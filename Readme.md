@@ -19,11 +19,9 @@ thesis file. The class options are documented below.
 Also provided is a `preamble.tex` which contains some possibly useful packages,
 tool and commands.
 
-Bibliography support is provided by the `biblatex` package, using the bibtex
-backend by default. Change the `bibliography.bib` filename in the preamble to
-match your bibliography database. A modified style is provided in the package
-`bibstyle-patch`, which adds arXiv and doi links and other formatting, but is
-not at all necessary.
+Bibliography support is provided by bibtex. Change the `bibliography.bib`
+filename in the main file to match your bibliography file. Uses the JHEP style
+by default.
 
 ## Building
 
