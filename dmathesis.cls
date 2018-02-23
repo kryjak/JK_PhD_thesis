@@ -389,7 +389,7 @@
     \if\relax\dma@researchgroup\relax\else
       \dmaresearchgroup{} \\
     \fi
-    Department of Mathematical Sciences \\
+    Department of Physics \\
     Durham University \\
     United Kingdom \\[1.0em]
     \dmadate\par}

@@ -33,57 +33,6 @@
 %   \includegraphics{img/picturename}
 %\graphicspath{./img}
 
-% Thmtools sets up theorem-like environments, and modifies the autoref
-% command from hyperref to work when these environments share a counter
-% Thmtools also defines an Autoref command for capitalising at the start
-% of a sentence
-\usepackage{thmtools}
-\declaretheorem[
-style=plain,
-name=Theorem,
-numberwithin=section
-]{thm}
-\declaretheorem[
-style=plain,
-name=Proposition,
-numberlike=thm
-]{prop}
-\declaretheorem[
-style=plain,
-name=Lemma,
-numberlike=thm
-]{lem}
-\declaretheorem[
-style=plain,
-name=Corollary,
-numberlike=thm
-]{cor}
-\declaretheorem[
-style=definition,
-name=Definition,
-numberlike=thm
-]{mdef}
-\declaretheorem[
-style=definition,
-name=Example,
-numberlike=thm
-]{example}
-\declaretheorem[
-style=definition,
-name=Remark,
-numberlike=thm
-]{rem}
-\declaretheorem[
-style=plain,
-name=Conjecture,
-numberlike=thm
-]{conj}
-\declaretheorem[
-style=plain,
-name=Question,
-numberlike=thm
-]{question}
-
 \numberwithin{equation}{section}
 \allowdisplaybreaks
 
