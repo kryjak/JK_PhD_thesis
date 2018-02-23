@@ -1,8 +1,10 @@
-# Durham maths thesis template
+# Durham IPPP thesis template
 
 This template is a hand-me-down from numerous people and has evolved over the
 past few years. Steven Charlton worked on a number of fiddly details and fixed
 much of the template, which was started by M. Imran.
+Matthew Kirk altered a few details to make it suitable for [IPPP] students,
+with a few touches taken from Helen Brooks' thesis.
 
 The template aims to satisfy the university [guidelines], but these could change
 at any time. The most significant change would be to the margin sizes, which are
@@ -10,8 +12,8 @@ specified in the template when the `geometry` package is loaded.
 
 ## Usage
 
-Most of the weight of the thesis options are hidden in the `dmathesis.cls` class
-file, which is used by calling `\documentclass{dmathesis}` at the top of your
+Most of the weight of the thesis options are hidden in the `ip3thesis.cls` class
+file, which is used by calling `\documentclass{ip3thesis}` at the top of your
 thesis file. The class options are documented below.
 
 Also provided is a `preamble.tex` which contains some possibly useful packages,
@@ -132,3 +134,4 @@ in the [guidelines].
 Provide any acknowledgements you wish to.
 
 [guidelines]: https://www.dur.ac.uk/graduate.school/current-students/submissionandbeyond/thesis.submission/preparing.thesis/format/
+[IPPP]: http://ippp.dur.ac.uk/

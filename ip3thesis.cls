@@ -1,7 +1,8 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{dmathesis}[2016/01/01 Durham University Maths Thesis Format]
+\ProvidesClass{ip3thesis}[2018/02/23 Durham University IPPP Thesis Format]
 
-% New thesis template written by Steven Charlton, 
+% New thesis template altered by Matthew Kirk, 
+% based on the new template written by Steven Charlton,
 % based on the old template of M. Imran
 % Example content taken also from M. Imran's template
 
