@@ -3,14 +3,14 @@ MAIN_TEX = $(NAME).tex
 OUTPUT = $(NAME).pdf
 
 PTX = pdflatex
-BIBTEX = biber
+BIBTEX = bibtex
 SHELL := /bin/bash
 
 SUBDIRS = 
 _SECTIONS = $(wildcard *.tex) $(foreach dir,$(SUBDIRS),$(wildcard $(dir)/*.tex))
 BUILD_DIR = build
 BIB_FILE = $(word 1, $(wildcard *.bib))
-CLS_FILE = dmathesis.cls
+CLS_FILE = ip3thesis.cls
 PKGS = $(wildcard *.sty)
 
 TXFLAGS =  --synctex=1 -output-directory $(BUILD_DIR)
