@@ -552,9 +552,9 @@
   %\par\vspace{2cm}
   \par\vfill
   \noindent \textbf{Copyright \copyright{} \number\year\space \dmaauthor}.\\
-  ``The copyright of this thesis rests with the author. No quotation from it
+  The copyright of this thesis rests with the author. No quotation from it
   should be published without the author's prior written consent and information
-  derived from it should be acknowledged.''
+  derived from it should be acknowledged.
   \clearpage
 }
 
