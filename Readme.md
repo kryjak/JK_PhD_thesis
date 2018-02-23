@@ -104,7 +104,7 @@ All environments will by default be added to the table of contents, use a
 starred version (e.g. `\begin{abstract*}...\end{abstract*}`) to prevent this.
 
 None of these are required by the template and can be ommitted. Some, like the
-absrtact and declaration, are required for your thesis. The order these are
+abstract and declaration, are required for your thesis. The order these are
 specified in the thesis document will determine the order in which they are
 typeset.
 
