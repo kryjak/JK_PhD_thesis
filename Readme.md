@@ -39,6 +39,14 @@ pdflatex <filename>
 A Makefile is also provided which includes some additional functionality, but is
 not at all explained nor tested on any other systems.
 
+A better option is just to use [latexmk].
+```
+# Makes the PDF
+latexmk -pdf <filename>
+# Cleans up all the extra files LaTeX produces
+latexmk -pdf c <filename>
+```
+
 ## Class options
 
 By default, the thesis template will pass the options `a4paper` and `12pt` to
@@ -133,3 +141,4 @@ Provide any acknowledgements you wish to.
 
 [guidelines]: https://www.dur.ac.uk/graduate.school/current-students/submissionandbeyond/thesis.submission/preparing.thesis/format/
 [IPPP]: http://ippp.dur.ac.uk/
+[latexmk]: https://ctan.org/pkg/latexmk
