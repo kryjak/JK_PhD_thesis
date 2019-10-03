@@ -140,5 +140,5 @@ in the [guidelines].
 Provide any acknowledgements you wish to.
 
 [guidelines]: https://www.dur.ac.uk/graduate.school/current-students/submissionandbeyond/thesis.submission/preparing.thesis/format/
-[IPPP]: http://ippp.dur.ac.uk/
+[IPPP]: https://www.ippp.dur.ac.uk/
 [latexmk]: https://ctan.org/pkg/latexmk
