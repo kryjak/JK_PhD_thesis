@@ -2,6 +2,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage[british]{babel}
+\usepackage[nottoc]{tocbibind}
 \usepackage[figuresright]{rotating}
 \usepackage[shrink=10,stretch=10]{microtype}
 \makeatletter
@@ -16,10 +17,27 @@
 
 \usepackage{cite}
 
-\usepackage{amsmath,amsthm,amssymb}
+\usepackage{amsmath,amssymb}
 \usepackage[hidelinks]{hyperref}
 \usepackage{booktabs}
+\usepackage{array}
+\newcolumntype{L}{>{$}l<{$}}
 \usepackage{xfrac}
+
+\usepackage[italic]{hepnames}
+
+\usepackage{braket}
+\usepackage{slashed}
+
+\usepackage{siunitx}
+\sisetup{
+	separate-uncertainty,
+	range-phrase = --,
+	range-units = single
+} 
+\DeclareSIUnit\fb{\femto\barn}
+
+\usepackage{cleveref}
 
 % The folder in which images are stored for this project.
 % If this is enabled, the folder doesn't need to be specified in each
@@ -27,7 +45,7 @@
 %   \includegraphics{picturename}
 % rather than
 %   \includegraphics{img/picturename}
-%\graphicspath{./img}
+\graphicspath{{img/}}
 
 \numberwithin{equation}{section}
 \allowdisplaybreaks
@@ -56,22 +74,3 @@
 % In align*, use this to number a particular line
 % Rather than using align, and \nonumber-ing every other line
 \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
-% Change autoref names. Generally I want sections to be capitalised at all
-% times, not just when starting a sentence.
-% (I'm not sure whether all these are necessary nor what the defaults are)
-\renewcommand{\equationautorefname}{equation}
-\newcommand{\equationAutorefname}{Equation}
-\newcommand{\sectionAutorefname}{Section}
-\newcommand{\chapterAutorefname}{Chapter}
-\newcommand{\subsectionAutorefname}{Subsection}
-\newcommand{\subsubsectionAutorefname}{Subsection}
-\newcommand{\algorithmAutorefname}{Algorithm}
-% Annoyingly these defs need to come *after* \begin{document}, so add to begin
-% document hook.
-\AtBeginDocument{%
-	\def\sectionautorefname{Section}%
-	\def\chapterautorefname{Chapter}%
-	\def\subsectionautorefname{Subsection}%
-	\def\subsubsectionautorefname{Subsection}%
-	\def\algorithmautorefname{Algorithm}%
-}
