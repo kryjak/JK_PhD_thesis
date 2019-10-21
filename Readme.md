@@ -27,24 +27,12 @@ by default.
 
 Running the standard build chain including `bibtex` in any of the standard latex
 writing programs should work.
-
-From the command line, use the usual commands
-```
-pdflatex <filename>
-bibtex <filename>
-pdflatex <filename>
-pdflatex <filename>
-```
-
-A Makefile is also provided which includes some additional functionality, but is
-not at all explained nor tested on any other systems.
-
-A better option is just to use [latexmk].
+However a better option is just to use [latexmk].
 ```
 # Makes the PDF
 latexmk -pdf <filename>
 # Cleans up all the extra files LaTeX produces
-latexmk -pdf c <filename>
+latexmk -pdf -c <filename>
 ```
 
 ## Class options
