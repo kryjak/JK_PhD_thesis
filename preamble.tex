@@ -1,9 +1,15 @@
+% General packages
 \usepackage[utf8]{inputenc} % utf8 input good for non-ascii characters
 \usepackage[T1]{fontenc} % Good for hyphenating non-ascii characters
 \usepackage{lmodern}
 \usepackage[british]{babel}
 \usepackage[nottoc]{tocbibind} % Includes bibliography in table of contents, but not the table of contents itself
 \usepackage[figuresright]{rotating} % Allows for sideways figures and tables
+\usepackage[hidelinks,pdfusetitle]{hyperref} % hidelinks removes the boxes around links when viewed on screen, pdfusetitle option includes the thesis title and author in the PDF metadata
+\usepackage{cite} % Combine multiple citations in range
+
+
+% Nicer appearance / typesetting
 \usepackage[shrink=10,stretch=10]{microtype}
 % We define a command to disable and enable protrusion, used for the tables of contents
 \makeatletter
@@ -16,30 +22,20 @@
 }
 \makeatother
 
-\usepackage{cite} % Combine multiple citations in range
-
-\usepackage{amsmath,amssymb}
-\usepackage[hidelinks,pdfusetitle]{hyperref} % hidelinks removes the boxes around links when viewed on screen, pdfusetitle option includes the thesis title and author in the PDF metadata
 \usepackage{booktabs} % Better tables
-\usepackage{array} % Allows us to define custom column types for tables
-\newcolumntype{L}{>{$}l<{$}} % a left aligned maths column type
-\usepackage{xfrac} % Nice small fractions
 
-\usepackage[italic]{hepnames} % Add particle name macros (e.g. \PBs)
+% These make paragraphs not indented, and separate consecutive paragraphs
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em plus 3pt minus 3pt}
 
-\usepackage{braket} % Adds Dirac bra-ket notation
-\usepackage{slashed} % Adds Dirac slash notation
+% Format captions
+\usepackage[margin=15mm,hang]{caption}
+\usepackage{subcaption}
+\usepackage{perpage} % Allows to reset counters on each page
+\MakePerPage{footnote} % Resets footnote counters on each page
 
-\usepackage{siunitx} % Add support for units
-\sisetup{
-	separate-uncertainty, % uncertainties with +- symbol, 
-	range-phrase = --, % ranges with dash
-	range-units = single % only write unit once
-} 
-\DeclareSIUnit\fb{\femto\barn}
 
-\usepackage{cleveref} % Add automatic reference type text via \cref command
-
+% For convenience
 % The folder in which images are stored for this project.
 % If this is enabled, the folder doesn't need to be specified in each
 % call to \includegraphics, i.e
@@ -48,15 +44,11 @@
 %   \includegraphics{img/picturename}
 \graphicspath{{img/}}
 
-\numberwithin{equation}{section}
-\allowdisplaybreaks
+% In align*, use this to number a particular line
+% Rather than using align, and \nonumber-ing every other line
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
 
-% use these to make paragraphs not indented,
-% and to separate consecutive paragraphs
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0.5em plus 3pt minus 3pt}
-
-% Provide itemize without extra spacing
+% Provide itemize and enumerate without extra spacing
 \newenvironment{itemize*}%
 {\begin{itemize}%
 	\setlength{\itemsep}{0pt}%
@@ -68,10 +60,29 @@
 	\setlength{\parskip}{0pt}}%
 {\end{enumerate}}
 
-% Format captions
-\usepackage[margin=15mm,hang]{caption}
-\usepackage{subcaption}
 
-% In align*, use this to number a particular line
-% Rather than using align, and \nonumber-ing every other line
-\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+% Better maths support
+\usepackage{amsmath,amssymb}
+\numberwithin{equation}{section}
+\allowdisplaybreaks % Allow display equations to break over different pages
+\usepackage{amssymb}
+\usepackage{bm} % More bold maths symbols
+\usepackage{bbm} % More blackboard bold characters, via \mathbbm. Mostly for blackboard bold 1
+\usepackage{xfrac} % Nice small fractions
+\usepackage{array} % Allows us to define custom column types for tables
+\newcolumntype{L}{>{$}l<{$}} % a left aligned maths column type
+
+\usepackage{cleveref} % Add automatic reference type text via \cref command
+
+
+% Some useful physics packages
+\usepackage[italic]{hepnames} % Add particle name macros (e.g. \PBs)
+\usepackage{braket} % Adds Dirac bra-ket notation
+\usepackage{slashed} % Adds Dirac slash notation
+\usepackage{siunitx} % Add support for units
+\sisetup{
+	separate-uncertainty, % uncertainties with +- symbol, 
+	range-phrase = --, % ranges with dash
+	range-units = single % only write unit once
+} 
+\DeclareSIUnit\fb{\femto\barn}
