@@ -46,9 +46,8 @@ All other options from the `report` document class can be passed to the thesis
 class and will be passed through to the underlying `report` class.
 
 #### draft
-By default enables a footer which includes wordcount information (requires the
-use of the makefile) and the date. This option is passed to the underlying
-report class so will also highlight any overfull hboxes.
+By default enables a footer with the date. This option is passed to
+the underlying report class so will also highlight any overfull hboxes.
 
 #### twoside
 Typeset the document to use both sides of paper. The margins are asymmetric, so
