@@ -3,7 +3,7 @@
 \usepackage{lmodern}
 \usepackage[british]{babel}
 \usepackage[figuresright]{rotating}
-\usepackage[draft=false,protrusion=true,expansion,shrink=10,stretch=10,]{microtype}
+\usepackage[shrink=10,stretch=10]{microtype}
 \makeatletter
 \@ifpackageloaded{microtype}{%
 	\providecommand{\disableprotrusion}{\microtypesetup{protrusion=false}}
@@ -17,7 +17,7 @@
 \usepackage{cite}
 
 \usepackage{amsmath,amsthm,amssymb}
-\usepackage[hidelinks,draft=false]{hyperref}
+\usepackage[hidelinks]{hyperref}
 \usepackage{booktabs}
 \usepackage{xfrac}
 
@@ -31,11 +31,6 @@
 
 \numberwithin{equation}{section}
 \allowdisplaybreaks
-
-% Makes the last line of a page flush with the bottom margin for neatness
-%\raggedbottom
-%\emergencystretch=1em
-\flushbottom
 
 % use these to make paragraphs not indented,
 % and to separate consecutive paragraphs
@@ -57,9 +52,6 @@
 % Format captions
 \usepackage[margin=15mm,hang]{caption}
 \usepackage{subcaption}
-
-\setfloatlocations{figure}{tbp}
-\setfloatlocations{table}{tbp}
 
 % In align*, use this to number a particular line
 % Rather than using align, and \nonumber-ing every other line
