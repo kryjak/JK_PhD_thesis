@@ -1,5 +1,6 @@
 \documentclass[twoside,openright,frontopenright]{ip3thesis}
 \input{preamble}
+\usepackage{subfiles}
 
 
 \begin{document}
@@ -53,15 +54,15 @@
 
 \cleardoublepage
 
-%\include{intro}
-%\include{background}
-%\include{paper1}
-%\include{paper2}
-%\include{paper3}
+\subfile{intro}
+%\subfile{background}
+%\subfile{paper1}
+%\subfile{paper2}
+%\subfile{paper3}
 
 \appendix
-%\include{appendix1}
-%\include{appendix2}
+%\subfile{appendix1}
+%\subfile{appendix2}
 
 \bibliographystyle{JHEP}
 \bibliography{bibliography}

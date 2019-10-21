@@ -19,6 +19,10 @@ thesis file. The class options are documented below.
 Also provided is a `preamble.tex` which contains some possibly useful packages,
 tool and commands.
 
+Chapters are included using the [subfiles] package.
+This is a nice package that allows you to compile either the entire thesis *or* just a single chapter without doing anything extra, just by compiling the appropriate file.
+An example chapter is provided in `intro.tex`.
+
 Bibliography support is provided by bibtex. Change the `bibliography.bib`
 filename in the main file to match your bibliography file. Uses the JHEP style
 by default.
@@ -129,3 +133,4 @@ Provide any acknowledgements you wish to.
 [guidelines]: https://www.dur.ac.uk/graduate.school/current-students/submissionandbeyond/thesis.submission/preparing.thesis/format/
 [IPPP]: https://www.ippp.dur.ac.uk/
 [latexmk]: https://ctan.org/pkg/latexmk
+[subfiles]: https://www.ctan.org/pkg/subfiles
