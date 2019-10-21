@@ -1,10 +1,11 @@
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc} % utf8 input good for non-ascii characters
+\usepackage[T1]{fontenc} % Good for hyphenating non-ascii characters
 \usepackage{lmodern}
 \usepackage[british]{babel}
-\usepackage[nottoc]{tocbibind}
-\usepackage[figuresright]{rotating}
+\usepackage[nottoc]{tocbibind} % Includes bibliography in table of contents, but not the table of contents itself
+\usepackage[figuresright]{rotating} % Allows for sideways figures and tables
 \usepackage[shrink=10,stretch=10]{microtype}
+% We define a command to disable and enable protrusion, used for the tables of contents
 \makeatletter
 \@ifpackageloaded{microtype}{%
 	\providecommand{\disableprotrusion}{\microtypesetup{protrusion=false}}
@@ -15,29 +16,29 @@
 }
 \makeatother
 
-\usepackage{cite}
+\usepackage{cite} % Combine multiple citations in range
 
 \usepackage{amsmath,amssymb}
-\usepackage[hidelinks]{hyperref}
-\usepackage{booktabs}
-\usepackage{array}
-\newcolumntype{L}{>{$}l<{$}}
-\usepackage{xfrac}
+\usepackage[hidelinks]{hyperref} % hidelinks removes the boxes around links when viewed on screen
+\usepackage{booktabs} % Better tables
+\usepackage{array} % Allows us to define custom column types for tables
+\newcolumntype{L}{>{$}l<{$}} % a left aligned maths column type
+\usepackage{xfrac} % Nice small fractions
 
-\usepackage[italic]{hepnames}
+\usepackage[italic]{hepnames} % Add particle name macros (e.g. \PBs)
 
-\usepackage{braket}
-\usepackage{slashed}
+\usepackage{braket} % Adds Dirac bra-ket notation
+\usepackage{slashed} % Adds Dirac slash notation
 
-\usepackage{siunitx}
+\usepackage{siunitx} % Add support for units
 \sisetup{
-	separate-uncertainty,
-	range-phrase = --,
-	range-units = single
+	separate-uncertainty, % uncertainties with +- symbol, 
+	range-phrase = --, % ranges with dash
+	range-units = single % only write unit once
 } 
 \DeclareSIUnit\fb{\femto\barn}
 
-\usepackage{cleveref}
+\usepackage{cleveref} % Add automatic reference type text via \cref command
 
 % The folder in which images are stored for this project.
 % If this is enabled, the folder doesn't need to be specified in each
