@@ -1,0 +1,121 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+%\chapter{Intro}
+%\label{chapter:intro}
+\centering
+\textbf{Thesis Plan}
+\begin{enumerate}
+    \item Introduction
+    \begin{itemize}
+        \item Explain the context in which this work is situated and the structure of the thesis
+    \end{itemize}
+    \item SM and QCD
+    \begin{itemize}
+        \item introductory content about the SM, non-abelian $SU(3)$ group, QCD Lagrangian
+        \item to extract a physical predictions, we need to calculate cross-sections
+        \item $\rightarrow$ the need for perturbative expansion -- order by order calculation of amplitudes
+        \item loops and divergences, dimensional regularisation, `t Hooft-Veltman scheme
+    \end{itemize}
+    \item Tools for calculating scattering amplitudes
+    \begin{itemize}
+        \item general description of the difficulties in these computations, algebraic + analytic complexity, talk about the state of the art developments
+        \item Feynman rules
+        \item colour decomposition
+        \item helicities and helicity amplitudes
+        \item spinor-helicity formalism
+        \item momentum twistors
+        \item finite fields
+        \begin{itemize}
+            \item mention the connection between finite fields and rational parametrisation of kinematics
+            \item mention how the Chinese remainder theorem allows us to reconstruct larger rational numbers by combining several prime fields
+        \end{itemize}
+        \item multiloop integrand reduction and unitarity cuts - explain how a tensor integral can be reduced onto a combination of scalar integrals - I would like to show a simple example of this
+       
+        \item IBP reduction
+        \begin{itemize}
+            \item generation, Laporta algorithm
+            \item solution as a linear solver - implemented over FF
+            \item UT basis of MIs (maybe talk about MIs in general here and leave the discussion of UT for later sections?):
+            \begin{itemize}
+                \item what they are, why they are useful
+                \item constructing the $\epsilon$-free DEs satisfied by UT integrals\
+                \item DEs as a way of solving UT MIs
+                \item the `symbol' formalism
+            \end{itemize}
+            
+            \item mention progress in syzygies, intersection numbers?
+        \end{itemize}
+        
+        \item discuss different bases of special functions and their advantages
+        \begin{itemize}
+            \item analytical and numerical methods for the evaluation of MIs/special functions
+            \item describe the theory behind auxiliary mass flow and generalised series expansion?
+        \end{itemize}
+    \end{itemize}
+    
+    \item $pp \rightarrow Hb\bar{b}$
+    \begin{itemize}
+        \item 5-pt 1-mass kinematics: 6 invariants + $\mathrm{tr}_5$
+        \item colour structure + describe how the leading-colour approximation simplifies the computation (also mention how (un)justified it is)
+        \item reduction onto maximal topologies (show pictures?)
+        \item IBPs - describe the planar families
+
+        \item pole subtraction to get finite remainder
+        \begin{itemize}
+            \item I would like to show how a sample pole structure is derived, but maybe that should be moved to Section 3?
+        \end{itemize}
+        \item reconstruction tools and complexity
+        \begin{itemize}
+            \item linear relations
+            \item matching onto ansatz
+            \item univariate partial-fractioning - mention the impact of the right choice of the variable
+        \end{itemize}
+        \item describe BCFW to compute tree level amps?
+        \item describe checks that are done on the final expressions?
+    \end{itemize}
+    
+    \item $pp \rightarrow W \gamma j$
+    \begin{itemize}
+        \item mostly same as above, but:
+        \begin{itemize}
+            \item describe the tensor decomposition method
+            \item show how to combine the 5pt and 4pt contributions
+        \end{itemize}
+        
+        \item pentagon functions and why they are useful (closure under permutations of massless legs)
+        \item reconstruction - testing of MT parametrisation on 1L expressions - done \textit{a posteriori} to reduce the size of rational coefficients (and also their evaluation time)
+    \end{itemize}
+
+    \item `all-plus' self-dual $\phi$+gluons amplitudes
+    \begin{itemize}
+        \item describe the model (mention how it relates to the H+gluons amps)
+        \item Christian's computations with unitarity cuts
+        \item my computation at the symbol level
+        \item troubles with the $\beta$ function
+    \end{itemize}
+
+    \item $pp \rightarrow W \gamma \gamma$ ???
+    \begin{itemize}
+        \item structure of the amplitudes, show how to combine the 5pt, 4pt, and 3pt contributions
+        \item IBPs in the `alt' approach - describe a more efficient implementation of the IBP solution over FF
+        \item talk about problems with $\mathrm{tr}_5$?
+        \begin{itemize}
+            \item parity of pentagon functions
+            \item full, UT basis vs the root-free basis that can be used by FF
+        \end{itemize}
+    \end{itemize}
+
+    \item Other? Things that could be mentioned, but don't really fit anywhere else:
+    \begin{itemize}
+        \item reparametrisation of MTs based on one-loop expression testing, implemented \textit{a priori} over FF
+        \item at one point, I applied integrand-level symmetries to loop monomials in order to simplify the \texttt{DiagramNumerators}. It helped a bit, but was not crucial in the end.
+    \end{itemize}
+
+    \item Conclusions
+    \begin{itemize}
+        \item a nice summary of our work and how it fits into the wider picture
+        \item stress that these results are some of the first at the 2L 5pt 1-mass QCD frontier
+        \item outlook
+    \end{itemize}
+\end{enumerate}
+\end{document}
