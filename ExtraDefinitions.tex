@@ -1,0 +1,130 @@
+\usepackage{graphicx}
+\usepackage{slashed}
+\usepackage{color}
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+
+\definecolor{mypink}{RGB}{219, 48, 122}
+\definecolor{mygreen}{rgb}{0,0.7,0}
+\def\SB#1{\textcolor{mygreen}{{\bf\tt [SB: #1]}}}
+\def\TP#1{\textcolor{yellow}{{\bf\tt [TP: #1]}}}
+\def\BH#1{\textcolor{red}{{\bf\tt [BH: #1]}}}
+\def\EC#1{\textcolor{mypink}{{\bf\tt [EC: #1]}}}
+\def\SZ#1{\textcolor{blue}{{\bf\tt [SZ: #1]}}}
+\def\JK#1{\textcolor{cyan}{{\bf\tt [JK: #1]}}}
+\def\txB#1{\textcolor{blue}{#1}}
+
+%%% spinor products %%%
+
+\def\finite{\mathrm{finite}}
+\def\renorm{\mathrm{ren,CDR}}
+\def\irpole{\mathrm{pole,CDR}}
+ 
+\def\fin{\mathrm{fin}}
+\def\zz{\boldsymbol{Z}}
+\def\mi{\mathrm{MI}}
+\def\cF{\mathcal{F}}
+\def\cP{\mathcal{P}}
+\def\cC{\mathcal{C}}
+\def\cA{\mathcal{A}}
+\def\cN{\mathcal{N}}
+\def\cO{\mathcal{O}}
+\def\cD{\mathcal{D}}
+\def\cQ{\mathcal{Q}}
+\def\cJ{\mathcal{J}}
+\def\cI{\mathcal{I}}
+\def\cT{\mathcal{T}}
+\def\nn{\nonumber \\ }
+
+\def\wpol{\varepsilon_W}
+\def\lrbrace#1{\lbrace#1\rbrace}
+\def\la{\langle}
+\def\ra{\rangle}
+\def\spA#1#2{\la#1#2\ra}
+\def\spB#1#2{[#1#2]}
+\def\spAB#1#2#3{\la#1|#2|#3]}
+\def\spBA#1#2#3{[#1|#2|#3\ra}
+\def\spAA#1#2#3{\la#1|#2|#3\ra}
+\def\spBB#1#2#3{[#1|#2|#3]}
+\def\spab#1#2{\la#1|#2]}
+\def\spaa#1#2#3#4{\la#1|#2|#3|#4\ra}
+\def\spbb#1#2#3#4{[#1|#2|#3|#4]}
+\def\wh#1{\widehat#1}
+\DeclareMathOperator{\tr}{\rm tr}
+\def\trm{\tr_-}
+\def\trp{\tr_+}
+\def\MP#1#2{(#1\cdot#2)}
+\def\trfive{\tr_5}
+\def\spAXB#1#2#3#4#5{\la#1|#2|#3|#4|#5]}
+
+\def\bra#1{\langle #1|}
+\def\ket#1{|#1 \rangle}
+\def\sqbra#1{[#1|}
+\def\sqket#1{|#1]}
+\def\braket#1{\langle #1 \rangle}
+
+\def\eps{\epsilon}
+\def\fl#1{#1^\flat}
+\def\tl#1{\tilde{#1}}
+\def\wh{\widehat}
+\def\tC{\tilde{C}}
+\def\qb{{\bar{q}}}
+\def\sb{\bar{s}}
+\def\Sb{\bar{S}}
+\def\lb{\bar{\ell}}
+\def\tb{{\bar{t}}}
+\def\ttgg{\bar{t}tgg}
+\def\mren{\mathrm{mren}}
+\def\ren{\mathrm{ren}}
+\def\mct{\mathrm{mct}}
+\def\ceps{C_\eps}
+\def\as{\alpha_s}
+\def\dk#1{\frac{d^d k_{#1}}{i\pi^{d/2}e^{-\eps \gamma_E}}}
+\def\bbh{b\bar{b}H}
+\def\bbggh{\bar{b}bggH}
+\def\bbqqh{\bar{b}b\bar{q}qH}
+
+\def\e{\epsilon}
+\def\tT{\tilde{T}}
+\def\coll#1#2{\overset{#1||#2}{\to}}
+\def\inf{{\rm Inf}}
+\def\gg#1{\gamma_{#1}}
+\def\XX{\chi}
+
+\def\cv#1#2{\AB{#1}{\gamma^\mu}{#2}}
+\def\cvS#1#2#3{\AB{#1}{#2}{#3}}
+
+\def\MHVb{$\overline{\rm MHV}$}
+\def\boxX{$\xcancel{\rm\bf box}$}
+
+\def\fl#1{{#1^{\flat}}}
+\def\flm#1{{#1^{\flat,\mu}}}
+\def\kf#1{{\fl{K_{#1}}}}
+\def\kfm#1{{\flm{K_{#1}}}}
+
+\def\ulim#1{\underset{#1}{\lim}}
+
+\def\fbox#1{F^{(#1)}_{\mathrm{box}}}
+\def\lh{\hat{L}}
+\def\li#1{\mathrm{Li}_{#1}}
+
+\def\finr{{\mathcal{F}}}
+\def\pole{{\mathcal{P}}}
+\def\cusp{{\mathrm{cusp}}}
+\def\sumhel{\sum_{\mathrm{helicity}}}
+
+%%%% typesetting equations %%%%
+\def\s#1{s_{#1}}
+\def\d#1#2{#1\cdot #2}
+\def\p#1{#1}
+\def\pp#1{p_{#1}}
+\def\f#1{#1^\flat}
+\def\n#1{\eta_{#1}}
+
+\def\Adcc{B_n^{(1)}}
+
+\def\usepic#1#2{\parbox{#1}{\includegraphics[width=#1]{#2}}}
+\def\usepix#1#2#3#4#5#6{\parbox{#1}{\includegraphics[width=#1,trim= #3 #4 #5 #6,clip=true]{#2}}}
+
+\def\hpl11{{\mathrm{HPL}}_{1,1}}
+

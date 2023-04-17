@@ -1,11 +1,32 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 \chapter{The `all-plus' $\phi+\text{gluons}$ amplitudes}
-Yet another type of process to which we can apply our technology is the scattering of a Higgs boson with gluons. This process is of high phenomenological interest because the greatest Higgs production mode is the inclusive $gg$ fusion through a quark loop, $gg \rightarrow H + X$. Since the Yukawa coupling of the Higgs boson to quarks is proportional to the quark mass, $gg$ fusion is dominated by the top quark loop specifically. It has been shown that in the limit $2m_t \gg m_H$, the effects of this loop can be reliably captured by integrating it out and adopting an effective vertex of dimension 5, $H G_{\mu\nu} G^{\mu\nu}$ \cite{Wilczek:1977, Djouadi:1991}. This reduces the loop order of the corresponding Feynman diagrams, greatly simplifying the calculations. Two-loop amplitudes for $H+4g$ scattering computed in this approximation contribute not only to NNLO QCD corrections to $pp \rightarrow H+2j$, but also to $pp \rightarrow H+j$ at N3LO and $pp \rightarrow H$ at $N4LO$.
+Yet another type of process to which we can apply our technology is the scattering of a Higgs boson with gluons. This process is of high phenomenological interest because the greatest Higgs production mode is the inclusive $gg$ fusion through a quark loop, $gg \rightarrow H + X$. Since the Yukawa coupling of the Higgs boson to quarks is proportional to the quark mass, $gg$ fusion is dominated by the top quark loop specifically. It has been shown that in the limit $2m_t \gg m_H$, the effects of this loop can be reliably captured by integrating it out and adopting an effective vertex of dimension 5 \cite{Wilczek:1977, Djouadi:1991}: 
+\begin{equation}
+    H \tr G_{\mu\nu} G^{\mu\nu} \,.
+\end{equation}
+This reduces the loop order of the corresponding Feynman diagrams, greatly simplifying the calculations. Two-loop amplitudes for $H+4g$ scattering computed in this approximation contribute not only to NNLO QCD corrections to $pp \rightarrow H+2j$, but also to $pp \rightarrow H+j$ at N3LO and $pp \rightarrow H$ at $N4LO$.
 \textcolor{red}{Is this correct? What does $\text{NNLO}_{HTL} \otimes \text{NLO}_{QCD}$ in Les Houches mean?}
 
-Unfortunately, due to the large symmetry of the external particles \textcolor{red}{How to express this better?}, this process is significantly more computationally demanding than the processes considered in the previous chapters. In particular, we have to handle a far greater number of integral topologies and non-planar families appear already at leading-colour \textcolor{red}{check if this was true, I'm not sure now}. At the time of writing, a UT master integral basis for the non-planar double-pentagons and the corresponding expansion into special functions are not available in literature yet. We can, however, study the 4-point amplitude in anticipation of these results. In this chapter, we give a brief overview of the computation of the $H+3g$ amplitude in the `all-plus' helicity configuration using the so-called `self-dual' model. We also present the results for the cut-constructible part of this amplitude obtained using \textcolor{red}{D-dimensional?} unitarity cuts. Finally, we introduce the `symbol' formalism, which is closely related to the differential equations and UT master integrals, and describe the pole structure of this amplitude.
+Unfortunately, due to the large symmetry of the external particles \textcolor{red}{How to express this better?}, this process is significantly more computationally demanding than the processes considered in the previous chapters. In particular, we have to handle a far greater number of integral topologies and non-planar families appear already at leading colour. At the time of writing, a UT master integral basis for the non-planar double-pentagons and the corresponding expansion into special functions are not available in literature yet. We can, however, study the 4-point amplitude in anticipation of these results. In this chapter, we give a brief overview of the computation of the $H+3g$ amplitude in the `all-plus' helicity configuration using the so-called `self-dual' model. We also present the results for the cut-constructible part of this amplitude obtained using $D$-dimensional unitarity cuts. Finally, we introduce the `symbol' formalism, which is closely related to the differential equations and UT master integrals, and describe the pole structure of this amplitude.
 
 \section{The self-dual model}
-Following Ref.~\cite{}
+Following Ref.~\cite{Dixon:2004za}, we split the effective $Hgg$ vertex into two parts by introducing the selfdual and anti-selfdual gluon field strength tensors:
+\begin{equation}
+    G^{\mu\nu}_{SD} = \frac{1}{2} \left(G^{\mu\nu} + \prescript{\ast}{}{G}^{\mu\nu} \right)\,, \quad     G^{\mu\nu}_{ASD} = \frac{1}{2} \left(G^{\mu\nu} - \prescript{\ast}{}{G}^{\mu\nu} \right)\,, \quad\prescript{\ast}{}{G}^{\mu\nu} = \frac{i}{2} \epsilon^{\mu\nu\rho\sigma} G_{\mu\nu}\,.
+\end{equation}
+We can then treat $H$ as the real part of a complex scalar field $\phi = \dfrac{1}{2}(H+i A)$ and observe that:
+\begin{align}
+    \Lagr_H^{\text{int}} \rightarrow \Lagr_{H, A}^{\text{int}} &= \frac{C}{2} \left( H \tr {G}_{\mu\nu}{G}^{\mu\nu} + iA \tr {G}_{\mu\nu}\prescript{\ast}{}{G}^{\mu\nu}\right) \\
+    &= C \left( \phi \tr {G}_{SD\,\mu\nu}{G}_{SD}^{\mu\nu} + \phi^\dagger \tr {G}_{ASD\,\mu\nu}\prescript{\ast}{}{G}_{ASD}^{\mu\nu}\right)\,.
+\end{align} 
+The constant $C$ can be obtained by calculating the $H \rightarrow gg$ amplitudes, including the top quark loop, in the limit $m_t \rightarrow \infty$. Its renormalised value up to $\order{\alpha_s^4}$ is given in Ref.~\cite{Chetyrkin:1997iv}. Since $H = \phi + \phi^\dagger$ and:
+\begin{equation}
+    A_n(\phi, 1^{h_1},2^{h_2}, \ldots, n^{h_n}) = A_n(\phi^\dagger, 1^{-h_1},2^{-h_2}, \ldots, n^{-h_n}) \rvert_{\spA{i}{j} \leftrightarrow \spB{i}{j}} \,,
+\end{equation}
+the $H+$gluons amplitudes can be recovered trivially from their $\phi$ and $\phi$ counterparts. The motivation behind this trick is that the latter amplitudes have a simpler structure than the full $H+$gluons ones. Indeed, it can be shown that: 
+\begin{equation}
+    A_n(\phi, 1^\pm,2^+,3^+, \ldots, n^+) = 0 \,,
+\end{equation}
+and the first non-vanishing helicity configurations are the $\phi$--MHV ones (or equivalently, the $\phi^\dagger$--anti-MHV)~\cite{Berends:1988759}, for which which simple expressions resembling the Parke-Taylor formula can be derived at tree-level~\cite{Dixon:2004za}. The corresponding one-loop amplitudes \textcolor{red}{just 1L or at any loop order?} are finite and free of branch cuts in the complex plane, just like in the pure QCD case~\cite{Mahlon:1993si}. 
 \end{document}
