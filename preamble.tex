@@ -54,9 +54,18 @@
 \def\ceps{C_\eps}
 \def\as{\alpha_s}
 \def\dk#1{\frac{d^d k_{#1}}{i\pi^{d/2}e^{-\eps \gamma_E}}}
+
+%processes
 \def\bbh{b\bar{b}H}
 \def\bbggh{\bar{b}bggH}
 \def\bbqqh{\bar{b}b\bar{q}qH}
+\def\ppbbH{pp \rightarrow b\bar{b}H}
+\def\Wgj{W^\pm \gamma j}
+\def\Wgjp{W^{+} \gamma j}
+\def\Wgjm{W^{-} \gamma j}
+\def\ppWgj{pp \rightarrow W^\pm \gamma j}
+\def\ppWgjp{pp \rightarrow W^{+} \gamma j}
+\def\ppWgjm{pp \rightarrow W^{-} \gamma j}
 
 \def\e{\epsilon}
 \def\tT{\tilde{T}}
@@ -144,3 +153,12 @@
 	range-units = single % only write unit once
 } 
 \DeclareSIUnit\fb{\femto\barn}
+
+\usepackage{tikz}
+\usepackage{tikzducks}
+%\usepackage[compat=1.1.1]{tikz-feynman}\usetikzlibrary{matrix,decorations.pathreplacing}
+\usetikzlibrary{shapes.geometric,shapes.misc,arrows}
+\tikzstyle{grayrec} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=gray!20]
+\tikzstyle{greenrec} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=green!30]
+\tikzstyle{redrec} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{bluerec} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=blue!30]

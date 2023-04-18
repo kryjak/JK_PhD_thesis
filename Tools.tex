@@ -1,0 +1,52 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+\chapter{Tools for calculating scattering amplitudes}
+In the remainder of this thesis, we focus on various aspects of the computation of two-loop QCD scattering amplitudes for high-multiplicity processes. It is important to note that there is currently no one-size-fits-all approach that would allow us to compute all the desired amplitudes at a press of a button. In practice, we use a collection of methods that are most appropriate for the task at hand. For processes at the limit of current capabilities, these tools need to be further improved or replaced with novel ideas. To this end, much work has been done by the theory community in recent years. Unfortunately, due to the overwhelming algebraic and analytic complexity, many calculations still present challenges beyond the reach of current technology. 
+\begin{figure}[t]
+\begin{tikzpicture}
+	\node (feynman) [greenrec] {Feynman diagrams};
+	\node (colour)  [redrec,right of=feynman,xshift=4cm] {Colour decomposition};
+	\node (topos)   [redrec,right of=colour,xshift=4cm] {Collect in topologies};
+	\node (reduction) [bluerec,below of=topos,yshift=-2cm] {\parbox{0.3\textwidth}{\centering Integrand reduction onto \\ maximal topologies}};
+	\node (IBPs)    [bluerec,left of=reduction,xshift=-4cm] {IBP reduction};
+	\node (spfns)   [bluerec,left of=IBPs, xshift=-4cm] {\parbox{0.3\textwidth}{\centering Expansion of MIs onto \\ special function basis}};
+	\node (sub)     [bluerec,below of=spfns,yshift=-2cm] {Pole subtraction};
+	\node (finrem)  [bluerec,right of=sub,xshift=4cm] {Finite remainder};
+	\node (rec)  [bluerec,right of=finrem,xshift=4cm] {Reconstruction};
+	\node (qgraf) [below of=feynman, opacity=0.7] {\textcolor{green}{\Large QGRAF}};
+	\node (mma) [below right of=colour, xshift=1.5cm, yshift=-0.3cm, opacity=0.7] {\textcolor{red}{\Large Mathematica/FORM}};
+	\node (ff) [below of=IBPs, yshift=-0.5cm,opacity=0.7] {\textcolor{blue}{\Large finite fields}};
+		
+	\draw[->] (feynman.east) -- (colour.west);
+	\draw[->] (colour.east) -- (topos.west);
+	\draw[->] (topos.south) -- (reduction.north) node[midway,right] {$d=4-2\epsilon$};
+	\draw[->] (reduction.west) -- (IBPs.east);
+	\draw[->] (IBPs.west) -- (spfns.east);
+	\draw[->] (spfns.south) -- (sub.north);
+	\draw[->] (sub.east) -- (finrem.west) node[midway,above] {$\epsilon \rightarrow 0$};
+	\draw[->] (finrem.east) -- (rec.west);
+\end{tikzpicture}
+\caption{A schematic overview of the workflow we adopt to compute scattering amplitudes.}
+\label{fig:outline}
+\end{figure}
+The goal of this chapter is to provide an overview of the method we adopt in amplitude computations, as well as the problems that invariably follow. The procedure involves several highly non-trivial steps. To help the reader retain the `big picture' of the workflow, we present its schematic outline in Fig.~\ref{fig:outline}.  Each step is discussed in more detail below. 
+
+\section{Feynman diagrams}
+The starting point of our amplitude computation for a given process is the generation of all Feynman diagrams contributing to this process at the desired loop order. Feynman diagrams provide a pictorial representation of the ways in which the interaction can occur.
+%time-ordered correlation functions that contribute to the $S$-matrix element
+At the same time, the corresponding mathematical expressions can be easily recovered using Feynman rules, which can be derived form the Lagrangian of the theory under consideration \textcolor{red}{(Feynman rules relevant to our work are listed in Appendix~\ref{app:feynmanrules})}. As such, these diagrams are an indispensable tool of any perturbative calculation. In practice, it can be observed that usually their number grows faster than exponentially as we increase the loop order or multiplicity (see Table~\ref{tab:ndiags} for an example). To handle the combinatorial complexity, we generate the relevant Feynman diagrams using $\texttt{QGRAF}$~\cite{Nogueira:1991ex}. \textcolor{red}{This programme has the advantage of being able to control the total power of the coupling constant in a certain diagram... - should I even mention that?}
+\begin{table}[b]
+	\begin{center}
+		\begin{tabular}{r|c|c|c|c|c|c}
+			  $n$ & 1 & 2 & 3 & 4 & 5 & 6 \\
+			\hline
+			$n$ gluons   & -- & -- & 1 & 4 & 25 & 220 \\
+			$q\bar{q} + n$ gluons & 1 & 3 & 16 & 123 & 1240 & 15495 \\
+		\end{tabular}
+	\end{center}
+ \caption{Number of tree-level diagrams contributing to selected processes with $n$-gluon.}
+ \label{tab:ndiags}
+\end{table}
+\section{Colour decomposition}
+Having generated the Feynman diagrams, we substitute the Feynman rules for the propagators and vertices using \texttt{Mathematica}. At this point, our QCD amplitude contains both colour and kinematic information:
+\end{document}
