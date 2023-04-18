@@ -74,6 +74,7 @@
 %\def\gg#1{\gamma_{#1}}  % clashes
 \def\XX{\chi}
 \def\Lagr{\mathcal{L}}
+\newcommand{\ampl}[2][]{\mathcal{A}^\textbf{#1}_{#2}}
 \def\order#1{\mathcal{O}(#1)}
 
 % Nicer appearance / typesetting
@@ -101,6 +102,7 @@
 \usepackage{perpage} % Allows to reset counters on each page
 \MakePerPage{footnote} % Resets footnote counters on each page
 
+\usepackage{graphicx}
 
 % For convenience
 % The folder in which images are stored for this project.
@@ -132,7 +134,6 @@
 \usepackage{amsmath,amssymb}
 \numberwithin{equation}{section}
 \allowdisplaybreaks % Allow display equations to break over different pages
-\usepackage{amssymb}
 \usepackage{bm} % More bold maths symbols
 \usepackage{bbm} % More blackboard bold characters, via \mathbbm. Mostly for blackboard bold 1
 \usepackage{xfrac} % Nice small fractions
@@ -156,7 +157,7 @@
 
 \usepackage{tikz}
 \usepackage{tikzducks}
-%\usepackage[compat=1.1.1]{tikz-feynman}\usetikzlibrary{matrix,decorations.pathreplacing}
+\usepackage[compat=1.1.1]{tikz-feynman}\usetikzlibrary{matrix,decorations.pathreplacing}
 \usetikzlibrary{shapes.geometric,shapes.misc,arrows}
 \tikzstyle{grayrec} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=gray!20]
 \tikzstyle{greenrec} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=green!30]

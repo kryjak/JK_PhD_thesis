@@ -37,16 +37,66 @@ The starting point of our amplitude computation for a given process is the gener
 At the same time, the corresponding mathematical expressions can be easily recovered using Feynman rules, which can be derived form the Lagrangian of the theory under consideration \textcolor{red}{(Feynman rules relevant to our work are listed in Appendix~\ref{app:feynmanrules})}. As such, these diagrams are an indispensable tool of any perturbative calculation. In practice, it can be observed that usually their number grows faster than exponentially as we increase the loop order or multiplicity (see Table~\ref{tab:ndiags} for an example). To handle the combinatorial complexity, we generate the relevant Feynman diagrams using $\texttt{QGRAF}$~\cite{Nogueira:1991ex}. \textcolor{red}{This programme has the advantage of being able to control the total power of the coupling constant in a certain diagram... - should I even mention that?}
 \begin{table}[b]
 	\begin{center}
-		\begin{tabular}{r|c|c|c|c|c|c}
-			  $n$ & 1 & 2 & 3 & 4 & 5 & 6 \\
+		\begin{tabular}{r|c|c|c|c|c|c|c|c}
+			  $n$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
 			\hline
-			$n$ gluons   & -- & -- & 1 & 4 & 25 & 220 \\
-			$q\bar{q} + n$ gluons & 1 & 3 & 16 & 123 & 1240 & 15495 \\
+			$n$ gluons   & -- & -- & 1 & 4 & 25 & 220 & 2485 & 34300 \\
+			$q\bar{q} + n$ gluons & 1 & 3 & 16 & 123 & 1240 & 15495 & 231280 & 4016775 \\
 		\end{tabular}
 	\end{center}
- \caption{Number of tree-level diagrams contributing to selected processes with $n$-gluon.}
+ \caption{Number of tree-level diagrams contributing to selected processes with $n$ gluons.}
  \label{tab:ndiags}
 \end{table}
 \section{Colour decomposition}
-Having generated the Feynman diagrams, we substitute the Feynman rules for the propagators and vertices using \texttt{Mathematica}. At this point, our QCD amplitude contains both colour and kinematic information:
+Having generated the Feynman diagrams, we substitute the Feynman rules for the propagators and vertices using \texttt{Mathematica}. At this point, our QCD amplitude contains both colour and kinematic information. The idea of colour ordering is to reorganise the amplitude such that these two components separate: a purely kinematic amplitude is multiplied by the corresponding colour factor. In other words, we perform the decomposition of the full amplitude in colour space, according to a chosen colour basis. Roughly speaking:
+\begin{equation}
+    \ampl{n} = \sum_i \text{(colour)}_i \times A_{n\,i} \,, 
+\end{equation}
+where $A_{n\,i}$ are the colour-ordered amplitudes (also known as colour-stripped or partial amplitudes). The motivation behind this decomposition is that the colour-ordered amplitudes turn out to be significantly simpler to calculate.
+
+The choice of the colour basis is not unique. We adopt the decomposition according to traces of the $SU(N_c)$ generators in the fundamental representation. As an example, let's look at the 4-gluon scattering at tree-level:
+\begin{equation} \label{eq:3grule}
+\feynmandiagram [baseline = (i.base), horizontal = i to j] {
+    a1 [particle={$A^{a}_{\mu_1}$}] -- [gluon, momentum=$p_1$] i;
+    a2 [particle={$A^{b}_{\mu_2}$}] -- [gluon, momentum=$p_2$] i;
+    i -- [gluon] j;
+    a3 [particle={$A^{d}_{\mu_3}$}] -- [gluon, momentum=$p_3$] j;
+    a4 [particle={$A^{e}_{\mu_4}$}] -- [gluon, momentum=$p_4$] j;
+    };
+    \xrightarrow{colour}
+    f^{abc}f^{def}\delta^{cd} \,.
+\end{equation}
+The colour factor of this diagram can be expressed in terms of the generators using Eq.~\ref{eq:liealgebra}:
+
+The minus sign on the second trace is compensated by the fact that the Feynman rule is antisymmetric with respect to swapping particles $2$ and $3$ in the kinematic part (the square brackets of Eq.~(\ref{eq:3grule})). Thus, putting everything together, we can write:
+\begin{equation}
+\feynmandiagram [baseline = (a1.base), horizontal = a1 to i] {
+    a1 [particle={$A^{a_1}_{\mu_1}$}] -- [gluon, momentum=$p_1$] i;
+    a2 [particle={$A^{a_2}_{\mu_2}$}] -- [gluon, momentum=$p_2$] i;
+    a3 [particle={$A^{a_3}_{\mu_3}$}] -- [gluon, momentum=$p_3$] i
+    };
+    = 
+    i \frac{g_s}{\mathrm{T}_F} \left( T(123)K(123) + T(132)K(132) \right) \,
+\end{equation}
+with:
+\begin{align} 
+    T(ijk) &= \tr(T^{a_i}T^{a_j}T^{a_k}) \\
+    K(ijk)   &= g_{{\mu_i}{\mu_j}} (p_i-p_j)_{\mu_k}+
+                g_{{\mu_j}{\mu_k}} (p_j-p_k)_{\mu_i}+
+                g_{{\mu_k}{\mu_i}} (p_k-p_i)_{\mu_j} \label{eq:3gruleordered} \, .
+\end{align}
+We can thus see how the 3-gluon vertex Feynman rule was separated into the pure colour and kinematics parts. The traces can be calculated using further group theory tricks such as the photon decoupling identity or simply brute-forced on a computer. The interesting physics is contained within the kinematic part.
+
+Although slightly more difficult, the 4-gluon vertex can be similarly arranged into a sum of six terms of the form $T(1234)K(1234)$ and its permutations. The name `colour ordering' now becomes clear. There also exists a visual representation of colour decomposition which encodes identities such as Eq.~(\ref{eq:f(abc)}) in pictorial form. This is particularly useful for keeping track of the group-theoretical factors when dealing with high multiplicity processes (for details, see e.g.~\cite{Dixon:1996wi}). In general, an $n-$gluon amplitude can be written as:
+\begin{equation} \label{eq:colour-decomposition}
+    A^\text{tree}_\text{n} = \sum_{\sigma \in S_{n-1}} \tr\left[1\sigma(2\ldots n)\right] \ampl{n}\left[1\sigma(2\ldots n)\right] \, ,
+\end{equation}
+where $\ampl{n}$ are the colour-ordered amplitudes and the sum runs over all permutations of $n-1$ elements while holding the first gluon fixed. Note that this formula is only true at tree-level, however it can be generalised to loop-level by considering more complicated trace structures. A very similar expression can also be derived for amplitudes involving gluons and quarks~\cite{Dixon:1996wi}.
+
+\section{Helicity amplitudes}
+\textcolor{red}{According to this approach, one calculates matrix elements with external states having a given assigned helicity. Since different helicity configurations do not interfere, to obtain the full cross
+section it is sufficient to sum incoherently the squares of all of the possible helicity amplitudes
+which can contribute to the process. The advantage over more standard techniques is that by
+choosing a definite helicity configuration one can exploit gauge invariance and select an explicit
+representation for the polarization vectors which will simplify the calculation.}
 \end{document}

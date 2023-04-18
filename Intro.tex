@@ -10,4 +10,15 @@
     \label{fig:after}
     This is referencing Fig.~\ref{fig:after}.
 \end{figure}
+
+\begin{equation} \label{eq:liealgebra}
+    [T^{a_1}, T^{a_2}] = if^{a_1a_2a_3} T^{a_3} \,.
+\end{equation}
+Working in the fundamental representation with normalisation $\tr(T^{a_1} T^{a_2}) = \mathrm{T}_F \, \delta^{a_1a_2}$, we multiply both sides by $T^{a_3}$ and take the trace:
+\begin{align} \label{eq:f(abc)}
+    \tr(T^{a_3}[T^{a_1}, T^{a_2}]) &= if^{a_1a_2a_4} \tr(T^{a_3} T^{a_4}) \nonumber \\
+    \tr(T^{a_3} T^{a_1} T^{a_2} - T^{a_3} T^{a_2} T^{a_1}) &= if^{a_1a_2a_4} \mathrm{T}_F \delta^{a_3a_4} \nonumber \\ 
+    \implies f^{a_1a_2a_3} &= -\frac{i}{\mathrm{T}_F} \tr(T^{a_3} T^{a_1} T^{a_2} - T^{a_3} T^{a_2} T^{a_1}) \nonumber \\
+    &= -\frac{i}{\mathrm:{T}_F} \tr(T^{a_1} T^{a_2} T^{a_3} - T^{a_1}T^{a_3} T^{a_2}) \,.
+\end{align}
 \end{document}
