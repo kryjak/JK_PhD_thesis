@@ -19,6 +19,16 @@ Working in the fundamental representation with normalisation $\tr(T^{a_1} T^{a_2
     \tr(T^{a_3}[T^{a_1}, T^{a_2}]) &= if^{a_1a_2a_4} \tr(T^{a_3} T^{a_4}) \nonumber \\
     \tr(T^{a_3} T^{a_1} T^{a_2} - T^{a_3} T^{a_2} T^{a_1}) &= if^{a_1a_2a_4} \mathrm{T}_F \delta^{a_3a_4} \nonumber \\ 
     \implies f^{a_1a_2a_3} &= -\frac{i}{\mathrm{T}_F} \tr(T^{a_3} T^{a_1} T^{a_2} - T^{a_3} T^{a_2} T^{a_1}) \nonumber \\
-    &= -\frac{i}{\mathrm:{T}_F} \tr(T^{a_1} T^{a_2} T^{a_3} - T^{a_1}T^{a_3} T^{a_2}) \,.
+    &= -\frac{i}{\mathrm{T}_F} \tr(T^{a_1} T^{a_2} T^{a_3} - T^{a_1}T^{a_3} T^{a_2}) \,.
 \end{align}
+Completeness relations for the Dirac spinors:
+\begin{align} \label{eq:completeness:fermions}
+    \sum_{s=\pm} u^s(p)\bar{u}^s(p) &= \slashed{p} + m\,, \\
+    \sum_{s=\pm} v^s(p)\bar{v}^s(p) &= \slashed{p} - m\,.
+\end{align}
+Completeness relations for the spin-1 polarisation vectors:
+\begin{equation} \label{eq:completeness:bosons}
+    \sum_{s=\pm} \varepsilon_\mu^s(p, q) \varepsilon_\nu^{\ast s}(p, q) = -g_{\mu\nu} + \frac{p_\mu q_\nu + p_\nu q_\mu}{p \cdot q}
+\end{equation}
+\textcolor{red}{is this true only in the axial gauge? See Eq. 30 of `Calculating scattering amplitudes efficiently'. We don't use the axial gauge.}
 \end{document}

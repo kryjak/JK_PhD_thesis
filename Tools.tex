@@ -34,7 +34,7 @@ The goal of this chapter is to provide an overview of the method we adopt in amp
 \section{Feynman diagrams}
 The starting point of our amplitude computation for a given process is the generation of all Feynman diagrams contributing to this process at the desired loop order. Feynman diagrams provide a pictorial representation of the ways in which the interaction can occur.
 %time-ordered correlation functions that contribute to the $S$-matrix element
-At the same time, the corresponding mathematical expressions can be easily recovered using Feynman rules, which can be derived form the Lagrangian of the theory under consideration \textcolor{red}{(Feynman rules relevant to our work are listed in Appendix~\ref{app:feynmanrules})}. As such, these diagrams are an indispensable tool of any perturbative calculation. In practice, it can be observed that usually their number grows faster than exponentially as we increase the loop order or multiplicity (see Table~\ref{tab:ndiags} for an example). To handle the combinatorial complexity, we generate the relevant Feynman diagrams using $\texttt{QGRAF}$~\cite{Nogueira:1991ex}. \textcolor{red}{This programme has the advantage of being able to control the total power of the coupling constant in a certain diagram... - should I even mention that?}
+At the same time, the corresponding mathematical expressions can be easily recovered using Feynman rules, which can be derived form the Lagrangian of the theory under consideration \textcolor{red}{(Feynman rules relevant to our work are listed in Appendix~\ref{app:feynmanrules})}. As such, these diagrams are an indispensable tool of any perturbative calculation. In practice, it can be observed that usually their number grows faster than exponentially as we increase the loop order or multiplicity (see Table~\ref{tab:ndiags} for an example). To handle the combinatorial complexity, we generate the relevant Feynman diagrams using $\texttt{QGRAF}$~\cite{Nogueira:1991ex}. This programme has the advantage of granting the user a large degree of control over the diagrams. For example, one can constrain it to generate diagrams without self-energy insertions or with a specified total power of the coupling constant. \textcolor{red}{should I even mention that?}
 \begin{table}[b]
 	\begin{center}
 		\begin{tabular}{r|c|c|c|c|c|c|c|c}
@@ -47,6 +47,7 @@ At the same time, the corresponding mathematical expressions can be easily recov
  \caption{Number of tree-level diagrams contributing to selected processes with $n$ gluons.}
  \label{tab:ndiags}
 \end{table}
+
 \section{Colour decomposition}
 Having generated the Feynman diagrams, we substitute the Feynman rules for the propagators and vertices using \texttt{Mathematica}. At this point, our QCD amplitude contains both colour and kinematic information. The idea of colour ordering is to reorganise the amplitude such that these two components separate: a purely kinematic amplitude is multiplied by the corresponding colour factor. In other words, we perform the decomposition of the full amplitude in colour space, according to a chosen colour basis. Roughly speaking:
 \begin{equation}
@@ -64,11 +65,11 @@ The choice of the colour basis is not unique. We adopt the decomposition accordi
     a4 [particle={$A^{a_4}_{\mu_4}$}] -- [gluon, momentum=$p_4$] j;
     };
     \xrightarrow{colour}
-    f^{a_1a_2b}f^{ba_2a_3} \,.
+    f^{a_1a_2b}f^{ba_3a_4} \,.
 \end{equation}
 The colour factor of this diagram can be expressed in terms of the generators using Eqs.~\ref{eq:liealgebra} and ~\ref{eq:fierz}:
 \begin{equation}
-    f^{a_1a_2b}f^{ba_2a_3} = -\frac{1}{T_F}\left(\tr[T^{a_1} T^{a_2} T^{a_3} T^{a_4}] - \tr[T^{a_1} T^{a_2} T^{a_4} T^{a_3}] - \tr[T^{a_1} T^{a_3} T^{a_4} T^{a_2}] + \tr[T^{a_1} T^{a_4} T^{a_3} T^{a_3}] \right)\,.
+    f^{a_1a_2b}f^{ba_3a_4} = -\frac{1}{T_F}\left(\tr[T^{a_1} T^{a_2} T^{a_3} T^{a_4}] - \tr[T^{a_1} T^{a_2} T^{a_4} T^{a_3}] - \tr[T^{a_1} T^{a_3} T^{a_4} T^{a_2}] + \tr[T^{a_1} T^{a_4} T^{a_3} T^{a_3}] \right)\,.
 \end{equation}
 The colour factors of the $t$- and $u$-channels can be expressed in a similar way. Combining the contributions from the three channels and using the cyclicity of the trace, we can organise the 4-gluon amplitude at tree-level as follows:
 \begin{equation}
@@ -80,7 +81,7 @@ In the general case, this formula reads:
 \end{equation}
 where the sum is over the set of all \textit{non-cyclic} permutations of $n-1$ particles. Similar colour decompositions can be derived for amplitudes involving quarks, as well as beyond tree-level~\cite{Dixon:1996wi}. At loop-level, the colour basis contains products of traces, in addition to single trace structures. 
 
-The colour-ordered amplitudes are calculated by considering the kinematic part of all Feynman diagrams contributing to a given colour factor. They are gauge invariant and satisfy a number of important identities:
+The colour-ordered amplitudes are calculated by adding up the kinematic parts of all Feynman diagrams contributing to a given colour factor. They are gauge invariant and satisfy a number of important identities:
 \begin{align}
     A_n[123\ldots n] &= A_n[23\ldots n\,1]\,, && \text{cyclicity} \\
     A_n[123\ldots n] &= (-1)^n A_n[n \ldots 231] \,, && \text{reflection} \\
@@ -88,12 +89,56 @@ The colour-ordered amplitudes are calculated by considering the kinematic part o
     & && U(1) \text{ decoupling} \\
     A_n[1, {\alpha}, n, {\beta}] &= (-1)^{|\beta|} \sum_{\mathclap{\sigma \in OP(\{\alpha\} \cup \{\beta^T\})}} A_n[1, \sigma, n] \,, && \text{Kleiss-Kuiff relations}
 \end{align}
-\textcolor{red}{fix alignment!!!} where the sum is over permutations in the joint set $\{\alpha\} \cup \{\beta\}$ such that the order within the individual sets is preserved, and $\{\beta^T\}$ is the reversal of the set $\{\beta\}$~\cite{Mangano:1990by, Kleiss:1989616, Bern:2008qj}. Crucially, these properties allow us to re the number of independent helicity amplitudes, to which we turn our attention next.
+\textcolor{red}{fix alignment!!!} where the sum is over permutations in the joint set $\{\alpha\} \cup \{\beta^T\}$ such that the order within the individual sets is preserved, and $\{\beta^T\}$ is the reversal of the set $\{\beta\}$~\cite{Mangano:1990by, Kleiss:1989616, Bern:2008qj}. Crucially, these properties allow us to reduce the number of independent amplitudes that need to be computed. In fact, for $n$-gluon scattering, this number is just $(n-2)!$\,.
 
 \section{Helicity amplitudes}
-\textcolor{red}{According to this approach, one calculates matrix elements with external states having a given assigned helicity. Since different helicity configurations do not interfere, to obtain the full cross
-section it is sufficient to sum incoherently the squares of all of the possible helicity amplitudes
-which can contribute to the process. The advantage over more standard techniques is that by
-choosing a definite helicity configuration one can exploit gauge invariance and select an explicit
-representation for the polarization vectors which will simplify the calculation.}
+After colour decomposition, our $L$-loop scattering amplitude contains purely kinematic information. The kinematic part of the Feynman rules for external states carries information about the spins and polarisations of particles: for massless spin\=/1/2 fermions, we use $\pm$ helicity states to differentiate between the two solutions to the Dirac equation, while for massless spin\=/1 bosons, they denote the two polarisation vectors. From the experimental perspective, we are rarely interested in differentiating between the spin states of individual particles. Usually, a beam of particles with random spins undergoes scattering and we look at the total number of particles outgoing in a certain direction. Thus, to calculate the corresponding cross-section, we should average over the initial spin states and sum over the final ones. This can be achieved in two different ways: 
+\begin{enumerate}
+    \item perform the amplitude calculation without specifying the helicity states, i.e. square the amplitude, then do the spin sums that appear at the level of $|\ampl{}{}|^2$ using completeness relations Eqs.~\ref{eq:completeness:fermionsm, eq:completeness:bosons}
+    \item specify the helicity states of external particles, compute each \textbf{helicity amplitude} separately, square them and sum over all relevant helicity configurations
+\end{enumerate}
+In our computations, we will adopt the latter method. We denote an $L$-loop helicity amplitude as:
+\begin{equation} \label{eq:helampdef}
+    \ampl{n}{(L),\,\{h\}} \equiv \ampl{n}{(L)}(1^{h_1}2^{h_2} \ldots n^{h_n})\,,
+\end{equation}
+where the superscript $\{h\}$ is understood as the set of helicities of the $n$ particles, but will be usually omitted since we will exclusively compute helicity amplitudes. The full, spin-summed amplitude can then be recovered through:
+\begin{equation}
+    \ampl{n}{(L)} = \sum_{\mathclap{\substack{\text{helicity} \\ \text{configurations}}}} \ampl{n}{(L),\,\{h\}} \,.
+\end{equation}
+At the cross-section level:
+\begin{equation}
+    \left|\ampl{n}{(L)}\right|^2 = \sum_{\mathclap{\substack{\text{helicity} \\ \text{configurations}}}} \left|\ampl{n}{(L),\,\{h\}} \right|^2 \,.
+\end{equation}
+It is important to note that the sum only includes the squares of individual helicity amplitudes --- there are no interferences between different helicity configurations.
+
+There are several strong advantages to this approach. Firstly, it is easy to see that the number of terms that need to be processed is significantly smaller than in method~(1). Consider the expansion of an amplitude in the coupling constant $\alpha$ up to NNLO:
+\begin{equation}
+    \ampl{}{} = \ampl{}{(0)} + \alpha \ampl{}{(1)} + \alpha^2 \ampl{}{(2)} + \order{\alpha^3} \,.
+\end{equation}
+Then, at the level of the cross-section, we have the following contributions:
+\begin{equation}
+    |\ampl{}{}|^2 = |\ampl{}{(0)}|^2 \,+\,\alpha\,2\,\mathrm{Re}\left(\ampl{}{(0)\ast}\ampl{}{(1)}\right) \,+\, \alpha^2 \left(2\,\mathrm{Re} \left(\ampl{}{(0)\ast}\ampl{}{(2)}\right) + |\ampl{}{(1)}|^2 \right) \,+\, \order{\alpha^3}\,.
+\end{equation}
+Let us also schematically write each $L$-loop amplitude as a sum of $m_L$ Feynman diagrams: $\ampl{}{(L)} = d^{(L)}_1 + d^{(L)}_2 + \ldots + d^{(L)}_{m_L}$. Then, at LO:
+\begin{equation}
+    \left|\ampl{n}{(0)}\right|^2 = \sum_{\mathclap{\substack{\text{hel.} \\ \text{confs.}}}} \left|\ampl{n}{(0),\,\{h\}} \right|^2 = \sum_{\mathclap{\substack{\text{hel.} \\ \text{confs.}}}} \left|d^{(0)\,,\{h\}}_1 + d^{(0)\,,\{h\}}_2 + \ldots + d^{(0)\,,\{h\}}_{m_0} \right|^2 \,.
+\end{equation}
+Each term in this sum has all helicities fixed and there are no spin sums to be performed (when evaluated at a chosen phase-space point, it is just a complex number). Thus, the number of terms we need to process at LO is $m_0 n_h$, where $n_h$ is the number of independent helicity configurations. On the other hand, according to method (1), we have:
+\begin{equation}
+    \left|\ampl{n}{(0)}\right|^2 = \left(d^{(0)}_1 + d^{(0)}_2 + \ldots + d^{(0)}_{m_0} \right) \left(d^{(0)\ast}_1 + d^{(0)\ast}_2 + \ldots + d^{(0)\ast}_{m_0} \right)\,,
+\end{equation}
+which means we need to interfere the diagrams with each other and perform the spin sums. Thus, there are $m_0^2$ terms to be processed. The scaling for higher loop orders is listed in Table~\ref{tab:nterms}. For small $L$, the advantage of using helicity amplitudes might be minimal (or in fact, in might be detrimental to do so). For $L\geq2$, however, the advantage becomes apparent, especially given that due to the symmetries of colour-ordered amplitudes, $n_h$ is usually much smaller than $2^n$. Moreover, it turns out not all helicity amplitudes are equally challenging to compute, as we will see in the next section. In fact, a host of them vanishes altogether (at least at tree-level). Finally, guided by experience, it is possible to choose the reference vectors of external polarisations such that the computation of non-zero amplitudes becomes easier. 
+\begin{table}[t]
+	\begin{center}
+		\begin{tabular}{c|c|c|c}
+			  \# terms & LO & NLO & NNLO \\
+			\hline
+			Method (1) & $m_0^2$ & $m_0^2 + m_0 m_1$ & $m_0^2 + m_0 m_1 + m_1^2 + m_0 m_2$ \\
+			Method (2) & $m_0 n_h$ & $(m_0+m_1)n_h$ & $(m_0+m_1+m_2)n_h$ \\
+		\end{tabular}
+	\end{center}
+ \caption{Number of terms to be processed in the computation of the squared amplitude $\left|\ampl{}{}\right|^2$ \textit{up to and including} a given order in the coupling constant. The meaning of methods (1) and (2) is outlined in the text around Eq.~\ref{eq:helampdef}.}
+ \label{tab:nterms}
+\end{table}
+
 \end{document}
