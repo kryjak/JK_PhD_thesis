@@ -74,9 +74,14 @@
 %\def\gg#1{\gamma_{#1}}  % clashes
 \def\XX{\chi}
 \def\Lagr{\mathcal{L}}
+\def\ex#1{\mathrm{e}^{#1}}
+\def\i{\mathrm{i}\,}
 %\newcommand{\ampl}[2][]{\mathcal{A}^\textbf{#1}_{#2}}
 \def\ampl#1#2{\mathcal{A}_{#1}^{#2}}
 \def\order#1{\mathcal{O}(#1)}
+\newcommand{\ketsq}[1]{\left| #1 \right]}
+\newcommand{\brasq}[1]{\left[ #1 \right|}
+\newcommand{\braketsq}[1]{[ #1 ]}
 
 % Nicer appearance / typesetting
 \usepackage[shrink=10,stretch=10]{microtype}
@@ -165,6 +170,8 @@
 \tikzstyle{redrec} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
 \tikzstyle{bluerec} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=blue!30]
 
+% define my comments
+\def\JK#1{\textcolor{red}{{\bf\tt [JK: #1]}}}
 
 % this one needs to be at the very end, apparently
 \usepackage[shortcuts]{extdash}  % for making unbreakable hyphens

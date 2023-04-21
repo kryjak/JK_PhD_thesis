@@ -1,6 +1,6 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
-\chapter{Introduction}
+\chapter{Introduction} \label{sec:intro}
 \begin{figure}[h]
     \centering
     \begin{tikzpicture}
@@ -10,25 +10,77 @@
     \label{fig:after}
     This is referencing Fig.~\ref{fig:after}.
 \end{figure}
-
-\begin{equation} \label{eq:liealgebra}
-    [T^{a_1}, T^{a_2}] = if^{a_1a_2a_3} T^{a_3} \,.
+\section{QED} \label{sec:QEDintro}
+The central equation of quantum field theory which describes all spin\=/1/2 particles is the Dirac equation:
+\begin{equation} \label{eq:Dirac}
+    (\slashed{p}-m)\psi(x) = 0\,.
 \end{equation}
-Working in the fundamental representation with normalisation $\tr(T^{a_1} T^{a_2}) = \mathrm{T}_F \, \delta^{a_1a_2}$, we multiply both sides by $T^{a_3}$ and take the trace:
-\begin{align} \label{eq:f(abc)}
-    \tr(T^{a_3}[T^{a_1}, T^{a_2}]) &= if^{a_1a_2a_4} \tr(T^{a_3} T^{a_4}) \nonumber \\
-    \tr(T^{a_3} T^{a_1} T^{a_2} - T^{a_3} T^{a_2} T^{a_1}) &= if^{a_1a_2a_4} \mathrm{T}_F \delta^{a_3a_4} \nonumber \\ 
-    \implies f^{a_1a_2a_3} &= -\frac{i}{\mathrm{T}_F} \tr(T^{a_3} T^{a_1} T^{a_2} - T^{a_3} T^{a_2} T^{a_1}) \nonumber \\
-    &= -\frac{i}{\mathrm{T}_F} \tr(T^{a_1} T^{a_2} T^{a_3} - T^{a_1}T^{a_3} T^{a_2}) \,.
+The solutions to this equation are given by the four-component Dirac spinors $\psi(x)$, which transform in the irreducible $\left(\frac{1}{2}, 0\right) \otimes \left(0, \frac{1}{2}\right)$ representation\footnote{Not to be confused with the usual four-vectors $x^\mu$, which transform in the $\left(\frac{1}{2}, \frac{1}{2}\right)$ representation.}. There are four plane-wave solutions to the Dirac equation, which admit both positive and negative energies:
+\begin{equation}
+    \psi(x) = u^s(p)\ex{-\i p\cdot x} \qquad \text{and} \qquad \psi(x) = v^s(p)\ex{+\i p\cdot x}\,,
+\end{equation}
+where $s=\{+, -\}$ labels the spin of the fermion. The momentum space spinors $u(p)$ and $v(p)$ are interpreted as describing particles and antiparticles with \textit{positive} energies, respectively. They satisfy the momentum space Dirac equations: 
+\begin{align}
+    (\slashed{p} - m)u(p) &= 0\,, \\
+    (\slashed{p} + m)v(p) &= 0\,,
 \end{align}
-Completeness relations for the Dirac spinors:
+as well as the following completeness relations, which is useful when performing spin sums in amplitude computations:
 \begin{align} \label{eq:completeness:fermions}
     \sum_{s=\pm} u^s(p)\bar{u}^s(p) &= \slashed{p} + m\,, \\
     \sum_{s=\pm} v^s(p)\bar{v}^s(p) &= \slashed{p} - m\,.
 \end{align}
+Moreover, it is convenient to split the spinors into two separate components:
+\begin{equation}
+    \psi(x) = 
+    \begin{pmatrix}
+        \psi_L(x) \\
+        \psi_R(x)
+    \end{pmatrix}\,,
+\end{equation}
+where the left- and right-handed Weyl spinors transform under the $\left(\frac{1}{2}, 0 \right)$ and $\left(\frac{1}{2}, 0 \right)$ representations, respectively. Crucially, in the absence of mass, the two components fully decouple \JK{maybe a better word?}. It is also useful to define an additional $\gamma^5$ matrix (also known as the chirality operator): 
+\begin{equation}
+    \gamma^5 \equiv \i \gamma^0 \gamma^1 \gamma^2 \gamma^3\,,
+\end{equation}
+which in the Weyl (chiral) representation of the $\gamma$-matrices is just:
+\begin{equation}
+    \gamma^5 = 
+    \begin{pmatrix}
+        1 & 0 \\
+        0 & -1
+    \end{pmatrix}\,.
+\end{equation}
+Then, the Weyl spinors can be extracted from the Dirac spinors by applying appropriate projectors, according to $\psi_L(x) = P_L\psi(x)$ and $\psi_R(x) = P_R\psi(x)$:
+\begin{equation}
+    P_L = \frac{1-\gamma^5}{2} = 
+    \begin{pmatrix}
+        0 & 0 \\
+        0 & 1
+    \end{pmatrix}\,,
+    \qquad
+    P_R = \frac{1+\gamma^5}{2} = 
+    \begin{pmatrix}
+        1 & 0 \\
+        0 & 0
+    \end{pmatrix}\,.
+\end{equation}
+Finally, we can associate $\psi_L$ and $\psi_R$ with the \textbf{helicity} of a particle, which is the projection of its spin onto the direction of motion. The corresponding helicity values for left- and right-handed particles are $-1$ and $+1$, respectively\footnote{Strictly speaking, the left- and right-handed Weyl spinors are eigenstates of the chirality operator $\gamma^5$. However, for $m=0$, helicity and chirality eigenstates coincide}.
+Weyl spinors will play a key role in the discussion of the spinor-helicity formalism in Section~\ref{sec:spinhelform}.
+
+\section{Quantum Chromodynamics} \label{sec:QCD}
+\begin{equation} \label{eq:liealgebra}
+    [T^{a_1}, T^{a_2}] = \i f^{a_1a_2a_3} T^{a_3} \,.
+\end{equation}
+Working in the fundamental representation with normalisation $\tr(T^{a_1} T^{a_2}) = \mathrm{T}_F \, \delta^{a_1a_2}$, we multiply both sides by $T^{a_3}$ and take the trace:
+\begin{align} \label{eq:f(abc)}
+    \tr(T^{a_3}[T^{a_1}, T^{a_2}]) &= \i f^{a_1a_2a_4} \tr(T^{a_3} T^{a_4}) \nonumber \\
+    \tr(T^{a_3} T^{a_1} T^{a_2} - T^{a_3} T^{a_2} T^{a_1}) &= if^{a_1a_2a_4} \mathrm{T}_F \delta^{a_3a_4} \nonumber \\ 
+    \implies f^{a_1a_2a_3} &= -\frac{\i}{\mathrm{T}_F} \tr(T^{a_3} T^{a_1} T^{a_2} - T^{a_3} T^{a_2} T^{a_1}) \nonumber \\
+    &= -\frac{\i}{\mathrm{T}_F} \tr(T^{a_1} T^{a_2} T^{a_3} - T^{a_1}T^{a_3} T^{a_2}) \,.
+\end{align}
+
 Completeness relations for the spin-1 polarisation vectors:
 \begin{equation} \label{eq:completeness:bosons}
     \sum_{s=\pm} \varepsilon_\mu^s(p, q) \varepsilon_\nu^{\ast s}(p, q) = -g_{\mu\nu} + \frac{p_\mu q_\nu + p_\nu q_\mu}{p \cdot q}
 \end{equation}
-\textcolor{red}{is this true only in the axial gauge? See Eq. 30 of `Calculating scattering amplitudes efficiently'. We don't use the axial gauge.}
+\JK{is this true only in the axial gauge? See Eq. 30 of `Calculating scattering amplitudes efficiently'. We don't use the axial gauge.}
 \end{document}

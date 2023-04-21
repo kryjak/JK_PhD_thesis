@@ -6,7 +6,7 @@ In the remainder of this thesis, we focus on various aspects of the computation 
 \begin{tikzpicture}
 	\node (feynman) [greenrec] {Feynman diagrams};
 	\node (colour)  [redrec,right of=feynman,xshift=4cm] {Colour decomposition};
-	\node (topos)   [redrec,right of=colour,xshift=4cm] {Collect in topologies};
+	\node (topos)   [redrec,right of=colour,xshift=4cm] {Helicity amplitudes};
 	\node (reduction) [bluerec,below of=topos,yshift=-2cm] {\parbox{0.3\textwidth}{\centering Integrand reduction onto \\ maximal topologies}};
 	\node (IBPs)    [bluerec,left of=reduction,xshift=-4cm] {IBP reduction};
 	\node (spfns)   [bluerec,left of=IBPs, xshift=-4cm] {\parbox{0.3\textwidth}{\centering Expansion of MIs onto \\ special function basis}};
@@ -34,7 +34,7 @@ The goal of this chapter is to provide an overview of the method we adopt in amp
 \section{Feynman diagrams}
 The starting point of our amplitude computation for a given process is the generation of all Feynman diagrams contributing to this process at the desired loop order. Feynman diagrams provide a pictorial representation of the ways in which the interaction can occur.
 %time-ordered correlation functions that contribute to the $S$-matrix element
-At the same time, the corresponding mathematical expressions can be easily recovered using Feynman rules, which can be derived form the Lagrangian of the theory under consideration \textcolor{red}{(Feynman rules relevant to our work are listed in Appendix~\ref{app:feynmanrules})}. As such, these diagrams are an indispensable tool of any perturbative calculation. In practice, it can be observed that usually their number grows faster than exponentially as we increase the loop order or multiplicity (see Table~\ref{tab:ndiags} for an example). To handle the combinatorial complexity, we generate the relevant Feynman diagrams using $\texttt{QGRAF}$~\cite{Nogueira:1991ex}. This programme has the advantage of granting the user a large degree of control over the diagrams. For example, one can constrain it to generate diagrams without self-energy insertions or with a specified total power of the coupling constant. \textcolor{red}{should I even mention that?}
+At the same time, the corresponding mathematical expressions can be easily recovered using Feynman rules, which can be derived form the Lagrangian of the theory under consideration \JK{(Feynman rules relevant to our work are listed in Appendix~\ref{app:feynmanrules})}. As such, these diagrams are an indispensable tool of any perturbative calculation. In practice, it can be observed that usually their number grows faster than exponentially as we increase the loop order or multiplicity (see Table~\ref{tab:ndiags} for an example). To handle the combinatorial complexity, we generate the relevant Feynman diagrams using $\texttt{QGRAF}$~\cite{Nogueira:1991ex}. This programme has the advantage of granting the user a large degree of control over the diagrams. For example, one can constrain it to generate diagrams without self-energy insertions or with a specified total power of the coupling constant. \JK{should I even mention that?}
 \begin{table}[b]
 	\begin{center}
 		\begin{tabular}{r|c|c|c|c|c|c|c|c}
@@ -89,7 +89,7 @@ The colour-ordered amplitudes are calculated by adding up the kinematic parts of
     & && U(1) \text{ decoupling} \\
     A_n[1, {\alpha}, n, {\beta}] &= (-1)^{|\beta|} \sum_{\mathclap{\sigma \in OP(\{\alpha\} \cup \{\beta^T\})}} A_n[1, \sigma, n] \,, && \text{Kleiss-Kuiff relations}
 \end{align}
-\textcolor{red}{fix alignment!!!} where the sum is over permutations in the joint set $\{\alpha\} \cup \{\beta^T\}$ such that the order within the individual sets is preserved, and $\{\beta^T\}$ is the reversal of the set $\{\beta\}$~\cite{Mangano:1990by, Kleiss:1989616, Bern:2008qj}. Crucially, these properties allow us to reduce the number of independent amplitudes that need to be computed. In fact, for $n$-gluon scattering, this number is just $(n-2)!$\,.
+\JK{fix alignment!!!} where the sum is over permutations in the joint set $\{\alpha\} \cup \{\beta^T\}$ such that the order within the individual sets is preserved, and $\{\beta^T\}$ is the reversal of the set $\{\beta\}$~\cite{Mangano:1990by, Kleiss:1989616, Bern:2008qj}. Crucially, these properties allow us to reduce the number of independent amplitudes that need to be computed. In fact, for $n$-gluon scattering, this number is just $(n-2)!$\,.
 
 \section{Helicity amplitudes}
 After colour decomposition, our $L$-loop scattering amplitude contains purely kinematic information. The kinematic part of the Feynman rules for external states carries information about the spins and polarisations of particles: for massless spin\=/1/2 fermions, we use $\pm$ helicity states to differentiate between the two solutions to the Dirac equation, while for massless spin\=/1 bosons, they denote the two polarisation vectors. From the experimental perspective, we are rarely interested in differentiating between the spin states of individual particles. Usually, a beam of particles with random spins undergoes scattering and we look at the total number of particles outgoing in a certain direction. Thus, to calculate the corresponding cross-section, we should average over the initial spin states and sum over the final ones. This can be achieved in two different ways: 
@@ -111,7 +111,7 @@ At the cross-section level:
 \end{equation}
 It is important to note that the sum only includes the squares of individual helicity amplitudes --- there are no interferences between different helicity configurations.
 
-There are several strong advantages to this approach. Firstly, it is easy to see that the number of terms that need to be processed is significantly smaller than in method~(1). Consider the expansion of an amplitude in the coupling constant $\alpha$ up to NNLO:
+There are several strong advantages to this approach. Firstly, it is easy to see that the number of terms that need to be processed is significantly smaller than in method~(1) \JK{check with SB if the argument below even makes sense...}. Consider the expansion of an amplitude in the coupling constant $\alpha$ up to NNLO:
 \begin{equation}
     \ampl{}{} = \ampl{}{(0)} + \alpha \ampl{}{(1)} + \alpha^2 \ampl{}{(2)} + \order{\alpha^3} \,.
 \end{equation}
@@ -127,7 +127,7 @@ Each term in this sum has all helicities fixed and there are no spin sums to be 
 \begin{equation}
     \left|\ampl{n}{(0)}\right|^2 = \left(d^{(0)}_1 + d^{(0)}_2 + \ldots + d^{(0)}_{m_0} \right) \left(d^{(0)\ast}_1 + d^{(0)\ast}_2 + \ldots + d^{(0)\ast}_{m_0} \right)\,,
 \end{equation}
-which means we need to interfere the diagrams with each other and perform the spin sums. Thus, there are $m_0^2$ terms to be processed. The scaling for higher loop orders is listed in Table~\ref{tab:nterms}. For small $L$, the advantage of using helicity amplitudes might be minimal (or in fact, in might be detrimental to do so). For $L\geq2$, however, the advantage becomes apparent, especially given that due to the symmetries of colour-ordered amplitudes, $n_h$ is usually much smaller than $2^n$. Moreover, it turns out not all helicity amplitudes are equally challenging to compute, as we will see in the next section. In fact, a host of them vanishes altogether (at least at tree-level). Finally, guided by experience, it is possible to choose the reference vectors of external polarisations such that the computation of non-zero amplitudes becomes easier. 
+which means we need to interfere the diagrams with each other and perform the spin sums. Thus, there are $m_0^2$ terms to be processed. The scaling for higher loop orders is listed in Table~\ref{tab:nterms}. For small $L$, the advantage of using helicity amplitudes might be minimal (or in fact, it might be detrimental to do so). For $L\geq2$, however, the advantage becomes apparent, especially that due to the symmetries of colour-ordered amplitudes, $n_h$ is usually much smaller than $2^n$. Moreover, it turns out that not all helicity amplitudes are equally challenging to compute, as we will see in the next section. In fact, a host of them vanishes altogether (at least at tree-level). Finally, guided by experience, it is possible to choose the reference vectors of external polarisations such that the computation of non-zero amplitudes becomes easier. 
 \begin{table}[t]
 	\begin{center}
 		\begin{tabular}{c|c|c|c}
@@ -137,8 +137,54 @@ which means we need to interfere the diagrams with each other and perform the sp
 			Method (2) & $m_0 n_h$ & $(m_0+m_1)n_h$ & $(m_0+m_1+m_2)n_h$ \\
 		\end{tabular}
 	\end{center}
- \caption{Number of terms to be processed in the computation of the squared amplitude $\left|\ampl{}{}\right|^2$ \textit{up to and including} a given order in the coupling constant. The meaning of methods (1) and (2) is outlined in the text around Eq.~\ref{eq:helampdef}.}
+ \caption{Number of terms to be processed in the computation of the squared amplitude $\left|\ampl{}{}\right|^2$ \textit{up to and including} a given order in the coupling constant, assuming there are $m_L$ diagrams at $L$ loops. The meaning of methods (1) and (2) is outlined in the text around Eq.~\ref{eq:helampdef}.}
  \label{tab:nterms}
 \end{table}
+\section{Spinor helicity formalism} \label{sec:spinhelform}
+In Section~\ref{sec:QEDintro}, we saw that for massless particles, the Dirac spinor splits into two Weyl spinors that do not mix and are associated with the helicity of the particle. Therefore, we might be tempted to think that helicity amplitudes are better described using a notation specific to the two-component Weyl spinors, which are acted on by the familiar Pauli matrices. Indeed, the powerful \textbf{spinor-helicity formalism} provides a neat way to express helicity amplitudes based on these considerations.
 
+As a first step, let's see how we can move from working with the four-component objects to two-component ones. We can write a `slashed' momentum $\slashed{p}$ as:
+\begin{equation}
+    \slashed{p} = p_\mu \gamma^\mu = p_\mu
+    \begin{pmatrix}
+    0 & (\sigma^\mu)_{a\dot{b}} \\
+    (\bar{\sigma}^\mu)^{\dot{a}b} & 0
+    \end{pmatrix}
+    \equiv
+    \begin{pmatrix}
+    0 & p_{a\dot{b}} \\
+    p^{\dot{a}b} & 0 
+    \end{pmatrix} \, ,
+\end{equation}
+with both dotted and undotted indices running over $\{1,2\}$ and $(\sigma^\mu)_{a\dot{b}} \equiv (1, \, \sigma^i), \, (\bar{\sigma}^\mu)^{\dot{a}b} \equiv (1, \, -\sigma^i)$, where $\sigma^i$ are the three Pauli matrices. The momentum bispinors $p^{\dot{a}b}$ and $p_{a\dot{b}}$ can be thought of as $(2 \times 2)$ matrices and it is straightforward to show that:
+\begin{equation}
+    \det p_{a\dot{b}} = \det p^{\dot{a}b} = m^2\,.
+\end{equation}
+For massless particles, this determinant vanishes and the matrix can be expressed as an outer product of two vectors\footnote{The determinant of a matrix is 0 only if its column/row vectors are linearly dependent, which implies that its rank is 1. A rank-1, $(n \times n)$ matrix can always be expressed as the outer product of two nonzero vectors of length $n$.}. The vectors we will choose are the momentum space Weyl spinors $\lambda_a$  and $\tilde{\lambda}_{\dot{a}}$ (sometimes referred to as helicity spinors). They are the two-component, left- and right-handed equivalents of the $u(p)$ and $v(p)$ Dirac spinors, with the corresponding helicities $-$ and $+$, respectively. We write:
+\begin{align} \label{eq:outerproduct}
+    p_{a\dot{b}} = \lambda_a \tilde{\lambda}_{\dot{b}} && p^{\dot{a}b} = \tilde{\lambda}^{\dot{a}} \lambda^b\,,
+\end{align}
+and the raising and lowering of indices is achieved through:
+\begin{equation}
+    \lambda^a = \varepsilon^{ab} \lambda_a \qquad \tilde{\lambda}
+\end{equation}
+the two-dimensional Levi-Civita tensor defined as:
+
+
+It is also convenient to trade these spinors for yet another piece of notation: 
+\begin{align} \label{eq:lambdatobraket}
+    \lambda_a  \rightarrow \ketsq{p}_a && \tilde{\lambda}_{\dot{a}} \rightarrow \bra{p}_{\dot{a}} \nonumber \\
+    \lambda^a  \rightarrow \brasq{p}^a && \tilde{\lambda}^{\dot{a}} \rightarrow \ket{p}^{\dot{a}} \,.
+\end{align}
+We can then write:
+\begin{align}
+    \slashed{p} = \ket{p}\brasq{p} && \slashed{p} = \ketsq{p} \bra{p} \,.
+\end{align}
+Here, what the `slashed' notation really means is a contraction of the momentum with the appropriate Pauli matrix rather than the Dirac matrix. Note that the assignment of dotted/undotted indices and angle/square brackets to either $\lambda$ or $\tilde{\lambda}$ is somewhat arbitrary and different conventions are seen throughout literature. However, once a choice is made, at any point of the subsequent calculation the type of the bracket and index can be immediately associated with the helicity of the particle it originates from, thus explaining the name of this new formalism. 
+
+In addition to massless fermions, it turns out that massless spin-1 bosons can also be translated into this language. The corresponding expressions are:
+\begin{align} \label{eq:pols}
+    \epsilon^\mu_- = \frac{\bra{p}\gamma^\mu\ketsq{q}}{\sqrt{2}\braketsq{qp}} && \epsilon^\mu_+ = \frac{\bra{q}\gamma^\mu\ketsq{p}}{\sqrt{2}\braket{qp}} \,,
+\end{align}
+where $q^\mu \neq p^\mu$ is an arbitrary reference momentum. In this way, we can write our amplitudes using the square and spinor brackets rather than the usual $u, v$ Dirac bi-spinors. Why is this useful? It turns out that working in this formalism, many of the calculations do indeed become extraordinarily simple as compared to the traditional approach. Before we can see the power of the spinor helicity language in practice, we review one more concept needed for handling QCD amplitudes.
 \end{document}
