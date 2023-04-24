@@ -1,7 +1,7 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 \chapter{Tools for calculating scattering amplitudes}
-In the remainder of this thesis, we focus on various aspects of the computation of two-loop QCD scattering amplitudes for high-multiplicity processes. It is important to note that there is currently no one-size-fits-all approach that would allow us to compute all the desired amplitudes at a press of a button. In practice, we use a collection of methods that are most appropriate for the task at hand. For processes at the limit of current capabilities, these tools need to be further improved or replaced with novel ideas. To this end, much work has been done by the theory community in recent years. Unfortunately, due to the overwhelming algebraic and analytic complexity, many calculations still present challenges beyond the reach of current technology. 
+In this chapter, we focus on various aspects of the computation of two-loop QCD scattering amplitudes for high-multiplicity processes. It is important to note that there is currently no one-size-fits-all approach that would allow us to compute all the desired amplitudes at a press of a button. In practice, we use a collection of methods that are most appropriate for the task at hand. For processes at the limit of current capabilities, these tools need to be further improved or replaced with novel ideas. To this end, much work has been done by the theory community in recent years. Unfortunately, due to the overwhelming algebraic and analytic complexity, many calculations still present challenges beyond the reach of current technology. 
 \begin{figure}[t]
 \begin{tikzpicture}
 	\node (feynman) [greenrec] {Feynman diagrams};
@@ -144,7 +144,7 @@ which means we need to interfere the diagrams with each other and perform the sp
 In Section~\ref{sec:QEDintro}, we saw that for massless particles, the Dirac spinor splits into two Weyl spinors that do not mix and are associated with the helicity of the particle. Therefore, we might be tempted to think that helicity amplitudes are better described using a notation specific to the two-component Weyl spinors, which are acted on by the familiar Pauli matrices. Indeed, the powerful \textbf{spinor-helicity formalism} provides a neat way to express helicity amplitudes based on these considerations.
 
 As a first step, let's see how we can move from working with the four-component objects to two-component ones. We can write a `slashed' momentum $\slashed{p}$ as:
-\begin{equation}
+\begin{equation} \label{eq:pslashed}
     \slashed{p} = p_\mu \gamma^\mu = p_\mu
     \begin{pmatrix}
     0 & (\sigma^\mu)_{a\dot{b}} \\
@@ -156,35 +156,90 @@ As a first step, let's see how we can move from working with the four-component 
     p^{\dot{a}b} & 0 
     \end{pmatrix} \, ,
 \end{equation}
-with both dotted and undotted indices running over $\{1,2\}$ and $(\sigma^\mu)_{a\dot{b}} \equiv (1, \, \sigma^i), \, (\bar{\sigma}^\mu)^{\dot{a}b} \equiv (1, \, -\sigma^i)$, where $\sigma^i$ are the three Pauli matrices. The momentum bispinors $p^{\dot{a}b}$ and $p_{a\dot{b}}$ can be thought of as $(2 \times 2)$ matrices and it is straightforward to show that:
+with both dotted and un-dotted indices running over $\{1,2\}$ and $(\sigma^\mu)_{a\dot{b}} \equiv (1, \, \sigma^i), \, (\bar{\sigma}^\mu)^{\dot{a}b} \equiv (1, \, -\sigma^i)$, where $\sigma^i$ are the three Pauli matrices. The momentum bispinors $p^{\dot{a}b}$ and $p_{a\dot{b}}$ can be thought of as $(2 \times 2)$ matrices and it is straightforward to show that:
 \begin{equation}
     \det p_{a\dot{b}} = \det p^{\dot{a}b} = m^2\,.
 \end{equation}
-For massless particles, this determinant vanishes and the matrix can be expressed as an outer product of two vectors\footnote{The determinant of a matrix is 0 only if its column/row vectors are linearly dependent, which implies that its rank is 1. A rank-1, $(n \times n)$ matrix can always be expressed as the outer product of two nonzero vectors of length $n$.}. The vectors we will choose are the momentum space Weyl spinors $\lambda_a$  and $\tilde{\lambda}_{\dot{a}}$ (sometimes referred to as helicity spinors). They are the two-component, left- and right-handed equivalents of the $u(p)$ and $v(p)$ Dirac spinors, with the corresponding helicities $-$ and $+$, respectively. We write:
+For massless particles, this determinant vanishes and the matrix can be expressed as an outer product of two vectors\footnote{The determinant of a matrix is 0 only if its column/row vectors are linearly dependent, which implies that its rank is 1. A rank-1, $(n \times n)$ matrix can always be expressed as the outer product of two nonzero vectors of length $n$.}. The vectors we will choose are the momentum space Weyl spinors $\lambda_a$  and $\tilde{\lambda}_{\dot{a}}$ (sometimes referred to as helicity spinors). They are the two-component, left- and right-handed equivalents of the $u(p)$ and $v(p)$ Dirac spinors, with the corresponding helicities $-$ and $+$, respectively. We thus write:
 \begin{align} \label{eq:outerproduct}
     p_{a\dot{b}} = \lambda_a \tilde{\lambda}_{\dot{b}} && p^{\dot{a}b} = \tilde{\lambda}^{\dot{a}} \lambda^b\,,
 \end{align}
 and the raising and lowering of indices is achieved through:
-\begin{equation}
-    \lambda^a = \varepsilon^{ab} \lambda_a \qquad \tilde{\lambda}
-\end{equation}
-the two-dimensional Levi-Civita tensor defined as:
-
-
-It is also convenient to trade these spinors for yet another piece of notation: 
-\begin{align} \label{eq:lambdatobraket}
-    \lambda_a  \rightarrow \ketsq{p}_a && \tilde{\lambda}_{\dot{a}} \rightarrow \bra{p}_{\dot{a}} \nonumber \\
-    \lambda^a  \rightarrow \brasq{p}^a && \tilde{\lambda}^{\dot{a}} \rightarrow \ket{p}^{\dot{a}} \,.
-\end{align}
-We can then write:
 \begin{align}
-    \slashed{p} = \ket{p}\brasq{p} && \slashed{p} = \ketsq{p} \bra{p} \,.
+    \lambda^a = \varepsilon^{ab} \lambda_b && \tilde{\lambda}^{\dot{a}} = \varepsilon^{\dot{a}\dot{b}} \lambda_{\dot{b}} \,,
 \end{align}
-Here, what the `slashed' notation really means is a contraction of the momentum with the appropriate Pauli matrix rather than the Dirac matrix. Note that the assignment of dotted/undotted indices and angle/square brackets to either $\lambda$ or $\tilde{\lambda}$ is somewhat arbitrary and different conventions are seen throughout literature. However, once a choice is made, at any point of the subsequent calculation the type of the bracket and index can be immediately associated with the helicity of the particle it originates from, thus explaining the name of this new formalism. 
+with the two-dimensional Levi-Civita tensor defined as:
+\begin{equation}
+    \varepsilon^{ab} = \varepsilon^{\dot{a}\dot{b}} = -\varepsilon_{ab} = -\varepsilon_{\dot{a}\dot{b}} = 
+    \begin{pmatrix}
+        0 & 1 \\
+        -1 & 0
+    \end{pmatrix}\,.
+\end{equation}
+In practice, it can be rather cumbersome to keep track of the dotted and un-dotted indices, as well as their lower or upper positions at the spinors. It is more intuitive to trade this notation for spinor brackets\footnote{The choice of assignment of dotted/un-dotted indices and angle/square brackets to either $\lambda$ or $\tilde{\lambda}$ is arbitrary. Different conventions are seen throughout literature - the only requirement is internal consistency.}:
+\begin{align} \label{eq:lambdatobraket}
+    \lambda_a  &\rightarrow \ketsq{p}_a,  &&\tilde{\lambda}_{\dot{a}} \rightarrow \bra{p}_{\dot{a}}\,, \nonumber \\
+    \lambda^a  &\rightarrow \brasq{p}^a  &&\tilde{\lambda}^{\dot{a}} \rightarrow \ket{p}^{\dot{a}} \,.
+\end{align}
+We can then write Eq.~\ref{eq:pslashed} as:
+\begin{align}
+    \slashed{p} = \ket{p}\brasq{p} && \slashed{p} = \ketsq{p} \bra{p} \,,
+\end{align}
+while the massless Dirac equation becomes the massless Weyl equation:
+\begin{align} \label{eq:weyleq}
+    \slashed{p}\ket{p} = 0 && \slashed{p}\ket{p} = 0\,.
+\end{align}
+In the above, $\slashed{p}$ is a small abuse of the `slashed' notation --- what it really means is a contraction of $p_\mu$ with $\sigma^\mu$ or $\bar{\sigma}^\mu$, rather than $\gamma^\mu$. The appropriate Lorentz vector can be chosen by looking at the indices of the square/angle spinors that $p^\mu$ is sandwiched between. However, the power of spinor-helicity formalism lies in the fact that in practice, we do not ever need to perform such explicit summation over indices and instead work with identities at the level of angle and square brackets:
+\begin{align}
+    \braket{ij} \equiv \bra{i}_{\dot{a}} \ket{j}^{\dot{a}}&& \braketsq{ij} \equiv \brasq{i}^a \ketsq{j}_a \,.     
+\end{align}
+It is straightforward to show that because the indices are raised and lowered using the Levi-Civita symbol, these brackets must be \textit{antisymmetric}:
+\begin{align}
+    \braket{ij} = -\braket{ji} && \braketsq{ij} = -\braketsq{ji}\,.
+\end{align}
+We can also formulate angle-square or square-angle brackets as follows:
+\begin{align}
+    \langle ikj ] \equiv \bra{i} \slashed{k} \ketsq{j} && [ikj\rangle \equiv \brasq{i} \slashed{k} \ket{j}\,.
+\end{align}
+To choose the right $\slashed{k}$ from Eq.~\ref{eq:pslashed}, we just need to remember that $\langle ik] = [ik\rangle = 0$. These brackets can be extended to arbitrary lengths by inserting additional slashed momenta inside. 
 
-In addition to massless fermions, it turns out that massless spin-1 bosons can also be translated into this language. The corresponding expressions are:
-\begin{align} \label{eq:pols}
-    \epsilon^\mu_- = \frac{\bra{p}\gamma^\mu\ketsq{q}}{\sqrt{2}\braketsq{qp}} && \epsilon^\mu_+ = \frac{\bra{q}\gamma^\mu\ketsq{p}}{\sqrt{2}\braket{qp}} \,,
+We note some very useful identities\footnote{Naturally, the Schouten and Fierz identities also hold if we exchange all angle and square brackets. Wherever $\gamma^\mu$ appears, it is understood as either $\sigma^\mu$ or $\bar{\sigma}^\mu$, as explained earlier.}:
+\begin{align}
+    \braket{ii} = \braketsq{ii} = 0 && \text{by antisymmetry} \label{eq:iieq0} \\
+    s_{ij} = -\braket{ij}\braketsq{ij} && \text{(for massless momenta)} \\
+    \braketsq{ij}^{\ast} = \braket{ji} && \text{(for real momenta)} \label{eq:complexconjbracket} \\
+    \sum_{i=1}^n \ketsq{i}\bra{i} = \sum_{i=1}^n \ket{i}\brasq{i} = 0 && \text{momentum conservation} \label{eq:spinmomcons}\\
+    \ket{i}\braket{jk} + \ket{j}\braket{ki} + \ket{k}\braket{ij} = 0 && \text{Schouten identity} \label{eq:schouten} \\
+    \brasq{i}\gamma^\mu \ket{j} = \bra{j} \gamma^\mu \ketsq{k} && \\
+    \brasq{i}\gamma^\mu \ket{j}^{\ast} = \brasq{j}\gamma^\mu \ket{i} && \text{(for real momenta)} \\
+    \brasq{i}\gamma^\mu \ket{j} \brasq{k}\gamma_\mu \ket{l} = 2\braketsq{ik}\braket{jl} && \text{Fierz identity} \label{eq:fierz} \,.
 \end{align}
-where $q^\mu \neq p^\mu$ is an arbitrary reference momentum. In this way, we can write our amplitudes using the square and spinor brackets rather than the usual $u, v$ Dirac bi-spinors. Why is this useful? It turns out that working in this formalism, many of the calculations do indeed become extraordinarily simple as compared to the traditional approach. Before we can see the power of the spinor helicity language in practice, we review one more concept needed for handling QCD amplitudes.
+
+In addition to massless fermions, we need to be able to write the polarisation vectors of massless spin\=/1 bosons in the spinor-helicity language. In analogy to Eq.~\ref{eq:outerproduct}, the Coulomb gauge identity $\epsilon_{\pm} \cdot \epsilon_{\pm} = 0$ \JK{Is this only true in Coulomb gauge?} allows us to decompose $\epsilon^\mu$ into an outer product of two vectors. To this end, we introduce a reference vector $q^\mu$ and write:
+\begin{align} \label{eq:pols}
+    \epsilon^\mu_{-}(p, q) = \frac{\bra{p}\gamma^\mu\ketsq{q}}{\sqrt{2}\braketsq{qp}} && \epsilon^\mu_{+}(p, q) = \frac{\bra{q}\gamma^\mu\ketsq{p}}{\sqrt{2}\braket{qp}} \,.
+\end{align}
+The choice of the reference vector is arbitrary (apart from the condition $q^\mu \neq p^\mu$), which reflects gauge invariance. In practice, it is useful to choose it such that contracting $\epsilon^\mu$ leads to the formation of vanishing spinor brackets, thus greatly simplifying the algebra. The validity of Eq.~\ref{eq:pols} can be verified by observing that these expressions obey all identities we would expect from a polarisation vector \JK{I don't like this}:
+\begin{align}
+    p \cdot \epsilon_\pm(p, q) &= 0 \\
+    q \cdot \epsilon_\pm(p, q) &= 0 \\
+    \epsilon_\pm (p, q) \cdot \epsilon_\pm(p', q) &= 0 \\
+    \epsilon_\pm (p, q) \cdot \epsilon_\mp(p', p) &= 0 \\
+    \epsilon_\pm^\ast (p, q) \cdot \epsilon_\pm(p, q) &= -1
+\end{align}
+
+At this point, we have all the tools we need to express any amplitude of massless fermions and spin\=/1 bosons through the angle and square brackets. Its usefulness, however, may not be immediately clear, especially given the notation which at first appears daunting. As a quick demonstration of the power of spinor-helicity formalism, let us consider the special case of 3-particle kinematics. For any three massless momenta satisfying $p_1^\mu + p_2^\mu + p_3^\mu = 0$, we have:
+\begin{equation}
+    \braket{12}\braketsq{21} = s_{12} = p_3^2 = 0\,.
+\end{equation}
+Thus, either $\braket{12} = 0$ or $\braketsq{12} = 0$. If we assume $\braket{12}$ is non-vanishing, then by momentum conservation and the massless Weyl equation:
+\begin{equation}
+    \braket{12}\braketsq{23} = \langle 1|\slashed{2}|\ket{3} = -\langle 1|(\slashed{1}+\slashed{3})\ket{3} = 0\,.
+\end{equation}
+Thus, $\braketsq{23} = 0$ and in an analogous manner, we can show that $\braketsq{13} = 0$ as well. Had we assumed $\braketsq{12} \neq 0$, we would have found that all angle brackets vanish instead:
+\begin{equation}
+    \braketsq{12} = \braketsq{13} = \braketsq{23} = 0 \qquad \text{or} \qquad \braket{12} = \braket{13} = \braket{23} = 0 \,.
+\end{equation}
+Therefore, for 3-particle kinematics, the amplitude must depend on either square or angle brackets only. However, note that this result makes sense only if we work with complex momenta. Otherwise, through Eq.~\ref{eq:complexconjbracket}, the angle and square brackets are complex conjugates of each other and so both types must vanish simultaneously. Amplitudes constructed from complex momenta are of course not physical, nonetheless they provide a useful building block for higher-point amplitudes in recursive techniques \JK{reference to BCFW? Maybe I should have a mini-section on BCFW when talking about the tree amps for $\ppbbh$}.
+
 \end{document}
