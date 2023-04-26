@@ -80,7 +80,21 @@ Working in the fundamental representation with normalisation $\tr(T^{a_1} T^{a_2
 
 Completeness relations for the spin-1 polarisation vectors:
 \begin{equation} \label{eq:completeness:bosons}
-    \sum_{s=\pm} \varepsilon_\mu^s(p, q) \varepsilon_\nu^{\ast s}(p, q) = -g_{\mu\nu} + \frac{p_\mu q_\nu + p_\nu q_\mu}{p \cdot q}
+    \sum_{s=\pm} \varepsilon_\mu^s(p, q) (\varepsilon_\nu^s(p, q))^{\ast} = -g_{\mu\nu} + \frac{p_\mu q_\nu + p_\nu q_\mu}{p \cdot q}
 \end{equation}
 \JK{is this true only in the axial gauge? See Eq. 30 of `Calculating scattering amplitudes efficiently'. We don't use the axial gauge.}
+
+\section{Scattering amplitudes}
+\begin{align} \label{eq:delta3}
+    \Delta_3^{(1)} &= \lambda(s5, s12, s34) \nonumber \\
+    \Delta_3^{(2)} &= \lambda(s5, s13, s24) \nonumber \\
+    \Delta_3^{(3)} &= \lambda(s5, s23, s14)\,,
+\end{align}
+where $\lambda(a,b,c) = a^2+b^2+c^2 - 2ab-2ac-2bc$ is the Källén function.
+\begin{equation} \label{eq:delta5}
+    \Delta_5 = \det G(p_1, p_2, p_3, p_4)
+\end{equation}
+\begin{equation} \label{eq:delta5tr5}
+    \Delta_5 = tr_5^2
+\end{equation}
 \end{document}

@@ -206,30 +206,35 @@ We can also formulate angle-square or square-angle brackets as follows:
 To choose the right $\slashed{k}$ from Eq.~\ref{eq:pslashed2}, we just need to remember that $\langle ik] = [ik\rangle = 0$. These brackets can be extended to arbitrary lengths by inserting additional slashed momenta inside. 
 
 We note some very useful identities\footnote{Naturally, the Schouten and Fierz identities also hold if we exchange all angle and square brackets. Wherever $\gamma^\mu$ appears, it is understood as either $\sigma^\mu$ or $\bar{\sigma}^\mu$, as explained earlier.}:
-\begin{align}
-    \braket{ii} = \braketsq{ii} = 0 && \text{by antisymmetry} \label{eq:iieq0} \\
-    s_{ij} = -\braket{ij}\braketsq{ij} && \text{(for massless momenta)} \\
-    \braketsq{ij}^{\ast} = \braket{ji} && \text{(for real momenta)} \label{eq:complexconjbracket} \\
-    \sum_{i=1}^n \ketsq{i}\bra{i} = \sum_{i=1}^n \ket{i}\brasq{i} = 0 && \text{momentum conservation} \label{eq:spinmomcons}\\
-    \ket{i}\braket{jk} + \ket{j}\braket{ki} + \ket{k}\braket{ij} = 0 && \text{Schouten identity} \label{eq:schouten} \\
-    \bra{i}\gamma^\mu \ketsq{i} = 2p_i^\mu && \text{Gordon identity} \label{eq:gordon} \\
-    \bra{i} \gamma^\mu \ketsq{j} = \brasq{j}\gamma^\mu \ket{i} && \\
-    \bra{i}\gamma^\mu \ketsq{j}^{\ast} = \bra{j}\gamma^\mu \ketsq{i} && \text{(for real momenta)} \\
-    \bra{i}\gamma^\mu \ketsq{j} \bra{k}\gamma_\mu \ketsq{l} = -2\braket{ik}\braketsq{jl} && \text{Fierz identity} \label{eq:fierz} \,.
-\end{align}
+\begin{subequations} \label{eq:spinorsids}
+    \begin{align}
+        \braket{ii} = \braketsq{ii} = 0 && \text{by antisymmetry} \label{eq:iieq0} \\
+        s_{ij} = -\braket{ij}\braketsq{ij} && \text{(for massless momenta)} \\
+        \braketsq{ij}^{\ast} = \braket{ji} && \text{(for real momenta)} \label{eq:complexconjbracket} \\
+        \sum_{i=1}^n \ketsq{i}\bra{i} = \sum_{i=1}^n \ket{i}\brasq{i} = 0 && \text{momentum conservation} \label{eq:spinmomcons}\\
+        \ket{i}\braket{jk} + \ket{j}\braket{ki} + \ket{k}\braket{ij} = 0 && \text{Schouten identity} \label{eq:schouten} \\
+        \bra{i}\gamma^\mu \ketsq{i} = 2p_i^\mu && \text{Gordon identity} \label{eq:gordon} \\
+        \bra{i} \gamma^\mu \ketsq{j} = \brasq{j}\gamma^\mu \ket{i} && \\
+        \bra{i}\gamma^\mu \ketsq{j}^{\ast} = \bra{j}\gamma^\mu \ketsq{i} && \text{(for real momenta)} \\
+        \bra{i}\gamma^\mu \ketsq{j} \bra{k}\gamma_\mu \ketsq{l} = -2\braket{ik}\braketsq{jl} && \text{Fierz identity} \label{eq:fierz} \,.
+    \end{align}
 
-In addition to massless fermions, we need to be able to write the polarisation vectors of massless spin\=/1 bosons in the spinor-helicity language. In analogy to Eq.~\ref{eq:outerproduct}, the Coulomb gauge identity $\epsilon_{\pm} \cdot \epsilon_{\pm} = 0$ \JK{Is this only true in Coulomb gauge?} allows us to decompose $\epsilon^\mu$ into an outer product of two vectors. To this end, we introduce a reference vector $q^\mu$ and write \JK{double check the signs}:
+\end{subequations}
+
+In addition to massless fermions, we need to be able to write the polarisation vectors of massless spin\=/1 bosons in the spinor-helicity language. In analogy to Eq.~\ref{eq:outerproduct}, the Coulomb gauge identity $\varepsilon_{\pm} \cdot \varepsilon_{\pm} = 0$ \JK{Is this only true in Coulomb gauge?} allows us to decompose $\varepsilon^\mu$ into an outer product of two vectors. To this end, we introduce a reference vector $q^\mu$ and write \JK{double check the signs}:
 \begin{align} \label{eq:pols}
-    \epsilon^\mu_{-}(p, q) = \frac{\bra{p}\gamma^\mu\ketsq{q}}{\sqrt{2}\braketsq{pq}} && \epsilon^\mu_{+}(p, q) = \frac{\bra{q}\gamma^\mu\ketsq{p}}{\sqrt{2}\braket{qp}} \,.
+    \varepsilon^\mu_{-}(p, q) = \frac{\bra{p}\gamma^\mu\ketsq{q}}{\sqrt{2}\braketsq{pq}} && \varepsilon^\mu_{+}(p, q) = \frac{\bra{q}\gamma^\mu\ketsq{p}}{\sqrt{2}\braket{qp}} \,.
 \end{align}
-The choice of the reference vector is arbitrary (apart from the condition $q^\mu \neq p^\mu$), which reflects gauge invariance. We can see this by noting that the Weyl spinors are two-component object and can be decomposed as $\ket{r} = \frac{\braket{rq}}{\braket{pq}}\ket{p} - \frac{\braket{rp}}{\braket{pq}}\ket{q}$. Therefore, any shift in $q$ must be of the form $q \rightarrow Aq + Bp$, where $A, B$ are constants. Then, from Eq.~\ref{eq:pols} (and using Eq.~\ref{eq:gordon}), it is easy to see that this shift will correspond to $\epsilon^\mu \rightarrow \epsilon^\mu + Cp^\mu$. Thus, the Ward identity $p_\mu \ampl{}{^\mu}$ is satisfied for any choice of the reference vector $q^\mu$. In practice, it is useful to choose it such that contracting $\epsilon^\mu$ with external momenta leads to the formation of vanishing spinor brackets, thus greatly simplifying the algebra. Finally, the validity of Eq.~\ref{eq:pols} can be verified by observing that these expressions obey all identities we would expect from a polarisation vector \JK{I don't like this}:
-\begin{align}
-    p \cdot \epsilon_\pm(p, q) &= 0 \\
-    q \cdot \epsilon_\pm(p, q) &= 0 \\
-    \epsilon_\pm (p, q) \cdot \epsilon_\pm(p', q) &= 0 \\
-    \epsilon_\pm (p, q) \cdot \epsilon_\mp(p', p) &= 0 \\
-    \epsilon_\pm^\ast (p, q) \cdot \epsilon_\pm(p, q) &= -1
-\end{align}
+The choice of the reference vector is arbitrary (apart from the condition $q^\mu \neq p^\mu$), which reflects gauge invariance. We can see this by noting that the Weyl spinors are two-component object and can be decomposed as $\ket{r} = \frac{\braket{rq}}{\braket{pq}}\ket{p} - \frac{\braket{rp}}{\braket{pq}}\ket{q}$. Therefore, any shift in $q$ must be of the form $q \rightarrow Aq + Bp$, where $A, B$ are constants. Then, from Eq.~\ref{eq:pols} (and using Eq.~\ref{eq:gordon}), it is easy to see that this shift will correspond to $\varepsilon^\mu \rightarrow \varepsilon^\mu + Cp^\mu$. Thus, the Ward identity $p_\mu \ampl{}{^\mu}$ is satisfied for any choice of the reference vector $q^\mu$. In practice, it is useful to choose it such that contracting $\varepsilon^\mu$ with external momenta leads to the formation of vanishing spinor brackets, thus greatly simplifying the algebra. Finally, the validity of Eq.~\ref{eq:pols} can be verified by observing that these expressions obey all identities we would expect from a polarisation vector \JK{I don't like this}:
+\begin{subequations}
+    \begin{align}
+        p \cdot \varepsilon_\pm(p, q) &= 0 \\
+        q \cdot \varepsilon_\pm(p, q) &= 0 \\
+        \varepsilon_\pm (p, q) \cdot \varepsilon_\pm(p', q) &= 0 \\
+        \varepsilon_\pm (p, q) \cdot \varepsilon_\mp(p', p) &= 0 \\
+        \varepsilon_\pm^\ast (p, q) \cdot \varepsilon_\pm(p, q) &= -1
+    \end{align}
+\end{subequations}
 At this point, we have all the tools we need to express any amplitude of massless fermions and spin\=/1 bosons through the angle and square brackets. Its usefulness, however, may not be immediately clear, especially given the notation which at first appears daunting. As a quick demonstration of the power of spinor-helicity formalism, let us consider the special case of 3-particle kinematics. For any three massless momenta satisfying $p_1^\mu + p_2^\mu + p_3^\mu = 0$, we have:
 \begin{equation}
     \braket{12}\braketsq{21} = s_{12} = p_3^2 = 0\,.
@@ -245,12 +250,12 @@ Thus, $\braketsq{23} = 0$ and in an analogous manner, we can show that $\brakets
 Therefore, for 3-particle kinematics, the amplitude must depend on either square or angle brackets only. However, note that this result makes sense only if we work with complex momenta. Otherwise, through Eq.~\ref{eq:complexconjbracket}, the angle and square brackets are complex conjugates of each other and so both types must vanish simultaneously. Amplitudes constructed from complex momenta are of course not physical, nonetheless they provide a useful building block for higher-point amplitudes in recursive techniques \JK{reference to BCFW? Maybe I should have a mini-section on BCFW when talking about the tree amps for $\ppbbh$}.
 \subsection{Little group scaling} \label{sec:littlegroup}
 In the previous section, we saw that the freedom in choosing the reference vector $q^\mu$ reflects gauge invariance of the amplitude. Here we will see how another physical principle places strong constrains on the form of helicity amplitudes. We begin by observing that when trading the Weyl spinors for the bracket notation, there is some freedom in how exactly we write down Eq.~(\ref{eq:lambdatobraket}). That is, note that both $p_{a\dot{b}} = \ketsq{p}_a \bra{p}_{\dot{b}}$ and $p^{\dot{a}b} = \ket{p}^{\dot{a}} \brasq{p}^b$ are invariant under the transformation:
-\begin{align} \label{eq:scaling}
+\begin{align} \label{eq:littlegroupscaling}
     \ket{i} \rightarrow z \ket{i} && \ketsq{i} \rightarrow z^{-1} \ketsq{i}, \qquad z \in \mathbb{C}  
 \end{align}
 This is known as \textbf{little group scaling}. Each external momentum has its own little-group transformation. This implies the following relations for spin-$1$ massless boson polarisations in Eq.~(\ref{eq:pols}):
 \begin{align}
-    \epsilon^\mu_- (p,q) \rightarrow z^2 \epsilon^\mu_- (p,q) &&  \epsilon^\mu_+ (p,q) \rightarrow z^{-2} \epsilon^\mu_+ (p,q) \,.
+    \varepsilon^\mu_- (p,q) \rightarrow z^2 \varepsilon^\mu_- (p,q) &&  \varepsilon^\mu_+ (p,q) \rightarrow z^{-2} \varepsilon^\mu_+ (p,q) \,.
 \end{align}
 Note that the polarisation vectors are invariant under re-scalings of the reference momenta. Thus, for scattering of massless particles, the little-group scaling of the corresponding amplitude is determined by the helicities of the external particles. Specifically, if we re-scale the spinor brackets associated with the momentum $p_i$, the amplitude scales according to:
 \begin{equation}
@@ -264,7 +269,7 @@ Assuming that this amplitude depends only on angle brackets:
 \begin{equation} \label{eq:3gscaling}
     A_3^{(0)} (1^-2^-3^+) \propto \braket{12}^{x_{12}} \braket{13}^{x_{13}} \braket{23}^{x_{23}} \,,
 \end{equation}
-Using Eq.~\ref{eq:scaling}, we solve for the exponents and get $\{x_{12} = 3, x_{13} = -1, x_{23} = -1\}$. An identical exercise can be performed (assuming square brackets this type) for the anti-MHV amplitude $A_3^{(0)} (1^+2^+3^-)$, leading to an analogous result. Therefore, the 3-point gluon amplitudes are fixed (up to an overall constant) by the special 3-point kinematics and little group scaling:
+Using Eq.~\ref{eq:littlegroupscaling}, we solve for the exponents and get $\{x_{12} = 3, x_{13} = -1, x_{23} = -1\}$. An identical exercise can be performed (assuming square brackets this type) for the anti-MHV amplitude $A_3^{(0)} (1^+2^+3^-)$, leading to an analogous result. Therefore, the 3-point gluon amplitudes are fixed (up to an overall constant) by the special 3-point kinematics and little group scaling:
 \begin{align} \label{eq:3gMHV}
     A_3^{(0)} (1^-2^-3^+) = \kappa_1 \frac{\braket{12}^3}{\braket{23}\braket{31}} && A_3^{(0)} (1^+2^+3^-) = \kappa_2 \frac{\braketsq{12}^3}{\braketsq{23}\braketsq{31}} \,.
 \end{align}
@@ -287,8 +292,49 @@ The first non-vanishing amplitudes are the MHV/anti-MHV configurations:
 \end{align}
 This result is known as the Parke-Taylor formula \cite{Mangano:1990by}. It can be proved inductively using the BCFW recursion relations~\cite{Britto:2004ap, Britto:2005fq}, with the 3-point MHV amplitudes of Eq.~\ref{eq:3gMHV} serving as the starting point. Overall, it is now clear that the spinor-helicity formalism, together with little group scaling and locality of the Lagrangian, produce astonishingly compact results for amplitudes which are traditionally calculated as sums of hundreds or thousands of Feynman diagrams.
 \section{Momentum twistors} \label{sec:MTs}
-In the previous section, we have seen that the spinor-helicity formalism provides a convenient framework to describe helicity amplitudes. By using spinor brackets, which are intrinsically tied to helicity, we were able to exploit properties of the amplitude to arrive at remarkably neat expressions. Nonetheless, this formalism comes with certain drawbacks. Firstly, note that kinematic identities such as momentum conservation are not automatically satisfied by the spinor brackets. We can in fact use the properties listed in Eq.~\ref{eq:} to 
+In the previous section, we have seen that the spinor-helicity formalism provides a convenient framework to describe helicity amplitudes. By using spinor brackets, which are intrinsically tied to helicity, we were able to exploit properties of the amplitude to arrive at remarkably neat expressions. Nonetheless, this formalism comes with certain drawbacks. Firstly, note that kinematic identities such as momentum conservation are not automatically satisfied by the spinor brackets. We can in fact use the properties listed in Eq.~\ref{eq:spinorsids} to arrive at a minimal set of these variables. In practice, however, this proves to be cumbersome, especially for high-multiplicity processes. Moreover, the appearance of square roots such as~\ref{eq:delta3} and \ref{eq:delta5} complicates our computational setup, which will be made clear in the next section. We would therefore like to have a parametrisation of external kinematics which solves both these problems simultaneously.
 
+In recent years, many amplitude computations have exploited variables known as \textbf{momentum twistors} (MTs)~\cite{Hodges:2009hk, Badger:2013gxa, Badger:2016uuq}. As the first step, we define dual-space coordinates $x_i^\mu$ as:
+\begin{equation} \label{eq:dualspacedef}
+    p_i^\mu = x_i^\mu - x_{i+1}^\mu\,.
+\end{equation}
+Using the massless Weyl equation (Eq.~\ref{eq:weyleq}) and the slash notation in the sense of Eq.~\ref{eq:pslashed1}, it then follows that:
+\begin{equation} \label{eq:incidencerel}
+    \brasq{\mu_i} \equiv \bra{i}\slashed{x}_i = \bra{i}\slashed{x}_{i+1}\,,
+\end{equation}
+The new variables allow us to define the momentum twistors $Z_i^I$:
+\begin{equation} \label{eq:momtwistor}
+    Z_i^I = 
+    \begin{pmatrix}
+        \ket{i} \\
+        \brasq{\mu_i} 
+    \end{pmatrix}\,.
+\end{equation}
+where the index $I$ is understood as $I=\{\dot{a},a\}$. Since $\slashed{p} = \ket{i}\brasq{i}$, we can also express $\brasq{i}$ in terms of $Z_i^I$. To this end, the dual twistor is defined as:
+\begin{equation} \label{eq:dualmomtwistor}
+    W_i^I = 
+    \begin{pmatrix}
+        \ket{\mu_i} \\
+        \brasq{i}
+    \end{pmatrix} = 
+    \frac{\varepsilon^{ABCD} Z_{(i-1)B} Z_{iC} Z_{(i+1)D}}{\braket{i-1, i} \braket{i, i+1}}\,.
+\end{equation}
+We can then expand this equation and read off the last two components:
+\begin{equation}
+    \brasq{i} = \frac{\braket{i, i+1}\brasq{\mu_{i-1}} + \braket{i+1, i-1}\brasq{\mu_i} + \braket{i-1, i}\brasq{\mu_{i+1}} }{\braket{i-1, i}\braket{i, i+1}}\,.
+\end{equation}
+Each momentum twistor $Z_i^I$ has four components, thus the matrix of all twistors has $4n$ entries for $n$\=/particle scattering. However, not all of them are independent. Firstly, momentum twistors are invariant under the 10-dimensional Poincaré group. Additionally, they exhibit the $U(1)$ symmetry as well, for each particle separately. We can see this from Eq.~\ref{eq:incidencerel}, which implies that under the little group scaling of $\ket{i}\rightarrow t_i\ket{i}$, with $t_i \in \mathbb{C}$, the momentum twistors scale as: $Z_i \rightarrow t_i Z_i$. At the same time, this transformation does not affect the underlying momentum $p_i^\mu$, thus $Z_i$ are defined projectively. Therefore, the number of independent \textbf{momentum-twistor variables} needed to generate the $Z_i$ for $n$\=/particles is\footnote{In amplitude jargon, the term `momentum twistors' most often refers to these $3n-10$ independent variables, rather than the $Z_i$'s themselves. We will also adopt this terminology in subsequent sections.}: $4n-10-n\times1 = 3n-10$. \JK{Make sure to understand the $3n-10$ thing.} \JK{I forgot what it means to be defined projectively.}.
+
+The momentum twistors $Z_i$, together with their dual equivalent $W_i$, serve as a useful way to generate numerical phase-space points according to the following recipe:
+\begin{enumerate}
+    \item Fill the twistor matrix $Z_i^I, i=1, \ldots, n$ with random integers.
+    \item Compute the dual twistor matrix $W_i^I$.
+    \item Read off spinors $\ket{i}$ and $\brasq{i}$.
+    \item Calculate the momenta according to the Gordon identity, $p^\mu = \frac{1}{2}\brasq{i}\gamma^\mu |i\rangle$.
+\end{enumerate}
+Phase-space points generated in this manner are complex and rational. We can also populate the matrix with rational functions instead. The corresponding phase-space parametrisation is guaranteed to be rational as well as to automatically implement momentum conservation and the Schouten identity. It is not clear, however, how to choose these functions such that the corresponding parametrisation leads to the simplest possible amplitude expressions \JK{Mention how the MTs break symmetries of helicity amplitudes}. We will present two judicious \JK{Maybe `judicious' is too much?...} choices in Sections~\ref{sec:Hbb} and \ref{sec:Wyj}\JK{Why do we use different MT parametrisations in these papers?}.
+
+A small drawback of using the momentum-twistor variables is that they lose the phase information carried by the spinor brackets $\ket{i}$ and $\brasq{i}$ \JK{At what point exactly does that happen? I want to see it in an equation.}.
 %\section{Finite fields} \label{sec:FF}
 %
 %\section{Reduction techniques} \label{sec:reduction}
