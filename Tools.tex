@@ -141,10 +141,10 @@ which means we need to interfere the diagrams with each other and perform the sp
  \label{tab:nterms}
 \end{table}
 \section{Spinor helicity formalism} \label{sec:spinhelform}
-In Section~\ref{sec:QEDintro}, we saw that for massless particles, the Dirac spinor splits into two Weyl spinors that do not mix and are associated with the helicity of the particle. Therefore, we might be tempted to think that helicity amplitudes are better described using a notation specific to the two-component Weyl spinors, which are acted on by the familiar Pauli matrices. Indeed, the powerful \textbf{spinor-helicity formalism} provides a neat way to express helicity amplitudes based on these considerations.
+In Section~\ref{sec:QEDintro}, we saw that for massless particles, the Dirac spinor splits into two Weyl spinors that do not mix and are associated with the helicity of the particle. Therefore, we might be tempted to think that helicity amplitudes are better described using a notation specific to the two-component Weyl spinors, which are acted on by the familiar Pauli matrices. Indeed, the powerful \textbf{spinor-helicity formalism} provides a neat way to express helicity amplitudes based on these considerations\footnote{In case the notation that follows appears daunting, we refer the reader to Ref.~\cite{ElvangHuang} for an in-depth discussion of the topic and useful exercises.}.
 
 As a first step, let's see how we can move from working with the four-component objects to two-component ones. We can write a `slashed' momentum $\slashed{p}$ as:
-\begin{equation} \label{eq:pslashed}
+\begin{equation} \label{eq:pslashed1}
     \slashed{p} = p_\mu \gamma^\mu = p_\mu
     \begin{pmatrix}
     0 & (\sigma^\mu)_{a\dot{b}} \\
@@ -181,8 +181,8 @@ In practice, it can be rather cumbersome to keep track of the dotted and un-dott
     \lambda_a  &\rightarrow \ketsq{p}_a,  &&\tilde{\lambda}_{\dot{a}} \rightarrow \bra{p}_{\dot{a}}\,, \nonumber \\
     \lambda^a  &\rightarrow \brasq{p}^a  &&\tilde{\lambda}^{\dot{a}} \rightarrow \ket{p}^{\dot{a}} \,.
 \end{align}
-We can then write Eq.~\ref{eq:pslashed} as:
-\begin{align}
+We can then write Eq.~\ref{eq:pslashed1} as:
+\begin{align} \label{eq:pslashed2}
     \slashed{p} = \ket{p}\brasq{p} && \slashed{p} = \ketsq{p} \bra{p} \,,
 \end{align}
 while the massless Dirac equation becomes the massless Weyl equation:
@@ -201,7 +201,7 @@ We can also formulate angle-square or square-angle brackets as follows:
 \begin{align}
     \langle ikj ] \equiv \bra{i} \slashed{k} \ketsq{j} && [ikj\rangle \equiv \brasq{i} \slashed{k} \ket{j}\,.
 \end{align}
-To choose the right $\slashed{k}$ from Eq.~\ref{eq:pslashed}, we just need to remember that $\langle ik] = [ik\rangle = 0$. These brackets can be extended to arbitrary lengths by inserting additional slashed momenta inside. 
+To choose the right $\slashed{k}$ from Eq.~\ref{eq:pslashed2}, we just need to remember that $\langle ik] = [ik\rangle = 0$. These brackets can be extended to arbitrary lengths by inserting additional slashed momenta inside. 
 
 We note some very useful identities\footnote{Naturally, the Schouten and Fierz identities also hold if we exchange all angle and square brackets. Wherever $\gamma^\mu$ appears, it is understood as either $\sigma^\mu$ or $\bar{\sigma}^\mu$, as explained earlier.}:
 \begin{align}
@@ -210,16 +210,17 @@ We note some very useful identities\footnote{Naturally, the Schouten and Fierz i
     \braketsq{ij}^{\ast} = \braket{ji} && \text{(for real momenta)} \label{eq:complexconjbracket} \\
     \sum_{i=1}^n \ketsq{i}\bra{i} = \sum_{i=1}^n \ket{i}\brasq{i} = 0 && \text{momentum conservation} \label{eq:spinmomcons}\\
     \ket{i}\braket{jk} + \ket{j}\braket{ki} + \ket{k}\braket{ij} = 0 && \text{Schouten identity} \label{eq:schouten} \\
-    \brasq{i}\gamma^\mu \ket{j} = \bra{j} \gamma^\mu \ketsq{k} && \\
-    \brasq{i}\gamma^\mu \ket{j}^{\ast} = \brasq{j}\gamma^\mu \ket{i} && \text{(for real momenta)} \\
-    \brasq{i}\gamma^\mu \ket{j} \brasq{k}\gamma_\mu \ket{l} = 2\braketsq{ik}\braket{jl} && \text{Fierz identity} \label{eq:fierz} \,.
+    \bra{i}\gamma^\mu \ketsq{i} = 2p_i^\mu && \text{Gordon identity} \label{eq:gordon} \\
+    \bra{i} \gamma^\mu \ketsq{j} = \brasq{j}\gamma^\mu \ket{i} && \\
+    \bra{i}\gamma^\mu \ketsq{j}^{\ast} = \bra{j}\gamma^\mu \ketsq{i} && \text{(for real momenta)} \\
+    \bra{i}\gamma^\mu \ketsq{j} \bra{k}\gamma_\mu \ketsq{l} = -2\braket{ik}\braketsq{jl} && \text{Fierz identity} \label{eq:fierz} \,.
 \end{align}
 
-In addition to massless fermions, we need to be able to write the polarisation vectors of massless spin\=/1 bosons in the spinor-helicity language. In analogy to Eq.~\ref{eq:outerproduct}, the Coulomb gauge identity $\epsilon_{\pm} \cdot \epsilon_{\pm} = 0$ \JK{Is this only true in Coulomb gauge?} allows us to decompose $\epsilon^\mu$ into an outer product of two vectors. To this end, we introduce a reference vector $q^\mu$ and write:
+In addition to massless fermions, we need to be able to write the polarisation vectors of massless spin\=/1 bosons in the spinor-helicity language. In analogy to Eq.~\ref{eq:outerproduct}, the Coulomb gauge identity $\epsilon_{\pm} \cdot \epsilon_{\pm} = 0$ \JK{Is this only true in Coulomb gauge?} allows us to decompose $\epsilon^\mu$ into an outer product of two vectors. To this end, we introduce a reference vector $q^\mu$ and write \JK{double check the signs}:
 \begin{align} \label{eq:pols}
-    \epsilon^\mu_{-}(p, q) = \frac{\bra{p}\gamma^\mu\ketsq{q}}{\sqrt{2}\braketsq{qp}} && \epsilon^\mu_{+}(p, q) = \frac{\bra{q}\gamma^\mu\ketsq{p}}{\sqrt{2}\braket{qp}} \,.
+    \epsilon^\mu_{-}(p, q) = \frac{\bra{p}\gamma^\mu\ketsq{q}}{\sqrt{2}\braketsq{pq}} && \epsilon^\mu_{+}(p, q) = \frac{\bra{q}\gamma^\mu\ketsq{p}}{\sqrt{2}\braket{qp}} \,.
 \end{align}
-The choice of the reference vector is arbitrary (apart from the condition $q^\mu \neq p^\mu$), which reflects gauge invariance. In practice, it is useful to choose it such that contracting $\epsilon^\mu$ leads to the formation of vanishing spinor brackets, thus greatly simplifying the algebra. The validity of Eq.~\ref{eq:pols} can be verified by observing that these expressions obey all identities we would expect from a polarisation vector \JK{I don't like this}:
+The choice of the reference vector is arbitrary (apart from the condition $q^\mu \neq p^\mu$), which reflects gauge invariance. We can see this by noting that the Weyl spinors are two-component object and can be decomposed as $\ket{r} = \frac{\braket{rq}}{\braket{pq}}\ket{p} - \frac{\braket{rp}}{\braket{pq}}\ket{q}$. Therefore, any shift in $q$ must be of the form $q \rightarrow Aq + Bp$, where $A, B$ are constants. Then, from Eq.~\ref{eq:pols} (and using Eq.~\ref{eq:gordon}), it is easy to see that this shift will correspond to $\epsilon^\mu \rightarrow \epsilon^\mu + Cp^\mu$. Thus, the Ward identity $p_\mu \ampl{}{^\mu}$ is satisfied for any choice of the reference vector $q^\mu$. In practice, it is useful to choose it such that contracting $\epsilon^\mu$ with external momenta leads to the formation of vanishing spinor brackets, thus greatly simplifying the algebra. Finally, the validity of Eq.~\ref{eq:pols} can be verified by observing that these expressions obey all identities we would expect from a polarisation vector \JK{I don't like this}:
 \begin{align}
     p \cdot \epsilon_\pm(p, q) &= 0 \\
     q \cdot \epsilon_\pm(p, q) &= 0 \\
@@ -227,19 +228,60 @@ The choice of the reference vector is arbitrary (apart from the condition $q^\mu
     \epsilon_\pm (p, q) \cdot \epsilon_\mp(p', p) &= 0 \\
     \epsilon_\pm^\ast (p, q) \cdot \epsilon_\pm(p, q) &= -1
 \end{align}
-
 At this point, we have all the tools we need to express any amplitude of massless fermions and spin\=/1 bosons through the angle and square brackets. Its usefulness, however, may not be immediately clear, especially given the notation which at first appears daunting. As a quick demonstration of the power of spinor-helicity formalism, let us consider the special case of 3-particle kinematics. For any three massless momenta satisfying $p_1^\mu + p_2^\mu + p_3^\mu = 0$, we have:
 \begin{equation}
     \braket{12}\braketsq{21} = s_{12} = p_3^2 = 0\,.
 \end{equation}
 Thus, either $\braket{12} = 0$ or $\braketsq{12} = 0$. If we assume $\braket{12}$ is non-vanishing, then by momentum conservation and the massless Weyl equation:
 \begin{equation}
-    \braket{12}\braketsq{23} = \langle 1|\slashed{2}|\ket{3} = -\langle 1|(\slashed{1}+\slashed{3})\ket{3} = 0\,.
+    \braket{12}\braketsq{23} = \langle 1|\slashed{2}\ketsq{3} = -\langle 1|(\slashed{1}+\slashed{3})\ketsq{3} = 0\,.
 \end{equation}
 Thus, $\braketsq{23} = 0$ and in an analogous manner, we can show that $\braketsq{13} = 0$ as well. Had we assumed $\braketsq{12} \neq 0$, we would have found that all angle brackets vanish instead:
 \begin{equation}
     \braketsq{12} = \braketsq{13} = \braketsq{23} = 0 \qquad \text{or} \qquad \braket{12} = \braket{13} = \braket{23} = 0 \,.
 \end{equation}
 Therefore, for 3-particle kinematics, the amplitude must depend on either square or angle brackets only. However, note that this result makes sense only if we work with complex momenta. Otherwise, through Eq.~\ref{eq:complexconjbracket}, the angle and square brackets are complex conjugates of each other and so both types must vanish simultaneously. Amplitudes constructed from complex momenta are of course not physical, nonetheless they provide a useful building block for higher-point amplitudes in recursive techniques \JK{reference to BCFW? Maybe I should have a mini-section on BCFW when talking about the tree amps for $\ppbbh$}.
-
+\subsection{Little group scaling} \label{sec:littlegroup}
+In the previous section, we saw that the freedom in choosing the reference vector $q^\mu$ reflects gauge invariance of the amplitude. Here we will see how another physical principle places strong constrains on the form of helicity amplitudes. We begin by observing that when trading the Weyl spinors for the bracket notation, there is some freedom in how exactly we write down Eq.~(\ref{eq:lambdatobraket}). That is, note that both $p_{a\dot{b}} = \ketsq{p}_a \bra{p}_{\dot{b}}$ and $p^{\dot{a}b} = \ket{p}^{\dot{a}} \brasq{p}^b$ are invariant under the transformation:
+\begin{align} \label{eq:scaling}
+    \ket{i} \rightarrow z \ket{i} && \ketsq{i} \rightarrow z^{-1} \ketsq{i}, \qquad z \in \mathbb{C}  
+\end{align}
+This is known as \textbf{little group scaling}. Each external momentum has its own little-group transformation. This implies the following relations for spin-$1$ massless boson polarisations in Eq.~(\ref{eq:pols}):
+\begin{align}
+    \epsilon^\mu_- (p,q) \rightarrow z^2 \epsilon^\mu_- (p,q) &&  \epsilon^\mu_+ (p,q) \rightarrow z^{-2} \epsilon^\mu_+ (p,q) \,.
+\end{align}
+Note that the polarisation vectors are invariant under re-scalings of the reference momenta. Thus, for scattering of massless particles, the little-group scaling of the corresponding amplitude is determined by the helicities of the external particles. Specifically, if we re-scale the spinor brackets associated with the momentum $p_i$, the amplitude scales according to:
+\begin{equation}
+    A_n \left(\ldots, \{p_i, h_i\}, \ldots \right) \xrightarrow[\ketsq{i} \rightarrow z_i^{-1}\ketsq{i}]{\ket{i} \rightarrow z_i\ket{i}} z_i^{-2h_i}  A_n \left(\ldots, \{p_i, h_i\}, \ldots \right),
+\end{equation}
+where $h_i=\pm\frac{1}{2}$ for fermions and $h_i=\pm1$ for massless spin\=/1 bosons. It turns out that this property places a strong constraint on the spinor bracket expression of the amplitude. Let us consider tree-level 3-gluon scattering as a basic example. We have already seen that for 3-particle kinematics, the amplitude must be written in terms of angle \textit{or} square brackets only, but we do not know the general form of the expression. Let us re-scale all three momenta with separate shifts $z_1, z_2, z_3$ in an MHV configuration. Then:
+\begin{equation}
+    A_3^{(0)} (1^-2^-3^+) \rightarrow z_1^2 z_2^2 z_3^{-2} A_3^{(0)}(1^-2^-3^+) \,.
+\end{equation}
+Assuming that this amplitude depends only on angle brackets:
+\begin{equation} \label{eq:3gscaling}
+    A_3^{(0)} (1^-2^-3^+) \propto \braket{12}^{x_{12}} \braket{13}^{x_{13}} \braket{23}^{x_{23}} \,,
+\end{equation}
+Using Eq.~\ref{eq:scaling}, we solve for the exponents and get $\{x_{12} = 3, x_{13} = -1, x_{23} = -1\}$. An identical exercise can be performed (assuming square brackets this type) for the anti-MHV amplitude $A_3^{(0)} (1^+2^+3^-)$, leading to an analogous result. Therefore, the 3-point gluon amplitudes are fixed (up to an overall constant) by the special 3-point kinematics and little group scaling:
+\begin{align} \label{eq:3gMHV}
+    A_3^{(0)} (1^-2^-3^+) = \kappa_1 \frac{\braket{12}^3}{\braket{23}\braket{31}} && A_3^{(0)} (1^+2^+3^-) = \kappa_2 \frac{\braketsq{12}^3}{\braketsq{23}\braketsq{31}} \,.
+\end{align}
+We also note that flipping all helicities corresponds to exchanging $\braket{\phantom{p}} \leftrightarrow \braketsq{\phantom{p}}$. With a wrong choice of the bracket type in Eq.~\ref{eq:3gscaling}, one can show by considering the mass dimension of the amplitude that the couplings $\kappa_1$ and $\kappa_2$ would have to come from terms in the Lagrangian that are non-local\footnote{The mass dimension of $\ampl{n}{}$ in $D=4$ is $4-n$. From Eq.~\ref{eq:pslashed2}, we see that both $\braket{\phantom{i}}$ and $\braketsq$ must have mass dimension 1. Thus, the constants $\kappa_1$ and $\kappa_2$ in Eq.~\ref{eq:3gMHV} have mass dimension 0, which is consistent with the fact that they must have come from the 3-gluon interaction term in the Lagrangian (Eq.~\ref{eq:QCDLagrangian}), \textasciitilde$A^\mu A_\mu \partial^\nu A_\nu$. Had we assumed incorrect bracket types, both constants would need to have dimension 2. Thus, the corresponding term in the Lagrangian would be \textasciitilde$A^\mu A_\mu \frac{\partial^\nu}{\square} A_\nu$, which is non-local (it describes an interaction whose effects become more important with distance).}. We thus reject them as unphysical. Moreover, the same argument can be used to show that the $(---)$ and $(+++)$ configurations cannot have a non-vanishing amplitude:
+\begin{align}
+    A_3^{(0)} (1^-2^-3^-) = 0 && A_3^{(0)} (1^+2^+3^+) = 0\,.
+\end{align}
+In fact, the simplicity we have seen so far generalises to higher-point gluon amplitudes. With a smart choice of reference vectors, it can be shown that:
+\begin{align}
+    A_n^{(0)} (1^-2^- \ldots n^-) = 0 && A_n^{(0)} (1^+2^+ \ldots n^+) = 0\,,
+\end{align}
+as well as:
+\begin{align}
+    A_n^{(0)} (1^+2^- \ldots n^-) = 0 && A_n^{(0)} (1^-2^+ \ldots n^+) = 0\,.
+\end{align}
+The first non-vanishing amplitudes are the MHV/anti-MHV configurations:
+\begin{align} \label{eq:ParkeTaylor}
+    A_n^{(0)} (1^+2^+\ldots i^- \ldots j^- \ldots n^+) &= \frac{\braket{ij}^4}{\braket{12} \braket{23} \ldots \braket{n1}} \,, \\
+    A_n^{(0)} (1^-2^-\ldots i^+ \ldots j^+ \ldots n^-) &= \frac{\braketsq{ij}^4}{\braketsq{12} \braketsq{23} \ldots \braketsq{n1}} \,.
+\end{align}
+This result is known as the Parke-Taylor formula \cite{Mangano:1990by}. It can be proved inductively using the BCFW recursion relations, with the 3-point MHV amplitudes of Eq.~\ref{eq:3gMHV} serving as the starting point. Overall, it is now clear that the spinor-helicity formalism, together with little group scaling and locality of the Lagrangian, produce astonishingly compact results for amplitudes which are traditionally calculated as sums of hundreds or thousands of Feynman diagrams.
 \end{document}
