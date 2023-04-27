@@ -337,7 +337,7 @@ Phase-space points generated in this manner are complex and rational. We can als
 A small drawback of using the momentum-twistor variables is that they lose the phase information carried by the spinor brackets $\ket{i}$ and $\brasq{i}$. This is because in reducing the number of independent variables from $4n$ to $3n-10$, imposing the symmetries essentially fixes the frame in which we evaluate the kinematics. Thus, strictly speaking, only phase-free expressions can be obtained in MT-variables. On the other hand, each helicity amplitude is a `phase-full' quantity (as opposed to the squared, spin-summed amplitude), therefore we need to restore this information at the end of our computation. This can be achieved by multiplying our MT-variable expression by any factor with the same phase content, normalised such that its magnitude is 1. In practice, we most often choose the spinor-bracket expression of the tree-level amplitude for the corresponding helicity, and divide it by its MT-variable expression.
 \section{Finite fields} \label{sec:FF}
 In the previous section, we have introduced a new, minimal set of independent variables that automatically implement constraints such as momentum conservation, as well as rationalise all square roots that appear in our kinematics. This is not just an elegant mathematical exercise. It turns out that momentum-twistor variables (henceforth referred to as just momentum twistors, MTs) provide us with a powerful computational framework that goes hand in hand with yet another tool we employ in amplitude computations.
-
+\subsection{Rational numbers} \label{sec:ratnums}
 The problem of enormous algebraic expressions plagues almost every calculation in QFT. At the same time, sweeping cancellations often occur, leading to much more compact answers. Indeed, we have already seen how at tree-level the MHV gluon amplitudes can be described by remarkably simple expressions, despite the fact that they come from hundreds, if not thousands, of Feynman diagrams. A key idea that has emerged over the past several years is to avoid this complexity at the intermediate stages of the computation by working with numerical expressions instead~\cite{Peraro:2016wsq, Peraro:2019svx, Klappert:2019emp, Klappert:2020aqs, Klappert:2020nbg, vonManteuffel:2014ixa, Abreu:2020xvt}. Crucially, the analytic dependence can still be recovered from the numerics at the very end. In this section, we introduce the concept of \textbf{finite fields} and show how it can be used to our advantage.
 
 A finite field is a field with a finite number of elements. We are interested in finite fields of non-negative integers:
@@ -360,22 +360,53 @@ This inequality, however, holds only because $\gcd(a, p) = 1$. It follows that t
 \begin{equation}
     q \text{ mod } p = \left(x \times (y^{-1} \text{ mod } p \right) \text{ mod } p\,.
 \end{equation}
-This map is not invertible, since it maps infinitely many elements of $\mathbb{Q}$ onto the finite set $\mathbb{Z}_p$. Nonetheless, the rational numbers $q$ can be recovered from their image in $\mathbb{Z}_p$ with a very high probability using \textit{Wang's algorithm} \cite{10.1145/800206.806398, 10.1145/1089292.1089293}. This process is referred to as \textbf{rational reconstruction}. We remark that this algorithm is successful if  $|x|, |y| < \sqrt{p/2}\,$. Therefore, $p$ should be chosen sufficiently large so that it is possible to reconstruct all rational numbers appearing in the problem. However, this defeats the purpose of using finite fields in the first place, which was to keep the size of numbers below a certain bound imposed by modular arithmetic $\text{mod } p\,$. Moreover, from the practical point of view, we want to use the efficiency of machine-size integers, which means we are usually constrained to $p<2^{64}$. Fortunately, rational numbers exceeding such thresholds can be reconstructed without using prohibitively large prime fields. Recall the essence of the \textit{Chinese remainder theorem}: knowledge of the congruences of an integer $x$ modulo $\{n_1, n_2, \ldots, n_k\}$, where all the $n_i$ are pairwise co-prime, allows us to obtain the congruence of $x$ modulo $n_1n_2\ldots n_k$ . The same idea holds even for our map $\mathbb{Q} \rightarrow \mathbb{Z}_p$ . Thus, by calculating:
+This map is not invertible, since it maps infinitely many elements of $\mathbb{Q}$ onto the finite set $\mathbb{Z}_p$. Nonetheless, the rational numbers $q$ can be recovered from their image in $\mathbb{Z}_p$ with a very high probability using \textit{Wang's algorithm} \cite{10.1145/800206.806398, 10.1145/1089292.1089293}. This process is referred to as \textbf{rational reconstruction}. We remark that this algorithm is successful if  $|x|, |y| < \sqrt{p/2}\,$. Therefore, $p$ should be chosen sufficiently large so that it is possible to reconstruct all rational numbers appearing in the problem. However, this defeats the purpose of using finite fields in the first place, which was to keep the size of numbers below a certain bound imposed by modular arithmetic $\text{mod } p\,$. Moreover, from the practical point of view, we want to use the efficiency of machine-size integers, which means we are usually constrained to $p<2^{64}$. Fortunately, rational numbers exceeding such thresholds can be reconstructed without using prohibitively large prime fields. Recall the essence of the \textit{Chinese remainder theorem}: knowledge of the congruences of an integer $x$ modulo $\{n_1, n_2, \ldots, n_k\}$, where all the $n_i$ are pairwise co-prime, allows us to obtain the congruence of $x$ modulo $n_1n_2\ldots n_k$. The same idea holds even for our map $\mathbb{Q} \rightarrow \mathbb{Z}_p$. Thus, by calculating:
 \begin{align}
-    q = a_{p_1} &\mod p_1 \\
-    q = a_{p_2} &\mod p_2 \\
-    &\vdots \\
-    q = a_{p_k} &\mod p_k
+    q = a_{p_1} &\mod p_1 \nonumber \\
+    q = a_{p_2} &\mod p_2 \nonumber \\
+    &\vdots \nonumber \\
+    q = a_{p_k} &\mod p_k\,,
 \end{align}
 we can obtain:
 \begin{equation}
     q = a_{p_1 p_2 \ldots p_k} \mod (p_1 p_2 \ldots p_k)\,.
 \end{equation}
 Hence, combining the images of $q$ over several prime fields $\mathbb{Z}_{p_i}$ allows us to use Wang's algorithm on $\mathbb{Z}_{p_1 p_2 \ldots p_k}$ and successfully reconstruct $q$ in $\mathbb{Q}$.
+\subsection{Rational functions} \label{sec:ratfuncs}
+So far, we have seen how we can exploit finite fields to keep the size of numerical expressions from growing throughout our computation\footnote{An alternative approach would be to use floating-point numbers instead of rational numbers, however this would quickly lead to issues with precision.}. It should not come as a surprise that this concept can be extended to allow for the reconstruction of not only rational numbers, but also rational functions in multiple variables. 
 
-So far, we have seen how we can exploit finite fields to keep the size of numerical expressions from growing throughout our computation\footnote{An alternative approach would be to use floating-point numbers instead of rational numbers, however this would quickly lead to issues with precision.}. It should not come as a surprise that this concept can be extended to allows for the reconstruction of not only rational numbers, but rational functions in multiple variables. 
+Let us consider the so-called \textit{black box interpolation problem}. Suppose we have a set of $n$ variables $\mathbf{x}=\{x_1, x_2, \ldots, x_n\}$. These variables will serve as the arguments of a rational function $f(\mathbf{x})$. In general, the analytic form of $f$ is obtained by applying a series of rational operations on $\mathbf{x}$ . We do not know $f$ analytically at any of these steps, however we assume that we have a way of implementing them \textit{numerically} --- this is what we call the `black box'. Specifically, the numerical operations will be done over a prime field $\mathbb{Z}_p$. We start by evaluating the variables $\mathbf{x}$ at random numerical values in $\mathbb{Z}_p$. \JK{are they actually random? Idk how FF chooses the sample points.}We then apply the rational operations represented by $f$, all within the same prime field. After passing through this black box, the result is a number within that field, which we denote as $f(\mathbf{x}) \text{ mod } p$. Therefore, we have obtained one \textit{sample point} of the analytic result corresponding to the initial values we chose for $\mathbf{x}$\JK{Maybe a bit pedantic: does `sample point' refer to the initial values of $\mathbf{x}$ or to the corresponding numerical evaluations of $f(\mathbf{x})$?}.
 
-Overall, we have seen that any numerical algorithm which can be expressed as a chain of rational operations can be implemented over finite fields. This turns out to be tremendously useful, since many of the steps required in amplitude computations are precisely such rational transformations. Armed with this knowledge, we can move on to the next steps in our algorithm.
+They key idea of finite field methods is that it is possible to reconstruct the full analytic dependence of $f(\mathbf{x})$, with coefficients of $x_i$ in $\mathbb{Q}$, by sampling it in this manner at multiple points. The first step of this procedure is in essence a linear fit problem \JK{Check if that's the correct term.}. Note that since $f(\mathbf{x})$ is a rational function, we can write it as:
+\begin{equation} \label{eq:ratfun}
+     f(\mathbf{x}) = \frac{
+     \sum_{\bm{\alpha}} n_{\bm{\alpha}} \mathbf{x}^{\bm{\alpha}}
+     }{
+     \sum_{\bm{\alpha}} d_{\bm{\alpha}} \mathbf{x}^{\bm{\alpha}}
+     }\,,
+\end{equation}
+with $n_{\bm{\alpha}}, n_{\bm{\alpha}} \in \mathbb{Z}_p$. Here, $\mathbf{x}^\alpha$ are the multi-variate monomials:
+\begin{equation}
+    \mathbf{x}^\alpha = \prod_{i=1}^n x_i^{\alpha_i}
+\end{equation}
+and $\bm{\alpha}$ denotes a collective set of exponents $\bm{\alpha} = \{\alpha_1, \alpha_2, \ldots, \alpha_n\}$. It is also useful to define the \textit{total degree} of the monomial as the sum of all its exponents:
+\begin{equation}
+    \deg (\mathbf{x}^{\bm{\alpha}}) = \sum_{i=1}^n \alpha_i\,.
+\end{equation}
+In the context of a rational function, the total degree $\degmax(f)$ is understood as the maximal total degree of any of its monomials.
+
+With this representation of $f(\mathbf{x})$ in Eq.~\ref{eq:ratfun}, we can try to reconstruct its analytic dependence from the numerical samples over the prime field $\mathbb{Z}_p$. In a very naive approach, we would construct the most general ansatz that would cover all possible monomials up to degree $\degmax (f(\mathbf{x}))$. We make this ansatz $R(\mathbf{x})$ for a rational function explicit by writing:
+\begin{equation}
+    R(\mathbf{x}) = \frac{
+    \sum\limits_{i=0}^u \sum\limits_{\bm{\alpha}:\, |\bm{\alpha}| = i} n_{\bm{\alpha}} \mathbf{x}^{\bm{\alpha}}
+    }{
+    \sum\limits_{i=0}^v \sum\limits_{\bm{\alpha}:\, |\bm{\alpha}| = i} d_{\bm{\alpha}} \mathbf{x}^{\bm{\alpha}}
+    }\,,
+\end{equation}
+where we have abbreviated the numerator/denominator degrees as $u=\degmax(\text{num}(f))$ and $v=\degmax(\text{den}(f))$. This is far from optimal, however, since such a general ansatz grows rapidly with both the degree as well as the number of variables. In fact, one can show the number of terms present is
+
+
+Overall, we have seen that any algorithm which can be expressed as a chain of rational operations can be implemented over finite fields. This applies to both pure rational numbers, as well as analytic expressions in the form of rational functions. This turns out to be tremendously useful, since many of the steps required in amplitude computations are precisely such rational transformations. Armed with this knowledge, we can move on to the next steps in our procedure.
 
 \section{Reduction techniques} \label{sec:reduction}
 Before we begin, let us briefly summarise what we have learnt so far about the workflow in Fig.~\ref{fig:outline}. First of all, 

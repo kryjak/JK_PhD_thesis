@@ -8,6 +8,8 @@
 \usepackage[hidelinks,pdfusetitle]{hyperref} % hidelinks removes the boxes around links when viewed on screen, pdfusetitle option includes the thesis title and author in the PDF metadata
 \usepackage{cite} % Combine multiple citations in range
 \usepackage{mathtools}
+\usepackage{amsmath,stackengine}
+\stackMath
 
 %\input{ExtraDefinitions.tex}
 \def\wpol{\varepsilon_W}
@@ -73,6 +75,8 @@
 \def\inf{{\rm Inf}}
 %\def\gg#1{\gamma_{#1}}  % clashes
 \def\XX{\chi}
+\def\degmax{\underset{\text{max}}{\deg}}
+\def\degmin{\underset{\text{min}}{\deg}}
 \def\Lagr{\mathcal{L}}
 \def\ex#1{\mathrm{e}^{#1}}
 \def\i{\mathrm{i}\,}
@@ -82,6 +86,7 @@
 \newcommand{\ketsq}[1]{\left| #1 \right]}
 \newcommand{\brasq}[1]{\left[ #1 \right|}
 \newcommand{\braketsq}[1]{[ #1 ]}
+
 
 % Nicer appearance / typesetting
 \usepackage[shrink=10,stretch=10]{microtype}
