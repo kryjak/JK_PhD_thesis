@@ -205,7 +205,7 @@ We can also formulate angle-square or square-angle brackets as follows:
 \end{align}
 To choose the right $\slashed{k}$ from Eq.~\ref{eq:pslashed2}, we just need to remember that $\langle ik] = [ik\rangle = 0$. These brackets can be extended to arbitrary lengths by inserting additional slashed momenta inside. 
 
-We note some very useful identities\footnote{Naturally, the Schouten and Fierz identities also hold if we exchange all angle and square brackets. Wherever $\gamma^\mu$ appears, it is understood as either $\sigma^\mu$ or $\bar{\sigma}^\mu$, as explained earlier.}:
+We note some very useful identities\footnote{Naturally, the Schouten, Gordon and Fierz identities also hold if we exchange all angle and square brackets. Wherever $\gamma^\mu$ appears, it is understood as either $\sigma^\mu$ or $\bar{\sigma}^\mu$, as explained earlier.}:
 \begin{subequations} \label{eq:spinorsids}
     \begin{align}
         \braket{ii} = \braketsq{ii} = 0 && \text{by antisymmetry} \label{eq:iieq0} \\
@@ -317,9 +317,9 @@ where the index $I$ is understood as $I=\{\dot{a},a\}$. Since $\slashed{p} = \ke
         \ket{\mu_i} \\
         \brasq{i}
     \end{pmatrix} = 
-    \frac{\varepsilon^{ABCD} Z_{(i-1)B} Z_{iC} Z_{(i+1)D}}{\braket{i-1, i} \braket{i, i+1}}\,.
+    \frac{\varepsilon^{ABCD} Z_{(i-1)B} Z_{iC} Z_{(i+1)D}}{\braket{i-1, i} \braket{i, i+1}}\,,
 \end{equation}
-We can then expand this equation and read off the last two components:
+where $\varepsilon^{ABCD}$ is the 4-dimensional Levi\=/Civita symbol. We can then expand this equation and read off the last two components:
 \begin{equation}
     \brasq{i} = \frac{\braket{i, i+1}\brasq{\mu_{i-1}} + \braket{i+1, i-1}\brasq{\mu_i} + \braket{i-1, i}\brasq{\mu_{i+1}} }{\braket{i-1, i}\braket{i, i+1}}\,.
 \end{equation}
@@ -332,13 +332,54 @@ The momentum twistors $Z_i$, together with their dual equivalent $W_i$, serve as
     \item Read off spinors $\ket{i}$ and $\brasq{i}$.
     \item Calculate the momenta according to the Gordon identity, $p^\mu = \frac{1}{2}\brasq{i}\gamma^\mu |i\rangle$.
 \end{enumerate}
-Phase-space points generated in this manner are complex and rational. We can also populate the matrix with rational functions instead. The corresponding phase-space parametrisation is guaranteed to be rational as well as to automatically implement momentum conservation and the Schouten identity. It is not clear, however, how to choose these functions such that the corresponding parametrisation leads to the simplest possible amplitude expressions \JK{Mention how the MTs break symmetries of helicity amplitudes}. We will present two judicious \JK{Maybe `judicious' is too much?...} choices in Sections~\ref{sec:Hbb} and \ref{sec:Wyj}\JK{Why do we use different MT parametrisations in these papers?}.
+Phase-space points generated in this manner are complex and rational. We can also populate the twistor matrix with rational functions instead. The corresponding phase-space parametrisation is guaranteed to be rational (including the square roots of Eqs.~\ref{eq:delta3} and \ref{eq:delta5tr5}) \JK{Why do MTs rationalise square roots?}, as well as to automatically implement momentum conservation and the Schouten identity. It is not clear, however, how to choose these functions such that the corresponding parametrisation leads to the simplest possible amplitude expressions \JK{Mention how the MTs break symmetries of helicity amplitudes}. We will present two judicious \JK{Maybe `judicious' is too much?...} choices in Sections~\ref{sec:Hbb} and \ref{sec:Wyj}\JK{Why do we use different MT parametrisations in these papers?}.
 
-A small drawback of using the momentum-twistor variables is that they lose the phase information carried by the spinor brackets $\ket{i}$ and $\brasq{i}$ \JK{At what point exactly does that happen? I want to see it in an equation.}.
-%\section{Finite fields} \label{sec:FF}
-%
-%\section{Reduction techniques} \label{sec:reduction}
-%
+A small drawback of using the momentum-twistor variables is that they lose the phase information carried by the spinor brackets $\ket{i}$ and $\brasq{i}$. This is because in reducing the number of independent variables from $4n$ to $3n-10$, imposing the symmetries essentially fixes the frame in which we evaluate the kinematics. Thus, strictly speaking, only phase-free expressions can be obtained in MT-variables. On the other hand, each helicity amplitude is a `phase-full' quantity (as opposed to the squared, spin-summed amplitude), therefore we need to restore this information at the end of our computation. This can be achieved by multiplying our MT-variable expression by any factor with the same phase content, normalised such that its magnitude is 1. In practice, we most often choose the spinor-bracket expression of the tree-level amplitude for the corresponding helicity, and divide it by its MT-variable expression.
+\section{Finite fields} \label{sec:FF}
+In the previous section, we have introduced a new, minimal set of independent variables that automatically implement constraints such as momentum conservation, as well as rationalise all square roots that appear in our kinematics. This is not just an elegant mathematical exercise. It turns out that momentum-twistor variables (henceforth referred to as just momentum twistors, MTs) provide us with a powerful computational framework that goes hand in hand with yet another tool we employ in amplitude computations.
+
+The problem of enormous algebraic expressions plagues almost every calculation in QFT. At the same time, sweeping cancellations often occur, leading to much more compact answers. Indeed, we have already seen how at tree-level the MHV gluon amplitudes can be described by remarkably simple expressions, despite the fact that they come from hundreds, if not thousands, of Feynman diagrams. A key idea that has emerged over the past several years is to avoid this complexity at the intermediate stages of the computation by working with numerical expressions instead~\cite{Peraro:2016wsq, Peraro:2019svx, Klappert:2019emp, Klappert:2020aqs, Klappert:2020nbg, vonManteuffel:2014ixa, Abreu:2020xvt}. Crucially, the analytic dependence can still be recovered from the numerics at the very end. In this section, we introduce the concept of \textbf{finite fields} and show how it can be used to our advantage.
+
+A finite field is a field with a finite number of elements. We are interested in finite fields of non-negative integers:
+\begin{equation} \label{eq:ffdefinition}
+    \mathbb{Z}_n = \{0, \ldots, n-1\}\,,    
+\end{equation}
+where $n$ is referred to as the size of the field. In particular, we will work with fields whose size is a large prime number $p$, as prime fields satisfy many properties which make the corresponding arithmetic especially simple. Basic operations, such as addition, subtraction and multiplication, are defined over $\mathbb{Z}_p$ through the standard modular arithmetic $\text{mod } p$. We can also define a multiplicative inverse $b\in \mathbb{Z}_p$ for all $a\neq0 \in \mathbb{Z}_p$:
+\begin{equation}
+    a^{-1} \equiv b \mod p \qquad \Longleftrightarrow \qquad ab = 1 \mod p\,.
+\end{equation}
+In fact, the existence of the inverse for all non-zero $a$ is guaranteed only for prime fields. We can see this by considering the following set:
+\begin{equation}
+    S = \{a, 2a, 3a, \ldots, (p-1)a\}\,.
+\end{equation}
+Now, note that for any two integers $x, x'$ such that: $x \neq x' \text{ mod } p$, we have:
+\begin{equation}
+    a(x-x') \neq 0 \mod p \qquad \qquad (a \neq 0) \,.
+\end{equation}
+This inequality, however, holds only because $\gcd(a, p) = 1$. It follows that the set $S \text{ mod } n$ contains all unique, non-zero elements of $\mathbb{Z}_p$, one of which must be 1. This proves the existence of the multiplicative inverse for all $a \neq 0$ (it can be calculated using the \textit{extended Euclidean algorithm}). Consequently, we can conclude that rational operations over $\mathbb{Z}_p$ are well-defined. Moreover, it allows us to define a map from rational numbers to the prime field, $\mathbb{Q} \rightarrow \mathbb{Z}_p\,$. For $q=\frac{x}{y} \in \mathbb{Q}\,$: 
+\begin{equation}
+    q \text{ mod } p = \left(x \times (y^{-1} \text{ mod } p \right) \text{ mod } p\,.
+\end{equation}
+This map is not invertible, since it maps infinitely many elements of $\mathbb{Q}$ onto the finite set $\mathbb{Z}_p$. Nonetheless, the rational numbers $q$ can be recovered from their image in $\mathbb{Z}_p$ with a very high probability using \textit{Wang's algorithm} \cite{10.1145/800206.806398, 10.1145/1089292.1089293}. This process is referred to as \textbf{rational reconstruction}. We remark that this algorithm is successful if  $|x|, |y| < \sqrt{p/2}\,$. Therefore, $p$ should be chosen sufficiently large so that it is possible to reconstruct all rational numbers appearing in the problem. However, this defeats the purpose of using finite fields in the first place, which was to keep the size of numbers below a certain bound imposed by modular arithmetic $\text{mod } p\,$. Moreover, from the practical point of view, we want to use the efficiency of machine-size integers, which means we are usually constrained to $p<2^{64}$. Fortunately, rational numbers exceeding such thresholds can be reconstructed without using prohibitively large prime fields. Recall the essence of the \textit{Chinese remainder theorem}: knowledge of the congruences of an integer $x$ modulo $\{n_1, n_2, \ldots, n_k\}$, where all the $n_i$ are pairwise co-prime, allows us to obtain the congruence of $x$ modulo $n_1n_2\ldots n_k$ . The same idea holds even for our map $\mathbb{Q} \rightarrow \mathbb{Z}_p$ . Thus, by calculating:
+\begin{align}
+    q = a_{p_1} &\mod p_1 \\
+    q = a_{p_2} &\mod p_2 \\
+    &\vdots \\
+    q = a_{p_k} &\mod p_k
+\end{align}
+we can obtain:
+\begin{equation}
+    q = a_{p_1 p_2 \ldots p_k} \mod (p_1 p_2 \ldots p_k)\,.
+\end{equation}
+Hence, combining the images of $q$ over several prime fields $\mathbb{Z}_{p_i}$ allows us to use Wang's algorithm on $\mathbb{Z}_{p_1 p_2 \ldots p_k}$ and successfully reconstruct $q$ in $\mathbb{Q}$.
+
+So far, we have seen how we can exploit finite fields to keep the size of numerical expressions from growing throughout our computation\footnote{An alternative approach would be to use floating-point numbers instead of rational numbers, however this would quickly lead to issues with precision.}. It should not come as a surprise that this concept can be extended to allows for the reconstruction of not only rational numbers, but rational functions in multiple variables. 
+
+Overall, we have seen that any numerical algorithm which can be expressed as a chain of rational operations can be implemented over finite fields. This turns out to be tremendously useful, since many of the steps required in amplitude computations are precisely such rational transformations. Armed with this knowledge, we can move on to the next steps in our algorithm.
+
+\section{Reduction techniques} \label{sec:reduction}
+Before we begin, let us briefly summarise what we have learnt so far about the workflow in Fig.~\ref{fig:outline}. First of all, 
+
 %\section{Integration-by-parts relations} \label{sec:IBP}
 %\subsection{Uniform transcendentality} \label{sec:UT}
 %\subsection{Differential equations} \label{sec:DEs}
