@@ -332,7 +332,7 @@ The momentum twistors $Z_i$, together with their dual equivalent $W_i$, serve as
     \item Read off spinors $\ket{i}$ and $\brasq{i}$.
     \item Calculate the momenta according to the Gordon identity, $p^\mu = \frac{1}{2}\brasq{i}\gamma^\mu |i\rangle$.
 \end{enumerate}
-Phase-space points generated in this manner are complex and rational. We can also populate the twistor matrix with rational functions instead. The corresponding phase-space parametrisation is guaranteed to be rational (including the square roots of Eqs.~\ref{eq:delta3} and \ref{eq:delta5tr5}) \JK{Why do MTs rationalise square roots?}, as well as to automatically implement momentum conservation and the Schouten identity. It is not clear, however, how to choose these functions such that the corresponding parametrisation leads to the simplest possible amplitude expressions \JK{Mention how the MTs break symmetries of helicity amplitudes}. We will present two judicious \JK{Maybe `judicious' is too much?...} choices in Sections~\ref{sec:Hbb} and \ref{sec:Wyj}\JK{Why do we use different MT parametrisations in these papers?}.
+Phase-space points generated in this manner are complex and rational. We can also populate the twistor matrix with rational functions instead. The corresponding phase-space parametrisation is guaranteed to automatically implement momentum conservation and the Schouten identity. It is also possible to make a specific choice which leads to $\tr_5$ being rational, which is a trick that will be useful in the next section\JK{Why do MTs rationalise $\tr_5$?}. It is not clear, however, how to choose these functions such that the corresponding parametrisation leads to the simplest possible amplitude expressions \JK{Mention how the MTs break symmetries of helicity amplitudes}. We will present two judicious \JK{Maybe `judicious' is too much?...} choices in Sections~\ref{sec:Hbb} and \ref{sec:Wyj}\JK{Why do we use different MT parametrisations in these papers?}.
 
 A small drawback of using the momentum-twistor variables is that they lose the phase information carried by the spinor brackets $\ket{i}$ and $\brasq{i}$. This is because in reducing the number of independent variables from $4n$ to $3n-10$, imposing the symmetries essentially fixes the frame in which we evaluate the kinematics. Thus, strictly speaking, only phase-free expressions can be obtained in MT-variables. On the other hand, each helicity amplitude is a `phase-full' quantity (as opposed to the squared, spin-summed amplitude), therefore we need to restore this information at the end of our computation. This can be achieved by multiplying our MT-variable expression by any factor with the same phase content, normalised such that its magnitude is 1. In practice, we most often choose the spinor-bracket expression of the tree-level amplitude for the corresponding helicity, and divide it by its MT-variable expression.
 \section{Finite fields} \label{sec:FF}
@@ -377,15 +377,15 @@ So far, we have seen how we can exploit finite fields to keep the size of numeri
 
 Let us consider the so-called \textbf{black box interpolation problem}. Suppose we have a set of $n$ variables $\mathbf{x}=\{x_1, x_2, \ldots, x_n\}$. These variables will serve as the arguments of a rational function $f(\mathbf{x})$. In general, the analytic form of $f$ is obtained by applying a series of rational operations on $\mathbf{x}$ . We do not know $f$ analytically at any of these steps, however we assume that we have a way of implementing them \textit{numerically} --- this is what we call the `black box'. Specifically, the numerical operations will be done over a prime field $\mathbb{Z}_p$. We start by evaluating the variables $\mathbf{x}$ at random numerical values in $\mathbb{Z}_p$. \JK{are they actually random? Idk how FF chooses the sample points.}We then apply the rational operations represented by $f$, all within the same prime field. After passing through this black box, the result is a number within that field, which we denote as $f(\mathbf{x}) \text{ mod } p$. Therefore, we have obtained one \textbf{sample point} of the analytic result corresponding to the initial values we chose for $\mathbf{x}$\JK{Maybe a bit pedantic: does `sample point' refer to the initial values of $\mathbf{x}$ or to the corresponding numerical evaluations of $f(\mathbf{x})$?}.
 
-They key idea of finite field methods is that it is possible to reconstruct the full analytic dependence of $f(\mathbf{x})$, with coefficients of $x_i$ in $\mathbb{Q}$, by sampling it in this manner at multiple points. The first step of this procedure is in essence a linear fit problem \JK{Check if that's the correct term.}. Note that since $f(\mathbf{x})$ is a rational function, we can write it as:
+They key idea of finite field methods is that it is possible to reconstruct the full analytic dependence of $f(\mathbf{x})$, with coefficients of $x_i$ in $\mathbb{Q}$, by sampling it in this manner at multiple points. The first step of this procedure is in essence a linear fit problem \JK{Check if that's the correct term.}. Any multivariate rational function can be written as:
 \begin{equation} \label{eq:ratfun}
-     f(\mathbf{x}) = \frac{
+     R(\mathbf{x}) = \frac{
      \sum_{\bm{\alpha}} a_{\bm{\alpha}} \mathbf{x}^{\bm{\alpha}}
      }{
      \sum_{\bm{\beta}} b_{\bm{\beta}} \mathbf{x}^{\bm{\beta}}
-     }\,,
+     }\,.
 \end{equation}
-Here, $a_{\bm{\alpha}}, b_{\bm{\beta}} \in \mathbb{Z}_p$ are coefficients of the multi-variate monomials $\mathbf{x}^\alpha$:
+Here, $a_{\bm{\alpha}}, b_{\bm{\beta}} \in \mathbb{Z}_p$ are coefficients of the multivariate monomials $\mathbf{x}^\alpha$:
 \begin{equation}
     \mathbf{x}^\alpha = \prod_{i=1}^n x_i^{\alpha_i}
 \end{equation}
@@ -395,15 +395,15 @@ and $\bm{\alpha}$ denotes a collective set of exponents $\bm{\alpha} = \{\alpha_
 \end{equation}
 In the context of a rational function, the total degree $\degmax(f)$ is understood as the maximal total degree of any of its monomials.
 
-With this representation of $f(\mathbf{x})$ in Eq.~\ref{eq:ratfun}, we can try to reconstruct its analytic dependence from the numerical samples over the prime field $\mathbb{Z}_p$. In a very naive approach, we would construct the most general ansatz covering all possible monomials up to degree $\degmax (f(\mathbf{x}))$. We make this ansatz $R(\mathbf{x})$ for a rational function explicit by writing:
+With this representation of $f(\mathbf{x})$ in Eq.~\ref{eq:ratfun}, we can try to reconstruct its analytic dependence from the numerical samples over the prime field $\mathbb{Z}_p$. In a very naive approach, we would construct the most general ansatz covering all possible monomials up to degree $\degmax (f)$. We make this explicit by writing the ansatz as:
 \begin{equation}
     R(\mathbf{x}) = \frac{
-    \sum\limits_{i=0}^u \sum\limits_{\bm{\alpha}:\, |\bm{\alpha}| = i} a_{\bm{\alpha}} \mathbf{x}^{\bm{\alpha}}
+    \sum\limits_{\bm{\alpha}:\, |\bm{\alpha}| \le u} a_{\bm{\alpha}} \mathbf{x}^{\bm{\alpha}}
     }{
-    \sum\limits_{i=0}^v \sum\limits_{\bm{\beta}:\, |\bm{\beta}| = i} b_{\bm{\beta}} \mathbf{x}^{\bm{\beta}}
+    \sum\limits_{\bm{\beta}:\, |\bm{\beta}| \le v} b_{\bm{\beta}} \mathbf{x}^{\bm{\beta}}
     }\,,
 \end{equation}
-where we have abbreviated the numerator/denominator degrees as $u=\degmax(\text{num}(f))$ and $v=\degmax(\text{den}(f))$. We can then formulate a system of linear equations in $a_{\bm{\alpha}}, b_{\bm{\beta}}$ by evaluating both the monomials $\mathbf{x}^{\bm{\alpha}}$ in the ansatz and the black box function $f(\mathbf{x})$ at a chosen value in $\mathbb{Z}_p$:
+where we have abbreviated the numerator/denominator degrees as $u=\degmax(\text{num}(f))$ and $v=\degmax(\text{den}(f))$. We can then formulate a system of linear equations in $a_{\bm{\alpha}}, b_{\bm{\beta}}$ by evaluating both the monomials $\mathbf{x}^{\bm{\alpha}}$ in the ansatz and the black box function $f(\mathbf{x})$ at a chosen value $\mathbf{x}_j$ in $\mathbb{Z}_p$:
 \begin{align}
     \sum_{\bm{\alpha}} a_{\bm{\alpha}} \mathbf{x}_j^{\bm{\alpha}} - 
     f(\mathbf{x}_j) \sum_{\bm{\beta}} b_{\bm{\beta}} \mathbf{x}_j^{\bm{\beta}} = 0 
@@ -423,20 +423,35 @@ Finding the values of these coefficients requires solving the system using linea
         n
     \end{pmatrix}\,.
 \end{equation}
-Since the time complexity of the corresponding Gaussian elimination is $\order{|R(\mathbf{x})|^3}$, this can prove prohibitively expensive. As an example, in practice we will be dealing with cases such as six-variable functions with $u=30, v=10$, which gives $|R(\mathbf{x})| \approx 2\times 10^6$. Row reducing such a system is simply not feasible \JK{Is this true for us or in general? Maybe on some supercomputer it would be possible. Idk what the corresponding time estimate is.}. 
+Since the time complexity of the corresponding Gaussian elimination is $\order{|R(\mathbf{x})|^3}$, this can prove prohibitively expensive. As an example, in practice we will be dealing with cases such as six-variable functions with $u=30, v=10$, which gives $|R(\mathbf{x})| \approx 2\times 10^6$. Row reducing such a system is simply not feasible \JK{Is this true for us or in general? Maybe on some supercomputer it would be possible. Idk what the corresponding time estimate is.}. Another complication arises due to the fact that in general, even though the black box operations are implemented numerically over finite fields, obtaining each evaluation of $f(\mathbf{x})$ in the field $\mathbb{Z}_p$ might still take a long time due to the number and complexity of these operations. We refer to this as the \textbf{evaluation time per point}.
 
-Another complication arises due to the fact that in general, even though the black box operations are implemented numerically over finite fields, obtaining each evaluation of $f(\mathbf{x})$ in the field $\mathbb{Z}_p$ might still take a long time due to the number and complexity of these operations. We refer to this as the \textbf{evaluation time per point}. Schematically:
+Overall, it is clear that we need to avoid using such a naive ansatz to interpolate a rational function from its evaluation over finite fields. Besides, in most applications the polynomial degrees $u$ and $v$ are not known \textit{a priori}, so it is difficult to construct an ansatz in the first place. Fortunately, we can make use of more elaborate interpolation methods\footnote{For a detailed description of these methods and their implementation, see~\cite{Peraro:2016wsq}.}. For univariate polynomials, the strategy is based on Newton's polynomial representation~\cite{Abramowitz1965HandbookOM}. This method is particularly useful in cases where the total degree is not known, as it allows for the inclusion of higher-degree terms until their coefficients are found to be 0, at which point the iterative procedure terminates. For univariate rational functions, we distinguish between two further cases based on whether the degrees $u$ and $v$ are known or not. If they are known, it turns out that the naive ansatzing described above performs well enough, as for $n=1$ the ansatz length $|R(x_1)|$ in Eq.~\ref{eq:naiveansatzlength} is sufficiently small to allow for efficient row reduction of the system. Finally, if the degrees are not known, the reconstruction strategy is based on a rational generalisation of Newton's formula known as Thiele's interpolation formula~\cite{Abramowitz1965HandbookOM}. 
+
+Multivariate reconstruction from finite fields can be achieved as well. For multivariate polynomials, it is sufficient to apply the univariate Newton's formula recursively. That is, a multivariate polynomial $P(\mathbf{x})$ is first treated as a univariate polynomial in $x_1$ with coefficients that are polynomials in $x_2, x_3, \ldots, x_n$. These coefficients then become the subject of $(n-1)$-variable reconstruction and so forth, up until $n=1$. Reconstructing multivariate rational functions is significantly more complicated. The strategy is also based on a recursive use of Newton's formula, but with some important modifications such as adding an auxiliary variable to $\mathbf{x}$. We refer the reader to Refs.~\cite{CUYT20111445, Peraro:2016wsq} for details.
+
+Having completed the interpolation through one of the methods above, the only thing left to do is to recover the monomial coefficients in $\mathbb{Q}$ from their images $a_{\bm{\alpha}}, b_{\bm{\beta}} \in \mathbb{Z}_p$ using Wang's algorithm. As explained earlier, if one prime field $\mathbb{Z}_{p_1}$ is not enough, we can always perform the interpolation in another field $\mathbb{Z}_{p_2}$ and combine these results with the Chinese remainder theorem to obtain the interpolation in $\mathbb{Z}_{p_1 p_2}$. In this way, a rational function with arbitrarily large coefficients can be recovered. The reconstruction time can be estimated according to:
 \begin{equation} \label{eq:rectimeschematic}
     \text{Reconstruction time} \approx (\text{number of sample points}) \times (\text{evaluation time per point})\,.
 \end{equation}
 It is of great practical importance to reduce both these factors as much as possible, which renders the reconstruction of increasingly complicated rational functions possible. We will elaborate on this topic in Sections~\ref{sec:Hbb} and \ref{sec:Wyj}.
 
-Overall, it is clear that we need to avoid using such a naive ansatz to interpolate a rational function from its evaluation over finite fields. Besides, in most applications the polynomial degrees $u$ and $v$ are not known \textit{a priori}, so it is difficult to construct an ansatz in the first place. Fortunately, we can make use of more elaborate interpolation methods\footnote{For a detailed description of these methods and their implementation, see~\cite{Peraro:2016wsq}}. For univariate polynomials, the strategy is based on Newton's polynomial representation~\cite{Abramowitz1965HandbookOM}. This method is particularly useful in cases where the total degree is not known, as it allows for the inclusion of higher-degree terms until their coefficients are found to be 0, at which point the iterative procedure terminates. For univariate rational functions, we distinguish between two further cases based on whether the degrees $u$ and $v$ are known or not. If they are known, it turns out that the naive ansatzing described above performs well enough, as for $n=1$, the ansatz length $|R(\mathbf{x})|$ in Eq.~\ref{eq:naiveansatzlength} is sufficiently small to allow for efficient row reduction of the system. Finally, if the degrees are not known, 
-
-Multivariate reconstruction
-
-As a final note, we remark that it is possible to reduce the number of variables in the problem by one by...
-
+Let us make three final remarks. Firstly, we emphasise that the reconstructed function is minimal in terms of the numerator and denominator degrees, that is $\gcd \left(\text{num}(f), \text{den}(f) \right) = 1$. Note that this is also needed for the reconstruction ansatz to be unique. Secondly, for functions which are homogeneous, in the sense that they satisfy:
+\begin{align}
+    f(\lambda \mathbf{x}) = \lambda^u f(\mathbf{x}) && \lambda \in \mathbb{C} \,,
+\end{align}
+where $u=\deg (f)$, it is possible to reduce the number of variables in the problem by one. This is easy to see if we define an auxiliary function:
+\begin{equation}
+    \tilde{f}(x_2, \ldots, x_n) \equiv f(x_1=1, x_2, \ldots, x_n)\,.
+\end{equation}
+Then, requiring the correct scaling gives:
+\begin{equation}
+    f(x_1, \ldots, x_n) = x_1^u \, \tilde{f}\left(\frac{x_2}{x_1}, \ldots, \frac{x_n}{x_1}\right) \,.
+\end{equation}
+Thus, we can reconstruct $\tilde{f}$ and restore the homogeneity of $f$ a posteriori. In our applications, even though the functions we will be dealing with are in general not homogeneous, it turns out we can still discard one variable. We will usually set $s_{12} = 1$ and recover its analytic dependence a posteriori through dimensional analysis \JK{I don't think I understand this.} \JK{Are these two methods of discarding a variable the same?}. Finally, recall from Sec.~\ref{sec:kinematics} the presence of square roots in the kinematics associated with the amplitude. This is a problem because it is not always possible to take a square root of a field element $a \in \mathbb{Z_p}$. Specifically, for a field of size $p>2$, there are only $(p+1)/2$ so-called quadratic residues, i.e. solutions to this equation $x^2-a=0$ in $\mathbb{Z}_p$ \cite{hardy2008introduction}. We can understand this by considering the following set of candidates residues:
+\begin{equation}
+    \left\{0^2, 1^2, \ldots, \left(\frac{p-1}{2}\right)^2  \right\}\,.
+\end{equation}
+Clearly, all the elements have a solution to the above equation in $\mathbb{Z}_p$, which is just $\left\{0, 1, \ldots, (p-1)/2 \right\}$. Therefore, they are valid residues. Moreover, note that we cannot add any more candidates to this set, because 
 %The advantage of turning an analytic calculation into a black-box interpolation is that it reduces the problem of computing a function f into the one of providing a fast numerical evaluation for it. Since the reconstruction is independent of the algorithm used for the evaluation of f , it has a very broad spectrum of applications. Numerical calculations can in turn avoid issues such as large intermediate expressions, which affect many computations in high-energy physics. With this approach, the number of evaluations needed for the reconstruction of a function scales linearly with the number of terms of the result itself and is independent of the complexity of intermediate expressions which may appear using fully analytic techniques.
 
 Overall, we have seen that any algorithm which can be expressed as a chain of rational operations can be implemented over finite fields. This applies to both pure rational numbers, as well as analytic expressions in the form of rational functions. This turns out to be tremendously useful, since many of the steps required in amplitude computations are precisely such rational transformations. Armed with this knowledge, we can move on to the next steps in our procedure.
