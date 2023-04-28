@@ -375,36 +375,69 @@ Hence, combining the images of $q$ over several prime fields $\mathbb{Z}_{p_i}$ 
 \subsection{Rational functions} \label{sec:ratfuncs}
 So far, we have seen how we can exploit finite fields to keep the size of numerical expressions from growing throughout our computation\footnote{An alternative approach would be to use floating-point numbers instead of rational numbers, however this would quickly lead to issues with precision.}. It should not come as a surprise that this concept can be extended to allow for the reconstruction of not only rational numbers, but also rational functions in multiple variables. 
 
-Let us consider the so-called \textit{black box interpolation problem}. Suppose we have a set of $n$ variables $\mathbf{x}=\{x_1, x_2, \ldots, x_n\}$. These variables will serve as the arguments of a rational function $f(\mathbf{x})$. In general, the analytic form of $f$ is obtained by applying a series of rational operations on $\mathbf{x}$ . We do not know $f$ analytically at any of these steps, however we assume that we have a way of implementing them \textit{numerically} --- this is what we call the `black box'. Specifically, the numerical operations will be done over a prime field $\mathbb{Z}_p$. We start by evaluating the variables $\mathbf{x}$ at random numerical values in $\mathbb{Z}_p$. \JK{are they actually random? Idk how FF chooses the sample points.}We then apply the rational operations represented by $f$, all within the same prime field. After passing through this black box, the result is a number within that field, which we denote as $f(\mathbf{x}) \text{ mod } p$. Therefore, we have obtained one \textit{sample point} of the analytic result corresponding to the initial values we chose for $\mathbf{x}$\JK{Maybe a bit pedantic: does `sample point' refer to the initial values of $\mathbf{x}$ or to the corresponding numerical evaluations of $f(\mathbf{x})$?}.
+Let us consider the so-called \textbf{black box interpolation problem}. Suppose we have a set of $n$ variables $\mathbf{x}=\{x_1, x_2, \ldots, x_n\}$. These variables will serve as the arguments of a rational function $f(\mathbf{x})$. In general, the analytic form of $f$ is obtained by applying a series of rational operations on $\mathbf{x}$ . We do not know $f$ analytically at any of these steps, however we assume that we have a way of implementing them \textit{numerically} --- this is what we call the `black box'. Specifically, the numerical operations will be done over a prime field $\mathbb{Z}_p$. We start by evaluating the variables $\mathbf{x}$ at random numerical values in $\mathbb{Z}_p$. \JK{are they actually random? Idk how FF chooses the sample points.}We then apply the rational operations represented by $f$, all within the same prime field. After passing through this black box, the result is a number within that field, which we denote as $f(\mathbf{x}) \text{ mod } p$. Therefore, we have obtained one \textbf{sample point} of the analytic result corresponding to the initial values we chose for $\mathbf{x}$\JK{Maybe a bit pedantic: does `sample point' refer to the initial values of $\mathbf{x}$ or to the corresponding numerical evaluations of $f(\mathbf{x})$?}.
 
 They key idea of finite field methods is that it is possible to reconstruct the full analytic dependence of $f(\mathbf{x})$, with coefficients of $x_i$ in $\mathbb{Q}$, by sampling it in this manner at multiple points. The first step of this procedure is in essence a linear fit problem \JK{Check if that's the correct term.}. Note that since $f(\mathbf{x})$ is a rational function, we can write it as:
 \begin{equation} \label{eq:ratfun}
      f(\mathbf{x}) = \frac{
-     \sum_{\bm{\alpha}} n_{\bm{\alpha}} \mathbf{x}^{\bm{\alpha}}
+     \sum_{\bm{\alpha}} a_{\bm{\alpha}} \mathbf{x}^{\bm{\alpha}}
      }{
-     \sum_{\bm{\alpha}} d_{\bm{\alpha}} \mathbf{x}^{\bm{\alpha}}
+     \sum_{\bm{\beta}} b_{\bm{\beta}} \mathbf{x}^{\bm{\beta}}
      }\,,
 \end{equation}
-with $n_{\bm{\alpha}}, n_{\bm{\alpha}} \in \mathbb{Z}_p$. Here, $\mathbf{x}^\alpha$ are the multi-variate monomials:
+Here, $a_{\bm{\alpha}}, b_{\bm{\beta}} \in \mathbb{Z}_p$ are coefficients of the multi-variate monomials $\mathbf{x}^\alpha$:
 \begin{equation}
     \mathbf{x}^\alpha = \prod_{i=1}^n x_i^{\alpha_i}
 \end{equation}
 and $\bm{\alpha}$ denotes a collective set of exponents $\bm{\alpha} = \{\alpha_1, \alpha_2, \ldots, \alpha_n\}$. It is also useful to define the \textit{total degree} of the monomial as the sum of all its exponents:
 \begin{equation}
-    \deg (\mathbf{x}^{\bm{\alpha}}) = \sum_{i=1}^n \alpha_i\,.
+    \deg (\mathbf{x}^{\bm{\alpha}}) \equiv |\bm{\alpha}| = \sum_{i=1}^n \alpha_i\,.
 \end{equation}
 In the context of a rational function, the total degree $\degmax(f)$ is understood as the maximal total degree of any of its monomials.
 
-With this representation of $f(\mathbf{x})$ in Eq.~\ref{eq:ratfun}, we can try to reconstruct its analytic dependence from the numerical samples over the prime field $\mathbb{Z}_p$. In a very naive approach, we would construct the most general ansatz that would cover all possible monomials up to degree $\degmax (f(\mathbf{x}))$. We make this ansatz $R(\mathbf{x})$ for a rational function explicit by writing:
+With this representation of $f(\mathbf{x})$ in Eq.~\ref{eq:ratfun}, we can try to reconstruct its analytic dependence from the numerical samples over the prime field $\mathbb{Z}_p$. In a very naive approach, we would construct the most general ansatz covering all possible monomials up to degree $\degmax (f(\mathbf{x}))$. We make this ansatz $R(\mathbf{x})$ for a rational function explicit by writing:
 \begin{equation}
     R(\mathbf{x}) = \frac{
-    \sum\limits_{i=0}^u \sum\limits_{\bm{\alpha}:\, |\bm{\alpha}| = i} n_{\bm{\alpha}} \mathbf{x}^{\bm{\alpha}}
+    \sum\limits_{i=0}^u \sum\limits_{\bm{\alpha}:\, |\bm{\alpha}| = i} a_{\bm{\alpha}} \mathbf{x}^{\bm{\alpha}}
     }{
-    \sum\limits_{i=0}^v \sum\limits_{\bm{\alpha}:\, |\bm{\alpha}| = i} d_{\bm{\alpha}} \mathbf{x}^{\bm{\alpha}}
+    \sum\limits_{i=0}^v \sum\limits_{\bm{\beta}:\, |\bm{\beta}| = i} b_{\bm{\beta}} \mathbf{x}^{\bm{\beta}}
     }\,,
 \end{equation}
-where we have abbreviated the numerator/denominator degrees as $u=\degmax(\text{num}(f))$ and $v=\degmax(\text{den}(f))$. This is far from optimal, however, since such a general ansatz grows rapidly with both the degree as well as the number of variables. In fact, one can show the number of terms present is
+where we have abbreviated the numerator/denominator degrees as $u=\degmax(\text{num}(f))$ and $v=\degmax(\text{den}(f))$. We can then formulate a system of linear equations in $a_{\bm{\alpha}}, b_{\bm{\beta}}$ by evaluating both the monomials $\mathbf{x}^{\bm{\alpha}}$ in the ansatz and the black box function $f(\mathbf{x})$ at a chosen value in $\mathbb{Z}_p$:
+\begin{align}
+    \sum_{\bm{\alpha}} a_{\bm{\alpha}} \mathbf{x}_j^{\bm{\alpha}} - 
+    f(\mathbf{x}_j) \sum_{\bm{\beta}} b_{\bm{\beta}} \mathbf{x}_j^{\bm{\beta}} = 0 
+&&    
+j \in \{1, \ldots, |R(\mathbf{x})|\} \,.
+\end{align}
+Finding the values of these coefficients requires solving the system using linear algebra methods. In order for the system to close \JK{Is that the right terminology?}, we need to perform such evaluations on as many sample points as the number of ansatz terms. This is far from optimal, however, since such a generic ansatz grows rapidly with both the degree as well as the number of variables. In fact, one can show that the number of terms present in $R(\mathbf{x})$ is \JK{I took this from SAGEX lectures, not sure if I should do a reference.}:
+\begin{equation} \label{eq:naiveansatzlength}
+    |R(\mathbf{x})| = 
+    \begin{pmatrix}
+        u + n \\
+        n
+    \end{pmatrix}
+    +
+    \begin{pmatrix}
+        v + n \\
+        n
+    \end{pmatrix}\,.
+\end{equation}
+Since the time complexity of the corresponding Gaussian elimination is $\order{|R(\mathbf{x})|^3}$, this can prove prohibitively expensive. As an example, in practice we will be dealing with cases such as six-variable functions with $u=30, v=10$, which gives $|R(\mathbf{x})| \approx 2\times 10^6$. Row reducing such a system is simply not feasible \JK{Is this true for us or in general? Maybe on some supercomputer it would be possible. Idk what the corresponding time estimate is.}. 
 
+Another complication arises due to the fact that in general, even though the black box operations are implemented numerically over finite fields, obtaining each evaluation of $f(\mathbf{x})$ in the field $\mathbb{Z}_p$ might still take a long time due to the number and complexity of these operations. We refer to this as the \textbf{evaluation time per point}. Schematically:
+\begin{equation} \label{eq:rectimeschematic}
+    \text{Reconstruction time} \approx (\text{number of sample points}) \times (\text{evaluation time per point})\,.
+\end{equation}
+It is of great practical importance to reduce both these factors as much as possible, which renders the reconstruction of increasingly complicated rational functions possible. We will elaborate on this topic in Sections~\ref{sec:Hbb} and \ref{sec:Wyj}.
+
+Overall, it is clear that we need to avoid using such a naive ansatz to interpolate a rational function from its evaluation over finite fields. Besides, in most applications the polynomial degrees $u$ and $v$ are not known \textit{a priori}, so it is difficult to construct an ansatz in the first place. Fortunately, we can make use of more elaborate interpolation methods\footnote{For a detailed description of these methods and their implementation, see~\cite{Peraro:2016wsq}}. For univariate polynomials, the strategy is based on Newton's polynomial representation~\cite{Abramowitz1965HandbookOM}. This method is particularly useful in cases where the total degree is not known, as it allows for the inclusion of higher-degree terms until their coefficients are found to be 0, at which point the iterative procedure terminates. For univariate rational functions, we distinguish between two further cases based on whether the degrees $u$ and $v$ are known or not. If they are known, it turns out that the naive ansatzing described above performs well enough, as for $n=1$, the ansatz length $|R(\mathbf{x})|$ in Eq.~\ref{eq:naiveansatzlength} is sufficiently small to allow for efficient row reduction of the system. Finally, if the degrees are not known, 
+
+Multivariate reconstruction
+
+As a final note, we remark that it is possible to reduce the number of variables in the problem by one by...
+
+%The advantage of turning an analytic calculation into a black-box interpolation is that it reduces the problem of computing a function f into the one of providing a fast numerical evaluation for it. Since the reconstruction is independent of the algorithm used for the evaluation of f , it has a very broad spectrum of applications. Numerical calculations can in turn avoid issues such as large intermediate expressions, which affect many computations in high-energy physics. With this approach, the number of evaluations needed for the reconstruction of a function scales linearly with the number of terms of the result itself and is independent of the complexity of intermediate expressions which may appear using fully analytic techniques.
 
 Overall, we have seen that any algorithm which can be expressed as a chain of rational operations can be implemented over finite fields. This applies to both pure rational numbers, as well as analytic expressions in the form of rational functions. This turns out to be tremendously useful, since many of the steps required in amplitude computations are precisely such rational transformations. Armed with this knowledge, we can move on to the next steps in our procedure.
 
