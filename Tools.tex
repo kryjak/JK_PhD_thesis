@@ -456,20 +456,129 @@ This fact implies that we can take the square root of a number almost exactly $5
 
 Overall, we have seen that any algorithm which can be expressed as a chain of rational operations can be implemented over finite fields. This applies to both pure rational numbers, as well as analytic expressions in the form of rational functions. This turns out to be tremendously useful, since many of the steps required in amplitude computations are precisely such rational transformations. By exploiting the finite field methods, we can entirely sidestep the analytic complexity in the intermediate stages, yet still enjoy the \textit{exact} cancellations that occur, since we are not forced to resort to floating-point numbers. The often insurmountable task of computing a function analytically has been turned into the much simpler task of providing its fast numerical evaluation over finite fields. Armed with this knowledge, we can move on to the next steps in our procedure.
 
-\section{Reduction techniques} \label{sec:reduction}
-Before we begin, let us briefly summarise what we have learnt so far about our workflow for computing scattering amplitudes (see Fig.~\ref{fig:outline}). We started by generating all Feynman diagrams that contribute to a desired loop amplitude. We then decomposed this amplitude in colour space and defined an new object, the colour-ordered amplitude, by considering only the diagrams which contribute to a particular colour factor. We then specified the helicities of external fermions and bosons in the so-called helicity amplitudes. We have learned that not all such amplitudes are equally challenging to compute (in fact, some will vanish or be free of divergences) and due to symmetries, we will not even have to compute all possible helicity configurations. We subsequently decided to employ a language which naturally captures the helicity information of the particles, that is the spinor-helicity formalism. However, we have also seen that it suffers from several drawbacks which can be remediated by one last variable change --- into momentum twistor variables. Not only does this parametrisation of external momenta automatically satisfy kinematic identities of Eq.~\ref{eq:spinorsids}, but it also allows us to rationalise some of the square roots we need to deal with. Last, but not least, we have also learnt that by performing numerical calculations over finite fields, we can bypass the analytic complexity which typically characterises QFT problems (in fact, all the remaining steps in our workflow will be implemented over finite fields).
+\section{Reduction onto scalar integrals} \label{sec:reduction}
+Before we begin, let us briefly summarise what we have learnt so far about our workflow for computing scattering amplitudes (see Fig.~\ref{fig:outline}). We started by generating all Feynman diagrams that contribute to a desired loop amplitude. We then decomposed this amplitude in colour space and defined an new object, the colour-ordered amplitude, by considering only the diagrams which contribute to a particular colour factor. We then specified the helicities of external fermions and bosons in the so-called helicity amplitudes. We have learned that not all such amplitudes are equally challenging to compute (in fact, some will vanish or be free of divergences) and due to symmetries, we will not even have to compute all possible helicity configurations. We subsequently decided to employ a language which naturally captures the helicity information of the particles, that is the spinor-helicity formalism. However, we have also seen that it suffers from several drawbacks which can be remediated by one last variable change --- into momentum twistor variables. Not only does this parametrisation of external momenta automatically satisfy kinematic identities of Eq.~\ref{eq:spinorsids}, but it also allows us to rationalise some of the square roots we need to deal with. Last, but not least, we have also learnt that by performing numerical calculations over finite fields, we can bypass the analytic complexity which typically characterises QFT problems.
 
 At this point, the task of computing a colour-ordered helicity amplitude for $n$-particle scattering amounts to computing loop integrals of the form:
-\begin{equation}
-    	A_n^{(L)} =  \sum_{T\in topologies} \left[\, \prod_{j=1}^{L} \left(\int \mathrm{d}^d k_j \right) \frac{\sum_i c_i(p(\mathbf{x}))m_i(k,p)}{\prod_{t\in T} D_t(k,p)} \right]\,.
+\begin{equation} \label{eq:ampschematic}
+    	A_n^{(L)} \left(1^{h_1}, 2^{h_2}, \ldots, n^{h_n} \right) =  \sum_{T\in \text{topologies}} \left[\, \prod_{l=1}^{L} \left(\int \mathrm{d}^d k_l \right) \frac{\sum_i c_i(p(\mathbf{x}))\times m_i(k,p)}{\prod_{t\in T} D_t(k,p)} \right]\,.
 \end{equation}
-The main sum runs over distinct integral topologies, that is sets of (inverse) propagators $D_t$ associated with a given Feynman diagram. Each propagator depends on external momenta $p$, as well as one or more loop momenta $k$, which act as the integration variables for the $d$-dimensional integrals (see Sec.~\ref{sec:divergences}. In the numerator of each topology, we have a sum of monomials of both loop and external momenta, which are multiplied by coefficients that depend on external momenta \textit{only}. The monomials are objects such as scalar products and spinor brackets, e.g. $\left(k_i \cdot p_3 \right)^2, \braket{ij}$
-In the following, we will specialise to the case $L=2$ since we are interested in computing two-loop amplitudes.
-%\section{Integration-by-parts relations} \label{sec:IBP}
-%\subsection{Uniform transcendentality} \label{sec:UT}
+The general structure of this formula can be understood simply by considering the QCD Feynman rules and all the possible Lorentz contractions that follow from them. The main sum runs over distinct integral topologies, that is sets of inverse propagators $D_t$ associated with a given Feynman diagram (see Fig.~\ref{fig:topologies} for a few examples). Each inverse propagator depends on external momenta $p$, as well as one or more loop momenta $k$, which act as the integration variables for the $d$-dimensional integrals (see Sec.~\ref{sec:divergences}). In the numerator of each topology, we have a sum of monomials $m_i$ of \textit{both} loop and external momenta, multiplied by coefficients $c_i$ that depend on external momenta \textit{only}. The monomials are composed of scalar products $p_i \cdot p_i,\, k_i \cdot k_j,\, k_i \cdot p_j$; as well as the spinor brackets $\braket{ij},\, \braketsq{ij},\, \langle i |k_i \ketsq{j},\, \langle i |p_5 \ketsq{j},\, \bra{i}k_i p_5\ket{j},\, \brasq{i}k_i p_5 \ketsq{j}\,$. Similar objects appear in their coefficients, but because they do not contain any dependence on the loop momenta, we express the external kinematics in the coefficients in terms of the momentum twistor variables $\mathbf{x} = \{x_1, \ldots, x_{3n-10}\}$. This ensures the coefficients are rational, parametrised through a minimal set of variables and can be processed using the finite field framework. In fact, all the remaining steps in our workflow that deal with the computation of the coefficients will be implemented over finite fields. 
+%Finally, we note that unless otherwise stated, in the following we will specialise to the case $L=2$ since we are interested in computing two-loop amplitudes.
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \hspace*{1em}\raisebox{1.1cm}{ % needed to align the diagrams
+        \begin{tikzpicture}
+        	\begin{feynman}[small]
+        		\vertex (v1);
+          
+        		\vertex[above left = 0.8cm of v1, yshift=-0.2cm] (i1);
+        		\vertex[below left =  0.8cm of v1, yshift=+0.2cm] (i2);
+        		\vertex[right = of v1] (v2);			
+        		\vertex[right = of v2] (v3);			
+        		
+        		\vertex[above right = 0.8cm of v3, yshift=-0.2cm] (f1);
+        		\vertex[right = 0.70cm of v3] (f2);
+        		\vertex[below right = 0.8cm of v3, yshift=+0.2cm] (f3);
+
+        		\diagram*{
+        			(i1) -- (v1) -- [out=60, in=120] (v2) -- [out=60, in=120] (v3) -- (f1),
+        			(i2) -- (v1) -- [out=-60, in=-120] (v2) -- [out=-60, in=-120] (v3) -- (f3),
+                    (v3) -- (f2),
+                
+        		};
+        	\end{feynman}
+        \end{tikzpicture}}
+    \caption{} \label{fig:topologya}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \hspace*{1em}
+        \begin{tikzpicture}
+    	\begin{feynman}[small]
+    		\vertex (v1);
+      
+    		\vertex[above left = 0.8cm of v1, yshift=-0.2cm] (i1);
+    		\vertex[below left =  0.8cm of v1, yshift=+0.2cm] (i2);
+    		\vertex[above right = of v1] (v2);			
+    		\vertex[below right = of v1] (v3);			
+    		\vertex[right = of v2] (v4);			
+    		\vertex[right = of v3] (v5);			
+    		
+    		\vertex[above right = 0.8cm of v4] (f1);
+    		\vertex[below right = 0.5cm of v5, yshift=-0.4cm] (f2);
+    		\vertex[below right = 0.5cm of v5, xshift=+0.4cm] (f3);
+    		
+    		\diagram*{
+    			(i1) -- (v1) -- (v2) -- (v4) -- (f1),
+    			(i2) -- (v1) -- (v3) -- (v5) -- (f2),
+                (v2) -- (v3),
+                (v4) -- (v5),
+                (v5) -- (f3),
+    		};
+    	\end{feynman}
+    \end{tikzpicture}
+    \caption{} \label{fig:topologyb}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \hspace*{1em}
+        \begin{tikzpicture}
+    	\begin{feynman}[small]
+    		\vertex (i1);
+    		\vertex[below right= 0.8cm of i1] (v1);
+    		\vertex[right = of v1] (v2);
+    		\vertex[yshift=0.3cm, right = 0.8cm of v2] (v3);
+    		\vertex[above right = 0.8cm of v3] (f1);			
+    		
+    		\vertex[below = of v1] (v7) ;
+    		\vertex[below left = 0.8cm of v7] (i2) ;
+    		\vertex[right = of v7] (v6) ;
+    		\vertex[yshift=-0.3cm, right = 0.8cm of v6] (v5) ;
+    		\vertex[below right = 0.8cm of v5] (f3) ;
+    		
+    		\vertex[xshift=0.6cm, yshift=0.2cm, below = of v3] (v4);
+    		\vertex[right = 0.8cm of v4] (f2) ;		
+    		
+    		\diagram*{
+    			(i1) -- (v1) -- (v2) -- (v3),
+    			(i2) -- (v7) -- (v6) -- (v5),
+    			(v3) -- (f1),
+    			(v3) -- (v4) -- (v5),
+    			(v4) -- (f2),
+    			(v5) -- (f3),
+    			(v1) -- (v7),
+    			(v2) -- (v6),
+    		};
+    	\end{feynman}
+    \end{tikzpicture}
+    \caption{} \label{fig:topologyc}
+    \end{subfigure}
+\caption{Examples of diagram topologies associated with five-particle Feynman diagrams. It is easy to see that topologies (a) and (b) can be obtained from topology (c) by pinching some of its propagators.}
+\label{fig:topologies}
+\end{figure}
+
+We point out that not all topologies contributing to each helicity amplitude are independent, in the sense that some topologies can be written as \textit{sub}topologies of others. This is illustrated in Fig.~\ref{fig:topologies}. It is clear that topologies (a) and (b) can be viewed as subtopologies of topology (c) with a few propagators absent. Topologies with the maximum number of propagators allowed for $L$-loop, $n$-particle kinematics are referred to as \textbf{maximal topologies}. All other topologies can be obtained from them by `pinching' appropriate propagators. Thus, the next step in our procedure is to express all topologies which contribute to Eq.~\ref{eq:ampschematic} as subtopologies of these maximal topologies. Moreover, after this mapping we will write the monomials $m_i(k, p)$ in terms of the propagators of the target maximal topology. In this way, we will remove all loop momentum dependence from the numerators, so that the amplitude will be a linear combination of scalar integrals over the maximal topologies, with rational coefficients of external kinematics parametrised by the momentum twistor variables.
+\subsection{Reduction onto maximal topologies}
+\JK{Figure out how the reduction is done in our code}
+\subsection{A simple example}
+\JK{Maybe 1L box? Idk if a 2L example will be too complicated.}
+
+\section{Integration-by-parts relations} \label{sec:IBP}
+\JK{Need to mention somewhere earlier that an integral family is defined as propagators + ISPs.}\\
+Thanks to the effort in the previous section, the helicity amplitude we need to compute is now expressed as a sum of \textit{scalar} loop integrals over maximal topologies:
+\begin{equation} \label{eq:ampreducedschematic}
+    	A_n^{(L)} \left(1^{h_1}, 2^{h_2}, \ldots, n^{h_n} \right) =  
+     \sum_{\mathclap{\substack{T \in \\ \text{maximal} \\ \text{topologies}}}} \sum_{\bm{\alpha}} e_{T, \bm{\alpha}}(p(\mathbf{x})) \left[\, \prod_{l=1}^{L} \left(\int \mathrm{d}^d k_l \right) \frac{1}{\prod_{t\in T} D^{\alpha_t}_t(k,p)} \right]\,.
+\end{equation}
+Here, we have made explicit the dependence of the inverse propagators $D_t$ on the exponents $\alpha_t$. As explained earlier, the index $t$ must now run over not only the propagators associated with a given maximal topology, but also the ISPs that were introduced to build a complete integral family. Overall, each element in the square brackets is a scalar integral defined by its maximal topology and a set of propagator powers $\bm{\alpha}$. We denote such integrals as $I_T(\alpha_1, \alpha_2, \ldots)$. As one might expect, not all $I_T$ are linearly independent. Within each family, it turns out we can reduce the integrals onto a basis of so-called \textbf{master integrals}, which we denote as $\text{MI}_T$. The problem of identifying such a basis and computing the reduction coefficients of each $I_T$ onto that basis is one of the most important steps in our workflow. However, it also turns out to be extremely computationally expensive.
+\subsection{A brief introduction to IBP relations} \label{sec:ibpintro}
+
+% It is also possible to determine just the dimensionality of the the MI basis without actually determining what the MIs themselves. See \JK{insert KIRA or whatever it was.}
+
 %\subsection{Differential equations} \label{sec:DEs}
+%\subsection{Uniform transcendentality} \label{sec:UT}
 %\subsection{Symbols} \label{sec:symbols}
-%\subsection{Syzygy relations} \label{sec:syzygies}
+%\subsection{Syzygy relations} \label{sec:syzygies} 
 %
 %\section{Special functions} \label{sec:specialfunctions}
 %\subsection{Pentagon functions} \label{sec:Pentagon functions}

@@ -1,0 +1,97 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+\chapter{Drawings} 
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \hspace*{1em}\raisebox{1.1cm}{ % needed to align the diagrams
+        \begin{tikzpicture}
+        	\begin{feynman}[small]
+        		\vertex (v1);
+          
+        		\vertex[above left = 0.8cm of v1, yshift=-0.2cm] (i1);
+        		\vertex[below left =  0.8cm of v1, yshift=+0.2cm] (i2);
+        		\vertex[right = of v1] (v2);			
+        		\vertex[right = of v2] (v3);			
+        		
+        		\vertex[above right = 0.8cm of v3, yshift=-0.2cm] (f1);
+        		\vertex[right = 0.70cm of v3] (f2);
+        		\vertex[below right = 0.8cm of v3, yshift=+0.2cm] (f3);
+
+        		\diagram*{
+        			(i1) -- (v1) -- [out=60, in=120] (v2) -- [out=60, in=120] (v3) -- (f1),
+        			(i2) -- (v1) -- [out=-60, in=-120] (v2) -- [out=-60, in=-120] (v3) -- (f3),
+                    (v3) -- (f2),
+                
+        		};
+        	\end{feynman}
+        \end{tikzpicture}}
+    \caption{} \label{fig:topologya}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \hspace*{1em}
+        \begin{tikzpicture}
+    	\begin{feynman}[small]
+    		\vertex (v1);
+      
+    		\vertex[above left = 0.8cm of v1, yshift=-0.2cm] (i1);
+    		\vertex[below left =  0.8cm of v1, yshift=+0.2cm] (i2);
+    		\vertex[above right = of v1] (v2);			
+    		\vertex[below right = of v1] (v3);			
+    		\vertex[right = of v2] (v4);			
+    		\vertex[right = of v3] (v5);			
+    		
+    		\vertex[above right = 0.8cm of v4] (f1);
+    		\vertex[below right = 0.5cm of v5, yshift=-0.4cm] (f2);
+    		\vertex[below right = 0.5cm of v5, xshift=+0.4cm] (f3);
+    		
+    		\diagram*{
+    			(i1) -- (v1) -- (v2) -- (v4) -- (f1),
+    			(i2) -- (v1) -- (v3) -- (v5) -- (f2),
+                (v2) -- (v3),
+                (v4) -- (v5),
+                (v5) -- (f3),
+    		};
+    	\end{feynman}
+    \end{tikzpicture}
+    \caption{} \label{fig:topologyb}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \hspace*{1em}
+        \begin{tikzpicture}
+    	\begin{feynman}[small]
+    		\vertex (i1);
+    		\vertex[below right= 0.8cm of i1] (v1);
+    		\vertex[right = of v1] (v2);
+    		\vertex[yshift=0.3cm, right = 0.8cm of v2] (v3);
+    		\vertex[above right = 0.8cm of v3] (f1);			
+    		
+    		\vertex[below = of v1] (v7) ;
+    		\vertex[below left = 0.8cm of v7] (i2) ;
+    		\vertex[right = of v7] (v6) ;
+    		\vertex[yshift=-0.3cm, right = 0.8cm of v6] (v5) ;
+    		\vertex[below right = 0.8cm of v5] (f3) ;
+    		
+    		\vertex[xshift=0.6cm, yshift=0.2cm, below = of v3] (v4);
+    		\vertex[right = 0.8cm of v4] (f2) ;		
+    		
+    		\diagram*{
+    			(i1) -- (v1) -- (v2) -- (v3),
+    			(i2) -- (v7) -- (v6) -- (v5),
+    			(v3) -- (f1),
+    			(v3) -- (v4) -- (v5),
+    			(v4) -- (f2),
+    			(v5) -- (f3),
+    			(v1) -- (v7),
+    			(v2) -- (v6),
+    		};
+    	\end{feynman}
+    \end{tikzpicture}
+    \caption{} \label{fig:topologyc}
+    \end{subfigure}
+\caption{Examples of diagram topologies associated with five-particle Feynman diagrams. It is easy to see that topologies (a) and (b) can be obtained from topology (c) by pinching some of its propagators.}
+\label{fig:topologies}
+\end{figure}
+
+\end{document}
