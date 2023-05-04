@@ -84,6 +84,28 @@ Completeness relations for the spin-1 polarisation vectors:
 \end{equation}
 \JK{is this true only in the axial gauge? See Eq. 30 of `Calculating scattering amplitudes efficiently'. We don't use the axial gauge.}
 
+\section{Divergences}
+The dimensionally regulated Feynman diagrams satisfy the following properties~\cite{Wilson1973}:
+\begin{itemize}
+\begin{subequations}
+    \item Linearity:
+    \begin{equation} \label{eq:linearity}
+        \int \dd^d k\, \left[ a f_1(k) + b f_2(k) \right] = a \int \dd^d k\, f_1(k) + b \int \dd^d k\, f_2(k)\,,
+    \end{equation}
+    where $a, b$ are arbitrary constants.
+    \item Translational invariance:
+    \begin{equation} \label{eq:translationalinvariance}
+        \int \dd^d k\, f(k+q) = \int \dd^d k\, f(k)\,,
+    \end{equation}
+    where $q$ is an arbitrary vector that can depend on the external momenta $p$, as well as the loop momenta $k$ (or both).
+    \item Scaling:
+    \begin{equation} \label{eq:scaling}
+        \int \dd^d k\, f(\lambda k) = \lambda^{-d} \int \dd^d k\, f(k)\,,
+    \end{equation}
+    where $\lambda$ is an arbitrary positive constant.
+\end{subequations}
+\end{itemize}
+
 \section{Scattering amplitudes} \label{sec:scatteringamplitudes}
 \subsection{Kinematics} \label{sec:kinematics}
 \begin{align} \label{eq:delta3}
