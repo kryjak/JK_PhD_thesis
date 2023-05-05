@@ -2,96 +2,231 @@
 \begin{document}
 \chapter{Drawings} 
 
-\begin{figure}
-    \centering
-    \begin{subfigure}[b]{0.3\textwidth}
-        \hspace*{1em}\raisebox{1.1cm}{ % needed to align the diagrams
-        \begin{tikzpicture}
-        	\begin{feynman}[small]
-        		\vertex (v1);
-          
-        		\vertex[above left = 0.8cm of v1, yshift=-0.2cm] (i1);
-        		\vertex[below left =  0.8cm of v1, yshift=+0.2cm] (i2);
-        		\vertex[right = of v1] (v2);			
-        		\vertex[right = of v2] (v3);			
-        		
-        		\vertex[above right = 0.8cm of v3, yshift=-0.2cm] (f1);
-        		\vertex[right = 0.70cm of v3] (f2);
-        		\vertex[below right = 0.8cm of v3, yshift=+0.2cm] (f3);
+%\begin{figure}
+%    \centering
+%    \begin{subfigure}[b]{0.3\textwidth}
+%        \hspace*{1em}\raisebox{1.1cm}{ % needed to align the diagrams
+%        \begin{tikzpicture}
+%        	\begin{feynman}[small]
+%        		\vertex (v1);
+%          
+%        		\vertex[above left = 0.8cm of v1, yshift=-0.2cm] (i1);
+%        		\vertex[below left =  0.8cm of v1, yshift=+0.2cm] (i2);
+%        		\vertex[right = of v1] (v2);			
+%        		\vertex[right = of v2] (v3);			
+%        		
+%        		\vertex[above right = 0.8cm of v3, yshift=-0.2cm] (f1);
+%        		\vertex[right = 0.70cm of v3] (f2);
+%        		\vertex[below right = 0.8cm of v3, yshift=+0.2cm] (f3);
+%
+%        		\diagram*{
+%        			(i1) -- (v1) -- [out=60, in=120] (v2) -- [out=60, in=120] (v3) -- (f1),
+%        			(i2) -- (v1) -- [out=-60, in=-120] (v2) -- [out=-60, in=-120] (v3) -- (f3),
+%                    (v3) -- (f2),
+%                
+%        		};
+%        	\end{feynman}
+%        \end{tikzpicture}}
+%    \caption{} \label{fig:topologya}
+%    \end{subfigure}
+%    \begin{subfigure}[b]{0.3\textwidth}
+%        \hspace*{1em}
+%        \begin{tikzpicture}
+%    	\begin{feynman}[small]
+%    		\vertex (v1);
+%      
+%    		\vertex[above left = 0.8cm of v1, yshift=-0.2cm] (i1);
+%    		\vertex[below left =  0.8cm of v1, yshift=+0.2cm] (i2);
+%    		\vertex[above right = of v1] (v2);			
+%    		\vertex[below right = of v1] (v3);			
+%    		\vertex[right = of v2] (v4);			
+%    		\vertex[right = of v3] (v5);			
+%    		
+%    		\vertex[above right = 0.8cm of v4] (f1);
+%    		\vertex[below right = 0.5cm of v5, yshift=-0.4cm] (f2);
+%    		\vertex[below right = 0.5cm of v5, xshift=+0.4cm] (f3);
+%    		
+%    		\diagram*{
+%    			(i1) -- (v1) -- (v2) -- (v4) -- (f1),
+%    			(i2) -- (v1) -- (v3) -- (v5) -- (f2),
+%                (v2) -- (v3),
+%                (v4) -- (v5),
+%                (v5) -- (f3),
+%    		};
+%    	\end{feynman}
+%    \end{tikzpicture}
+%    \caption{} \label{fig:topologyb}
+%    \end{subfigure}
+%    \begin{subfigure}[b]{0.3\textwidth}
+%        \hspace*{1em}
+%        \begin{tikzpicture}
+%    	\begin{feynman}[small]
+%    		\vertex (i1);
+%    		\vertex[below right= 0.8cm of i1] (v1);
+%    		\vertex[right = of v1] (v2);
+%    		\vertex[yshift=0.3cm, right = 0.8cm of v2] (v3);
+%    		\vertex[above right = 0.8cm of v3] (f1);			
+%    		
+%    		\vertex[below = of v1] (v7) ;
+%    		\vertex[below left = 0.8cm of v7] (i2) ;
+%    		\vertex[right = of v7] (v6) ;
+%    		\vertex[yshift=-0.3cm, right = 0.8cm of v6] (v5) ;
+%    		\vertex[below right = 0.8cm of v5] (f3) ;
+%    		
+%    		\vertex[xshift=0.6cm, yshift=0.2cm, below = of v3] (v4);
+%    		\vertex[right = 0.8cm of v4] (f2) ;		
+%    		
+%    		\diagram*{
+%    			(i1) -- (v1) -- (v2) -- (v3),
+%    			(i2) -- (v7) -- (v6) -- (v5),
+%    			(v3) -- (f1),
+%    			(v3) -- (v4) -- (v5),
+%    			(v4) -- (f2),
+%    			(v5) -- (f3),
+%    			(v1) -- (v7),
+%    			(v2) -- (v6),
+%    		};
+%    	\end{feynman}
+%    \end{tikzpicture}
+%    \caption{} \label{fig:topologyc}
+%    \end{subfigure}
+%\caption{Examples of diagram topologies associated with five-particle Feynman diagrams. It is easy to see that topologies (a) and (b) can be obtained from topology (c) by pinching some of its propagators.}
+%\label{fig:topologies}
+%\end{figure}
 
-        		\diagram*{
-        			(i1) -- (v1) -- [out=60, in=120] (v2) -- [out=60, in=120] (v3) -- (f1),
-        			(i2) -- (v1) -- [out=-60, in=-120] (v2) -- [out=-60, in=-120] (v3) -- (f3),
-                    (v3) -- (f2),
-                
-        		};
-        	\end{feynman}
-        \end{tikzpicture}}
-    \caption{} \label{fig:topologya}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
-        \hspace*{1em}
-        \begin{tikzpicture}
-    	\begin{feynman}[small]
-    		\vertex (v1);
-      
-    		\vertex[above left = 0.8cm of v1, yshift=-0.2cm] (i1);
-    		\vertex[below left =  0.8cm of v1, yshift=+0.2cm] (i2);
-    		\vertex[above right = of v1] (v2);			
-    		\vertex[below right = of v1] (v3);			
-    		\vertex[right = of v2] (v4);			
-    		\vertex[right = of v3] (v5);			
-    		
-    		\vertex[above right = 0.8cm of v4] (f1);
-    		\vertex[below right = 0.5cm of v5, yshift=-0.4cm] (f2);
-    		\vertex[below right = 0.5cm of v5, xshift=+0.4cm] (f3);
-    		
-    		\diagram*{
-    			(i1) -- (v1) -- (v2) -- (v4) -- (f1),
-    			(i2) -- (v1) -- (v3) -- (v5) -- (f2),
-                (v2) -- (v3),
-                (v4) -- (v5),
-                (v5) -- (f3),
-    		};
-    	\end{feynman}
-    \end{tikzpicture}
-    \caption{} \label{fig:topologyb}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.3\textwidth}
-        \hspace*{1em}
-        \begin{tikzpicture}
-    	\begin{feynman}[small]
-    		\vertex (i1);
-    		\vertex[below right= 0.8cm of i1] (v1);
-    		\vertex[right = of v1] (v2);
-    		\vertex[yshift=0.3cm, right = 0.8cm of v2] (v3);
-    		\vertex[above right = 0.8cm of v3] (f1);			
-    		
-    		\vertex[below = of v1] (v7) ;
-    		\vertex[below left = 0.8cm of v7] (i2) ;
-    		\vertex[right = of v7] (v6) ;
-    		\vertex[yshift=-0.3cm, right = 0.8cm of v6] (v5) ;
-    		\vertex[below right = 0.8cm of v5] (f3) ;
-    		
-    		\vertex[xshift=0.6cm, yshift=0.2cm, below = of v3] (v4);
-    		\vertex[right = 0.8cm of v4] (f2) ;		
-    		
-    		\diagram*{
-    			(i1) -- (v1) -- (v2) -- (v3),
-    			(i2) -- (v7) -- (v6) -- (v5),
-    			(v3) -- (f1),
-    			(v3) -- (v4) -- (v5),
-    			(v4) -- (f2),
-    			(v5) -- (f3),
-    			(v1) -- (v7),
-    			(v2) -- (v6),
-    		};
-    	\end{feynman}
-    \end{tikzpicture}
-    \caption{} \label{fig:topologyc}
-    \end{subfigure}
-\caption{Examples of diagram topologies associated with five-particle Feynman diagrams. It is easy to see that topologies (a) and (b) can be obtained from topology (c) by pinching some of its propagators.}
-\label{fig:topologies}
-\end{figure}
+%\begin{figure}
+%    \centering
+%    \begin{tikzpicture}
+%
+%        %axes
+%        \draw[thick,->] (-3.5,0) -- (3.5,0) node[anchor=north west] {$\nu_1$};
+%        \draw[thick,->] (0,-3.5) -- (0,3.5) node[anchor=south east] {$\nu_2$};
+%
+%        %dots and axes labels
+%        \draw[fill] (0,0) circle (1pt) node[anchor=north east] {$0$};
+%        \foreach \i in {-3,-2,-1,1,2,3}
+%            {
+%            \draw[fill] (0,\i ) circle (1pt) node[anchor=east] {$\i$};
+%            \draw[fill] (\i,0) circle (1pt) node[anchor=north] {$\i$};
+%            \foreach \j in {-3,-2,-1,1,2,3}
+%                \draw[fill] (\j, \i) circle (1pt);
+%            }
+%
+%        %lines separating sectors
+%        \draw[thick, blue] (0.5, -3.5) -- (0.5, 3.5);
+%        \draw[thick, blue] (-3.5, 0.5) -- (3.5, 0.5);
+%
+%        \node at (2, 2.5) {$\bm{\theta_I} = \{1, 1\}$};
+%        \node at (-2, 2.5) {$\bm{\theta_{II}} = \{0, 1\}$};
+%        \node at (2, -2.5) {$\bm{\theta_{III}} = \{1, 0\}$};
+%        \node at (-2, -2.5) {$\bm{\theta_{IV}} = \{0, 0\}$};
+%
+%
+%        \clip (-3.3,-3.3) rectangle (0.3, 0.3);
+%        \foreach \i in {-12,...,0}
+%            \draw[dashed, red, samples=100] plot function{-x+(0.3+0.5*\i)} node[right] {};
+%    \end{tikzpicture}
+%    \caption{Caption}
+%    \label{fig:sectors}
+%\end{figure}
+
+
+%\begin{figure}
+%    \centering
+%    \begin{subfigure}[b]{0.4\textwidth}
+%    \begin{tikzpicture}
+%        %axes
+%        \draw[thick,->] (-3.5,0) -- (3.5,0) node[anchor=north west] {$\nu_1$};
+%        \draw[thick,->] (0,-3.5) -- (0,3.5) node[anchor=south east] {$\nu_2$};
+%        %dots and axes labels
+%        \draw[fill] (0,0) circle (1pt) node[anchor=north east] {$0$};
+%        \foreach \i in {-3,-2,-1,1,2,3}
+%            {
+%            \draw[fill] (0,\i ) circle (1pt) node[anchor=east] {$\i$};
+%            \draw[fill] (\i,0) circle (1pt) node[anchor=north] {$\i$};
+%            \foreach \j in {-3,-2,-1,1,2,3}
+%                \draw[fill] (\j, \i) circle (1pt);
+%            }
+%        %lines separating sectors
+%        \draw[thick, blue] (0.5, -3.5) -- (0.5, 3.5);
+%        \draw[thick, blue] (-3.5, 0.5) -- (3.5, 0.5);
+%
+%        \node at (2, 2.5) {$\bm{\theta_I} = \{1, 1\}$};
+%        \node at (-2, 2.5) {$\bm{\theta_{II}} = \{0, 1\}$};
+%        \node at (2, -2.5) {$\bm{\theta_{III}} = \{1, 0\}$};
+%        \node at (-2, -2.5) {$\bm{\theta_{IV}} = \{0, 0\}$};
+%
+%        \clip (-3.3,-3.3) rectangle (0.3, 0.3);
+%        \foreach \i in {-12,...,0}
+%            \draw[dashed, red, samples=100] plot function{-x+(0.3+0.5*\i)} node[right] {};
+%    \end{tikzpicture}
+%    \caption{Each point $(\nu_1, \nu_2)$ in the $\mathbb{Z}^2$ lattice corresponds to the $d$-dimensional Feynman integral $I(\nu_1, \nu_2)$. The lattice is divided into sectors as defined through Eq.~\ref{eq:sectors}. They are ordered $\bm{\theta}_{I}>\bm{\theta}_{II},\,\bm{\theta}_{III}>\bm{\theta}_{IV}$. In particular, sector $\bm{\theta}_{IV}$ is trivially 0.} 
+%    \label{fig:IBPsectors}
+%    \end{subfigure}
+%    \hfill
+%    \hspace*{1em}\raisebox{0.9cm}{ % needed to align the diagrams
+%    \begin{subfigure}[b]{0.45\textwidth}
+%    \begin{tikzpicture}
+%      %axes
+%        \draw[thick,->] (-0.5,0) -- (5.5,0) node[anchor=north west] {$\nu_1$};
+%        \draw[thick,->] (0,-0.5) -- (0,6.5) node[anchor=south east] {$\nu_2$};
+%
+%        %dots and axes labels
+%        \draw[fill] (0,0) circle (1pt) node[anchor=north east] {$0$};
+%        \foreach \i in {1,...,6}
+%            {
+%            \draw[fill] (0,\i ) circle (1pt) node[anchor=east] {$\i$};
+%            \draw[fill] (\i,0) circle (1pt) node[anchor=north] {$\i$};
+%            \foreach \j in {1,...,5}
+%                \draw[fill] (\j, \i) circle (1pt);
+%            }
+%
+%        %lines separating sectors
+%        \draw[thick, blue] (0.5, -0.5) -- (0.5, 6.5);
+%        \draw[thick, blue] (-0.5, 0.5) -- (5.5, 0.5);
+%
+%        \draw[orange, thick, ->] (5, 4) edge (5,3) (5, 3) edge (4,3) (4,3) edge (4,2) (4,2) edge (3,2) (3,2) edge (2,2) (2,2) edge (2,1) (2, 1) -- (1,1);
+%        
+%        \node at (5, 6.5) {$\bm{\theta_I}$};
+%        \node at (1, 1) [anchor=south] {$\text{MI}(1, 1)$};
+%        \node at (5, 4) [anchor=south] {$I(5, 4)$};
+%    \end{tikzpicture}
+%    \caption{A hypothetical reduction pathway within the top sector $\bm{\theta}_I$. An integral $I(5, 4)$ is reduced to the master integral $\text{MI}(1,1)$ through a series of IBP relations lowering the denominator exponents.} \label{fig:IBPreduction}
+%    \end{subfigure}
+%    }
+%    \caption{A visualisation of integrals and sectors used in the IBP reduction as a lattice of points ($N=2$).}
+%    \label{fig:IBPschematic}
+%\end{figure}
+
+%\begin{figure}
+%    \centering
+%        \begin{tikzpicture}
+%        	\begin{feynman}
+%        		\vertex (v1);
+%          
+%        		\vertex[right = of v1] (v2);			
+%        		\vertex[below = of v2] (v3);			
+%        		\vertex[left = of v3] (v4);			
+%          
+%        		\vertex[above left = 0.7cm of v1] (i1) {$p_1$};
+%        		\vertex[above right =  0.7cm of v2] (i2) {$p_2$};
+%        		\vertex[below right =  0.7cm of v3] (i3) {$p_3$};
+%        		\vertex[below left =  0.7cm of v4] (i4) {$p_4$};
+%
+%                \node (dot) at ($(v2)!0.5!(v3)$);
+%                \draw[fill] (dot) circle (2pt);
+%          
+%        		\diagram*{
+%                    (v1) -- (v2) -- (v3) -- (v4) -- [momentum=$k_1$] (v1),
+%                    (i1) -- (v1),
+%                    (i2) -- (v2),
+%                    (i3) -- (v3),
+%                    (i4) -- (v4),
+%                    };
+%        	\end{feynman}
+%        \end{tikzpicture}
+%    \caption{One-loop box Feynman diagram $I_\text{box}(1,1,2,1)$ with a `dotted' propagator. The corresponding denominators are: $\{k_1^2, (k_1-p_1)^2, \left((k_1-p_1-p_2)^2\right)^2, (k_1+p_4)^2\}$\,.} \label{fig:1Lboxdot}
+%\end{figure}
+
 
 \end{document}
