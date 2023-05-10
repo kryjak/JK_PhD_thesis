@@ -1,8 +1,4 @@
 \documentclass[main.tex]{subfiles}
-
-\tikzset{cross/.style={cross out, draw=black, minimum size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt},
-%default radius will be 1pt. 
-cross/.default={5pt}}
 \begin{document}
 \chapter{Drawings} 
 
@@ -232,111 +228,119 @@ cross/.default={5pt}}
 %    \caption{One-loop box Feynman diagram $I_\text{box}(1,1,2,1)$ with a `dotted' propagator. The corresponding denominators are: $\{k_1^2, (k_1-p_1)^2, \left((k_1-p_1-p_2)^2\right)^2, (k_1+p_4)^2\}$\,.} \label{fig:1Lboxdot}
 %\end{figure}
 
-\begin{figure}
-    \centering
-    \raisebox{0.9cm}{
-    \begin{subfigure}[b]{0.4\textwidth}
-        \hspace*{1em}
-        \begin{tikzpicture}
-    	\begin{feynman}[small]
-    		\vertex (v1);
-    		\vertex[above left = 0.8cm of v1] (i1) {$p_1$};
-    		\vertex[right = of v1] (v2);
-    		\vertex[yshift=0.3cm, right = 0.8cm of v2] (v3);
-    		\vertex[above right = 0.8cm of v3] (f1) {$p_1$};			
-    		
-    		\vertex[below = of v1] (v7) ;
-    		\vertex[below left = 0.8cm of v7] (i2) {$p_4$};
-    		\vertex[right = of v7] (v6) ;
-    		\vertex[yshift=-0.3cm, right = 0.8cm of v6] (v5) ;
-    		\vertex[below right = 0.8cm of v5] (f3) {$p_3$};
-    		
-    		\vertex[xshift=0.6cm, yshift=0.2cm, below = of v3] (v4);
-    		\vertex[right = 0.8cm of v4] (f2) {$p_2$};		
-
-            \draw ($(v7)!0.5!(v6)$) node[cross,red] (5cm) {};
-            \draw ($(v4)!0.5!(v5)$) node[cross,red,rotate=45] (5cm) {};
-            
-    		\diagram*{
-    			(i1) -- (v1) -- (v2) -- (v3),
-    			(i2) -- (v7) -- (v6) -- (v5),
-    			(v3) -- (f1),
-    			(v3) -- (v4) -- (v5),
-    			(v4) -- (f2),
-    			(v5) -- (f3),
-    			(v1) -- (v7),
-    			(v2) -- (v6),
-    		};
-    	\end{feynman}
-    \end{tikzpicture}
-    \caption{} \label{fig:topologyc}
-    \end{subfigure}
-    }
-    \begin{subfigure}[b]{0.4\textwidth}
-        \hspace*{1em}
-        \begin{tikzpicture}
-        \begin{feynman}[small]
-			\vertex (v1);
-			\vertex[left = 0.8cm of v1] (i1) {$p_5$};
-			\vertex[above right =1cm of v1] (v2);
-			\vertex[below right =1cm of v1] (v3);				
-			\vertex[yshift=0.3cm, right = 0.7cm of v2] (v4);	
-			\vertex[yshift=-0.6cm, right = 0.7cm of v4] (v5);
-			\vertex[yshift=-0.3cm, right = 0.7cm of v3] (v7);
-			\vertex[yshift=0.6cm, right = 0.7cm of v7] (v6);	
-			\vertex[above right = 0.8cm of v4] (i2) {$p_1$};
-			\vertex[yshift=0.2cm, right = 0.8cm of v5] (i3) {$p_2$};
-			\vertex[yshift=-0.2cm, right = 0.8cm of v6] (i4) {$p_3$};
-			\vertex[below right = 0.8cm of v7] (i5) {$p_4$};
-			
-            \draw ($(v7)!0.5!(v3)$) node[cross,red,rotate=60] (5cm) {};
-            \draw ($(v6)!0.5!(v5)$) node[cross,red] (5cm) {};
-            
-			\diagram*{
-				(i1) -- (v1) -- (v2) -- (v3) -- (v1),
-				(v2) -- (v4) -- (v5) -- (v6) -- (v7) -- (v3),
-				(v4) -- (i2),
-				(v5) -- (i3),
-				(v6) -- (i4),
-				(v7) -- (i5),
-			};
-		\end{feynman}
-        \end{tikzpicture}
-    \caption{} \label{fig:topologyc}
-    \end{subfigure}
-    \raisebox{0.9cm}{
-    \begin{subfigure}[b]{0.4\textwidth}
-        \hspace*{1em}
-        \begin{tikzpicture}
-    	\begin{feynman}[small]
-    		\vertex (v1);
-      
-    		\vertex[left = 0.8cm of v1] (i1) {$p_5$};
-    		\vertex[above right = of v1] (v2);			
-    		\vertex[below right = of v1] (v3);			
-    		\vertex[right = of v2] (v4);			
-    		\vertex[right = of v3] (v5);			
-    		
-    		\vertex[above right = 0.8cm of v4] (i2) {$p_1$};
-    		\vertex[below right = 0.7cm of v5, yshift=-0.2cm] (i3) {$p_3$};
-    		\vertex[below right = 0.5cm of v5, xshift=+0.4cm] (i4) {$p_2$};
-    		\vertex[below =  0.7cm of v3] (i5) {$p_4$};
-    		
-    		\diagram*{
-                (i1) -- (v1) -- (v2) -- (v4) -- (i2),
-                (v1) -- (v3) -- (v5) -- (i3),
-                (v2) -- (v3),
-                (v4) -- (v5),
-                (v5) -- (i4),
-                (v3) -- (i5),
-    		};
-    	\end{feynman}
-    \end{tikzpicture}
-    \caption{} \label{fig:topologyb}
-    \end{subfigure}
-    }
-\caption{A simple example of possible non-IBP relations between integrals within different (maximal) topologies. Integrals in lower sectors often map to each other. The red crosses denote a vanishing denominator, i.e. the corresponding $\nu_i$ is 0. Here, diagrams $(a)$ and $(b)$ both collapse onto diagram $(c)$. Such relations are often hard to discover just from analysing the propagators of the integrals, especially if the two families use vastly different conventions for loop momentum routing. However, a visual representation often makes spotting these relations trivial.}
-\label{fig:topologies}
-\end{figure}
+%\begin{figure}
+%    \centering
+%    \begin{adjustbox}{minipage=\textwidth,scale=0.9}
+%    \raisebox{0.2cm}{
+%    \begin{subfigure}[b]{0.25\linewidth}
+%        \hspace*{1em}
+%        \begin{tikzpicture}
+%    	\begin{feynman}[small]
+%    		\vertex (v1);
+%    		\vertex[above left = 0.8cm of v1] (i1) {$p_5$};
+%    		\vertex[right = of v1] (v2);
+%    		\vertex[yshift=0.3cm, right = 0.8cm of v2] (v3);
+%    		\vertex[above right = 0.8cm of v3] (f1) {$p_1$};			
+%    		
+%    		\vertex[below = of v1] (v7) ;
+%    		\vertex[below left = 0.8cm of v7] (i2) {$p_4$};
+%    		\vertex[right = of v7] (v6) ;
+%    		\vertex[yshift=-0.3cm, right = 0.8cm of v6] (v5) ;
+%    		\vertex[below right = 0.8cm of v5] (f3) {$p_3$};
+%    		
+%    		\vertex[xshift=0.6cm, yshift=0.2cm, below = of v3] (v4);
+%    		\vertex[right = 0.8cm of v4] (f2) {$p_2$};		
+%
+%            \draw ($(v7)!0.5!(v6)$) node[cross,red] (5cm) {};
+%            \draw ($(v4)!0.5!(v5)$) node[cross,red,rotate=45] (5cm) {};
+%            
+%    		\diagram*{
+%    			(i1) -- (v1) -- (v2) -- (v3),
+%    			(i2) -- (v7) -- (v6) -- (v5),
+%    			(v3) -- (f1),
+%    			(v3) -- (v4) -- (v5),
+%    			(v4) -- (f2),
+%    			(v5) -- (f3),
+%    			(v1) -- (v7),
+%    			(v2) -- (v6),
+%    		};
+%    	\end{feynman}
+%    \end{tikzpicture}
+%    \caption{} \label{fig:topologyc}
+%    \end{subfigure}
+%    }
+%    %\end{adjustbox}
+%    \hspace{1.3cm}
+%    %\begin{adjustbox}{minipage=\linewidth,scale=0.4}
+%    \begin{subfigure}[b]{0.25\linewidth}
+%        \hspace*{1em}
+%        \begin{tikzpicture}
+%        \begin{feynman}[small]
+%			\vertex (v1);
+%			\vertex[left = 0.8cm of v1] (i1) {$p_5$};
+%			\vertex[above right =1cm of v1] (v2);
+%			\vertex[below right =1cm of v1] (v3);				
+%			\vertex[yshift=0.3cm, right = 0.7cm of v2] (v4);	
+%			\vertex[yshift=-0.6cm, right = 0.7cm of v4] (v5);
+%			\vertex[yshift=-0.3cm, right = 0.7cm of v3] (v7);
+%			\vertex[yshift=0.6cm, right = 0.7cm of v7] (v6);	
+%			\vertex[above right = 0.8cm of v4] (i2) {$p_1$};
+%			\vertex[yshift=0.2cm, right = 0.8cm of v5] (i3) {$p_2$};
+%			\vertex[yshift=-0.2cm, right = 0.8cm of v6] (i4) {$p_3$};
+%			\vertex[below right = 0.8cm of v7] (i5) {$p_4$};
+%			
+%            \draw ($(v7)!0.5!(v3)$) node[cross,red,rotate=60] (5cm) {};
+%            \draw ($(v6)!0.5!(v5)$) node[cross,red] (5cm) {};
+%            
+%			\diagram*{
+%				(i1) -- (v1) -- (v2) -- (v3) -- (v1),
+%				(v2) -- (v4) -- (v5) -- (v6) -- (v7) -- (v3),
+%				(v4) -- (i2),
+%				(v5) -- (i3),
+%				(v6) -- (i4),
+%				(v7) -- (i5),
+%			};
+%		\end{feynman}
+%        \end{tikzpicture}
+%    \caption{} \label{fig:topologyc}
+%    \end{subfigure}
+%    %\end{adjustbox}
+%    \hspace{1.3cm}
+%    %\begin{adjustbox}{minipage=\linewidth,scale=0.4}
+%    \raisebox{0.2cm}{
+%    \begin{subfigure}[b]{0.25\linewidth}
+%        \hspace*{1em}
+%        \begin{tikzpicture}
+%    	\begin{feynman}[small]
+%    		\vertex (v1);
+%      
+%    		\vertex[left = 0.8cm of v1] (i1) {$p_5$};
+%    		\vertex[above right = of v1] (v2);			
+%    		\vertex[below right = of v1] (v3);			
+%    		\vertex[right = of v2] (v4);			
+%    		\vertex[right = of v3] (v5);			
+%    		
+%    		\vertex[above right = 0.8cm of v4] (i2) {$p_1$};
+%    		\vertex[below right = 0.7cm of v5, yshift=-0.2cm] (i3) {$p_3$};
+%    		\vertex[below right = 0.5cm of v5, xshift=+0.4cm] (i4) {$p_2$};
+%    		\vertex[below =  0.7cm of v3] (i5) {$p_4$};
+%    		
+%    		\diagram*{
+%                (i1) -- (v1) -- (v2) -- (v4) -- (i2),
+%                (v1) -- (v3) -- (v5) -- (i3),
+%                (v2) -- (v3),
+%                (v4) -- (v5),
+%                (v5) -- (i4),
+%                (v3) -- (i5),
+%    		};
+%    	\end{feynman}
+%    \end{tikzpicture}
+%    \caption{} \label{fig:topologyb}
+%    \end{subfigure}
+%    }
+%    \end{adjustbox}
+%\caption{A simple example of possible non-IBP relations between integrals within different (maximal) topologies. Integrals in lower sectors often map to each other. The red crosses denote a vanishing denominator, i.e. the corresponding $\nu_i$ is 0. Here, diagrams $(a)$ and $(b)$ both collapse onto diagram $(c)$. Such relations are often hard to discover just from analysing the propagators of the integrals, especially if the two families use vastly different conventions for loop momentum routing. However, a visual representation often makes spotting these relations trivial.}
+%\label{fig:topologies}
+%\end{figure}
 
 \end{document}

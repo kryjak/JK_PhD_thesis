@@ -572,11 +572,11 @@ Thanks to the effort in the previous section, the helicity amplitude we need to 
      \sum_{\mathclap{\substack{T \in \\ \text{maximal} \\ \text{topologies}}}} \sum_{\bm{\nu}} e_{T, \bm{\nu}}(p(\mathbf{x}), \varepsilon) \left[\, \prod_{l=1}^{L} \left(\int \mathrm{d}^d k_l \right) \frac{1}{\prod_{t\in T} D^{\nu_t}_t(k,p)} \right]\,.
 \end{equation}
 \JK{Is the notation here and below clear?...}.\\
-Here, we have made explicit the dependence of the inverse propagators $D_t$ on the exponents $\alpha_t$. As explained earlier, the index $t$ must now run over not only the propagators associated with a given maximal topology, but also the ISPs that were introduced to build a complete integral family. Overall, each element in the square brackets is a $d$-dimensional scalar integral defined by its maximal topology $T$ and a set of exponents $\bm{\nu}$. We write:
+Here, we have made explicit the dependence of $D_t$ on the exponents $\alpha_t$. As explained earlier, the index $t$ must now run over not only the inverse propagators associated with a given maximal topology, but also the ISPs that were introduced to build a complete integral family. Overall, each element in the square brackets is a $d$-dimensional scalar integral defined by its maximal topology $T$ and a set of exponents $\bm{\nu}$. We write:
 \begin{equation} \label{eq:ibpintegral}
-    I_T^{(L)}(\nu_1, \nu_2, \ldots) = \prod_{l=1}^{L} \left(\int \mathrm{d}^d k_l \right) \prod_{t\in T} \frac{1}{D^{\nu}_t}\,.
+    I_T^{(L)}(\nu_1, \nu_2, \ldots) = \prod_{l=1}^{L} \left(\int \mathrm{d}^d k_l \right) \prod_{t\in T} \frac{1}{D^{\nu_t}_t(k,p)}\,,
 \end{equation}
-As one might expect, not all $I_T$ are linearly independent. Within each family, it turns out we can reduce the integrals onto a basis of so-called \textbf{master integrals}, which we denote as $\text{MI}_T$. The problem of identifying such a basis and computing the reduction coefficients of each $I_T$ onto that basis is one of the most important steps in our workflow. However, it also turns out to be extremely computationally expensive. In this section, we introduce the reader to the concept of integration-by-parts reduction, as well as to the related concepts of differential equations, symbols and uniform transcendentality. These key ideas are crucial not only from the computational perspective, but also provide an insight into the analytic structure of the amplitudes.
+where $\nu_t \geq 0$ if $D_t$ is an inverse propagator and $\nu_t\le0$ if $D_t$ is an ISP. As one might expect, not all $I_T$ are linearly independent. Within each family, it turns out we can reduce the integrals onto a basis of so-called \textbf{master integrals}, which we denote as $\text{MI}_T$. The problem of identifying such a basis and computing the reduction coefficients of each $I_T$ onto that basis is one of the most important steps in our workflow. However, it also turns out to be extremely computationally expensive. In this section, we introduce the reader to the concept of integration-by-parts reduction, as well as to the related concepts of differential equations, symbols and uniform transcendentality. These key ideas are crucial not only from the computational perspective, but also provide an insight into the analytic structure of the amplitudes.
 \subsection{A brief introduction to IBP relations} \label{sec:ibpintro}
 We start by making a trivial observation: the choice of the loop momentum $k$ in Feynman integrals is arbitrary. It can be re-scaled by a constant, shifted by the external momenta or even shifted by another loop momentum (in the case of multi-loop integrals) --- the physics this integral represents does not change. Surprisingly, this simple fact leads to powerful results. To see this, consider an integrand $f(k)$ and let us shift $k \rightarrow k + \lambda q$, where $\lambda$ is a small constant and $q$ is an arbitrary momentum. First, assume that $q^\mu = p^\mu$. Then, by translational invariance~\ref{eq:translationalinvariance}:
 \begin{equation}
@@ -728,15 +728,140 @@ where $|\text{MI}|$ denotes the total number of linearly independent master inte
     |\text{MI}| \equiv |\text{MI}_{\sum_T T}| \neq \sum_{\mathclap{\substack{T \in \\ \text{maximal} \\ \text{topologies}}}} |\text{MI}_T| \,.
 \end{equation}
 That is, the number of MIs for all families considered together is not the same as the sum of numbers of MIs for these families considered separately. This statement might seem surprising. Indeed, if we formulate one bigt system of IBP relations between integrals in all the families and perform a pure IBP reduction, the resultant MI basis is equal to the sum of the bases obtained by solving smaller systems of IBP relations within each family one by one. This is because integrals in different families live in different vector spaces and the IBP relations, by their very nature, cannot find inter-family relations. Nonetheless, other kinds of relations exist that can help us further reduce the number of linearly independent integrals (for details, see Refs. \cite{Grozin:2011mt, Lee:2008tj, Lee:2012cn}). They are typically appended to the `pure' IBP system and make it less under-determined. In particular, integrals belonging to sectors other than the top sector can often be mapped between families. We present an easy to understand example in Fig.~\ref{fig:symmetryrelation}. We will return to the observation of Eq.~\ref{eq:noofmis} in Sec.~\ref{sec:altibps}.
+\begin{figure}
+    \centering
+    \begin{adjustbox}{minipage=\textwidth,scale=0.9}
+    \raisebox{0.2cm}{
+    \begin{subfigure}[b]{0.25\linewidth}
+        \hspace*{1em}
+        \begin{tikzpicture}
+    	\begin{feynman}[small]
+    		\vertex (v1);
+    		\vertex[above left = 0.8cm of v1] (i1) {$p_5$};
+    		\vertex[right = of v1] (v2);
+    		\vertex[yshift=0.3cm, right = 0.8cm of v2] (v3);
+    		\vertex[above right = 0.8cm of v3] (f1) {$p_1$};			
+    		
+    		\vertex[below = of v1] (v7) ;
+    		\vertex[below left = 0.8cm of v7] (i2) {$p_4$};
+    		\vertex[right = of v7] (v6) ;
+    		\vertex[yshift=-0.3cm, right = 0.8cm of v6] (v5) ;
+    		\vertex[below right = 0.8cm of v5] (f3) {$p_3$};
+    		
+    		\vertex[xshift=0.6cm, yshift=0.2cm, below = of v3] (v4);
+    		\vertex[right = 0.8cm of v4] (f2) {$p_2$};		
 
+            \draw ($(v7)!0.5!(v6)$) node[cross,red] (5cm) {};
+            \draw ($(v4)!0.5!(v5)$) node[cross,red,rotate=45] (5cm) {};
+            
+    		\diagram*{
+    			(i1) -- (v1) -- (v2) -- (v3),
+    			(i2) -- (v7) -- (v6) -- (v5),
+    			(v3) -- (f1),
+    			(v3) -- (v4) -- (v5),
+    			(v4) -- (f2),
+    			(v5) -- (f3),
+    			(v1) -- (v7),
+    			(v2) -- (v6),
+    		};
+    	\end{feynman}
+    \end{tikzpicture}
+    \caption{} \label{fig:pentabox}
+    \end{subfigure}
+    }
+    %\end{adjustbox}
+    \hspace{1.3cm}
+    %\begin{adjustbox}{minipage=\linewidth,scale=0.4}
+    \begin{subfigure}[b]{0.25\linewidth}
+        \hspace*{1em}
+        \begin{tikzpicture}
+        \begin{feynman}[small]
+			\vertex (v1);
+			\vertex[left = 0.8cm of v1] (i1) {$p_5$};
+			\vertex[above right =1cm of v1] (v2);
+			\vertex[below right =1cm of v1] (v3);				
+			\vertex[yshift=0.3cm, right = 0.7cm of v2] (v4);	
+			\vertex[yshift=-0.6cm, right = 0.7cm of v4] (v5);
+			\vertex[yshift=-0.3cm, right = 0.7cm of v3] (v7);
+			\vertex[yshift=0.6cm, right = 0.7cm of v7] (v6);	
+			\vertex[above right = 0.8cm of v4] (i2) {$p_1$};
+			\vertex[yshift=0.2cm, right = 0.8cm of v5] (i3) {$p_3$};
+			\vertex[yshift=-0.2cm, right = 0.8cm of v6] (i4) {$p_2$};
+			\vertex[below right = 0.8cm of v7] (i5) {$p_4$};
+			
+            \draw ($(v7)!0.5!(v3)$) node[cross,red,rotate=60] (5cm) {};
+            \draw ($(v6)!0.5!(v5)$) node[cross,red] (5cm) {};
+            
+			\diagram*{
+				(i1) -- (v1) -- (v2) -- (v3) -- (v1),
+				(v2) -- (v4) -- (v5) -- (v6) -- (v7) -- (v3),
+				(v4) -- (i2),
+				(v5) -- (i3),
+				(v6) -- (i4),
+				(v7) -- (i5),
+			};
+		\end{feynman}
+        \end{tikzpicture}
+    \caption{} \label{fig:hexatriangle}
+    \end{subfigure}
+    %\end{adjustbox}
+    \hspace{1.3cm}
+    %\begin{adjustbox}{minipage=\linewidth,scale=0.4}
+    \raisebox{0.2cm}{
+    \begin{subfigure}[b]{0.25\linewidth}
+        \hspace*{1em}
+        \begin{tikzpicture}
+    	\begin{feynman}[small]
+    		\vertex (v1);
+      
+    		\vertex[left = 0.8cm of v1] (i1) {$p_5$};
+    		\vertex[above right = of v1] (v2);			
+    		\vertex[below right = of v1] (v3);			
+    		\vertex[right = of v2] (v4);			
+    		\vertex[right = of v3] (v5);			
+    		
+    		\vertex[above right = 0.8cm of v4] (i2) {$p_1$};
+    		\vertex[below right = 0.7cm of v5, yshift=-0.2cm] (i3) {$p_3$};
+    		\vertex[below right = 0.5cm of v5, xshift=+0.4cm] (i4) {$p_2$};
+    		\vertex[below =  0.7cm of v3] (i5) {$p_4$};
+    		
+    		\diagram*{
+                (i1) -- (v1) -- (v2) -- (v4) -- (i2),
+                (v1) -- (v3) -- (v5) -- (i3),
+                (v2) -- (v3),
+                (v4) -- (v5),
+                (v5) -- (i4),
+                (v3) -- (i5),
+    		};
+    	\end{feynman}
+    \end{tikzpicture}
+    \caption{} \label{fig:topologyc}
+    \end{subfigure}
+    }
+    \end{adjustbox}
+\caption{A simple example of possible non-IBP relations between integrals within different (maximal) topologies. Integrals in lower sectors often map to each other. The red crosses denote a vanishing denominator, i.e. the corresponding $\nu_i$ is 0. Here, diagrams $(a)$ and $(b)$ both collapse onto diagram $(c)$. Such relations are often hard to discover just from analysing the propagators of the integrals, especially if the two families use vastly different conventions for loop momentum routing. However, a visual representation often makes spotting these relations trivial.}
+\label{fig:topologies}
+\end{figure}
 \subsection{Differential equations} \label{sec:DEs}
 \subsection{Uniform transcendentality} \label{sec:UT}
 \JK{Ask Simone to explain why mappings between UT MIs cannot contain $\varepsilon$ or kinematic dependence.}
-%\subsection{Symbols} \label{sec:symbols}
-%\subsection{Syzygy relations} \label{sec:syzygies} 
+\subsection{Symbols} \label{sec:symbols}
+\subsection{An alternative approach to IBP reduction}
+As mentioned earlier, the IBP relations can only provide the reduction of integrals within one family. Therefore, in practice we typically need to build an extensive IBP system which covers all the families in the problem. This often leads to a prohibitively long time required to solve the system. There is, however, a more efficient way of performing the IBP reduction. Recall that the integral families fed into the reduction are defined by their propagators and ISPs. Each family can therefore be identified by its `type' and permutation of external legs within that type. For example, we refer to the topology of Fig.~\ref{fig:pentabox} as $\text{double-box}(12345)$, and to that of Fig.~\ref{fig:hexatriangle} as $\text{hexa-triangle}(13245)$. It is not hard to notice that that if two given families are of the same type and differ only by a permutation $\sigma$ of the external momenta, i.e. $T'=T(\sigma(ijklm))$, then the IBP reduction of any integral Eq.~\ref{eq:ibpintegral} within the permuted family $T'$ can be expressed as a permutation of the reduction of the corresponding integral in the original family $T$:
+\begin{align}
+    I_{T(ijklm)}(\bm{\nu}) &= \sum_{i=1}^{|\text{MI}_T|} c_i(p, \varepsilon) \times \text{MI}_{T(ijklm),\,i} \\
+    \implies I_{T(\sigma(ijklm))}(\bm{\nu}) &= \sum_{i=1}^{|\text{MI}_T|} c_i(\sigma(p), \varepsilon) \times \text{MI}_{T(\sigma(ijklm)),\,i}\,.
+\end{align}
+\JK{I think the notation here is crap, but I can't think of anything better for now.} \JK{Does this fact need any further justification?} Since the reduction coefficients $c_i$ are rational functions of the $\varepsilon$ and the momenta $p$, permuting the external kinematics to obtain $c_i(\sigma(p), \varepsilon)$ is trivial, whether we express them through the Mandelstam invariants $s_{ij}$ or the momentum twistor variables $\bm{x}$. Moreover, the rationality means that this new approach to IBP reduction is perfectly compatible with the finite field workflow. Permuting the coefficients amounts to a change of variables, which can be implemented over the field\footnote{When working with the $s_{ij}$ variables, the permutation $s_{\sigma(ij)}$ will in general take us outside of the minimal set such as Eq.~\ref{eq:sijs}, but we can always express the new Mandelstam variables through the same minimal set by using momentum conservation. This subtlety is not present at the level of momentum twistor variables.}. Thus, we never have to know and permute the analytic form of the IBP coefficients, which leads to a significant reduction in the computational cost. For an $n$-particle integral family, we only need to consider the IBP system composed of one permutation of this family, rather than up to $n!$ permutations of it. The choice of this main permutation is arbitrary and we will denote it as $\sigma_\text{id}$.
+
+\JK{Should I---and if yes, then where---describe the permutations of $\sqrt{}$`s and $\tr_5$ in the basis definitions?}
+
+Mappings between MIs
+\subsection{Syzygy relations} \label{sec:syzygies} 
 %
 %\section{Special functions} \label{sec:specialfunctions}
 %\subsection{Pentagon functions} \label{sec:Pentagon functions}
 %\subsection{Generalised series expansion} \label{sec:DiffExp}
 %\subsection{Auxiliary mass flow} \label{sec:AMFlow}
+
 \end{document}
