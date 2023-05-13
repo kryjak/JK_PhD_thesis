@@ -447,6 +447,7 @@ Then, requiring the correct scaling gives:
 \begin{equation}
     f(x_1, \ldots, x_n) = x_1^u \, \tilde{f}\left(\frac{x_2}{x_1}, \ldots, \frac{x_n}{x_1}\right) \,.
 \end{equation}
+\JK{Check out Weinzierl's Feynman Integrals, Eq. 2.144}
 Thus, we can reconstruct $\tilde{f}$ and restore the homogeneity of $f$ a posteriori. In our applications, even though the functions we will be dealing with are in general not homogeneous, it turns out we can still discard one variable. We will usually set $s_{12} = 1$ and recover its analytic dependence a posteriori through dimensional analysis \JK{I don't think I understand this.} \JK{Are these two methods of discarding a variable the same?}. Finally, recall from Sec.~\ref{sec:kinematics} the presence of square roots in the kinematics associated with the amplitude. This is a problem because it is not always possible to take a square root of a field element $a \in \mathbb{Z_p}$. Specifically, for a field of size $p>2$, there are only $(p+1)/2$ so-called quadratic residues, i.e. solutions to this equation $x^2=a \text{ mod } p$ \cite{hardy2008introduction}. This fact is easy to understand as we can actually enumerate all the residues. Note that this equation admits two solutions, since it is equivalent to $(x-b)(x+b)=0 \text{ mod } p \Longrightarrow x = \pm b \text{ mod } p$. Thus, the set of solutions $\{b_i\} \in \mathbb{Z}_p$ will lead to distinct quadratic residues only if no two $b_i$ are negatives of each other in the field. This constrains us to the first half of the elements, i.e. $\{0, 1, 2, \ldots, (p-1)/2 \}$. Indeed, if we try to add another solution, $(p+1)/2$, it would square to the same residue as $(p-1)/2$, because $b_i^2 = (p-b_i)^2 \text{ mod }p$
 and we have precisely $p - (p+1)/2 = (p-1)/2 \text{ mod }p$. Thus, the full set of distinct residues is:
 \begin{equation}
@@ -727,7 +728,7 @@ where $|\text{MI}|$ denotes the total number of linearly independent master inte
 \begin{equation} \label{eq:noofmis}
     |\text{MI}| \equiv |\text{MI}_{\sum_T T}| \neq \sum_{\mathclap{\substack{T \in \\ \text{maximal} \\ \text{topologies}}}} |\text{MI}_T| \,.
 \end{equation}
-That is, the number of MIs for all families considered together is not the same as the sum of numbers of MIs for these families considered separately. This statement might seem surprising. Indeed, if we formulate one bigt system of IBP relations between integrals in all the families and perform a pure IBP reduction, the resultant MI basis is equal to the sum of the bases obtained by solving smaller systems of IBP relations within each family one by one. This is because integrals in different families live in different vector spaces and the IBP relations, by their very nature, cannot find inter-family relations. Nonetheless, other kinds of relations exist that can help us further reduce the number of linearly independent integrals (for details, see Refs. \cite{Grozin:2011mt, Lee:2008tj, Lee:2012cn}). They are typically appended to the `pure' IBP system and make it less under-determined. In particular, integrals belonging to sectors other than the top sector can often be mapped between families. We present an easy to understand example in Fig.~\ref{fig:symmetryrelation}. We will return to the observation of Eq.~\ref{eq:noofmis} in Sec.~\ref{sec:altibps}.
+That is, the number of MIs for all families considered together is not the same as the sum of numbers of MIs for these families considered separately. This statement might seem surprising. Indeed, if we formulate one big system of IBP relations between integrals in all the families and perform a pure IBP reduction, the resultant MI basis is equal to the sum of the bases obtained by solving smaller systems of IBP relations within each family one by one. This is because integrals in different families live in different vector spaces and the IBP relations, by their very nature, cannot find inter-family relations. Nonetheless, other kinds of relations exist that can help us further reduce the number of linearly independent integrals (for details, see Refs. \cite{Grozin:2011mt, Lee:2008tj, Lee:2012cn}). They are typically appended to the `pure' IBP system and make it less under-determined. In particular, integrals belonging to sectors other than the top sector can often be mapped between families. We present an easy to understand example in Fig.~\ref{fig:symmetryrelation}. We will return to the observation of Eq.~\ref{eq:noofmis} in Sec.~\ref{sec:altibps}.
 \begin{figure}
     \centering
     \begin{adjustbox}{minipage=\textwidth,scale=0.9}
@@ -843,10 +844,83 @@ That is, the number of MIs for all families considered together is not the same 
 \label{fig:topologies}
 \end{figure}
 \subsection{Differential equations} \label{sec:DEs}
+Differential equations (DEs) satisfied by Feynman integrals were studied even before the invention of the IBP reduction technique (see, for example, Ref.~\cite{Golubeva:1976}). However, it was these two concepts combined together that led to the development of a powerful method for evaluating the MIs \cite{Kotikov:1990kg, Kotikov:1991314, Bern:1993kr, Remiddi:1997ny, Gehrmann:1999as}. The idea is as follows. If we differentiate an integral $I_T(\bm{\nu})$ with respect to the Mandelstam invariants $s_{ij}$ or internal masses $m_i$, we will obtain a linear combination of integrals within the same family $T$, but with different exponents $\bm{\nu}'$. These new integrals $I_T(\bm{\nu}')$ can then be IBP reduced onto the corresponding MIs. Thus, if we apply the differentiation to the MI basis itself, we obtain a set of first-order partial DEs (one for each kinematic variable). It is convenient to group the MIs as a vector $\vv{\text{MI}}$. We then have:
+\begin{equation} \label{eq:DEspartial}
+    \frac{\partial}{\partial \lambda} \vv{\text{MI}} = A_{\lambda}(\lambda, \varepsilon) \vv{\text{MI}}\,,
+\end{equation}
+where $\lambda \in \{s_{ij}, m_i\}$ are the kinematic variables and $A_{\lambda_i}$ is a $\left(|\text{MI}| \times |\text{MI}|\right)$ matrix. Its entries are rational functions of the kinematic variables and $\varepsilon$, which is due to the nature of IBP relations. It is also common to work with the total differential rather than partial derivatives:
+\begin{equation}
+    \dd \,\vv{\text{MI}} = \sum_{\lambda} \left(\frac{\partial \vv{\text{MI}}}{\partial \lambda} \right) \dd \lambda\,,
+\end{equation}
+as well as to define:
+\begin{equation}
+    A = \sum_\lambda A_\lambda \dd\lambda\,.
+\end{equation}
+Then, the system of DEs can be written as:
+\begin{equation} \label{eq:DEsoneform}
+    \dd \,\vv{\text{MI}} = A(\lambda, \varepsilon) \,\vv{\text{MI}}\,.
+\end{equation}
+Naturally, to solve this equation, we also need to provide boundary values. It is convenient to use the values of MIs at a special kinematic point, for example where one of the kinematic variables $\lambda_i$ vanishes or is equal to another kinematic variable. There, the MIs become easier to evaluate. 
+
+In general, solving the DEs satisfied by MIs is hard. Note however, that typically we are interested in only the first few coefficients of the Laurent expansion of Eq.~\ref{eq:DEsoneform} around $\varepsilon=0$. Consider a change of basis:
+\begin{equation} \label{eq:basistransformation}
+    \vv{\text{MI}} \rightarrow \vv{\text{MI}}' = B\,\vv{\text{MI}}\,,
+\end{equation}
+where $B$ is an arbitrary matrix that can depend on $\lambda$ and $\varepsilon$. Under this transformation, the partial DEs become:
+\begin{equation}
+    \frac{\partial \vv{\text{MI}}'}{\partial \lambda} = \left( \frac{\partial B}{\partial \lambda}B^{-1} + B A_{\lambda} B^{-1} \right) \vv{\text{MI}}'
+\end{equation}
+A key conjecture due to Ref.~\cite{Henn:2013pwa} is that it is always possible to choose $B$ such that:
+\begin{equation}
+    \left( \frac{\partial B}{\partial \lambda}B^{-1} + B A_{\lambda}(\lambda, \, \varepsilon) B^{-1} \right) = \varepsilon \dd \tilde{A}_{\lambda}(\lambda)\,.
+\end{equation}
+That is, with an appropriate transformation, the $\varepsilon$-dependence factorises out of the matrices, which now contain only kinematic dependence. Note, however, that they might now contain algebraic (i.e. non-rational) factors such as square roots. Overall, Eq.~\ref{eq:DEspartial} becomes:
+\begin{equation} \label{eq:canonicalDEspartial}
+    \frac{\partial}{\partial \lambda} \vv{\text{MI}}' = \varepsilon\dd \tilde{A}_{\lambda}(\lambda) \vv{\text{MI}}'\,, 
+\end{equation}
+while Eq.~\ref{eq:DEsoneform}:
+\begin{equation} \label{eq:canonicalDEsoneform}
+    \dd \,\vv{\text{MI}}' = \varepsilon \dd \tilde{A}(\lambda) \,\vv{\text{MI}}'\,.
+\end{equation}
+\JK{Should this be $\dd \tilde{A}(\lambda)$?}
+This is known as DEs in \textbf{canonical form} (also known as the $\varepsilon$-form)\footnote{Several packages exist for transforming the DEs into the canonical form. See \texttt{Fuchsia}~\cite{Gituliar:2017vzm}, \texttt{Libra}~\cite{Lee:2020zfb}, \texttt{INITIAL}~\cite{Dlapa:2020cwj} and \texttt{CANONICA}~\cite{Meyer:2018feh}. See also \cite{Dlapa:2022nct} for a comprehensive review of different techniques.}. In particular, Eq.~\ref{eq:canonicalDEsoneform} admits a solution in terms of the path-ordered exponential:
+\begin{equation} \label{eq:pathexponential}
+    \dd \,\vv{\text{MI}}'(\lambda,\, \varepsilon) = \mathbb{P} \exp \left(\varepsilon\int_\gamma \dd \tilde{A} \right) \vv{\text{MI}}'(\lambda(\gamma=0),\,\varepsilon )\,,
+\end{equation}
+where $\gamma\,:\,[0, 1] \rightarrow \mathbb{C}^{|\lambda|}$ is a path in the space of the kinematic invariants and internal masses $\lambda$. We note that the integration is independent of the path taken. Because the solution is expressed through the series expansion of the matrix exponential, it is easy to see that the MIs are obtained as iterated integrals of $\tilde{A}$. Given the Laurent expansion of canonical MI vector:
+\begin{equation}
+    \vv{\text{MI}}'(\lambda, \, \varepsilon) = \sum_{i=0}^\infty \varepsilon^i\,\vv{\text{MI}}'^{(i)}(\lambda) \,,
+\end{equation}
+we can insert it into Eq.~\ref{eq:pathexponential} and series expand both its sides in $\varepsilon$. Then the order-by-order DE solution becomes:
+\begin{equation} \label{eq:DEssolution}
+    \vv{\text{MI}}'^{(i)}(\lambda) = \sum_{j=0}^i \int_\gamma \underbrace{\dd \tilde{A} \cdot \ldots \cdot \dd \tilde{A}}_{j\text{ times}} \, \cdot \, \vv{\text{MI}}'^{(i-j)}(\lambda(\gamma=0))\,,
+\end{equation}
+where the path integral for $j=0$ is defined as 1\cite{Chen:1977oja}. Note that we can assume that the Laurent expansion starts from $\varepsilon=0$, because the DEs are insensitive to a re-scaling of the integrals by a factor which does not depend on the kinematics. Thus, the MIs can be normalised to be finite, which moves any potential singularities into the coefficients of the IBP reduction. 
+
+Overall, we see that the MIs at $\order{\varepsilon^i}$ are given by sums of up to $i$-fold integrals. The integration kernels are determined by the structure of $\tilde{A}$, which deserves further discussion. Let us consider the singularities of the DEs. It can be shown, for example by studying the Feynman parameter representation, that the Feynman integrals cannot contain so-called essential singularities, e.g. singularities of the form $\mathrm{e}^{1/\lambda} = 1+ 1/\lambda + 1/(2!\lambda^2)+\ldots\,$ at $\lambda=0$. In particular, for each singularity $\lambda_k$, we expect the leading behaviour of the Feynman integrals to be $\sim (\lambda- \lambda_k)^\alpha$ for some power $\alpha$. This implies that the corresponding DEs must have only regular singularities. In particular, around each singular point $\lambda_k$, they must have a simple pole $\sim \alpha/(\lambda-\lambda_k)$. This strongly constrains the form that DEs can take\footnote{In practice, when constructing canonical DEs, we might encounter spurious double poles or higher. However, they can be removed by a suitable basis change which leaves the DEs with only simple poles. \JK{Is this always true?}}\cite{Henn:2014qga}. In many cases of practical interest, it is possible to construct MI bases which result in DEs in the so-called \textbf{$\dd \log$ form}:
+\begin{equation} \label{eq:dlogform}
+    \dd\tilde{A} = \sum_{i=1}^{|\bm{w}|} a_i \times \dd \log w_i\,.
+\end{equation}
+Here, $w_i$ are known as `letters' (note that sometimes the differentials $\dd \log w_i$ are referred to as letters instead), while their collection $\bm{w} = \{w_1, w_2, \ldots\}$ is the `alphabet'. The matrices $a_i$ contain rational numbers only, free of any kinematic of $\varepsilon$ dependence. The letters play a central role in the analysis of DEs in the $\dd \log$ form, since they control their singularities, determine which class of special functions the MIs are written in terms of, as well as play a central role in the symbol formalism, which we will introduce soon. As mentioned before, in general the kinematic dependence of $\tilde{A}$ might no longer be rational, as the transformation Eq.~\ref{eq:basistransformation} needed to bring DEs into canonical form might introduce non-rational functions into the definitions of the corresponding canonical MIs. In this case, the letters $w_k$ are algebraic functions of $\lambda$. However, if the form of Eq.~\ref{eq:dlogform} can be reached by using rational transformations only, the letters are rational functions of the form $w_k = \lambda - \lambda_k$. Then, it is particularly easy to write down the order-by-order solution Eq.~\ref{eq:DEssolution} as the iterated integrals in this case are the well-known Goncharov Polylogarithms (GPLs)\footnote{Also known as Hyperlogarithms and Multiple Polylogarithms (MPLs)}:
+\begin{equation} \label{eq:GPLs}
+    G_n(a_1, a_2, \ldots, a_n; \lambda) = \int_0^\lambda \frac{\dd t}{t-a_1} G_{n-1}(a_2, \ldots, a_n; t)\, \qquad \text{with } \quad G_0(; x) = 1\,.
+\end{equation}
+They are related to the usual logarithms through:
+\begin{equation}
+    G_n(a, a, \ldots, a; \lambda) = 
+    \begin{cases}
+        \frac{1}{n!}\log^n\left(1-\frac{\lambda}{a}\right) & \text{if  $a \neq 0$} \\ 
+        \frac{1}{n!}\log^n x & \text{if $a = 0$}\,.
+    \end{cases}
+\end{equation}  
+%Insert references to GPLs.
+%What happens if the kernels are not rational --> elliptic functions.
+%Maximal cuts to analyse DEs
+%Insert references to show where the dlog DEs have been used to calculate MIs
 \subsection{Uniform transcendentality} \label{sec:UT}
 \JK{Ask Simone to explain why mappings between UT MIs cannot contain $\varepsilon$ or kinematic dependence.}
 \subsection{Symbols} \label{sec:symbols}
-\subsection{An alternative approach to IBP reduction}
+\subsection{An alternative approach to IBP reduction} \label{sec:altibps}
 As mentioned earlier, the IBP relations can only provide the reduction of integrals within one family. Therefore, in practice we typically need to build an extensive IBP system which covers all the families in the problem. This often leads to a prohibitively long time required to solve the system. There is, however, a more efficient way of performing the IBP reduction. Recall that the integral families fed into the reduction are defined by their propagators and ISPs. Each family can therefore be identified by its `type' and permutation of external legs within that type. For example, we refer to the topology of Fig.~\ref{fig:pentabox} as $\text{double-box}(12345)$, and to that of Fig.~\ref{fig:hexatriangle} as $\text{hexa-triangle}(13245)$. It is not hard to notice that that if two given families are of the same type and differ only by a permutation $\sigma$ of the external momenta, i.e. $T'=T(\sigma(ijklm))$, then the IBP reduction of any integral Eq.~\ref{eq:ibpintegral} within the permuted family $T'$ can be expressed as a permutation of the reduction of the corresponding integral in the original family $T$:
 \begin{align}
     I_{T(ijklm)}(\bm{\nu}) &= \sum_{i=1}^{|\text{MI}_T|} c_i(p, \varepsilon) \times \text{MI}_{T(ijklm),\,i} \\
@@ -855,13 +929,22 @@ As mentioned earlier, the IBP relations can only provide the reduction of integr
 \JK{I think the notation here is crap, but I can't think of anything better for now.} \JK{Does this fact need any further justification?} Since the reduction coefficients $c_i$ are rational functions of the $\varepsilon$ and the momenta $p$, permuting the external kinematics to obtain $c_i(\sigma(p), \varepsilon)$ is trivial, whether we express them through the Mandelstam invariants $s_{ij}$ or the momentum twistor variables $\bm{x}$. Moreover, the rationality means that this new approach to IBP reduction is perfectly compatible with the finite field workflow. Permuting the coefficients amounts to a change of variables, which can be implemented over the field\footnote{When working with the $s_{ij}$ variables, the permutation $s_{\sigma(ij)}$ will in general take us outside of the minimal set such as Eq.~\ref{eq:sijs}, but we can always express the new Mandelstam variables through the same minimal set by using momentum conservation. This subtlety is not present at the level of momentum twistor variables.}. Thus, we never have to know and permute the analytic form of the IBP coefficients, which leads to a significant reduction in the computational cost. For an $n$-particle integral family, we only need to consider the IBP system composed of one permutation of this family, rather than up to $n!$ permutations of it. The choice of this main permutation is arbitrary and we will denote it as $\sigma_\text{id}$.
 
 \JK{Should I---and if yes, then where---describe the permutations of $\sqrt{}$`s and $\tr_5$ in the basis definitions?}
+As pointed out below Eq.~\ref{eq:noofmis}, the presence of relations other than IBP relations allows us to express some MIs of one family in terms of the MIs of other families. Thus, the total number of MIs is smaller than the sum of MIs in the individual families. This fact is automatically taken care of in the traditional approach to IBP reduction, where all families are treated by one shared IBP system, which also includes inter-family relations. However, in the alternative approach described above, these extra relations are not taken into account, as we are performing the reduction for families $T$ only in their canonical permutations $\sigma_\text{id}$. Thus, the amplitude obtained in this approach will contain MIs which are in fact not fully linearly independent. Strictly speaking, there is no requirement for the amplitude to be expressed in terms of independent objects. However, it is always desirable to do so, as this ensures that any cancellations happen analytically, therefore it avoids introducing instabilities and issues with precision during numerical evaluation of the amplitude. Moreover, it is more computationally efficient, as it reduces the number of independent coefficients that have to be processed when expanding the amplitude into special functions.
 
-Mappings between MIs
+In practice, these missing relations between MIs can be obtained by performing their reduction in the traditional approach\footnote{Note that this reduction will not rely on identities of the IBP nature, as inter-family IBP relations do not exist. Instead, it will use Lorentz invariance identities, symmetries between propagators, etc. See Refs.~\cite{Grozin:2011mt, Lee:2012cn} for details.}, which expresses the MIs from all families in terms of the truly independent ones:
+\begin{equation}
+    \text{MI}_{i} = \sum_j^{|\text{MI}|} f_{ij}(p, \varepsilon) \times \text{MI}_j \qquad i \in \left\{1, \ldots, \sum_T |\text{MI}_T|\right\}\,,
+\end{equation}
+where $|\text{MI}| = |\text{MI}_{\sum_T T}|$, as defined earlier. This additional reduction does not present such complexity as the reduction needed for the amplitude. Firstly, the identities generated through the Laporta algorithm only need to cover the rank and number of dotted propagators present in the MI bases, rather than the full amplitude. Secondly, all the missing relations between MIs can be worked out just once and they will be applicable to any process at the same loop order and number of particles, since the IBP identities are sensitive only to the kinematic setup. Finally, an extremely useful property of UT integrals is that any inter-family relations between them cannot contain any dependence on the kinematic variables, i.e. $f(p, \varepsilon) \rightarrow f(\varepsilon)$. Thus, when using UT bases, this additional reduction can be performed with the kinematic variables set to random values (subject to momentum conservation). Having obtained the missing relations between MIs, we apply them to our amplitude and collect the coefficients of the true, linearly independent MIs. In the end, this is equivalent to performing the traditional IBP reduction of all families considered together simultaneously, but much more efficient.
 \subsection{Syzygy relations} \label{sec:syzygies} 
 %
 %\section{Special functions} \label{sec:specialfunctions}
 %\subsection{Pentagon functions} \label{sec:Pentagon functions}
 %\subsection{Generalised series expansion} \label{sec:DiffExp}
 %\subsection{Auxiliary mass flow} \label{sec:AMFlow}
+
+%\section{Finite remainder} \label{sec:finrem}
+%\section{Reconstruction} \label{sec:reconstruction}
+%Describe the various reconstruction tricks?
 
 \end{document}
