@@ -901,7 +901,7 @@ Overall, we see that the MIs at $\order{\varepsilon^i}$ are given by sums of up 
 \begin{equation} \label{eq:dlogform}
     \dd\tilde{A} = \sum_{i=1}^{|\bm{w}|} a_i \times \dd \log w_i\,.
 \end{equation}
-Here, $w_i$ are known as `letters' (note that sometimes the differentials $\dd \log w_i$ are referred to as letters instead), while their collection $\bm{w} = \{w_1, w_2, \ldots\}$ is the `alphabet'. The matrices $a_i$ contain rational numbers only, free of any kinematic of $\varepsilon$ dependence. The letters play a central role in the analysis of DEs in the $\dd \log$ form, since they control their singularities, determine which class of special functions the MIs are written in terms of, as well as play a central role in the symbol formalism, which we will introduce soon. As mentioned before, in general the kinematic dependence of $\tilde{A}$ might no longer be rational, as the transformation Eq.~\ref{eq:basistransformation} needed to bring DEs into canonical form might introduce non-rational functions into the definitions of the corresponding canonical MIs. In this case, the letters $w_k$ are algebraic functions of $\lambda$. However, if the form of Eq.~\ref{eq:dlogform} can be reached by using rational transformations only, the letters are rational functions of the form $w_k = \lambda - \lambda_k$. Then, it is particularly easy to write down the order-by-order solution Eq.~\ref{eq:DEssolution} as the iterated integrals in this case are the well-known Goncharov Polylogarithms (GPLs)\footnote{Also known as Hyperlogarithms and Multiple Polylogarithms (MPLs)}:
+Here, $w_i$ are known as `letters' (note that sometimes the differentials $\dd \log w_i$ are referred to as letters instead), while their collection $\bm{w} = \{w_1, w_2, \ldots\}$ is the `alphabet'. The matrices $a_i$ contain rational numbers only, free of any kinematic of $\varepsilon$ dependence. The letters play a central role in the analysis of DEs in the $\dd \log$ form, since they control their singularities, determine which class of special functions the MIs are written in terms of, as well as play a central role in the symbol formalism, which we will introduce soon. As mentioned before, in general the kinematic dependence of $\tilde{A}$ might no longer be rational, as the transformation Eq.~\ref{eq:basistransformation} needed to bring DEs into canonical form might introduce non-rational functions into the definitions of the corresponding canonical MIs. In this case, the letters $w_k$ are algebraic functions of $\lambda$. However, if the form of Eq.~\ref{eq:dlogform} can be reached by using rational transformations only, the letters are rational functions of the form $w_k = \lambda - \lambda_k$. Then, it is particularly easy to write down the order-by-order solution Eq.~\ref{eq:DEssolution}, as the iterated integrals in this case are the well-known Goncharov Polylogarithms (GPLs)\footnote{Also known as Hyperlogarithms and Multiple Polylogarithms (MPLs).}\cite{2001math......3059G, 2011arXiv1105.2076G, Vollinga:2004sn}:
 \begin{equation} \label{eq:GPLs}
     G_n(a_1, a_2, \ldots, a_n; \lambda) = \int_0^\lambda \frac{\dd t}{t-a_1} G_{n-1}(a_2, \ldots, a_n; t)\, \qquad \text{with } \quad G_0(; x) = 1\,.
 \end{equation}
@@ -913,11 +913,29 @@ They are related to the usual logarithms through:
         \frac{1}{n!}\log^n x & \text{if $a = 0$}\,.
     \end{cases}
 \end{equation}  
-%Insert references to GPLs.
-%What happens if the kernels are not rational --> elliptic functions.
-%Maximal cuts to analyse DEs
+Aside from this special case of GPLs, the complexity of the integration kernels can be estimated by studying the maximal cuts of the relevant Feynman integrals~\cite{Tancredi:2017onthemaxcut, Abreu:2020jxa, abreu2021twoloop}. More generally, the letters might not be rational, or the kernels overall might not be of the $\dd \log$ form. Then, more complicated functions appear in the solution of the DEs.  For example, the presence of internal masses in the Feynman diagrams often \JK{Often or always?} leads to Elliptic Multiple Polylogarithms (eMPLs) (see Refs.~ \cite{Broedel:2017kkb, Broedel:2017siw, Adams:2017ejb, Broedel:2018qkq, Adams:2018yfj, Walden:2020odh} for a discussion of eMPLs and also Refs.~\cite{Bonciani:2016qxi, Bonciani:2019jyb, Frellesvig:2019byn} for the application to Higgs+jet production with quark mass dependence). 
+
+%Unfortunately, the iterated
+%integrals for geometries beyond elliptic curves have not yet been studied in detail. Furthermore,
+%even in cases where the geometry of the maximal cuts seems simple, it might not be known or even
+%possible to evaluate the integrals in terms of multiple polylogarithms or elliptic polylogarithms.
+%For example, some families of integrals admit a canonical d log-basis which depends on numerous
+%non-simultaneously rationalizable square roots. In such a case it can be very difficult to obtain
+%polylogarithmic expressions (which admit fast evaluation) for the integrals - especially at higher
+%weights - and it might not be possible to obtain polylogarithmic expressions at all (see e.g. Refs.
+%[26–30] for recent works.) Similarly, when multiple square roots are coupled to elliptic sectors, it is
+%not clear how to express the elliptic integrals in terms of elliptic multiple polylogarithms
+
+%Summary of MI work for the QCD processes relevant to us
 %Insert references to show where the dlog DEs have been used to calculate MIs
+
 \subsection{Uniform transcendentality} \label{sec:UT}
+When talking about canonical DEs, it is also useful to introduce the idea of `transcendentality'. For an iterated integral $f$, its \textbf{transcendental weight} $\mathcal{T}$ is simply the count of iterated integrations needed to define $f$. For example, $\mathcal{T}(\log x) = 1$, while $\mathcal{T}(G_n(a_1, \ldots, a_n;\, x)) = n$. From the definition, it follows that $\mathcal{T}(f_1 f_2) = \mathcal{T}(f_1) + \mathcal{T}(f_2)$, but note that $\mathcal{T}(f_1 + f_2)$ cannot be defined unless $\mathcal{T}(f_1) = \mathcal{T}(f_2)$. furthermore, algebraic factors have weight 0. Constants which can be obtained as special values of iterated integrals have the corresponding weight, e.g. $\mathcal{T}(\pi) = 1$, since $\log (-1) = \pm \i \pi$ and $\mathcal{T}(i) = \mathcal{T}(-1) = 0$. \JK{Why is $\mathcal{T}(\zeta(n)) = n$?}
+
+$\mathcal{T}(\varepsilon) = -1$
+%pure integrals
+%Why UT is important
+%conjecture about the weight of special functions required for amplitudes
 \JK{Ask Simone to explain why mappings between UT MIs cannot contain $\varepsilon$ or kinematic dependence.}
 \subsection{Symbols} \label{sec:symbols}
 \subsection{An alternative approach to IBP reduction} \label{sec:altibps}
