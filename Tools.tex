@@ -722,13 +722,13 @@ It is now possible to order (albeit not uniquely) the sectors $\bm{\theta}$ with
 Overall, IBP relations allow us to express each helicity amplitude of Eq.~\ref{eq:ampreducedschematic} in terms of a much smaller number of master integrals:
 \begin{equation} \label{eq:ampafterIBP}
     	A_n^{(L)} \left(1^{h_1}, 2^{h_2}, \ldots, n^{h_n} \right) =  
-     \sum_{i=1}^{|\text{MI}|} g_i(p(\mathbf{x}), \varepsilon) \times \text{MI}_i(k,p,\varepsilon)\,,
+     \sum_{i=1}^{|\text{MI}|} g_i(p(\mathbf{x}), \varepsilon) \times \text{MI}_i(p,\varepsilon)\,,
 \end{equation}
 where $|\text{MI}|$ denotes the total number of linearly independent master integrals in all the families. Once again, the coefficients are rational functions of external kinematics (expressed through the momentum twistor variables), as well as the dimensional parameter $\varepsilon$. It is worth pointing out an interesting subtlety of this formula:
 \begin{equation} \label{eq:noofmis}
     |\text{MI}| \equiv |\text{MI}_{\sum_T T}| \neq \sum_{\mathclap{\substack{T \in \\ \text{maximal} \\ \text{topologies}}}} |\text{MI}_T| \,.
 \end{equation}
-That is, the number of MIs for all families considered together is not the same as the sum of numbers of MIs for these families considered separately. This statement might seem surprising. Indeed, if we formulate one big system of IBP relations between integrals in all the families and perform the IBP reduction, the resultant MI basis is equal to the sum of the bases obtained by solving smaller systems of IBP relations within each family one by one. This is because integrals in different families live in different vector spaces and there cannot be inter-family \ac{IBP} relations. However, integrals belonging to sectors other than the top sector can often be mapped between families. We present an easy to understand example in Fig.~\ref{fig:symmetryrelation}. We will return to the observation of Eq.~\ref{eq:noofmis} in Sec.~\ref{sec:altibps}. 
+That is, the number of MIs for all families considered together is not the same as the sum of numbers of MIs for these families considered separately. This statement might seem surprising. Indeed, if we formulate one big system of IBP relations between integrals in all the families and perform the IBP reduction, the resultant MI basis is equal to the sum of the bases obtained by solving smaller systems of IBP relations within each family one by one. This is because integrals in different families live in different vector spaces and there cannot be inter-family IBP relations. However, integrals belonging to sectors other than the top sector can often be mapped between families. We present an easy to understand example in Fig.~\ref{fig:symmetryrelation}. We will return to the observation of Eq.~\ref{eq:noofmis} in Sec.~\ref{sec:altibps}. 
 \begin{figure}
     \centering
     \begin{adjustbox}{minipage=\textwidth,scale=0.9}
@@ -848,7 +848,7 @@ Differential equations (DEs) satisfied by Feynman integrals were studied even be
 \begin{equation} \label{eq:DEspartial}
     \frac{\partial}{\partial \lambda} \vv{\text{MI}} = A_{\lambda}(\lambda, \varepsilon) \vv{\text{MI}}\,,
 \end{equation}
-where $\lambda \in \{s_{ij}, m_i\}$ are the kinematic variables and $A_{\lambda_i}$ is a $\left(|\text{MI}| \times |\text{MI}|\right)$ matrix. Its entries are rational functions of the kinematic variables and $\varepsilon$, which is due to the nature of IBP relations. It is also common to work with the total differential rather than partial derivatives:
+where $\lambda \in \{s_{ij}, m_i\}$ are the kinematic variables and $A_\lambda$ is a $\left(|\text{MI}| \times |\text{MI}|\right)$ matrix. Its entries are rational functions of the kinematic variables and $\varepsilon$, which is due to the nature of IBP relations. It is also common to work with the total differential rather than partial derivatives:
 \begin{equation}
     \dd \,\vv{\text{MI}} = \sum_{\lambda} \left(\frac{\partial \vv{\text{MI}}}{\partial \lambda} \right) \dd \lambda\,,
 \end{equation}
@@ -888,7 +888,7 @@ This is known as DEs in \textbf{canonical form} (also known as the $\varepsilon$
     \dd \,\vv{\text{MI}}'(\lambda,\, \varepsilon) = \mathbb{P} \exp \left(\varepsilon\int_\gamma \dd \tilde{A} \right) \vv{\text{MI}}'(\lambda(\gamma=0),\,\varepsilon )\,,
 \end{equation}
 where $\gamma\,:\,[0, 1] \rightarrow \mathbb{C}^{|\lambda|}$ is a path in the space of the kinematic invariants and internal masses $\lambda$. We note that the integration is independent of the path taken. Because the solution is expressed through the series expansion of the matrix exponential, it is easy to see that the MIs are obtained as iterated integrals of $\tilde{A}$. Given the Laurent expansion of canonical MI vector:
-\begin{equation}
+\begin{equation} \label{eq:MIlaurentexp}
     \vv{\text{MI}}'(\lambda, \, \varepsilon) = \sum_{i=0}^\infty \varepsilon^i\,\vv{\text{MI}}'^{(i)}(\lambda) \,,
 \end{equation}
 we can insert it into Eq.~\ref{eq:pathexponential} and series expand both its sides in $\varepsilon$. Then the order-by-order DE solution becomes:
@@ -930,14 +930,44 @@ Aside from this special case of GPLs, the complexity of the integration kernels 
 %Insert references to show where the dlog DEs have been used to calculate MIs
 
 \subsection{Uniform transcendentality} \label{sec:UT}
-When talking about canonical DEs, it is also useful to introduce the idea of `transcendentality'. For an iterated integral $f$, its \textbf{transcendental weight} $\mathcal{T}$ is simply the count of iterated integrations needed to define $f$\cite{Henn:2013pwa}. For example, $\mathcal{T}(\log x) = 1$, while $\mathcal{T}(G_n(a_1, \ldots, a_n;\, x)) = n$. From the definition, it follows that $\mathcal{T}(f_1 f_2) = \mathcal{T}(f_1) + \mathcal{T}(f_2)$, but note that $\mathcal{T}(f_1 + f_2)$ cannot be defined unless $\mathcal{T}(f_1) = \mathcal{T}(f_2)$. furthermore, algebraic factors have weight 0. Constants which can be obtained as special values of iterated integrals have the corresponding weight, e.g. $\mathcal{T}(\pi) = 1$, since $\log (-1) = \pm \i \pi$ and $\mathcal{T}(i) = \mathcal{T}(-1) = 0$. \JK{Why is $\mathcal{T}(\zeta(n)) = n$?}
+When talking about canonical DEs, it is also useful to introduce the idea of `transcendentality'. For an iterated integral $f$, its \textbf{transcendental weight} $\mathcal{T}$ is simply the count of iterated integrations needed to define $f$\cite{Henn:2013pwa}. For example, $\mathcal{T}(\log x) = 1$, while $\mathcal{T}(G_n(a_1, \ldots, a_n;\, x)) = n$. From the definition, it follows that $\mathcal{T}(f_1 f_2) = \mathcal{T}(f_1) + \mathcal{T}(f_2)$, but note that $\mathcal{T}(f_1 + f_2)$ cannot be defined unless $\mathcal{T}(f_1) = \mathcal{T}(f_2)$. Furthermore, algebraic functions and constants have weight 0. Special constants which can be considered as derived from iterated integrals have the corresponding weight, e.g. $\mathcal{T}(\pi) = 1$, since $\log (-1) = \pm \i \pi$ and $\mathcal{T}(i) = \mathcal{T}(-1) = 0$, while $\mathcal{T}(\zeta(n)) = n$, since $\zeta(n) = \text{Li}_n(1)$ (for $n>1$). It is also convenient to assign $\mathcal{T}(\varepsilon)=-1$. With this choice, it is clear that every term in the solution of Eq.~\ref{eq:pathexponential} has the same transcendental weight. This property is referred to as \textbf{uniform transcendentality} (UT). A simple example of a UT function could be $f(x) = 1 + \varepsilon (\log x + \pi) + \varepsilon^2 (\log^2 x + G_2(1, 1;\, x))$, with $\mathcal{T}(f) = 0$. Additionally, 
+UT functions satisfying a more stringent condition:
+\begin{equation} \label{eq:purecondition}
+    \mathcal{T}(\dd f) = \mathcal{T}(f) - 1
+\end{equation}
+are known as \textit{pure} function. In practice, this means that a pure function cannot contain algebraic factors that are not constant --- while they do not affect the transcendental weight of a function, they affect the DE it satisfies\footnote{Note that in literature, the term 'UT' is often implicitly taken to mean `UT and pure'.}. It immediately follows that the iterated integral solution to the canonical DEs is built out of pure functions (the reverse is also true: given a pure basis of MIs, the DEs they satisfy will be canonical). In practice, when constructing a MI basis, we can verify its purity by checking a few conditions that the DE matrices $\tilde{A}_\lambda$ of Eq.~\ref{eq:canonicalDEspartial} have to satisfy:
+\begin{subequations}
+\begin{align}
+    [ \tilde{A}_i, \tilde{A}_j] &= 0\,, \\
+    \partial_i \tilde{A}_j - \partial_j \tilde{A}_i &= 0\,, \\
+    \sum_i \lambda_i \tilde{A}_i &= [\vv{\text{MI}'}] \, \mathbb{1}\,,
+\end{align}
+\end{subequations}
+where in the last equation, the sum runs over all kinematic scales, $[\vv{\text{MI}'}]$ are the mass dimensions of the MIs and $\mathbb{1}$ is the identity matrix \JK{I don't understand the scaling property}. Finally, we point out an interesting observation on the nature of dimensionally regulated amplitudes (see e.g. Ref.~\cite{Duhr:2014woa}). For a Laurent expanded $L$-loop amplitude in $d = 4- 2\varepsilon$, it is \textit{conjectured} that the $\order{\varepsilon^k}$ term contains functions of transcendental weight up to $2L+k$. For example, to calculate a two-loop amplitude up to $\order{\varepsilon^0}$, we need to supply the MI expansions up to weight 4. It is expected that in $\mathcal{N}=4$ Super Yang-Mills theory, this bound is saturated, i.e. functions of weight exactly $2L+k$ are required.
 
-$\mathcal{T}(\varepsilon) = -1$
-%pure integrals
-%Why UT is important
-%conjecture about the weight of special functions required for amplitudes
+Overall, pure integrals have played a central role in the derivation and evaluation of MI bases relevant to our work, that is bases for two-loop integrals with a high number of kinematic scales and massless propagators. 
+\begin{table}[b]
+	\begin{center}
+		\begin{tabular}{r|c|c|c|c|c|c|c|c}
+			  $n$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+			\hline
+			$n$ gluons   & -- & -- & 1 & 4 & 25 & 220 & 2485 & 34300 \\
+			$q\bar{q} + n$ gluons & 1 & 3 & 16 & 123 & 1240 & 15495 & 231280 & 4016775 \\
+		\end{tabular}
+\end{center}
+\end{table}
+
+
+%Paraphrase and add this sentence somewhere:
+%Once a (possibly over-complete) list of UT integrals has been found, their definitions
+%can be added as additional equations to the IBP system. By assigning a lower weight to these
+%integrals, they will be automatically chosen as preferred master integrals by the system solver
+
 \JK{Ask Simone to explain why mappings between UT MIs cannot contain $\varepsilon$ or kinematic dependence.}
 \subsection{Symbols} \label{sec:symbols}
+%def
+%properties
+%First entry condition
 \subsection{An alternative approach to IBP reduction} \label{sec:altibps}
 As mentioned earlier, the IBP relations can only provide the reduction of integrals within one family. Therefore, in practice we typically need to build an extensive IBP system which covers all the families in the problem. This often leads to a prohibitively long time required to solve the system. There is, however, a more efficient way of performing the IBP reduction. Recall that the integral families fed into the reduction are defined by their propagators and ISPs. Each family can therefore be identified by its `type' and permutation of external legs within that type. For example, we refer to the topology of Fig.~\ref{fig:pentabox} as $\text{double-box}(12345)$, and to that of Fig.~\ref{fig:hexatriangle} as $\text{hexa-triangle}(13245)$. It is not hard to notice that that if two given families are of the same type and differ only by a permutation $\sigma$ of the external momenta, i.e. $T'=T(\sigma(ijklm))$, then the IBP reduction of any integral Eq.~\ref{eq:ibpintegral} within the permuted family $T'$ can be expressed as a permutation of the reduction of the corresponding integral in the original family $T$:
 \begin{align}
