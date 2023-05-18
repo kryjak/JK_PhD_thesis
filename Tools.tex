@@ -903,11 +903,11 @@ Overall, we see that the MIs at $\order{\varepsilon^i}$ are given by sums of up 
 \begin{equation} \label{eq:dlogform}
     \dd\tilde{A} = \sum_{i=1}^{|\bm{w}|} a_i \times \dd \log w_i\,.
 \end{equation}
-Here, $w_i$ are known as `letters' (note that sometimes the differentials $\dd \log w_i$ are referred to as letters instead), while their collection $\bm{w} = \{w_1, w_2, \ldots\}$ is the `alphabet'. The matrices $a_i$ contain rational numbers only, free of any kinematic of $\varepsilon$ dependence. The letters play a central role in the analysis of DEs in the $\dd \log$ form, since they control their singularities, determine which class of special functions the MIs are written in terms of, as well as play a central role in the symbol formalism, which we will introduce soon. As mentioned before, in general the kinematic dependence of $\tilde{A}$ might no longer be rational, as the transformation Eq.~\ref{eq:basistransformation} needed to bring DEs into canonical form might introduce non-rational functions into the definitions of the corresponding canonical MIs. In this case, the letters $w_k$ are algebraic functions of $\lambda$. However, if the form of Eq.~\ref{eq:dlogform} can be reached by using rational transformations only, the letters are rational functions of the form $w_k = \lambda - \lambda_k$. Then, it is particularly easy to write down the order-by-order solution Eq.~\ref{eq:DEssolution}, as the iterated integrals in this case are the well-known Goncharov Polylogarithms (GPLs)\footnote{Also known as Hyperlogarithms and Multiple Polylogarithms (MPLs).}\cite{2001math......3059G, 2011arXiv1105.2076G, Vollinga:2004sn}:
+Here, $w_i$ are known as `letters' (note that sometimes the differentials $\dd \log w_i$ are referred to as letters instead), while their collection $\bm{w} = \{w_1, w_2, \ldots\}$ is the `alphabet'. The matrices $a_i$ contain rational numbers only, free of any kinematic of $\varepsilon$ dependence. The letters play a central role in the analysis of DEs in the $\dd \log$ form, since they control their singularities, determine which class of special functions the MIs are written in terms of, as well as play a central role in the symbol formalism, which we will introduce soon. As mentioned before, in general the kinematic dependence of $\tilde{A}$ might no longer be rational, as the transformation Eq.~\ref{eq:basistransformation} needed to bring DEs into canonical form might introduce non-rational functions into the definitions of the corresponding canonical MIs. In this case, the letters $w_k$ are algebraic functions of $\lambda$. However, if the form of Eq.~\ref{eq:dlogform} can be reached by using rational transformations only, the letters are rational functions of the form $w_k = \lambda - \lambda_k$. Then, it is particularly easy to write down the order-by-order solution Eq.~\ref{eq:DEssolution}, as the iterated integrals become the well-known Goncharov Polylogarithms (GPLs)\footnote{Also known as Hyperlogarithms and Multiple Polylogarithms (MPLs).}\cite{2001math......3059G, 2011arXiv1105.2076G, Vollinga:2004sn}:
 \begin{equation} \label{eq:GPLs}
     G_n(a_1, a_2, \ldots, a_n; \lambda) = \int_0^\lambda \frac{\dd t}{t-a_1} G_{n-1}(a_2, \ldots, a_n; t)\, \qquad \text{with } \quad G_0(; x) = 1\,.
 \end{equation}
-They are related to the usual logarithms through:
+Here, despite the somewhat suggestive notation, the indices $a_i$ do not have to be numbers and are considered fully-fledged arguments of $G_n$, alongside $\lambda$. The length of the vector $\vec{a} = (a_1, \ldots a_n)$, i.e. $|\vec{a}|=n$ is called the weight (or depth) of $G_n$. The GPLs are related to the usual logarithms through:
 \begin{equation}
     G_n(a, a, \ldots, a; \lambda) = 
     \begin{cases}
@@ -958,29 +958,39 @@ Overall, pure integrals have played a central role in the derivation and evaluat
 
 \JK{Ask Simone to explain why mappings between UT MIs cannot contain $\varepsilon$ or kinematic dependence.}
 \subsection{Symbols} \label{sec:symbols}
-In this section, we introduce yet another useful concept related to iterated integrals. We begin by noting that the representation of the solution to the canonical DEs in Eq.~\ref{eq:canonicalDEsoneform} is not unique. Most generally, the answer is written using Chen's iterated integrals (CIIs)~\cite{Chen:1977oja}. This form is usually the most compact one. However, if the `letters' are rational in at least one variable, CIIs be expressed in terms of GPLs~\cite{Henn:2014qga}. This typically increases the number of terms, but has the advantage that robust and stable numerical evaluation of GPLs is available (see e.g. \cite{Bauer:2000cp, Vollinga:2004sn}). Moreover, due to the conjecture pointed out in the previous section, typically we will be interested in computing the solution up to transcendental weight 4. Another remarkable conjecture exists: any transcendental function of weight $k < 4$ can be expressed in terms of the usual logarithms and polylogarithms $\text{Li}_k$ only~\cite{MR1265551, Goncharov:2010jf}, while at weight $k=4$ all functions can be expressed in terms of the following functions~\cite{Henn:2014qga}:
+In this section, we introduce yet another useful concept related to iterated integrals. We begin by noting that the representation of the solution to the canonical DEs in Eq.~\ref{eq:canonicalDEsoneform} is not unique. Most generally, the answer is written using Chen's iterated integrals (CIIs)~\cite{Chen:1977oja}. This form is usually the most compact one. However, as pointed out above Eq.~\ref{eq:GPLs}, if the `letters' are rational in at least one variable, CIIs be expressed in terms of GPLs~\cite{Henn:2014qga}. This typically increases the number of terms, but has the advantage that robust and stable numerical evaluation of GPLs is available (see e.g. \cite{Bauer:2000cp, Vollinga:2004sn}). Moreover, due to the conjecture pointed out in the previous section, typically we will be interested in computing the solution up to transcendental weight 4. Another remarkable conjecture exists: any transcendental function of weight $k < 4$ can be expressed in terms of the usual logarithms and polylogarithms $\text{Li}_k$ only~\cite{MR1265551, Goncharov:2010jf}, while at weight $k=4$ all functions can be expressed in terms of the following functions~\cite{Henn:2014qga}:
 \begin{equation} \label{eq:weight4basis}
     \left\{\log(x)\log(y)\log(z)\log(w), \Li_2(z) \log(x) \log(y), \Li_2(x)\Li_2(y), \Li_3(y) \log (x), \Li_4(x), \Li_{2,2}(x, y) \right\}\,,
 \end{equation}
 Here, the classical polylogarithms are defined as:
 \begin{equation} \label{eq:Lidefinition}
-    \Li_k(z) = \sum_{i=1}^\infty \frac{z^i}{i^k}\,, \qquad z \in \mathbb{C},\,  k \in \mathbb{N}\,,
+    \Li_n(z) = \sum_{k=1}^\infty \frac{z^k}{k^n}\,, \qquad z, n \in \mathbb{C}\,,
 \end{equation}
-while the multiple polylogarithms $\Li_{m_1, \ldots, m_k}$ are their generalisations:
-\begin{equation} \label{eq:multiLidefinition}
-    \Li_{m_1, \ldots, m_k}(z_1, \ldots, z_k) = \sum_{0<n_1<\ldots<n_k} \frac{z_1^{n_1} \ldots z_k^{n_k}}{n_1^{m_1} \ldots n_k^{m_k}} = \sum_{n_k=1}^\infty \frac{z_k^{n_k}}{n_k^{m_k}} \sum_{n_{k-1}=1}^{n_k-1} \ldots \sum_{n_1=1}^{n_2-1} \frac{z_1^{n_1}}{n_1^{m_1}}\,.
+while the multiple polylogarithms $\Li_{m_1, \ldots, m_k}$ are their generalisations~\cite{2011arXiv1105.2076G, Duhr:2019tlz}:
+\begin{subequations}
+\begin{align} \label{eq:multiLidefinition}
+    \Li_{m_1, \ldots, m_n}(z_1, \ldots, z_n) &= \sum_{0<k_1<\ldots<k_n} \frac{z_1^{k_1} \ldots z_n^{k_n}}{k_1^{m_1} \ldots k_n^{m_n}} \\
+    &= \sum_{k_n=1}^\infty \frac{z_n^{k_n}}{k_n^{m_n}} \sum_{k_{n-1}=1}^{k_n-1} \frac{z_{n-1}^{k_{n-1}}}{k_{n-1}^{m_{n-1}}}\ldots \sum_{k_1=1}^{k_2-1} \frac{z_1^{k_1}}{k_1^{m_1}}\,. \label{eq:multiLidefinition2}
+\end{align}
+\end{subequations}
+Note that in these two definitions, $|z_i|<1$, but the formulas can be analytically continued to cover regions where $|z_i| \ge 1$. The $\Li_{m_1, \ldots, m_k}$ MPLs can be viewed as the series representation of the GPLs defined in Eq.~\ref{eq:GPLs}. They are related through the following equation~\cite{Duhr:2019tlz}:
+\begin{equation} \label{eq:LiToG}
+    \Li_{m_1, \ldots, m_n}(z_1, \ldots, z_n) = (-1)^n\,G\left(\vec{0}_{m_n-1}, \frac{1}{z_n}, \ldots, \vec{0}_{m_1-1}, \frac{1}{z_1\ldots z_n}; \,1 \right)\,.
 \end{equation}
-The $\Li_{m_1, \ldots, m_k}$ MPLs can be viewed as the series representation of the GPLs defined in Eq.~\ref{eq:GPLs}. In particular, $\Li_{2,2}(x, y)$ in the weight-4 basis Eq.~\ref{eq:weight4basis} admits the integral representation:
+For example, $\Li_{2,2}(x, y)$ in the weight-4 basis Eq.~\ref{eq:weight4basis} can be written as:%admits the integral representation:
 \begin{equation}
-    \Li_{2,2}(x, y) = -\int_0^1 \frac{x \dd t}{1- xt} \log t \, \Li_2(xyt)\,.
+     \Li_{2,2}(x, y) = G\left(0, \frac{1}{y}, 0, \frac{1}{xy};\,1 \right)\,.
 \end{equation}
-We thus see that the most naive solution to the canonical DEs, written in terms of CIIs, is likely to contain a large degree of redundancy. Therefore, we would like to have a tool which can find such relations between transcendental functions and reduce them onto a minimal expression. To this end, we introduce the notion of a \textbf{symbol}\cite{Goncharov:2010jf, Duhr:2011zq}. After giving its definition and properties, we will demonstrate its power based on several illustrative examples. To motivate our effort, we remark that the main result of Ref.~\cite{Goncharov:2010jf} was the re-writing of a 17-page expression for a quantity known as the two-loop, six-point remainder function (related to Wilson loops) in $\mathcal{N}=4$ SYM~\cite{DelDuca:2009au, DelDuca:2010zg} as a remarkably compact combination of classical polylogarithms. Moreover, we will have a chance to exploit the power of symbols on our own when we study the structure of the `all-plus' $\phi$+gluon amplitude in Section~\ref{sec:selfdual}.
+%\begin{equation}
+%    \Li_{2,2}(x, y) = -\int_0^1 \frac{x \dd t}{1- xt} \log t \, \Li_2(xyt)\,.
+%\end{equation}
+Overall, we see that the most naive solution to the canonical DEs, written in terms of CIIs, is likely to contain a large degree of redundancy. However, due to the abundance of integral representations, it is not easy to choose the most appropriate set of functions or even verify if two expressions are equivalent. We would like to have a tool which can find relations between transcendental functions and be representation independent \JK{Is it correct to say that the symbol is representation independent?}. To this end, we introduce the notion of a \textbf{symbol}\cite{Goncharov:2010jf, Duhr:2011zq}. After giving its definition and properties, we will demonstrate its power based on several illustrative examples. To motivate our effort, we remark that the main result of Ref.~\cite{Goncharov:2010jf} was the re-writing of a 17-page expression for a quantity known as the two-loop, six-point remainder function (related to Wilson loops) in $\mathcal{N}=4$ SYM~\cite{DelDuca:2009au, DelDuca:2010zg} as a remarkably compact combination of classical polylogarithms. Moreover, we will have a chance to exploit the power of symbols on our own when we study the structure of the `all-plus' $\phi$+gluon amplitude in Section~\ref{sec:selfdual}.
 
 The symbol of a CII with $\dd \log$ is kernels defined as:
 \begin{equation} \label{eq:symboldef}
     \SS \left(\int_\gamma \dd \log w_1 \cdot \ldots \cdot \dd \log w_n \right) \equiv w_1 \oo \ldots \oo w_n \,.
 \end{equation}
-We can think of it as an elementary $n$-fold tensor where each entry $w_i$ is implicitly understood as to mean its corresponding $\dd \log$ form. It satisfied certain properties that we would expect from the behaviour of logarithms:
+We can think of it as an elementary $n$-fold tensor where each entry $w_i$ is implicitly understood as to mean its corresponding $\dd \log$ form. It satisfies certain properties that we would expect from the behaviour of logarithms\footnote{for a detailed discussion of symbol properties, see Ref.~\cite{Duhr:2011zq}}:
 \begin{subequations}
 \begin{align}
     A \oo (ab) \oo B &= A \oo a \oo B + A \oo b \oo B\,, \\
@@ -989,7 +999,7 @@ We can think of it as an elementary $n$-fold tensor where each entry $w_i$ is im
 \end{align}
 \end{subequations}
 where $A, B$ are elementary tensors and $a, b$ are algebraic functions. Note that in the last line, $n$ becomes a coefficient of the symbol, rather than a part of it. Indeed, a symbol which contains a constant (not only rational) vanishes:
-\begin{equation}
+\begin{equation} \label{eq:symbolAcB}
     A \oo c \oo B = 0\,,
 \end{equation}
 which can be understood as a consequence of $\dd \log c = 0$. This means that, when working with the symbol, we are insensitive to constants, including transcendental ones like $\pi$. 
@@ -998,21 +1008,62 @@ Since CIIs are defined as repeated integrations over some kernels, it is natural
 \begin{equation} \label{eq:symboldiff}
     \dd (w_1 \oo \ldots \oo w_n) = \dd \log w_n \, (w_1 \oo \ldots \oo w_{n-1})\,.
 \end{equation}
-This should remind the reader of the definition of pure functions in Eq.~\ref{eq:purecondition}. Crucially, this differential property can be reversed and allows us to define the symbol recursively~\cite{Goncharov:2010jf}. For a transcendental function $f$ with $\mathcal{T}(F) = k$ whose total differential can be written as:
+This should remind the reader of the definition of pure functions in Eq.~\ref{eq:purecondition}. Crucially, this differential property can be reversed and allows us to define the symbol recursively~\cite{Goncharov:2010jf}. For a transcendental function $F$ with $\mathcal{T}(F) = k$ whose total differential can be written as:
 \begin{equation}
-    \dd F = \sum_i f_i \dd \log w_i\,,
+    \dd F = \sum_i f_i \, \dd \log w_i\,,
 \end{equation}
 where $f_i$ are functions with $T(f_i)=k-1$, we have:
 \begin{equation} \label{eq:symbolrecursive}
     \SS(F) = \sum_i \SS(f_i)\oo w_i \,.
 \end{equation}
-The starting point of the recursion is a single weight-1 function --- the logarithm: $\SS(\log w) = w$ (remember that $\SS(\pi) = \SS(\zeta(n))=0$ \JK{Is this relevant?}). This immediately allows us to give the symbol of any classical polylogarithm $\Li_k$. 
+The starting point of the recursion is a single weight-1 function --- the logarithm: $\SS(\log w) = w$, where the $w$ on the RHS is understood as an elementary tensor in the sense of Eq.~\ref{eq:symboldef} (remember that $\SS(\pi) = \SS(\zeta(n))=0$ \JK{Is this relevant?}). This immediately allows us to obtain the symbol of any classical polylogarithm $\Li_k$. Note the weight-1 polylogarithm is just the normal logarithm:
+\begin{equation}
+    \Li_1(z) = -\log (1-z)\,. 
+\end{equation}
+Moreover, the following integral relation holds:
+\begin{equation} \label{eq:Liiterative}
+    \Li_n(z) = \int_0^z \frac{\dd t}{t} \Li_{n-1}(t)\,.
+\end{equation}
+Thus, we have:
+\begin{align} \label{eq:Lisymbols}
+    \SS(\Li_1(z)) &= -(1-z)\,, \nonumber \\
+    \SS(\Li_2(z)) &= -(1-z) \oo z \,, \nonumber \\
+    &\,\,\, \vdots \nonumber \\
+    \SS(\Li_n(z)) &= -(1-z) \oo \underbrace{z \oo \ldots \oo z}_{n-1 \text{ times}}\,.
+\end{align}
+Note that in deriving the first line, we used $\SS(-f) = -\SS(f)$\JK{Make sure this is correct.} and this minus sign cannot be dropped or absorbed, i.e. $\SS(\Li_1(z)) \neq (z-1)$. Moreover, it should not be confused with the symbol expression $-1 \oo (1-z)$, which vanishes due to Eq.~\ref{eq:symbolAcB}. To avoid confusion, the symbol is often written using a bracket and with the `$\SS$' retained, e.g. $\SS(\Li_2(z)) = -\SS[1-z, z]$.
 
-For a detailed discussion of symbol properties, see Ref.~\cite{Duhr:2011zq}. 
+\JK{How to take $\SS(G(\vec{a}; z))$?.}
+\begin{equation} \label{eq:Gsymbol}
+    \textcolor{red}{\SS(G(a_1, \ldots a_n; z)) = }
+\end{equation}
 
-Let us now demonstrate the power of this formalism through a few examples.
+We also need to know how to obtain the symbol of a product of functions, e.g. $\SS(\log(z) \Li_2(z))$. To this end, we point out that the CIIs satisfy so-called shuffle relations. Specialising to the case of GPLs, we have:
+\begin{equation}
+    G(\vec{a};z)G(\vec{b};z) = \sum_{\vec{c}=\vec{a} \shuffle \vec{b}} G(\vec{c};z)\,.
+\end{equation}
+The shuffle product $\vec{a} \shuffle \vec{b}$ produces all possible ways of permuting the union of indices $\vec{a}$ and $\vec{b}$ such that the ordering of indices within each set is preserved. Perhaps a simple example illustrates this definition better:
+\begin{align} \label{eq:shuffleexample}
+    G(a_1,a_2;z) G(b_1,b_2;z) &= G(a_1,a_2,b_1,b_2;z) + G(a_1,b_1,a_2,b_2;z) + G(a_1,b_1,b_2,a_2;z) \nonumber \\ 
+    &+ G(b_1,a_1,a_2,b_2;z) + G(b_1,a_1,b_2,a_2;z) + G(b_1,b_2,a_1,a_2;z)\,.
+\end{align}
+Therefore, the shuffle relations allow us to write a product of GPLs of weight $|\vec{a}|$ and $|\vec{b}|$ as a GPL of weight $|\vec{a}|+|\vec{b}|$. The symbol itself also satisfies the shuffle algebra:
+\begin{equation} \label{eq:symbolshuffle}
+    (w_1 \oo \ldots \oo w_n) \times (v_1 \oo \ldots \oo v_m) = \sum_{\vec{z}=\vec{w} \shuffle \vec{v}} (z_1 \oo \ldots \oo z_{n+m})\,.
+\end{equation}
+For example, 
+\begin{align}
+    \SS(\log(z) \Li_2(z)) &= (z) \times (-(1-z)\oo z) \nonumber \\
+    &= -z \oo (1-z) \oo z - 2 (1-z) \oo z \oo z \\
+    &\textcolor{gray}{= -\SS[z, 1-z, z] -2 \SS[1-z, z, z]} \,, \nonumber
+\end{align}
+where in the last line we used the alternative notation mentioned above in order to make absolutely clear the position of the minus sign and a constant\JK{Is the last line actually correct???}.
 
+Overall, we see that thanks to symbols of the classical polylogarithms Eqs.~\ref{eq:Lisymbols} and GPLs Eq.~\ref{eq:Gsymbol}, the symbol shuffling Eq.~\ref{eq:symbolshuffle} and finally the relation Eq.~\ref{eq:LiToG}, we can now compute the symbol of each function in the weight-4 basis of Eq.~\ref{eq:weight4basis}. Thinking ahead to our amplitude applications, it should now be clear that the symbol will allow us to find relations between linearly dependent objects such as GPLs and express our results in a much more compact form. Having expended the effort of understanding the last few pages, let us enjoy the fruits of our labour sprouting in the form of several illustrative examples.
+
+%examples
 %First entry condition
+%Disc - Simone's thesis
 \subsection{An alternative approach to IBP reduction} \label{sec:altibps}
 As mentioned earlier, the IBP relations can only provide the reduction of integrals within one family. Therefore, in practice we typically need to build an extensive IBP system which covers all the families in the problem. This often leads to a prohibitively long time required to solve the system. There is, however, a more efficient way of performing the IBP reduction. Recall that the integral families fed into the reduction are defined by their propagators and ISPs. Each family can therefore be identified by its `type' and permutation of external legs within that type. For example, we refer to the topology of Fig.~\ref{fig:pentabox} as $\text{double-box}(12345)$, and to that of Fig.~\ref{fig:hexatriangle} as $\text{hexa-triangle}(13245)$. It is not hard to notice that that if two given families are of the same type and differ only by a permutation $\sigma$ of the external momenta, i.e. $T'=T(\sigma(ijklm))$, then the IBP reduction of any integral Eq.~\ref{eq:ibpintegral} within the permuted family $T'$ can be expressed as a permutation of the reduction of the corresponding integral in the original family $T$:
 \begin{align}
