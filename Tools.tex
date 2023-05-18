@@ -958,15 +958,60 @@ Overall, pure integrals have played a central role in the derivation and evaluat
 
 \JK{Ask Simone to explain why mappings between UT MIs cannot contain $\varepsilon$ or kinematic dependence.}
 \subsection{Symbols} \label{sec:symbols}
-In this section, we introduce yet another useful concept related to iterated integrals. We begin by noting that the representation of the solution to the canonical DEs in Eq.~\ref{eq:canonicalDEsoneform} is not unique. Most generally, the answer is written using Chen's iterated integrals~\cite{Chen:1977oja}. However, if the `letters' are rational in at least one variable, they can be expressed in terms of GPLs~\cite{Henn:2014qga}. Moreover, due to the conjecture pointed out in the previous section, typically we will be interested in computing the solution up to transcendental weight 4. Another remarkable conjecture exists: any transcendental function of weight $k \le 4$ can be expressed in terms of the classical logarithms and polylogarithms $\text{Li}_k$ only. Furthermore, they are not linearly independent and can be reduced onto the following basis~\cite{MR1265551, Goncharov:2010jf}:
-\begin{equation}
-    \left\{\log(x)\log(y)\log(z)\log(w), \Li_2(x) \log(y) \log(z), \Li_2(x)\Li_2(y), \Li_3(x) \log (y), \Li_4(x) \right\}
+In this section, we introduce yet another useful concept related to iterated integrals. We begin by noting that the representation of the solution to the canonical DEs in Eq.~\ref{eq:canonicalDEsoneform} is not unique. Most generally, the answer is written using Chen's iterated integrals (CIIs)~\cite{Chen:1977oja}. This form is usually the most compact one. However, if the `letters' are rational in at least one variable, CIIs be expressed in terms of GPLs~\cite{Henn:2014qga}. This typically increases the number of terms, but has the advantage that robust and stable numerical evaluation of GPLs is available (see e.g. \cite{Bauer:2000cp, Vollinga:2004sn}). Moreover, due to the conjecture pointed out in the previous section, typically we will be interested in computing the solution up to transcendental weight 4. Another remarkable conjecture exists: any transcendental function of weight $k < 4$ can be expressed in terms of the usual logarithms and polylogarithms $\text{Li}_k$ only~\cite{MR1265551, Goncharov:2010jf}, while at weight $k=4$ all functions can be expressed in terms of the following functions~\cite{Henn:2014qga}:
+\begin{equation} \label{eq:weight4basis}
+    \left\{\log(x)\log(y)\log(z)\log(w), \Li_2(z) \log(x) \log(y), \Li_2(x)\Li_2(y), \Li_3(y) \log (x), \Li_4(x), \Li_{2,2}(x, y) \right\}\,,
 \end{equation}
-We thus see that the most naive solution to the canonical DEs, written in terms of Chen's iterated integrals, is likely to contain a large degree of redundancy. Therefore, we would like to have a tool which can find such relations between transcendental functions and reduce them onto a minimal expression. To this end, we introduce the notion of a \textbf{symbol}. After giving its definition and properties, we will demonstrate its power based on several illustrative examples. To motivate our effort, we remark that the main result of Ref.~\cite{Goncharov:2010jf} was the re-writing of a 17-page expression for a quantity known as the two-loop, six-point remainder function (related to Wilson loops) in $\mathcal{N}=4$ SYM~\cite{DelDuca:2009au, DelDuca:2010zg} as a remarkably compact combination of classical polylogarithms. Moreover, we will have a chance to exploit the power of symbols on our own when we study the structure of the `all-plus' $\phi$+gluon amplitude in Section~\ref{sec:selfdual}.
+Here, the classical polylogarithms are defined as:
+\begin{equation} \label{eq:Lidefinition}
+    \Li_k(z) = \sum_{i=1}^\infty \frac{z^i}{i^k}\,, \qquad z \in \mathbb{C},\,  k \in \mathbb{N}\,,
+\end{equation}
+while the multiple polylogarithms $\Li_{m_1, \ldots, m_k}$ are their generalisations:
+\begin{equation} \label{eq:multiLidefinition}
+    \Li_{m_1, \ldots, m_k}(z_1, \ldots, z_k) = \sum_{0<n_1<\ldots<n_k} \frac{z_1^{n_1} \ldots z_k^{n_k}}{n_1^{m_1} \ldots n_k^{m_k}} = \sum_{n_k=1}^\infty \frac{z_k^{n_k}}{n_k^{m_k}} \sum_{n_{k-1}=1}^{n_k-1} \ldots \sum_{n_1=1}^{n_2-1} \frac{z_1^{n_1}}{n_1^{m_1}}\,.
+\end{equation}
+The $\Li_{m_1, \ldots, m_k}$ MPLs can be viewed as the series representation of the GPLs defined in Eq.~\ref{eq:GPLs}. In particular, $\Li_{2,2}(x, y)$ in the weight-4 basis Eq.~\ref{eq:weight4basis} admits the integral representation:
+\begin{equation}
+    \Li_{2,2}(x, y) = -\int_0^1 \frac{x \dd t}{1- xt} \log t \, \Li_2(xyt)\,.
+\end{equation}
+We thus see that the most naive solution to the canonical DEs, written in terms of CIIs, is likely to contain a large degree of redundancy. Therefore, we would like to have a tool which can find such relations between transcendental functions and reduce them onto a minimal expression. To this end, we introduce the notion of a \textbf{symbol}\cite{Goncharov:2010jf, Duhr:2011zq}. After giving its definition and properties, we will demonstrate its power based on several illustrative examples. To motivate our effort, we remark that the main result of Ref.~\cite{Goncharov:2010jf} was the re-writing of a 17-page expression for a quantity known as the two-loop, six-point remainder function (related to Wilson loops) in $\mathcal{N}=4$ SYM~\cite{DelDuca:2009au, DelDuca:2010zg} as a remarkably compact combination of classical polylogarithms. Moreover, we will have a chance to exploit the power of symbols on our own when we study the structure of the `all-plus' $\phi$+gluon amplitude in Section~\ref{sec:selfdual}.
 
+The symbol of a CII with $\dd \log$ is kernels defined as:
+\begin{equation} \label{eq:symboldef}
+    \SS \left(\int_\gamma \dd \log w_1 \cdot \ldots \cdot \dd \log w_n \right) \equiv w_1 \oo \ldots \oo w_n \,.
+\end{equation}
+We can think of it as an elementary $n$-fold tensor where each entry $w_i$ is implicitly understood as to mean its corresponding $\dd \log$ form. It satisfied certain properties that we would expect from the behaviour of logarithms:
+\begin{subequations}
+\begin{align}
+    A \oo (ab) \oo B &= A \oo a \oo B + A \oo b \oo B\,, \\
+    A \oo \left(\frac{a}{b}\right) \oo B &= A \oo a \oo B - A \oo b \oo B\,, \\
+    A \oo a^n \oo B &= n(A \oo a \oo B)\,,
+\end{align}
+\end{subequations}
+where $A, B$ are elementary tensors and $a, b$ are algebraic functions. Note that in the last line, $n$ becomes a coefficient of the symbol, rather than a part of it. Indeed, a symbol which contains a constant (not only rational) vanishes:
+\begin{equation}
+    A \oo c \oo B = 0\,,
+\end{equation}
+which can be understood as a consequence of $\dd \log c = 0$. This means that, when working with the symbol, we are insensitive to constants, including transcendental ones like $\pi$. 
 
-%def
-%properties
+Since CIIs are defined as repeated integrations over some kernels, it is natural to expect that the total differential acts on the symbol defined through Eq.~\ref{eq:symboldef} in the following way:
+\begin{equation} \label{eq:symboldiff}
+    \dd (w_1 \oo \ldots \oo w_n) = \dd \log w_n \, (w_1 \oo \ldots \oo w_{n-1})\,.
+\end{equation}
+This should remind the reader of the definition of pure functions in Eq.~\ref{eq:purecondition}. Crucially, this differential property can be reversed and allows us to define the symbol recursively~\cite{Goncharov:2010jf}. For a transcendental function $f$ with $\mathcal{T}(F) = k$ whose total differential can be written as:
+\begin{equation}
+    \dd F = \sum_i f_i \dd \log w_i\,,
+\end{equation}
+where $f_i$ are functions with $T(f_i)=k-1$, we have:
+\begin{equation} \label{eq:symbolrecursive}
+    \SS(F) = \sum_i \SS(f_i)\oo w_i \,.
+\end{equation}
+The starting point of the recursion is a single weight-1 function --- the logarithm: $\SS(\log w) = w$ (remember that $\SS(\pi) = \SS(\zeta(n))=0$ \JK{Is this relevant?}). This immediately allows us to give the symbol of any classical polylogarithm $\Li_k$. 
+
+For a detailed discussion of symbol properties, see Ref.~\cite{Duhr:2011zq}. 
+
+Let us now demonstrate the power of this formalism through a few examples.
+
 %First entry condition
 \subsection{An alternative approach to IBP reduction} \label{sec:altibps}
 As mentioned earlier, the IBP relations can only provide the reduction of integrals within one family. Therefore, in practice we typically need to build an extensive IBP system which covers all the families in the problem. This often leads to a prohibitively long time required to solve the system. There is, however, a more efficient way of performing the IBP reduction. Recall that the integral families fed into the reduction are defined by their propagators and ISPs. Each family can therefore be identified by its `type' and permutation of external legs within that type. For example, we refer to the topology of Fig.~\ref{fig:pentabox} as $\text{double-box}(12345)$, and to that of Fig.~\ref{fig:hexatriangle} as $\text{hexa-triangle}(13245)$. It is not hard to notice that that if two given families are of the same type and differ only by a permutation $\sigma$ of the external momenta, i.e. $T'=T(\sigma(ijklm))$, then the IBP reduction of any integral Eq.~\ref{eq:ibpintegral} within the permuted family $T'$ can be expressed as a permutation of the reduction of the corresponding integral in the original family $T$:
