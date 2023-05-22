@@ -866,11 +866,11 @@ Naturally, to solve this equation, we also need to provide boundary values. It i
 \subsection{The canonical form}
 In general, solving the DEs satisfied by MIs is hard. Note however, that typically we are interested in only the first few coefficients of the Laurent expansion of Eq.~\ref{eq:DEsoneform} around $\varepsilon=0$. Consider a change of basis:
 \begin{equation} \label{eq:basistransformation}
-    \vv{\text{MI}} \rightarrow \vv{\text{MI}}' = B\,\vv{\text{MI}}\,,
+    \vv{\text{MI}} \rightarrow B\,\vv{\text{MI}}\,,
 \end{equation}
 where $B$ is an arbitrary matrix that can depend on $\lambda$ and $\varepsilon$. Under this transformation, the partial DEs become:
 \begin{equation}
-    \frac{\partial \vv{\text{MI}}'}{\partial \lambda} = \left( \frac{\partial B}{\partial \lambda}B^{-1} + B A_{\lambda} B^{-1} \right) \vv{\text{MI}}'
+    \frac{\partial \vv{\text{MI}}}{\partial \lambda} = \left( \frac{\partial B}{\partial \lambda}B^{-1} + B A_{\lambda} B^{-1} \right) \vv{\text{MI}}
 \end{equation}
 A key conjecture due to Ref.~\cite{Henn:2013pwa} is that it is always possible to choose $B$ such that:
 \begin{equation}
@@ -878,32 +878,32 @@ A key conjecture due to Ref.~\cite{Henn:2013pwa} is that it is always possible t
 \end{equation}
 That is, with an appropriate transformation, the $\varepsilon$-dependence factorises out of the matrices, which now contain only kinematic dependence. Note, however, that they might now contain algebraic (i.e. non-rational) factors such as square roots. Overall, Eq.~\ref{eq:DEspartial} becomes:
 \begin{equation} \label{eq:canonicalDEspartial}
-    \frac{\partial}{\partial \lambda} \vv{\text{MI}}' = \varepsilon\dd \tilde{A}_{\lambda}(\lambda) \vv{\text{MI}}'\,, 
+    \frac{\partial}{\partial \lambda} \vv{\text{MI}} = \varepsilon\dd \tilde{A}_{\lambda}(\lambda) \vv{\text{MI}}\,, 
 \end{equation}
 while Eq.~\ref{eq:DEsoneform}:
 \begin{equation} \label{eq:canonicalDEsoneform}
-    \dd \,\vv{\text{MI}}' = \varepsilon \dd \tilde{A}(\lambda) \,\vv{\text{MI}}'\,.
+    \dd \,\vv{\text{MI}} = \varepsilon \dd \tilde{A}(\lambda) \,\vv{\text{MI}}\,.
 \end{equation}
 \JK{Should this be $\dd \tilde{A}(\lambda)$?}
 This is known as DEs in \textbf{canonical form} (also known as the $\varepsilon$-form)\footnote{Several packages exist for transforming the DEs into the canonical form. See \texttt{Fuchsia}~\cite{Gituliar:2017vzm}, \texttt{Libra}~\cite{Lee:2020zfb}, \texttt{INITIAL}~\cite{Dlapa:2020cwj} and \texttt{CANONICA}~\cite{Meyer:2018feh}. See also \cite{Dlapa:2022nct} for a comprehensive review of different techniques.}. In particular, Eq.~\ref{eq:canonicalDEsoneform} admits a solution in terms of the path-ordered exponential:
 \begin{equation} \label{eq:pathexponential}
-    \dd \,\vv{\text{MI}}'(\lambda,\, \varepsilon) = \mathbb{P} \exp \left(\varepsilon\int_\gamma \dd \tilde{A} \right) \vv{\text{MI}}'(\lambda(\gamma=0),\,\varepsilon )\,,
+    \dd \,\vv{\text{MI}}(\lambda,\, \varepsilon) = \mathbb{P} \exp \left(\varepsilon\int_\gamma \dd \tilde{A} \right) \vv{\text{MI}}(\lambda(\gamma=0),\,\varepsilon )\,,
 \end{equation}
-where $\gamma\,:\,[0, 1] \rightarrow \mathbb{C}^{|\lambda|}$ is a path in the space of the kinematic invariants and internal masses $\lambda$. We note that the integration is independent of the path taken. Because the solution is expressed through the series expansion of the matrix exponential, it is easy to see that the MIs are obtained as iterated integrals of $\tilde{A}$. Given the Laurent expansion of canonical MI vector:
+where $\gamma\,:\,[0, 1] \rightarrow \mathbb{C}^{|\lambda|}$ is a path in the space of the kinematic invariants and internal masses $\lambda$. We note that the integration is independent of the path taken. Because the solution is expressed through the series expansion of the matrix exponential, it is easy to see that the MIs are obtained as iterated integrals of $\tilde{A}$. Given the Laurent expansion of the canonical MI vector:
 \begin{equation} \label{eq:MIlaurentexp}
-    \vv{\text{MI}}'(\lambda, \, \varepsilon) = \sum_{i=0}^\infty \varepsilon^i\,\vv{\text{MI}}'^{(i)}(\lambda) \,,
+    \vv{\text{MI}}(\lambda, \, \varepsilon) = \sum_{k=0}^\infty \varepsilon^k\,\vv{\text{MI}}^{(k)}(\lambda) \,,
 \end{equation}
 we can insert it into Eq.~\ref{eq:pathexponential} and series expand both its sides in $\varepsilon$. Then the order-by-order DE solution becomes:
 \begin{equation} \label{eq:DEssolution}
-    \vv{\text{MI}}'^{(i)}(\lambda) = \sum_{j=0}^i \int_\gamma \underbrace{\dd \tilde{A} \cdot \ldots \cdot \dd \tilde{A}}_{j\text{ times}} \, \cdot \, \vv{\text{MI}}'^{(i-j)}(\lambda(\gamma=0))\,,
+    \vv{\text{MI}}^{(k)}(\lambda) = \sum_{j=0}^k \int_\gamma \underbrace{\dd \tilde{A} \cdot \ldots \cdot \dd \tilde{A}}_{j\text{ times}} \, \cdot \, \vv{\text{MI}}^{(k-j)}(\lambda(\gamma=0))\,,
 \end{equation}
-where the path integral for $j=0$ is defined as 1\cite{Chen:1977oja}. Note that we can assume that the Laurent expansion starts from $\varepsilon=0$, because the DEs are insensitive to a re-scaling of the integrals by a factor which does not depend on the kinematics. Thus, the MIs can be normalised to be finite, which moves any potential singularities into the coefficients of the IBP reduction. 
-\section{The $\dd \log$ form and Goncharov Polylogarithms}
-Overall, we see that the MIs at $\order{\varepsilon^i}$ are given by sums of up to $i$-fold integrals. The integration kernels are determined by the structure of $\tilde{A}$, which deserves further discussion. Let us consider the singularities of the DEs. It can be shown, for example by studying the Feynman parameter representation, that the Feynman integrals cannot contain so-called essential singularities, e.g. singularities of the form $\mathrm{e}^{1/\lambda} = 1+ 1/\lambda + 1/(2!\lambda^2)+\ldots\,$ at $\lambda=0$. In particular, for each singularity $\lambda_k$, we expect the leading behaviour of the Feynman integrals to be $\sim (\lambda- \lambda_k)^\alpha$ for some power $\alpha$. This implies that the corresponding DEs must have only regular singularities. In particular, around each singular point $\lambda_k$, they must have a simple pole $\sim \alpha/(\lambda-\lambda_k)$. This strongly constrains the form that DEs can take\footnote{In practice, when constructing canonical DEs, we might encounter spurious double poles or higher. However, they can be removed by a suitable basis change which leaves the DEs with only simple poles. \JK{Is this always true?}}\cite{Henn:2014qga}. In many cases of practical interest, it is possible to construct MI bases which result in DEs in the so-called \textbf{$\dd \log$ form}:
+where the path integral for $j=0$ is defined as 1\cite{Chen:1977oja}. These integrals are known as Chen's iterated integrals (CIIs). Note that we can assume that the Laurent expansion starts from $\varepsilon=0$, because the DEs are insensitive to a re-scaling of the integrals by a factor which does not depend on the kinematics. Thus, the MIs can be normalised to be finite, which moves any potential singularities into the coefficients of the IBP reduction. 
+\subsection{The $\dd \log$ form and Goncharov Polylogarithms} \label{sec:DEdlogform}
+Overall, we see that the MIs at $\order{\varepsilon^k}$ are given by sums of up to $k$-fold integrals. The integration kernels are determined by the structure of $\tilde{A}$, which deserves further discussion. Let us consider the singularities of the DEs. It can be shown, for example by studying the Feynman parameter representation, that the Feynman integrals cannot contain so-called essential singularities, e.g. singularities of the form $\mathrm{e}^{1/\lambda} = 1+ 1/\lambda + 1/(2!\lambda^2)+\ldots\,$ at $\lambda=0$. In particular, for each singularity $\lambda_i$, we expect the leading behaviour of the Feynman integrals to be $\sim (\lambda- \lambda_i)^\alpha$ for some power $\alpha$. This implies that the corresponding DEs must have only regular singularities. In particular, around each singular point $\lambda_i$, they must have a simple pole $\sim \alpha/(\lambda-\lambda_i)$. This strongly constrains the form that DEs can take\footnote{In practice, when constructing canonical DEs, we might encounter spurious double poles or higher. However, they can be removed by a suitable basis change which leaves the DEs with only simple poles. \JK{Is this always true?}}\cite{Henn:2014qga}. Furthermore, in many cases of practical interest, it is possible to construct MI bases which result in DEs in the so-called \textbf{$\dd \log$ form}:
 \begin{equation} \label{eq:dlogform}
     \dd\tilde{A} = \sum_{i=1}^{|\bm{w}|} a_i \times \dd \log w_i\,.
 \end{equation}
-Here, $w_i$ are known as `letters' (note that sometimes the differentials $\dd \log w_i$ are referred to as letters instead), while their collection $\bm{w} = \{w_1, w_2, \ldots\}$ is the `alphabet'. The matrices $a_i$ contain rational numbers only, free of any kinematic of $\varepsilon$ dependence. The letters play a central role in the analysis of DEs in the $\dd \log$ form, since they control their singularities, determine which class of special functions the MIs are written in terms of, as well as play a central role in the symbol formalism, which we will introduce soon. As mentioned before, in general the kinematic dependence of $\tilde{A}$ might no longer be rational, as the transformation Eq.~\ref{eq:basistransformation} needed to bring DEs into canonical form might introduce non-rational functions into the definitions of the corresponding canonical MIs. In this case, the letters $w_k$ are algebraic functions of $\lambda$. However, if the form of Eq.~\ref{eq:dlogform} can be reached by using rational transformations only, the letters are rational functions of the form $w_k = \lambda - \lambda_k$. Then, it is particularly easy to write down the order-by-order solution Eq.~\ref{eq:DEssolution}, as the iterated integrals become the well-known Goncharov Polylogarithms (GPLs)\footnote{Also known as Hyperlogarithms and Multiple Polylogarithms (MPLs).}\cite{2001math......3059G, 2011arXiv1105.2076G, Vollinga:2004sn}:
+Here, $w_i$ are known as `letters' (note that sometimes the differentials $\dd \log w_i$ are referred to as letters instead), while their collection $\bm{w} = \{w_1, w_2, \ldots\}$ is the `alphabet'. The matrices $a_i$ contain rational numbers only, free of any kinematic of $\varepsilon$ dependence. The letters play a central role in the analysis of DEs in the $\dd \log$ form, since they control their singularities, determine which class of special functions the MIs are written in terms of, as well as play a central role in the symbol formalism, which we will introduce soon. As mentioned before, in general the kinematic dependence of $\tilde{A}$ might no longer be rational, as the transformation Eq.~\ref{eq:basistransformation} needed to bring DEs into canonical form might introduce non-rational functions into the definitions of the corresponding canonical MIs. In this case, the letters $w_k$ are algebraic functions of $\lambda$. However, if the form of Eq.~\ref{eq:dlogform} can be reached by using rational transformations only, the letters are rational functions of the form $w_i = \lambda - \lambda_i$. Then, it is particularly easy to write down the order-by-order solution Eq.~\ref{eq:DEssolution}, as the iterated integrals become the well-known Goncharov Polylogarithms (GPLs)\footnote{Also known as Hyperlogarithms and Multiple Polylogarithms (MPLs).}\cite{2001math......3059G, 2011arXiv1105.2076G, Vollinga:2004sn}:
 \begin{equation} \label{eq:GPLs}
     G_n(a_1, a_2, \ldots, a_n; \lambda) = \int_0^\lambda \frac{\dd t}{t-a_1} G_{n-1}(a_2, \ldots, a_n; t)\,,
 \end{equation}
@@ -1123,26 +1123,49 @@ which is indeed a well-known dilogarithm relation. Finally, the reader might won
 
 \textbf{Example 3}
 \newline
-For more complicated identities, calculating the symbol by hand becomes unfeasible. Consider the following wei relation:
+\JK{Not sure if these example adds anything of value...}
+For more complicated identities, calculating the symbol by hand becomes unfeasible. Consider the following weight-3 relation:
 \begin{align}
     \Li_3(z)&=-\Li_3\left(\frac{z}{z-1}\right)-\Li_3(1-z) \nonumber \\
     &+\frac{1}{6} \log ^3(1-z)-\frac{1}{2} \log (z) \log ^2(1-z)+\frac{1}{6} \pi ^2 \log (1-z)+\zeta (3)\,, \qquad z \notin (1, \, \infty)\,.
 \end{align}
+\JK{Is the domain correct here?}
 The symbol of the LHS is trivial thanks to Eq.~\ref{eq:Lisymbols}:
 \begin{equation} \label{eq:Li3symbol}
     \SS(\Li_3(z)) = -[1-z,z,z]\,.
 \end{equation}
 The RHS requires much more work, namely repeated application of shuffle products and symbol properties Eq.~\ref{eq:symbolproperties}. These operations can be easily automated, however. In particular, we make use of the \texttt{Mathematica} package \texttt{PolyLogTools}~\cite{Duhr:2019tlz}, which enables the computation of symbols of arbitrary combinations of GPLs. Indeed, with the help of this package, it is trivial to verify that the sum of symbols of the terms on the RHS is equal to Eq.~\ref{eq:Li3symbol}.
 
-The \texttt{PolyLogTools} package introduces several powerful tools related to the symbol.
+The \texttt{PolyLogTools} package introduces several powerful tools related to the symbol. In particular, we point out its functionality related to the so-called `fibration basis'. Given a GPL expression $F$ whose letters (i.e. the arguments) satisfy certain conditions, it is possible to write it in the following form:
+\begin{equation}
+    F = \sum_i c_i\, G(\vec{a}_i;\, x)\,,
+\end{equation}
+for some variable x, where $\vec{a}_i$ are independent of $x$ and the coefficients $c_i$ include only those GPLs that are independent of x (see~\cite{Duhr:2019tlz} and references therein). The GPLs appearing on the RHS of this formula are known as the fibration basis. Moreover, it is also possible to `integrate' a symbol --- given a symbol tensor $S$, it is possible to find a fibration basis such that $\SS(F) = S.$  This means we can determine the functional form corresponding to a symbol expressions (up to beyond-the-symbol terms). 
+\subsection{Relation to canonical DEs and discontinuities}
+Let us now take a step back and make a connection between the symbols and the differential equations satisfied by master integrals. In Section~\ref{sec:DEs}, we saw that by making a suitable change of basis, it is possible to construct MIs such that the corresponding DEs are in the canonical form of Eq.~\ref{eq:canonicalDEsoneform}. Then, their solution is given by a path-ordered exponential of the $\varepsilon$-free DE matrix $\tilde{A}$. This exponential is understood through its series expansion, leading to repeated integrations over kernels dictated by $\tilde{A}$. Further, we introduced the notion of uniform transcendentality and an even stronger condition on `pure' functions, Eq.~\ref{eq:purecondition}, which says that the transcendental weight of pure UT functions is lowered by 1 upon differentiation. Moreover, we learned that the solution of any canonical DEs is pure and vice versa --- a given basis of pure functions will satisfy the canonical DEs. We should therefore be able to write down these DEs in a way which makes the purity property manifest. Indeed, notice that the differential equivalent of Eq.~\ref{eq:DEssolution} is:
+\begin{equation}
+    \dd \vv{\text{MI}}^{(k)} = \dd \tilde{A} \vv{\text{MI}}^{(k-1)}\,.
+\end{equation}
+If we specify to the cases where the DE matrix can be written in the $\dd \log$ form of Eq.~\ref{eq:dlogform}, then this equation becomes:
+\begin{equation} \label{eq:pureMIDEs}
+    \dd \vv{\text{MI}}^{(k)} = \left( \sum_i b_i^{(k)} \dd \log w_i  \right)\vv{\text{MI}}^{(k-1)}\,.
+\end{equation}
+\JK{Is it $b_i^{(i)}$ or the same $a_i$ as in Eq.~\ref{eq:dlogform}? Eq. (5.1) in Abreu suggests it's the latter and I would agree.}. Note that $\vv{\text{MI}}^{(0)}$ is a vector of constants since it lives in the kernel of the derivative \JK{Not sure if I understand this}. This means that the leading term in the Laurent expansion of pure MIs does not contain any kinematic dependence. 
 
-Moreover, it is also possible to `integrate' the symbol, that is to find a linear combination of GPLs which has the same symbol. This means we can determine the functional form corresponding to a symbol expressions --- up to an overall constant. For details of the procedure, see Refs.~\cite{Duhr:2011zq}and \cite{Duhr:2019tlz}.
-
-
-\subsection{Relation to discontinuities}
-%First entry condition
-%Disc - Simone's thesis
-\subsection{An alternative approach to IBP reduction} \label{sec:altibps}
+We can use Eq.~\ref{eq:pureMIDEs} to express the solution of the canonical DEs \textit{up to} weight $n$ in the following form:
+\begin{equation} \label{eq:pureMIDEsupton}
+    \vv{\text{MI}}^{(n)} = \sum_{\alpha_1, \ldots, \alpha_n} \vec{c}_{\alpha_1, \ldots, \alpha_n} \int \dd \log w_{\alpha_1} \ldots \dd \log w_{\alpha_n}\,, \qquad n\ge1\,.
+\end{equation}
+Note that each coefficient $\vec{c}_{\alpha_1, \ldots, \alpha_n}$ is a vector of rational numbers --- they are calculated from the products of matrices \JK{$b_i^{(i)}/a_i$}, which are dotted into the weight-0 term $\vv{\text{MI}}^{(0)}$. Naturally, to obtain explicit values for $\vv{\text{MI}}^{(n)}$, we need to supply the integration contour. Nonetheless, the symbol, which discards this information, can still tell us a lot about the analytic structure of the solution. It can be trivially read off from the above equation:
+\begin{equation}
+    \SS\left(\vv{\text{MI}}^{(n)}\right) = \sum_{\alpha_1, \ldots, \alpha_n} \vec{c}_{\alpha_1, \ldots, \alpha_n} [w_{\alpha_1}, \ldots, w_{\alpha_n}]\,.
+\end{equation}
+It turns out that the first entry of the symbol encodes its branch cut structure. In particular, a Feynman integral with the symbol $[w_{\alpha_1}, \ldots, w_{\alpha_n}]$ has a discontinuity when $w_{\alpha_1}=0$ or $\infty$. Of course, singular points of Feynman integrals are not random and we expect them to be connected to special values of the Mandelstam variables. Indeed, there exists a so-called first-entry condition which states that $\vec{c}_{\alpha_1, \ldots, \alpha_n}=0$ if $w_{\alpha_1} \neq s_{ij}\,$, i.e. a symbol cannot appear in the solution of the DEs if its first letter is not a Mandelstam variable with a physical discontinuity\footnote{Strictly speaking, it is the absence of discontinuities at certain points that implies first-entry conditions, but this statement should not be inverted. It is possible to write an amplitude using a function which satisfies a first-entry condition, yet has the forbidden singularity. See Section 3 of Ref.~\cite{Zoia:2021zmb} for an explicit example.}. This turns out to be a very strong condition which in many cases uniquely fixes the values of $\vv{\text{MI}}^{(0)}$, as we will see in Section~\ref{sec:selfdual} \JK{Are we actually going to see this there?...}.
+ %Beyond first entry - Abreu page 23
+ %Steinman relations
+ %Mention how these relations help find a suitable alphabet for Abreu et al
+\section{An alternative approach to IBP reduction} \label{sec:altibps}
+\JK{Improve this section according to what I wrote for Ryan's paper.}\\
 As mentioned earlier, the IBP relations can only provide the reduction of integrals within one family. Therefore, in practice we typically need to build an extensive IBP system which covers all the families in the problem. This often leads to a prohibitively long time required to solve the system. There is, however, a more efficient way of performing the IBP reduction. Recall that the integral families fed into the reduction are defined by their propagators and ISPs. Each family can therefore be identified by its `type' and permutation of external legs within that type. For example, we refer to the topology of Fig.~\ref{fig:pentabox} as $\text{double-box}(12345)$, and to that of Fig.~\ref{fig:hexatriangle} as $\text{hexa-triangle}(13245)$. It is not hard to notice that that if two given families are of the same type and differ only by a permutation $\sigma$ of the external momenta, i.e. $T'=T(\sigma(ijklm))$, then the IBP reduction of any integral Eq.~\ref{eq:ibpintegral} within the permuted family $T'$ can be expressed as a permutation of the reduction of the corresponding integral in the original family $T$:
 \begin{align}
     I_{T(ijklm)}(\bm{\nu}) &= \sum_{i=1}^{|\text{MI}_T|} c_i(p, \varepsilon) \times \text{MI}_{T(ijklm),\,i} \\
@@ -1158,7 +1181,7 @@ In practice, we obtain these missing relations between MIs by performing their r
     \text{MI}_{i} = \sum_j^{|\text{MI}|} f_{ij}(p, \varepsilon) \times \text{MI}_j \qquad i \in \left\{1, \ldots, \sum_T |\text{MI}_T|\right\}\,,
 \end{equation}
 where $|\text{MI}| = |\text{MI}_{\sum_T T}|$, as defined earlier. This additional reduction does not present such complexity as the reduction needed for the amplitude. Firstly, the identities generated through the Laporta algorithm only need to cover the rank and number of dotted propagators present in the MI bases, rather than the full amplitude. Secondly, all the missing relations between MIs can be worked out just once and they will be applicable to any process at the same loop order and number of particles, since the IBP identities are sensitive only to the kinematic setup. Finally, an extremely useful property of UT integrals is that any inter-family relations between them cannot contain any dependence on the kinematic variables, i.e. $f(p, \varepsilon) \rightarrow f(\varepsilon)$. Thus, when using UT bases, this additional reduction can be performed with the kinematic variables set to random values (subject to momentum conservation). Having obtained the missing relations between MIs, we apply them to our amplitude and collect the coefficients of the true, linearly independent MIs. In the end, this is equivalent to performing the traditional IBP reduction of all families considered together simultaneously, but much more efficient.
-\subsection{Syzygy relations} \label{sec:syzygies} 
+\section{Syzygy relations} \label{sec:syzygies} 
 %
 %\section{Special functions} \label{sec:specialfunctions}
 %\subsection{Pentagon functions} \label{sec:Pentagon functions}
