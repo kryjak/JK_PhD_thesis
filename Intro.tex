@@ -84,6 +84,64 @@ Completeness relations for the spin-1 polarisation vectors:
 \end{equation}
 \JK{is this true only in the axial gauge? See Eq. 30 of `Calculating scattering amplitudes efficiently'. We don't use the axial gauge.}
 
+\begin{equation} \label{eq:QCDbetafunction}
+    \text{QCD Beta function - asymptotic freedom}
+\end{equation}
+
+\section{Particle scattering} \label{sec:particlescattering}
+Having introduced the quantum field theories that describe the most fundamental particles our nature has to offer, one might rightfully wonder about the rewards for our intellectual effort (beyond personal satisfaction). After all, amongst our non-physicist friends, it is common to think that the word `theoretical' in theoretical physics is synonymous with `hypothetical'. Not much could be further from the truth and we dedicate this section to illustrating the immense predictive power of QFTs.
+
+Consider a typical particle physics experiment. Two beams of particles, travelling in opposite direction, interact briefly and produce a host of new states that fly away in various directions until they are registered by some kind of a detector. Naturally, the number of such scattering events is proportional to the number of particles in the two beams, $N_a$ and $N_b$, as well as to the area common to the beams, $A$. The ratio of these quantities is known as the scattering \textbf{cross-section}:
+\begin{equation} \label{eq:crossection}
+    \sigma \equiv \frac{\text{number of scattering events}}{N_a N_b A}\,.
+\end{equation}
+Typically, apart from just counting the total number of events, we want to differentiate between the type of outgoing particles, their momentum, angle of collision, etc. However, if we specify an exact value for a continuous variable such as the momentum, the numerator of Eq.~\ref{eq:crossection} becomes infinitesimal. To avoid this issue, we usually work with a \textit{differential} cross-section, e.g. $\dd\sigma/(\dd p_1 \ldots \dd p_n)$, such that its integral over some small range of $p_i$ gives the \textit{total} cross-section in that region of momentum space. While cross-sections can be measured in particle colliders, it is the task of QFT to make predictions for them.
+
+In the case of hadron collisions, there is one additional complication which is not present in the relatively `clean' world of QED interactions. The fundamental objects of QCD are quark and gluons, however they cannot be observed individually due to colour confinement --- only colourless combinations can be scattered and subsequently detected in a collider. The LHC, being (primarily) a proton-proton collider, requires a more complicated model of the interactions than just the scattering of point particles. Now, recall from Eq.~\ref{eq:QCDbetafunction} that QCD exhibits asymptotic freedom. The coupling $\alpha_s$ decreases with energy (i.e. at small distances) and its value determines whether we are allowed to use perturbation theory or not. Roughly speaking, above the scale $\Lambda_\text{QCD} \sim 200 \text{ GeV}$, $\alpha_s$ becomes small enough such that the perturbative expansion is justified. The individual `partons' (i.e. quarks, antiquarks and gluons) act like free particles and undergo `hard' scattering\cite{PhysRevLett.23.1415} described by the \textit{partonic} cross-section $\hat{\sigma}$. On the other hand, physics at energies below $\Lambda_\text{QCD}$ is necessarily non-perturbative due to large $\alpha_s$ values. Its effects are captured by the Parton Distribution Functions (PDFs) $f_i(x, \mu_F)$, which give the probability of finding in a hadron a given parton $i$ with momentum fraction $x$ of this hadron\JK{Is this sentence grammatically correct?.}. Here, $\mu_F$ is 
+
+%Scaling with $\mu_F$ - DGLAP equations.
+%PDFs are renormalised
+%The PDFs are extracted from experimental data. List PDF sets
+%Factorisation formula - include the $\order{\frac{\Lambda_\text{QCD}}{Q}}$ terms - see Schwartz p.685
+\begin{equation}
+    \dd \sigma = \sum \int PDF \dd \hat{\sigma} + \order{\frac{\Lambda_\text{QCD}}{Q}}
+\end{equation}
+%This phenomenological approach assumes factorisation: that PDFs are universal objects, and any scattering process involving protons can be computed using the same PDFs with a different perturbative calculation. It is remarkable that this procedure works so well, and it is therefore desirable to have a precise derivation of factorisation.
+
+% Parton showers, jets, hadronisation
+%insert a picture showing factorisation and then parton showers etc.
+
+We remark that the computation of each element described in this section, i.e. the cross-sections, the PDFs, the Monte Carlo phase-space integration, parton showers, hadronisation and jets, is a tremendous effort undertaken by thousands of particle physicists around the world. This thesis is a small building block of the entire enterprise and aims to shed light on just one of these aspects --- the calculation of scattering amplitudes.
+
+\section{Scattering amplitudes}
+Having decoupled the high and low energy physics within a hadron, let us now address the computation of the hard scattering between partons. The partonic cross section $\hat{\sigma}$ is calculated by considering the matrix elements of asymptotic states. Very schematically,
+\begin{equation}
+    \hat{\sigma} \propto \,_{\text{as.}}\braket{\text{final}|\text{initial}}_{\text{as.}}
+\end{equation}
+
+
+\subsection{Kinematics} \label{sec:kinematics}
+\begin{align} \label{eq:delta3}
+    \Delta_3^{(1)} &= \lambda(s_5, s_{12}, s_{34}) \nonumber \\
+    \Delta_3^{(2)} &= \lambda(s_5, s_{13}, s_{24}) \nonumber \\
+    \Delta_3^{(3)} &= \lambda(s_5, s_{23}, s_{14})\,,
+\end{align}
+where $\lambda(a,b,c) = a^2+b^2+c^2 - 2ab-2ac-2bc$ is the Källén function.
+\begin{equation} \label{eq:delta5}
+    \Delta_5 = \det G(p_1, p_2, p_3, p_4)
+\end{equation}
+\begin{equation} \label{eq:delta5tr5}
+    \Delta_5 = \tr_5^2
+\end{equation}
+
+\begin{equation} \label{eq:sijs}
+    \vec{s}_5 = \{s_{12}, s_{23}, s_{34}, s_{45}, s_{15}, s_5\}\,.
+\end{equation}
+
+\subsection{Divergences and dimensional regularisation} \label{sec:divergences}
+Explain integrals over loop momenta, divergences, $(d=4-2\epsilon)$-dimensional integrals, universal IR Catani structure, UV structure
+
+
 \section{Divergences}
 The dimensionally regulated Feynman diagrams satisfy the following properties~\cite{Wilson1973}:
 \begin{itemize}
@@ -105,26 +163,4 @@ The dimensionally regulated Feynman diagrams satisfy the following properties~\c
     where $\lambda$ is an arbitrary positive constant.
 \end{subequations}
 \end{itemize}
-
-\section{Scattering amplitudes} \label{sec:scatteringamplitudes}
-\subsection{Kinematics} \label{sec:kinematics}
-\begin{align} \label{eq:delta3}
-    \Delta_3^{(1)} &= \lambda(s5, s12, s34) \nonumber \\
-    \Delta_3^{(2)} &= \lambda(s5, s13, s24) \nonumber \\
-    \Delta_3^{(3)} &= \lambda(s5, s23, s14)\,,
-\end{align}
-where $\lambda(a,b,c) = a^2+b^2+c^2 - 2ab-2ac-2bc$ is the Källén function.
-\begin{equation} \label{eq:delta5}
-    \Delta_5 = \det G(p_1, p_2, p_3, p_4)
-\end{equation}
-\begin{equation} \label{eq:delta5tr5}
-    \Delta_5 = tr_5^2
-\end{equation}
-
-\begin{equation} \label{eq:sijs}
-    \vec{s}_5 = \{s_{12}, s_{23}, s_{34}, s_{45}, s_{15}, s_5\}\,.
-\end{equation}
-
-\subsection{Divergences and dimensional regularisation} \label{sec:divergences}
-Explain integrals over loop momenta, divergences, $(d=4-2\epsilon)$-dimensional integrals, universal IR Catani structure, UV structure
 \end{document}

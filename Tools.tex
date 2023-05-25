@@ -1,6 +1,6 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
-\chapter{Tools for calculating scattering amplitudes}
+\chapter{Tools for calculating scattering amplitudes} \label{sec:tools}
 In this chapter, we focus on various aspects of the computation of two-loop QCD scattering amplitudes for high-multiplicity processes. It is important to note that there is currently no one-size-fits-all approach that would allow us to compute all the desired amplitudes at a press of a button. In practice, we use a collection of methods that are most appropriate for the task at hand. For processes at the limit of current capabilities, these tools need to be further improved or replaced with novel ideas. To this end, much work has been done by the theory community in recent years. Unfortunately, due to the overwhelming algebraic and analytic complexity, many calculations still present challenges beyond the reach of current technology. 
 \begin{figure}[t]
 \begin{tikzpicture}
@@ -603,7 +603,7 @@ Expanding for small $\lambda$:
 \end{equation}
 Collecting terms at $\order{\lambda}$:
 \begin{equation}
-    \int \dd^d k\, \left[ k^\mu \frac{\partial f(k)}{\partial k^\mu} + d f(k) \right] = \int \dd^d k\, \frac{\partial(k^\mu f(k))}{\partial k^\mu} = 0\,,
+    \int \dd^d k\, \left[ k^\mu \frac{\partial f(k)}{\partial k^\mu} + d\, f(k) \right] = \int \dd^d k\, \frac{\partial(k^\mu f(k))}{\partial k^\mu} = 0\,,
 \end{equation}
 where we have moved $k^\mu$ into the derivative by using $\partial k^\mu / \partial k^\mu = \delta^\mu_\mu=d$. Overall, due to the linearity of $d$-dimensional integrals, Eq.~\ref{eq:linearity}, these equations must also hold for any linear combination of external and loop momenta. Thus, for a generic $q$:
 \begin{equation} \label{eq:IBPboundaryterm}
@@ -1180,12 +1180,12 @@ In practice, we obtain these missing relations between MIs by performing their r
 where $|\text{MI}| = |\text{MI}_{\sum_T T}|$, as defined earlier. This additional reduction does not present such complexity as the reduction needed for the amplitude. Firstly, the identities generated through the Laporta algorithm only need to cover the rank and number of dotted propagators present in the MI bases, rather than the full amplitude. Secondly, all the missing relations between MIs can be worked out just once and they will be applicable to any process at the same loop order and number of particles, since the IBP identities are sensitive only to the kinematic setup. Finally, an extremely useful property of UT integrals is that any inter-family relations between them cannot contain any dependence on the kinematic variables, i.e. $f(p, \varepsilon) \rightarrow f(\varepsilon)$. Thus, when using UT bases, this additional reduction can be performed with the kinematic variables set to random values (subject to momentum conservation). Having obtained the missing relations between MIs, we apply them to our amplitude and collect the coefficients of the true, linearly independent MIs. In the end, this is equivalent to performing the traditional IBP reduction of all families considered together simultaneously, but much more efficient.
 \section{Syzygy relations} \label{sec:syzygies} 
 %
-%\section{Special functions} \label{sec:specialfunctions}
+\section{Special functions} \label{sec:specialfunctions}
 %\subsection{Pentagon functions} \label{sec:Pentagon functions}
 %\subsection{Generalised series expansion} \label{sec:DiffExp}
 %\subsection{Auxiliary mass flow} \label{sec:AMFlow}
 
-%\section{Finite remainder} \label{sec:finrem}
+\section{Finite remainder} \label{sec:finrem}
 %\section{Reconstruction} \label{sec:reconstruction}
 %Describe the various reconstruction tricks?
 
