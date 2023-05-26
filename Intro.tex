@@ -97,28 +97,47 @@ Consider a typical particle physics experiment. Two beams of particles, travelli
 \end{equation}
 Typically, apart from just counting the total number of events, we want to differentiate between the type of outgoing particles, their momentum, angle of collision, etc. However, if we specify an exact value for a continuous variable such as the momentum, the numerator of Eq.~\ref{eq:crossection} becomes infinitesimal. To avoid this issue, we usually work with a \textit{differential} cross-section, e.g. $\dd\sigma/(\dd p_1 \ldots \dd p_n)$, such that its integral over some small range of $p_i$ gives the \textit{total} cross-section in that region of momentum space. While cross-sections can be measured in particle colliders, it is the task of QFT to make predictions for them.
 
-In the case of hadron collisions, there is one additional complication which is not present in the relatively `clean' world of QED interactions. The fundamental objects of QCD are quark and gluons, however they cannot be observed individually due to colour confinement --- only colourless combinations can be scattered and subsequently detected in a collider. The LHC, being (primarily) a proton-proton collider, requires a more complicated model of the interactions than just the scattering of point particles. Now, recall from Eq.~\ref{eq:QCDbetafunction} that QCD exhibits asymptotic freedom. The coupling $\alpha_s$ decreases with energy (i.e. at small distances) and its value determines whether we are allowed to use perturbation theory or not. Roughly speaking, above the scale $\Lambda_\text{QCD} \sim 200 \text{ GeV}$, $\alpha_s$ becomes small enough such that the perturbative expansion is justified. The individual `partons' (i.e. quarks, antiquarks and gluons) act like free particles and undergo `hard' scattering\cite{PhysRevLett.23.1415} described by the \textit{partonic} cross-section $\hat{\sigma}$. On the other hand, physics at energies below $\Lambda_\text{QCD}$ is necessarily non-perturbative due to large $\alpha_s$ values. Its effects are captured by the Parton Distribution Functions (PDFs) $f_i(x, \mu_F)$, which give the probability of finding in a hadron a given parton $i$ with momentum fraction $x$ of this hadron\JK{Is this sentence grammatically correct?.}. Here, $\mu_F$ is 
-
+In the case of hadron collisions, there is one additional complication which is not present in the relatively `clean' world of QED interactions\JK{What about the `partons' of QED? One can also introduce PDFs for virtual electrons + photons in collinear emission. See Peskin Ch 17.5.}. The fundamental objects of QCD are quark and gluons, however they cannot be observed individually due to colour confinement --- only colourless combinations can be scattered and subsequently detected in a collider. The LHC, being (primarily) a proton-proton collider, requires a more complicated model of the interactions than just the scattering of point particles. Now, recall from Eq.~\ref{eq:QCDbetafunction} that QCD exhibits asymptotic freedom. The coupling $\alpha_s$ decreases with energy (i.e. at small distances) and its value determines whether we are allowed to use perturbation theory or not. Roughly speaking, above the scale $\Lambda_\text{QCD} \sim 200 \text{ GeV}$, $\alpha_s$ becomes small enough so that the perturbative expansion is justified. The individual `partons' (i.e. quarks, antiquarks and gluons) act like free particles and undergo `hard' scattering\cite{PhysRevLett.23.1415}. On the other hand, physics at energies below $\Lambda_\text{QCD}$ is necessarily non-perturbative due to large $\alpha_s$ values. Its effects are captured by the Parton Distribution Functions (PDFs) $f_i(x, Q)$, which give the probability of finding in a hadron a given parton $i$ with momentum fraction $x$ of this hadron\JK{Is this sentence grammatically correct?.}. Here, $Q$ is the resolution scale at which we're probing the hard scattering process\JK{Should I replace $Q$ with $\mu_F$ and call it the factorisation scale?}. In fact, the PDFs run with $Q$, similarly to the running of the QCD coupling $\alpha_s$, and their evolution is given by the DGLAP equations.
 %Scaling with $\mu_F$ - DGLAP equations.
 %PDFs are renormalised
-%The PDFs are extracted from experimental data. List PDF sets
-%Factorisation formula - include the $\order{\frac{\Lambda_\text{QCD}}{Q}}$ terms - see Schwartz p.685
-\begin{equation}
-    \dd \sigma = \sum \int PDF \dd \hat{\sigma} + \order{\frac{\Lambda_\text{QCD}}{Q}}
+Overall, the factorisation of soft and hard physics allows us to write the cross-section for the scattering of two hadrons as:
+
+\begin{equation} \label{eq:factorisation}
+    \dd \sigma = \sum_{i,j} \int_0^1 \dd x_1 \dd x_2 f_i(x_1, Q) f_j(x_2, Q) \dd \hat{\sigma}_{ij} + \order{\frac{\Lambda_\text{QCD}}{Q}}\,,
 \end{equation}
-%This phenomenological approach assumes factorisation: that PDFs are universal objects, and any scattering process involving protons can be computed using the same PDFs with a different perturbative calculation. It is remarkable that this procedure works so well, and it is therefore desirable to have a precise derivation of factorisation.
+\JK{Should the $Q$ in the higher order term be different to the $Q$ in the PDFs?}where $i, j$ are the partons of the two hadrons and $\hat{\sigma}_{ij}$ is the \textit{partonic} cross-section for the scattering of $i,j$ into the final state. Since the PDFs describe effects at large $\alpha_s$, they cannot be calculated using perturbative QCD. Instead, they are extracted from experimental data (see e.g. \cite{H1:2015ubc, Alekhin:2017kpj, Hou:2019efy, NNPDF:2021uiq, Buckley:2014ana}. On a positive note, they are universal, i.e. process independent, so once they have been determined from some experiment, they can be re-used in the description of any other hadron interaction. 
 
-% Parton showers, jets, hadronisation
-%insert a picture showing factorisation and then parton showers etc.
+Contrary to the PDFs, the partonic cross-sections are computed using perturbative QCD. Before turning our full attention to these objects, let us briefly remark that even after the scattering has taken place, a lot of interesting physics is still taking place. The final state partons can radiate a cascade of other partons in a phenomenon referred to as parton showers. Furthermore, these coloured partons cannot be observed in an experiment --- as the energy scale falls below $\Lambda_\text{QCD}$, they combine together to form colourless hadrons. Finally, unstable hadrons may decay into further products. What is actually detected in a collider is then a collimated spray of hadrons and other particles referred to as a jet. Using the so-called jet algorithms and definitions, one then tries to reverse engineer the collision of individual partons\JK{Is that a correct thing to say?}. We refer the reader to Refs.~\cite{Plehn:2009nd, Hoche:2014rga} for an introduction on these topics.
+\JK{insert a picture showing factorisation and then parton showers etc.}
+\section{From cross-sections to scattering amplitudes}
+Having decoupled the high and low energy physics within a hadron, let us now address the computation of the hard scattering between partons. The partonic cross section $\hat{\sigma}_{i\rightarrow f}$ is simply related to the probability of starting with some initial state $i$ and ending up with the final state $f$, that is: $\mathcal{P} = |\braket{f|i}|^2$. These interacting states are not the free wave packets with well-defined momenta that we know how to handle using the QFT machinery. However, they do become free in the limit as $t\rightarrow -\infty$, i.e. before the interaction, as well as $t \rightarrow \infty$, i.e. after the interaction. The idea is then to view the scattering in the following way: an asymptotically free state $\ket{i}_{t=-\infty}$ evolves to a real-world state $\ket{i}$, undergoes scattering (of negligible duration) into the state $\ket{f}$ which finally evolves into the free state $\ket{f}_{t=\infty}$. The evolution of real states from and to the asymptotic states is captured by the $S$-matrix, which is calculated from the Hamiltonian in the interaction representation. Specifying to the scattering of two partons into $n-2$ particles, we write the so-called $S$-matrix elements in terms of free multi-particle states:
+\begin{equation} \label{eq:Smatrixelements}
+    \braket{p_3, \ldots, p_n|S|p_1,p_2}\,.
+\end{equation}
+Furthermore, it is customary to split the $S$-matrix according to:
+\begin{equation} \label{eq:StoiT}
+    S = \mathds{1} + \i T\,.
+\end{equation}
+In any scattering experiment, there is a large chance of the particles simply missing each other and nothing happening, which is expressed by the identity matrix. The interesting physics of interactions is captured by the transition matrix $T$:
+\begin{equation} \label{eq:Tmatamplitudes}
+    \braket{p_3, \ldots, p_n|\i T|p_1,p_2} = (2\pi)^4 \delta^{(4)}\left(p_1+p_2 - \sum_{f=3}^n p_f\right)\, \i \mathcal{A} (p_1,p_2 \rightarrow p_3, \ldots, p_n) \,,
+\end{equation}
+where we included the overall $\delta$-function to impose 4-momentum conservation. Here, $\mathcal{A} (p_1,p_2 \rightarrow p_3, \ldots, p_n)$ is the $n$-particle \textbf{scattering amplitude}. Finally, to relate the amplitudes to the partonic cross-section, we insert Eq.~\ref{eq:Tmatamplitudes} into Eq.~\ref{eq:Smatrixelements} and integrate over a small region $\dd^3p_3 \ldots \dd^3 p_n$. This integration encodes the probability that the $n-2$ final particles will belong to that region of the momentum phase-space. Overall, the recipe reads:
+\begin{equation} \label{eq:crosssecampl}
+    \dd \hat{\sigma} = \frac{1}{2E_1 2E_2 |v_1-v_2|} \left(\prod_f \frac{\dd^3 p_f}{(2\pi)^3} \frac{1}{2E_f} \right) (2\pi)^4 \delta^{(4)}\left(p_1+p_2 - \sum_f p_f\right)|\mathcal{A}(p_1,p_2 \rightarrow p_f)|^2\,.
+\end{equation}
+The first term in this formula is a flux factor related to the relative velocity of the two incoming beams in the laboratory reference frame, $|v_1-v_2|$. Next, the overall $\delta$-function imposes Lorentz invariance on the phase-space integration over $\prod_f \dd^3 p_f$. In practice, the phase-space integration is carried out using Monte Carlo event generators~\cite{Reuschle:2014fya, Campbell:2022qmc}. Finally, the formula is completed by the square of the scattering amplitude.
 
-We remark that the computation of each element described in this section, i.e. the cross-sections, the PDFs, the Monte Carlo phase-space integration, parton showers, hadronisation and jets, is a tremendous effort undertaken by thousands of particle physicists around the world. This thesis is a small building block of the entire enterprise and aims to shed light on just one of these aspects --- the calculation of scattering amplitudes.
-
+Let us stress that the computation of each element described so far, i.e. the cross-sections, PDFs, the phase-space integrations, amplitudes, parton showers, hadronisation and jets, is a tremendous effort undertaken by a multitude of particle physicists around the world. This thesis is a small building block of the entire enterprise and aims to shed light on just one of these aspects --- the calculation of scattering amplitudes\footnote{Naturally, if we are not dealing with the scattering of hadrons, one can drop the `hats' on the cross-sections and forget about the PDFs, hadronisation, etc. In this case, the cross-section $\sigma$ is the hard scattering cross-section from the start.\JK{Is this really true? I think there are PDFs for leptonic processes too.}}.
 \section{Scattering amplitudes}
-Having decoupled the high and low energy physics within a hadron, let us now address the computation of the hard scattering between partons. The partonic cross section $\hat{\sigma}$ is calculated by considering the matrix elements of asymptotic states. Very schematically,
-\begin{equation}
-    \hat{\sigma} \propto \,_{\text{as.}}\braket{\text{final}|\text{initial}}_{\text{as.}}
-\end{equation}
-
+Scattering amplitude - bridge between theory an experiment, due to Eq.~\ref{eq:crosssecampl}. \\
+Cannot be calculated exactly, perturbative expansion of the amplitudes in $\alpha_s$.\\
+Means that $\dd \sigma$ also admits expansion in $\alpha_s \rightarrow LO, ..., N^kLO$.
+Each term in the perturbative expansion is represented by Feynman diagrams/integrals.\\
+Loop diagrams/integrals - divergences.\\
+Dimensional regularisation\\
+KLN theorem \\
+The next chapter is dedicated to a detailed description of the tools used to compute scattering amplitudes.
 
 \subsection{Kinematics} \label{sec:kinematics}
 \begin{align} \label{eq:delta3}
