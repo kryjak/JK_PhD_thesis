@@ -107,7 +107,7 @@ Overall, the factorisation of soft and hard physics allows us to write the cross
 \end{equation}
 \JK{Should the $Q$ in the higher order term be different to the $Q$ in the PDFs?}where $i, j$ are the partons of the two hadrons and $\hat{\sigma}_{ij}$ is the \textit{partonic} cross-section for the scattering of $i,j$ into the final state. Since the PDFs describe effects at large $\alpha_s$, they cannot be calculated using perturbative QCD. Instead, they are extracted from experimental data (see e.g. \cite{H1:2015ubc, Alekhin:2017kpj, Hou:2019efy, NNPDF:2021uiq, Buckley:2014ana}. On a positive note, they are universal, i.e. process independent, so once they have been determined from some experiment, they can be re-used in the description of any other hadron interaction. 
 
-Contrary to the PDFs, the partonic cross-sections are computed using perturbative QCD. Before turning our full attention to these objects, let us briefly remark that even after the scattering has taken place, a lot of interesting physics is still taking place. The final state partons can radiate a cascade of other partons in a phenomenon referred to as parton showers. Furthermore, these coloured partons cannot be observed in an experiment --- as the energy scale falls below $\Lambda_\text{QCD}$, they combine together to form colourless hadrons. Finally, unstable hadrons may decay into further products. What is actually detected in a collider is then a collimated spray of hadrons and other particles referred to as a jet. Using the so-called jet algorithms and definitions, one then tries to reverse engineer the collision of individual partons\JK{Is that a correct thing to say?}. We refer the reader to Refs.~\cite{Plehn:2009nd, Hoche:2014rga} for an introduction on these topics.
+Contrary to the PDFs, the partonic cross-sections are computed using perturbative QCD. Before turning our full attention to these objects, let us briefly remark that even after the scattering has taken place, a lot of interesting physics is still taking place. The final state partons can radiate a cascade of other partons in a phenomenon referred to as parton showers. Furthermore, these coloured partons cannot be observed in an experiment --- as the energy scale falls below $\Lambda_\text{QCD}$, they combine together to form colourless hadrons. Finally, unstable hadrons may decay into further products. What is actually detected in a collider is then a collimated spray of hadrons and other particles referred to as a jet. Using the so-called jet algorithms and definitions, one then tries to reverse engineer the collision of individual partons\JK{Is that a correct thing to say?}. We refer the reader to Refs.~\cite{Plehn:2009nd, Hoche:2014rga} for a closer look at these topics.
 \JK{insert a picture showing factorisation and then parton showers etc.}
 \section{From cross-sections to scattering amplitudes}
 Having decoupled the high and low energy physics within a hadron, let us now address the computation of the hard scattering between partons. The partonic cross section $\hat{\sigma}_{i\rightarrow f}$ is simply related to the probability of starting with some initial state $i$ and ending up with the final state $f$, that is: $\mathcal{P} = |\braket{f|i}|^2$. These interacting states are not the free wave packets with well-defined momenta that we know how to handle using the QFT machinery. However, they do become free in the limit as $t\rightarrow -\infty$, i.e. before the interaction, as well as $t \rightarrow \infty$, i.e. after the interaction. The idea is then to view the scattering in the following way: an asymptotically free state $\ket{i}_{t=-\infty}$ evolves to a real-world state $\ket{i}$, undergoes scattering (of negligible duration) into the state $\ket{f}$ which finally evolves into the free state $\ket{f}_{t=\infty}$. The evolution of real states from and to the asymptotic states is captured by the $S$-matrix, which is calculated from the Hamiltonian in the interaction representation. Specifying to the scattering of two partons into $n-2$ particles, we write the so-called $S$-matrix elements in terms of free multi-particle states:
@@ -130,38 +130,50 @@ The first term in this formula is a flux factor related to the relative velocity
 
 Let us stress that the computation of each element described so far, i.e. the cross-sections, PDFs, the phase-space integrations, amplitudes, parton showers, hadronisation and jets, is a tremendous effort undertaken by a multitude of particle physicists around the world. This thesis is a small building block of the entire enterprise and aims to shed light on just one of these aspects --- the calculation of scattering amplitudes\footnote{Naturally, if we are not dealing with the scattering of hadrons, one can drop the `hats' on the cross-sections and forget about the PDFs, hadronisation, etc. In this case, the cross-section $\sigma$ is the hard scattering cross-section from the start.\JK{Is this really true? I think there are PDFs for leptonic processes too.}}.
 \section{Scattering amplitudes}
-Scattering amplitude - bridge between theory an experiment, due to Eq.~\ref{eq:crosssecampl}. \\
-Cannot be calculated exactly, perturbative expansion of the amplitudes in $\alpha_s$.\\
-Means that $\dd \sigma$ also admits expansion in $\alpha_s \rightarrow LO, ..., N^kLO$.
-Each term in the perturbative expansion is represented by Feynman diagrams/integrals.\\
-Loop diagrams/integrals - divergences.\\
+Scattering amplitude represent a vital bridge between theory an experiment. On one hand, due to Eq.~\ref{eq:crosssecampl}, they allow us to derive predictions for physical observables that can be measured in a collider. On the other hand, due to their connection with the $S$-matrix through Eq.~\ref{eq:Tmatamplitudes}, they are sensitive to our understanding of the underlying theory of interactions. As such, computing amplitudes serves as a key tool to challenge and improve our models elementary particles. Unfortunately, in all but the simplest cases, the $S$-matrix elements cannot be calculated exactly. Instead, we resort to an expansion in powers of the coupling constant:
+\begin{equation} \label{eq:ampexpansion}
+    \ampl{n}{} = \alpha^t \left(\ampl{n}{(0)} + \alpha^1 \ampl{n}{(1)} + \alpha^2 \ampl{n}{(2)} + \ldots \right) \,.
+\end{equation}
+In this formula, each term is calculated from sums of Feynman integrals (more about them below), which are visually represented by Feynman diagrams. The expansion starts at the power $t$ of the leading order (LO) term $\ampl{}{(0)}$. This term usually --- but not always --- corresponds to tree-level diagrams, i.e. diagrams with no closed loops. Higher-order terms $\ampl{}{(L)}$ gain additional powers of $\alpha$ due to $L$-loop diagrams. Therefore, at high energies where the coupling constant becomes small, we can approximate the full scattering amplitude by truncating the expansion in Eq.~\ref{eq:ampexpansion} at a desired order.
+
+Let us now devote our attention to the study of Feynman integrals, the fundamental building blocks of scattering amplitudes. For a tree-level diagram, all momenta are uniquely fixed by momentum conservation at the vertices and no integration is necessary. However, the presence of loops introduces an unconstrained `loop momentum' which needs to be integrated over (we will denote them as $k_i$, where $1\le i\le L$). It is a famous fact of QFT that the resultant Feynman integrals often contain divergences. They come in two types: 
+\begin{itemize}
+    \item \textbf{Ultraviolet divergences} - these appear when $k \rightarrow \infty$,
+\item \textbf{Infrared divergences} - these arise in processes with massless particles and have two origins:
+\begin{itemize}
+    \item \textbf{Soft divergences} - when $k \rightarrow 0$,
+    \item \textbf{Collinear divergences} - when the loop momentum $k$ becomes collinear to a massless external momentum.
+\end{itemize}
+\end{itemize}
+
+Both are regularised by dimensional regularisation.\\
+Insert a picture of a generic $2\rightarrow n$ diagram and how it corresponds to an integral. \\
 Dimensional regularisation\\
-KLN theorem \\
-The next chapter is dedicated to a detailed description of the tools used to compute scattering amplitudes.
+Regularisation schemes \\
+IR - KLN theorem \\
+UV - Renormalisation \\
 
-\subsection{Kinematics} \label{sec:kinematics}
-\begin{align} \label{eq:delta3}
-    \Delta_3^{(1)} &= \lambda(s_5, s_{12}, s_{34}) \nonumber \\
-    \Delta_3^{(2)} &= \lambda(s_5, s_{13}, s_{24}) \nonumber \\
-    \Delta_3^{(3)} &= \lambda(s_5, s_{23}, s_{14})\,,
-\end{align}
-where $\lambda(a,b,c) = a^2+b^2+c^2 - 2ab-2ac-2bc$ is the Källén function.
-\begin{equation} \label{eq:delta5}
-    \Delta_5 = \det G(p_1, p_2, p_3, p_4)
-\end{equation}
-\begin{equation} \label{eq:delta5tr5}
-    \Delta_5 = \tr_5^2
-\end{equation}
+%\subsection{Kinematics} \label{sec:kinematics}
+%\begin{align} \label{eq:delta3}
+%    \Delta_3^{(1)} &= \lambda(s_5, s_{12}, s_{34}) \nonumber \\
+%    \Delta_3^{(2)} &= \lambda(s_5, s_{13}, s_{24}) \nonumber \\
+%    \Delta_3^{(3)} &= \lambda(s_5, s_{23}, s_{14})\,,
+%\end{align}
+%where $\lambda(a,b,c) = a^2+b^2+c^2 - 2ab-2ac-2bc$ is the Källén function.
+%\begin{equation} \label{eq:delta5}
+%    \Delta_5 = \det G(p_1, p_2, p_3, p_4)
+%\end{equation}
+%\begin{equation} \label{eq:delta5tr5}
+%    \Delta_5 = \tr_5^2
+%\end{equation}
+%
+%\begin{equation} \label{eq:sijs}
+%    \vec{s}_5 = \{s_{12}, s_{23}, s_{34}, s_{45}, s_{15}, s_5\}\,.
+%\end{equation}
 
-\begin{equation} \label{eq:sijs}
-    \vec{s}_5 = \{s_{12}, s_{23}, s_{34}, s_{45}, s_{15}, s_5\}\,.
-\end{equation}
+\section{Divergences and dimensional regularisation} \label{sec:divergences}
+Explain integrals over loop momenta, divergences, $(d=4-2\epsilon)$-dimensional integrals, universal IR Catani structure, UV structure \\
 
-\subsection{Divergences and dimensional regularisation} \label{sec:divergences}
-Explain integrals over loop momenta, divergences, $(d=4-2\epsilon)$-dimensional integrals, universal IR Catani structure, UV structure
-
-
-\section{Divergences}
 The dimensionally regulated Feynman diagrams satisfy the following properties~\cite{Wilson1973}:
 \begin{itemize}
 \begin{subequations}
@@ -182,4 +194,13 @@ The dimensionally regulated Feynman diagrams satisfy the following properties~\c
     where $\lambda$ is an arbitrary positive constant.
 \end{subequations}
 \end{itemize}
+
+\subsubsection{A final note}
+Finally, we remark that the cross-section itself follows a perturbative expansion similar to Eq.~\ref{eq:ampexpansion}:
+\begin{equation} \label{eq:crosssecexpansion}
+    \dd \sigma = \alpha^t \left(\dd \sigma^{\text{LO}} + \alpha^1 \dd \sigma^{\text{NLO}} + \alpha^2 \dd \sigma^{\text{NNLO}} + \ldots \right) \,.
+\end{equation}
+It is important to remember that the terms in Eq.~\ref{eq:ampexpansion} and Eq.~\ref{eq:crosssecexpansion} are not in one-to-one correspondence, since an $n$-particle, N$^\text{k}$LO cross-section might receive contributions from an $(n+i)$-particle, $(k-i)$-loop amplitude, where $0\le i \le k$. From the experimental perspective, real emission of extra soft or collinear particles is indistinguishable from the genuine $n$-point process. Thus, it needs to be included when calculating the cross-section, which introduces singularities that are cancelled out by the virtual corrections coming from diagrams with loops. As an example, the two-loop, five-point amplitudes we compute in Chapter~\ref{sec:Hbb} are relevant not only to the process $pp \rightarrow b\bar{b}H$ at NNLO, but also to $pp \rightarrow b(\bar{b})H$ at N$^\text{3}$LO (where one $b$-jet is tagged) and $pp \rightarrow H$ at N$^\text{4}$LO\JK{Check if this paragraph makes sense}.
+
+Overall, it is clear that precision particle phenomenology requires us to push our computational capabilities and include terms of increasingly higher order in Eq.~\ref{eq:crosssecexpansion}. This in turn means the inclusion of scattering amplitudes with more loops and more legs, but both of these frontiers pose significant challenges. On one side, Feynman integrals with a high number of closed loops are notoriously difficult to evaluate and often lead to special functions that exhibit complicated behaviour and branch cuts. On the other hand, the inclusion of extra particles (or internal masses) means a more complicated kinematic setup, with additional scales that exacerbate algebraic complexity. \JK{Should I mention that we focus on the high-multiplicity aspect?} A tremendous body of work has been done by the community on both fronts. The next chapter is dedicated to a detailed, yet by no means comprehensive, description of the tools used to compute scattering amplitudes. The reward for our effort will be the ability to compute some of the QCD amplitudes at the cutting edge of current knowledge, with direct relevance to precision physics at the LHC.
 \end{document}
