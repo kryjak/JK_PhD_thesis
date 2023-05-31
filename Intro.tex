@@ -145,13 +145,20 @@ Let us now devote our attention to the study of Feynman integrals, the fundament
     \item \textbf{Collinear divergences} - when the loop momentum $k$ becomes collinear to a massless external momentum.
 \end{itemize}
 \end{itemize}
-
-Both are regularised by dimensional regularisation.\\
-Insert a picture of a generic $2\rightarrow n$ diagram and how it corresponds to an integral. \\
-Dimensional regularisation\\
-Regularisation schemes \\
-IR - KLN theorem \\
+The two types of divergences are handled in separate ways. Firstly, UV divergences are dealt with using renormalisation. 
 UV - Renormalisation \\
+
+IR - KLN theorem - real emission \\
+Mention Catani \\
+Insert a picture of a generic $2\rightarrow n$ diagram and how it corresponds to an integral. \\
+
+Nonetheless, at intermediate stages of the computation, i.e. before the cancellation of divergences has taken place, it is useful to have a way of controlling and tracking these divergences. It has become standard practice to regularise both IR and UV divergences by moving away from $d=4$ and analytically continuing the dimension to $d=4-2\varepsilon$ in a process known as \textbf{dimensional regularisation}\footnote{It is also common to compute integrals around e.g. $d=6-2\varepsilon$ or $d=8-2\varepsilon$ as they are often IR and/or UV finite. Then, such integrals can be related to the ones in $d=4-2\varepsilon$ using dimensional recurrence relations. See \cite{Bern:1993kr, Lee:2012cn} and references therein.}~\cite{bollini1964analytic, THOOFT1972189}. It amounts to replacing each integration measure as:
+\begin{equation}
+    \int \frac{\dd k_i^{4}}{(2\pi)^4} \longrightarrow \mu^{2\varepsilon} \int \frac{\dd k_i^{d}}{(2\pi)^d}\,,
+\end{equation}
+where the arbitrary regularisation scale $\mu$ is needed to keep the mass dimension of the coupling constant fixed. Then, the loop integrals are a function of $\varepsilon$ and the UV/IR divergences appear as poles in the Laurent expansion in $\varepsilon$. Any cancellations between terms can now also be tracked through this dimensional regulator. Typically, when computing scattering amplitudes we are interested only in terms up to $\order{\varepsilon^0}$ since the four-dimensional result is recovered by setting $\epsilon = 0$ at the end of the computation\footnote{A common exception to this rule is when an $(l<L)$-loop amplitude is meant to be multiplied by the pole operator mentioned above in order to to derive the pole structure of an $L$-loop amplitude. Then terms beyond $\order{\varepsilon^0}$ are required, usually up to $\order{\varepsilon^2}$}.
+
+The continuation of the dimension of the loop momentum to a generic $d$ introduces an ambiguity related to the external states and their polarisation sums. Many choices are possible for how to handle the Dirac algebra in the numerators, leading to multiple \textbf{regularisation schemes}. For example, in the popular ’t Hooft-Veltman (HV) scheme which we will use in Sections~\ref{sec:Hbb}and \ref{sec:Wyj}, internal states live in $d$ dimensions, but external states are strictly four-dimensional\JK{Why do we use HV scheme?}. It is important to remember that the meaning of `internal' and `external' here is not what we would expect intuitively. Fields corresponding to virtual particles (i.e. divergent loop integrals) or to real emission (i.e. soft and collinear singularities in phase space integrals) are called internal (or singular), while all other fields are called external (or regular). We refer the reader to Refs.~\cite{Signer:2008va, Gnendiger:2017pys} for an overview of various regularisation schemes and a mathematically rigorous treatment of the spaces in which particles live.
 
 %\subsection{Kinematics} \label{sec:kinematics}
 %\begin{align} \label{eq:delta3}
@@ -172,9 +179,9 @@ UV - Renormalisation \\
 %\end{equation}
 
 \section{Divergences and dimensional regularisation} \label{sec:divergences}
-Explain integrals over loop momenta, divergences, $(d=4-2\epsilon)$-dimensional integrals, universal IR Catani structure, UV structure \\
+universal IR Catani structure, UV structure \\
 
-The dimensionally regulated Feynman diagrams satisfy the following properties~\cite{Wilson1973}:
+Finally, let us remark that the dimensionally regulated Feynman diagrams satisfy the following properties~\cite{Wilson1973}:
 \begin{itemize}
 \begin{subequations}
     \item Linearity:
@@ -194,7 +201,7 @@ The dimensionally regulated Feynman diagrams satisfy the following properties~\c
     where $\lambda$ is an arbitrary positive constant.
 \end{subequations}
 \end{itemize}
-
+For now, we give these properties simply for completeness. However, as we will see in Sec.~\ref{sec:IBP}, they will lead to an extremely powerful method of simplifying the computation of scattering amplitudes.
 \subsubsection{A final note}
 Finally, we remark that the cross-section itself follows a perturbative expansion similar to Eq.~\ref{eq:ampexpansion}:
 \begin{equation} \label{eq:crosssecexpansion}
