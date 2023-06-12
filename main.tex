@@ -1,5 +1,7 @@
 \documentclass[twoside,openright,frontopenright,halfspacing]{ip3thesis}
 \input{preamble}
+\input{ExtraDefinitions}
+\newcolumntype{C}[1]{>{\hsize=#1\hsize\centering\arraybackslash}X}%
 \usepackage{subfiles}
 
 
@@ -66,9 +68,9 @@ On a fortune hunt that's far too fleet
 \subfile{Selfdual}
 \subfile{Conclusions}
 
-\appendix
-%\subfile{appendix1}
-%\subfile{appendix2}
+%\appendix
+\subfile{Hbbappendix}
+\subfile{Wyjappendix}
 
 \bibliographystyle{JHEP}
 \bibliography{bibliography}
