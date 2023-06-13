@@ -1,0 +1,33 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+\section{Trying to understand renormalisation}
+Originally, I was trying to understand how the amplitude is independent of the renormalisation scale $\mu_R$. One place in which it appears is obviously the renormalised, physical coupling constant $\alpha_R \equiv \alpha_s(\mu_R)$, but then it needs to cancel with $\mu_R$ from somewhere else. If we decide to introduce a UV cutoff $\Lambda$, it is easy to see how that happens.
+
+We can impose that the physical coupling be equal to the matrix element at some kinematic point. We can experimentally measure that value in a collider. On the other hand, we can calculate it using the bare parameters in normal perturbation theory. See Lancaster Example 34.1 (p. 303) and Schwartz p. 298. One can then express the bare couplings in terms of the physical ones and make that replacement in any future calculation. This has the effect of essentially subtracting a matrix element calculated at a particular kinematic point, e.g.
+\begin{equation}
+    A = \lambda_R(\mu_R) + \lambda_R^2(\mu_R) \ln \left( \frac{\mu_R^2}{s} \right) + \ldots
+\end{equation}
+This subtraction technique is known as physical, or on-shell, renormalisation.
+
+However, if we don't want to use a cutoff, we need to resort to dimensional regularisation to keep track of the UV divergences as poles in $\varepsilon$. How then do we make sense of the cancellation of $\mu_R$ between the coupling constants and other terms? In fact, in dim-reg, ultraviolet divergences show up as poles of
+the form $1/\varepsilon$. In fact, the coefficients of large logarithms of the the physical scale $s_0$ \footnote{$s_0$ represents collectively the values of the Mandelstam variables $s_{ij}$ at which we define the physical coupling} are connected to UV divergences, as they would be in a theory with a UV regulator $\Lambda$ (in the references above, we will see functions like $\ln \frac{\Lambda}{s_0}$. See Schwartz Sec 23.1. Thus, the explicit dependence of the logs on $\mu_R$ now hides as poles in $1/\varepsilon$ (or strictly speaking, $1/\varepsilon_{UV}$.
+
+Rather than using the `subtraction' renormalisation described above, which relies on computing physical quantities with a cutoff $\Lambda$ and then cancelling it out, it is more common to use `renormalised perturbation theory', where the renormalised couplings are used right from the beginning:
+\begin{equation}
+    x_B \rightarrow Z_x x_R
+\end{equation}
+The multiplicative factor $Z_x$ absorbs the divergences from $x_B$, making $x_R$ finite. This means that it is in itself divergent - indeed, adding this factor is equivalent to adding counterterms to the Lagrangian that are designed precisely to cancel the infinite parts of amplitudes.
+
+Each factor $Z_x$ can be expanded:
+\begin{align}
+    Z_x &= 1 + \delta_x \\
+        &= 1 + \left( \frac{\alpha}{4 \pi} \right) c_{x,\,1} + \left(\frac{\alpha}{4 \pi}\right)^2 c_{x,\,2} \ldots
+\end{align}
+(careful with the factors of $2, \pi$). The $\delta_x$ can be calculated from Feynman diagrams by imposing the divergent parts cancel out (and by imposing the `renormalisation conditions'?). The 1-loop calculations are done explicitly in e.g. the QCD notes by Alex Huss from the IPPP PhD course or see Schwartz Sec. 26.4.
+
+The $\beta$-function can be calculated by imposing that the physical Lagrangian should not depend on $\mu_R$ (see Schwartz Sec 26.6). It then follows from this calculation that the $\beta_0$ coefficients is equal to $\delta_g$ counterterm at 1-loop, i.e. $c_{g,\,1}$ (up to some factors of $2, \varepsilon$). See Schwartz Eq. 26.94, but \textcolor{red}{be careful!}. The renormalised Lagrangian in Eq. 26.54 defines $Z_{A^3} = Z_g (Z_3)^\frac{3}{2}$, so the $\delta_{A^3}$ given in Sec. 26.5.3 is NOT the usual $\delta_g$. In fact, to relate them, we simply need to $\delta_g = \delta_{A^3} -\frac{3}{2}\delta_3$. Then, we recover the usual term:
+\begin{equation}
+    c_{g,\,1} = \frac{\beta_0}{\varepsilon}
+\end{equation}
+Thus, we see that the dependence of $\alpha_s$ on $\mu_R$ can cancel out with the dependence hidden as UV divergences in the form of $1/\varepsilon$ in the $c_{g,\,1}$.
+\end{document}
