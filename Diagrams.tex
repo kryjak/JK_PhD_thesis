@@ -366,4 +366,25 @@
 %\label{tab:MIs}
 %\end{table}
 
+	\begin{tikzpicture}[scale=0.4]
+        \begin{feynman}
+		\filldraw[gray!50,draw=black] (0,0) ellipse (4 and 2);
+		\draw[fill=white,draw=black,] (-2.5,0) ellipse (0.7cm and 1cm) node {\small $k_1$};
+		\draw[fill=white,draw=black,] (-.9,0) ellipse (0.7cm and 1cm) node {\small $k_2$};
+		\draw[fill=white,draw=black,] (+2.5,0) ellipse (0.7cm and 1cm) node {\small $k_L$};
+        \node (ldots) at (0.8, 0) {$\ldots$};
+
+        \node (kL) at (2.5, 0);
+        \ddd{kL.center}{2cm}{d1}{d2}{d3}{0}{20};
+		
+        \draw[thick] (3, 1.32) -- (5,3) node [anchor=south west] {$p_3$};
+		\draw[thick] (3, -1.32) -- (5,-3) node [anchor=north west] {$p_n$};
+		\draw[thick] (-3, 1.32) -- (-5,3) node [anchor=south east] {$p_2$};
+		\draw[thick] (-3, -1.32) -- (-5,-3) node [anchor=north east] {$p_1$};
+
+        \node (text) [text width=5cm] at (15, 0) {\begin{equation*}
+            \longleftrightarrow \qquad \prod_{l=1}^L \left( \int \frac{\dd^d k_l}{(2\pi)^d}\right) \frac{N}{\prod_i D_i(k,p,m)}
+        \end{equation*}};
+        \end{feynman}
+	\end{tikzpicture}
 \end{document}

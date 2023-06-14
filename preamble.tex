@@ -182,6 +182,7 @@
 \DeclareSIUnit\fb{\femto\barn}
 
 \usepackage{tikz}
+\usetikzlibrary{positioning}
 \usepackage{tikzducks}
 \usepackage[compat=1.1.1]{tikz-feynman}\usetikzlibrary{matrix,decorations.pathreplacing}
 \usetikzlibrary{shapes.geometric,shapes.misc,arrows}
@@ -191,6 +192,14 @@
 \tikzstyle{bluerec} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=blue!30]
 \usetikzlibrary{shapes.misc}
 \tikzset{cross/.style={cross out, draw=black, minimum size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt},cross/.default={5pt}}
+
+%\usepackage{tikzfeynhand}
+\newcommand{\ddd}[7]{
+    \vertex [dot, style={/tikz/minimum size=0.05cm}] [above right=(#2)*sin(#6   )/2 and (#2)*cos(#6   )/2 of #1] (#3) {};
+    \vertex [dot, style={/tikz/minimum size=0.05cm}] [above right=(#2)*sin(#6+#7)/2 and (#2)*cos(#6+#7)/2 of #1] (#4) {};
+    \vertex [dot, style={/tikz/minimum size=0.05cm}] [above right=(#2)*sin(#6-#7)/2 and (#2)*cos(#6-#7)/2 of #1] (#5) {};
+}
+
 
 % define my comments
 \def\JK#1{\textcolor{red}{{\bf\tt [JK: #1]}}}
