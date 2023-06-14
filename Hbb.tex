@@ -5,9 +5,8 @@
 
 \begin{document}
 \chapter{Two-loop helicity amplitudes for $\ppbbh$ production} \label{sec:Hbb}
-This is some text $\ppbbh$
 In this chapter, we present the computation of the two-loop QCD helicity amplitudes for the production of a Higgs boson in association with a bottom quark pair at a hadron collider. We take the approximations of leading colour and work in the five flavour scheme, where the bottom quarks are massless while the Yukawa coupling is non-zero. We extract analytic expressions from multiple numerical evaluations over finite fields and present the results in terms of an independent set of special functions that can be reliably evaluated over the full phase space.
-\JK{Insert some details about hte structure of this chapter.}.
+\JK{Insert some details about the structure of this chapter.}.
 \\
 \section{Introduction \label{Hbbsec:intro}}
 
@@ -213,8 +212,8 @@ while the $I_1(\eps)$ operators for $\bbh$ production in both the $gg$ and the $
 \begin{align}
 I^{\bbqqh}_1(\eps) &= -N_c \frac{N(\eps)}{2} \bigg( \frac{1}{\eps^2} + \frac{3}{2\eps} \bigg) \big[ \left(-s_{23}\right)^{-\eps} + \left(-s_{14}\right)^{-\eps} \big], 
 \label{eq:I1bbqqh}\\
-I^{\bbggh}_1(\eps) &= -N_c \frac{N(\eps)}{2} \bigg\lbrace \bigg( \frac{1}{\eps^2} + \frac{3}{4\eps} + \frac{\beta_0}{4\eps} \bigg) \big[ \left(-s_{23}\right)^{-\eps} + \left(-s_{14}\right)^{-\eps} \big]
-                 + \bigg( \frac{1}{\eps^2} + \frac{\beta_0}{2\eps} \bigg) \left(-s_{34}\right)^{-\eps} \bigg\rbrace \,,
+I^{\bbggh}_1(\eps) &= -N_c \frac{N(\eps)}{2} \bigg\lbrace \bigg( \frac{1}{\eps^2} + \frac{3}{4\eps} + \frac{\beta_0}{4 N_c\eps} \bigg) \big[ \left(-s_{23}\right)^{-\eps} + \left(-s_{14}\right)^{-\eps} \big]
+                 + \bigg( \frac{1}{\eps^2} + \frac{\beta_0}{2 N_c \eps} \bigg) \left(-s_{34}\right)^{-\eps} \bigg\rbrace \,,
 \label{eq:I1bbggh}
 \end{align}
 where $N(\eps) = {e^{\eps \gamma_E}}/{\Gamma(1-\eps)}$, $s_{14} = s_{23}-s_{15}-s_{45}+p_5^2$ and
@@ -222,11 +221,11 @@ where $N(\eps) = {e^{\eps \gamma_E}}/{\Gamma(1-\eps)}$, $s_{14} = s_{23}-s_{15}-
 H_{\bbqqh}^{(2)}(\eps) &= \frac{1}{16\eps} \bigg\lbrace 4 \gamma_1^q - \gamma_1^\cusp \gamma_0^q + \frac{\pi^2}{4} \beta_0 \gamma_0^\cusp C_F \bigg\rbrace \,, \\
 H_{\bbggh}^{(2)}(\eps) &=  \frac{1}{16\eps} \bigg\lbrace 2\left(\gamma_1^q+\gamma_1^g\right)
                                                 - \frac{1}{2}\gamma_1^\cusp \left(\gamma_0^q+\gamma_0^g\right)
-                                                + \frac{\pi^2}{8} \beta_0 \gamma_0^\cusp \left(C_F+C_A\right) \bigg\rbrace \,.
+                                                + \frac{\pi^2}{8} \beta_0 \gamma_0^\cusp \left(C_F+C_A\right) \bigg\rbrace \,. \label{eq:H2bbggH}
 \end{align}
-The $\beta$ function coefficients and anomalous dimensions are given in Appendix~\ref{app:renormconstants}.
-The finite remainder of the $L$-loop partial amplitude is then obtained by subtracting the poles $P^{(L)}$ 
-(which include both the ultraviolet and infrared singularities) from the unrenormalised partial amplitude $A^{(L)}$ and setting $\eps$ to $0$,
+The $\beta$ function coefficients and anomalous dimensions are given in Appendix~\ref{app:renormconstants}. Moreover, in Appendix~\ref{app:polestructure} we provide an explicit derivation of the full pole structure above.
+
+The finite remainder of the $L$-loop partial amplitude is obtained by subtracting the poles $P^{(L)}$ (which include both the ultraviolet and infrared singularities) from the unrenormalised partial amplitude $A^{(L)}$ and setting $\eps$ to $0$,
 \begin{equation}
 F^{(L)} = \lim_{\eps \to 0} \left[ A^{(L)} - P^{(L)} A^{(0)} \right]\,.
 \label{eq:finiteremainder}
@@ -275,9 +274,9 @@ In both cases, due to the colour decomposition of the full amplitudes given by E
 
 We derive the analytic form of the two-loop QCD helicity amplitudes using the framework discussed in Refs.~\cite{Badger:2021owl,Badger:2021imn}, which combines the Feynman diagram approach with numerical sampling over finite fields and functional reconstruction techniques. We generate a set of Feynman diagrams contributing to 
 both the $\bbggh$ and $\bbqqh$ processes using 
-\textsc{QGRAF}~\cite{Nogueira:1991ex}, and perform diagram filtering, topology identification and colour decomposition using a collection of in-house \textsc{Mathematica} and \textsc{Form}~\cite{Kuipers:2012rf,Ruijl:2017dtg} scripts. 
+\texttt{QGRAF}~\cite{Nogueira:1991ex}, and perform diagram filtering, topology identification and colour decomposition using a collection of in-house \texttt{Mathematica} and \texttt{Form}~\cite{Kuipers:2012rf,Ruijl:2017dtg} scripts. 
 In the leading colour approximation there are 749 (264) Feynman diagrams contributing to the two-loop $\bbggh$ ($\bbqqh$) QCD amplitudes, including all closed fermion loop contributions.
-The numerators of the loop amplitudes are then computed for each independent helicity configuration, and the spinor-helicity manipulations are carried out using the library \textsc{Spinney}~\cite{Cullen:2010jv}.
+The numerators of the loop amplitudes are then computed for each independent helicity configuration, and the spinor-helicity manipulations are carried out using the library \texttt{Spinney}~\cite{Cullen:2010jv}.
 The helicity dependent loop numerators are written in terms of spinor products ($\spA{i}{j}$, $\spB{i}{j}$), 
 scalar products ($p_i\cdot p_j$, $k_i\cdot k_j$, $k_i \cdot p_j$) and 
 spinor strings ($\spAB{i}{k_i}{j}$, $\spAB{i}{p_5}{j}$, $\spAA{i}{k_i p_5}{j}$, $\spBB{i}{k_i p_5}{j}$), where $p_i$'s and $k_i$'s are the external and loop momenta, respectively. The angle $|i\rangle$ and square $|i]$ brackets denote the usual holomorphic and anti-holomorphic bi-spinors built from the external massless momenta. The momenta appearing between them in the spinor strings are intended as the matrices obtained by contracting the corresponding four-momenta with the vector of the Pauli matrices, e.g. $\spAB{i}{p_5}{j} = \spAB{i}{\sigma_{\mu}}{j} \, p^{\mu}_5$.
@@ -334,13 +333,13 @@ There are 15 maximal topologies for both the $\bbggh$ and $\bbqqh$ processes, an
 Each diagram topology appearing in the amplitude can be mapped onto at least one of the maximal topologies. 
 After that is done, the objects which depend on the loop momenta in the helicity dependent loop numerators are written in terms of 
 the 11 propagators associated with the chosen maximal topology. 
-These mapping procedures are performed numerically within the \textsc{FiniteFlow} framework~\cite{Peraro:2019svx}. 
+These mapping procedures are performed numerically within the \texttt{FiniteFlow} framework~\cite{Peraro:2019svx}. 
 External kinematics that are involved in the mapping are already expressed in terms of momentum twistor variables.
 At this stage, the loop amplitude is expressed as a linear combination of scalar integrals that will further be 
 reduced to a set of master integrals. The coefficients associated with these scalar integrals are functions only of the external kinematics in the
 form of momentum twistor variables.
 
-The integrand is now ready to be reduced to a set of master integrals using the Integration-by-Parts (IBP) reduction method~\cite{Chetyrkin:1981qh} within the finite field setup. The IBP relations are generated using \textsc{LiteRed}~\cite{Lee:2012cn} and solved numerically over finite fields using the Laporta algorithm~\cite{Laporta:2001dd}. The IBP reduction is performed directly to a set of master integrals with uniform transcendental (UT) weight identified in Ref.~\cite{Abreu:2020jxa}. The UT master integrals are further decomposed into a basis of special functions $f$ that is built out of the UT master integral components as proposed in Ref.~\cite{Badger:2021nhg}. We refer to this basis of special functions as the \textit{master integral function basis}.
+The integrand is now ready to be reduced to a set of master integrals using the Integration-by-Parts (IBP) reduction method~\cite{Chetyrkin:1981qh} within the finite field setup. The IBP relations are generated using \texttt{LiteRed}~\cite{Lee:2012cn} and solved numerically over finite fields using the Laporta algorithm~\cite{Laporta:2001dd}. The IBP reduction is performed directly to a set of master integrals with uniform transcendental (UT) weight identified in Ref.~\cite{Abreu:2020jxa}. The UT master integrals are further decomposed into a basis of special functions $f$ that is built out of the UT master integral components as proposed in Ref.~\cite{Badger:2021nhg}. We refer to this basis of special functions as the \textit{master integral function basis}.
 Subtracting the UV and IR poles from the bare helicity amplitudes and performing Laurent expansion in the dimensional regulator $\eps = (4-d)/2$, we arrive at the following expression for the finite remainders,
 \begin{equation}
 F^{(L)} = \sum_{i} r_i(x) m_i(f)\,,
@@ -359,12 +358,12 @@ the $\tr_5$ already present in the rational coefficients is rationalised and pre
 
 At this stage we have an algorithm which computes the coefficients of the special function monomials, $r_i(x)$ in Eq.~\eqref{eq:squareroots}, 
 numerically over finite fields for each of the independent helicity configurations of the two processes $\bar{b}bggH$ and $\bar{b}b\bar{q}qH$. 
-We emphasise that from the start of our numerical algorithm until the evaluation of $r_i(x)$, the computation is done within one system of \textsc{FiniteFlow} graphs.
+We emphasise that from the start of our numerical algorithm until the evaluation of $r_i(x)$, the computation is done within one system of \texttt{FiniteFlow} graphs.
 The last step which remains to be done is the functional reconstruction of the rational coefficients. This task is made challenging by the high polynomial degrees, which are shown in the third column of Tables~\ref{tab:degrees2g2bH} and~\ref{tab:degrees2q2bH}. We tackle the complexity of the reconstruction through the strategy already used in Refs.~\cite{Badger:2021nhg,Badger:2021imn}. We refer to Ref.~\cite{Badger:2021imn} for a thorough discussion, and give here only a brief outline. 
 
 The first step of the strategy consists in fitting the linear relations among the rational coefficients. These linear relations are then used to express the rational coefficients in terms of a set of linearly independent coefficients, which are chosen to have the lowest possible degrees. The degrees of the independent rational coefficients are given in the fourth column of Tables~\ref{tab:degrees2g2bH} and~\ref{tab:degrees2q2bH}.
 
-The second step of our reconstruction strategy consists in determining the factors in the denominators of the rational coefficients\textbf{\textcolor{red}{, as first proposed in Ref.~\cite{Abreu:2018zmy}.}} The analytic structure of the special functions is determined by a set of algebraic functions of the kinematics called letters. In other words, the singularities of the special functions and of their discontinuities are located on the hypersurfaces where any of the letters vanishes (or goes to infinity). It is therefore natural to expect that the rational coefficients which multiply the special functions in the amplitudes should feature poles which are similarly linked to the letters, given for this problem in Ref.~\cite{Abreu:2020jxa}. 
+The second step of our reconstruction strategy consists in determining the factors in the denominators of the rational coefficients. The analytic structure of the special functions is determined by a set of algebraic functions of the kinematics called letters. In other words, the singularities of the special functions and of their discontinuities are located on the hypersurfaces where any of the letters vanishes (or goes to infinity). It is therefore natural to expect that the rational coefficients which multiply the special functions in the amplitudes should feature poles which are similarly linked to the letters, given for this problem in Ref.~\cite{Abreu:2020jxa}. 
 This motivates us to include the letters into an ansatz for the denominator factors of the rational coefficients. Since the helicity amplitudes also contain phase information we must also include spinor structures. It is then simple to check, on a univariate slice of the amplitude, whether the terms in the ansatz are present or not. For the amplitudes considered in this article, we find the following list is sufficient, 
 \begin{equation}
 \begin{aligned}
@@ -379,7 +378,7 @@ where the indices $i,j$ in the spinor expressions vary from $1$ to $4$, while th
 
 Having determined the denominators of the rational coefficients we can proceed to the third and last step of our reconstruction strategy:  a univariate partial fraction decomposition on the fly. We find that, with the parameterisation of the external kinematics given by Eq.~\eqref{eq:mtvardefs}, partial fractioning with respect to $x_5$ is the most convenient choice. 
 The partial fraction decomposition of multivariate functions has recently drawn a lot interest as a powerful tool to simplify the analytic expressions of scattering amplitudes. A number of new approaches have been proposed, which make use of algebraic geometry techniques to handle the multivariate case efficiently~\cite{Leinartas:1978,Raichev:2012,Abreu:2019odu,Boehm:2020ijp,Heller:2021qkz}. These algorithms are however applied to known analytic expressions, namely after the rational reconstruction has been performed. Conversely, the univariate partial fraction decomposition can be performed within the finite field setup to simplify the reconstruction of the rational coefficients.
-The algorithm makes use of the knowledge of the denominators to construct an ansatz for the decomposition into partial fractions with respect to the chosen variable. The coefficients of this ansatz can then be solved for and reconstructed within the finite field workflow. In order to reconstruct the coefficients of the partial fraction decomposition we perform a further matching of the factors from the ansatz~\eqref{eq:coeffansatz}. The determined factors are then removed, and the remaining functions are reconstructed with \textsc{FiniteFlow}'s reconstruction algorithm. The degrees of the rational coefficients which remain to be reconstructed are shown in the fifth column of Tables~\ref{tab:degrees2g2bH} and~\ref{tab:degrees2q2bH}. Note that after partial fractioning the denominators are not entirely determined from the ansatz~\eqref{eq:coeffansatz}. The univariate partial fraction decomposition in fact introduces spurious factors in the denominators. The latter could be determined as well, but we refrain from doing so as it does not reduce the complexity of the reconstruction.
+The algorithm makes use of the knowledge of the denominators to construct an ansatz for the decomposition into partial fractions with respect to the chosen variable. The coefficients of this ansatz can then be solved for and reconstructed within the finite field workflow. In order to reconstruct the coefficients of the partial fraction decomposition we perform a further matching of the factors from the ansatz~\eqref{eq:coeffansatz}. The determined factors are then removed, and the remaining functions are reconstructed with \texttt{FiniteFlow}'s reconstruction algorithm. The degrees of the rational coefficients which remain to be reconstructed are shown in the fifth column of Tables~\ref{tab:degrees2g2bH} and~\ref{tab:degrees2q2bH}. Note that after partial fractioning the denominators are not entirely determined from the ansatz~\eqref{eq:coeffansatz}. The univariate partial fraction decomposition in fact introduces spurious factors in the denominators. The latter could be determined as well, but we refrain from doing so as it does not reduce the complexity of the reconstruction.
 
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[t!]
@@ -485,13 +484,13 @@ The master integral function basis defined in Ref.~\cite{Badger:2021nhg} and thu
 \sigma \left[ h^{(w)}_i \right] (X) =  h^{(w)}_i \left[\sigma\left(X\right)\right] \,.
 \end{align}
 This is possible because 
-we evaluate the finite remainder function basis $\{h^{(w)}_i\}$ by solving the system of differential equations~\eqref{eq:dh} numerically with the method of the generalised power series expansions~\cite{Francesco:2019yqt}. For this purpose we make use of the public \textsc{Mathematica} package \textsc{DiffExp}~\cite{Hidding:2020ytt}. In order to compute the boundary values, i.e. the values of the functions at some base point, we relate the finite remainder functions to master integral components using the definition of the master integral function basis~\cite{Badger:2021nhg}, and evaluate the latter through their analytic expression in terms of Goncharov polylogarithms~\cite{2011arXiv1105.2076G,Remiddi:1999ew,2001math......3059G} provided in Refs.~\cite{Papadopoulos:2015jft,Syrrakos:2020kba,Canko:2020ylt}. We evaluate the Goncharov polylogarithms numerically with the \textsc{C++} library \textsc{GiNaC}~\cite{Vollinga:2004sn}. We provide in ancillary files the differential equations~\eqref{eq:dh} and the values of the finite remainder functions at six points, one for each $2\to 3$ scattering region with massless incoming particles, with (at least) $200$-digit accuracy. Using this information, the generalised power series expansion method allows to evaluate the finite remainder function basis reliably anywhere in the phase space. This technique in fact handles the analytic continuation automatically, so that also the permutations required to evaluate the complete finite remainders starting from the partial ones --~as shown in Eqs.~\eqref{eq:colourdecomposition} for the amplitudes~-- as well as the other helicity configurations can be performed numerically straightforwardly. We assessed the reliability of this evaluation approach by checking the convergence of the finite remainders close to the spurious poles of the rational coefficients. We discuss this and other checks in the next section.
+we evaluate the finite remainder function basis $\{h^{(w)}_i\}$ by solving the system of differential equations~\eqref{eq:dh} numerically with the method of the generalised power series expansions~\cite{Francesco:2019yqt}. For this purpose we make use of the public \texttt{Mathematica} package \texttt{DiffExp}~\cite{Hidding:2020ytt}. In order to compute the boundary values, i.e. the values of the functions at some base point, we relate the finite remainder functions to master integral components using the definition of the master integral function basis~\cite{Badger:2021nhg}, and evaluate the latter through their analytic expression in terms of Goncharov polylogarithms~\cite{2011arXiv1105.2076G,Remiddi:1999ew,2001math......3059G} provided in Refs.~\cite{Papadopoulos:2015jft,Syrrakos:2020kba,Canko:2020ylt}. We evaluate the Goncharov polylogarithms numerically with the \texttt{C++} library \texttt{GiNaC}~\cite{Vollinga:2004sn}. We provide in ancillary files the differential equations~\eqref{eq:dh} and the values of the finite remainder functions at six points, one for each $2\to 3$ scattering region with massless incoming particles, with (at least) $200$-digit accuracy. Using this information, the generalised power series expansion method allows to evaluate the finite remainder function basis reliably anywhere in the phase space. This technique in fact handles the analytic continuation automatically, so that also the permutations required to evaluate the complete finite remainders starting from the partial ones --~as shown in Eqs.~\eqref{eq:colourdecomposition} for the amplitudes~-- as well as the other helicity configurations can be performed numerically straightforwardly. We assessed the reliability of this evaluation approach by checking the convergence of the finite remainders close to the spurious poles of the rational coefficients. We discuss this and other checks in the next section.
 
 
 \section{Further Validation}
 \label{Hbbsec:validation}
 
-The finite remainders are defined by subtracting the expected UV and IR poles from the bare amplitudes. Therefore, the fact that all the poles in $\eps$ cancel out, so that our expressions for the finite remainders are indeed finite, is already a strong check of the validity of our results. We have also checked that our amplitudes are correctly normalised by comparing the spin and colour averaged squared tree-level amplitudes with full colour dependence against \textsc{MadGraph}~\cite{Alwall:2014hca}.
+The finite remainders are defined by subtracting the expected UV and IR poles from the bare amplitudes. Therefore, the fact that all the poles in $\eps$ cancel out, so that our expressions for the finite remainders are indeed finite, is already a strong check of the validity of our results. We have also checked that our amplitudes are correctly normalised by comparing the spin and colour averaged squared tree-level amplitudes with full colour dependence against \texttt{MadGraph}~\cite{Alwall:2014hca}.
 On top of that, we performed a number of additional checks, which we discuss in the next subsections.
 
 
@@ -500,7 +499,7 @@ On top of that, we performed a number of additional checks, which we discuss in 
 We checked the helicity amplitudes derived in this paper against a squared matrix element computation, carried out independently following the approach used in the previous work on $u\bar{d}\to Wb\bar{b}$~\cite{Badger:2021nhg}.
 In the squared matrix element computation the two-loop amplitude is interfered with the tree-level amplitude analytically. After manipulating the
 Dirac traces, the loop numerators contain only scalar products ($k_i \cdot k_j$, $k_i \cdot p_j$, $p_i \cdot p_j$), that can be mapped easily onto propagator denominators. This way we derive an analytic form of the two-loop squared matrix element written as a linear combination of scalar Feynman integrals. The squared matrix element is then processed further through IBP reduction to obtain the master integral representation, followed by mapping of the master integrals onto the basis of special functions, subtraction of UV and IR singularities, and finally Laurent expansion in $\eps$. 
-All these steps are carried out numerically over finite fields within the \textsc{FiniteFlow} framework. 
+All these steps are carried out numerically over finite fields within the \texttt{FiniteFlow} framework. 
 The squared matrix element computation uses the Conventional Dimensional Regularisation (CDR) scheme, where internal and external momenta live in $d=4-2 \eps$ dimensions. We find complete agreement with this approach and the helicity amplitudes in the tHV scheme at the level of the squared finite remainders.
 
 
@@ -602,7 +601,7 @@ where $i,j \in \{1,2,3,4\}$ with $i\neq j$. Next, for each factor $P_k$ in Eq.~\
 \section{Results}
 \label{Hbbsec:results}
 
-We provide the analytic expressions of the independent one- and two-loop finite remainders in the ancillary files. We present them as combinations of linearly independent rational coefficients and monomials of the square roots and of the finite remainder basis functions. The rational coefficients are expressed in terms of the momentum twistor variables defined in Eq.~\eqref{eq:mtvardefs}. We evaluate the finite remainder function basis numerically by integrating the differential equations~\eqref{eq:dh} with the method of the generalised series expansions. We also provide \textsc{Mathematica} scripts which illustrate how to evaluate the finite remainders interfered with the tree-level amplitudes for all the partonic channels contributing to the process $pp\to b\bar{b} H$, which we label as
+We provide the analytic expressions of the independent one- and two-loop finite remainders in the ancillary files. We present them as combinations of linearly independent rational coefficients and monomials of the square roots and of the finite remainder basis functions. The rational coefficients are expressed in terms of the momentum twistor variables defined in Eq.~\eqref{eq:mtvardefs}. We evaluate the finite remainder function basis numerically by integrating the differential equations~\eqref{eq:dh} with the method of the generalised series expansions. We also provide \texttt{Mathematica} scripts which illustrate how to evaluate the finite remainders interfered with the tree-level amplitudes for all the partonic channels contributing to the process $pp\to b\bar{b} H$, which we label as
 \begin{equation}
 \label{eq:channel_definition}
 \begin{aligned}
@@ -658,7 +657,7 @@ where $\alpha=3$ for $\mathbf{gg}$ and $\alpha=2$ for all the other channels, an
                                             &   \hspace{1.5cm} \times  \big[ F^{(L)}(1_{\bar b},4_{b},3_{\bar{q}},2_{q} ,5_{H}) + F^{(L)}(2_{\bar b},3_{b},1_{\bar{q}},4_{q} ,5_{H}) \big] \,.
 \end{align}
 \endgroup
-We evaluate the permutations of the finite remainders numerically. The analytic continuation is performed by adding a small positive imaginary part to each $s_{ij}$ and to $p_5^2$, which is done automatically by \textsc{DiffExp}.
+We evaluate the permutations of the finite remainders numerically. The analytic continuation is performed by adding a small positive imaginary part to each $s_{ij}$ and to $p_5^2$, which is done automatically by \texttt{DiffExp}.
 
 To facilitate future checks, we provide here the benchmark evaluation at a physical point corresponding to the $pp \to b\bar{b}H$ scattering process,
 \begin{align}
@@ -772,7 +771,7 @@ The reality of the angle $\theta$ then restricts the free parameter $y_2$ to the
 [\frac{39}{100},\frac{39}{40}]$. In order to evaluate the finite remainders for all the processes
 shown in Eq.~\eqref{eq:channel_definition} we need to compute the finite remainder special functions
 at $16$ permutations of each phase space point, as can be seen explicitly in
-Eqs.\eqref{eq:channel_gg}~-~\eqref{eq:channel_BB}. We do this by integrating the system of canonical differential equations~\eqref{eq:dh} with \textsc{DiffExp} using rationalised values of the invariants. The need for rational values arises from the fact that the series expansion method, implemented in \textsc{DiffExp}, is very sensitive to the values of input parameters as it requires high precision throughout the intermediate steps. For each permutation of each point we compute the ``distance'' (technically speaking, the number of segments into which the integration contour is divided by \textsc{DiffExp}) from the six reference points provided in the ancillary files, and choose the closest one as initial point for the integration. In Figure~\ref{fig:plots} we plot the values of the one- and two-loop reduced squared finite remainders for all the processes defined in Eq.~\eqref{eq:channel_definition}, as functions of the parameter $y_2$.
+Eqs.\eqref{eq:channel_gg}~-~\eqref{eq:channel_BB}. We do this by integrating the system of canonical differential equations~\eqref{eq:dh} with \texttt{DiffExp} using rationalised values of the invariants. The need for rational values arises from the fact that the series expansion method, implemented in \texttt{DiffExp}, is very sensitive to the values of input parameters as it requires high precision throughout the intermediate steps. For each permutation of each point we compute the ``distance'' (technically speaking, the number of segments into which the integration contour is divided by \texttt{DiffExp}) from the six reference points provided in the ancillary files, and choose the closest one as initial point for the integration. In Figure~\ref{fig:plots} we plot the values of the one- and two-loop reduced squared finite remainders for all the processes defined in Eq.~\eqref{eq:channel_definition}, as functions of the parameter $y_2$.
 
 \begin{figure}[t!]
 \centering
@@ -852,7 +851,7 @@ constructing such a basis was presented in the recent $pp\to Wb\bar{b}$ computat
 authors. The finite remainders were then extracted from multiple
 evaluations over finite fields and IBP reduction with a rational parametrisation of the external kinematics.
 We obtained relatively compact results after determining the linear relations between the rational coefficients and
-performing a univariate partial fraction decomposition on the fly. The final expressions were evaluated using the method of generalised series expansions as implemented in the \textsc{DiffExp} code~\cite{Hidding:2020ytt}.
+performing a univariate partial fraction decomposition on the fly. The final expressions were evaluated using the method of generalised series expansions as implemented in the \texttt{DiffExp} code~\cite{Hidding:2020ytt}.
 
 The expressions have been validated in a number of ways and we observe that they exhibit a smooth behaviour in all
 scattering regions. Evaluation times appear to be suitable for phenomenological applications,

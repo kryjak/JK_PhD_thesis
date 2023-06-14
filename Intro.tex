@@ -150,13 +150,32 @@ Let us now devote our attention to the study of Feynman integrals, the fundament
     \item \textbf{Collinear divergences} - when the loop momentum $k$ becomes collinear to a massless external momentum.
 \end{itemize}
 \end{itemize}
-
-\JK{Insert a picture of a generic $2\rightarrow n$ diagram and how it corresponds to an integral.}
-\begin{figure}
+\begin{figure}[t]
     \centering
-    
-    \caption{Caption}
-    \label{fig:enter-label}
+    \hspace{-2cm}
+	\begin{tikzpicture}[scale=0.5]
+        \begin{feynman}
+		\filldraw[gray!50,draw=black] (0,0) ellipse (4 and 2);
+		\draw[fill=white,draw=black,] (-2.5,0) ellipse (0.7cm and 1cm) node {\small $k_1$};
+		\draw[fill=white,draw=black,] (-.9,0) ellipse (0.7cm and 1cm) node {\small $k_2$};
+		\draw[fill=white,draw=black,] (+2.5,0) ellipse (0.7cm and 1cm) node {\small $k_L$};
+        \node (ldots) at (0.8, 0) {$\ldots$};
+
+        \node (kL) at (2.5, 0);
+        \ddd{kL.center}{2.5cm}{d1}{d2}{d3}{0}{20};
+		
+        \draw[thick] (3, 1.32) -- (5,3) node [anchor=south west] {$p_3$};
+		\draw[thick] (3, -1.32) -- (5,-3) node [anchor=north west] {$p_n$};
+		\draw[thick] (-3, 1.32) -- (-5,3) node [anchor=south east] {$p_2$};
+		\draw[thick] (-3, -1.32) -- (-5,-3) node [anchor=north east] {$p_1$};
+
+        \node (text) [text width=5cm] at (12, 0.5) {\begin{equation*}
+            \longleftrightarrow \qquad \prod_{l=1}^L \left( \int \frac{\dd^d k_l}{(2\pi)^d}\right) \frac{N}{\prod_i D_i(k,p,m)}
+        \end{equation*}};
+        \end{feynman}
+	\end{tikzpicture}
+    \caption{An $L$-loop Feynman diagram corresponds to an $L$-fold Feynman integral. We continue the integrals from $4$ to $d$ dimensions (see below for explanation). The integrand is determined by the Feynman rules of the underlying theory. \JK{Should I explain what $N$ and $D$ are?} \JK{Should I include $\mu^{2\varepsilon}$ and the symmetry factor}? }
+    \label{fig:genericint}
 \end{figure}
 \subsubsection{UV divergence and renormalisation}
 The two types of divergences are handled in separate ways. Firstly, UV divergences are dealt with using renormalisation. In short, we start by realising that the masses, fields and couplings in the original Lagrangian of Eq.~\ref{eq:QCDLagrangian} are not `physical', in the sense that we have been using them to define the perturbative expansion, but they do not correspond to the physical parameters that can be measured in a collider. From this perspective, the fact that our attempts at deriving predictions from QFT result in an abundance of infinities does not shatter our dreams of having a sensible theory of real-world interactions. One simply needs to move these infinities away from the integrals and into the definitions of the naive `bare' couplings. It is conventional to introduce into the Lagrangian so-called counterterms (with their own Feynman rules and diagrams) designed precisely to cancel out divergences up to a given order in perturbation theory. The inclusion of counterterms (which are themselves divergent) is equivalent to shifting the couplings from their bare values to the physical ones. This means that the predictions obtained using the physical parameters will now be finite. To get the values of the physical parameters themselves, we need to relate them to some quantity that can be measured in an experiment. This measurement can be performed at an arbitrary energy $\mu_R$, which is known as the renormalisation scale. Then, the relationship between the bare and physical couplings allows us to write down renormalised expression for the scattering amplitudes. Even though the renormalised amplitudes are a function of the physical couplings as measured at some $\mu_R$, the choice of this renormalisation scale is arbitrary and the predictions obtained from the renormalised amplitudes are independent of it.
