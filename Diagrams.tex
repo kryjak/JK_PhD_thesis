@@ -366,25 +366,182 @@
 %\label{tab:MIs}
 %\end{table}
 
-	\begin{tikzpicture}[scale=0.4]
-        \begin{feynman}
-		\filldraw[gray!50,draw=black] (0,0) ellipse (4 and 2);
-		\draw[fill=white,draw=black,] (-2.5,0) ellipse (0.7cm and 1cm) node {\small $k_1$};
-		\draw[fill=white,draw=black,] (-.9,0) ellipse (0.7cm and 1cm) node {\small $k_2$};
-		\draw[fill=white,draw=black,] (+2.5,0) ellipse (0.7cm and 1cm) node {\small $k_L$};
-        \node (ldots) at (0.8, 0) {$\ldots$};
+%	\begin{tikzpicture}[scale=0.4]
+%        \begin{feynman}
+%		\filldraw[gray!50,draw=black] (0,0) ellipse (4 and 2);
+%		\draw[fill=white,draw=black,] (-2.5,0) ellipse (0.7cm and 1cm) node {\small $k_1$};
+%		\draw[fill=white,draw=black,] (-.9,0) ellipse (0.7cm and 1cm) node {\small $k_2$};
+%		\draw[fill=white,draw=black,] (+2.5,0) ellipse (0.7cm and 1cm) node {\small $k_L$};
+%        \node (ldots) at (0.8, 0) {$\ldots$};
+%
+%        \node (kL) at (2.5, 0);
+%        \ddd{kL.center}{2cm}{d1}{d2}{d3}{0}{20};
+%		
+%        \draw[thick] (3, 1.32) -- (5,3) node [anchor=south west] {$p_3$};
+%		\draw[thick] (3, -1.32) -- (5,-3) node [anchor=north west] {$p_n$};
+%		\draw[thick] (-3, 1.32) -- (-5,3) node [anchor=south east] {$p_2$};
+%		\draw[thick] (-3, -1.32) -- (-5,-3) node [anchor=north east] {$p_1$};
+%
+%        \node (text) [text width=5cm] at (15, 0) {\begin{equation*}
+%            \longleftrightarrow \qquad \prod_{l=1}^L \left( \int \frac{\dd^d k_l}{(2\pi)^d}\right) \frac{N}{\prod_i D_i(k,p,m)}
+%        \end{equation*}};
+%        \end{feynman}
+%	\end{tikzpicture}
 
-        \node (kL) at (2.5, 0);
-        \ddd{kL.center}{2cm}{d1}{d2}{d3}{0}{20};
-		
-        \draw[thick] (3, 1.32) -- (5,3) node [anchor=south west] {$p_3$};
-		\draw[thick] (3, -1.32) -- (5,-3) node [anchor=north west] {$p_n$};
-		\draw[thick] (-3, 1.32) -- (-5,3) node [anchor=south east] {$p_2$};
-		\draw[thick] (-3, -1.32) -- (-5,-3) node [anchor=north east] {$p_1$};
+\begin{figure}
+    \centering
+    %\begin{adjustbox}{minipage=\textwidth,scale=0.9}
+    %\raisebox{0.2cm}{
+    \begin{subfigure}[b]{0.5\linewidth}
+        \hspace*{1em}
+        \begin{tikzpicture}[every text node part/.style={align=left}]
+    	\begin{feynman}[small]
+    		\vertex (v) node[anchor=north] {$b$};
+            \vertex (f) [right=2cm of v] {$\phantom{i_1}$};
+            \node at (f.south west) {$c$};
+            \node (t) [left=0.5cm of v] {$\bm{T}^a:$};
+            \node (eq) [right=0.5cm of f] {$=$};
 
-        \node (text) [text width=5cm] at (15, 0) {\begin{equation*}
-            \longleftrightarrow \qquad \prod_{l=1}^L \left( \int \frac{\dd^d k_l}{(2\pi)^d}\right) \frac{N}{\prod_i D_i(k,p,m)}
-        \end{equation*}};
-        \end{feynman}
-	\end{tikzpicture}
+            \vertex (v2) [right=0.5cm of eq] {$-\ii$};
+            \node at (v2.south east) {$b$};
+            \vertex (m) [right=1.3cm of v2] [anchor=west];
+            \vertex (f2) [right=1.2cm of m] {\phantom{j}};
+            \node at (f2.south west) {$c$};
+            \vertex (g) [above=of m] {$a$};
+
+            \node (text) [right=2cm of f2] {gluon};
+            
+    		\diagram*{
+    			(v) -- [thick, gluon] (f);
+                (v2) -- [thick, gluon] (m) -- [thick, gluon] (f2);
+                (m) -- [thick, gluon] (g);
+    		};
+    	\end{feynman}
+    \end{tikzpicture}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+        \hspace*{1em}
+        \begin{tikzpicture}[every text node part/.style={align=left}]
+    	\begin{feynman}[small]
+    		\vertex (v) node[anchor=north] {$i$};
+            \vertex (f) [right=2cm of v] {$\phantom{i_1}$};
+            \node at (f.south west) {$j$};
+            \node (t) [left=0.5cm of v] {$\bm{T}^a:$};
+            \node (eq) [right=0.5cm of f] {$=$};
+
+            \vertex (v2) [right=0.5cm of eq] {$+$};
+            \node at (v2.south east) {$i$};
+            \vertex (m) [right=1.3cm of v2] [anchor=west];
+            \vertex (f2) [right=1.2cm of m] {\phantom{j}};
+            \node at (f2.south west) {$j$};
+            \vertex (g) [above=of m] {$a$};
+
+            \node (text) [right=2cm of f2] {outgoing\\quark};
+            
+            \filldraw (v) circle (2pt);
+            \filldraw (v2.east) circle (2pt);
+            
+    		\diagram*{
+    			(v) -- [thick, fermion] (f);
+                (v2) -- [thick, fermion] (m) -- [thick, fermion] (f2);
+                (m) -- [thick, gluon] (g);
+    		};
+    	\end{feynman}
+    \end{tikzpicture}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+        \hspace*{1em}
+        \begin{tikzpicture}[every text node part/.style={align=left}]
+    	\begin{feynman}[small]
+    		\vertex (v) node[anchor=north] {$i$};
+            \vertex (f) [right=2cm of v] {$\phantom{i_1}$};
+            \node at (f.south west) {$j$};
+            \node (t) [left=0.5cm of v] {$\bm{T}^a:$};
+            \node (eq) [right=0.5cm of f] {$=$};
+
+            \vertex (v2) [right=0.5cm of eq] {$-$};
+            \node (c) at (v2.south east) {$i$};
+            \vertex (m) [right=1.3cm of v2] [anchor=west];
+            \vertex (f2) [right=1.2cm of m] {\phantom{j}};
+            \node at (f2.south west) {$j$};
+            \vertex (g) [above=of m] {$a$};
+
+            \node (text) [right=2cm of f2] {outgoing\\antiquark};
+            
+            \filldraw (v) circle (2pt);
+            \filldraw (c.north) [fill=gray!50,draw=black] circle (5pt);
+            
+    		\diagram*{
+    			(v) -- [thick, anti fermion] (f);
+                (v2) -- [thick, anti fermion] (m) -- [thick, anti fermion] (f2);
+                (m) -- [thick, gluon] (g);
+    		};
+    	\end{feynman}
+    \end{tikzpicture}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+        \hspace*{1em}
+        \begin{tikzpicture}[every text node part/.style={align=left}]
+    	\begin{feynman}[small]
+    		\vertex (v) node[anchor=north] {$i$};
+            \vertex (f) [right=2cm of v] {$\phantom{i_1}$};
+            \node at (f.south west) {$j$};
+            \node (t) [left=0.5cm of v] {$\bm{T}^a:$};
+            \node (eq) [right=0.5cm of f] {$=$};
+
+            \vertex (v2) [right=0.5cm of eq] {$-$};
+            \node at (v2.south east) {$i$};
+            \vertex (m) [right=1.3cm of v2] [anchor=west];
+            \vertex (f2) [right=1.2cm of m] {\phantom{j}};
+            \node at (f2.south west) {$j$};
+            \vertex (g) [above=of m] {$a$};
+
+            \node (text) [right=2cm of f2] {incoming\\quark};
+            
+            \filldraw (f.west) circle (2pt);
+            \filldraw (f2.west) circle (2pt);
+            
+    		\diagram*{
+    			(v) -- [thick, anti fermion] (f);
+                (v2) -- [thick, anti fermion] (m) -- [thick, anti fermion] (f2);
+                (m) -- [thick, gluon] (g);
+    		};
+    	\end{feynman}
+    \end{tikzpicture}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+        \hspace*{1em}
+        \begin{tikzpicture}[every text node part/.style={align=left}]
+    	\begin{feynman}[small]
+    		\vertex (v) node[anchor=north] {$i$};
+            \vertex (f) [right=2cm of v] {$\phantom{i_1}$};
+            \node at (f.south west) {$j$};
+            \node (t) [left=0.5cm of v] {$\bm{T}^a:$};
+            \node (eq) [right=0.5cm of f] {$=$};
+
+            \vertex (v2) [right=0.5cm of eq] {$+$};
+            \node at (v2.south east) {$i$};
+            \vertex (m) [right=1.3cm of v2] [anchor=west];
+            \vertex (f2) [right=1.2cm of m] {\phantom{j}};
+            \node at (f2.south west) {$j$};
+            \vertex (g) [above=of m] {$a$};
+
+            \node (text) [right=2cm of f2] {incoming\\antiquark};
+            
+            \filldraw (f.west) circle (2pt);
+            \filldraw (f2.west) circle (2pt);
+            
+    		\diagram*{
+    			(v) -- [thick, anti fermion] (f);
+                (v2) -- [thick, anti fermion] (m) -- [thick, anti fermion] (f2);
+                (m) -- [thick, gluon] (g);
+    		};
+    	\end{feynman}
+    \end{tikzpicture}
+    \end{subfigure}
+    %}
+    %\end{adjustbox}
+\caption{\lipsum[1]}
+\label{fig:topologies}
+\end{figure}
 \end{document}

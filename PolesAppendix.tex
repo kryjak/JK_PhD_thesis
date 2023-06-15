@@ -23,7 +23,7 @@ where $a_B = \alpha_{s,B}/(4\pi)$ and $\alpha_{s,B}\,$,  $y_{b,B}$ are the bare 
     \alpha_{s,B} &= S_\eps\, Z_{\alpha_s} \, \alpha_{s,R}(\mu_R) \label{eq:baretorenormalpha} \\
     y_{b,B} &= Z_y \, y_{b,R}(\mu_R) \label{eq:baretorenormyb} \,,
 \end{align}
-where $\mu_R$ is the renormalisation scale. The factor $S_\eps = \mathrm{e}^{\eps \gamma_E} (4\pi)^{-\eps}$ cancels out with the $m_\eps$ factor extracted from the colour-ordered amplitudes in Eq.~\ref{eq:colourdecomposition} and so will be dropped in the following discussion. The renormalisation factors themselves admit a perturbative expansion in the renormalised strong coupling constant:
+where $\mu_R$ is the renormalisation scale. The factor $S_\eps = e^{\eps \gamma_E} (4\pi)^{-\eps}$ cancels out with the $m_\eps$ factor extracted from the colour-ordered amplitudes in Eq.~\ref{eq:colourdecomposition} and so will be dropped in the following discussion. The renormalisation factors themselves admit a perturbative expansion in the renormalised strong coupling constant:
 \begin{align}
     Z_{\alpha_s} &= 1 + a_R r_1 + a_R^2 r_2 + \order{a_R^3}  \label{eq:Zalphacoeff} \\
     Z_y &= 1 + a_R s_1 + a_R^2 s_2 + \order{a_R^3} \label{eq:Zybcoeff}\,,
@@ -49,18 +49,22 @@ The $\overline{\text{MS}}$-renormalised amplitudes $A_R^{(L)}$ admit the followi
 \end{align}
 Thus, the IR-divergent part is determined by amplitudes at lower loop order, while the full amplitude also receives a finite part $F^{(L)}$, which is the genuinely new contribution that needs to be computed. The pole operators are given by:
 \begin{align}
-    \bm{I}^{(1)}(\eps) &= \frac{1}{2} \frac{\mathrm{e}^{\eps \gamma_E}}{\Gamma(1-\eps)} \sum_i \left(\frac{1}{\eps^2} - \frac{\gamma_0^i}{2\eps} \frac{1}{\bm{T}_i^2}\right) \sum_{j\neq i} \bm{T}_j \cdot \bm{T}_j \left(\frac{\mu_R^2}{-s_{ij}} \right)^\eps\,, \\
-    \bm{I}^{(2)}(\eps) &= \frac{\mathrm{e}^{-\eps \gamma_E} \Gamma(1-2\eps)}{\Gamma(1-\eps} \left( \frac{\gamma_1^\text{cusp}}{8} + \frac{\beta_0}{2\eps} \right) \bm{I}^{(1)}(2\eps) - \frac{1}{2}\bm{I}^{(1)}(\eps) \left(\bm{I}^{(1)}(2\eps) + \frac{\beta_0}{\eps} \right) + \bm{H}_{\text{RS}}^{(2)}(\eps)\,,
+    \bm{I}^{(1)}(\eps) &= \frac{1}{2} \frac{e^{\eps \gamma_E}}{\Gamma(1-\eps)} \sum_i \left(\frac{1}{\eps^2} - \frac{\gamma_0^i}{2\eps} \frac{1}{\bm{T}_i^2}\right) \sum_{j\neq i} \bm{T}_j \cdot \bm{T}_j \left(\frac{\mu_R^2}{-s_{ij}} \right)^\eps\,, \\
+    \bm{I}^{(2)}(\eps) &= \frac{e^{-\eps \gamma_E} \Gamma(1-2\eps)}{\Gamma(1-\eps} \left( \frac{\gamma_1^\text{cusp}}{8} + \frac{\beta_0}{2\eps} \right) \bm{I}^{(1)}(2\eps) - \frac{1}{2}\bm{I}^{(1)}(\eps) \left(\bm{I}^{(1)}(2\eps) + \frac{\beta_0}{\eps} \right) + \bm{H}_{\text{RS}}^{(2)}(\eps)\,,
 \end{align}
 where $s_{ij} = 2\sigma_{ij} p_i \cdot p_j$ with $\sigma_{ij}=+1$ if both momenta are incoming or outgoing and $\sigma_{ij}=-1$ otherwise. The values of the $\beta$-function coefficients and the anomalous dimensions are given in Appendix~\ref{app:renormconstants}. We remark that the one-loop pole operator $\bm{I}^{(1)}(\eps)$ is independent of the regularisation scheme, while the two-loop operator $\bm{I}^{(2)}(\eps)$ is not. Its dependence enters through the quantity $\bm{H}_{\text{RS}}^{(2)}(\eps)$, which contains $\order(1/\eps)$ poles only:
 \begin{align}
     \bm{H}_{\text{RS}}^{(2)}(\eps) &= \frac{1}{16\eps} \sum_i \left(\gamma_1^i - \frac{1}{4} \gamma_1^{\text{cusp}}\gamma_0^i + \frac{\pi^2}{16} \beta_0 \gamma_0^{\text{cusp}} C_i \right) \\
-    &+ \frac{\ii f^{abc}}{24\eps} \sum_{(i,j,k)} \bm{T}_i^a \bm{T}_j^b \bm{T}_k^c \ln\left(\frac{-s_{ij}}{-s_{jk}} \right) \ln\left(\frac{-s_{jk}}{-s_{kj}} \right) \ln\left(\frac{-s_{ki}}{-s_{ij}} \right) \\
-    &-\frac{\ii f^{abc}}{128\eps} \gamma_0^{\text{cusp}} \sum_{(i,j,k)} \bm{T}_i^a \bm{T}_j^b \bm{T}_k^c \left( \frac{\gamma_0^i}{C_i} - \frac{\gamma_0^j}{C_j} \right)\ln\left(\frac{-s_{ij}}{-s_{jk}} \right) \ln\left(\frac{-s_{ki}}{-s_{ij}} \right)\,,
+    &+ \frac{i f^{abc}}{24\eps} \sum_{(i,j,k)} \bm{T}_i^a \bm{T}_j^b \bm{T}_k^c \ln\left(\frac{-s_{ij}}{-s_{jk}} \right) \ln\left(\frac{-s_{jk}}{-s_{kj}} \right) \ln\left(\frac{-s_{ki}}{-s_{ij}} \right) \\
+    &-\frac{i f^{abc}}{128\eps} \gamma_0^{\text{cusp}} \sum_{(i,j,k)} \bm{T}_i^a \bm{T}_j^b \bm{T}_k^c \left( \frac{\gamma_0^i}{C_i} - \frac{\gamma_0^j}{C_j} \right)\ln\left(\frac{-s_{ij}}{-s_{jk}} \right) \ln\left(\frac{-s_{ki}}{-s_{ij}} \right)\,,
 \end{align}
 where the sum runs over unordered tuples $(i,j,k)$ of distinct parton indices. As pointed out in Ref.~\cite{Becher:2009cu}, the last two lines appear only because the pole operators $\bm{I}^{(L)}(\eps)$ formulated in Ref.~\cite{Catani:1998bh} were not defined in a minimal scheme, but also include terms finite in $\eps$. Due to colour conservation, they contribute only if the amplitude contains at least four partons \JK{The last line appears only for \textit{more} than partons due to momentum conservation (Becher+Neubert). But the 2nd line should still be present for bbH, since we have exactly 4 partons and we are working in $\overline{\text{MS}}$ scheme. What's going on?}.
 
-Overall, we see that 
+Overall, despite the intimidating appearance of the formulas above, it can be appreciated that the only non-trivial piece of deriving the pole structure of the two-loop amplitudes is due to the operators $\bm{T}$, which we will refer to as `colour insertion operators'. Indeed, each $\bm{T}_i^a$ acts on the colour structure of the amplitude by inserting a gluon with the adjoint index $a$ onto the parton $i$. 
+
+It might be very helpful to use pictures akin to Feynman diagrams in order to understand their action:
+
+
 \subsubsection{Application to $\ppbbh$ amplitudes}
 \texttt{Mathematica} package \texttt{ColorMath}~\cite{Sjodahl:2012nk}
 \end{document}
