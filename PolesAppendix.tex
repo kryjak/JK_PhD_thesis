@@ -34,7 +34,7 @@ where $a_R = \alpha_{s,R}/(4\pi)$. Substituting Eqs.~\ref{eq:baretorenormalpha} 
 \end{equation}
 with the individual amplitudes given by:
 \begin{align}
-    A_R^{(0)} &= A_B^{(0)} \,,\\ \nonumber
+    A_R^{(0)} &= A_B^{(0)} \,,\nonumber \\ 
     A_R^{(1)} &= A_B^{(1)} + 2 A_B^{(0)}(r_1 + s_1) \,, \label{eq:amprenorminbare}\\ 
     A_R^{(2)} &= A_B^{(2)} + 2 A_B^{(1)}(2r_1 + s_1) + 4A_B^{(0)} (r_2 + r_1 s_1 + s_2)\,. \nonumber
 \end{align}
@@ -42,10 +42,10 @@ The coefficients $r_1, r_2, s_1, s_2$ are listed in Appendix~\ref{app:renormcons
 \section{IR singularities}
 The renormalised amplitudes $A_R^{(L)}$ are only UV-finite --- the IR divergences remain. As explained in Sec.~\ref{sec:IRdivergencesandKLN}, the IR pole structure of two-loop amplitudes in massless gauge theories was originally derived in Ref.~\cite{Catani:1998bh} and later extended in  Refs.~\cite{Becher:2009cu, Becher:2009qa, Gardi:2009qi}. Here, we provide a brief summary of these results, followed by their application to our process of interest, $\ppbbh$.
 \subsection{Overview of IR singularities}
-The $\overline{\text{MS}}$-renormalised amplitudes $A_R^{(L)}$ admit the following structure:
+The $\overline{\text{MS}}$-renormalised amplitudes $A_R^{(L)}$ admit the following structure\footnote{Note that similarly to the previous section, we rescale $\bm{I}^{(1)}(\eps)$ and $\bm{I}^{(2)}(\eps)$ by $2$ and $2^2$, respectively, to account for the different expansion parameter $a_R$ in Ref.~\cite{Catani:1998bh}.}:
 \begin{align}
-    A_R^{(1)} &= \bm{I}^{(1)}(\eps) A_R^{(0)} + F^{(1)}\,, \\
-    A_R^{(2)} &= \bm{I}^{(1)}(\eps) A_R^{(1)} + \bm{I}^{(2)}(\eps) A_R^{(0)} + F^{(2)}\,.
+    A_R^{(1)} &= 2\bm{I}^{(1)}(\eps) A_R^{(0)} + F^{(1)}\,, \label{eq:A1IRstructure} \\
+    A_R^{(2)} &= 2\bm{I}^{(1)}(\eps) A_R^{(1)} + 4\bm{I}^{(2)}(\eps) A_R^{(0)} + F^{(2)} \,. \label{eq:A2IRstructure}
 \end{align}
 Thus, the IR-divergent part is determined by amplitudes at lower loop order, while the full amplitude also receives a finite part $F^{(L)}$, which is the genuinely new contribution that needs to be computed. The pole operators are given by:
 \begin{align}
@@ -321,12 +321,24 @@ In the same manner, we need to obtain the remaining matrices $\mathcal{C}_{ij}$.
 
 Once all the matrices $\mathcal{C}_{ij}$ have been computed, we have all the information needed to act with the pole operators $\bm{I}^{(L)}$ on the renormalised amplitudes $A_R^{(L)}$ and subtract the IR singularities. Note that if we want to retain full colour dependence, for each colour-ordered amplitude the subtraction will involve multiple lower-loop amplitudes with different colour factors. However, within the leading-colour approximation, the situation becomes much simpler. Indeed, replacing each $\bm{T}_i \cdot \bm{T}_j$ with the corresponding $\mathcal{C}_{ij}$ (and each $\bm{T}_i^2$ with the corresponding quadratic Casimir $C_i$), we retain only the highest power of $N_c$ to find:
 \begin{equation}
-    \bm{I}_{\bbqqh}^{(1)} = -N_c \frac{N(\eps)}{2}\left(\frac{1}{\eps^2} + \frac{3}{2\eps} \right) \left[(-s_{23})^{-\eps} + (-s_{14})^{-\eps}\right]
+    \bm{I}_{\bbqqh}^{(1)} = -N_c \frac{N(\eps)}{2}\left(\frac{1}{\eps^2} + \frac{3}{2\eps} \right) \left((-s_{23})^{-\eps} + (-s_{14})^{-\eps}\right)
     \begin{pmatrix}
         1 & 0 \\
         0 & 1
-    \end{pmatrix}
+    \end{pmatrix}\,.
 \end{equation}
+Moreover, it turns out that the second colour factor $\delta_{i_2}^{\;\;\bar{i}_1} \delta_{i_4}^{\;\;\bar{i}_3}$ always appears suppressed by $1/N_c$ with respect to the first factor $\delta_{i_4}^{\;\;\bar{i}_1} \delta_{i_2}^{\;\;\bar{i}_3}$, as can be appreciated from our simple example in Fig.~\ref{fig:bbqqHcolour}. Thus, in the leading-colour approximation, we simply drop it. This justifies the decomposition in Eq.~\ref{eq:colourdecomposition} and completes the derivation of the pole operator $I_{\bbqqh}^{(1)}$ in Eq.~\ref{eq:I1bbqqh}, which now acts solely on the amplitude associated with the colour factor $\delta_{i_4}^{\;\;\bar{i}_1} \delta_{i_2}^{\;\;\bar{i}_3}$.
 
+Finally, we combine the UV and IR poles in a single operator $P^{(L)}$ which we can use to subtract both types of divergences from the amplitude. Substituting Eq.~\ref{eq:amprenorminbare} into Eqs.~\ref{eq:A1IRstructure} and \ref{eq:A2IRstructure}, we obtain the finite part:
+\begin{align}
+    F^{(1)} &= A_R^{(1)} - 2 I^{(1)}(\eps) A_R^{(0)} \nonumber \\
+            &= A_B^{(1)} + 2 A_B^{(0)}(r_1 + s_1) - 2 I^{(1)}(\eps) A_B^{(0)} \nonumber \\
+            &= A_B^{(1)} - \underbrace{2 \left(I^{(1)}(\eps) - r_1 - s_1 \right)}_{P^{(1)}} A_B^{(0)} \,, \\
+            &\nonumber \\
+    F^{(2)} &= A_R^{(2)} - 2 I^{(1)}(\eps) A_R^{(1)} - 4 I^{(2)}(\eps) A_R^{(0)} \nonumber \\
+            &= A_B^{(2)} + 2 A_B^{(1)}(2r_1 + s_1) + 4A_B^{(0)} (r_2 + r_1 s_1 + s_2) \nonumber \\
+            & -2 I^{(1)}(\eps) \left(A_B^{(1)} + 2 A_B^{(0)}(r_1 + s_1)\right) - 4 I^{(2)}(\eps) A_B^{(0)} \nonumber \\
+            &= A_B^{(2)} - \underbrace{\left(2 I^{(1)}(\eps) \left(\hat{A}_B^{(1)} + r_1 + s_1\right) + 4I^{(2)}(\eps) - 2 (2r_1 + s_1) \hat{A}_B^{(1)} -  4(r_2 + r_1 s_1 + s_2) \right)}_{P^{(2)}} A_B^{(0)}\,.
+\end{align}
 \subsubsection{The $\bbggh$ channel}
 \end{document}

@@ -545,54 +545,148 @@
 %\label{fig:topologies}
 %\end{figure}
 
+%\begin{figure}
+%    \centering
+%        \begin{tikzpicture}
+%        	\begin{feynman}[small]
+%        		\vertex (v1);
+%          
+%        		\vertex[above left = 1cm of v1] (i1) {$i_4$};
+%        		\vertex[below left =  1cm of v1] (i2) {$\bar{i}_3$};
+%        		\vertex[right = of v1] (v2);			
+%        		
+%        		\vertex[above right = 1cm of v2] (f1) {$\bar{i}_1$};
+%        		\vertex[below right = 1cm of v2] (f2) {$i_2$};
+%
+%                %2nd diagram
+%                \vertex[below right=of f1, xshift=1.5cm] (2i1) {$i_4$};
+%                \vertex[above right=of f2, xshift=1.5cm] (2i2) {$\bar{i}_3$};
+%                		
+%        		\vertex[right=2cm of 2i1] (2f1) {$\bar{i}_1$};
+%                \vertex[right=2cm of 2i2] (2f2) {$i_2$}; 
+%
+%                %3rd diagram
+%                \vertex[above right=of 2f1, xshift=1cm] (3i1) {$i_4$};
+%                \vertex[below right=of 2f2, xshift=1cm] (3i2) {$\bar{i}_3$};
+%                		
+%        		\vertex[right=of 3i1] (3f1) {$\bar{i}_1$};
+%                \vertex[right=of 3i2] (3f2) {$i_2$}; 
+%
+%                %equation nodes
+%                \node[right=2.5cm of v1] {$=T_F$ \Huge $\Biggr($};
+%                \node[right=6.5cm of v1] {$ -\,\,\dfrac{1}{N_c} $};
+%                \node[right=9cm of v1] {\Huge $\Biggr)$};
+%
+%        		\diagram*{
+%                    %1st diagram
+%        			(i1) -- [anti fermion] (v1) -- [anti fermion] (i2),
+%                    (v1) -- [gluon] (v2),
+%        			(f1) -- [fermion] (v2) -- [fermion] (f2),
+%                    %2nd diagram
+%                    (2i1) -- [anti fermion] (2f1),
+%                    (2i2) -- [fermion] (2f2),
+%                    %3rd diagram
+%                    (3i1) -- [anti fermion] (3i2),
+%                    (3f1) -- [fermion] (3f2),
+%        		};
+%        	\end{feynman}
+%        \end{tikzpicture}
+%    \caption{The colour structure of a sample diagram contributing to the $\bbqqh$ channel at tree level. We employ the Fierz identity to write $(T^a)_{i_4}^{\;\;\bar{i}_3} (T^a)_{i_2}^{\;\;\bar{i}_1} = T_F \left( \delta_{i_4}^{\;\;\bar{i}_1} \delta_{i_2}^{\;\;\bar{i}_3} - \frac{1}{N_c} \delta_{i_2}^{\;\;\bar{i}_1} \delta_{i_4}^{\;\;\bar{i}_3}\right)$.} 
+%    \label{fig:}
+%\end{figure}
+
 \begin{figure}
     \centering
+        \begin{subfigure}{\linewidth}
         \begin{tikzpicture}
         	\begin{feynman}[small]
-        		\vertex (v1);
-          
-        		\vertex[above left = 1cm of v1] (i1) {$i_4$};
-        		\vertex[below left =  1cm of v1] (i2) {$\bar{i}_3$};
-        		\vertex[right = of v1] (v2);			
+        		\vertex (i1) {$i_4$};
+        		\vertex[right =3cm of i1] (f1) {$\bar{i}_1$};
+        		\vertex[below =0.7cm of i1] (i2) {$\bar{i}_3$};
+        		\vertex[right =3cm of i2] (f2) {$i_2$};			
         		
-        		\vertex[above right = 1cm of v2] (f1) {$\bar{i}_1$};
-        		\vertex[below right = 1cm of v2] (f2) {$i_2$};
-
                 %2nd diagram
-                \vertex[below right=of f1, xshift=1.5cm] (2i1) {$i_4$};
-                \vertex[above right=of f2, xshift=1.5cm] (2i2) {$\bar{i}_3$};
+                \vertex[right=of f1, xshift=0.8cm] (2i1) {$i_4$};
+                \vertex[right=of f2, xshift=0.8cm] (2i2) {$\bar{i}_3$};
                 		
-        		\vertex[right=2cm of 2i1] (2f1) {$\bar{i}_1$};
-                \vertex[right=2cm of 2i2] (2f2) {$i_2$}; 
+        		\vertex[right=of 2i1] (2m1);
+                \vertex[right=of 2m1] (2m2);
+                
+        		\vertex[right=of 2m2] (2f1) {$\bar{i}_1$};
+                \vertex[below=0.7cm of 2f1] (2f2) {$i_2$}; 
 
                 %3rd diagram
-                \vertex[above right=of 2f1, xshift=1cm] (3i1) {$i_4$};
-                \vertex[below right=of 2f2, xshift=1cm] (3i2) {$\bar{i}_3$};
+                \vertex[right=of 2f1, xshift=1cm] (3i1) {$i_4$};
+                \vertex[right=of 2f2, xshift=1cm] (3i2) {$\bar{i}_3$};
+                \vertex[right=3cm of 3i1] (3f1) {$\bar{i}_1$};
+                \vertex[below=0.7cm of 3f1] (3f2) {$i_2$}; 
+                
+                %equation nodes
+                \node (t1) [left=1.2cm of i1, yshift=-0.35cm] {$\bm{T}_1 \cdot \bm{T}_4:$};
+                \node (t2) [right=5cm of t1] {$\;\;=\;\;-$};
+                \node (t3) [right=5.3cm of t2] {$= \;\;C_A$};
+
+        		\diagram*{
+                    %1st diagram
+        			(i1) -- [anti fermion] (f1),
+                    (i2) -- [fermion] (f2),
+                    %2nd diagram
+                    (2i1) -- (2m1) -- [anti fermion] (2m2) -- (2f1),
+                    (2i2) -- [fermion] (2f2),
+                    (2m1) -- [gluon, out=90, in=90] (2m2),
+                    %3rd diagram
+        			(3i1) -- [anti fermion] (3f1),
+                    (3i2) -- [fermion] (3f2),
+        		};
+        	\end{feynman}
+        \end{tikzpicture}
+    %\caption 
+    %\label{}
+    \end{subfigure}
+    \begin{subfigure}{\linewidth}
+        \begin{tikzpicture}
+        	\begin{feynman}[small]
+        		\vertex (i1) {$i_4$};
+        		\vertex[below=2cmof i1] (i2) {$\bar{i}_3$};
+                \vertex[right=of i1] (f1) {$\bar{i}_1$};
+                \vertex[below=2cmof f1] (f2) {$\bar{i}_2$};
+
+                %2nd diagram
+                \vertex[right=of f1, xshift=1.5cm] (2i1) {$i_4$};
+                \vertex[below=of 2i1] (2im);
+                \vertex[below=of 2im] (2i2) {$\bar{i}_3$};
+                		
+        		\vertex[right=of 2i1] (2f1) {$\bar{i}_1$};
+        		\vertex[below=of 2f1] (2fm);
+                \vertex[right=of 2i2] (2f2) {$i_2$}; 
+
+                %3rd diagram
+                \vertex[right=of 2f1, xshift=1cm] (3i1) {$i_4$};
+                \vertex[right=of 2f2, xshift=1cm] (3i2) {$\bar{i}_3$};
                 		
         		\vertex[right=of 3i1] (3f1) {$\bar{i}_1$};
                 \vertex[right=of 3i2] (3f2) {$i_2$}; 
 
                 %equation nodes
-                \node[right=2.5cm of v1] {$=T_F$ \Huge $\Biggr($};
-                \node[right=6.5cm of v1] {$ -\,\,\dfrac{1}{N_c} $};
-                \node[right=9cm of v1] {\Huge $\Biggr)$};
+                \node (t1) [left=1.2cm of i1, yshift=-0.35cm] {$\bm{T}_1 \cdot \bm{T}_4:$};
+                %\node (t2) [right=5cm of t1] {$\;\;=\;\;-$};
+                %\node (t3) [right=5.3cm of t2] {$= \;\;C_A$};
 
         		\diagram*{
                     %1st diagram
-        			(i1) -- [anti fermion] (v1) -- [anti fermion] (i2),
-                    (v1) -- [gluon] (v2),
-        			(f1) -- [fermion] (v2) -- [fermion] (f2),
+        			(i1) -- [anti fermion] (i2),
+        			(f1) -- [fermion] (f2),
                     %2nd diagram
-                    (2i1) -- [anti fermion] (2f1),
-                    (2i2) -- [fermion] (2f2),
+        			(2i1) -- [anti fermion] (2im) -- [anti fermion] (2i2),
+        			(2f1) -- [fermion] (2fm) -- [fermion] (2f2),
+                    (2im) -- [gluon] (2fm),
                     %3rd diagram
                     (3i1) -- [anti fermion] (3i2),
                     (3f1) -- [fermion] (3f2),
         		};
         	\end{feynman}
         \end{tikzpicture}
-    \caption{The colour structure of a sample diagram contributing to the $\bbqqh$ channel at tree level. We employ the Fierz identity to write $(T^a)_{i_4}^{\;\;\bar{i}_3} (T^a)_{i_2}^{\;\;\bar{i}_1} = T_F \left( \delta_{i_4}^{\;\;\bar{i}_1} \delta_{i_2}^{\;\;\bar{i}_3} - \frac{1}{N_c} \delta_{i_2}^{\;\;\bar{i}_1} \delta_{i_4}^{\;\;\bar{i}_3}\right)$.} 
-    \label{fig:}
-\end{figure}
-    
+    %\caption{} 
+    %\label{}
+    \end{subfigure}\end{figure}   
 \end{document}
