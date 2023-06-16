@@ -52,7 +52,7 @@ Thus, the IR-divergent part is determined by amplitudes at lower loop order, whi
     \bm{I}^{(1)}(\eps) &= \frac{1}{2} \frac{e^{\eps \gamma_E}}{\Gamma(1-\eps)} \sum_i \left(\frac{1}{\eps^2} - \frac{\gamma_0^i}{2\eps} \frac{1}{\bm{T}_i^2}\right) \sum_{j\neq i} \bm{T}_j \cdot \bm{T}_j \left(\frac{\mu_R^2}{-s_{ij}} \right)^\eps\,, \\
     \bm{I}^{(2)}(\eps) &= \frac{e^{-\eps \gamma_E} \Gamma(1-2\eps)}{\Gamma(1-\eps)} \left( \frac{\gamma_1^\text{cusp}}{8} + \frac{\beta_0}{2\eps} \right) \bm{I}^{(1)}(2\eps) - \frac{1}{2}\bm{I}^{(1)}(\eps) \left(\bm{I}^{(1)}(2\eps) + \frac{\beta_0}{\eps} \right) + \bm{H}_{\text{RS}}^{(2)}(\eps)\,,
 \end{align}
-where $s_{ij} = 2\sigma_{ij} p_i \cdot p_j$ with $\sigma_{ij}=+1$ if both momenta are incoming or outgoing and $\sigma_{ij}=-1$ otherwise. The values of the $\beta$-function coefficients and the anomalous dimensions are given in Appendix~\ref{app:renormconstants}. We remark that the one-loop pole operator $\bm{I}^{(1)}(\eps)$ is independent of the regularisation scheme, while the two-loop operator $\bm{I}^{(2)}(\eps)$ is not. Its dependence enters through the quantity $\bm{H}_{\text{RS}}^{(2)}(\eps)$, which contains $\order(1/\eps)$ poles only:
+where $s_{ij} = 2\sigma_{ij} p_i \cdot p_j$ with $\sigma_{ij}=+1$ if both momenta are incoming or outgoing and $\sigma_{ij}=-1$ otherwise. The values of the $\beta$-function coefficients and the anomalous dimensions are given in Appendix~\ref{app:renormconstants}. We remark that the one-loop pole operator $\bm{I}^{(1)}(\eps)$ is independent of the regularisation scheme, while the two-loop operator $\bm{I}^{(2)}(\eps)$ is not. Its dependence enters through the quantity $\bm{H}_{\text{RS}}^{(2)}(\eps)$, which contains $\order{1/\eps}$ poles only:
 \begin{align} \label{eq:IR_H_function}
     \bm{H}_{\text{RS}}^{(2)}(\eps) &= \frac{1}{16\eps} \sum_i \left(\gamma_1^i - \frac{1}{4} \gamma_1^{\text{cusp}}\gamma_0^i + \frac{\pi^2}{16} \beta_0 \gamma_0^{\text{cusp}} C_i \right) \nonumber \\
     &+ \frac{i f^{abc}}{24\eps} \sum_{(i,j,k)} \bm{T}_i^a \bm{T}_j^b \bm{T}_k^c \ln\left(\frac{-s_{ij}}{-s_{jk}} \right) \ln\left(\frac{-s_{jk}}{-s_{kj}} \right) \ln\left(\frac{-s_{ki}}{-s_{ij}} \right) \\ 
@@ -73,7 +73,7 @@ We find it very helpful to use pictures akin to Feynman diagrams in order to bet
     \centering
     %\begin{adjustbox}{minipage=\textwidth,scale=0.9}
     %\raisebox{0.2cm}{
-    \begin{subfigure}[b]{0.5\linewidth}
+    \begin{subfigure}[b]{0.8\linewidth}
         \hspace*{1em}
         \begin{tikzpicture}[every text node part/.style={align=left}]
     	\begin{feynman}[small]
@@ -90,7 +90,7 @@ We find it very helpful to use pictures akin to Feynman diagrams in order to bet
             \node at (f2.south west) {$c$};
             \vertex (g) [above=of m] {$a$};
 
-            \node (text) [right=2cm of f2] {gluon};
+            \node (text) [right=1.7cm of f2] {gluon};
             
     		\diagram*{
     			(v) -- [thick, gluon] (f);
@@ -100,7 +100,7 @@ We find it very helpful to use pictures akin to Feynman diagrams in order to bet
     	\end{feynman}
     \end{tikzpicture}
     \end{subfigure}
-    \begin{subfigure}[b]{0.5\linewidth}
+    \begin{subfigure}[b]{0.8\linewidth}
         \hspace*{1em}
         \begin{tikzpicture}[every text node part/.style={align=left}]
     	\begin{feynman}[small]
@@ -130,7 +130,7 @@ We find it very helpful to use pictures akin to Feynman diagrams in order to bet
     	\end{feynman}
     \end{tikzpicture}
     \end{subfigure}
-    \begin{subfigure}[b]{0.5\linewidth}
+    \begin{subfigure}[b]{0.8\linewidth}
         \hspace*{1em}
         \begin{tikzpicture}[every text node part/.style={align=left}]
     	\begin{feynman}[small]
@@ -160,7 +160,7 @@ We find it very helpful to use pictures akin to Feynman diagrams in order to bet
     	\end{feynman}
     \end{tikzpicture}
     \end{subfigure}
-    \begin{subfigure}[b]{0.5\linewidth}
+    \begin{subfigure}[b]{0.8\linewidth}
         \hspace*{1em}
         \begin{tikzpicture}[every text node part/.style={align=left}]
     	\begin{feynman}[small]
@@ -190,7 +190,7 @@ We find it very helpful to use pictures akin to Feynman diagrams in order to bet
     	\end{feynman}
     \end{tikzpicture}
     \end{subfigure}
-    \begin{subfigure}[b]{0.5\linewidth}
+    \begin{subfigure}[b]{0.8\linewidth}
         \hspace*{1em}
         \begin{tikzpicture}[every text node part/.style={align=left}]
     	\begin{feynman}[small]
@@ -234,15 +234,15 @@ while for $i=j$ the action of the product gives the quadratic Casimir of the app
     \bm{T}_i^2 = C_i\,,
 \end{equation}
 with $C_q = C_{\bar{q}} = C_F$ and $C_g=C_A$. Moreover, due to colour conservation:
-\begin{align} \label{eq:poleinsertionchecks}
-    \sum_{i=1}^n \bm{T}_i^a \ket{A_n} &= 0\,, \\
-    \sum_{(i,j)} \bm{T}_i \cdot \bm{T}_j = -\sum_i \bm{T}_i^2 &= -\sum_i C_i\,,
+\begin{align} 
+    \sum_{i=1}^n \bm{T}_i^a \ket{A_n} &= 0\,, \label{eq:poleinsertioncheckA} \\
+    \sum_{(i,j)} \bm{T}_i \cdot \bm{T}_j = -\sum_i \bm{T}_i^2 &= -\sum_i C_i\,, \label{eq:poleinsertioncheckB}
 \end{align}
 where $\ket{A_n}$ denotes a vector in the $n$-dimensional colour space, with $A_n$ being the UV-renormalised amplitude of $n$ coloured partons\footnote{For a description of the colour-space formalism, see Ref.~\cite{Catani:1996vz}.}. These equations can be used to check whether we have applied the colour insertion operators to our amplitude correctly.
 \subsection{Application to $\ppbbh$ amplitudes}
 We now have all the tools to derive the IR pole structure of the $\ppbbh$ amplitudes in Chapter~\ref{sec:Hbb}. First of all, we note that by applying the first line of Eq.~\ref{eq:IR_H_function} to the $\bbqqh$ and $\bbggh$ channels, Eqs.~\ref{eq:H2bbqqH} and \ref{eq:H2bbggH} follow trivially. Then, to derive the two-loop pole operator $\bm{I}^{(2)}(\eps)$, we only need to concern ourselves with the action of the colour insertion operators $\bm{T}_i^a$ within $\bm{I}^{(1)}(\eps)$.
 \subsubsection{The $\bbqqh$ channel}
-As the first step, we write down all the colour structures that appear in the relevant Feynman diagrams. For this channel, we find two structures (see Fig.~\ref{fig:bbqqHcolour}):
+As the first step, we write down all the colour structures that appear in the relevant Feynman diagrams. Note that factors such as $N_c, T_F, C_A$ or $C_F$ are not considered a part of these structures --- we only include $\delta$-functions, fundamental generators $(T^a)_{ij}$ or the structure constants $f^{abc}$\JK{Maybe this sentence can be improved.}. For this channel, we find two structures (see Fig.~\ref{fig:bbqqHcolour}):
 \begin{equation}
     \bm{c} = 
     \begin{pmatrix}
@@ -253,9 +253,80 @@ Then, the action of the products $\bm{T}_i \cdot \bm{T}_j$ produces a linear com
 \begin{equation}
     \bm{T}_i \cdot \bm{T}_j :  \bm{c} = \mathcal{C}_{ij} \bm{c}\,.
 \end{equation}
-Note that we do not have to compute $\mathcal{C}_{ij}$ for all possible combinations of $i$ and $j$. Due to Eq.~\ref{eq:Ti^2eqCi}, all $\mathcal{C}_{ii}$ are diagonal and their entries are given by the quadratic Casimirs $C_i$ in the relevant representation. Moreover, the commutativity property Eq.~\ref{eq:TiTjcommute} further reduces the number of necessary computations. Overall, for $i$ coloured partons, we only need to compute $n(n+1)/2$ matrices. 
+Note that we do not have to compute $\mathcal{C}_{ij}$ for all possible combinations of $i$ and $j$. Due to Eq.~\ref{eq:Ti^2eqCi}, all $\mathcal{C}_{ii}$ are diagonal and their entries are given by the quadratic Casimirs $C_i$ in the relevant representation. Moreover, the commutativity property Eq.~\ref{eq:TiTjcommute} further reduces the number of necessary computations. Overall, for $n$ coloured partons, we only need to compute $n(n+1)/2$ matrices.
+\begin{figure}
+    \centering
+        \begin{tikzpicture}
+        	\begin{feynman}[small]
+        		\vertex (v1);
+          
+        		\vertex[above left = 1cm of v1] (i1) {$i_4$};
+        		\vertex[below left =  1cm of v1] (i2) {$\bar{i}_3$};
+        		\vertex[right = of v1] (v2);			
+        		
+        		\vertex[above right = 1cm of v2] (f1) {$\bar{i}_1$};
+        		\vertex[below right = 1cm of v2] (f2) {$i_2$};
 
+                %2nd diagram
+                \vertex[below right=of f1, xshift=1.5cm] (2i1) {$i_4$};
+                \vertex[above right=of f2, xshift=1.5cm] (2i2) {$\bar{i}_3$};
+                		
+        		\vertex[right=2cm of 2i1] (2f1) {$\bar{i}_1$};
+                \vertex[right=2cm of 2i2] (2f2) {$i_2$}; 
+
+                %3rd diagram
+                \vertex[above right=of 2f1, xshift=1cm] (3i1) {$i_4$};
+                \vertex[below right=of 2f2, xshift=1cm] (3i2) {$\bar{i}_3$};
+                		
+        		\vertex[right=of 3i1] (3f1) {$\bar{i}_1$};
+                \vertex[right=of 3i2] (3f2) {$i_2$}; 
+
+                %equation nodes
+                \node[right=2.5cm of v1] {$=T_F$ \Huge $\Biggr($};
+                \node[right=6.5cm of v1] {$ -\,\,\dfrac{1}{N_c} $};
+                \node[right=9cm of v1] {\Huge $\Biggr)$};
+
+        		\diagram*{
+                    %1st diagram
+        			(i1) -- [anti fermion] (v1) -- [anti fermion] (i2),
+                    (v1) -- [gluon] (v2),
+        			(f1) -- [fermion] (v2) -- [fermion] (f2),
+                    %2nd diagram
+                    (2i1) -- [anti fermion] (2f1),
+                    (2i2) -- [fermion] (2f2),
+                    %3rd diagram
+                    (3i1) -- [anti fermion] (3i2),
+                    (3f1) -- [fermion] (3f2),
+        		};
+        	\end{feynman}
+        \end{tikzpicture}
+    \caption{The colour structure of a sample diagram contributing to the $\bbqqh$ channel at tree level. We employ the Fierz identity to write $(T^a)_{i_4}^{\;\;\bar{i}_3} (T^a)_{i_2}^{\;\;\bar{i}_1} = T_F \left( \delta_{i_4}^{\;\;\bar{i}_1} \delta_{i_2}^{\;\;\bar{i}_3} - \frac{1}{N_c} \delta_{i_2}^{\;\;\bar{i}_1} \delta_{i_4}^{\;\;\bar{i}_3}\right)$. Note that particles 3 and 4 have to be crossed into the final state to correspond to the process definition in Eq.~\ref{eq:subprocessqq}, where all particles are outgoing. Thus, we should treat them as an outgoing antiquark and an outgoing quark, respectively, when applying the rules from Fig.~\ref{fig:colourinsertion}.} 
+    \label{fig:bbqqHcolour}
+\end{figure}
+
+As an example, let us see how the operator product $\bm{T}_1 \cdot \bm{T}_4$ acts on the two colour structures in this channel. Applying the rules listed in Fig.~\ref{fig:colourinsertion} (remember that particle 4 is treated as an outgoing quark):
+\begin{align}
+    \bm{T}_1 \cdot \bm{T}_4 : \delta_{i_4}^{\;\;\bar{i}_1} \delta_{i_2}^{\;\;\bar{i}_3} &= -(T^a T^a)_{i_4}^{\;\;\bar{i}_1} \delta_{i_2}^{\;\;\bar{i}_3} = -C_F \delta_{i_4}^{\;\;\bar{i}_1} \delta_{i_2}^{\;\;\bar{i}_3}\,, \\
+    \bm{T}_1 \cdot \bm{T}_4 : \delta_{i_2}^{\;\;\bar{i}_1} \delta_{i_4}^{\;\;\bar{i}_3} &= -(T^a)_{i_2}^{\;\;\bar{i}_1} (T^a)_{i_4}^{\;\;\bar{i}_3} = -T_F \left(\delta_{i_4}^{\;\;\bar{i}_1}\delta_{i_2}^{\;\;\bar{i}_3} - \frac{1}{N_c}\delta_{i_2}^{\;\;\bar{i}_1} \delta_{i_4}^{\;\;\bar{i}_3} \right) \,,
+\end{align}
+where in both lines we have used the Fierz identity in the last equality. Perhaps a graphical representation of these operations in Fig.~\ref{fig:qqinsertion} is once again more illustrative. We can now read off the matrix $\mathcal{C}_{14}$:
+\begin{equation}
+    \mathcal{C}_{14} = 
+    \begin{pmatrix}
+    -C_F & 0 \\
+    -T_F & \frac{T_F}{N_c}
+\end{pmatrix}\,.
+\end{equation}
+In the same manner, we need to obtain the remaining matrices $\mathcal{C}_{ij}$. Needless to say, performing these operations by hand (or even using their diagrammatical equivalents) becomes tedious and extremely prone to errors. We therefore automate this task in \texttt{Mathematica} and make use of the package \texttt{ColorMath}~\cite{Sjodahl:2012nk} to achieve the simplifications of the various colour structures that arise as a result of applying the colour insertion operators. We also verify that Eq.~\ref{eq:poleinsertioncheckB} holds as a check on our calculations.
+
+Once all the matrices $\mathcal{C}_{ij}$ have been computed, we have all the information needed to act with the pole operators $\bm{I}^{(L)}$ on the renormalised amplitudes $A_R^{(L)}$ and subtract the IR singularities. Note that if we want to retain full colour dependence, for each colour-ordered amplitude the subtraction will involve multiple lower-loop amplitudes with different colour factors. However, within the leading-colour approximation, the situation becomes much simpler. Indeed, replacing each $\bm{T}_i \cdot \bm{T}_j$ with the corresponding $\mathcal{C}_{ij}$ (and each $\bm{T}_i^2$ with the corresponding quadratic Casimir $C_i$), we retain only the highest power of $N_c$ to find:
+\begin{equation}
+    \bm{I}_{\bbqqh}^{(1)} = -N_c \frac{N(\eps)}{2}\left(\frac{1}{\eps^2} + \frac{3}{2\eps} \right) \left[(-s_{23})^{-\eps} + (-s_{14})^{-\eps}\right]
+    \begin{pmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{pmatrix}
+\end{equation}
 
 \subsubsection{The $\bbggh$ channel}
-\texttt{Mathematica} package \texttt{ColorMath}~\cite{Sjodahl:2012nk}
 \end{document}
