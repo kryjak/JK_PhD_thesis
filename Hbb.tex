@@ -186,9 +186,9 @@ In our computation we do not consider the closed top-quark loop contribution.
 
 The pole structure of the unrenormalised amplitudes in the 't Hooft-Veltman (tHV) scheme at one and two loops is given by~\cite{Catani:1998bh,Becher:2009qa,Becher:2009cu,Gardi:2009qi}
 \begin{align}
-P^{(1)} & = 2 I_1(\eps) + \frac{\beta_0}{\eps} - 2 s_1,  
+P^{(1)} & = 2 I^{(1)}(\eps) + \frac{\beta_0}{\eps} - 2 s_1,  
 \label{eq:poles1L} \\
-P^{(2)} & =   2 I_1(\eps) \bigg( \hat{A}^{(1)} - \frac{\beta_0}{\eps} + 2 s_1\bigg) + 4 I_2(\eps)
+P^{(2)} & =   2 I^{(1)}(\eps) \bigg( \hat{A}^{(1)} - \frac{\beta_0}{\eps} + 2 s_1\bigg) + 4 I^{(2)}(\eps)
                 + \bigg(\frac{2\beta_0}{\eps}-2 s_1\bigg) \hat{A}^{(1)} \nn 
 & \hspace{0.4cm} - \frac{\beta_0^2}{\eps^2} + \frac{\beta_1}{2\eps} - 4 s_2 + \frac{2 s_1\beta_0}{\eps} \,,
 \label{eq:poles2L}
@@ -200,25 +200,25 @@ Such a mixed renormalisation scheme can be used so long as pure QCD corrections 
 $y_b$ and $m_b$ must be imposed to guarantee the cancellation of UV singularities~\cite{Pagani:2020rsg}.
 
 
-The $I_2(\eps)$ operator is defined by
+The $I^{(2)}(\eps)$ operator is defined by
 \begin{equation}
-I_2(\eps) =   - \frac{1}{2}I_1(\eps) \left[ I_1(\eps)
+I^{(2)}(\eps) =   - \frac{1}{2}I^{(1)}(\eps) \left[ I^{(1)}(\eps)
               + \frac{\beta_0}{\eps} \right]
               + \frac{N(\eps)}{N(2\eps)} \left[ \frac{\beta_0}{2\eps}
-                        + \frac{\gamma_{1}^{\cusp}}{8} \right] I_1(2\eps)
+                        + \frac{\gamma_{1}^{\cusp}}{8} \right] I^{(1)}(2\eps)
               + H^{(2)}(\eps) \,,
 \end{equation}
-while the $I_1(\eps)$ operators for $\bbh$ production in both the $gg$ and the $q\bar{q}$ channels are given at leading colour by
+while the $I^{(1)}(\eps)$ operators for $\bbh$ production in both the $gg$ and the $q\bar{q}$ channels are given at leading colour by
 \begin{align}
-I^{\bbqqh}_1(\eps) &= -N_c \frac{N(\eps)}{2} \bigg( \frac{1}{\eps^2} + \frac{3}{2\eps} \bigg) \big[ \left(-s_{23}\right)^{-\eps} + \left(-s_{14}\right)^{-\eps} \big], 
+I_{\bbqqh}^{(1)}(\eps) &= -N_c \frac{N(\eps)}{2} \bigg( \frac{1}{\eps^2} + \frac{3}{2\eps} \bigg) \big[ \left(-s_{23}\right)^{-\eps} + \left(-s_{14}\right)^{-\eps} \big], 
 \label{eq:I1bbqqh}\\
-I^{\bbggh}_1(\eps) &= -N_c \frac{N(\eps)}{2} \bigg\lbrace \bigg( \frac{1}{\eps^2} + \frac{3}{4\eps} + \frac{\beta_0}{4 N_c\eps} \bigg) \big[ \left(-s_{23}\right)^{-\eps} + \left(-s_{14}\right)^{-\eps} \big]
+I_{\bbggh}^{(1)}(\eps) &= -N_c \frac{N(\eps)}{2} \bigg\lbrace \bigg( \frac{1}{\eps^2} + \frac{3}{4\eps} + \frac{\beta_0}{4 N_c\eps} \bigg) \big[ \left(-s_{23}\right)^{-\eps} + \left(-s_{14}\right)^{-\eps} \big]
                  + \bigg( \frac{1}{\eps^2} + \frac{\beta_0}{2 N_c \eps} \bigg) \left(-s_{34}\right)^{-\eps} \bigg\rbrace \,,
 \label{eq:I1bbggh}
 \end{align}
 where $N(\eps) = {e^{\eps \gamma_E}}/{\Gamma(1-\eps)}$, $s_{14} = s_{23}-s_{15}-s_{45}+p_5^2$ and
 \begin{align}
-H_{\bbqqh}^{(2)}(\eps) &= \frac{1}{16\eps} \bigg\lbrace 4 \gamma_1^q - \gamma_1^\cusp \gamma_0^q + \frac{\pi^2}{4} \beta_0 \gamma_0^\cusp C_F \bigg\rbrace \,, \\
+H_{\bbqqh}^{(2)}(\eps) &= \frac{1}{16\eps} \bigg\lbrace 4 \gamma_1^q - \gamma_1^\cusp \gamma_0^q + \frac{\pi^2}{4} \beta_0 \gamma_0^\cusp C_F \bigg\rbrace \,, \label{eq:H2bbqqH} \\
 H_{\bbggh}^{(2)}(\eps) &=  \frac{1}{16\eps} \bigg\lbrace 2\left(\gamma_1^q+\gamma_1^g\right)
                                                 - \frac{1}{2}\gamma_1^\cusp \left(\gamma_0^q+\gamma_0^g\right)
                                                 + \frac{\pi^2}{8} \beta_0 \gamma_0^\cusp \left(C_F+C_A\right) \bigg\rbrace \,. \label{eq:H2bbggH}

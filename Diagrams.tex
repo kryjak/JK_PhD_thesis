@@ -399,7 +399,7 @@
     		\vertex (v) node[anchor=north] {$b$};
             \vertex (f) [right=2cm of v] {$\phantom{i_1}$};
             \node at (f.south west) {$c$};
-            \node (t) [left=0.5cm of v] {$\bm{T}^a:$};
+            \node (t) [left=0.5cm of v] {$\bm{T}^a_c:$};
             \node (eq) [right=0.5cm of f] {$=$};
 
             \vertex (v2) [right=0.5cm of eq] {$-\ii$};
@@ -426,7 +426,7 @@
     		\vertex (v) node[anchor=north] {$i$};
             \vertex (f) [right=2cm of v] {$\phantom{i_1}$};
             \node at (f.south west) {$j$};
-            \node (t) [left=0.5cm of v] {$\bm{T}^a:$};
+            \node (t) [left=0.5cm of v] {$\bm{T}^a_j:$};
             \node (eq) [right=0.5cm of f] {$=$};
 
             \vertex (v2) [right=0.5cm of eq] {$+$};
@@ -456,7 +456,7 @@
     		\vertex (v) node[anchor=north] {$i$};
             \vertex (f) [right=2cm of v] {$\phantom{i_1}$};
             \node at (f.south west) {$j$};
-            \node (t) [left=0.5cm of v] {$\bm{T}^a:$};
+            \node (t) [left=0.5cm of v] {$\bm{T}^a_j:$};
             \node (eq) [right=0.5cm of f] {$=$};
 
             \vertex (v2) [right=0.5cm of eq] {$-$};
@@ -469,7 +469,7 @@
             \node (text) [right=2cm of f2] {outgoing\\antiquark};
             
             \filldraw (v) circle (2pt);
-            \filldraw (c.north) [fill=gray!50,draw=black] circle (5pt);
+            \filldraw (v2.east) circle (2pt);
             
     		\diagram*{
     			(v) -- [thick, anti fermion] (f);
@@ -486,7 +486,7 @@
     		\vertex (v) node[anchor=north] {$i$};
             \vertex (f) [right=2cm of v] {$\phantom{i_1}$};
             \node at (f.south west) {$j$};
-            \node (t) [left=0.5cm of v] {$\bm{T}^a:$};
+            \node (t) [left=0.5cm of v] {$\bm{T}^a_i:$};
             \node (eq) [right=0.5cm of f] {$=$};
 
             \vertex (v2) [right=0.5cm of eq] {$-$};
@@ -502,8 +502,8 @@
             \filldraw (f2.west) circle (2pt);
             
     		\diagram*{
-    			(v) -- [thick, anti fermion] (f);
-                (v2) -- [thick, anti fermion] (m) -- [thick, anti fermion] (f2);
+    			(v) -- [thick, fermion] (f);
+                (v2) -- [thick, fermion] (m) -- [thick, fermion] (f2);
                 (m) -- [thick, gluon] (g);
     		};
     	\end{feynman}
@@ -516,7 +516,7 @@
     		\vertex (v) node[anchor=north] {$i$};
             \vertex (f) [right=2cm of v] {$\phantom{i_1}$};
             \node at (f.south west) {$j$};
-            \node (t) [left=0.5cm of v] {$\bm{T}^a:$};
+            \node (t) [left=0.5cm of v] {$\bm{T}^a_i:$};
             \node (eq) [right=0.5cm of f] {$=$};
 
             \vertex (v2) [right=0.5cm of eq] {$+$};
@@ -541,7 +541,7 @@
     \end{subfigure}
     %}
     %\end{adjustbox}
-\caption{\lipsum[1]}
+\caption{Graphical representation of the action of the colour insertion operators on partons. The dot $\bullet$ indicates a Feynman diagram vertex and allows us to distinguish between incoming and outgoing quarks and antiquarks.}
 \label{fig:topologies}
 \end{figure}
 \end{document}

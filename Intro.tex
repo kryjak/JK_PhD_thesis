@@ -105,7 +105,6 @@ In the case of hadron collisions, there is one additional complication which is 
 %Scaling with $\mu_F$ - DGLAP equations.
 %PDFs are renormalised
 Overall, the factorisation of soft and hard physics allows us to write the cross-section for the scattering of two hadrons as:
-
 \begin{equation} \label{eq:factorisation}
     \dd \sigma = \sum_{i,j} \int_0^1 \dd x_1 \dd x_2 f_i(x_1, Q) f_j(x_2, Q) \dd \hat{\sigma}_{ij} + \order{\frac{\Lambda_\text{QCD}}{Q}}\,,
 \end{equation}
@@ -170,7 +169,7 @@ Let us now devote our attention to the study of Feynman integrals, the fundament
 		\draw[thick] (-3, -1.32) -- (-5,-3) node [anchor=north east] {$p_1$};
 
         \node (text) [text width=5cm] at (12, 0.5) {\begin{equation*}
-            \longleftrightarrow \qquad \prod_{l=1}^L \left( \int \frac{\dd^d k_l}{(2\pi)^d}\right) \frac{N}{\prod_i D_i(k,p,m)}
+            \longleftrightarrow \qquad \prod_{l=1}^L \left( \int \frac{\dd^d k_l}{\ii \, \pi^{d/2}}\right) \frac{N}{\prod_i D_i(k,p,m)}
         \end{equation*}};
         \end{feynman}
 	\end{tikzpicture}

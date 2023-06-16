@@ -38,10 +38,10 @@ with the individual amplitudes given by:
     A_R^{(1)} &= A_B^{(1)} + 2 A_B^{(0)}(r_1 + s_1) \,, \label{eq:amprenorminbare}\\ 
     A_R^{(2)} &= A_B^{(2)} + 2 A_B^{(1)}(2r_1 + s_1) + 4A_B^{(0)} (r_2 + r_1 s_1 + s_2)\,. \nonumber
 \end{align}
-The coefficients $r_1, r_2, s_1, s_2$ are listed in Appendix~\ref{app:renormconstants}. Note that we use their values as given in Ref.~\cite{Mondini:2019vub} for the sake of consistency, but in Eq.~\ref{eq:amprenorminbare} we have rescaled them by powers of 2 to make them compatible with our expansion). Overall, we see that each UV-finite amplitude $A_R^{(L)}$ is defined by adding to the bare amplitude $A_B^{(L)}$ terms related to the $\beta$-function whose $\eps$ poles cancel out the UV divergences. This completes the renormalisation of the$\ppbbh$ amplitudes in Chapter~\ref{sec:Hbb}.
+The coefficients $r_1, r_2, s_1, s_2$ are listed in Appendix~\ref{app:renormconstants}. Note that we use their values as given in Ref.~\cite{Mondini:2019vub} for the sake of consistency, but in Eq.~\ref{eq:amprenorminbare} we have rescaled them by powers of 2 to make them compatible with our expansion). Overall, we see that each UV-finite amplitude $A_R^{(L)}$ is defined by adding to the bare amplitude $A_B^{(L)}$ terms related to the $\beta$-function whose $\eps$ poles cancel out the UV divergences. This completes the renormalisation of the $\ppbbh$ amplitudes in Chapter~\ref{sec:Hbb}.
 \section{IR singularities}
-The renormalised amplitudes $A_R^{(L)}$ are only UV-finite --- the IR divergences remain. As explained in Sec.~\ref{sec:IRdivergencesandKLN}, the IR pole structure of two-loop amplitudes in massless gauge theories was originally derived in Ref.~\cite{Catani:1998bh} and later extended in  Refs.~\cite{Becher:2009cu, Becher:2009qa, Gardi:2009qi}. Here, we provide a brief summary of these results, followed be their application to our process of interest, $\ppbbh$.
-\subsubsection{Overview of IR singularities}
+The renormalised amplitudes $A_R^{(L)}$ are only UV-finite --- the IR divergences remain. As explained in Sec.~\ref{sec:IRdivergencesandKLN}, the IR pole structure of two-loop amplitudes in massless gauge theories was originally derived in Ref.~\cite{Catani:1998bh} and later extended in  Refs.~\cite{Becher:2009cu, Becher:2009qa, Gardi:2009qi}. Here, we provide a brief summary of these results, followed by their application to our process of interest, $\ppbbh$.
+\subsection{Overview of IR singularities}
 The $\overline{\text{MS}}$-renormalised amplitudes $A_R^{(L)}$ admit the following structure:
 \begin{align}
     A_R^{(1)} &= \bm{I}^{(1)}(\eps) A_R^{(0)} + F^{(1)}\,, \\
@@ -50,21 +50,212 @@ The $\overline{\text{MS}}$-renormalised amplitudes $A_R^{(L)}$ admit the followi
 Thus, the IR-divergent part is determined by amplitudes at lower loop order, while the full amplitude also receives a finite part $F^{(L)}$, which is the genuinely new contribution that needs to be computed. The pole operators are given by:
 \begin{align}
     \bm{I}^{(1)}(\eps) &= \frac{1}{2} \frac{e^{\eps \gamma_E}}{\Gamma(1-\eps)} \sum_i \left(\frac{1}{\eps^2} - \frac{\gamma_0^i}{2\eps} \frac{1}{\bm{T}_i^2}\right) \sum_{j\neq i} \bm{T}_j \cdot \bm{T}_j \left(\frac{\mu_R^2}{-s_{ij}} \right)^\eps\,, \\
-    \bm{I}^{(2)}(\eps) &= \frac{e^{-\eps \gamma_E} \Gamma(1-2\eps)}{\Gamma(1-\eps} \left( \frac{\gamma_1^\text{cusp}}{8} + \frac{\beta_0}{2\eps} \right) \bm{I}^{(1)}(2\eps) - \frac{1}{2}\bm{I}^{(1)}(\eps) \left(\bm{I}^{(1)}(2\eps) + \frac{\beta_0}{\eps} \right) + \bm{H}_{\text{RS}}^{(2)}(\eps)\,,
+    \bm{I}^{(2)}(\eps) &= \frac{e^{-\eps \gamma_E} \Gamma(1-2\eps)}{\Gamma(1-\eps)} \left( \frac{\gamma_1^\text{cusp}}{8} + \frac{\beta_0}{2\eps} \right) \bm{I}^{(1)}(2\eps) - \frac{1}{2}\bm{I}^{(1)}(\eps) \left(\bm{I}^{(1)}(2\eps) + \frac{\beta_0}{\eps} \right) + \bm{H}_{\text{RS}}^{(2)}(\eps)\,,
 \end{align}
 where $s_{ij} = 2\sigma_{ij} p_i \cdot p_j$ with $\sigma_{ij}=+1$ if both momenta are incoming or outgoing and $\sigma_{ij}=-1$ otherwise. The values of the $\beta$-function coefficients and the anomalous dimensions are given in Appendix~\ref{app:renormconstants}. We remark that the one-loop pole operator $\bm{I}^{(1)}(\eps)$ is independent of the regularisation scheme, while the two-loop operator $\bm{I}^{(2)}(\eps)$ is not. Its dependence enters through the quantity $\bm{H}_{\text{RS}}^{(2)}(\eps)$, which contains $\order(1/\eps)$ poles only:
-\begin{align}
-    \bm{H}_{\text{RS}}^{(2)}(\eps) &= \frac{1}{16\eps} \sum_i \left(\gamma_1^i - \frac{1}{4} \gamma_1^{\text{cusp}}\gamma_0^i + \frac{\pi^2}{16} \beta_0 \gamma_0^{\text{cusp}} C_i \right) \\
-    &+ \frac{i f^{abc}}{24\eps} \sum_{(i,j,k)} \bm{T}_i^a \bm{T}_j^b \bm{T}_k^c \ln\left(\frac{-s_{ij}}{-s_{jk}} \right) \ln\left(\frac{-s_{jk}}{-s_{kj}} \right) \ln\left(\frac{-s_{ki}}{-s_{ij}} \right) \\
-    &-\frac{i f^{abc}}{128\eps} \gamma_0^{\text{cusp}} \sum_{(i,j,k)} \bm{T}_i^a \bm{T}_j^b \bm{T}_k^c \left( \frac{\gamma_0^i}{C_i} - \frac{\gamma_0^j}{C_j} \right)\ln\left(\frac{-s_{ij}}{-s_{jk}} \right) \ln\left(\frac{-s_{ki}}{-s_{ij}} \right)\,,
+\begin{align} \label{eq:IR_H_function}
+    \bm{H}_{\text{RS}}^{(2)}(\eps) &= \frac{1}{16\eps} \sum_i \left(\gamma_1^i - \frac{1}{4} \gamma_1^{\text{cusp}}\gamma_0^i + \frac{\pi^2}{16} \beta_0 \gamma_0^{\text{cusp}} C_i \right) \nonumber \\
+    &+ \frac{i f^{abc}}{24\eps} \sum_{(i,j,k)} \bm{T}_i^a \bm{T}_j^b \bm{T}_k^c \ln\left(\frac{-s_{ij}}{-s_{jk}} \right) \ln\left(\frac{-s_{jk}}{-s_{kj}} \right) \ln\left(\frac{-s_{ki}}{-s_{ij}} \right) \\ 
+    &-\frac{i f^{abc}}{128\eps} \gamma_0^{\text{cusp}} \sum_{(i,j,k)} \bm{T}_i^a \bm{T}_j^b \bm{T}_k^c \left( \frac{\gamma_0^i}{C_i} - \frac{\gamma_0^j}{C_j} \right)\ln\left(\frac{-s_{ij}}{-s_{jk}} \right) \ln\left(\frac{-s_{ki}}{-s_{ij}} \right)\,, \nonumber
 \end{align}
 where the sum runs over unordered tuples $(i,j,k)$ of distinct parton indices. As pointed out in Ref.~\cite{Becher:2009cu}, the last two lines appear only because the pole operators $\bm{I}^{(L)}(\eps)$ formulated in Ref.~\cite{Catani:1998bh} were not defined in a minimal scheme, but also include terms finite in $\eps$. Due to colour conservation, they contribute only if the amplitude contains at least four partons \JK{The last line appears only for \textit{more} than partons due to momentum conservation (Becher+Neubert). But the 2nd line should still be present for bbH, since we have exactly 4 partons and we are working in $\overline{\text{MS}}$ scheme. What's going on?}.
 
-Overall, despite the intimidating appearance of the formulas above, it can be appreciated that the only non-trivial piece of deriving the pole structure of the two-loop amplitudes is due to the operators $\bm{T}$, which we will refer to as `colour insertion operators'. Indeed, each $\bm{T}_i^a$ acts on the colour structure of the amplitude by inserting a gluon with the adjoint index $a$ onto the parton $i$. 
+Overall, despite the intimidating appearance of the formulas above, it can be appreciated that the only non-trivial piece of deriving the pole structure of the two-loop amplitudes is due to the operators $\bm{T}_i^a$, which we will refer to as `colour insertion operators'. Indeed, each $\bm{T}_i^a$ acts on the colour structure of the amplitude by inserting a gluon with the adjoint index $a$ onto the parton $i$. The rules are as follows:
+\begin{itemize}
+    \item $\bm{T}_c^a: \delta^{bc} = -\ii f^{abc}$ if $c$ is a gluon
+    \item $\bm{T}_i^a: \delta_{ij} = + (T^a)_{ij}$ if $i$ is an outgoing quark 
+    \item $\bm{T}_i^a: \delta_{ji} = - (T^a)_{ji}$ if $i$ is an outgoing antiquark
+    \item $\bm{T}_i^a: \delta_{ji} = - (T^a)_{ji}$ if $i$ is an incoming quark
+    \item $\bm{T}_i^a: \delta_{ij} = + (T^a)_{ij}$ if $i$ is an incoming antiquark
+\end{itemize}
+We find it very helpful to use pictures akin to Feynman diagrams in order to better understand these rules (see  Fig.~\ref{fig:colourinsertion}). 
+\begin{figure}
+    \centering
+    %\begin{adjustbox}{minipage=\textwidth,scale=0.9}
+    %\raisebox{0.2cm}{
+    \begin{subfigure}[b]{0.5\linewidth}
+        \hspace*{1em}
+        \begin{tikzpicture}[every text node part/.style={align=left}]
+    	\begin{feynman}[small]
+    		\vertex (v) node[anchor=north] {$b$};
+            \vertex (f) [right=2cm of v] {$\phantom{i_1}$};
+            \node at (f.south west) {$c$};
+            \node (t) [left=0.5cm of v] {$\bm{T}^a_c:$};
+            \node (eq) [right=0.5cm of f] {$=$};
 
-It might be very helpful to use pictures akin to Feynman diagrams in order to understand their action:
+            \vertex (v2) [right=0.5cm of eq] {$-\ii$};
+            \node at (v2.south east) {$b$};
+            \vertex (m) [right=1.3cm of v2] [anchor=west];
+            \vertex (f2) [right=1.2cm of m] {\phantom{j}};
+            \node at (f2.south west) {$c$};
+            \vertex (g) [above=of m] {$a$};
+
+            \node (text) [right=2cm of f2] {gluon};
+            
+    		\diagram*{
+    			(v) -- [thick, gluon] (f);
+                (v2) -- [thick, gluon] (m) -- [thick, gluon] (f2);
+                (m) -- [thick, gluon] (g);
+    		};
+    	\end{feynman}
+    \end{tikzpicture}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+        \hspace*{1em}
+        \begin{tikzpicture}[every text node part/.style={align=left}]
+    	\begin{feynman}[small]
+    		\vertex (v) node[anchor=north] {$j$};
+            \vertex (f) [right=2cm of v] {$\phantom{i_1}$};
+            \node at (f.south west) {$i$};
+            \node (t) [left=0.5cm of v] {$\bm{T}^a_i:$};
+            \node (eq) [right=0.5cm of f] {$=$};
+
+            \vertex (v2) [right=0.5cm of eq] {$+$};
+            \node at (v2.south east) {$j$};
+            \vertex (m) [right=1.3cm of v2] [anchor=west];
+            \vertex (f2) [right=1.2cm of m] {\phantom{j}};
+            \node at (f2.south west) {$i$};
+            \vertex (g) [above=of m] {$a$};
+
+            \node (text) [right=2cm of f2] {outgoing\\quark};
+            
+            \filldraw (v) circle (2pt);
+            \filldraw (v2.east) circle (2pt);
+            
+    		\diagram*{
+    			(v) -- [thick, fermion] (f);
+                (v2) -- [thick, fermion] (m) -- [thick, fermion] (f2);
+                (m) -- [thick, gluon] (g);
+    		};
+    	\end{feynman}
+    \end{tikzpicture}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+        \hspace*{1em}
+        \begin{tikzpicture}[every text node part/.style={align=left}]
+    	\begin{feynman}[small]
+    		\vertex (v) node[anchor=north] {$j$};
+            \vertex (f) [right=2cm of v] {$\phantom{i_1}$};
+            \node at (f.south west) {$i$};
+            \node (t) [left=0.5cm of v] {$\bm{T}^a_i:$};
+            \node (eq) [right=0.5cm of f] {$=$};
+
+            \vertex (v2) [right=0.5cm of eq] {$-$};
+            \node (c) at (v2.south east) {$j$};
+            \vertex (m) [right=1.3cm of v2] [anchor=west];
+            \vertex (f2) [right=1.2cm of m] {\phantom{j}};
+            \node at (f2.south west) {$i$};
+            \vertex (g) [above=of m] {$a$};
+
+            \node (text) [right=2cm of f2] {outgoing\\antiquark};
+            
+            \filldraw (v) circle (2pt);
+            \filldraw (v2.east) circle (2pt);
+            
+    		\diagram*{
+    			(v) -- [thick, anti fermion] (f);
+                (v2) -- [thick, anti fermion] (m) -- [thick, anti fermion] (f2);
+                (m) -- [thick, gluon] (g);
+    		};
+    	\end{feynman}
+    \end{tikzpicture}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+        \hspace*{1em}
+        \begin{tikzpicture}[every text node part/.style={align=left}]
+    	\begin{feynman}[small]
+    		\vertex (v) node[anchor=north] {$i$};
+            \vertex (f) [right=2cm of v] {$\phantom{i_1}$};
+            \node at (f.south west) {$j$};
+            \node (t) [left=0.5cm of v] {$\bm{T}^a_i:$};
+            \node (eq) [right=0.5cm of f] {$=$};
+
+            \vertex (v2) [right=0.5cm of eq] {$-$};
+            \node at (v2.south east) {$i$};
+            \vertex (m) [right=1.3cm of v2] [anchor=west];
+            \vertex (f2) [right=1.2cm of m] {\phantom{j}};
+            \node at (f2.south west) {$j$};
+            \vertex (g) [above=of m] {$a$};
+
+            \node (text) [right=2cm of f2] {incoming\\quark};
+            
+            \filldraw (f.west) circle (2pt);
+            \filldraw (f2.west) circle (2pt);
+            
+    		\diagram*{
+    			(v) -- [thick, fermion] (f);
+                (v2) -- [thick, fermion] (m) -- [thick, fermion] (f2);
+                (m) -- [thick, gluon] (g);
+    		};
+    	\end{feynman}
+    \end{tikzpicture}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.5\linewidth}
+        \hspace*{1em}
+        \begin{tikzpicture}[every text node part/.style={align=left}]
+    	\begin{feynman}[small]
+    		\vertex (v) node[anchor=north] {$i$};
+            \vertex (f) [right=2cm of v] {$\phantom{i_1}$};
+            \node at (f.south west) {$j$};
+            \node (t) [left=0.5cm of v] {$\bm{T}^a_i:$};
+            \node (eq) [right=0.5cm of f] {$=$};
+
+            \vertex (v2) [right=0.5cm of eq] {$+$};
+            \node at (v2.south east) {$i$};
+            \vertex (m) [right=1.3cm of v2] [anchor=west];
+            \vertex (f2) [right=1.2cm of m] {\phantom{j}};
+            \node at (f2.south west) {$j$};
+            \vertex (g) [above=of m] {$a$};
+
+            \node (text) [right=2cm of f2] {incoming\\antiquark};
+            
+            \filldraw (f.west) circle (2pt);
+            \filldraw (f2.west) circle (2pt);
+            
+    		\diagram*{
+    			(v) -- [thick, anti fermion] (f);
+                (v2) -- [thick, anti fermion] (m) -- [thick, anti fermion] (f2);
+                (m) -- [thick, gluon] (g);
+    		};
+    	\end{feynman}
+    \end{tikzpicture}
+    \end{subfigure}
+    %}
+    %\end{adjustbox}
+\caption{Graphical representation of the action of the colour insertion operators on partons. The dot $\bullet$ indicates a Feynman diagram vertex and allows us to distinguish between incoming and outgoing quarks and antiquarks. The fundamental and antifundamental indices should be read in the direction opposite to fermion flow, while the adjoint indices in the three-point gluon vertex should be read anticlockwise.\JK{Does that make sense?}}
+\label{fig:colourinsertion}
+\end{figure}
+Before applying them to our process of interest, it is useful to note that the product of two colour insertion operators, $\bm{T}_i\cdot\bm{T}_j \equiv \bm{T}_i^a \bm{T}_j^a$, trivially commutes: 
+\begin{equation} \label{eq:TiTjcommute}
+    \bm{T}_i\cdot\bm{T}_j = \bm{T}_j\cdot\bm{T}_i\,,
+\end{equation}
+while for $i=j$ the action of the product gives the quadratic Casimir of the appropriate representation of $SU(N_c)$:
+\begin{equation} \label{eq:Ti^2eqCi}
+    \bm{T}_i^2 = C_i\,,
+\end{equation}
+with $C_q = C_{\bar{q}} = C_F$ and $C_g=C_A$. Moreover, due to colour conservation:
+\begin{align} \label{eq:poleinsertionchecks}
+    \sum_{i=1}^n \bm{T}_i^a \ket{A_n} &= 0\,, \\
+    \sum_{(i,j)} \bm{T}_i \cdot \bm{T}_j = -\sum_i \bm{T}_i^2 &= -\sum_i C_i\,,
+\end{align}
+where $\ket{A_n}$ denotes a vector in the $n$-dimensional colour space, with $A_n$ being the UV-renormalised amplitude of $n$ coloured partons\footnote{For a description of the colour-space formalism, see Ref.~\cite{Catani:1996vz}.}. These equations can be used to check whether we have applied the colour insertion operators to our amplitude correctly.
+\subsection{Application to $\ppbbh$ amplitudes}
+We now have all the tools to derive the IR pole structure of the $\ppbbh$ amplitudes in Chapter~\ref{sec:Hbb}. First of all, we note that by applying the first line of Eq.~\ref{eq:IR_H_function} to the $\bbqqh$ and $\bbggh$ channels, Eqs.~\ref{eq:H2bbqqH} and \ref{eq:H2bbggH} follow trivially. Then, to derive the two-loop pole operator $\bm{I}^{(2)}(\eps)$, we only need to concern ourselves with the action of the colour insertion operators $\bm{T}_i^a$ within $\bm{I}^{(1)}(\eps)$.
+\subsubsection{The $\bbqqh$ channel}
+As the first step, we write down all the colour structures that appear in the relevant Feynman diagrams. For this channel, we find two structures (see Fig.~\ref{fig:bbqqHcolour}):
+\begin{equation}
+    \bm{c} = 
+    \begin{pmatrix}
+        \delta_{i_4}^{\;\;\bar{i}_1} \delta_{i_2}^{\;\;\bar{i}_3} & \delta_{i_2}^{\;\;\bar{i}_1} \delta_{i_4}^{\;\;\bar{i}_3}
+    \end{pmatrix}^T\,.
+\end{equation}
+Then, the action of the products $\bm{T}_i \cdot \bm{T}_j$ produces a linear combination of these structures, which we encode in the matrices $\mathcal{C}_{ij}$ defined as follows:
+\begin{equation}
+    \bm{T}_i \cdot \bm{T}_j :  \bm{c} = \mathcal{C}_{ij} \bm{c}\,.
+\end{equation}
+Note that we do not have to compute $\mathcal{C}_{ij}$ for all possible combinations of $i$ and $j$. Due to Eq.~\ref{eq:Ti^2eqCi}, all $\mathcal{C}_{ii}$ are diagonal and their entries are given by the quadratic Casimirs $C_i$ in the relevant representation. Moreover, the commutativity property Eq.~\ref{eq:TiTjcommute} further reduces the number of necessary computations. Overall, for $i$ coloured partons, we only need to compute $n(n+1)/2$ matrices. 
 
 
-\subsubsection{Application to $\ppbbh$ amplitudes}
+\subsubsection{The $\bbggh$ channel}
 \texttt{Mathematica} package \texttt{ColorMath}~\cite{Sjodahl:2012nk}
 \end{document}
