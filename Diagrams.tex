@@ -595,98 +595,166 @@
 %    \label{fig:}
 %\end{figure}
 
+%\begin{figure}
+%    \centering
+%        \begin{subfigure}{\linewidth}
+%        \begin{tikzpicture}
+%        	\begin{feynman}[small]
+%        		\vertex (i1) {$i_4$};
+%        		\vertex[right =3cm of i1] (f1) {$\bar{i}_1$};
+%        		\vertex[below =0.7cm of i1] (i2) {$\bar{i}_3$};
+%        		\vertex[right =3cm of i2] (f2) {$i_2$};			
+%        		
+%                %2nd diagram
+%                \vertex[right=of f1, xshift=0.8cm] (2i1) {$i_4$};
+%                \vertex[right=of f2, xshift=0.8cm] (2i2) {$\bar{i}_3$};
+%                		
+%        		\vertex[right=of 2i1] (2m1);
+%                \vertex[right=of 2m1] (2m2);
+%                
+%        		\vertex[right=of 2m2] (2f1) {$\bar{i}_1$};
+%                \vertex[below=0.7cm of 2f1] (2f2) {$i_2$}; 
+%
+%                %3rd diagram
+%                \vertex[right=of 2f1, xshift=1cm] (3i1) {$i_4$};
+%                \vertex[right=of 2f2, xshift=1cm] (3i2) {$\bar{i}_3$};
+%                \vertex[right=3cm of 3i1] (3f1) {$\bar{i}_1$};
+%                \vertex[below=0.7cm of 3f1] (3f2) {$i_2$}; 
+%                
+%                %equation nodes
+%                \node (t1) [left=1.2cm of i1, yshift=-0.35cm] {$\bm{T}_1 \cdot \bm{T}_4:$};
+%                \node (t2) [right=5cm of t1] {$\;\;=\;\;-$};
+%                \node (t3) [right=5.3cm of t2] {$= \;\;-C_F$};
+%
+%        		\diagram*{
+%                    %1st diagram
+%        			(i1) -- [anti fermion] (f1),
+%                    (i2) -- [fermion] (f2),
+%                    %2nd diagram
+%                    (2i1) -- (2m1) -- [anti fermion] (2m2) -- (2f1),
+%                    (2i2) -- [fermion] (2f2),
+%                    (2m1) -- [gluon, out=90, in=90] (2m2),
+%                    %3rd diagram
+%        			(3i1) -- [anti fermion] (3f1),
+%                    (3i2) -- [fermion] (3f2),
+%        		};
+%        	\end{feynman}
+%        \end{tikzpicture}
+%    \caption{}
+%    %\label{}
+%    \end{subfigure}
+%    \begin{subfigure}{\linewidth}
+%    \vspace{0.5cm}
+%        \begin{tikzpicture}
+%        	\begin{feynman}[small]
+%        		\vertex (i1) {$i_4$};
+%        		\vertex[below=2.3cm of i1] (i2) {$\bar{i}_3$};
+%                \vertex[right=of i1] (f1) {$\bar{i}_1$};
+%                \vertex[below=2.3cm of f1] (f2) {$i_2$};
+%
+%                %2nd diagram
+%                \vertex[right=of f1, xshift=0.5cm] (2i1) {$i_4$};
+%                \vertex[below=of 2i1] (2im);
+%                \vertex[below=of 2im] (2i2) {$\bar{i}_3$};
+%                		
+%        		\vertex[right=of 2i1] (2f1) {$\bar{i}_1$};
+%        		\vertex[below=of 2f1] (2fm);
+%                \vertex[right=of 2i2] (2f2) {$i_2$}; 
+%
+%                %3rd diagram
+%                \vertex[right=2.5cm of 2f1, yshift=-0.6cm] (3i1) {$i_4$};
+%        		\vertex[right =2cm of 3i1] (3f1) {$\bar{i}_1$};
+%        		\vertex[right=2.5cm of 2f2, yshift=0.8cm] (3i2) {$\bar{i}_3$};
+%        		\vertex[right =2cm of 3i2] (3f2) {$i_2$};
+%
+%                %4th diagram
+%                \vertex[above right=of 3f1, xshift=1cm] (4i1) {$i_4$};
+%                \vertex[below right=of 3f2, xshift=1cm] (4i2) {$\bar{i}_3$};
+%                		
+%        		\vertex[right=of 4i1] (4f1) {$\bar{i}_1$};
+%                \vertex[right=of 4i2] (4f2) {$i_2$}; 
+%
+%                %equation nodes
+%                \node (t1) [below left=1.5cm of i1, xshift=-0.2cm] {$\bm{T}_1 \cdot \bm{T}_4:$};
+%                \node (t2) [right=3cm of t1] {$\;\;=\;\;-$};
+%                \node (t3) [right=3cm of t2] {$= \;\;-T_F$ \Huge $\Biggr($};
+%                \node (t4) [right=4.2cm of t3] {$ -\,\,\dfrac{1}{N_c} $};
+%                \node (t5) [right=2.2cm of t4] {\Huge $\Biggr)$};
+%
+%        		\diagram*{
+%                    %1st diagram
+%        			(i1) -- [anti fermion] (i2),
+%        			(f1) -- [fermion] (f2),
+%                    %2nd diagram
+%        			(2i1) -- [anti fermion] (2im) -- [anti fermion] (2i2),
+%        			(2f1) -- [fermion] (2fm) -- [fermion] (2f2),
+%                    (2im) -- [gluon] (2fm),
+%                    %3rd diagram
+%                    (3i1) -- [anti fermion] (3f1),
+%                    (3i2) -- [fermion] (3f2),
+%                    %4th diagram
+%                    (4i1) -- [anti fermion] (4i2),
+%                    (4f1) -- [fermion] (4f2),
+%        		};
+%        	\end{feynman}
+%        \end{tikzpicture}
+%    \caption{}
+%    %\label{}
+%    \end{subfigure}
+%    \caption{Diagrammatical representation of the action of the colour insertion operators $\bm{T}_1 \cdot \bm{T}_4$ on the colour factors (a): and (b):} 
+%\end{figure}   
+
 \begin{figure}
     \centering
-        \begin{subfigure}{\linewidth}
         \begin{tikzpicture}
         	\begin{feynman}[small]
-        		\vertex (i1) {$i_4$};
-        		\vertex[right =3cm of i1] (f1) {$\bar{i}_1$};
-        		\vertex[below =0.7cm of i1] (i2) {$\bar{i}_3$};
-        		\vertex[right =3cm of i2] (f2) {$i_2$};			
+        		\vertex (v1);
+          
+        		\vertex[above left = 1cm of v1] (i1) {$a_4$};
+        		\vertex[below left =  1cm of v1] (i2) {$a_3$};
+        		\vertex[right = of v1] (v2);			
         		
+        		\vertex[above right = 1cm of v2] (f1) {$\bar{i}_1$};
+        		\vertex[below right = 1cm of v2] (f2) {$i_2$};
+
                 %2nd diagram
-                \vertex[right=of f1, xshift=0.8cm] (2i1) {$i_4$};
-                \vertex[right=of f2, xshift=0.8cm] (2i2) {$\bar{i}_3$};
+                \vertex[below right=of f1, xshift=1cm] (2i1) {$a_4$};
+                \vertex[above right=of f2, xshift=1cm] (2i2) {$a_3$};
                 		
-        		\vertex[right=of 2i1] (2m1);
-                \vertex[right=of 2m1] (2m2);
-                
-        		\vertex[right=of 2m2] (2f1) {$\bar{i}_1$};
-                \vertex[below=0.7cm of 2f1] (2f2) {$i_2$}; 
+        		\vertex[right=2cm of 2i1] (2f2);
+        		\vertex[above=0.5cm of 2f2] (2f1) {$\bar{i}_1$};
+                \vertex[right=2cm of 2i2] (2f3); 
+                \vertex[below=0.5cm of 2f3] (2f4) {$i_2$}; 
 
                 %3rd diagram
-                \vertex[right=of 2f1, xshift=1cm] (3i1) {$i_4$};
-                \vertex[right=of 2f2, xshift=1cm] (3i2) {$\bar{i}_3$};
-                \vertex[right=3cm of 3i1] (3f1) {$\bar{i}_1$};
-                \vertex[below=0.7cm of 3f1] (3f2) {$i_2$}; 
+                \vertex[right=1.2cm of 2f2, ] (3i1) {$a_4$};
+                \vertex[right=1.2cm of 2f3, ] (3i2) {$a_3$};
+                		
+        		\vertex[right=2cm of 3i1] (3f2);
+        		\vertex[above=0.5cm of 3f2] (3f1) {$\bar{i}_1$};
+                \vertex[right=2cm of 3i2] (3f3); 
+                \vertex[below=0.5cm of 3f3] (3f4) {$i_2$}; 
                 
-                %equation nodes
-                \node (t1) [left=1.2cm of i1, yshift=-0.35cm] {$\bm{T}_1 \cdot \bm{T}_4:$};
-                \node (t2) [right=5cm of t1] {$\;\;=\;\;-$};
-                \node (t3) [right=5.3cm of t2] {$= \;\;C_A$};
+                \node (t1) [right=1.2cm of v2] {$\;\;=\;\;$};
+                \node (t2) [right=3.7cm of t1] {$-$};
 
         		\diagram*{
                     %1st diagram
-        			(i1) -- [anti fermion] (f1),
-                    (i2) -- [fermion] (f2),
+        			(i1) -- [gluon] (v1) -- [gluon] (i2),
+                    (v1) -- [gluon] (v2),
+        			(f1) -- [fermion] (v2) -- [fermion] (f2),
                     %2nd diagram
-                    (2i1) -- (2m1) -- [anti fermion] (2m2) -- (2f1),
-                    (2i2) -- [fermion] (2f2),
-                    (2m1) -- [gluon, out=90, in=90] (2m2),
+                    (2f1) -- [fermion] (2f2) -- [fermion] (2f3) -- [fermion] (2f4);
+                    (2i1) -- [gluon] (2f2),
+                    (2i2) -- [gluon] (2f3),
                     %3rd diagram
-        			(3i1) -- [anti fermion] (3f1),
-                    (3i2) -- [fermion] (3f2),
+                    (3f1) -- [fermion] (3f2) -- [fermion] (3f3) -- [fermion] (3f4);
+                    (3i1) -- [gluon] (3f3),
+                    (3i2) -- [gluon] (3f2),
         		};
         	\end{feynman}
         \end{tikzpicture}
-    %\caption 
-    %\label{}
-    \end{subfigure}
-    \begin{subfigure}{\linewidth}
-        \begin{tikzpicture}
-        	\begin{feynman}[small]
-        		\vertex (i1) {$i_4$};
-        		\vertex[below=2cmof i1] (i2) {$\bar{i}_3$};
-                \vertex[right=of i1] (f1) {$\bar{i}_1$};
-                \vertex[below=2cmof f1] (f2) {$\bar{i}_2$};
-
-                %2nd diagram
-                \vertex[right=of f1, xshift=1.5cm] (2i1) {$i_4$};
-                \vertex[below=of 2i1] (2im);
-                \vertex[below=of 2im] (2i2) {$\bar{i}_3$};
-                		
-        		\vertex[right=of 2i1] (2f1) {$\bar{i}_1$};
-        		\vertex[below=of 2f1] (2fm);
-                \vertex[right=of 2i2] (2f2) {$i_2$}; 
-
-                %3rd diagram
-                \vertex[right=of 2f1, xshift=1cm] (3i1) {$i_4$};
-                \vertex[right=of 2f2, xshift=1cm] (3i2) {$\bar{i}_3$};
-                		
-        		\vertex[right=of 3i1] (3f1) {$\bar{i}_1$};
-                \vertex[right=of 3i2] (3f2) {$i_2$}; 
-
-                %equation nodes
-                \node (t1) [left=1.2cm of i1, yshift=-0.35cm] {$\bm{T}_1 \cdot \bm{T}_4:$};
-                %\node (t2) [right=5cm of t1] {$\;\;=\;\;-$};
-                %\node (t3) [right=5.3cm of t2] {$= \;\;C_A$};
-
-        		\diagram*{
-                    %1st diagram
-        			(i1) -- [anti fermion] (i2),
-        			(f1) -- [fermion] (f2),
-                    %2nd diagram
-        			(2i1) -- [anti fermion] (2im) -- [anti fermion] (2i2),
-        			(2f1) -- [fermion] (2fm) -- [fermion] (2f2),
-                    (2im) -- [gluon] (2fm),
-                    %3rd diagram
-                    (3i1) -- [anti fermion] (3i2),
-                    (3f1) -- [fermion] (3f2),
-        		};
-        	\end{feynman}
-        \end{tikzpicture}
-    %\caption{} 
-    %\label{}
-    \end{subfigure}\end{figure}   
+    \caption{The colour structure of a sample diagram contributing to the $\bbggh$ channel at tree level. It is also a graphical representation of the relation which defines the structure constants, $\ii f^{abc} (T^c)_{i_2}^{\;\;\bar{i}_1} = (T^aT^b)_{i_2}^{\;\;\bar{i}_1} - (T^bT^a)_{i_2}^{\;\;\bar{i}_1}\,$. \JK{I think there's an overall minus sign here.}} 
+    \label{fig:}
+\end{figure}
 \end{document}

@@ -1,13 +1,124 @@
 \documentclass[main.tex]{subfiles}
 
 \begin{document}
-\renewcommand{\chaptername}{}
-\renewcommand{\thechapter}{}
-\renewcommand{\thetable}{C.\arabic{table}}
-\renewcommand{\thesection}{C.\arabic{section}}
-\renewcommand{\thesubsection}{C.\arabic{subsection}}
-\renewcommand{\theequation}{C.\arabic{section}.\arabic{equation}}
-\chapter{Appendix C} \label{app:polestructure}
+%\renewcommand{\chaptername}{}
+%\renewcommand{\thechapter}{}
+%\renewcommand{\thetable}{A.\arabic{table}}
+%\renewcommand{\thesection}{B.\arabic{section}}
+%\renewcommand{\thesubsection}{C.\arabic{subsection}}
+%\renewcommand{\theequation}{A.\arabic{equation}}
+
+\chapter{One-Loop Results}
+\label{app:oneloop}
+In this Appendix, we collect the numerical results relevant to the amplitudes presented in Chapters~\ref{sec:Hbb} and \ref{sec:Wyj}. Tables~\ref{tab:benchmarkbare1L} and \ref{Wyjtab:benchmark1Lnf0bare} show the bare one-loop amplitudes (normalised by the tree-level amplitudes) for the two processes. Tables~\ref{tab:benchmarkfinremsq1L} and ~\ref{Wyjtab:benchmarkfinremsq1L} show the corresponding reduced squared tree-level amplitudes $\cH^{(0)}$ and reduced squared one-loop finite remainders (normalised by $\cH^{(0)}$).
+\begin{table}[t!]
+\centering
+\begin{tabularx}{1.0\textwidth}{|C{0.7}|C{0.8}|C{0.5}|C{1.2}|C{1.2}|C{1.3}|C{1.3}|}
+\hline
+ $\bbggh$     & helicity & $\eps^{-2}$ & $\eps^{-1}$ & $\eps^{0}$ & $\eps^{1}$ & $\eps^{2}$ \\
+\hline
+$\hat A^{(1),1}$ & $++++$ & $ -3 $ & $ 3.07857 - 3.14159 i$ & $ 0.317351 + 8.42128 i$ & $ -1.25257 - 8.56907 i$ & $ 25.8294 - 4.35648 i $ \\
+                 & $+++-$ & $ -3 $ & $ 3.07857 - 3.14159 i$ & $ -2.99786 - 1.02133 i$ & $ 2.86487 - 28.7164 i$ & $ 30.3093 - 26.3373 i $ \\
+                 & $++-+$ & $ -3 $ & $ 3.07857 - 3.14159 i$ & $ -0.119814 + 8.67497 i$ & $ -1.43041 - 5.33656 i$ & $ 19.6373 - 0.110475 i $ \\
+                 & $++--$ & $ -3 $ & $ 3.07857 - 3.14159 i$ & $ -6.51606 + 18.6156 i$ & $ -21.7849 + 24.0036 i$ & $ -24.6605 + 55.6878 i $ \\
+\hline
+$\hat A^{(1),n_f}$ & $++++$ & $ 0$ & $ 0$ & $ -0.005010 + 0.000779871 i$ & $ -0.00700827 - 0.0150298 i$ & $ 0.0109029 - 0.0163643 i $ \\
+                   & $+++-$ & $ 0$ & $ 0$ & $ 0$ & $ 0$ & $ 0 $ \\
+                   & $++-+$ & $ 0$ & $ 0$ & $ 0$ & $ 0$ & $ 0 $ \\
+                   & $++--$ & $ 0$ & $ 0$ & $ -0.393552 + 0.138515 i$ & $ -0.793221 - 1.11035 i$ & $ 0.635641 - 1.48796 i $ \\
+\hline
+$\bbqqh$     & helicity & $\eps^{-2}$ & $\eps^{-1}$ & $\eps^{0}$ & $\eps^{1}$ & $\eps^{2}$ \\
+\hline
+$\hat A^{(1),1}$ & $+++-$ & $ -2 $ & $ 2.48840$ & $ -9.99430 - 8.95182 i$ & $ 2.20899 - 24.3401 i$ & $ 4.76962 - 27.6604 i $ \\
+                 & $++-+$ & $ -2 $ & $ 2.48840$ & $ -8.43825 - 7.45006 i$ & $ 7.21741 - 24.6383 i$ & $ 13.6369 - 20.4876 i $ \\
+\hline
+$\hat A^{(1),n_f}$ & $+++-$ & $ 0$ & $ -0.666667$ & $ 0.726782 - 2.09440 i$ & $ 2.29387 + 2.28325 i$ & $ -2.54017 + 0.316127 i $ \\
+                   & $++-+$ & $ 0$ & $ -0.666667$ & $ 0.726782 - 2.09440 i$ & $ 2.29387 + 2.28325 i$ & $ -2.54017 + 0.316127 i $ \\
+\hline
+\end{tabularx}
+\caption{\label{tab:benchmarkbare1L} Numerical values of the bare $\bbggh$ and $\bbqqh$ partial amplitudes at one loop (normalised to the tree-level amplitude) at the kinematic point in 
+Eq.~\eqref{eq:physicalpointHbbMomTwistor} for the four independent helicity configurations and the various closed fermion loops contributions. }
+\end{table}
+
+\begin{table}[t!]
+\centering
+\begin{tabularx}{0.85\textwidth}{|C{0.7}|C{1.1}|C{1.1}|C{1.1}|}
+\hline
+channel & $\mathcal{H}^{(0)}$ & $\mathrm{Re}\;\mathcal{H}^{(1),1}$ & $\mathrm{Re}\;\mathcal{H}^{(1),n_f}$  \\
+\hline
+$\mathbf{gg}$       & $ 1121.375369 $    & $ 4905.689964$ & $ 204.1069797 $ \\
+$\mathbf{q\bar{q}}$ & $ 0.001095232986 $ & $ -0.008958148524$ & $ 0.0007959961305 $ \\
+$\mathbf{\bar{q}q}$ & $ 0.001095232986 $ & $ 0.01182947634$ & $ 0.0007959961305 $ \\
+$\mathbf{b\bar{b}}$ & $ 738.4111805 $ & $ 5948.275150$ & $ -2005.976183 $ \\
+$\mathbf{\bar{b}b}$ & $ 774.9861507 $ & $ -8346.007933$ & $ -2253.325645 $ \\
+$\mathbf{bb}/\mathbf{\bar{b}\bar{b}}$ & $ 71.81424881 $  & $ -678.1382010$ & $ -243.5040325 $ \\
+\hline
+\end{tabularx}
+\caption{\label{tab:benchmarkfinremsq1L} Numerical values of the tree-level reduced squared amplitudes  $\mathcal{H}^{(0)}$ and 
+one-loop reduced squared finite remainders $\mathcal{H}^{(1)}$ 
+defined in Eqs.~\eqref{eq:channel_gg}-\eqref{eq:channel_BB} at the kinematic point in 
+Eq.~\eqref{eq:physicalpointHbbMomTwistor} for  the closed fermion loops contributions and the scattering channels specified in Eq.~\eqref{eq:channel_definition}.}
+\end{table}
+
+\begin{table}[t!]
+\centering
+\begin{tabularx}{1.0\textwidth}{|C{0.7}|C{1.0}|C{0.6}|C{1.0}|C{1.2}|C{1.2}|C{1.3}|}
+\hline
+      & helicity & $\eps^{-2}$ & $\eps^{-1}$ & $\eps^{0}$ & $\eps^{1}$ & $\eps^{2}$ \\
+\hline
+$\hat A^{(1),1}_u$ & $\scriptstyle +++--+$ & -2 & 23.8477 & $-138.615 - 2.09370  i$ & $523.949 + 12.3666 i$ & $-1448.23 - 21.7701 i$ \\
+                   & $\scriptstyle -++--+$ & -2 & 23.8477 & $-139.779 - 0.516164 i$ & $535.218 - 2.01397 i$ & $-1503.32 + 46.1044 i$ \\
+\hline
+$\hat A^{(1),1}_d$ & $\scriptstyle +++--+$ & -2 & 23.8477 & $-140.008 - 2.18806 i$  & $539.871 + 13.7461 i$ & $-1538.48 - 30.4669 i$ \\
+                   & $\scriptstyle -++--+$ & -2 & 23.8477 & $-139.294 - 2.18046 i$  & $532.471 + 15.2170 i$ & $-1499.51 - 44.3866 i$ \\
+\hline
+$\hat A^{(1),1}_W$ & $\scriptstyle +++--+$ & -2 & 23.8477 & $-139.550 - 1.53563 i$  & $534.185 + 8.26368 i$ & $-1503.99 - 6.62167 i$ \\
+                   & $\scriptstyle -++--+$ & -2 & 23.8477 & $-139.818 - 1.20381 i$  & $536.639 + 5.03856 i$ & $-1515.10 + 9.39205 i$ \\
+\hline
+$\hat A^{(1),1}_e$ & $\scriptstyle +++--+$ & -2 & 23.8477 & $-139.570 - 1.46851 i$  & $534.360 + 7.61926 i$ & $-1504.71 - 3.48177 i$ \\
+                   & $\scriptstyle -++--+$ & -2 & 23.8477 & $-140.303 - 1.48855 i$  & $541.353 + 7.64165 i$ & $-1538.44 - 2.31498 i$ \\
+\hline
+\end{tabularx}
+\caption{\label{Wyjtab:benchmark1Lnf0bare} 
+Bare one-loop helicity sub-amplitudes (normalised to the tree-level amplitudes as in Eq.~\eqref{Wyjeq:treenorm}) without any closed fermion loop contribution  
+for $\wpaj$ production in the $\mathbf{u\bar{d}}$ scattering channel 
+evaluated at the kinematic point given in Eq.~\eqref{Wyjeq:PSpoint}. The results are shown for the two independent helicity configurations and obtained with $q_1 = p_3$ and $q_3 = p_1$ where $q_1$ ($q_3$) is the 
+reference momentum for the photon (gluon) polarisation vector.
+}
+\end{table}
+
+\begin{table}[t!]
+\centering
+\begin{tabularx}{1\textwidth}{|C{0.4}|C{1.2}|C{1.2}|C{1.2}|}
+\hline
+$W^+\gamma j$ & $\mathcal{H}^{(0)}  \; [\times 10^{-10}\,\mathrm{GeV}^{-4}] $ & $\mathrm{Re}\;\hat{\mathcal{H}}^{(1),1}$ & $\mathrm{Re}\;\hat{\mathcal{H}}^{(1),n_f}$  \\
+\hline
+$\mathbf{u\bar{d}}$ & 32.9224527109  & -20.4269208141 & 4.22462265354  \\
+$\mathbf{\bar{d}u}$ & 35.8863373066  & -20.0350027848 & 4.22462265354  \\
+$\mathbf{ug}      $ & 4.84655650134  & -26.9389515414 & 4.45445318051  \\
+$\mathbf{gu}      $ & 15.2151742999  & -25.3235043118 & 4.37533965902  \\
+$\mathbf{\bar{d}g}$ & 9.18270882925  & -28.3542876136 & 4.45445318051  \\
+$\mathbf{g\bar{d}}$ & 26.4333120479  & -27.3120879601 & 4.37533965902  \\
+\hline
+\hline
+$W^-\gamma j$ & $\mathcal{H}^{(0)}  \; [\times 10^{-10}\,\mathrm{GeV}^{-4}] $ & $\mathrm{Re}\;\hat{\mathcal{H}}^{(1),1}$ & $\mathrm{Re}\;\hat{\mathcal{H}}^{(1),n_f}$  \\
+\hline
+$\mathbf{d\bar{u}}$ & 48.5521763841  & -20.5759435967 & 4.22462265354  \\
+$\mathbf{\bar{u}d}$ & 5.60724308955  & -25.0921274652 & 4.22462265354  \\
+$\mathbf{dg}      $ & 0.161819754065 & -53.2745933316 & 4.45445318051  \\
+$\mathbf{gd}      $ & 2.59919214772  & -35.7387232774 & 4.37533965902  \\
+$\mathbf{\bar{u}g}$ & 0.471356750696 & -25.5067063821 & 4.45445318051  \\
+$\mathbf{g\bar{u}}$ & 27.6357549618  & -32.8902240077 & 4.37533965902  \\
+\hline
+\end{tabularx}
+\caption{\label{Wyjtab:benchmarkfinremsq1L} 
+Reduced squared tree-level amplitude (absolute) and reduced squared one-loop finite remainders (normalised to the reduced squared tree amplitudes)
+for the various closed fermion loop contributions and scattering channels of both $pp\to\wpaj$ and $pp\to\wmaj$ production,
+evaluated at the kinematic point given in Eq.~\eqref{Wyjeq:PSpoint}.
+}
+\end{table}
+
+\chapter{Derivation of the pole structure} \label{app:polestructure}
 In the following, we provide a detailed derivation of the full pole structure of the $\ppbbh$ amplitudes presented in Eqs.~\ref{eq:poles1L} to \ref{eq:H2bbggH}. We do this for completeness, but also in the hope of illuminating the procedure, which can be far from obvious. 
 \section{UV singularities}
 Let us start with the UV singularities. Renormalising the amplitude amounts to replacing the bare couplings in the Lagrangian with the physical ones according to:
@@ -531,4 +642,34 @@ where:
 As in the previous section, the last colour factor is always suppressed by $1/N_c$ with respect to the first two and we simply drop it. This completes the derivation of the $\bbggh$ leading-colour decomposition Eq.\ref{eq:colourdecomposition} and its pole operator Eq.~\ref{eq:I1bbggh}.\JK{What about the $bbbbH$ channel?}
 
 A careful reader might be alarmed by the presence of the $\beta_0/N_c$ term at leading colour. Indeed, since $\beta_0 = \frac{11}{3}C_A - \frac{4}{3} T_F n_f$ and $C_A = N_c$ \JK{or rather $C_A = 2 T_F N_c$ ?}, we would expect only the $11/3$ contribution to survive. However, in most practical applications, $n_f=4$ or $5$, thus $n_f/N_c \approx  \order{1}$. It is therefore reasonable to retain the $n_f$ term as well and the whole contribution is written in terms of the first $\beta$-function coefficient as $\beta_0/N_c$. This also provides the motivation for the decomposition in Eqs.~\ref{eq:NfDecomposition1L} and \ref{eq:NfDecomposition2L}.
+
+\chapter{Renormalisation Constants} \label{app:renormconstants}
+\renewcommand{\theequation}{C.\arabic{equation}}
+The bottom-quark Yukawa renormalisation constants are~\cite{Ahmed:2014pka,Mondini:2021nck}:
+\begin{align}
+r_1 & = -\frac{\beta_0}{2\eps}\,, \\
+r_2 & = \frac{\beta_0^2}{4\eps^2} - \frac{\beta_1}{8\eps}\,, \\
+s_1 & = -\frac{3 C_F}{2\eps} \,, \\
+s_2 & = \frac{3}{8\eps^2}\big(3 C_F^2 + \beta_0 C_F \big) - \frac{1}{8\eps} \bigg( \frac{3 C_F^2}{2} + \frac{97}{6} C_F C_A -\frac{10}{3} C_F T_F n_f   \bigg) \,,
+\end{align}
+while the $\beta$ function coefficients and anomalous dimensions are~\cite{Becher:2009qa}
+\begingroup
+\allowdisplaybreaks
+\begin{align}
+\beta_0 = & \;\frac{11}{3}C_A - \frac{4}{3} T_F n_f \,, \\
+\beta_1 = & \; \frac{34}{3} C_A^2 - \frac{20}{3} C_A T_F n_f - 4 C_F T_F n_f \,, \\
+\gamma_0^g = & \; -\frac{11}{3}C_A + \frac{4}{3} T_F n_f \,,   \\
+\gamma_1^g = & \;  C_A^2 \left( -\frac{692}{27} + \frac{11\pi^2}{18} + 2 \zeta_3\right)
+               + 4 C_F T_F n_f
+               + C_A T_F n_f \left( \frac{256}{27} - \frac{2\pi^2}{9}\right) \,, \\
+\gamma_0^q = & \; -3 C_F \,, \\
+\gamma_1^q = & \; C_F^2 \left( -\frac{3}{2} + 2 \pi^2 - 24 \zeta_3 \right)
+                  + C_F C_A \left( -\frac{961}{54} -\frac{11\pi^2}{6} + 26 \zeta_3 \right) \nn
+             & \;  + C_F T_F n_f \left( \frac{130}{27} + \frac{2\pi^2}{3} \right) \,, \\
+\gamma_0^\cusp = & \; 4 \,, \\
+\gamma_1^\cusp = & \; \left( \frac{268}{9} - \frac{4\pi^2}{3} \right) C_A -\frac{80}{9} T_F n_f \,,
+\end{align}
+\endgroup
+where $C_A = N_c$, $C_F = (N_c^2-1)/(2N_c)$ and $T_F = 1/2$.
+
 \end{document}
