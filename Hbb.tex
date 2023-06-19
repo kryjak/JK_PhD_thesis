@@ -279,30 +279,505 @@ Having set up a rational parametrisation of the external kinematics, the helicit
 ready to be further processed.
 This is the starting point of our numerical algorithm in the finite field setup. 
 In order to write the loop amplitude in terms of Feynman scalar integrals, 
-we first define the integral families for the 15 maximal topologies which are shown in Fig.~3 of Ref.~\cite{Badger:2021nhg}. 
-Each diagram topology appearing in the amplitude can be mapped onto at least one of the maximal topologies. 
+we first define the integral families for the 15 maximal topologies, which are shown in Fig.~\ref{fig:Hbbmaxtopos}. 
+Each diagram topology appearing in the amplitude can be mapped onto at least one of them. 
 After that is done, the objects which depend on the loop momenta in the helicity dependent loop numerators are written in terms of 
-the 11 propagators associated with the chosen maximal topology. 
+the 11 propagators and ISPs associated with the chosen maximal topology. 
 These mapping procedures are performed numerically within the \texttt{FiniteFlow} framework~\cite{Peraro:2019svx}. 
 External kinematics that are involved in the mapping are already expressed in terms of momentum twistor variables.
 At this stage, the loop amplitude is expressed as a linear combination of scalar integrals that will further be 
 reduced to a set of master integrals. The coefficients associated with these scalar integrals are functions only of the external kinematics in the
 form of momentum twistor variables.
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.3\linewidth}
+    \scalebox{0.8}{
+		\begin{tikzpicture}
+			\begin{feynman}[small]
+				\vertex (v1);
+				\vertex[above left=0.8cm of v1] (i1) {$p_1$};
+				\vertex[right = of v1] (v2);
+				\vertex[yshift=0.3cm, right = 0.8cm of v2] (v3);
+				\vertex[above right = 0.8cm of v3] (f1) {$p_5$};			
+				
+				\vertex[below = of v1] (v7) ;
+				\vertex[below left = 0.8cm of v7] (i2) {$p_4$};
+				\vertex[right = of v7] (v6) ;
+				\vertex[yshift=-0.3cm, right = 0.8cm of v6] (v5) ;
+				\vertex[below right = 0.8cm of v5] (f3) {$p_3$};
+				
+				\vertex[xshift=0.6cm, yshift=0.2cm, below = of v3] (v4);
+				\vertex[right = 0.8cm of v4] (f2) {$p_2$};
+				
+				\diagram*{
+					(i1) -- (v1) -- (v2) -- (v3) -- (v4) -- (v5),
+					(i2) -- (v7) -- (v6) -- (v5),
+					(v3) -- [scalar, very thick] (f1),
+					(v4) -- (f2),
+					(v5) -- (f3),
+					(v1) -- (v7),
+					(v2) -- (v6),
+				};
+			\end{feynman}
+		\end{tikzpicture}
+    }
+    \end{subfigure}
+    \begin{subfigure}{0.3\linewidth}
+    \scalebox{0.8}{
+		\begin{tikzpicture}
+			\begin{feynman}[small]
+				\vertex (v1);
+				\vertex[above left=0.8cm of v1] (i1) {$p_2$};
+				\vertex[right = of v1] (v2);
+				\vertex[yshift=0.3cm, right = 0.8cm of v2] (v3);
+				\vertex[above right = 0.8cm of v3] (f1) {$p_5$};			
+				
+				\vertex[below = of v1] (v7) ;
+				\vertex[below left = 0.8cm of v7] (i2) {$p_3$};
+				\vertex[right = of v7] (v6) ;
+				\vertex[yshift=-0.3cm, right = 0.8cm of v6] (v5) ;
+				\vertex[below right = 0.8cm of v5] (f3) {$p_4$};
+				
+				\vertex[xshift=0.6cm, yshift=0.2cm, below = of v3] (v4);
+				\vertex[right = 0.8cm of v4] (f2) {$p_1$};
+				
+				\diagram*{
+					(i1) -- (v1) -- (v2) -- (v3) -- (v4) -- (v5),
+					(i2) -- (v7) -- (v6) -- (v5),
+					(v3) -- [scalar, very thick] (f1),
+					(v4) -- (f2),
+					(v5) -- (f3),
+					(v1) -- (v7),
+					(v2) -- (v6),
+				};
+			\end{feynman}
+		\end{tikzpicture}
+    }
+    \end{subfigure}
+    \begin{subfigure}{0.3\linewidth}
+    \scalebox{0.8}{
+		\begin{tikzpicture}
+			\begin{feynman}[small]
+				\vertex (v1);
+				\vertex[above left=0.8cm of v1] (i1) {$p_4$};
+				\vertex[right = of v1] (v2);
+				\vertex[yshift=0.3cm, right = 0.8cm of v2] (v3);
+				\vertex[above right = 0.8cm of v3] (f1) {$p_1$};			
+				
+				\vertex[below = of v1] (v7) ;
+				\vertex[below left = 0.8cm of v7] (i2) {$p_3$};
+				\vertex[right = of v7] (v6) ;
+				\vertex[yshift=-0.3cm, right = 0.8cm of v6] (v5) ;
+				\vertex[below right = 0.8cm of v5] (f3) {$p_2$};
+				
+				\vertex[xshift=0.6cm, yshift=0.2cm, below = of v3] (v4);
+				\vertex[right = 0.8cm of v4] (f2) {$p_5$};
+				
+				\diagram*{
+					(i1) -- (v1) -- (v2) -- (v3) -- (v4) -- (v5),
+					(i2) -- (v7) -- (v6) -- (v5),
+					(v3) -- (f1),
+					(v4) -- [scalar, very thick] (f2),
+					(v5) -- (f3),
+					(v1) -- (v7),
+					(v2) -- (v6),
+				};
+			\end{feynman}
+		\end{tikzpicture}
+    }
+    \end{subfigure}
+    \begin{subfigure}{0.3\linewidth}
+    \scalebox{0.8}{
+		\begin{tikzpicture}
+			\begin{feynman}[small]
+				\vertex (v1);
+				\vertex[above left=0.8cm of v1] (i1) {$p_5$};
+				\vertex[right = of v1] (v2);
+				\vertex[yshift=0.3cm, right = 0.8cm of v2] (v3);
+				\vertex[above right = 0.8cm of v3] (f1) {$p_1$};			
+				
+				\vertex[below = of v1] (v7) ;
+				\vertex[below left = 0.8cm of v7] (i2) {$p_2$};
+				\vertex[right = of v7] (v6) ;
+				\vertex[yshift=-0.3cm, right = 0.8cm of v6] (v5) ;
+				\vertex[below right = 0.8cm of v5] (f3) {$p_3$};
+				
+				\vertex[xshift=0.6cm, yshift=0.2cm, below = of v3] (v4);
+				\vertex[right = 0.8cm of v4] (f2) {$p_4$};
+				
+				\diagram*{
+					(i1) -- [scalar, very thick] (v1) -- (v2) -- (v3) -- (v4) -- (v5),
+					(i2) -- (v7) -- (v6) -- (v5),
+					(v3) -- (f1),
+					(v4) -- (f2),
+					(v5) -- (f3),
+					(v1) -- (v7),
+					(v2) -- (v6),
+				};
+			\end{feynman}
+		\end{tikzpicture}
+    }
+    \end{subfigure}
+    \begin{subfigure}{0.3\linewidth}
+    \scalebox{0.8}{
+		\begin{tikzpicture}
+			\begin{feynman}[small]
+				\vertex (v1);
+				\vertex[above left=0.8cm of v1] (i1) {$p_5$};
+				\vertex[right = of v1] (v2);
+				\vertex[yshift=0.3cm, right = 0.8cm of v2] (v3);
+				\vertex[above right = 0.8cm of v3] (f1) {$p_2$};			
+				
+				\vertex[below = of v1] (v7) ;
+				\vertex[below left = 0.8cm of v7] (i2) {$p_1$};
+				\vertex[right = of v7] (v6) ;
+				\vertex[yshift=-0.3cm, right = 0.8cm of v6] (v5) ;
+				\vertex[below right = 0.8cm of v5] (f3) {$p_4$};
+				
+				\vertex[xshift=0.6cm, yshift=0.2cm, below = of v3] (v4);
+				\vertex[right = 0.8cm of v4] (f2) {$p_3$};
+				
+				\diagram*{
+					(i1) -- [scalar, very thick] (v1) -- (v2) -- (v3) -- (v4) -- (v5),
+					(i2) -- (v7) -- (v6) -- (v5),
+					(v3) -- (f1),
+					(v4) -- (f2),
+					(v5) -- (f3),
+					(v1) -- (v7),
+					(v2) -- (v6),
+				};
+			\end{feynman}
+		\end{tikzpicture}
+    }
+    \end{subfigure}
+    \begin{subfigure}{0.3\linewidth}
+    \scalebox{0.8}{
+		\begin{tikzpicture}
+			\begin{feynman}[small]
+				\vertex (v1);
+				\vertex[left = 0.8cm of v1] (i1) {$p_1$};
+				\vertex[above right =1cm of v1] (v2);
+				\vertex[below right =1cm of v1] (v3);				
+				\vertex[yshift=0.3cm, right = 0.7cm of v2] (v4);	
+				\vertex[yshift=-0.6cm, right = 0.7cm of v4] (v5);
+				\vertex[yshift=-0.3cm, right = 0.7cm of v3] (v7);
+				\vertex[yshift=0.6cm, right = 0.7cm of v7] (v6);	
+				\vertex[above right = 0.8cm of v4] (i2) {$p_5$};
+				\vertex[yshift=0.2cm, right = 0.8cm of v5] (i3) {$p_2$};
+				\vertex[yshift=-0.2cm, right = 0.8cm of v6] (i4) {$p_3$};
+				\vertex[below right = 0.8cm of v7] (i5) {$p_4$};
+				
+				\diagram*{
+					(i1) -- (v1) -- (v2) -- (v3) -- (v1),
+					(v2) -- (v4) -- (v5) -- (v6) -- (v7) -- (v3),
+					(v4) -- [scalar, very thick] (i2),
+					(v5) -- (i3),
+					(v6) -- (i4),
+					(v7) -- (i5),
+				};
+			\end{feynman}
+		\end{tikzpicture}
+    }
+    \end{subfigure}
+    \begin{subfigure}{0.3\linewidth}
+    \scalebox{0.8}{
+		\begin{tikzpicture}
+			\begin{feynman}[small]
+				\vertex (v1);
+				\vertex[left = 0.8cm of v1] (i1) {$p_2$};
+				\vertex[above right =1cm of v1] (v2);
+				\vertex[below right =1cm of v1] (v3);				
+				\vertex[yshift=0.3cm, right = 0.7cm of v2] (v4);	
+				\vertex[yshift=-0.6cm, right = 0.7cm of v4] (v5);
+				\vertex[yshift=-0.3cm, right = 0.7cm of v3] (v7);
+				\vertex[yshift=0.6cm, right = 0.7cm of v7] (v6);	
+				\vertex[above right = 0.8cm of v4] (i2) {$p_5$};
+				\vertex[yshift=0.2cm, right = 0.8cm of v5] (i3) {$p_1$};
+				\vertex[yshift=-0.2cm, right = 0.8cm of v6] (i4) {$p_4$};
+				\vertex[below right = 0.8cm of v7] (i5) {$p_3$};
+				
+				\diagram*{
+					(i1) -- (v1) -- (v2) -- (v3) -- (v1),
+					(v2) -- (v4) -- (v5) -- (v6) -- (v7) -- (v3),
+					(v4) -- [scalar, very thick] (i2),
+					(v5) -- (i3),
+					(v6) -- (i4),
+					(v7) -- (i5),
+				};
+			\end{feynman}
+		\end{tikzpicture}
+    }
+    \end{subfigure}
+    \begin{subfigure}{0.3\linewidth}
+    \scalebox{0.8}{
+		\begin{tikzpicture}
+			\begin{feynman}[small]
+				\vertex (v1);
+				\vertex[left = 0.8cm of v1] (i1) {$p_4$};
+				\vertex[above right =1cm of v1] (v2);
+				\vertex[below right =1cm of v1] (v3);				
+				\vertex[yshift=0.3cm, right = 0.7cm of v2] (v4);	
+				\vertex[yshift=-0.6cm, right = 0.7cm of v4] (v5);
+				\vertex[yshift=-0.3cm, right = 0.7cm of v3] (v7);
+				\vertex[yshift=0.6cm, right = 0.7cm of v7] (v6);	
+				\vertex[above right = 0.8cm of v4] (i2) {$p_1$};
+				\vertex[yshift=0.2cm, right = 0.8cm of v5] (i3) {$p_5$};
+				\vertex[yshift=-0.2cm, right = 0.8cm of v6] (i4) {$p_2$};
+				\vertex[below right = 0.8cm of v7] (i5) {$p_3$};
+				
+				\diagram*{
+					(i1) -- (v1) -- (v2) -- (v3) -- (v1),
+					(v2) -- (v4) -- (v5) -- (v6) -- (v7) -- (v3),
+					(v4) -- (i2),
+					(v5) -- [scalar, very thick] (i3),
+					(v6) -- (i4),
+					(v7) -- (i5),
+				};
+			\end{feynman}
+		\end{tikzpicture}
+    }
+    \end{subfigure}
+    \begin{subfigure}{0.3\linewidth}
+    \scalebox{0.8}{
+		\begin{tikzpicture}
+			\begin{feynman}[small]
+				\vertex (v1);
+				\vertex[left = 0.8cm of v1] (i1) {$p_3$};
+				\vertex[above right =1cm of v1] (v2);
+				\vertex[below right =1cm of v1] (v3);				
+				\vertex[yshift=0.3cm, right = 0.7cm of v2] (v4);	
+				\vertex[yshift=-0.6cm, right = 0.7cm of v4] (v5);
+				\vertex[yshift=-0.3cm, right = 0.7cm of v3] (v7);
+				\vertex[yshift=0.6cm, right = 0.7cm of v7] (v6);	
+				\vertex[above right = 0.8cm of v4] (i2) {$p_2$};
+				\vertex[yshift=0.2cm, right = 0.8cm of v5] (i3) {$p_5$};
+				\vertex[yshift=-0.2cm, right = 0.8cm of v6] (i4) {$p_1$};
+				\vertex[below right = 0.8cm of v7] (i5) {$p_4$};
+				
+				\diagram*{
+					(i1) -- (v1) -- (v2) -- (v3) -- (v1),
+					(v2) -- (v4) -- (v5) -- (v6) -- (v7) -- (v3),
+					(v4) -- (i2),
+					(v5) -- [scalar, very thick] (i3),
+					(v6) -- (i4),
+					(v7) -- (i5),
+				};
+			\end{feynman}
+		\end{tikzpicture}
+    }
+    \end{subfigure}
+    \begin{subfigure}{0.3\linewidth}
+    \scalebox{0.8}{
+		\begin{tikzpicture}
+			\begin{feynman}[small]
+				\vertex (v1);
+				\vertex[left = 0.8cm of v1] (i1) {$p_5$};
+				\vertex[above right =1cm of v1] (v2);
+				\vertex[below right =1cm of v1] (v3);				
+				\vertex[yshift=0.3cm, right = 0.7cm of v2] (v4);	
+				\vertex[yshift=-0.6cm, right = 0.7cm of v4] (v5);
+				\vertex[yshift=-0.3cm, right = 0.7cm of v3] (v7);
+				\vertex[yshift=0.6cm, right = 0.7cm of v7] (v6);	
+				\vertex[above right = 0.8cm of v4] (i2) {$p_2$};
+				\vertex[yshift=0.2cm, right = 0.8cm of v5] (i3) {$p_3$};
+				\vertex[yshift=-0.2cm, right = 0.8cm of v6] (i4) {$p_4$};
+				\vertex[below right = 0.8cm of v7] (i5) {$p_1$};
+				
+				\diagram*{
+					(i1) -- [scalar, very thick] (v1) -- (v2) -- (v3) -- (v1),
+					(v2) -- (v4) -- (v5) -- (v6) -- (v7) -- (v3),
+					(v4) -- (i2),
+					(v5) -- (i3),
+					(v6) -- (i4),
+					(v7) -- (i5),
+				};
+			\end{feynman}
+		\end{tikzpicture}
+    }
+    \end{subfigure}
+    \begin{subfigure}{0.3\linewidth}
+    \scalebox{0.8}{
+		\begin{tikzpicture}\hspace{0.5cm}
+			\begin{feynman}[small]
+				\vertex (v1);
+				\vertex[yshift=0.2cm, right =1cm of v1] (v2);
+				\vertex[xshift=0.7cm, below =1cm of v2] (v3);				
+				\vertex[below = 1.5cm of v1] (v5);
+				\vertex[yshift=-0.2cm, right =1cm of v5] (v4);
+				\vertex[below=0.3cm of v1] (v6);
+				\vertex[below=0.9cm of v6] (v7);
+				
+				\vertex[above left = 0.8cm of v1] (i1) {$p_5$};
+				\vertex[above right = 0.8cm of v2] (i2) {$p_2$};
+				\vertex[right = 0.8cm of v3] (i3) {$p_3$};
+				\vertex[below right = 0.8cm of v4] (i4) {$p_4$};
+				\vertex[below left = 0.8cm of v5] (i5) {$p_1$};
+				
+				\draw ([yshift=-0.75cm]v1) circle (0.45cm);
+				
+				\diagram*{
+					(v6) -- (v1) -- (v2) -- (v3) -- (v4) -- (v5) -- (v7), 
+					(v1) -- [scalar, very thick] (i1),
+					(v2) -- (i2),
+					(v3) -- (i3),
+					(v4) -- (i4),
+					(v5) -- (i5),
+					
+				};
+			\end{feynman}
+		\end{tikzpicture}
+    }
+    \end{subfigure}
+    \begin{subfigure}{0.3\linewidth}
+    \scalebox{0.8}{
+		\begin{tikzpicture}\hspace{0.5cm}
+			\begin{feynman}[small]
+				\vertex (v1);
+				\vertex[yshift=0.2cm, right =1cm of v1] (v2);
+				\vertex[xshift=0.7cm, below =1cm of v2] (v3);				
+				\vertex[below = 1.5cm of v1] (v5);
+				\vertex[yshift=-0.2cm, right =1cm of v5] (v4);
+				\vertex[below=0.3cm of v1] (v6);
+				\vertex[below=0.9cm of v6] (v7);
+				
+				\vertex[above left = 0.8cm of v1] (i1) {$p_5$};
+				\vertex[above right = 0.8cm of v2] (i2) {$p_1$};
+				\vertex[right = 0.8cm of v3] (i3) {$p_4$};
+				\vertex[below right = 0.8cm of v4] (i4) {$p_3$};
+				\vertex[below left = 0.8cm of v5] (i5) {$p_2$};
+				
+				\draw ([yshift=-0.75cm]v1) circle (0.45cm);
+				
+				\diagram*{
+					(v6) -- (v1) -- (v2) -- (v3) -- (v4) -- (v5) -- (v7), 
+					(v1) -- [scalar, very thick] (i1),
+					(v2) -- (i2),
+					(v3) -- (i3),
+					(v4) -- (i4),
+					(v5) -- (i5),
+					
+				};
+			\end{feynman}
+		\end{tikzpicture}
+    }
+    \end{subfigure}
+    \begin{subfigure}{0.3\linewidth}
+    \scalebox{0.8}{
+		\begin{tikzpicture}\hspace{0.5cm}
+			\begin{feynman}[small]
+				\vertex (v1);
+				\vertex[yshift=0.2cm, right =1cm of v1] (v2);
+				\vertex[xshift=0.7cm, below =1cm of v2] (v3);				
+				\vertex[below = 1.5cm of v1] (v5);
+				\vertex[yshift=-0.2cm, right =1cm of v5] (v4);
+				\vertex[below=0.3cm of v1] (v6);
+				\vertex[below=0.9cm of v6] (v7);
+				
+				\vertex[above left = 0.8cm of v1] (i1) {$p_1$};
+				\vertex[above right = 0.8cm of v2] (i2) {$p_5$};
+				\vertex[right = 0.8cm of v3] (i3) {$p_2$};
+				\vertex[below right = 0.8cm of v4] (i4) {$p_3$};
+				\vertex[below left = 0.8cm of v5] (i5) {$p_4$};
+				
+				\draw ([yshift=-0.75cm]v1) circle (0.45cm);
+				
+				\diagram*{
+					(v6) -- (v1) -- (v2) -- (v3) -- (v4) -- (v5) -- (v7), 
+					(v1) -- (i1),
+					(v2) -- [scalar, very thick] (i2),
+					(v3) -- (i3),
+					(v4) -- (i4),
+					(v5) -- (i5),
+					
+				};
+			\end{feynman}
+		\end{tikzpicture}
+    }
+    \end{subfigure}
+    \begin{subfigure}{0.3\linewidth}
+    \scalebox{0.8}{
+		\begin{tikzpicture}\hspace{0.5cm}
+			\begin{feynman}[small]
+				\vertex (v1);
+				\vertex[yshift=0.2cm, right =1cm of v1] (v2);
+				\vertex[xshift=0.7cm, below =1cm of v2] (v3);				
+				\vertex[below = 1.5cm of v1] (v5);
+				\vertex[yshift=-0.2cm, right =1cm of v5] (v4);
+				\vertex[below=0.3cm of v1] (v6);
+				\vertex[below=0.9cm of v6] (v7);
+				
+				\vertex[above left = 0.8cm of v1] (i1) {$p_2$};
+				\vertex[above right = 0.8cm of v2] (i2) {$p_5$};
+				\vertex[right = 0.8cm of v3] (i3) {$p_1$};
+				\vertex[below right = 0.8cm of v4] (i4) {$p_4$};
+				\vertex[below left = 0.8cm of v5] (i5) {$p_3$};
+				
+				\draw ([yshift=-0.75cm]v1) circle (0.45cm);
+				
+				\diagram*{
+					(v6) -- (v1) -- (v2) -- (v3) -- (v4) -- (v5) -- (v7), 
+					(v1) -- (i1),
+					(v2) -- [scalar, very thick] (i2),
+					(v3) -- (i3),
+					(v4) -- (i4),
+					(v5) -- (i5),
+					
+				};
+			\end{feynman}
+		\end{tikzpicture}
+        }
+    \end{subfigure}
+    \begin{subfigure}{0.3\linewidth}
+        \scalebox{0.8}{
+		\begin{tikzpicture}\hspace{0.5cm}
+			\begin{feynman}[small]
+				\vertex (v1);
+				\vertex[yshift=0.2cm, right =1cm of v1] (v2);
+				\vertex[xshift=0.7cm, below =1cm of v2] (v3);				
+				\vertex[below = 1.5cm of v1] (v5);
+				\vertex[yshift=-0.2cm, right =1cm of v5] (v4);
+				\vertex[below=0.3cm of v1] (v6);
+				\vertex[below=0.9cm of v6] (v7);
+				
+				\vertex[above left = 0.8cm of v1] (i1) {$p_4$};
+				\vertex[above right = 0.8cm of v2] (i2) {$p_1$};
+				\vertex[right = 0.8cm of v3] (i3) {$p_5$};
+				\vertex[below right = 0.8cm of v4] (i4) {$p_2$};
+				\vertex[below left = 0.8cm of v5] (i5) {$p_3$};
+				
+				\draw ([yshift=-0.75cm]v1) circle (0.45cm);
+				
+				\diagram*{
+					(v6) -- (v1) -- (v2) -- (v3) -- (v4) -- (v5) -- (v7), 
+					(v1) -- (i1),
+					(v2) -- (i2),
+					(v3) -- [scalar, very thick] (i3),
+					(v4) -- (i4),
+					(v5) -- (i5),
+					
+				};
+			\end{feynman}
+		\end{tikzpicture}
+        }
+    \end{subfigure}
+    \caption{Maximal topologies present in the computation of the two-loop $\ppbbh$ amplitudes. They were previously also used in Ref.~\cite{Badger:2021nhg}. The massive scalar particle is marked with a bold dashed line.}
+    \label{fig:Hbbmaxtopos}
+\end{figure}
 
-The integrand is now ready to be reduced to a set of master integrals using the Integration-by-Parts (IBP) reduction method~\cite{Chetyrkin:1981qh} within the finite field setup. The IBP relations are generated using \texttt{LiteRed}~\cite{Lee:2012cn} and solved numerically over finite fields using the Laporta algorithm~\cite{Laporta:2001dd}. The IBP reduction is performed directly to a set of master integrals with uniform transcendental (UT) weight identified in Ref.~\cite{Abreu:2020jxa}. The UT master integrals are further decomposed into a basis of special functions $f$ that is built out of the UT master integral components as proposed in Ref.~\cite{Badger:2021nhg}. We refer to this basis of special functions as the \textit{master integral function basis}.
+The integrand is now ready to be reduced to a set of master integrals using the IBP reduction method~\cite{Chetyrkin:1981qh} within the finite field setup. The IBP relations are generated using \texttt{LiteRed}~\cite{Lee:2012cn} and solved numerically over finite fields using the Laporta algorithm~\cite{Laporta:2001dd}. The IBP reduction is performed directly to a set of master integrals with UT weight identified in Ref.~\cite{Abreu:2020jxa}. The UT master integrals are further decomposed into a basis of special functions $f$ that is built out of the UT master integral components as proposed in Ref.~\cite{Badger:2021nhg}. We refer to this basis of special functions as the \textit{master integral function basis}.
 Subtracting the UV and IR poles from the bare helicity amplitudes and performing Laurent expansion in the dimensional regulator $\eps = (4-d)/2$, we arrive at the following expression for the finite remainders,
 \begin{equation}
 F^{(L)} = \sum_{i} r_i(x) m_i(f)\,,
 \label{eq:finrem}
 \end{equation}
-where $m_i(f)$ are monomials of the special functions and $r_i$ are rational functions of the momentum twistor variables $x$. It is important to note that the definition of the UT master integrals involves three square roots. One is related to the pseudo-scalar invariant $\tr_5$, which captures the parity-odd part of the spinor expressions and is therefore present already in the rational coefficients. This square root is rationalised by the momentum-twistor inspired parameterisation~\eqref{eq:mtvardefs}. The other two square roots are associated with the three-mass triangle Gram determinants,
+where $m_i(f)$ are monomials of the special functions and $r_i$ are rational functions of the momentum twistor variables $x$. It is important to note that the definition of the UT master integrals involves three square roots. One is related to the pseudo-scalar invariant $\tr_5$, which captures the parity-odd part of the spinor expressions and is therefore present already in the rational coefficients. This square root is rationalised by the momentum-twistor inspired parametrisation~\eqref{eq:mtvardefs}. The other two square roots are associated with the three-mass triangle Gram determinants,
 \begin{align}
   \Delta_1 &= 2 \sqrt{(p_{23} \cdot p_{5})^2 - p_5^2 s_{23}} \,,&
   \Delta_2 &= 2 \sqrt{(p_{12} \cdot p_{5})^2 - p_5^2 s_{12}} \,,
   \label{eq:squareroots}
 \end{align}
 where $p_{ij} = p_i + p_j$.
-They are not rationalised by our parameterisation and may therefore be problematic for the finite field setup. We overcome this issue by absorbing the three square roots in the definition of the UT master integrals, which is possible because they appear only as overall normalisations of the latter. As a result, they are contained in the monomials $m_i(f)$ in Eq.~\eqref{eq:finrem} and do not appear in the amplitude reconstruction.
+They are not rationalised by our parametrisation and may therefore be problematic for the finite field setup. We overcome this issue by absorbing the three square roots in the definition of the UT master integrals, which is possible because they appear only as overall normalisations of the latter. As a result, they are contained in the monomials $m_i(f)$ in Eq.~\eqref{eq:finrem} and do not appear in the amplitude reconstruction.
  We note that in our computation, while the $\tr_5$ originating from the UT master integral definition is absorbed in $m_i(f)$, 
 the $\tr_5$ already present in the rational coefficients is rationalised and present in the amplitude reconstruction.
 
@@ -385,14 +860,14 @@ The relation with the $+++-$ configuration constitutes a non-trivial check of ou
 
 \section{A Custom Basis of Special Functions for the Finite Remainders}
 \label{Hbbsec:Hbasis}
-
-The one and two-loop finite remainders are expressed as combinations of rational coefficients --~functions of the momentum twistor variables~\eqref{eq:mtvardefs}~-- and monomials of square roots and elements of the master integral function basis $\{f^{(w)}_i\}$. The latter were classified in Ref.~\cite{Badger:2021nhg} so as to span the cyclic permutations of the planar five-particle integrals with one massive off-shell leg up to two loops. The function space of the finite remainders is however simpler than that of the integrals and of the amplitudes. This becomes particularly clear when we express the special functions in terms of Chen's iterated integrals~\cite{Chen:1977oja} (see the notes~\cite{Brown:2013qva} for a thorough discussion of their properties). Given a set of logarithmic integration kernels $\left\{ d\log W_i \right\}$, where the arguments $W_i$ are algebraic functions of the external kinematics, Chen's iterated integrals can be defined iteratively as
+\JK{I'm not confident that the discussion of CIIs below is consistent with what I wrote in Sec.~\ref{sec:canonicalform}.}
+The one and two-loop finite remainders are expressed as combinations of rational coefficients --~functions of the momentum twistor variables~\eqref{eq:mtvardefs}~-- and monomials of square roots and elements of the master integral function basis $\{f^{(w)}_i\}$. The latter were classified in Ref.~\cite{Badger:2021nhg} so as to span the cyclic permutations of the planar five-particle integrals with one massive off-shell leg up to two loops. The function space of the finite remainders is however simpler than that of the integrals and of the amplitudes. This becomes particularly clear when we express the special functions in terms of CIIs~\cite{Chen:1977oja}, which we have introduced in Sec.~\ref{sec:canonicalform} in the context of master integrals. Here, we will write the special functions as:
 \begin{align} \label{eq:Chen}
 \left[W_{i_1}, \ldots, W_{i_n}  \right]_{s_0} (s) = \int_0^1 dt \, \frac{d \log W_{i_n}\left(\gamma(t)\right)}{dt} \left[W_{i_1}, \ldots, W_{i_{n-1}}  \right]_{s_0} \left(\gamma(t)\right) \,,
 \end{align}
-where we denote cumulatively by $s$ the dependence on the external kinematics, $s_0$ is an arbitrary reference point, and $\gamma$ is an arbitrary contour in the phase space going from $\gamma(0)=s_0$ to $\gamma(1)=s$. The iteration starts with $[]_{s_0}(s) := 1$, and the number of iterated integrations --~$n$ in Eq.~\eqref{eq:Chen}~-- is called transcendental weight. At two loops up to order $\eps^0$ iterated integrals with transcendental weight up to four are required. In our case, the integration kernels are given by the letters $\{W_i\}$ of the alphabet defined in Ref.~\cite{Abreu:2020jxa}. 
-Although they may look rather abstract, Chen's iterated integrals offer several important advantages. Most importantly, they implement automatically all the functional relations which would otherwise be hidden in a representation in terms of other types of functions, such as Goncharov polylogarithms. This property was exploited in Ref.~\cite{Badger:2021nhg} to construct the master integral function basis $\{f^{(w)}_i\}$. 
-The expression in terms of Chen's iterated integrals of the master integral basis functions can be obtained through their definition in terms of master integrals components given in Ref.~\cite{Badger:2021nhg}, and the canonical differential equations for the master integrals given in Ref.~\cite{Abreu:2020jxa} (see Ref.~\cite{Badger:2021nhg} for a thorough discussion). Another important benefit of using iterated integrals is that their analytic structure is beautifully manifest: an iterated integral may have singularities or branch points only where one of its letters vanishes or diverges. Expressing the special functions in the finite remainders in terms of Chen's iterated integrals therefore highlights their analytic structure. Indeed this unveils important simplifications: certain letters, which are present in the expressions of the master integrals, are absent in the finite remainders. In other words, certain branch cuts of the integrals drop out of the finite remainders. We observe the same pattern noticed for the $Wb\bar{b}$ amplitudes in Ref.~\cite{Badger:2021nhg}. One letter, $W_{49} = \text{tr}_5$, is present in the bare amplitudes but absent in the finite remainders. This pattern of the pseudo-scalar invariant $\text{tr}_5$ has already been observed explicitly in many massless two-loop five-particle finite remainders~\cite{Badger:2018enw,Abreu:2018zmy,Abreu:2018aqd,Chicherin:2018yne,Chicherin:2019xeg,Abreu:2019rpt,Abreu:2019odu,Badger:2019djh,Caron-Huot:2020vlo,Abreu:2020cwb,Chawdhry:2020for}, and is linked to an underlying cluster algebra structure~\cite{Chicherin:2020umh}. Since this letter is invariant under permutations of the external massless legs (up to a sign), we expect it to drop out from the finite remainders in general.
+where $\left\{ d\log W_i \right\}$ are the logarithmic integration kernels and their arguments $W_i$ are algebraic functions of the external kinematics. The cumulative dependence on external kinematics is denoted by $s$, while $s_0$ is an arbitrary reference point, and $\gamma$ is an arbitrary contour in the phase space going from $\gamma(0)=s_0$ to $\gamma(1)=s$. The iteration starts with $[]_{s_0}(s) := 1$. The transcendental weight of the special functions is then trivially given by $n$ in Eq.~\eqref{eq:Chen}. At two loops up to order $\eps^0$ iterated integrals with transcendental weight up to four are required. In our case, the integration kernels are given by the letters $\{W_i\}$ of the alphabet defined in Ref.~\cite{Abreu:2020jxa}. 
+Although they may look rather abstract, CIIs offer several important advantages. Most importantly, they implement automatically all the functional relations which would otherwise be hidden in a representation in terms of other types of functions, such as GPLs. This property was exploited in Ref.~\cite{Badger:2021nhg} to construct the master integral function basis $\{f^{(w)}_i\}$. 
+The expression in terms of CIIs of the master integral basis functions can be obtained through their definition in terms of master integrals components given in Ref.~\cite{Badger:2021nhg}, and the canonical differential equations for the master integrals given in Ref.~\cite{Abreu:2020jxa} (see Ref.~\cite{Badger:2021nhg} for a thorough discussion). Another important benefit of using iterated integrals is that their analytic structure is beautifully manifest: an iterated integral may have singularities or branch points only where one of its letters vanishes or diverges. Expressing the special functions in the finite remainders in terms of CIIs therefore highlights their analytic structure. Indeed this unveils important simplifications: certain letters, which are present in the expressions of the master integrals, are absent in the finite remainders. In other words, certain branch cuts of the integrals drop out of the finite remainders. We observe the same pattern noticed for the $Wb\bar{b}$ amplitudes in Ref.~\cite{Badger:2021nhg}. One letter, $W_{49} = \text{tr}_5$, is present in the bare amplitudes but absent in the finite remainders. This pattern of the pseudo-scalar invariant $\text{tr}_5$ has already been observed explicitly in many massless two-loop five-particle finite remainders~\cite{Badger:2018enw,Abreu:2018zmy,Abreu:2018aqd,Chicherin:2018yne,Chicherin:2019xeg,Abreu:2019rpt,Abreu:2019odu,Badger:2019djh,Caron-Huot:2020vlo,Abreu:2020cwb,Chawdhry:2020for}, and is linked to an underlying cluster algebra structure~\cite{Chicherin:2020umh}. Since this letter is invariant under permutations of the external massless legs (up to a sign), we expect it to drop out from the finite remainders in general.
 In addition, six letters, $W_i$ with $i=16,17,27,28,29,30$, are present in the two-loop integrals but drop out already at the level of the bare amplitudes (truncated at order $\eps^0$ at two loops). This set of letters is not closed under all permutations of the external massless legs, and the generality of their absence is therefore less clear.
 It would be of great interest to uncover the physical principle underlying these simplifications.
 
@@ -402,39 +877,39 @@ We thus construct a new basis of special functions, which we label by $\{h^{(w)}
 
 In order to evaluate numerically the finite remainder function basis $\{h^{(w)}_i\}$ we apply the method of the generalised power series expansion~\cite{Francesco:2019yqt}. This approach has already found several successful applications to the evaluation of master integrals from the differential equations they satisfy~\cite{Francesco:2019yqt,Bonciani:2019jyb,Frellesvig:2019byn,Abreu:2020jxa,Becchetti:2020wof,Bonciani:2021zzf,abreu2021twoloop}. Here, following Ref.~\cite{Badger:2021nhg}, we apply it directly to the basis of special functions. The main advantage is that having a basis of special functions allows to subtract from the bare amplitudes the IR and UV poles analytically, which makes it possible to reconstruct the finite remainders directly over finite fields. 
 
-The method of the generalised power series expansion can be applied to the finite remainder and master integral function basis because they too, like the master integral bases they stem from, satisfy systems of differential equations in the canonical form~\cite{Henn:2013pwa}. This follows from the fact that the functions in the bases $\{h^{(w)}_i\}$ and $\{f^{(w)}_i\}$ are by construction \textit{pure}, that is they have the following two properties. First, they have uniform transcendental weight, i.e. they are expressed by linear combinations of Chen's iterated integrals having the same transcendental weight with constant rational coefficients. Explicitly, any of the functions $h^{(w)}_i$, for $w>0$, is given in terms of Chen's iterated integrals by
+The method of the generalised power series expansion can be applied to the finite remainder and master integral function basis because they too, like the master integral bases they stem from, satisfy systems of differential equations in the canonical form~\cite{Henn:2013pwa}. This follows from the fact that the functions in the bases $\{h^{(w)}_i\}$ and $\{f^{(w)}_i\}$ are by construction pure (see Sec.~\ref{sec:UT}). Thus, due to their uniform transcendental weight, we can write any $h^{(w)}_i$, for $w>0$, in terms of CIIs as:
 \begin{align} \label{eq:example_h}
 h^{(w)}_{i}(s) = \sum_{I = (i_1,\ldots,i_w)} c_I^{(i)} \, \left[W_{i_1}, \ldots, W_{i_w}  \right]_{s_0} (s) \, ,
 \end{align}
 for some rational constant coefficients $c_I^{(i)}$\footnote{In general the iterated integrals in Eq.~\eqref{eq:example_h} include also transcendental constants, such as $\pi$ and $\zeta(3)$. We neglect them here to simplify the presentation.}.
-Second, the derivative of a pure weight-$w$ function is a uniform transcendental function with weight $w-1$. This follows straightforwardly from the differential of Chen's iterated integrals,
+Moreover, the purity condition Eq.~\ref{eq:purecondition} follows straightforwardly from the differential of Chen's iterated integrals,
 \begin{align} \label{eq:ChenDerivative}
 d \left[W_{i_1}, \ldots, W_{i_n}  \right]_{s_0} (s) = d \log W_{i_n}(s) \, \left[W_{i_1}, \ldots, W_{i_{n-1}}  \right]_{s_0} (s) \,,
 \end{align}
 where we note that the derivatives of $\log W_i$ are algebraic functions and hence have transcendental weight $0$.
-The transcendental purity of the functions in the basis therefore implies that the vector of all weight-$w$ functions in the finite remainder basis, $\vec{h}^{(w)}= \bigl(h^{(w)}_1, h^{(w)}_2, \ldots \bigr)^T$, satisfies a differential equation of the form
+The purity of the functions basis therefore implies that the vector of all weight-$w$ functions in the finite remainder basis, $\vec{h}^{(w)}= \bigl(h^{(w)}_1, h^{(w)}_2, \ldots \bigr)^T$, satisfies a DE of the form
 \begin{align} \label{eq:dhw}
 d \vec{h}^{(w)} = \left( \sum_{j} b_j^{(w)} \, d\log W_j  \right) \,  \vec{h}^{(w-1)} \,,
 \end{align}
 for $w>1$, where $b_j$ are constant rational matrices. The matrices $b_j^{(w)}$ can be determined easily from the iterated integral expression of the functions through Eq.~\eqref{eq:ChenDerivative}. 
-In general the derivatives of the weight-$w$ functions may involve weight-$(w-1)$ functions which are not needed to express the finite remainders. These must be included in the basis as well, in order to be able to write down the differential equations. So, strictly speaking, the finite remainder function basis $\{h^{(w)}_i\}$ contains all linearly independent functions which appear in the finite remainders and in the derivatives of the basis itself.
-The differential equations~\eqref{eq:dhw} for all weights can be put together in one system by defining the vector of all the functions in the finite remainder basis as
+In general the derivatives of the weight-$w$ functions may involve weight-$(w-1)$ functions which are not needed to express the finite remainders. These must be included in the basis as well, in order to be able to write down the DEs. So, strictly speaking, the finite remainder function basis $\{h^{(w)}_i\}$ contains all linearly independent functions which appear in the finite remainders and in the derivatives of the basis itself.
+The DEs~\eqref{eq:dhw} for all weights can be put together in one system by defining the vector of all the functions in the finite remainder basis as
 \begin{align}
 \vec{h} = \left( \eps^4 \vec{h}^{(4)}\,, \eps^3 \vec{h}^{(3)}\,, \eps^2 \vec{h}^{(2)} \,, \eps \vec{h}^{(1)} \,, 1 \right)^T \,,
 \end{align}
-where $\eps$ is an auxiliary parameter with transcendental weight $-1$, so that the vector $\vec{h}$ is pure with transcendental weight $0$. The full basis $\vec{h}$ then satisfies a system of differential equations in the canonical form~\cite{Henn:2013pwa},
+where $\eps$ is an auxiliary parameter with transcendental weight $-1$, so that the vector $\vec{h}$ is pure with transcendental weight $0$. The full basis $\vec{h}$ then satisfies a system of DEs in the canonical form~\cite{Henn:2013pwa},
 \begin{align} \label{eq:dh}
 d \vec{h} = \eps \, \left(  \sum_{i=1}^{49} a_i \, d\log W_i \right) \, \vec{h} \,,
 \end{align}
-where the constant matrices $a_i$ are strictly upper block triangular, with the blocks given by the matrices $b_i^{(w)}$ in the differential equations~\eqref{eq:dhw} for the various weights.
-This system of differential equations is however much simpler than that for the master integrals. First, it contains only the letters which do appear in the finite remainders, i.e. $a_i = 0$ for $i=16,17,27,28,29,30,49$. Second, while the differential equations for the master integrals contain information about all the orders in $\eps$, the system~\eqref{eq:dh} encodes only those orders which are relevant for the finite remainders, i.e. up to $\eps^4$. The constant matrices $a_i$ are in fact nilpotent with degree $5$, i.e. $(a_i)^5 = 0$ for any $i$, which follows from their strictly upper triangular form. The process-dependent basis identified for the finite remainder has a practical advantage since we find a significant reduction in the number of weight four functions which dominate the total evaluation times. In this case we find a reduction from 113 to 23 weight four functions which gives a rough measure of the improvement.
+where the constant matrices $a_i$ are strictly upper block triangular, with the blocks given by the matrices $b_i^{(w)}$ in the differential equations~\eqref{eq:dhw} for the various weights. This is in direct analogy to the canonical DEs for the MIs we saw in Eq.~\ref{eq:dlogform}.
+However, this system of DEs for the vector $\vec{h}$ is much simpler than that for the MIs. First, it contains only the letters which do appear in the finite remainders, i.e. $a_i = 0$ for $i=16,17,27,28,29,30,49$. Second, while the differential equations for the master integrals contain information about all the orders in $\eps$, the system~\eqref{eq:dh} encodes only those orders which are relevant for the finite remainders, i.e. up to $\eps^4$. The constant matrices $a_i$ are in fact nilpotent with degree $5$, i.e. $(a_i)^5 = 0$ for any $i$, which follows from their strictly upper triangular form. The process-dependent basis identified for the finite remainder has a practical advantage since we find a significant reduction in the number of weight four functions which dominate the total evaluation times. In this case we find a reduction from 113 to 23 weight four functions which gives a rough measure of the improvement.
 
 The master integral function basis defined in Ref.~\cite{Badger:2021nhg} and thus also the finite remainder function basis constructed here cover the planar integral families only in those permutations of the external massless legs which preserve the cyclic ordering of the particles. The other permutations cannot be expressed analytically in terms of functions of these bases only. Nonetheless, thanks to our numerical evaluation strategy, we can obtain the values of any permutation $\sigma$ of the finite remainder basis functions by evaluating them in the standard orientation at permuted points,
 \begin{align}
 \sigma \left[ h^{(w)}_i \right] (X) =  h^{(w)}_i \left[\sigma\left(X\right)\right] \,.
 \end{align}
 This is possible because 
-we evaluate the finite remainder function basis $\{h^{(w)}_i\}$ by solving the system of differential equations~\eqref{eq:dh} numerically with the method of the generalised power series expansions~\cite{Francesco:2019yqt}. For this purpose we make use of the public \texttt{Mathematica} package \texttt{DiffExp}~\cite{Hidding:2020ytt}. In order to compute the boundary values, i.e. the values of the functions at some base point, we relate the finite remainder functions to master integral components using the definition of the master integral function basis~\cite{Badger:2021nhg}, and evaluate the latter through their analytic expression in terms of Goncharov polylogarithms~\cite{2011arXiv1105.2076G,Remiddi:1999ew,2001math......3059G} provided in Refs.~\cite{Papadopoulos:2015jft,Syrrakos:2020kba,Canko:2020ylt}. We evaluate the Goncharov polylogarithms numerically with the \texttt{C++} library \texttt{GiNaC}~\cite{Vollinga:2004sn}. We provide in ancillary files the differential equations~\eqref{eq:dh} and the values of the finite remainder functions at six points, one for each $2\to 3$ scattering region with massless incoming particles, with (at least) $200$-digit accuracy. Using this information, the generalised power series expansion method allows to evaluate the finite remainder function basis reliably anywhere in the phase space. This technique in fact handles the analytic continuation automatically, so that also the permutations required to evaluate the complete finite remainders starting from the partial ones --~as shown in Eqs.~\eqref{eq:colourdecomposition} for the amplitudes~-- as well as the other helicity configurations can be performed numerically straightforwardly. We assessed the reliability of this evaluation approach by checking the convergence of the finite remainders close to the spurious poles of the rational coefficients. We discuss this and other checks in the next section.
+we evaluate the finite remainder function basis $\{h^{(w)}_i\}$ by solving the system of differential equations~\eqref{eq:dh} numerically with the method of the generalised power series expansions~\cite{Francesco:2019yqt}. For this purpose we make use of the public \texttt{Mathematica} package \texttt{DiffExp}~\cite{Hidding:2020ytt}. In order to compute the boundary values, i.e. the values of the functions at some base point, we relate the finite remainder functions to master integral components using the definition of the master integral function basis~\cite{Badger:2021nhg}, and evaluate the latter through their analytic expression in terms of GPLs~\cite{2011arXiv1105.2076G,Remiddi:1999ew,2001math......3059G} provided in Refs.~\cite{Papadopoulos:2015jft,Syrrakos:2020kba,Canko:2020ylt}. We evaluate the GPLs numerically with the \texttt{C++} library \texttt{GiNaC}~\cite{Vollinga:2004sn}. We provide in ancillary files the differential equations~\eqref{eq:dh} and the values of the finite remainder functions at six points, one for each $2\to 3$ scattering region with massless incoming particles, with (at least) $200$-digit accuracy. Using this information, the generalised power series expansion method allows to evaluate the finite remainder function basis reliably anywhere in the phase space. This technique in fact handles the analytic continuation automatically, so that also the permutations required to evaluate the complete finite remainders starting from the partial ones --~as shown in Eqs.~\eqref{eq:colourdecomposition} for the amplitudes~-- as well as the other helicity configurations can be performed numerically straightforwardly. We assessed the reliability of this evaluation approach by checking the convergence of the finite remainders close to the spurious poles of the rational coefficients. We discuss this and other checks in the next section.
 
 
 \section{Further Validation}
@@ -446,7 +921,7 @@ On top of that, we performed a number of additional checks, which we discuss in 
 
 \subsection{Direct computation of the squared finite remainders} 
 
-We checked the helicity amplitudes derived in this paper against a squared matrix element computation, carried out independently following the approach used in the previous work on $u\bar{d}\to Wb\bar{b}$~\cite{Badger:2021nhg}.
+We checked the helicity amplitudes derived in this work against a squared matrix element computation, carried out independently following the approach used in the previous work on $u\bar{d}\to Wb\bar{b}$~\cite{Badger:2021nhg}.
 In the squared matrix element computation the two-loop amplitude is interfered with the tree-level amplitude analytically. After manipulating the
 Dirac traces, the loop numerators contain only scalar products ($k_i \cdot k_j$, $k_i \cdot p_j$, $p_i \cdot p_j$), that can be mapped easily onto propagator denominators. This way we derive an analytic form of the two-loop squared matrix element written as a linear combination of scalar Feynman integrals. The squared matrix element is then processed further through IBP reduction to obtain the master integral representation, followed by mapping of the master integrals onto the basis of special functions, subtraction of UV and IR singularities, and finally Laurent expansion in $\eps$. 
 All these steps are carried out numerically over finite fields within the \texttt{FiniteFlow} framework. 
@@ -528,7 +1003,7 @@ Permuting the letters $W_i$ is however trivial, as they only involve algebraic f
 \begin{align} \label{eq:dsigmah}
 d ( \sigma \circ \vec{h} ) = \eps \left( \sum_{i=1}^{49} a_i' \, d \log W_i  \right) \,  ( \sigma \circ \vec{h} ) \,.
 \end{align}
-The latter can straightforwardly be solved in terms of Chen's iterated integrals (see Ref.~\cite{Badger:2021nhg} for a thorough discussion). In order to be comparable with the solution of the system~\eqref{eq:dh}, which defines the finite remainder function basis $\vec{h}$, we must make sure that the same boundary point is used when solving both systems of differential equations in terms of iterated integrals. The boundary values can be obtained numerically with arbitrary precision using the expressions in terms of Goncharov polylogarithms of Refs.~\cite{Papadopoulos:2015jft,Syrrakos:2020kba,Canko:2020ylt}, as discussed at the end of Section~\ref{Hbbsec:Hbasis}. Using the differential equations~\eqref{eq:dsigmah} we can then express the permuted finite remainder special functions in terms of the ones in the original orientation through Chen's iterated integrals. Once that is done, the right-hand sides of Eqs.~\eqref{eq:relations} are written in terms of the same special function basis as the left-hand sides. Since the rational coefficients can be permuted analytically trivially, it is immediate to verify that our results for the one- and two-loop finite remainders satisfy the relations given by Eqs.~\eqref{eq:relations}.
+The latter can straightforwardly be solved in terms of CIIs (see Ref.~\cite{Badger:2021nhg} for a thorough discussion). In order to be comparable with the solution of the system~\eqref{eq:dh}, which defines the finite remainder function basis $\vec{h}$, we must make sure that the same boundary point is used when solving both systems of differential equations in terms of iterated integrals. The boundary values can be obtained numerically with arbitrary precision using the expressions in terms of GPLs of Refs.~\cite{Papadopoulos:2015jft,Syrrakos:2020kba,Canko:2020ylt}, as discussed at the end of Section~\ref{Hbbsec:Hbasis}. Using the differential equations~\eqref{eq:dsigmah} we can then express the permuted finite remainder special functions in terms of the ones in the original orientation through CIIs. Once that is done, the right-hand sides of Eqs.~\eqref{eq:relations} are written in terms of the same special function basis as the left-hand sides. Since the rational coefficients can be permuted analytically trivially, it is immediate to verify that our results for the one- and two-loop finite remainders satisfy the relations given by Eqs.~\eqref{eq:relations}.
 
 
 
@@ -550,8 +1025,7 @@ where $i,j \in \{1,2,3,4\}$ with $i\neq j$. Next, for each factor $P_k$ in Eq.~\
 
 \section{Results}
 \label{Hbbsec:results}
-
-We provide the analytic expressions of the independent one- and two-loop finite remainders in the ancillary files. We present them as combinations of linearly independent rational coefficients and monomials of the square roots and of the finite remainder basis functions. The rational coefficients are expressed in terms of the momentum twistor variables defined in Eq.~\eqref{eq:mtvardefs}. We evaluate the finite remainder function basis numerically by integrating the differential equations~\eqref{eq:dh} with the method of the generalised series expansions. We also provide \texttt{Mathematica} scripts which illustrate how to evaluate the finite remainders interfered with the tree-level amplitudes for all the partonic channels contributing to the process $pp\to b\bar{b} H$, which we label as
+The analytic expressions of the independent one- and two-loop finite remainders are provided in the ancillary files of Ref~\cite{Badger:2021ega}. We present them as combinations of linearly independent rational coefficients and monomials of the square roots and of the finite remainder basis functions. The rational coefficients are expressed in terms of the momentum twistor variables defined in Eq.~\eqref{eq:mtvardefs}. We evaluate the finite remainder function basis numerically by integrating the differential equations~\eqref{eq:dh} with the method of the generalised series expansions. We also provide \texttt{Mathematica} scripts which illustrate how to evaluate the finite remainders interfered with the tree-level amplitudes for all the partonic channels contributing to the process $pp\to b\bar{b} H$, which we label as
 \begin{equation}
 \label{eq:channel_definition}
 \begin{aligned}
@@ -790,15 +1264,14 @@ we can see the $q\bar{q}$ fermion pairs can appear
 with momenta $p_1$ and $p_2$, which is not the case for other processes. All the other features of the plots
 in Figure~\ref{fig:plots} can be similarly understood in terms of tree-level propagators going on shell.
 
-\section{Conclusions}
+\section{Summary}
 \label{Hbbsec:conclusions}
 
-In this article we have presented an analytic form for the two-loop QCD corrections to the process
-$pp\to b\bar{b}H$. To the best of our knowledge this is the first complete set of helicity
+In this chapter, we have presented an analytic form for the two-loop QCD corrections to the process
+$pp\to b\bar{b}H$. To the best of our knowledge, this is the first complete set of helicity
 amplitudes provided for a $2\to 3$ scattering process with an off-shell leg. A special function basis for
 the finite remainder was identified obeying a canonical form differential equation. The method for
-constructing such a basis was presented in the recent $pp\to Wb\bar{b}$ computation~\cite{Badger:2021nhg} by three of the present
-authors. The finite remainders were then extracted from multiple
+constructing such a basis was presented in the recent $pp\to Wb\bar{b}$ computation~\cite{Badger:2021nhg}. The finite remainders were then extracted from multiple
 evaluations over finite fields and IBP reduction with a rational parametrisation of the external kinematics.
 We obtained relatively compact results after determining the linear relations between the rational coefficients and
 performing a univariate partial fraction decomposition on the fly. The final expressions were evaluated using the method of generalised series expansions as implemented in the \texttt{DiffExp} code~\cite{Hidding:2020ytt}.
@@ -810,8 +1283,5 @@ been done in other applications of the method~\cite{Frellesvig:2019byn,Abreu:202
 
 The techniques presented here show promise for applications to other important scattering processes such
 as $pp\to V+2j$ and $pp\to H+2j$, although the non-planar sector is not entirely known and remains a high priority.
-
-The analytic expressions together with \texttt{Mathematica} scripts to evaluate them numerically are provided in the ancillary files accompanying this article.
-
 
 \end{document}
