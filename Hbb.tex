@@ -6,45 +6,27 @@
 \begin{document}
 \chapter{Two-loop helicity amplitudes for $\ppbbh$ production} \label{sec:Hbb}
 In this chapter, we present the computation of the two-loop QCD helicity amplitudes for the production of a Higgs boson in association with a bottom quark pair at a hadron collider. We take the approximations of leading colour and work in the five flavour scheme, where the bottom quarks are massless while the Yukawa coupling is non-zero. We extract analytic expressions from multiple numerical evaluations over finite fields and present the results in terms of an independent set of special functions that can be reliably evaluated over the full phase space.
-\JK{Insert some details about the structure of this chapter.}.
-\\
+
+The chapter is organised as follows. After providing the necessary background and context in which this work is situated, in Section~\ref{Hbbsec:amp} we describe the structure of the $b\bar{b}H$ amplitudes at leading colour, followed by a brief outline of the methodology used in deriving the analytic expression of the amplitudes in Section~\ref{Hbbsec:reduction}. A description of the basis of special functions is presented in Section~\ref{Hbbsec:Hbasis} and a number of validations that we performed on the results derived in this work are discussed in Section~\ref{Hbbsec:validation}. We present benchmark numerical evaluations together with evaluations on a physical phase-space slice in Section~\ref{Hbbsec:results}. Finally we draw our conclusions in Section~\ref{Hbbsec:conclusions}. 
 \section{Introduction \label{Hbbsec:intro}}
+%Precise theoretical predictions are an essential ingredient in the search for subtle deviations from
+%the Standard Model (SM) at current and future collider experiments. The enormous amount of data
+%gathered at the Large Hadron Collider (LHC) is already challenging the theoretical precision for
+%many processes and the pressure will increase as data continues to pour in. It has been clear for
+%some time~\cite{Badger:2016bpw,Bendavid:2018nar,Amoroso:2020lgh} that, for a large class of two- and three-particle final states, at least the Next-to-Next-to-Leading Order corrections in Quantum Chromodynamics (NNLO QCD) will be required for fully differential cross sections. The high multiplicity final states, particularly those with many kinematic scales, pose the biggest technical challenge owing to the enormous analytic and algebraic complexity. Nevertheless, thanks to a huge effort across the theoretical community, new tools and methods have been developed that have produced the first NNLO QCD predictions for $2\to3$ processes~\cite{Chawdhry:2019bji,Kallweit:2020gcp,Chawdhry:2021hkp}, most notably for 3-jet production~\cite{Czakon:2021mjy}. This remarkable progress has been driven both by the advancements in the scattering amplitude computation and by efficient subtraction schemes. By now, all the two-loop master integrals --~which are one of the important ingredients in the amplitude computation~-- are available for the fully massless five-particle processes~\cite{Papadopoulos:2015jft, Gehrmann:2018yef, Abreu:2018rcw, Chicherin:2018mue, Chicherin:2018old, Chicherin:2020oor}, allowing for several two-loop QCD amplitudes to be derived
+%analytically~\cite{Gehrmann:2015bfy, Badger:2018enw, Abreu:2018zmy,Abreu:2019odu, Badger:2019djh, Abreu:2020cwb, Chawdhry:2020for, Agarwal:2021grm, Abreu:2021fuk, Chawdhry:2021mkw, Agarwal:2021vdh, Badger:2021imn}, improving on previous results that were obtained numerically~\cite{Badger:2017jhb, Abreu:2017hqn, Badger:2018gip, Abreu:2018jgq}. These new results have been achieved thanks to technological breakthroughs in the method of differential
+%equations~\cite{Kotikov:1990kg, Bern:1993kr, Remiddi:1997ny, Gehrmann:1999as, Henn:2013pwa}, integral reduction algorithms~\cite{Gluza:2010ws, Schabinger:2011dz, Ita:2015tya, Larsen:2015ped, Boehm:2017wjc} and the use of finite-field arithmetic to tame the algebraic complexity of multi-leg and multi-scale problems~\cite{vonManteuffel:2014ixa, Peraro:2016wsq, Klappert:2019emp, Peraro:2019svx, Klappert:2020aqs, Klappert:2020nbg}.
+%
+%A different class of $2\to 3$ processes that is of great interest involves an external massive leg.
+%The two-loop planar helicity amplitudes for $W+4$-parton scattering (contributing to the prediction
+%for $W+2$-jet production at NNLO QCD) have been previously studied numerically~\cite{Hartanto:2019uvl}. 
+%All two-loop integrals needed for this type of process are available for the planar
+%contributions~\cite{Papadopoulos:2015jft,Abreu:2020jxa,Canko:2020ylt,Syrrakos:2020kba}, and the
+%first analytic result was derived for $Wb\bar{b}$ production in the leading colour, massless
+%$b$-quark and on-shell $W$-boson approximations~\cite{Badger:2021nhg}. 
+%Very recently, complete analytic results for one of the non-planar integral topologies have also become available~\cite{Papadopoulos:2019iam,abreu2021twoloop}.
 
-Precise theoretical predictions are an essential ingredient in the search for subtle deviations from
-the Standard Model (SM) at current and future collider experiments. The enormous amount of data
-gathered at the Large Hadron Collider (LHC) is already challenging the theoretical precision for
-many processes and the pressure will increase as data continues to pour in. It has been clear for
-some time~\cite{Badger:2016bpw,Bendavid:2018nar,Amoroso:2020lgh} that, for a large class of two- and three-particle final states, at least the
-Next-to-Next-to-Leading Order corrections in Quantum Chromodynamics (NNLO QCD) will be required for
-fully differential cross sections. The high multiplicity final states, particularly those with many kinematic
-scales, pose the biggest technical challenge owing to the enormous analytic and algebraic
-complexity. Nevertheless, thanks to a huge effort across the theoretical community, new tools and
-methods have been developed that have produced the first NNLO QCD predictions for $2\to3$
-processes~\cite{Chawdhry:2019bji,Kallweit:2020gcp,Chawdhry:2021hkp}, most notably for 3-jet
-production~\cite{Czakon:2021mjy}. This remarkable progress has been driven both by the advancements
-in the scattering amplitude computation and by efficient subtraction schemes. By now, all the
-two-loop master integrals --~which are one of the important ingredients in the amplitude
-computation~-- are available for the fully massless five-particle
-processes~\cite{Papadopoulos:2015jft,Gehrmann:2018yef,Abreu:2018rcw,Chicherin:2018mue,Chicherin:2018old,Chicherin:2020oor},
-allowing for several two-loop QCD amplitudes to be derived
-analytically~\cite{Gehrmann:2015bfy,Badger:2018enw,Abreu:2018zmy,Abreu:2019odu,Badger:2019djh,Abreu:2020cwb,Chawdhry:2020for,Agarwal:2021grm,Abreu:2021fuk,Chawdhry:2021mkw,Agarwal:2021vdh,Badger:2021imn}, improving on previous results that were obtained
-numerically~\cite{Badger:2017jhb,Abreu:2017hqn,Badger:2018gip,Abreu:2018jgq}. These new results have
-been achieved thanks to technological breakthroughs in the method of differential
-equations~\cite{Kotikov:1990kg,Bern:1993kr,Remiddi:1997ny,Gehrmann:1999as,Henn:2013pwa}, integral
-reduction algorithms~\cite{Gluza:2010ws,Schabinger:2011dz,Ita:2015tya,Larsen:2015ped,Boehm:2017wjc}
-and the use of finite-field arithmetic to tame the algebraic complexity of multi-leg and multi-scale
-problems~\cite{vonManteuffel:2014ixa,Peraro:2016wsq,Klappert:2019emp,Peraro:2019svx,Klappert:2020aqs,Klappert:2020nbg}.
-
-A different class of $2\to 3$ processes that is of great interest involves an external massive leg.
-The two-loop planar helicity amplitudes for $W+4$-parton scattering (contributing to the prediction
-for $W+2$-jet production at NNLO QCD) have been previously studied numerically~\cite{Hartanto:2019uvl}. 
-All two-loop integrals needed for this type of process are available for the planar
-contributions~\cite{Papadopoulos:2015jft,Abreu:2020jxa,Canko:2020ylt,Syrrakos:2020kba}, and the
-first analytic result was derived for $Wb\bar{b}$ production in the leading colour, massless
-$b$-quark and on-shell $W$-boson approximations~\cite{Badger:2021nhg}. 
-Very recently, complete analytic results for one of the non-planar integral topologies have also become available~\cite{Papadopoulos:2019iam,abreu2021twoloop}.
-
-In this article we consider the two-loop amplitudes relevant for the production of a Higgs boson in
+In this work, we consider the two-loop amplitudes relevant for the production of a Higgs boson in
 association with a bottom-quark pair, i.e. $pp \to b\bar{b}H$, in the leading colour approximation.
 $b\bar{b}H$ production at the LHC has been a subject of great phenomenological interest due to its
 potential in directly measuring the bottom-quark Yukawa coupling. In the Standard Model (SM), the
@@ -83,7 +65,7 @@ and the supersymmetric QCD corrections~\cite{Liu:2012qu,Dittmaier:2014sva} are a
 There have also been efforts in matching the 5FS and 4FS calculations to obtain accurate predictions across the entire kinematic region~\cite{Harlander:2011aa,Bonvini:2015pxa,Forte:2015hba,Forte:2016sja,Duhr:2020kzd}. 
 A first step towards a massive version of the five-flavour scheme (5FMS) has been devised to naturally connect the 4FS and 5FS approaches~\cite{Krauss:2017wmx,Figueroa:2018chn}.
 
-In this work we compute the two-loop QCD corrections to the $gg \rightarrow b\bar{b}H$,
+In the following, we compute the two-loop QCD corrections to the $gg \rightarrow b\bar{b}H$,
 $q\bar{q}/\bar{q}q \rightarrow b\bar{b}H$, $b\bar{b}/\bar{b}b\rightarrow b\bar{b}H$, $bb \rightarrow
 bbH$ and $\bar{b}\bar{b}\rightarrow\bar{b}\bar{b}H$ reactions in the 5FS. These two-loop amplitudes
 enter the computation of $pp(b\bar{b})\to H$ at N4LO, $pp\to b(\bar{b})H$ at N3LO when one $b$-jet
@@ -98,23 +80,12 @@ b\bar{b}$, N3LO $H\to b\bar{b}j$ and NNLO $H\to b\bar{b}jj$ computations.  In ad
 the $b\bar{b}$ pair to the initial state and the $gg/q\bar{q}$ pair to the final state we obtain the
 contribution of the bottom-quark initiated channel to $H+2j$ production ($b\bar{b}\to Hjj$).
 
-We present analytic results for the finite remainders after ultraviolet (UV) and infrared (IR) poles have been subtracted.
-This is possible using a basis of independent special functions recently identified in the context
+We present analytic results for the finite remainders after both UV and IR poles have been subtracted. This is possible using a basis of independent special functions recently identified in the context
 of $Wb\bar{b}$ production~\cite{Badger:2021nhg}. We obtain numerical results valid across the full phase
-space by applying the generalised series expansion approach~\cite{Francesco:2019yqt,Abreu:2020jxa,Hidding:2020ytt} to
-the differential equations satisfied by the special functions appearing in the finite remainders.
-
-This paper is organised as follows. We begin by describing the structure of the $b\bar{b}H$
-amplitudes at leading colour in Section~\ref{Hbbsec:amp}, followed by a discussion of the methodology
-used in deriving the analytic expression of the amplitudes in Section~\ref{Hbbsec:reduction}. 
-A description of the basis of special functions is presented in Section~\ref{Hbbsec:Hbasis} and a number of validations
-that we performed on the results derived in this work are discussed in Section~\ref{Hbbsec:validation}.
-We present benchmark numerical evaluations together with evaluations on a physical phase-space slice in
-Section~\ref{Hbbsec:results}. Finally we draw our conclusions in Section~\ref{Hbbsec:conclusions}. 
+space by applying the generalised series expansion approach~\cite{Francesco:2019yqt,Abreu:2020jxa,Hidding:2020ytt} to the differential equations satisfied by the special functions appearing in the finite remainders.
 
 \section{Structure of the $pp\to\bbh$ Amplitudes at Leading Colour}
 \label{Hbbsec:amp}
-
 We compute the two-loop QCD corrections in the leading colour approximation for the following subprocesses
 \begin{align} \label{eq:subprocesses}
 & 0 \rightarrow \bar{b}(p_1) + b(p_2) + g(p_3) + g(p_4) + H(p_5)\,, \\
@@ -223,7 +194,7 @@ H_{\bbggh}^{(2)}(\eps) &=  \frac{1}{16\eps} \bigg\lbrace 2\left(\gamma_1^q+\gamm
                                                 - \frac{1}{2}\gamma_1^\cusp \left(\gamma_0^q+\gamma_0^g\right)
                                                 + \frac{\pi^2}{8} \beta_0 \gamma_0^\cusp \left(C_F+C_A\right) \bigg\rbrace \,. \label{eq:H2bbggH}
 \end{align}
-The $\beta$ function coefficients and anomalous dimensions are given in Appendix~\ref{app:renormconstants}. Moreover, in Appendix~\ref{app:polestructure} we provide an explicit derivation of the full pole structure above.
+The $\beta$ function coefficients and anomalous dimensions are given in Appendix~\ref{app:renormconstants}, while in Appendix~\ref{app:polestructure} we provide an explicit derivation of the pole operators.
 
 The finite remainder of the $L$-loop partial amplitude is obtained by subtracting the poles $P^{(L)}$ (which include both the ultraviolet and infrared singularities) from the unrenormalised partial amplitude $A^{(L)}$ and setting $\eps$ to $0$,
 \begin{equation}
@@ -272,30 +243,11 @@ In both cases, due to the colour decomposition of the full amplitudes given by E
 \section{Amplitude Reduction and Reconstruction}
 \label{Hbbsec:reduction}
 
-We derive the analytic form of the two-loop QCD helicity amplitudes using the framework discussed in Refs.~\cite{Badger:2021owl,Badger:2021imn}, which combines the Feynman diagram approach with numerical sampling over finite fields and functional reconstruction techniques. We generate a set of Feynman diagrams contributing to 
-both the $\bbggh$ and $\bbqqh$ processes using 
-\texttt{QGRAF}~\cite{Nogueira:1991ex}, and perform diagram filtering, topology identification and colour decomposition using a collection of in-house \texttt{Mathematica} and \texttt{Form}~\cite{Kuipers:2012rf,Ruijl:2017dtg} scripts. 
-In the leading colour approximation there are 749 (264) Feynman diagrams contributing to the two-loop $\bbggh$ ($\bbqqh$) QCD amplitudes, including all closed fermion loop contributions.
-The numerators of the loop amplitudes are then computed for each independent helicity configuration, and the spinor-helicity manipulations are carried out using the library \texttt{Spinney}~\cite{Cullen:2010jv}.
-The helicity dependent loop numerators are written in terms of spinor products ($\spA{i}{j}$, $\spB{i}{j}$), 
-scalar products ($p_i\cdot p_j$, $k_i\cdot k_j$, $k_i \cdot p_j$) and 
-spinor strings ($\spAB{i}{k_i}{j}$, $\spAB{i}{p_5}{j}$, $\spAA{i}{k_i p_5}{j}$, $\spBB{i}{k_i p_5}{j}$), where $p_i$'s and $k_i$'s are the external and loop momenta, respectively. The angle $|i\rangle$ and square $|i]$ brackets denote the usual holomorphic and anti-holomorphic bi-spinors built from the external massless momenta. The momenta appearing between them in the spinor strings are intended as the matrices obtained by contracting the corresponding four-momenta with the vector of the Pauli matrices, e.g. $\spAB{i}{p_5}{j} = \spAB{i}{\sigma_{\mu}}{j} \, p^{\mu}_5$.
-The loop numerators are therefore expressed as linear combinations of monomials of loop-momentum dependent objects 
-that multiply coefficients which depend only on the external kinematics.
-These coefficients contain spinor products and loop momentum independent spinor strings, 
-and such objects not only are not independent  (due to momentum conservation and Schouten identity), 
-but they are also incompatible with the finite field arithmetic framework.
+To obtain the analytic form of the two-loop QCD helicity amplitudes, we employ the framework discussed in Chapter~\ref{sec:tools}. We start by generating a set of Feynman diagrams contributing to 
+both the $\bbggh$ and $\bbqqh$ processes using \texttt{QGRAF}~\cite{Nogueira:1991ex}, and perform diagram filtering, topology identification and colour decomposition using a collection of in-house \texttt{Mathematica} and \texttt{Form}~\cite{Kuipers:2012rf,Ruijl:2017dtg} scripts.  In the leading colour approximation there are 749 (264) Feynman diagrams contributing to the two-loop $\bbggh$ ($\bbqqh$) QCD amplitudes, including all closed fermion loop contributions. The numerators of the loop amplitudes are then computed for each independent helicity configuration, and the spinor-helicity manipulations are carried out using the library \texttt{Spinney}~\cite{Cullen:2010jv}. The helicity dependent loop numerators are written in terms of spinor products ($\spA{i}{j}$, $\spB{i}{j}$), scalar products ($p_i\cdot p_j$, $k_i\cdot k_j$, $k_i \cdot p_j$) and spinor strings ($\spAB{i}{k_i}{j}$, $\spAB{i}{p_5}{j}$, $\spAA{i}{k_i p_5}{j}$, $\spBB{i}{k_i p_5}{j}$), where $p_i$'s and $k_i$'s are the external and loop momenta, respectively. The numerators are therefore expressed as linear combinations of monomials of loop-momentum dependent objects that multiply coefficients which depend only on the external kinematics.
+As explained in Sec.~\ref{sec:MTs}, the coefficients are built from spinor products and strings (free of $k_i$) which not only are not independent, but are also incompatible with finite field arithmetic.
 
-In order to allow for the use of finite field sampling in the computation of the helicity amplitudes, 
-we make use of an explicit rational parametrisation of the external kinematics. 
-This is constructed with help of the momentum twistor~\cite{Hodges:2009hk} and spinor-helicity formalisms. To obtain a configuration for the off-shell five-particle configuration we begin with a massless configuration
-for six particles. While the exact parametrisation is not important, the form presented in
-Ref.~\cite{Badger:2016uuq} is a useful starting point. We can think of the massless process as the result of the
-off-shell leg decaying into a pair of massless particles. There are 8 independent variables in the six-particle
-process, but we can reduce the degrees of freedom by choosing one of the decay direction to be
-collinear with one of the other massless legs in the five-point kinematics. Since the momentum
-twistors are associated with complex momenta we consider the angle and square bracket spinors
-products to be independent. We can write this explicitly as follows: the six massless momenta $q_i^\mu$ are related to the off-shell five particle momenta $p_i^\mu$ by
+Both of these problems are solved by using momentum twistor variables. To obtain a configuration for the off-shell five-particle configuration we begin with a massless configuration for six particles. While the exact parametrisation is not important, the form presented in Ref.~\cite{Badger:2016uuq} is a useful starting point. We can think of the massless process as the result of the off-shell leg decaying into a pair of massless particles. There are 8 independent variables in the six-particle process, but we can reduce the degrees of freedom by choosing one of the decay direction to be collinear with one of the other massless legs in the five-point kinematics. Since the momentum twistors are associated with complex momenta we consider the angle and square bracket spinors products to be independent. We can write this explicitly as follows: the six massless momenta $q_i^\mu$ are related to the off-shell five particle momenta $p_i^\mu$ by:
 \begin{align}
   p_1^\mu = q_1^\mu\,, \ \qquad 
   p_2^\mu = q_2^\mu\,, \ \qquad 
@@ -320,16 +272,14 @@ where $\tr_{\pm}(ij \cdots kl) = \frac{1}{2} \tr((1\pm\gamma_5)\slashed{p}_i\sla
 Some features of this parametrisation are particularly convenient. For example, the only dimensionful 
 quantity is $x_1$, and $\tr_5$ is rational. However, such a choice does break some symmetries
 in the problem and so different helicity configurations will have different complexities. For the
-processes considered here the polynomial complexity was manageable using this form.
+processes considered here, the complexity was manageable using this form.
 Applications to other off-shell five-particle processes may require further thought. 
 
 Having set up a rational parametrisation of the external kinematics, the helicity dependent loop numerators are constructed analytically and
 ready to be further processed.
 This is the starting point of our numerical algorithm in the finite field setup. 
 In order to write the loop amplitude in terms of Feynman scalar integrals, 
-we first define the integral families for the \textit{maximal topologies}, 
-which are the topologies with the maximum number of loop propagators (8 in this case). 
-There are 15 maximal topologies for both the $\bbggh$ and $\bbqqh$ processes, and they are shown in Fig.~3 of Ref.~\cite{Badger:2021nhg}. 
+we first define the integral families for the 15 maximal topologies which are shown in Fig.~3 of Ref.~\cite{Badger:2021nhg}. 
 Each diagram topology appearing in the amplitude can be mapped onto at least one of the maximal topologies. 
 After that is done, the objects which depend on the loop momenta in the helicity dependent loop numerators are written in terms of 
 the 11 propagators associated with the chosen maximal topology. 
