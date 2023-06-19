@@ -1,17 +1,23 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 \chapter{Two-loop helicity amplitudes for $\Wgj$ production} \label{sec:Wyj}
-$\ppWgj$
-In this chapter, we present the computation of the two-loop leading colour QCD helicity amplitudes for the process $pp\to W(\to l\nu)\gamma+j$. We implement a complete reduction of the amplitudes, including the leptonic decay of the $W$-boson,
+In this chapter, we present the computation of the two-loop leading colour QCD helicity amplitudes for yet another process, $pp\to W(\to l\nu)\gamma+j$. We implement a complete reduction of the amplitudes, including the leptonic decay of the $W$-boson,
 using finite field arithmetic, and extract the analytic finite remainders using a recently
 identified basis of special functions. Simplified analytic expressions are obtained after considering
 permutations of a rational kinematic parametrisation and multivariate partial fractioning. We
 demonstrate efficient numerical evaluation of the two-loop colour and helicity summed finite
 remainders for physical kinematics, and hence the suitability for phenomenological applications.
 
+This chapter largely follows the structure of the previous one. In Section~\ref{wyjsec:amp} we describe the structure of the
+amplitudes for $pp\to W\gamma j$ up to two loops, paying particular attention to the description of
+the decay of the $W$ boson. In Section~\ref{wyjsec:reduction} we describe the finite field reduction
+setup used to extract the finite remainders, and propose an approach to simplify dramatically the analytic expressions of the latter based on a systematic search of a better parameterisation of the kinematics in terms of momentum-twistor variables. We describe a number of validation tests that have been
+performed on our results in Section~\ref{wyjsec:validation}, and then present some numerical results for the
+colour and helicity summed finite remainders in Section~\ref{wyjsec:results}. We
+present our summary and outlook for the future in Section~\ref{wyjsec:conclusions}. Complete analytic expressions associated with the work in this chapter are provided in the ancillary files of Ref.~\cite{Badger:2022ncb}.
+
 \section{Introduction \label{wyjsec:intro}}
-High-precision theoretical predictions are a high priority for the current experiments at the Large
-Hadron Collider (LHC). Processes with a pair of electroweak vector bosons $(W^\pm,Z,\gamma)$ offer a wide
+Processes with a pair of electroweak vector bosons $(W^\pm,Z,\gamma)$ offer a wide
 range of observables which can test electroweak couplings and probe the Higgs sector of the Standard
 Model. In particular, the production of a $W$ boson in association with a photon ($pp\to W\gamma$) is
 one of the processes observed at the LHC with relatively large cross sections where clean
@@ -34,35 +40,24 @@ $W\gamma$+1 jet, $W\gamma$+2 jets, etc. Increasing the precision of the theoreti
 each of the jet bins amounts to computing higher order corrections to $W\gamma$ production in association
 with additional jets.
 
-In this article we compute the two-loop helicity amplitudes for the process $pp\to W^\pm(\to l^\pm\nu)\gamma + j$ for
-the first time. The amplitude-level ingredients we provide will give useful information for future precision 
+In this chapter, we present the first computation of the two-loop helicity amplitudes for the process $pp\to W^\pm(\to l^\pm\nu)\gamma + j$. The amplitude-level ingredients we provide will give useful information for future precision 
 measurements of anomalous couplings and potentially for complete global fits of the Standard Model
 Effective Theory (SMEFT). A fully differential computation of $W\gamma+j$ at NNLO in QCD would also
 open up the possibility of N${}^3$LO QCD predictions for $W\gamma$ production.
 
-The process has already been well studied at NLO in QCD~\cite{Campanario:2009um}, including the anomalous couplings~\cite{Campanario:2010hv}, 
-and is easily within the reach of standard automated tools including electroweak corrections. Compact analytic formulae at one loop have been obtained recently~\cite{Campbell:2021mlr}.
+%The process has already been well studied at NLO in QCD~\cite{Campanario:2009um}, including the anomalous couplings~\cite{Campanario:2010hv}, 
+%and is easily within the reach of standard automated tools including electroweak corrections. Compact analytic formulae at one loop have been obtained recently~\cite{Campbell:2021mlr}.
 
-Recent years have seen tremendous progress in the analytic computation of two-loop amplitudes for processes involving five massless particles~\cite{Gehrmann:2015bfy,Badger:2018enw,Abreu:2018aqd,Chicherin:2018yne,Chicherin:2019xeg,Abreu:2019rpt,%
-Abreu:2018zmy,Abreu:2018jgq,Abreu:2019odu,Badger:2019djh,Abreu:2020cwb,Chawdhry:2020for,Caron-Huot:2020vlo,Chicherin:2020oor,DeLaurentis:2020qle,Agarwal:2021grm,Abreu:2021oya,%
-Chawdhry:2021mkw,Agarwal:2021vdh,Badger:2021imn}.
-The methods are now reaching maturity also for two-loop five-particle amplitudes with an external off-shell leg, with the
-first sets of analytic helicity amplitudes in the planar limit appearing over the last 12
-months~\cite{Badger:2021nhg,Badger:2021ega,Abreu:2021asb}. This progress has been made possible by the classification of the special functions appearing in the finite remainders through the
-differential equations they satisfy~\cite{Papadopoulos:2015jft,Papadopoulos:2019iam,Abreu:2021smk,Abreu:2020jxa,
-Canko:2020ylt,Syrrakos:2020kba,Chicherin:2021dyp}. Furthermore, finite-field arithmetic for
-scattering amplitudes~\cite{vonManteuffel:2014ixa,Peraro:2016wsq,Peraro:2019svx} allows us to avoid the large intermediate expressions and provides efficient solutions to large systems of
-integration-by-parts integral identities~\cite{Tkachov:1981wb,Chetyrkin:1981qh,Laporta:2000dsw}, which are the main bottlenecks in the analytic computation of multi-loop scattering amplitudes.
-
-Our paper is organised as follows. In Section~\ref{wyjsec:amp} we describe the structure of the
-amplitudes for $pp\to W\gamma j$ up to two loops, paying particular attention to the description of
-the decay of the $W$ boson. In Section~\ref{wyjsec:reduction} we describe the finite field reduction
-setup used to extract the finite remainders, and propose an approach to simplify dramatically the analytic expressions of the latter based on a systematic search of a better parameterisation of the kinematics in terms of momentum-twistor variables. We describe a number of validation tests that have been
-performed on our results in Section~\ref{wyjsec:validation}, and then present some numerical results for the
-colour and helicity summed finite remainders in Section~\ref{wyjsec:results}. We
-present our conclusions and outlook for the future in Section~\ref{wyjsec:conclusions}. Complete analytic expressions are provided in
-the associated ancillary files on the \texttt{arXiv}. In addition, we include appendices describing the details
-of the renormalisation constants, and giving explicit one-loop results to facilitate future cross-checks.
+%Recent years have seen tremendous progress in the analytic computation of two-loop amplitudes for processes involving five massless particles~\cite{Gehrmann:2015bfy,Badger:2018enw,Abreu:2018aqd,Chicherin:2018yne,Chicherin:2019xeg,Abreu:2019rpt,%
+%Abreu:2018zmy,Abreu:2018jgq,Abreu:2019odu,Badger:2019djh,Abreu:2020cwb,Chawdhry:2020for,Caron-Huot:2020vlo,Chicherin:2020oor,DeLaurentis:2020qle,Agarwal:2021grm,Abreu:2021oya,%
+%Chawdhry:2021mkw,Agarwal:2021vdh,Badger:2021imn}.
+%The methods are now reaching maturity also for two-loop five-particle amplitudes with an external off-shell leg, with the
+%first sets of analytic helicity amplitudes in the planar limit appearing over the last 12
+%months~\cite{Badger:2021nhg,Badger:2021ega,Abreu:2021asb}. This progress has been made possible by the classification of the special functions appearing in the finite remainders through the
+%differential equations they satisfy~\cite{Papadopoulos:2015jft,Papadopoulos:2019iam,Abreu:2021smk,Abreu:2020jxa,
+%Canko:2020ylt,Syrrakos:2020kba,Chicherin:2021dyp}. Furthermore, finite-field arithmetic for
+%scattering amplitudes~\cite{vonManteuffel:2014ixa,Peraro:2016wsq,Peraro:2019svx} allows us to avoid the large intermediate expressions and provides efficient solutions to large systems of
+%integration-by-parts integral identities~\cite{Tkachov:1981wb,Chetyrkin:1981qh,Laporta:2000dsw}, which are the main bottlenecks in the analytic computation of multi-loop scattering amplitudes.
 
 
 \section{Structure of the Amplitudes}
@@ -243,9 +238,9 @@ A_{6}^{(L)}(1^{-h_1}_\gamma,2^{+}_{\bar{d}},3^{-h_3}_g,4^{-}_u,5^{-}_{e},6^{+}_{
 \section{Amplitude Computation}
 \label{wyjsec:reduction}
 In this section we describe the computation of the two-loop $\wpaj$ amplitude in the leading colour approximation.
-To derive the analytic form of the amplitude we employ a framework that combines Feynman diagram input, the four-dimensional projector method~\cite{Peraro:2019cjj,Peraro:2020sfm}, integration-by-parts (IBP) reduction~\cite{Tkachov:1981wb,Chetyrkin:1981qh,Laporta:2000dsw},
-Laurent expansion onto a basis of special function, numerical evaluations over finite fields, and analytic reconstruction techniques~\cite{vonManteuffel:2014ixa,Peraro:2016wsq,Peraro:2019svx}.
-
+To derive the analytic form of the amplitude, we closely (albeit with certain departures) follow the framework adopted throughout Chapter~\ref{sec:Hbb} and described extensively in Chapter~\ref{sec:tools}. Crucially, apart from the techniques presented so far, in this work we also make use of the the four-dimensional projector method~\cite{Peraro:2019cjj,Peraro:2020sfm}, which we will introduce in later sections.
+%That combines Feynman diagram input, the four-dimensional projector method~\cite{Peraro:2019cjj,Peraro:2020sfm}, integration-by-parts (IBP) reduction~\cite{Tkachov:1981wb,Chetyrkin:1981qh,Laporta:2000dsw},
+%Laurent expansion onto a basis of special function, numerical evaluations over finite fields, and analytic reconstruction techniques~\cite{vonManteuffel:2014ixa,Peraro:2016wsq,Peraro:2019svx}.
 Instead of computing the loop amplitudes using the full six-particle kinematics, 
 we detach the leptonic decay of the $W$ boson from the amplitude and only compute the $W$-production amplitudes.
 For the $A^{(L)}_{6,u}$ and $A^{(L)}_{6,d}$ sub-amplitudes the $W$-production amplitude is a five-point amplitude with an off-shell leg (denoted by  $A_{5,u/d}^{^{(L)}\mu}$),
@@ -743,7 +738,7 @@ where we have made the dependence on the kinematic point explicit.
 
 \subsection{Tree-level and one-loop checks}
 
-We validated the tree-level and one-loop amplitudes derived in this paper against the results available in the literature.
+We validated the tree-level and one-loop amplitudes derived in this chapter against the results available in the literature.
 For the tree-level amplitude we compared our helicity amplitudes against the analytic results presented in Ref.~\cite{Campbell:2021mlr} and additionally, for the full colour tree-level squared matrix elements, against \textsc{Madgraph5}~\cite{Alwall:2014hca} for both processes $W^+\gamma j$ and $W^-\gamma j$.
 As for the one-loop amplitudes, we compared our results against the leading colour contributions of the $W^+\gamma j$ amplitudes presented in Ref.~\cite{Campbell:2021mlr}.
 In all cases we find perfect agreement.
@@ -1013,14 +1008,14 @@ Figure~\ref{Wyjfig:plots} shows the plots of the reduced squared finite remainde
 \section{Conclusions}
 \label{wyjsec:conclusions}
 
-In this article we have presented the two-loop leading colour QCD helicity amplitudes for the
+In this chapter, we have presented the two-loop leading colour QCD helicity amplitudes for the
 process $W^{\pm}\gamma j$ for the first time. We have obtained relatively compact analytic
 expressions that can be efficiently evaluated across the full physical phase-space. We constructed
 the colour and helicity summed finite remainders, and performed several validation tests. This opens
 the path for precision phenomenological predictions at NNLO accuracy in the strong coupling.
 
 To obtain the best possible theoretical predictions it will be necessary to improve upon the leading
-colour approximation taken in this article. While it is expected that the leading colour contribution
+colour approximation taken in this chapter. While it is expected that the leading colour contribution
 dominates, a quantitative statement is not possible without explicit computation. Sub-leading colour
 corrections require non-planar topologies to be taken into account, and represent a considerable
 increase in analytic and algebraic complexity. Progress on the relevant Feynman integrals has been made in this direction quite
