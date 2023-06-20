@@ -86,30 +86,34 @@ space by applying the generalised series expansion approach~\cite{Francesco:2019
 
 \section{Structure of the $pp\to\bbh$ Amplitudes at Leading Colour}
 \label{Hbbsec:amp}
-We compute the two-loop QCD corrections in the leading colour approximation for the following subprocesses
+We compute the two-loop QCD corrections in the leading colour approximation for the following subprocesses:
 \begin{align} \label{eq:subprocesses}
 & 0 \rightarrow \bar{b}(p_1) + b(p_2) + g(p_3) + g(p_4) + H(p_5)\,, \\
 & 0 \rightarrow \bar{b}(p_1) + b(p_2) + \bar{q}(p_3) + q(p_4) + H(p_5)\,, \label{eq:subprocessqq} \\
 & 0 \rightarrow \bar{b}(p_1) + b(p_2) + \bar{b}(p_3) + b(p_4) + H(p_5) \,, \label{eq:subprocessbb}
 \end{align}
-where all momenta are taken as outgoing, 
+where all momenta are taken as outgoing:
 \begin{align}
 \sum_{i=1}^5 p_i = 0\,.
 \end{align}
-We work in the five-flavour scheme, where the bottom quark is taken as massless while its Yukawa coupling to the Higgs boson is kept finite, so that
+We work in the five-flavour scheme, where the bottom quark is taken as massless while its Yukawa coupling to the Higgs boson is kept finite, so that:
 \begin{align}
 p_1^2=p_2^2=p_3^2=p_4^2=0\,, \qquad \quad p_5^2=m_H^2\,, 
 \end{align}
-where $m_H$ is the mass of the Higgs boson. The kinematics is described by six independent scalar products, which we choose as 
+where $m_H$ is the mass of the Higgs boson. The kinematics is described by six independent scalar products, which we choose as:
 \begin{equation}
  (s_{12},s_{23},s_{34},s_{45},s_{15},p_5^2) \,, \nonumber
-\end{equation} with $s_{ij} = (p_i + p_j)^2$, and a pseudo-scalar invariant,
-\begin{align}
+\end{equation}
+with $s_{ij} = (p_i + p_j)^2$. It is also possible to form pseudo-scalar invariants by contracting the Levi-Civita symbol $\eps_{\mu \nu \rho \sigma}$ with any four external momenta. The five-particle kinematics is therefore fully determined by the scalar invariants above and by one pseudo-scalar invariant, which captures all the space-time parity information of the phase space. We choose:
+\begin{align} \label{eq:tr5}
 \text{tr}_5 = 4 i \epsilon_{\mu \nu \rho \sigma} p_1^{\mu} p_2^{\nu} p_3^{\rho} p_4^{\sigma} = [12] \spA{2}{3} [34] \spA{4}{1} - \spA{1}{2} [23] \spA{3}{4} [41] \,.
 \end{align}
-The latter is connected to the Gram determinant of the four linearly independent momenta, $\Delta = \mathrm{det}(s_{ij})$ with $1 \leq i,j \leq 4$, via 
-$\Delta = (\text{tr}_5)^2$.
- 
+It is related to the scalar invariants through:
+\begin{align} \label{eq:tr5squared}
+\tr_5^2 =  \Delta_5 := \text{det}\left(2 p_i \cdot p_j \right)\bigl|_{i,j=1,\ldots,4} \,,
+\end{align}
+where the right-hand side is a degree-four polynomial in the scalar invariants.
+
 The colour decomposition of the $L$-loop amplitudes in the leading colour approximation is given by
 \begin{align}
 &\mathcal{A}^{(L)}(1_{\bar b},2_{b},3_{g},4_{g} ,5_{H}) = n^L g_s^2 y_b \bigg[ 
@@ -772,8 +776,8 @@ F^{(L)} = \sum_{i} r_i(x) m_i(f)\,,
 \end{equation}
 where $m_i(f)$ are monomials of the special functions and $r_i$ are rational functions of the momentum twistor variables $x$. It is important to note that the definition of the UT master integrals involves three square roots. One is related to the pseudo-scalar invariant $\tr_5$, which captures the parity-odd part of the spinor expressions and is therefore present already in the rational coefficients. This square root is rationalised by the momentum-twistor inspired parametrisation~\eqref{eq:mtvardefs}. The other two square roots are associated with the three-mass triangle Gram determinants,
 \begin{align}
-  \Delta_1 &= 2 \sqrt{(p_{23} \cdot p_{5})^2 - p_5^2 s_{23}} \,,&
-  \Delta_2 &= 2 \sqrt{(p_{12} \cdot p_{5})^2 - p_5^2 s_{12}} \,,
+  \Delta_3^{(1)} &= 2 \sqrt{(p_{23} \cdot p_{5})^2 - p_5^2 s_{23}} \,,&
+  \Delta_3^{(2)} &= 2 \sqrt{(p_{12} \cdot p_{5})^2 - p_5^2 s_{12}} \,,
   \label{eq:squareroots}
 \end{align}
 where $p_{ij} = p_i + p_j$.
@@ -803,7 +807,7 @@ where the indices $i,j$ in the spinor expressions vary from $1$ to $4$, while th
 
 Having determined the denominators of the rational coefficients we can proceed to the third and last step of our reconstruction strategy:  a univariate partial fraction decomposition on the fly. We find that, with the parameterisation of the external kinematics given by Eq.~\eqref{eq:mtvardefs}, partial fractioning with respect to $x_5$ is the most convenient choice. 
 The partial fraction decomposition of multivariate functions has recently drawn a lot interest as a powerful tool to simplify the analytic expressions of scattering amplitudes. A number of new approaches have been proposed, which make use of algebraic geometry techniques to handle the multivariate case efficiently~\cite{Leinartas:1978,Raichev:2012,Abreu:2019odu,Boehm:2020ijp,Heller:2021qkz}. These algorithms are however applied to known analytic expressions, namely after the rational reconstruction has been performed. Conversely, the univariate partial fraction decomposition can be performed within the finite field setup to simplify the reconstruction of the rational coefficients.
-The algorithm makes use of the knowledge of the denominators to construct an ansatz for the decomposition into partial fractions with respect to the chosen variable. The coefficients of this ansatz can then be solved for and reconstructed within the finite field workflow. In order to reconstruct the coefficients of the partial fraction decomposition we perform a further matching of the factors from the ansatz~\eqref{eq:coeffansatz}. The determined factors are then removed, and the remaining functions are reconstructed with \texttt{FiniteFlow}'s reconstruction algorithm. The degrees of the rational coefficients which remain to be reconstructed are shown in the fifth column of Tables~\ref{tab:degrees2g2bH} and~\ref{tab:degrees2q2bH}. Note that after partial fractioning the denominators are not entirely determined from the ansatz~\eqref{eq:coeffansatz}. The univariate partial fraction decomposition in fact introduces spurious factors in the denominators. The latter could be determined as well, but we refrain from doing so as it does not reduce the complexity of the reconstruction.
+The algorithm makes use of the knowledge of the denominators to construct an ansatz for the decomposition into partial fractions with respect to the chosen variable. The coefficients of this ansatz can then be solved for and reconstructed within the finite field workflow. In order to reconstruct the coefficients of the partial fraction decomposition we perform a further matching of the factors from the ansatz~\eqref{eq:coeffansatz}. The determined factors are then removed, and the remaining functions are reconstructed with \texttt{FiniteFlow}'s reconstruction algorithm (see Sec.~\ref{sec:ratfuncs}). The degrees of the rational coefficients which remain to be reconstructed are shown in the fifth column of Tables~\ref{tab:degrees2g2bH} and~\ref{tab:degrees2q2bH}. Note that after partial fractioning the denominators are not entirely determined from the ansatz~\eqref{eq:coeffansatz}. The univariate partial fraction decomposition in fact introduces spurious factors in the denominators. The latter could be determined as well, but we refrain from doing so as it does not reduce the complexity of the reconstruction.
 
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[t!]
