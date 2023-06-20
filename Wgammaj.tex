@@ -643,15 +643,13 @@ We further demonstrate the gauge invariance by evaluating the helicity amplitude
 
 \subsection{Renormalisation scale dependence}
 \label{wyjsec:scaledep}
-
-The $L$-loop finite remainders depend on the renormalisation scale, $\mu$. In deriving analytic results for the process $\wpaj$ we set the renormalisation scale to unity ($\mu=1$).
-The dependence on the renormalisation scale of the finite remainders can be restored as follows,
-\begin{equation}
-F^{(L),i}_6\left(\mu^2\right) = F^{(L),i}_6\left(\mu^2 = 1\right) + \delta F^{(L),i}_6 \left(\mu^2\right) \,,
-\label{Wyjeq:FiniteRemainderMu}
-\end{equation}
-%where by $\vec{p} = (p_1,\ldots,p_6)$ we denote cumulatively the dependence on the external momenta, 
-where we omitted the dependence on the external momenta to simplify the notation. The $\mu$-restoring terms $\delta F_6^{(L),i}$ are built out of the lower-loop finite remainders evaluated at $\mu^2=1$ and logarithms of $\mu^2$. Explicitly, they are given by
+Similarly to Sec.~\ref{Hbbsec:renormscaledep}, we restore the renormalisation scale dependence of the $L$-loop finite remainders by adding to them the terms:
+%\begin{equation}
+%F^{(L),i}_6\left(\mu^2\right) = F^{(L),i}_6\left(\mu^2 = 1\right) + \delta F^{(L),i}_6 \left(\mu^2\right) \,,
+%\label{Wyjeq:FiniteRemainderMu}
+%\end{equation}
+%%where by $\vec{p} = (p_1,\ldots,p_6)$ we denote cumulatively the dependence on the external momenta, 
+%where we omitted the dependence on the external momenta to simplify the notation. The $\mu$-restoring terms $\delta F_6^{(L),i}$ are built out of the lower-loop finite remainders evaluated at $\mu^2=1$ and logarithms of $\mu^2$. Explicitly, they are given by
 \begingroup
 \allowdisplaybreaks
 \begin{align}
@@ -664,22 +662,21 @@ where we omitted the dependence on the external momenta to simplify the notation
 & \delta F^{(2),n_f^2}_6\left(\mu^2\right) = \log(\mu^2) \bigg\lbrace \frac{10}{27} A^{(0)}_6 -  F^{(1),n_f}_6(1) \bigg\rbrace + \frac{1}{6} A^{(0)}_6 \log^2(\mu^2) \,.
 \end{align}
 \endgroup
-The dependence on the external momenta is understood.
-We can then use Eq.~\eqref{Wyjeq:FiniteRemainderMu} to check that the finite remainders we computed have the correct scale dependence.
-We do this by evaluating the finite remainders at two phase-space points that are connected by a rescaling by some positive factor $a$,
-\begin{equation}
-\begin{aligned}
-& \vec{p} = (p_1,p_2,p_3,p_4,p_5,p_6) \,,  \\ 
-& \vec{p}^{\,\prime} = a \, \vec{p} =  (a \, p_1,a \, p_2,a \, p_3,a \, p_4,a \, p_5,a \, p_6)\,.  
-\end{aligned}
-\end{equation}
-These two evaluations allow us to confirm numerically that the finite remainders exhibit the correct scaling behaviour, in the form
-\begin{equation}
-  \frac{F_6^{(L),i}\left(1,a \, \vec{p}\right)+\delta F_6^{(L),i}\left(a^2,a \, \vec{p} \right)}{A_6^{(0)}\left(a\,\vec{p}\right)} 
-= \frac{F_6^{(L),i}\left(1,\vec{p}\right)}{A_6^{(0)}\left(\vec{p}\right)} \,,
-\label{Wyjeq:scaledepcheck}
-\end{equation}
-where we have made the dependence on the kinematic point explicit.
+The dependence on the external momenta is understood. We then verify that the $\mu$-dependent finite remainders satisfy the correct scaling relations by evaluating them at two phase-space points and checking the relation Eq.~\ref{eq:Hbbscalingrel}.
+%We do this by evaluating the finite remainders at two phase-space points that are connected by a rescaling by some positive factor $a$,
+%\begin{equation}
+%\begin{aligned}
+%& \vec{p} = (p_1,p_2,p_3,p_4,p_5,p_6) \,,  \\ 
+%& \vec{p}^{\,\prime} = a \, \vec{p} =  (a \, p_1,a \, p_2,a \, p_3,a \, p_4,a \, p_5,a \, p_6)\,.  
+%\end{aligned}
+%\end{equation}
+%These two evaluations allow us to confirm numerically that the finite remainders exhibit the correct scaling behaviour, in the form
+%\begin{equation}
+%  \frac{F_6^{(L),i}\left(1,a \, \vec{p}\right)+\delta F_6^{(L),i}\left(a^2,a \, \vec{p} \right)}{A_6^{(0)}\left(a\,\vec{p}\right)} 
+%= \frac{F_6^{(L),i}\left(1,\vec{p}\right)}{A_6^{(0)}\left(\vec{p}\right)} \,,
+%\label{Wyjeq:scaledepcheck}
+%\end{equation}
+%where we have made the dependence on the kinematic point explicit.
 
 
 \subsection{Tree-level and one-loop checks}
@@ -699,27 +696,19 @@ for the helicity coefficients which are linear combinations of the form factors 
 In order to enable a direct comparison for the one- and two-loop leading colour finite remainders, we 
 recomputed the $A_4^{(L)\mu}$ amplitudes in Eq.~\eqref{Wyjeq:B4decomposition} using the tensor structures employed in Ref.~\cite{Gehrmann:2011ab}.
 Since we compute the finite remainders with $\mu^2=1$, we obtain the results at $\mu^2=s_{234}$ using the formulae to restore the dependence on $\mu$ shown in Section~\ref{wyjsec:scaledep}. We obtain perfect numerical agreement for the helicity coefficients. We further check that the four-particle finite remainders $F_4^{(L)\mu}$ computed using the tensor structures of Ref.~\cite{Gehrmann:2011ab} match the ones we derived using the tensor structures defined in Section~\ref{wyjsec:B4amplitude} after contracting them with the decay currents according to Eq.~\eqref{Wyjeq:decayBF}.
-
-
-
-
 \section{Results}
 \label{wyjsec:results}
+The analytic expressions for the five- and four-point contracted amplitudes ($\tilde{A}^{(L)}_{5,i}$ and $\tilde{A}^{(L)}_{4,i}$), at one and two loops, together with the decay currents ($L_{A,\mu}$, $L^{e}_{B,\mu}$, $L^{W}_{B,\mu}$) and the relevant projection matrices ($\Delta$~\eqref{Wyjeq:Delta} and $\Omega$~\eqref{Wyjeq:Omega}) are provided in the ancillary files of Ref.~\cite{Badger:2022ncb}. The amplitudes are presented as linear combinations of independent rational coefficients that multiply a monomial basis of square roots and special functions. 
 
-We provide analytic expressions for the five- and four-point contracted amplitudes ($\tilde{A}^{(L)}_{5,i}$ and $\tilde{A}^{(L)}_{4,i}$), at one and two loops, together with the decay currents ($L_{A,\mu}$, $L^{e}_{B,\mu}$, $L^{W}_{B,\mu}$) and the relevant projection matrices ($\Delta$~\eqref{Wyjeq:Delta} and $\Omega$~\eqref{Wyjeq:Omega}) 
-in the ancillary files. The amplitudes are presented as linear combinations of independent rational coefficients that multiply a monomial basis of square roots and special functions. 
+We confirm the observations pointed out in Sec.~\ref{Hbbsec:Hbasis} about the cancellation of the pentagon functions involving certain letters~\cite{Badger:2021nhg, Badger:2021ega, Abreu:2021asb}. Once again, we observe that the functions involving the letters $\{W_{16}, W_{17}, W_{27}, W_{28}, W_{29}, W_{30} \}$ (in the notation of Ref.~\cite{Abreu:2020jxa}) are present in the contributing integrals but drop out from the amplitudes truncated at order $\eps^0$,\footnote{This holds for the set of independent amplitudes we reconstructed explicitly, which receive contributions only from the cyclic permutations of the master integrals. Since the set of letters $\mathcal{Z}$ is not closed under all $S_4$ permutations, these letters are present in some of the permuted amplitudes which contribute to the helicity and colour summed squared finite remainders.} and that the functions involving the letter $W_{49}=\tr_5$ are present in the amplitudes and drop out from the finite remainders. It is worth noting that these cancellations occur already at the level of the separate sub-amplitudes $A^{(L)}_{6,i}$ and sub-finite remainders $F^{(L)}_{6,i}$, and not just for their gauge-invariant combinations. 
+%The cancellation of the letter corresponding to $\tr_5$ is by now well established in the case of fully massless scattering, where it has been linked to an underlying cluster algebra structure of the letter alphabet~\cite{Chicherin:2020umh}.
 
-We confirm the previous observations about the cancellation of the pentagon functions involving certain letters~\cite{Badger:2021nhg,Badger:2021ega,Abreu:2021asb}. We observe that the functions involving the letters $\mathcal{Z}=\{W_{18}, W_{25}, W_{34}, W_{45}, W_{46}, W_{57} \}$ (in the notation of Refs.~\cite{Abreu:2021smk,Chicherin:2021dyp}) are present in the contributing integrals but drop out from the amplitudes truncated at order $\eps^0$,\footnote{This holds for the set of independent amplitudes we reconstructed explicitly, which receive contributions only from the cyclic permutations of the master integrals. Since the set of letters $\mathcal{Z}$ is not closed under all $S_4$ permutations, these letters are present in some of the permuted amplitudes which contribute to the helicity and colour summed squared finite remainders.} and that the functions involving the letter $W_{198}=\tr_5$ are present in the amplitudes and drop out from the finite remainders. It is worth noting that these cancellations occur already at the level of the separate sub-amplitudes $A^{(L)}_{6,i}$ and sub-finite remainders $F^{(L)}_{6,i}$, and not just for the gauge-invariant combinations of them. The cancellation of the letter corresponding to $\tr_5$ is by now well established in the case of fully massless scattering, where it has been linked to an underlying cluster algebra structure of the letter alphabet~\cite{Chicherin:2020umh}.
-
-We include a \textsc{Mathematica} script to demonstrate the assembly of both the $\wpaj$ and $\wmaj$ amplitudes, and to perform the numerical evaluation of the finite remainders at a given kinematic point.
-We evaluate the special functions in the physical scattering region using the package \textsc{PentagonFunctions++}~\cite{Chicherin:2021dyp}, as discussed in Section~\ref{wyjsec:Permutations}.
-
-We use the following configuration of momenta,
+The ancillary files of Ref.~\cite{Badger:2022ncb} include a \textsc{Mathematica} script to demonstrate the assembly of both the $\wpaj$ and $\wmaj$ amplitudes, and to perform the numerical evaluation of the finite remainders at a given kinematic point. We evaluate the special functions in the physical scattering region using the package \textsc{PentagonFunctions++}~\cite{Chicherin:2021dyp}, as discussed in Section~\ref{wyjsec:Permutations}. We use the following configuration of momenta:
 \begin{equation}
 -p_2 - p_4 \to p_1 + p_3 + p_5 + p_6 \,,
 \label{Wyjeq:momconfig}
 \end{equation}
-to define the six scattering channels for $pp\to W^+\gamma j$ production,
+to define the six scattering channels for $pp\to W^+\gamma j$ production:
 \begin{equation}
 \label{Wyjeq:wplus_channel_definition}
 \begin{aligned}
@@ -731,7 +720,7 @@ to define the six scattering channels for $pp\to W^+\gamma j$ production,
 &\mathbf{g\bar{d}}: \quad  g(-p_2) + \bar{d}(-p_4) \to \gamma(p_1) + \bar{u}(p_3) + \nu_e(p_5) + e^+(p_6) \,,
 \end{aligned}
 \end{equation}
-and similarly for $pp\to W^-\gamma j$ production,
+and similarly for $pp\to W^-\gamma j$ production:
 \begin{equation}
 \label{Wyjeq:wmin_channel_definition}
 \begin{aligned}
@@ -743,25 +732,23 @@ and similarly for $pp\to W^-\gamma j$ production,
 &\mathbf{g\bar{u}}: \quad  g(-p_2) + \bar{u}(-p_4) \to \gamma(p_1) + \bar{d}(p_3) + e^-(p_5) + \bar\nu_e(p_6) \,.
 \end{aligned}
 \end{equation}
-The interference between the $L$-loop finite remainders and the tree-level amplitudes summed over
-colour and helicity in the leading colour approximation is given by
+The interference between the $L$-loop finite remainders and the tree-level amplitudes summed over colour and helicity in the leading colour approximation is given by:
 \begin{equation}
 \sum_{\mathrm{colour}}\sum_{\mathrm{helicity}} \cA_6^{(0)*} \cF_6^{(L)} =: 2 e^2 g_W^4 g_s^2 n^L N_c^2 \, \cH^{(L)} \,,
 \end{equation}
-where the \textit{reduced squared finite remainder} $\cH^{(L)}$ is defined by
+where the reduced squared finite remainder $\cH^{(L)}$ is defined by:
 \begin{equation}
 \cH^{(L)} = \sum_{\mathrm{helicity}}  A_{6}^{(0)*}  F_{6}^{(L)} \,,
 \end{equation}
 for all scattering channels given in Eqs.~\eqref{Wyjeq:wplus_channel_definition} and~\eqref{Wyjeq:wmin_channel_definition}. 
-The reduced squared finite remainder obeys the same decomposition according to the closed fermion loop contributions as $F_{6}^{(L)}$,
+The reduced squared finite remainder obeys the same decomposition according to the closed fermion loop contributions as $F_{6}^{(L)}$:
 \begin{align} \label{Wyjeq:NfDecompositionH} 
 \begin{aligned}
 & \cH^{(1)} = N_c \cH^{(1),1} + n_f \cH^{(1),n_f} \,, \\
 & \cH^{(2)} = N_c^2 \cH^{(2),1} + N_c n_f \cH^{(2),n_f} + n_f^2 \cH^{(2),n_f^2} \,.
 \end{aligned}
 \end{align}
-
-We present a benchmark evaluation at the following phase-space point in the physical scattering region specified by Eq.~\ref{Wyjeq:momconfig} (the momenta are given in units of GeV),
+We present a benchmark evaluation at the following phase-space point in the physical scattering region specified by Eq.~\ref{Wyjeq:momconfig} (the momenta are given in units of GeV):
 \begin{align}
 \label{Wyjeq:PSpoint}
 \begin{aligned}
@@ -773,7 +760,7 @@ p_5 & = (152.35810946, -105.88095966, -97.709638326, 49.548385226)  \,, \\
 p_6 & = (430.76113825, 231.83126183, 359.56304052, -50.237875657)   \,, 
 \end{aligned}
 \end{align}
-with $\tr_5 =  2.167055i \cdot 10^{10} \; \mathrm{GeV}^4$. We take the $W$ boson mass and width to be 
+with $\tr_5 =  2.167055i \cdot 10^{10} \; \mathrm{GeV}^4$. We take the $W$ boson mass and width to be: 
 \begin{equation}
 %M_W = 80.4109002445756163 \; \mathrm{GeV} \,, \qquad \qquad \Gamma_W = 2.0467 \; \mathrm{GeV}\,.
 M_W = 80.4109 \; \mathrm{GeV} \,, \qquad \qquad \Gamma_W = 2.0467 \; \mathrm{GeV}\,.
@@ -781,7 +768,7 @@ M_W = 80.4109 \; \mathrm{GeV} \,, \qquad \qquad \Gamma_W = 2.0467 \; \mathrm{GeV
 \end{equation}
 High precision values for the phase space point in Eq.~\eqref{Wyjeq:PSpoint} as well as the input parameters in Eq.~\eqref{Wyjeq:inputparameters} are provided in the ancillary files.
 We present in Tables~\ref{Wyjtab:benchmark2Lnf0bare} and~\ref{Wyjtab:benchmark2Lnf1bare} the values of the bare two-loop amplitudes
-normalised to the tree-level amplitudes in the $\mathbf{u\bar{d}}$ scattering channel for each individual sub-amplitude,
+normalised to the tree-level amplitudes in the $\mathbf{u\bar{d}}$ scattering channel for each individual sub-amplitude:
 \begin{equation}  \label{Wyjeq:treenorm}
 \hat{A}_{6,i}^{(L),j} = \frac{A_{6,i}^{(L),j}}{A_{6,i}^{(0)}} \,, 
 \end{equation} 
@@ -790,11 +777,11 @@ The results are presented only for the two independent helicity configurations (
 We note that the numerical results in Tables~\ref{Wyjtab:benchmark2Lnf0bare} and~\ref{Wyjtab:benchmark2Lnf1bare}, presented separately for the sub-amplitudes $A_u$, $A_d$, $A_W$ and $A_e$,
 are gauge dependent. We used  $q_1 = p_3$ and $q_3 = p_1$, where $q_1 (q_3)$ is the reference momentum for the photon (gluon) polarisation vector. Gauge invariant quantities can be obtained using Eq.~\eqref{Wyjeq:gaugeinvariantamps}. This enables comparisons already for the smaller building blocks of the amplitude, rather than just the full amplitude. For example, the sub-amplitudes $A_W$ and $A_e$ can be derived by attaching the $L^{e/W}_{B,\mu}(p_1,p_5,p_6)$ decay currents to the already available $q\bar{q} \to Wg$ 
 amplitude~\cite{Gehrmann:2011ab}. Indeed we performed this check, as described in Section~\ref{subwyjsec:4ptcomparison}. 
-In Table~\ref{Wyjtab:benchmarkfinremsq2L} we show the values of the two-loop reduced squared finite remainders normalised to the reduced squared tree-level amplitudes, 
+In Table~\ref{Wyjtab:benchmarkfinremsq2L} we show the values of the two-loop reduced squared finite remainders normalised to the reduced squared tree-level amplitudes: 
 \begin{equation}
 \hat{\cH}^{(L)} = \frac{\cH^{(L)}}{\cH^{(0)}} \,,
 \end{equation}
-for all channels of both $pp \to \wpaj$ and $pp\to\wmaj$ production. We give analogous tables for the one-loop amplitudes in Appendix~\ref{Wyjapp:oneloop}.
+for all channels of both $pp \to \wpaj$ and $pp\to\wmaj$ production. We give analogous tables for the one-loop amplitudes in Appendix~\ref{app:oneloop}.
 %
 \begin{table}[t!]
 \centering
@@ -880,7 +867,7 @@ evaluated at the kinematic point given in Eq.~\eqref{Wyjeq:PSpoint} for both $pp
 }
 \end{table}
 
-In order to show the suitability and stability of our evaluation strategy, we present in Figure~\ref{Wyjfig:plots} the evaluation of the reduced squared finite remainders on a one-dimensional slice of the physical phase space for all channels of $\wpaj$ production. We begin by parameterising the momenta of the one-mass five-particle process relevant for the $W$-production amplitudes as
+In order to show the suitability and stability of our evaluation strategy, we present in Figure~\ref{Wyjfig:plots} the evaluation of the reduced squared finite remainders on a one-dimensional slice of the physical phase space for all channels of $\wpaj$ production. We begin by parameterising the momenta of the one-mass five-particle process relevant for the $W$-production amplitudes as:
 \begin{align} \label{Wyjeq:unislice1}
 \begin{aligned}
 & p_1^{\mu} = u_1 \, \frac{\sqrt{s}}{2} \, \left(1,1,0,0 \right) \,, \\
@@ -889,17 +876,17 @@ In order to show the suitability and stability of our evaluation strategy, we pr
 & p_4^{\mu} =  \frac{\sqrt{s}}{2} \, \left(-1,0,0,1 \right) \,. \\
 \end{aligned}
 \end{align}
-We fix the value of $\cos\theta$ by requiring that 
+We fix the value of $\cos\theta$ by requiring that: 
 \begin{align} \label{Wyjeq:unislice2}
 (p_5+p_6)^2 = M^2_{ll} \,, 
 \end{align}
 where $M^2_{ll}$ is the invariant mass of the leptonic pair.
-We then parameterise the momenta of the leptonic pair,
+We then parameterise the momenta of the leptonic pair:
 \begin{align} \label{Wyjeq:unislice3}
 p_5^{\mu} = u_3 \, \frac{\sqrt{s}}{2}  \left(1,\cos\theta_{ll},-\sin \phi_{ll} \sin \theta_{ll}, -\cos \phi_{ll} \sin\theta_{ll} \right) \,,
 \end{align}
 and $p_6$ follows from momentum conservation.
-We fix $u_3$ by requiring that $p_6^2 = 0$. In order to define a univariate phase-space slice, we choose
+We fix $u_3$ by requiring that $p_6^2 = 0$. In order to define a univariate phase-space slice, we choose:
 \begin{align} \label{Wyjeq:unisliceparams}
 s = 10^4 \, \text{GeV}^2 \,, \qquad M_{ll} = 60 \, \text{GeV}  \,, \qquad \phi = \frac{1}{10} \,, \qquad u_1 = \frac{1}{7}\,, \qquad \theta_{ll} = \frac{\pi}{2} \,, \qquad \phi_{ll} = \frac{\pi}{3} \,.
 \end{align}
