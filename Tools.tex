@@ -50,7 +50,7 @@ As such, these diagrams are an indispensable tool of any perturbative calculatio
  \label{tab:ndiags}
 \end{table}
 
-\section{Colour decomposition}
+\section{Colour decomposition} \label{sec:colourdec}
 Having generated the Feynman diagrams, we substitute the Feynman rules for the propagators and vertices using \texttt{Mathematica}. At this point, our QCD amplitude contains both colour and kinematic information. The idea of colour ordering is to reorganise the amplitude such that these two components separate: a purely kinematic amplitude is multiplied by the corresponding colour factor. In other words, we perform the decomposition of the full amplitude in colour space, according to a chosen colour basis. Roughly speaking:
 \begin{equation}
     \ampl{n}{} = \sum_i \text{(colour)}_i \times A_{n\,i} \,, 
@@ -69,7 +69,7 @@ The choice of the colour basis is not unique. We adopt the decomposition accordi
     \xrightarrow{colour}
     f^{a_1a_2b}f^{ba_3a_4} \,.
 \end{equation}
-The colour factor of this diagram can be expressed in terms of the generators using Eqs.~\ref{eq:liealgebra} and ~\ref{eq:fierz}:
+The colour factor of this diagram can be expressed in terms of the generators using Eqs.~\ref{eq:fierzcolour} and \ref{eq:fabc}:
 \begin{equation}
     f^{a_1a_2b}f^{ba_3a_4} = -\frac{1}{T_F}\left(\tr[T^{a_1} T^{a_2} T^{a_3} T^{a_4}] - \tr[T^{a_1} T^{a_2} T^{a_4} T^{a_3}] - \tr[T^{a_1} T^{a_3} T^{a_4} T^{a_2}] + \tr[T^{a_1} T^{a_4} T^{a_3} T^{a_3}] \right)\,.
 \end{equation}

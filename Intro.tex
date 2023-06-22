@@ -1,20 +1,9 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 \chapter{Introduction} \label{sec:intro}
-\begin{figure}[h]
-    \centering
-    \begin{tikzpicture}
-        \randuck
-    \end{tikzpicture}
-    \caption{A duck with a label after caption.}
-    \label{fig:after}
-    This is referencing Fig.~\ref{fig:after}.
-\end{figure}
-\label{sec:QEDintro}
-QCD Lagrangian:
-\begin{equation} \label{eq:QCDLagrangian}
-    QCD
-\end{equation}
+This chapter is meant to provide the reader with a bridge between elementary knowledge of QFT and state-of-the-art techniques that are used to extract predictions from these QFTs. We start by providing a brief summary of the relevant information about QFTs and in particular QCD. Next, we describe how to connect this theory to physical observables that can be measured experimentally. This introduces the notion of a scattering amplitude, which will be the main focus of this thesis. Finally, we discuss the famous problem of divergences present in QFT computations and show how in the process of trying to keep them under control, we discover a surprising feature of the QCD interactions. At the end, we will be ready to tackle the more advanced topics presented in Chapter~\ref{sec:tools}.
+
+\section{QFT background}
 The central equation of quantum field theory which describes all spin\=/1/2 particles is the Dirac equation:
 \begin{equation} \label{eq:Dirac}
     (\slashed{p}-m)\psi(x) = 0\,.
@@ -70,7 +59,6 @@ Then, the Weyl spinors can be extracted from the Dirac spinors by applying appro
 Finally, we can associate $\psi_L$ and $\psi_R$ with the \textbf{helicity} of a particle, which is the projection of its spin onto the direction of motion. The corresponding helicity values for left- and right-handed particles are $-1$ and $+1$, respectively\footnote{Strictly speaking, the left- and right-handed Weyl spinors are eigenstates of the chirality operator $\gamma^5$. However, for $m=0$, helicity and chirality eigenstates coincide}.
 Weyl spinors will play a key role in the discussion of the spinor-helicity formalism in Section~\ref{sec:spinhelform}.
 
-\section{Quantum Chromodynamics} \label{sec:QCD}
 \begin{equation} \label{eq:liealgebra}
     [T^{a_1}, T^{a_2}] = \i f^{a_1a_2a_3} T^{a_3} \,.
 \end{equation}
@@ -91,6 +79,66 @@ Completeness relations for the spin-1 polarisation vectors:
 \begin{equation} \label{eq:QCDbetafunction2}
     \text{QCD Beta function - asymptotic freedom}
 \end{equation}
+
+\section{Quantum Chromodynamics} \label{sec:QCD}
+In this thesis, we will concern ourselves with the study of interactions involving mainly quarks and gluons. As such, a brief refresher of the relevant information is in order. Standard Model particles carrying colour charge interact via the strong force, which is mathematically described by QCD. Its Lagrangian is given by:
+\begin{equation} \label{eq:QCDLagrangian}
+    \mathcal{L}_{\text{QCD}} = -\frac{1}{4} G^a_{\mu\nu} G^{a\,\mu\nu} + \sum_{q,\bar{q}}^{n_f} \overline{\psi}_{\bar{q}}^{\,i} \left(\ii \slashed{D}_{ij} - m_q \delta_{ij} \right) \psi_q^j\,,
+\end{equation}
+where:
+\begin{equation}
+     G^a_{\mu\nu} = \partial_\mu A^a_\nu + \partial_\nu A^a_\mu + g_s f^{abc} A^b_\mu A^c_\nu
+\end{equation}
+is the gluon field strength, while:
+\begin{equation}
+    (D_\mu)_{ij} = \delta_{ij} \partial^\mu - \ii g_s (T^a)_{ij} A^a_\mu
+\end{equation}
+is the covariant derivative introduced to ensure gauge invariance under SU($N_c$) transformations\footnote{We will try to keep the degree $N_c$ of the group SU($N_c$) generic in the discussion below, but of course we are interested in the QCD case of $N_c=3$.}.
+
+The QCD Lagrangian contains three types of fields. Quarks and antiquarks, corresponding to $\overline{\psi}_q^{\,i}$ and $\psi_q^i$, respectively, transform in the fundamental and antifundamental representations of SU($N_c$). In QCD, they have $n_f = 6$ flavours. The indices $i$ denote the colour of the (anti)quarks and take values $\{1,\ldots,N_c\}$. It is common to drop the colour index and work with $\psi_q$, which is understood as $\psi_q \equiv \left(\psi_q^r, \psi_q^b, \psi_q^g \right)^T$. The fundamental fields are acted on by the $N_c^2-1$ fundamental generators of SU($N_c$) with dimensions $(N_c \times N_c)$. For SU(3), they are given by:
+\begin{equation}
+    (T^a)_{ij} = \frac{1}{2} (\tau^a)_{ij}\,,
+\end{equation}
+where $(\tau^a)_{ij}$ are the eight $(3 \times 3)$ Gell-Mann matrices. Similarly, the antifundamental fields are acted on by the generators in the antifundamental representation, $\overline{T}^{\,a} = -\left(T^a\right)^\ast$. The fundamental generators are normalised according to:
+\begin{equation}
+    \tr (T^aT^b) = T_F \delta^{ab},
+\end{equation}
+with $T_F$ typically $\frac{1}{2}$ or $1$. Finally, let us list one more extremely useful identity satisfied by the fundamental generators:
+\begin{equation} \label{eq:fierzcolour}
+    (T^a)_{ij} (T^a)_kl = T_F \left( \delta_{il} \delta{kj} - \frac{1}{N_c} \delta_{ij} \delta_{kj} \right)\,.
+\end{equation}
+
+The third type of field, the gluon field, is represented by $A^a_\mu$. It transforms in the adjoint representation, i.e. under the action of $N_c^2-1$ adjoint generators with dimensions $(N_c^2-1 \times  N_c^2-1)$:
+\begin{equation}
+\left(T_\text{adj}^a\right)^{bc} = -\ii f^{abc}\,,
+\end{equation}
+where $a,b,c \in \{1, \ldots, N_c^2-1\}$ and the totally antisymmetric objects $f^{abc}$ are known as the structure constants. Typically, the adjoint generators are normalised such that $\tr (T_\text{adj}^aT_\text{adj}^b) = N_c \delta^{ab}$. 
+
+SU($N_c$) generators in any representation (let us denote them $T_R^a$) satisfy the following defining relation of the Lie algebra:
+\begin{equation} \label{eq:liealgebra}
+    \left[T^a, T^b\right] = \ii f^{abc} T^c\,.
+\end{equation}
+Note that for Abelian groups, the structure constants vanish. For the non-Abelian SU(3) group of QCD, they are non-vanishing, however, and it is useful to invert the above relation in terms of the fundamental generators:
+\begin{equation} \label{eq:fabc}
+    f^{abc} = \frac{\ii}{T_F} \tr \left(\left[T^a, T^b \right] T^c \right)\,.
+\end{equation}
+Thus, the structure constants, which are associated with 3- and 4-gluon vertices in Feynman diagrams, can be written in terms of traces of fundamental generators. This fact, along with Eq.~\ref{eq:fierzcolour}, becomes very useful when computing scattering amplitudes involving gluons, as we will see in Sec.~\ref{sec:colourdec}.
+
+In the process of deriving the gluon propagator, the notion of gauge invariance leads to two important qualitative features. First of all, just as in the case of the photon propagator in QED, instead of explicitly fixing the gauge, we find it convenient to introduce an auxiliary (i.e. non-propagating) field $\xi$. We write:
+\begin{equation} \label{eq:gaugefixing}
+    \mathcal{L}_{R_\xi} = -\frac{1}{2 \xi} \left(\partial_\mu A^a_\mu \right)^2\,,
+\end{equation}
+which yields the gluon propagator:
+\begin{equation}
+    \Pi^{\mu\nu}(p) = \frac{-\ii}{p^2+ \ii \varepsilon} \left(g^{\mu\nu} - (1-\xi) \frac{p^\mu p^\nu}{p^2+\ii \varepsilon} \right)\,.
+\end{equation}
+As an example, with term Eq.\ref{eq:gaugefixing} included in the full QCD Lagrangian, for small $\xi$ we must have that $\partial_\mu A^a_\mu \rightarrow 0$ in order to prevent the exponential of $\mathcal{L}$ from blowing up, such that we can still minimise the action. Thus, the choice $\xi = 0$ is equivalent to the Lorenz gauge and spares us from having to impose the Lorenz condition throughout the entire computation. Other choices are possible, of course. In fact, the most common prescription is to set $\xi = 1$, which is known as the Feynman-'t Hooft gauge. It is also possible to keep $\xi$ generic --- gauge invariance ensures that the results of our computations of physical quantities will at the end be free of $\xi$. Overall, the class of gauges which include the auxiliary field $\xi$ are referred to as covariant or $R_\xi$-gauges.
+
+The second feature, which appears only in non-Abelian gauge theories, is that gauge fixing the Lagrangian implies that not only the physical transverse modes of $A^a_\mu$ can propagate. To cancel the unphysical degrees of freedom propagating through gluon loops in Feynman diagrams, it is necessary to include in the Lagrangian Grassmann-valued fields $c$ and $\bar{c}$ representing Faddeev–Popov ghosts and antighosts, respectively:
+\begin{equation} \label{eq:ghosts}
+    \mathcal{L}_\text{ghosts} = (\partial_\mu \bar{c}^a)(\delta^{ac} \partial_\mu + g_s f^{abc} A^b_\mu ) c^c\,.
+\end{equation}
+These particles are not physical states. In fact, it is possible to work in non-covariant gauges, such as the axial gauge or the lightcone gauge, where ghosts decouple from physical particles and can be neglected. However, the cost of doing so is a more complicated expression for the gluon propagator, leading to greater tougher computations. Thus, we usually accept ghosts as a peculiarity of working with non-Abelian gauge theories and include them in our computations. Ghosts couple only to gluons and not to quarks. They receive their own Feynman rules for the propagator and the vertex.
 
 \section{Particle scattering} \label{sec:particlescattering}
 Having introduced the quantum field theories that describe the most fundamental particles our nature has to offer, one might rightfully wonder about the rewards for our intellectual effort (beyond personal satisfaction). After all, amongst our non-physicist friends, it is common to think that the word `theoretical' in theoretical physics is synonymous with `hypothetical'. Not much could be further from the truth and we dedicate this section to illustrating the immense predictive power of QFTs.
