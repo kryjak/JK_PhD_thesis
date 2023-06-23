@@ -1,12 +1,12 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 \chapter{Introduction} \label{sec:intro}
-This chapter is meant to provide the reader with a bridge between elementary knowledge of QFT and state-of-the-art techniques that are used to extract predictions from these QFTs. We start by providing a brief summary of the relevant information about QFTs and in particular QCD. Next, we describe how to connect this theory to physical observables that can be measured experimentally. This introduces the notion of a scattering amplitude, which will be the main focus of this thesis. Finally, we discuss the famous problem of divergences present in QFT computations and show how in the process of trying to keep them under control, we discover a surprising feature of the QCD interactions. At the end, we will be ready to tackle the more advanced topics presented in Chapter~\ref{sec:tools}.
+This chapter is meant to provide the reader with a bridge between elementary knowledge of QFT and state-of-the-art techniques that are used to extract predictions from these QFTs. We start by providing a brief summary of the relevant information about QFTs, and in particular QCD. Next, we describe how to connect this theory to physical observables that can be measured experimentally. This introduces the notion of a scattering amplitude, which will be the main focus of this thesis. Finally, we discuss the famous problem of divergences present in QFT computations and show how in the process of trying to keep them under control, we discover a surprising feature of the QCD interactions. At the end, we will be ready to tackle the more advanced topics presented in Chapter~\ref{sec:tools}.
 
 \section{QFT background}
-The central equation of quantum field theory which describes all spin\=/1/2 particles is the Dirac equation:
+The central equation of QFT which describes all spin\=/1/2 particles is the Dirac equation:
 \begin{equation} \label{eq:Dirac}
-    (\slashed{p}-m)\psi(x) = 0\,.
+    (\ii \slashed{\partial}-m)\psi(x) = 0\,.
 \end{equation}
 The solutions to this equation are given by the four-component Dirac spinors $\psi(x)$, which transform in the irreducible $\left(\frac{1}{2}, 0\right) \otimes \left(0, \frac{1}{2}\right)$ representation\footnote{Not to be confused with the usual four-vectors $x^\mu$, which transform in the $\left(\frac{1}{2}, \frac{1}{2}\right)$ representation.}. There are four plane-wave solutions to the Dirac equation, which admit both positive and negative energies:
 \begin{equation}
@@ -14,12 +14,12 @@ The solutions to this equation are given by the four-component Dirac spinors $\p
 \end{equation}
 where $s=\{+, -\}$ labels the spin of the fermion. The momentum space spinors $u(p)$ and $v(p)$ are interpreted as describing particles and antiparticles with \textit{positive} energies, respectively. They satisfy the momentum space Dirac equations: 
 \begin{align}
-    (\slashed{p} - m)u(p) &= 0\,, \\
+    (\slashed{p} - m)u(p) &= 0\,, \nonumber \\
     (\slashed{p} + m)v(p) &= 0\,,
 \end{align}
-as well as the following completeness relations, which is useful when performing spin sums in amplitude computations:
+as well as the following completeness relations, which are useful when performing spin sums in QFT computations:
 \begin{align} \label{eq:completeness:fermions}
-    \sum_{s=\pm} u^s(p)\bar{u}^s(p) &= \slashed{p} + m\,, \\
+    \sum_{s=\pm} u^s(p)\bar{u}^s(p) &= \slashed{p} + m\, \nonumber, \\
     \sum_{s=\pm} v^s(p)\bar{v}^s(p) &= \slashed{p} - m\,.
 \end{align}
 Moreover, it is convenient to split the spinors into two separate components:
@@ -30,55 +30,62 @@ Moreover, it is convenient to split the spinors into two separate components:
         \psi_R(x)
     \end{pmatrix}\,,
 \end{equation}
-where the left- and right-handed Weyl spinors transform under the $\left(\frac{1}{2}, 0 \right)$ and $\left(\frac{1}{2}, 0 \right)$ representations, respectively. Crucially, in the absence of mass, the two components fully decouple \JK{maybe a better word?}. It is also useful to define an additional $\gamma^5$ matrix (also known as the chirality operator): 
+where the left- and right-handed Weyl spinors transform under the $\left(\frac{1}{2}, 0 \right)$ and $\left(\frac{1}{2}, 0 \right)$ representations, respectively. It is important to note that the Dirac equation, Eq.~\ref{eq:Dirac} mixes these two components, which can be appreciated by writing it explicitly in matrix notation. In the so-called Weyl (or chiral) basis, the Dirac matrices are given by:
+\begin{equation}
+    \gamma^\mu = 
+    \begin{pmatrix}
+        0 & \sigma^\mu \\
+        \bar{\sigma}^\mu & 0
+    \end{pmatrix}\,,
+\end{equation}
+with $\sigma^\mu \equiv (\mathds{1}, \sigma^i)$ and $\bar{\sigma}^\mu \equiv (\mathds{1}, -\sigma^i)$, and $\sigma^i$ for $i=1,2,3$ are the Pauli matrices. Thus, the Dirac equation is:
+\begin{equation}
+    \begin{pmatrix}
+        -m & \ii \sigma^\mu \partial_\mu \\
+        \ii \bar{\sigma}^\mu \partial_\mu & -m \\
+    \end{pmatrix}
+    \begin{pmatrix}
+        \psi_L(x) \\
+        \psi_R(x)
+    \end{pmatrix} = 0 \,,
+\end{equation}
+where each entry is in itself understood to be a $(2 \times 2)$ matrix. Crucially, we can see that in the absence of mass, the two components fully decouple and can be treated separately. It is also useful to define an additional $\gamma^5$ matrix: 
 \begin{equation}
     \gamma^5 \equiv \i \gamma^0 \gamma^1 \gamma^2 \gamma^3\,,
 \end{equation}
-which in the Weyl (chiral) representation of the $\gamma$-matrices is just:
+which in the Weyl representation of the $\gamma$-matrices is just:
 \begin{equation}
     \gamma^5 = 
     \begin{pmatrix}
-        1 & 0 \\
-        0 & -1
+        \mathds{1} & 0 \\
+        0 & -\mathds{1}
     \end{pmatrix}\,.
 \end{equation}
-Then, the Weyl spinors can be extracted from the Dirac spinors by applying appropriate projectors, according to $\psi_L(x) = P_L\psi(x)$ and $\psi_R(x) = P_R\psi(x)$:
+The fifth $\gamma$-matrix plays a surprisingly important role in QFT. First, the Weyl spinors can be extracted from the Dirac spinors by applying appropriate projectors:
 \begin{equation}
-    P_L = \frac{1-\gamma^5}{2} = 
+    P_L = \frac{\mathds{1}-\gamma^5}{2} = 
     \begin{pmatrix}
         0 & 0 \\
-        0 & 1
+        0 & \mathds{1}
     \end{pmatrix}\,,
     \qquad
-    P_R = \frac{1+\gamma^5}{2} = 
+    P_R = \frac{\mathds{1}+\gamma^5}{2} = 
     \begin{pmatrix}
-        1 & 0 \\
+        \mathds{1} & 0 \\
         0 & 0
-    \end{pmatrix}\,.
+    \end{pmatrix}\,,
 \end{equation}
-Finally, we can associate $\psi_L$ and $\psi_R$ with the \textbf{helicity} of a particle, which is the projection of its spin onto the direction of motion. The corresponding helicity values for left- and right-handed particles are $-1$ and $+1$, respectively\footnote{Strictly speaking, the left- and right-handed Weyl spinors are eigenstates of the chirality operator $\gamma^5$. However, for $m=0$, helicity and chirality eigenstates coincide}.
-Weyl spinors will play a key role in the discussion of the spinor-helicity formalism in Section~\ref{sec:spinhelform}.
+according to $\psi_L(x) = P_L\psi(x)$ and $\psi_R(x) = P_R\psi(x)$. This allows us to associate $\psi_L$ and $\psi_R$ with the \textbf{helicity} of a particle, which is the projection of its spin onto the direction of motion. The corresponding helicity values for left- and right-handed particles are $-1$ and $+1$, respectively\footnote{Strictly speaking, the left- and right-handed Weyl spinors are eigenstates of the chirality operator $\gamma^5$. However, for $m=0$, helicity and chirality eigenstates coincide}. Weyl spinors will play a key role in the discussion of the spinor-helicity formalism in Section~\ref{sec:spinhelform}. Moreover, the $P_L$ projector appears in the $V-A$ coupling of the charged bosons $W^\pm$ to quarks and leptons, reflecting the fact that they interact only with left-handed fermions. Finally, as we will see in Sections~\ref{sec:Hbb} and ~\ref{sec:Wyj}, $\gamma^5$ allows us to introduce a pseudo-scalar invariant which is needed to capture the parity information of the kinematic phase-space. 
 
-\begin{equation} \label{eq:liealgebra}
-    [T^{a_1}, T^{a_2}] = \i f^{a_1a_2a_3} T^{a_3} \,.
-\end{equation}
-Working in the fundamental representation with normalisation $\tr(T^{a_1} T^{a_2}) = \mathrm{T}_F \, \delta^{a_1a_2}$, we multiply both sides by $T^{a_3}$ and take the trace:
-\begin{align} \label{eq:f(abc)}
-    \tr(T^{a_3}[T^{a_1}, T^{a_2}]) &= \i f^{a_1a_2a_4} \tr(T^{a_3} T^{a_4}) \nonumber \\
-    \tr(T^{a_3} T^{a_1} T^{a_2} - T^{a_3} T^{a_2} T^{a_1}) &= if^{a_1a_2a_4} \mathrm{T}_F \delta^{a_3a_4} \nonumber \\ 
-    \implies f^{a_1a_2a_3} &= -\frac{\i}{\mathrm{T}_F} \tr(T^{a_3} T^{a_1} T^{a_2} - T^{a_3} T^{a_2} T^{a_1}) \nonumber \\
-    &= -\frac{\i}{\mathrm{T}_F} \tr(T^{a_1} T^{a_2} T^{a_3} - T^{a_1}T^{a_3} T^{a_2}) \,.
-\end{align}
-
-Completeness relations for the spin-1 polarisation vectors:
+Apart from fermions, we also need to know how to deal with bosons. In particular, spin\=/1 bosons are described by vector fields $A^\mu$, which transform in the $(\frac{1}{2}, \frac{1}{2})$ representation of the Lorentz group. For the massive gauge bosons, that is $w^\pm$ and $Z^0$, imposing their equations of motions leads to three distinct solutions labelled as $\varepsilon^\mu_i(p)$ and referred to as polarisation vectors. On the other hand, massless gauge bosons, i.e. photons and gluons, have only two polarisations, which can be interpreted as helicity eigenstates. Similarly to the completeness relations for spin\=/1/2 fermions, Eq.~\ref{eq:completeness:fermions}, the polarisation vectors of \textit{massless} gauge bosons satisfy the following property:
 \begin{equation} \label{eq:completeness:bosons}
-    \sum_{s=\pm} \eps_\mu^s(p, q) (\eps_\nu^s(p, q))^{\ast} = -g_{\mu\nu} + \frac{p_\mu q_\nu + p_\nu q_\mu}{p \cdot q}
+    \sum_{s=\pm} \eps_\mu^s(p, q) (\eps_\nu^s(p, q))^{\ast} = -g_{\mu\nu} + \frac{p_\mu q_\nu + p_\nu q_\mu}{p \cdot q} \,,
 \end{equation}
-\JK{is this true only in the axial gauge? See Eq. 30 of `Calculating scattering amplitudes efficiently'. We don't use the axial gauge.}
-
-\begin{equation} \label{eq:QCDbetafunction2}
-    \text{QCD Beta function - asymptotic freedom}
+\JK{where $q$ is} \JK{is this true only in the axial gauge? See Eq. 30 of `Calculating scattering amplitudes efficiently'. We don't use the axial gauge.}
+\begin{equation}
+    \JK{Massive \; spin\; sum}
 \end{equation}
+Finally, \JK{Higgs}
 
 \section{Quantum Chromodynamics} \label{sec:QCD}
 In this thesis, we will concern ourselves with the study of interactions involving mainly quarks and gluons. As such, a brief refresher of the relevant information is in order. Standard Model particles carrying colour charge interact via the strong force, which is mathematically described by QCD. Its Lagrangian is given by:
@@ -103,9 +110,9 @@ where $(\tau^a)_{ij}$ are the eight $(3 \times 3)$ Gell-Mann matrices. Similarly
 \begin{equation}
     \tr (T^aT^b) = T_F \delta^{ab},
 \end{equation}
-with $T_F$ typically $\frac{1}{2}$ or $1$. Finally, let us list one more extremely useful identity satisfied by the fundamental generators:
+with $T_F$ typically $\frac{1}{2}$ or $1$. Finally, let us list one more extremely useful relation satisfied by the fundamental generators:
 \begin{equation} \label{eq:fierzcolour}
-    (T^a)_{ij} (T^a)_kl = T_F \left( \delta_{il} \delta{kj} - \frac{1}{N_c} \delta_{ij} \delta_{kj} \right)\,.
+    (T^a)_{ij} (T^a)_{kl} = T_F \left( \delta_{il} \delta{kj} - \frac{1}{N_c} \delta_{ij} \delta_{kj} \right)\,.
 \end{equation}
 
 The third type of field, the gluon field, is represented by $A^a_\mu$. It transforms in the adjoint representation, i.e. under the action of $N_c^2-1$ adjoint generators with dimensions $(N_c^2-1 \times  N_c^2-1)$:
@@ -120,13 +127,13 @@ SU($N_c$) generators in any representation (let us denote them $T_R^a$) satisfy 
 \end{equation}
 Note that for Abelian groups, the structure constants vanish. For the non-Abelian SU(3) group of QCD, they are non-vanishing, however, and it is useful to invert the above relation in terms of the fundamental generators:
 \begin{equation} \label{eq:fabc}
-    f^{abc} = \frac{\ii}{T_F} \tr \left(\left[T^a, T^b \right] T^c \right)\,.
+    f^{abc} = -\frac{\ii}{T_F} \tr \left(\left[T^a, T^b \right] T^c \right)\,.
 \end{equation}
 Thus, the structure constants, which are associated with 3- and 4-gluon vertices in Feynman diagrams, can be written in terms of traces of fundamental generators. This fact, along with Eq.~\ref{eq:fierzcolour}, becomes very useful when computing scattering amplitudes involving gluons, as we will see in Sec.~\ref{sec:colourdec}.
 
 In the process of deriving the gluon propagator, the notion of gauge invariance leads to two important qualitative features. First of all, just as in the case of the photon propagator in QED, instead of explicitly fixing the gauge, we find it convenient to introduce an auxiliary (i.e. non-propagating) field $\xi$. We write:
 \begin{equation} \label{eq:gaugefixing}
-    \mathcal{L}_{R_\xi} = -\frac{1}{2 \xi} \left(\partial_\mu A^a_\mu \right)^2\,,
+    \mathcal{L}_{R_\xi} = -\frac{1}{2 \xi} \left(\partial^\mu A^a_\mu \right)^2\,,
 \end{equation}
 which yields the gluon propagator:
 \begin{equation}
@@ -136,7 +143,7 @@ As an example, with term Eq.\ref{eq:gaugefixing} included in the full QCD Lagran
 
 The second feature, which appears only in non-Abelian gauge theories, is that gauge fixing the Lagrangian implies that not only the physical transverse modes of $A^a_\mu$ can propagate. To cancel the unphysical degrees of freedom propagating through gluon loops in Feynman diagrams, it is necessary to include in the Lagrangian Grassmann-valued fields $c$ and $\bar{c}$ representing Faddeev–Popov ghosts and antighosts, respectively:
 \begin{equation} \label{eq:ghosts}
-    \mathcal{L}_\text{ghosts} = (\partial_\mu \bar{c}^a)(\delta^{ac} \partial_\mu + g_s f^{abc} A^b_\mu ) c^c\,.
+    \mathcal{L}_\text{ghosts} = (\partial^\mu \bar{c}^{\,a})(\delta^{ac} \partial_\mu + g_s f^{abc} A^b_\mu ) c^c\,.
 \end{equation}
 These particles are not physical states. In fact, it is possible to work in non-covariant gauges, such as the axial gauge or the lightcone gauge, where ghosts decouple from physical particles and can be neglected. However, the cost of doing so is a more complicated expression for the gluon propagator, leading to greater tougher computations. Thus, we usually accept ghosts as a peculiarity of working with non-Abelian gauge theories and include them in our computations. Ghosts couple only to gluons and not to quarks. They receive their own Feynman rules for the propagator and the vertex.
 
