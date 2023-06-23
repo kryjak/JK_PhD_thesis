@@ -1,8 +1,9 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 \chapter{Introduction} \label{sec:intro}
-This chapter is meant to provide the reader with a bridge between elementary knowledge of QFT and state-of-the-art techniques that are used to extract predictions from these QFTs. We start by providing a brief summary of the relevant information about QFTs, and in particular QCD. Next, we describe how to connect this theory to physical observables that can be measured experimentally. This introduces the notion of a scattering amplitude, which will be the main focus of this thesis. Finally, we discuss the famous problem of divergences present in QFT computations and show how in the process of trying to keep them under control, we discover a surprising feature of the QCD interactions. At the end, we will be ready to tackle the more advanced topics presented in Chapter~\ref{sec:tools}.
+\JK{Motivation}
 
+The rest of this chapter is meant to provide the reader with a bridge between elementary knowledge of QFT and state-of-the-art techniques that are used to extract predictions from these QFTs. We start by providing a brief summary of the relevant information about QFTs, and in particular QCD. Next, we describe how to connect this theory to physical observables that can be measured experimentally. This introduces the notion of a scattering amplitude, which will be the main focus of this thesis. Finally, we discuss the famous problem of divergences present in QFT computations and show how in the process of trying to keep them under control, we discover a surprising feature of the QCD interactions. At the end, we will be ready to tackle the more advanced topics presented in Chapter~\ref{sec:tools}.
 \section{QFT background}
 The central equation of QFT which describes all spin\=/1/2 particles is the Dirac equation:
 \begin{equation} \label{eq:Dirac}
@@ -57,36 +58,39 @@ which in the Weyl representation of the $\gamma$-matrices is just:
 \begin{equation}
     \gamma^5 = 
     \begin{pmatrix}
-        \mathds{1} & 0 \\
-        0 & -\mathds{1}
+        -\mathds{1} & 0 \\
+        0 & \mathds{1}
     \end{pmatrix}\,.
 \end{equation}
 The fifth $\gamma$-matrix plays a surprisingly important role in QFT. First, the Weyl spinors can be extracted from the Dirac spinors by applying appropriate projectors:
 \begin{equation}
     P_L = \frac{\mathds{1}-\gamma^5}{2} = 
     \begin{pmatrix}
-        0 & 0 \\
-        0 & \mathds{1}
+        \mathds{1} & 0 \\
+        0 & 0
     \end{pmatrix}\,,
     \qquad
     P_R = \frac{\mathds{1}+\gamma^5}{2} = 
     \begin{pmatrix}
-        \mathds{1} & 0 \\
-        0 & 0
+        0 & 0 \\
+        0 & \mathds{1}
     \end{pmatrix}\,,
 \end{equation}
 according to $\psi_L(x) = P_L\psi(x)$ and $\psi_R(x) = P_R\psi(x)$. This allows us to associate $\psi_L$ and $\psi_R$ with the \textbf{helicity} of a particle, which is the projection of its spin onto the direction of motion. The corresponding helicity values for left- and right-handed particles are $-1$ and $+1$, respectively\footnote{Strictly speaking, the left- and right-handed Weyl spinors are eigenstates of the chirality operator $\gamma^5$. However, for $m=0$, helicity and chirality eigenstates coincide}. Weyl spinors will play a key role in the discussion of the spinor-helicity formalism in Section~\ref{sec:spinhelform}. Moreover, the $P_L$ projector appears in the $V-A$ coupling of the charged bosons $W^\pm$ to quarks and leptons, reflecting the fact that they interact only with left-handed fermions. Finally, as we will see in Sections~\ref{sec:Hbb} and ~\ref{sec:Wyj}, $\gamma^5$ allows us to introduce a pseudo-scalar invariant which is needed to capture the parity information of the kinematic phase-space. 
 
-Apart from fermions, we also need to know how to deal with bosons. In particular, spin\=/1 bosons are described by vector fields $A^\mu$, which transform in the $(\frac{1}{2}, \frac{1}{2})$ representation of the Lorentz group. For the massive gauge bosons, that is $w^\pm$ and $Z^0$, imposing their equations of motions leads to three distinct solutions labelled as $\varepsilon^\mu_i(p)$ and referred to as polarisation vectors. On the other hand, massless gauge bosons, i.e. photons and gluons, have only two polarisations, which can be interpreted as helicity eigenstates. Similarly to the completeness relations for spin\=/1/2 fermions, Eq.~\ref{eq:completeness:fermions}, the polarisation vectors of \textit{massless} gauge bosons satisfy the following property:
-\begin{equation} \label{eq:completeness:bosons}
-    \sum_{s=\pm} \eps_\mu^s(p, q) (\eps_\nu^s(p, q))^{\ast} = -g_{\mu\nu} + \frac{p_\mu q_\nu + p_\nu q_\mu}{p \cdot q} \,,
-\end{equation}
-\JK{where $q$ is} \JK{is this true only in the axial gauge? See Eq. 30 of `Calculating scattering amplitudes efficiently'. We don't use the axial gauge.}
+Apart from fermions, we also need to know how to deal with bosons. In particular, spin\=/1 bosons are described by vector fields $A^\mu$, which transform in the $(\frac{1}{2}, \frac{1}{2})$ representation of the Lorentz group. For the massive gauge bosons, that is $W^\pm$ and $Z^0$, imposing their equations of motions leads to three distinct solutions labelled as $\varepsilon^\mu_i(p)$ and referred to as polarisation vectors.
+Similarly to the completeness relations for spin\=/1/2 fermions, Eq.~\ref{eq:completeness:fermions}, the polarisation vectors of massive gauge bosons satisfy the following property:
 \begin{equation}
-    \JK{Massive \; spin\; sum}
+    \sum_{s=-,0,+} \eps_\mu^s(p) (\eps_\nu^s(p))^{\ast} = -g_{\mu\nu} + \frac{p_\mu q_\nu}{M^2} \,,
 \end{equation}
-Finally, \JK{Higgs}
+%Eq. 21.26 in Peskin or 85.16 in Srednicki (but remember he uses -+++ metric)
+On the other hand, massless gauge bosons, i.e. photons and gluons, have only two polarisations, which can be interpreted as helicity eigenstates. Their completeness relation reads:
+\begin{equation} \label{eq:completeness:bosons}
+    \sum_{s=-,+} \eps_\mu^s(p, q) (\eps_\nu^s(p, q))^{\ast} = -g_{\mu\nu} + \frac{p_\mu q_\nu + p_\nu q_\mu}{p \cdot q} \,,
+\end{equation}
+where $q^\mu \neq p^\nu$ is an arbitrary reference vector which is introduced to help decompose the four-component vectors $\varepsilon^\mu$ into two-component objects, similarly to the decomposition of the Dirac spinor into Weyl spinors. The end results of computations are independent of $q^\mu$, i.e. the reference vector is consistent with gauge invariance. 
 
+Finally, the Standard Model famously includes a scalar particle --- the Higgs boson. This boson is responsible for electroweak symmetry breaking and, as a direct consequence, giving mass to the electroweak gauge bosons $W^\pm$ and $Z^0$. 
 \section{Quantum Chromodynamics} \label{sec:QCD}
 In this thesis, we will concern ourselves with the study of interactions involving mainly quarks and gluons. As such, a brief refresher of the relevant information is in order. Standard Model particles carrying colour charge interact via the strong force, which is mathematically described by QCD. Its Lagrangian is given by:
 \begin{equation} \label{eq:QCDLagrangian}
