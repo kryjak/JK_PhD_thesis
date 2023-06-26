@@ -758,480 +758,502 @@
 %    \label{fig:}
 %\end{figure}
 
+%\begin{figure}
+%    \centering
+%    \begin{subfigure}{0.3\linewidth}
+%    \scalebox{0.8}{
+%		\begin{tikzpicture}
+%			\begin{feynman}[small]
+%				\vertex (v1);
+%				\vertex[above left=0.8cm of v1] (i1) {$p_1$};
+%				\vertex[right = of v1] (v2);
+%				\vertex[yshift=0.3cm, right = 0.8cm of v2] (v3);
+%				\vertex[above right = 0.8cm of v3] (f1) {$p_5$};			
+%				
+%				\vertex[below = of v1] (v7) ;
+%				\vertex[below left = 0.8cm of v7] (i2) {$p_4$};
+%				\vertex[right = of v7] (v6) ;
+%				\vertex[yshift=-0.3cm, right = 0.8cm of v6] (v5) ;
+%				\vertex[below right = 0.8cm of v5] (f3) {$p_3$};
+%				
+%				\vertex[xshift=0.6cm, yshift=0.2cm, below = of v3] (v4);
+%				\vertex[right = 0.8cm of v4] (f2) {$p_2$};
+%				
+%				\diagram*{
+%					(i1) -- (v1) -- (v2) -- (v3) -- (v4) -- (v5),
+%					(i2) -- (v7) -- (v6) -- (v5),
+%					(v3) -- [scalar, very thick] (f1),
+%					(v4) -- (f2),
+%					(v5) -- (f3),
+%					(v1) -- (v7),
+%					(v2) -- (v6),
+%				};
+%			\end{feynman}
+%		\end{tikzpicture}
+%    }
+%    \end{subfigure}
+%    \begin{subfigure}{0.3\linewidth}
+%    \scalebox{0.8}{
+%		\begin{tikzpicture}
+%			\begin{feynman}[small]
+%				\vertex (v1);
+%				\vertex[above left=0.8cm of v1] (i1) {$p_2$};
+%				\vertex[right = of v1] (v2);
+%				\vertex[yshift=0.3cm, right = 0.8cm of v2] (v3);
+%				\vertex[above right = 0.8cm of v3] (f1) {$p_5$};			
+%				
+%				\vertex[below = of v1] (v7) ;
+%				\vertex[below left = 0.8cm of v7] (i2) {$p_3$};
+%				\vertex[right = of v7] (v6) ;
+%				\vertex[yshift=-0.3cm, right = 0.8cm of v6] (v5) ;
+%				\vertex[below right = 0.8cm of v5] (f3) {$p_4$};
+%				
+%				\vertex[xshift=0.6cm, yshift=0.2cm, below = of v3] (v4);
+%				\vertex[right = 0.8cm of v4] (f2) {$p_1$};
+%				
+%				\diagram*{
+%					(i1) -- (v1) -- (v2) -- (v3) -- (v4) -- (v5),
+%					(i2) -- (v7) -- (v6) -- (v5),
+%					(v3) -- [scalar, very thick] (f1),
+%					(v4) -- (f2),
+%					(v5) -- (f3),
+%					(v1) -- (v7),
+%					(v2) -- (v6),
+%				};
+%			\end{feynman}
+%		\end{tikzpicture}
+%    }
+%    \end{subfigure}
+%    \begin{subfigure}{0.3\linewidth}
+%    \scalebox{0.8}{
+%		\begin{tikzpicture}
+%			\begin{feynman}[small]
+%				\vertex (v1);
+%				\vertex[above left=0.8cm of v1] (i1) {$p_4$};
+%				\vertex[right = of v1] (v2);
+%				\vertex[yshift=0.3cm, right = 0.8cm of v2] (v3);
+%				\vertex[above right = 0.8cm of v3] (f1) {$p_1$};			
+%				
+%				\vertex[below = of v1] (v7) ;
+%				\vertex[below left = 0.8cm of v7] (i2) {$p_3$};
+%				\vertex[right = of v7] (v6) ;
+%				\vertex[yshift=-0.3cm, right = 0.8cm of v6] (v5) ;
+%				\vertex[below right = 0.8cm of v5] (f3) {$p_2$};
+%				
+%				\vertex[xshift=0.6cm, yshift=0.2cm, below = of v3] (v4);
+%				\vertex[right = 0.8cm of v4] (f2) {$p_5$};
+%				
+%				\diagram*{
+%					(i1) -- (v1) -- (v2) -- (v3) -- (v4) -- (v5),
+%					(i2) -- (v7) -- (v6) -- (v5),
+%					(v3) -- (f1),
+%					(v4) -- [scalar, very thick] (f2),
+%					(v5) -- (f3),
+%					(v1) -- (v7),
+%					(v2) -- (v6),
+%				};
+%			\end{feynman}
+%		\end{tikzpicture}
+%    }
+%    \end{subfigure}
+%    \begin{subfigure}{0.3\linewidth}
+%    \scalebox{0.8}{
+%		\begin{tikzpicture}
+%			\begin{feynman}[small]
+%				\vertex (v1);
+%				\vertex[above left=0.8cm of v1] (i1) {$p_5$};
+%				\vertex[right = of v1] (v2);
+%				\vertex[yshift=0.3cm, right = 0.8cm of v2] (v3);
+%				\vertex[above right = 0.8cm of v3] (f1) {$p_1$};			
+%				
+%				\vertex[below = of v1] (v7) ;
+%				\vertex[below left = 0.8cm of v7] (i2) {$p_2$};
+%				\vertex[right = of v7] (v6) ;
+%				\vertex[yshift=-0.3cm, right = 0.8cm of v6] (v5) ;
+%				\vertex[below right = 0.8cm of v5] (f3) {$p_3$};
+%				
+%				\vertex[xshift=0.6cm, yshift=0.2cm, below = of v3] (v4);
+%				\vertex[right = 0.8cm of v4] (f2) {$p_4$};
+%				
+%				\diagram*{
+%					(i1) -- [scalar, very thick] (v1) -- (v2) -- (v3) -- (v4) -- (v5),
+%					(i2) -- (v7) -- (v6) -- (v5),
+%					(v3) -- (f1),
+%					(v4) -- (f2),
+%					(v5) -- (f3),
+%					(v1) -- (v7),
+%					(v2) -- (v6),
+%				};
+%			\end{feynman}
+%		\end{tikzpicture}
+%    }
+%    \end{subfigure}
+%    \begin{subfigure}{0.3\linewidth}
+%    \scalebox{0.8}{
+%		\begin{tikzpicture}
+%			\begin{feynman}[small]
+%				\vertex (v1);
+%				\vertex[above left=0.8cm of v1] (i1) {$p_5$};
+%				\vertex[right = of v1] (v2);
+%				\vertex[yshift=0.3cm, right = 0.8cm of v2] (v3);
+%				\vertex[above right = 0.8cm of v3] (f1) {$p_2$};			
+%				
+%				\vertex[below = of v1] (v7) ;
+%				\vertex[below left = 0.8cm of v7] (i2) {$p_1$};
+%				\vertex[right = of v7] (v6) ;
+%				\vertex[yshift=-0.3cm, right = 0.8cm of v6] (v5) ;
+%				\vertex[below right = 0.8cm of v5] (f3) {$p_4$};
+%				
+%				\vertex[xshift=0.6cm, yshift=0.2cm, below = of v3] (v4);
+%				\vertex[right = 0.8cm of v4] (f2) {$p_3$};
+%				
+%				\diagram*{
+%					(i1) -- [scalar, very thick] (v1) -- (v2) -- (v3) -- (v4) -- (v5),
+%					(i2) -- (v7) -- (v6) -- (v5),
+%					(v3) -- (f1),
+%					(v4) -- (f2),
+%					(v5) -- (f3),
+%					(v1) -- (v7),
+%					(v2) -- (v6),
+%				};
+%			\end{feynman}
+%		\end{tikzpicture}
+%    }
+%    \end{subfigure}
+%    \begin{subfigure}{0.3\linewidth}
+%    \scalebox{0.8}{
+%		\begin{tikzpicture}
+%			\begin{feynman}[small]
+%				\vertex (v1);
+%				\vertex[left = 0.8cm of v1] (i1) {$p_1$};
+%				\vertex[above right =1cm of v1] (v2);
+%				\vertex[below right =1cm of v1] (v3);				
+%				\vertex[yshift=0.3cm, right = 0.7cm of v2] (v4);	
+%				\vertex[yshift=-0.6cm, right = 0.7cm of v4] (v5);
+%				\vertex[yshift=-0.3cm, right = 0.7cm of v3] (v7);
+%				\vertex[yshift=0.6cm, right = 0.7cm of v7] (v6);	
+%				\vertex[above right = 0.8cm of v4] (i2) {$p_5$};
+%				\vertex[yshift=0.2cm, right = 0.8cm of v5] (i3) {$p_2$};
+%				\vertex[yshift=-0.2cm, right = 0.8cm of v6] (i4) {$p_3$};
+%				\vertex[below right = 0.8cm of v7] (i5) {$p_4$};
+%				
+%				\diagram*{
+%					(i1) -- (v1) -- (v2) -- (v3) -- (v1),
+%					(v2) -- (v4) -- (v5) -- (v6) -- (v7) -- (v3),
+%					(v4) -- [scalar, very thick] (i2),
+%					(v5) -- (i3),
+%					(v6) -- (i4),
+%					(v7) -- (i5),
+%				};
+%			\end{feynman}
+%		\end{tikzpicture}
+%    }
+%    \end{subfigure}
+%    \begin{subfigure}{0.3\linewidth}
+%    \scalebox{0.8}{
+%		\begin{tikzpicture}
+%			\begin{feynman}[small]
+%				\vertex (v1);
+%				\vertex[left = 0.8cm of v1] (i1) {$p_2$};
+%				\vertex[above right =1cm of v1] (v2);
+%				\vertex[below right =1cm of v1] (v3);				
+%				\vertex[yshift=0.3cm, right = 0.7cm of v2] (v4);	
+%				\vertex[yshift=-0.6cm, right = 0.7cm of v4] (v5);
+%				\vertex[yshift=-0.3cm, right = 0.7cm of v3] (v7);
+%				\vertex[yshift=0.6cm, right = 0.7cm of v7] (v6);	
+%				\vertex[above right = 0.8cm of v4] (i2) {$p_5$};
+%				\vertex[yshift=0.2cm, right = 0.8cm of v5] (i3) {$p_1$};
+%				\vertex[yshift=-0.2cm, right = 0.8cm of v6] (i4) {$p_4$};
+%				\vertex[below right = 0.8cm of v7] (i5) {$p_3$};
+%				
+%				\diagram*{
+%					(i1) -- (v1) -- (v2) -- (v3) -- (v1),
+%					(v2) -- (v4) -- (v5) -- (v6) -- (v7) -- (v3),
+%					(v4) -- [scalar, very thick] (i2),
+%					(v5) -- (i3),
+%					(v6) -- (i4),
+%					(v7) -- (i5),
+%				};
+%			\end{feynman}
+%		\end{tikzpicture}
+%    }
+%    \end{subfigure}
+%    \begin{subfigure}{0.3\linewidth}
+%    \scalebox{0.8}{
+%		\begin{tikzpicture}
+%			\begin{feynman}[small]
+%				\vertex (v1);
+%				\vertex[left = 0.8cm of v1] (i1) {$p_4$};
+%				\vertex[above right =1cm of v1] (v2);
+%				\vertex[below right =1cm of v1] (v3);				
+%				\vertex[yshift=0.3cm, right = 0.7cm of v2] (v4);	
+%				\vertex[yshift=-0.6cm, right = 0.7cm of v4] (v5);
+%				\vertex[yshift=-0.3cm, right = 0.7cm of v3] (v7);
+%				\vertex[yshift=0.6cm, right = 0.7cm of v7] (v6);	
+%				\vertex[above right = 0.8cm of v4] (i2) {$p_1$};
+%				\vertex[yshift=0.2cm, right = 0.8cm of v5] (i3) {$p_5$};
+%				\vertex[yshift=-0.2cm, right = 0.8cm of v6] (i4) {$p_2$};
+%				\vertex[below right = 0.8cm of v7] (i5) {$p_3$};
+%				
+%				\diagram*{
+%					(i1) -- (v1) -- (v2) -- (v3) -- (v1),
+%					(v2) -- (v4) -- (v5) -- (v6) -- (v7) -- (v3),
+%					(v4) -- (i2),
+%					(v5) -- [scalar, very thick] (i3),
+%					(v6) -- (i4),
+%					(v7) -- (i5),
+%				};
+%			\end{feynman}
+%		\end{tikzpicture}
+%    }
+%    \end{subfigure}
+%    \begin{subfigure}{0.3\linewidth}
+%    \scalebox{0.8}{
+%		\begin{tikzpicture}
+%			\begin{feynman}[small]
+%				\vertex (v1);
+%				\vertex[left = 0.8cm of v1] (i1) {$p_3$};
+%				\vertex[above right =1cm of v1] (v2);
+%				\vertex[below right =1cm of v1] (v3);				
+%				\vertex[yshift=0.3cm, right = 0.7cm of v2] (v4);	
+%				\vertex[yshift=-0.6cm, right = 0.7cm of v4] (v5);
+%				\vertex[yshift=-0.3cm, right = 0.7cm of v3] (v7);
+%				\vertex[yshift=0.6cm, right = 0.7cm of v7] (v6);	
+%				\vertex[above right = 0.8cm of v4] (i2) {$p_2$};
+%				\vertex[yshift=0.2cm, right = 0.8cm of v5] (i3) {$p_5$};
+%				\vertex[yshift=-0.2cm, right = 0.8cm of v6] (i4) {$p_1$};
+%				\vertex[below right = 0.8cm of v7] (i5) {$p_4$};
+%				
+%				\diagram*{
+%					(i1) -- (v1) -- (v2) -- (v3) -- (v1),
+%					(v2) -- (v4) -- (v5) -- (v6) -- (v7) -- (v3),
+%					(v4) -- (i2),
+%					(v5) -- [scalar, very thick] (i3),
+%					(v6) -- (i4),
+%					(v7) -- (i5),
+%				};
+%			\end{feynman}
+%		\end{tikzpicture}
+%    }
+%    \end{subfigure}
+%    \begin{subfigure}{0.3\linewidth}
+%    \scalebox{0.8}{
+%		\begin{tikzpicture}
+%			\begin{feynman}[small]
+%				\vertex (v1);
+%				\vertex[left = 0.8cm of v1] (i1) {$p_5$};
+%				\vertex[above right =1cm of v1] (v2);
+%				\vertex[below right =1cm of v1] (v3);				
+%				\vertex[yshift=0.3cm, right = 0.7cm of v2] (v4);	
+%				\vertex[yshift=-0.6cm, right = 0.7cm of v4] (v5);
+%				\vertex[yshift=-0.3cm, right = 0.7cm of v3] (v7);
+%				\vertex[yshift=0.6cm, right = 0.7cm of v7] (v6);	
+%				\vertex[above right = 0.8cm of v4] (i2) {$p_2$};
+%				\vertex[yshift=0.2cm, right = 0.8cm of v5] (i3) {$p_3$};
+%				\vertex[yshift=-0.2cm, right = 0.8cm of v6] (i4) {$p_4$};
+%				\vertex[below right = 0.8cm of v7] (i5) {$p_1$};
+%				
+%				\diagram*{
+%					(i1) -- [scalar, very thick] (v1) -- (v2) -- (v3) -- (v1),
+%					(v2) -- (v4) -- (v5) -- (v6) -- (v7) -- (v3),
+%					(v4) -- (i2),
+%					(v5) -- (i3),
+%					(v6) -- (i4),
+%					(v7) -- (i5),
+%				};
+%			\end{feynman}
+%		\end{tikzpicture}
+%    }
+%    \end{subfigure}
+%    \begin{subfigure}{0.3\linewidth}
+%    \scalebox{0.8}{
+%		\begin{tikzpicture}\hspace{0.5cm}
+%			\begin{feynman}[small]
+%				\vertex (v1);
+%				\vertex[yshift=0.2cm, right =1cm of v1] (v2);
+%				\vertex[xshift=0.7cm, below =1cm of v2] (v3);				
+%				\vertex[below = 1.5cm of v1] (v5);
+%				\vertex[yshift=-0.2cm, right =1cm of v5] (v4);
+%				\vertex[below=0.3cm of v1] (v6);
+%				\vertex[below=0.9cm of v6] (v7);
+%				
+%				\vertex[above left = 0.8cm of v1] (i1) {$p_5$};
+%				\vertex[above right = 0.8cm of v2] (i2) {$p_2$};
+%				\vertex[right = 0.8cm of v3] (i3) {$p_3$};
+%				\vertex[below right = 0.8cm of v4] (i4) {$p_4$};
+%				\vertex[below left = 0.8cm of v5] (i5) {$p_1$};
+%				
+%				\draw ([yshift=-0.75cm]v1) circle (0.45cm);
+%				
+%				\diagram*{
+%					(v6) -- (v1) -- (v2) -- (v3) -- (v4) -- (v5) -- (v7), 
+%					(v1) -- [scalar, very thick] (i1),
+%					(v2) -- (i2),
+%					(v3) -- (i3),
+%					(v4) -- (i4),
+%					(v5) -- (i5),
+%					
+%				};
+%			\end{feynman}
+%		\end{tikzpicture}
+%    }
+%    \end{subfigure}
+%    \begin{subfigure}{0.3\linewidth}
+%    \scalebox{0.8}{
+%		\begin{tikzpicture}\hspace{0.5cm}
+%			\begin{feynman}[small]
+%				\vertex (v1);
+%				\vertex[yshift=0.2cm, right =1cm of v1] (v2);
+%				\vertex[xshift=0.7cm, below =1cm of v2] (v3);				
+%				\vertex[below = 1.5cm of v1] (v5);
+%				\vertex[yshift=-0.2cm, right =1cm of v5] (v4);
+%				\vertex[below=0.3cm of v1] (v6);
+%				\vertex[below=0.9cm of v6] (v7);
+%				
+%				\vertex[above left = 0.8cm of v1] (i1) {$p_5$};
+%				\vertex[above right = 0.8cm of v2] (i2) {$p_1$};
+%				\vertex[right = 0.8cm of v3] (i3) {$p_4$};
+%				\vertex[below right = 0.8cm of v4] (i4) {$p_3$};
+%				\vertex[below left = 0.8cm of v5] (i5) {$p_2$};
+%				
+%				\draw ([yshift=-0.75cm]v1) circle (0.45cm);
+%				
+%				\diagram*{
+%					(v6) -- (v1) -- (v2) -- (v3) -- (v4) -- (v5) -- (v7), 
+%					(v1) -- [scalar, very thick] (i1),
+%					(v2) -- (i2),
+%					(v3) -- (i3),
+%					(v4) -- (i4),
+%					(v5) -- (i5),
+%					
+%				};
+%			\end{feynman}
+%		\end{tikzpicture}
+%    }
+%    \end{subfigure}
+%    \begin{subfigure}{0.3\linewidth}
+%    \scalebox{0.8}{
+%		\begin{tikzpicture}\hspace{0.5cm}
+%			\begin{feynman}[small]
+%				\vertex (v1);
+%				\vertex[yshift=0.2cm, right =1cm of v1] (v2);
+%				\vertex[xshift=0.7cm, below =1cm of v2] (v3);				
+%				\vertex[below = 1.5cm of v1] (v5);
+%				\vertex[yshift=-0.2cm, right =1cm of v5] (v4);
+%				\vertex[below=0.3cm of v1] (v6);
+%				\vertex[below=0.9cm of v6] (v7);
+%				
+%				\vertex[above left = 0.8cm of v1] (i1) {$p_1$};
+%				\vertex[above right = 0.8cm of v2] (i2) {$p_5$};
+%				\vertex[right = 0.8cm of v3] (i3) {$p_2$};
+%				\vertex[below right = 0.8cm of v4] (i4) {$p_3$};
+%				\vertex[below left = 0.8cm of v5] (i5) {$p_4$};
+%				
+%				\draw ([yshift=-0.75cm]v1) circle (0.45cm);
+%				
+%				\diagram*{
+%					(v6) -- (v1) -- (v2) -- (v3) -- (v4) -- (v5) -- (v7), 
+%					(v1) -- (i1),
+%					(v2) -- [scalar, very thick] (i2),
+%					(v3) -- (i3),
+%					(v4) -- (i4),
+%					(v5) -- (i5),
+%					
+%				};
+%			\end{feynman}
+%		\end{tikzpicture}
+%    }
+%    \end{subfigure}
+%    \begin{subfigure}{0.3\linewidth}
+%    \scalebox{0.8}{
+%		\begin{tikzpicture}\hspace{0.5cm}
+%			\begin{feynman}[small]
+%				\vertex (v1);
+%				\vertex[yshift=0.2cm, right =1cm of v1] (v2);
+%				\vertex[xshift=0.7cm, below =1cm of v2] (v3);				
+%				\vertex[below = 1.5cm of v1] (v5);
+%				\vertex[yshift=-0.2cm, right =1cm of v5] (v4);
+%				\vertex[below=0.3cm of v1] (v6);
+%				\vertex[below=0.9cm of v6] (v7);
+%				
+%				\vertex[above left = 0.8cm of v1] (i1) {$p_2$};
+%				\vertex[above right = 0.8cm of v2] (i2) {$p_5$};
+%				\vertex[right = 0.8cm of v3] (i3) {$p_1$};
+%				\vertex[below right = 0.8cm of v4] (i4) {$p_4$};
+%				\vertex[below left = 0.8cm of v5] (i5) {$p_3$};
+%				
+%				\draw ([yshift=-0.75cm]v1) circle (0.45cm);
+%				
+%				\diagram*{
+%					(v6) -- (v1) -- (v2) -- (v3) -- (v4) -- (v5) -- (v7), 
+%					(v1) -- (i1),
+%					(v2) -- [scalar, very thick] (i2),
+%					(v3) -- (i3),
+%					(v4) -- (i4),
+%					(v5) -- (i5),
+%					
+%				};
+%			\end{feynman}
+%		\end{tikzpicture}
+%        }
+%    \end{subfigure}
+%    \begin{subfigure}{0.3\linewidth}
+%        \scalebox{0.8}{
+%		\begin{tikzpicture}\hspace{0.5cm}
+%			\begin{feynman}[small]
+%				\vertex (v1);
+%				\vertex[yshift=0.2cm, right =1cm of v1] (v2);
+%				\vertex[xshift=0.7cm, below =1cm of v2] (v3);				
+%				\vertex[below = 1.5cm of v1] (v5);
+%				\vertex[yshift=-0.2cm, right =1cm of v5] (v4);
+%				\vertex[below=0.3cm of v1] (v6);
+%				\vertex[below=0.9cm of v6] (v7);
+%				
+%				\vertex[above left = 0.8cm of v1] (i1) {$p_4$};
+%				\vertex[above right = 0.8cm of v2] (i2) {$p_1$};
+%				\vertex[right = 0.8cm of v3] (i3) {$p_5$};
+%				\vertex[below right = 0.8cm of v4] (i4) {$p_2$};
+%				\vertex[below left = 0.8cm of v5] (i5) {$p_3$};
+%				
+%				\draw ([yshift=-0.75cm]v1) circle (0.45cm);
+%				
+%				\diagram*{
+%					(v6) -- (v1) -- (v2) -- (v3) -- (v4) -- (v5) -- (v7), 
+%					(v1) -- (i1),
+%					(v2) -- (i2),
+%					(v3) -- [scalar, very thick] (i3),
+%					(v4) -- (i4),
+%					(v5) -- (i5),
+%					
+%				};
+%			\end{feynman}
+%		\end{tikzpicture}
+%        }
+%    \end{subfigure}
+%    \caption{Maximal topologies present in the computation of the two-loop $\ppbbh$ amplitudes. The massive scalar particle is marked with a bold dashed line. They were previously also used in Ref.~\cite{Badger:2021nhg}}
+%    \label{fig:Hbbmaxtopos}
+%\end{figure}
+
 \begin{figure}
     \centering
-    \begin{subfigure}{0.3\linewidth}
-    \scalebox{0.8}{
-		\begin{tikzpicture}
-			\begin{feynman}[small]
-				\vertex (v1);
-				\vertex[above left=0.8cm of v1] (i1) {$p_1$};
-				\vertex[right = of v1] (v2);
-				\vertex[yshift=0.3cm, right = 0.8cm of v2] (v3);
-				\vertex[above right = 0.8cm of v3] (f1) {$p_5$};			
-				
-				\vertex[below = of v1] (v7) ;
-				\vertex[below left = 0.8cm of v7] (i2) {$p_4$};
-				\vertex[right = of v7] (v6) ;
-				\vertex[yshift=-0.3cm, right = 0.8cm of v6] (v5) ;
-				\vertex[below right = 0.8cm of v5] (f3) {$p_3$};
-				
-				\vertex[xshift=0.6cm, yshift=0.2cm, below = of v3] (v4);
-				\vertex[right = 0.8cm of v4] (f2) {$p_2$};
-				
-				\diagram*{
-					(i1) -- (v1) -- (v2) -- (v3) -- (v4) -- (v5),
-					(i2) -- (v7) -- (v6) -- (v5),
-					(v3) -- [scalar, very thick] (f1),
-					(v4) -- (f2),
-					(v5) -- (f3),
-					(v1) -- (v7),
-					(v2) -- (v6),
-				};
-			\end{feynman}
-		\end{tikzpicture}
-    }
-    \end{subfigure}
-    \begin{subfigure}{0.3\linewidth}
-    \scalebox{0.8}{
-		\begin{tikzpicture}
-			\begin{feynman}[small]
-				\vertex (v1);
-				\vertex[above left=0.8cm of v1] (i1) {$p_2$};
-				\vertex[right = of v1] (v2);
-				\vertex[yshift=0.3cm, right = 0.8cm of v2] (v3);
-				\vertex[above right = 0.8cm of v3] (f1) {$p_5$};			
-				
-				\vertex[below = of v1] (v7) ;
-				\vertex[below left = 0.8cm of v7] (i2) {$p_3$};
-				\vertex[right = of v7] (v6) ;
-				\vertex[yshift=-0.3cm, right = 0.8cm of v6] (v5) ;
-				\vertex[below right = 0.8cm of v5] (f3) {$p_4$};
-				
-				\vertex[xshift=0.6cm, yshift=0.2cm, below = of v3] (v4);
-				\vertex[right = 0.8cm of v4] (f2) {$p_1$};
-				
-				\diagram*{
-					(i1) -- (v1) -- (v2) -- (v3) -- (v4) -- (v5),
-					(i2) -- (v7) -- (v6) -- (v5),
-					(v3) -- [scalar, very thick] (f1),
-					(v4) -- (f2),
-					(v5) -- (f3),
-					(v1) -- (v7),
-					(v2) -- (v6),
-				};
-			\end{feynman}
-		\end{tikzpicture}
-    }
-    \end{subfigure}
-    \begin{subfigure}{0.3\linewidth}
-    \scalebox{0.8}{
-		\begin{tikzpicture}
-			\begin{feynman}[small]
-				\vertex (v1);
-				\vertex[above left=0.8cm of v1] (i1) {$p_4$};
-				\vertex[right = of v1] (v2);
-				\vertex[yshift=0.3cm, right = 0.8cm of v2] (v3);
-				\vertex[above right = 0.8cm of v3] (f1) {$p_1$};			
-				
-				\vertex[below = of v1] (v7) ;
-				\vertex[below left = 0.8cm of v7] (i2) {$p_3$};
-				\vertex[right = of v7] (v6) ;
-				\vertex[yshift=-0.3cm, right = 0.8cm of v6] (v5) ;
-				\vertex[below right = 0.8cm of v5] (f3) {$p_2$};
-				
-				\vertex[xshift=0.6cm, yshift=0.2cm, below = of v3] (v4);
-				\vertex[right = 0.8cm of v4] (f2) {$p_5$};
-				
-				\diagram*{
-					(i1) -- (v1) -- (v2) -- (v3) -- (v4) -- (v5),
-					(i2) -- (v7) -- (v6) -- (v5),
-					(v3) -- (f1),
-					(v4) -- [scalar, very thick] (f2),
-					(v5) -- (f3),
-					(v1) -- (v7),
-					(v2) -- (v6),
-				};
-			\end{feynman}
-		\end{tikzpicture}
-    }
-    \end{subfigure}
-    \begin{subfigure}{0.3\linewidth}
-    \scalebox{0.8}{
-		\begin{tikzpicture}
-			\begin{feynman}[small]
-				\vertex (v1);
-				\vertex[above left=0.8cm of v1] (i1) {$p_5$};
-				\vertex[right = of v1] (v2);
-				\vertex[yshift=0.3cm, right = 0.8cm of v2] (v3);
-				\vertex[above right = 0.8cm of v3] (f1) {$p_1$};			
-				
-				\vertex[below = of v1] (v7) ;
-				\vertex[below left = 0.8cm of v7] (i2) {$p_2$};
-				\vertex[right = of v7] (v6) ;
-				\vertex[yshift=-0.3cm, right = 0.8cm of v6] (v5) ;
-				\vertex[below right = 0.8cm of v5] (f3) {$p_3$};
-				
-				\vertex[xshift=0.6cm, yshift=0.2cm, below = of v3] (v4);
-				\vertex[right = 0.8cm of v4] (f2) {$p_4$};
-				
-				\diagram*{
-					(i1) -- [scalar, very thick] (v1) -- (v2) -- (v3) -- (v4) -- (v5),
-					(i2) -- (v7) -- (v6) -- (v5),
-					(v3) -- (f1),
-					(v4) -- (f2),
-					(v5) -- (f3),
-					(v1) -- (v7),
-					(v2) -- (v6),
-				};
-			\end{feynman}
-		\end{tikzpicture}
-    }
-    \end{subfigure}
-    \begin{subfigure}{0.3\linewidth}
-    \scalebox{0.8}{
-		\begin{tikzpicture}
-			\begin{feynman}[small]
-				\vertex (v1);
-				\vertex[above left=0.8cm of v1] (i1) {$p_5$};
-				\vertex[right = of v1] (v2);
-				\vertex[yshift=0.3cm, right = 0.8cm of v2] (v3);
-				\vertex[above right = 0.8cm of v3] (f1) {$p_2$};			
-				
-				\vertex[below = of v1] (v7) ;
-				\vertex[below left = 0.8cm of v7] (i2) {$p_1$};
-				\vertex[right = of v7] (v6) ;
-				\vertex[yshift=-0.3cm, right = 0.8cm of v6] (v5) ;
-				\vertex[below right = 0.8cm of v5] (f3) {$p_4$};
-				
-				\vertex[xshift=0.6cm, yshift=0.2cm, below = of v3] (v4);
-				\vertex[right = 0.8cm of v4] (f2) {$p_3$};
-				
-				\diagram*{
-					(i1) -- [scalar, very thick] (v1) -- (v2) -- (v3) -- (v4) -- (v5),
-					(i2) -- (v7) -- (v6) -- (v5),
-					(v3) -- (f1),
-					(v4) -- (f2),
-					(v5) -- (f3),
-					(v1) -- (v7),
-					(v2) -- (v6),
-				};
-			\end{feynman}
-		\end{tikzpicture}
-    }
-    \end{subfigure}
-    \begin{subfigure}{0.3\linewidth}
-    \scalebox{0.8}{
-		\begin{tikzpicture}
-			\begin{feynman}[small]
-				\vertex (v1);
-				\vertex[left = 0.8cm of v1] (i1) {$p_1$};
-				\vertex[above right =1cm of v1] (v2);
-				\vertex[below right =1cm of v1] (v3);				
-				\vertex[yshift=0.3cm, right = 0.7cm of v2] (v4);	
-				\vertex[yshift=-0.6cm, right = 0.7cm of v4] (v5);
-				\vertex[yshift=-0.3cm, right = 0.7cm of v3] (v7);
-				\vertex[yshift=0.6cm, right = 0.7cm of v7] (v6);	
-				\vertex[above right = 0.8cm of v4] (i2) {$p_5$};
-				\vertex[yshift=0.2cm, right = 0.8cm of v5] (i3) {$p_2$};
-				\vertex[yshift=-0.2cm, right = 0.8cm of v6] (i4) {$p_3$};
-				\vertex[below right = 0.8cm of v7] (i5) {$p_4$};
-				
-				\diagram*{
-					(i1) -- (v1) -- (v2) -- (v3) -- (v1),
-					(v2) -- (v4) -- (v5) -- (v6) -- (v7) -- (v3),
-					(v4) -- [scalar, very thick] (i2),
-					(v5) -- (i3),
-					(v6) -- (i4),
-					(v7) -- (i5),
-				};
-			\end{feynman}
-		\end{tikzpicture}
-    }
-    \end{subfigure}
-    \begin{subfigure}{0.3\linewidth}
-    \scalebox{0.8}{
-		\begin{tikzpicture}
-			\begin{feynman}[small]
-				\vertex (v1);
-				\vertex[left = 0.8cm of v1] (i1) {$p_2$};
-				\vertex[above right =1cm of v1] (v2);
-				\vertex[below right =1cm of v1] (v3);				
-				\vertex[yshift=0.3cm, right = 0.7cm of v2] (v4);	
-				\vertex[yshift=-0.6cm, right = 0.7cm of v4] (v5);
-				\vertex[yshift=-0.3cm, right = 0.7cm of v3] (v7);
-				\vertex[yshift=0.6cm, right = 0.7cm of v7] (v6);	
-				\vertex[above right = 0.8cm of v4] (i2) {$p_5$};
-				\vertex[yshift=0.2cm, right = 0.8cm of v5] (i3) {$p_1$};
-				\vertex[yshift=-0.2cm, right = 0.8cm of v6] (i4) {$p_4$};
-				\vertex[below right = 0.8cm of v7] (i5) {$p_3$};
-				
-				\diagram*{
-					(i1) -- (v1) -- (v2) -- (v3) -- (v1),
-					(v2) -- (v4) -- (v5) -- (v6) -- (v7) -- (v3),
-					(v4) -- [scalar, very thick] (i2),
-					(v5) -- (i3),
-					(v6) -- (i4),
-					(v7) -- (i5),
-				};
-			\end{feynman}
-		\end{tikzpicture}
-    }
-    \end{subfigure}
-    \begin{subfigure}{0.3\linewidth}
-    \scalebox{0.8}{
-		\begin{tikzpicture}
-			\begin{feynman}[small]
-				\vertex (v1);
-				\vertex[left = 0.8cm of v1] (i1) {$p_4$};
-				\vertex[above right =1cm of v1] (v2);
-				\vertex[below right =1cm of v1] (v3);				
-				\vertex[yshift=0.3cm, right = 0.7cm of v2] (v4);	
-				\vertex[yshift=-0.6cm, right = 0.7cm of v4] (v5);
-				\vertex[yshift=-0.3cm, right = 0.7cm of v3] (v7);
-				\vertex[yshift=0.6cm, right = 0.7cm of v7] (v6);	
-				\vertex[above right = 0.8cm of v4] (i2) {$p_1$};
-				\vertex[yshift=0.2cm, right = 0.8cm of v5] (i3) {$p_5$};
-				\vertex[yshift=-0.2cm, right = 0.8cm of v6] (i4) {$p_2$};
-				\vertex[below right = 0.8cm of v7] (i5) {$p_3$};
-				
-				\diagram*{
-					(i1) -- (v1) -- (v2) -- (v3) -- (v1),
-					(v2) -- (v4) -- (v5) -- (v6) -- (v7) -- (v3),
-					(v4) -- (i2),
-					(v5) -- [scalar, very thick] (i3),
-					(v6) -- (i4),
-					(v7) -- (i5),
-				};
-			\end{feynman}
-		\end{tikzpicture}
-    }
-    \end{subfigure}
-    \begin{subfigure}{0.3\linewidth}
-    \scalebox{0.8}{
-		\begin{tikzpicture}
-			\begin{feynman}[small]
-				\vertex (v1);
-				\vertex[left = 0.8cm of v1] (i1) {$p_3$};
-				\vertex[above right =1cm of v1] (v2);
-				\vertex[below right =1cm of v1] (v3);				
-				\vertex[yshift=0.3cm, right = 0.7cm of v2] (v4);	
-				\vertex[yshift=-0.6cm, right = 0.7cm of v4] (v5);
-				\vertex[yshift=-0.3cm, right = 0.7cm of v3] (v7);
-				\vertex[yshift=0.6cm, right = 0.7cm of v7] (v6);	
-				\vertex[above right = 0.8cm of v4] (i2) {$p_2$};
-				\vertex[yshift=0.2cm, right = 0.8cm of v5] (i3) {$p_5$};
-				\vertex[yshift=-0.2cm, right = 0.8cm of v6] (i4) {$p_1$};
-				\vertex[below right = 0.8cm of v7] (i5) {$p_4$};
-				
-				\diagram*{
-					(i1) -- (v1) -- (v2) -- (v3) -- (v1),
-					(v2) -- (v4) -- (v5) -- (v6) -- (v7) -- (v3),
-					(v4) -- (i2),
-					(v5) -- [scalar, very thick] (i3),
-					(v6) -- (i4),
-					(v7) -- (i5),
-				};
-			\end{feynman}
-		\end{tikzpicture}
-    }
-    \end{subfigure}
-    \begin{subfigure}{0.3\linewidth}
-    \scalebox{0.8}{
-		\begin{tikzpicture}
-			\begin{feynman}[small]
-				\vertex (v1);
-				\vertex[left = 0.8cm of v1] (i1) {$p_5$};
-				\vertex[above right =1cm of v1] (v2);
-				\vertex[below right =1cm of v1] (v3);				
-				\vertex[yshift=0.3cm, right = 0.7cm of v2] (v4);	
-				\vertex[yshift=-0.6cm, right = 0.7cm of v4] (v5);
-				\vertex[yshift=-0.3cm, right = 0.7cm of v3] (v7);
-				\vertex[yshift=0.6cm, right = 0.7cm of v7] (v6);	
-				\vertex[above right = 0.8cm of v4] (i2) {$p_2$};
-				\vertex[yshift=0.2cm, right = 0.8cm of v5] (i3) {$p_3$};
-				\vertex[yshift=-0.2cm, right = 0.8cm of v6] (i4) {$p_4$};
-				\vertex[below right = 0.8cm of v7] (i5) {$p_1$};
-				
-				\diagram*{
-					(i1) -- [scalar, very thick] (v1) -- (v2) -- (v3) -- (v1),
-					(v2) -- (v4) -- (v5) -- (v6) -- (v7) -- (v3),
-					(v4) -- (i2),
-					(v5) -- (i3),
-					(v6) -- (i4),
-					(v7) -- (i5),
-				};
-			\end{feynman}
-		\end{tikzpicture}
-    }
-    \end{subfigure}
-    \begin{subfigure}{0.3\linewidth}
-    \scalebox{0.8}{
-		\begin{tikzpicture}\hspace{0.5cm}
-			\begin{feynman}[small]
-				\vertex (v1);
-				\vertex[yshift=0.2cm, right =1cm of v1] (v2);
-				\vertex[xshift=0.7cm, below =1cm of v2] (v3);				
-				\vertex[below = 1.5cm of v1] (v5);
-				\vertex[yshift=-0.2cm, right =1cm of v5] (v4);
-				\vertex[below=0.3cm of v1] (v6);
-				\vertex[below=0.9cm of v6] (v7);
-				
-				\vertex[above left = 0.8cm of v1] (i1) {$p_5$};
-				\vertex[above right = 0.8cm of v2] (i2) {$p_2$};
-				\vertex[right = 0.8cm of v3] (i3) {$p_3$};
-				\vertex[below right = 0.8cm of v4] (i4) {$p_4$};
-				\vertex[below left = 0.8cm of v5] (i5) {$p_1$};
-				
-				\draw ([yshift=-0.75cm]v1) circle (0.45cm);
-				
-				\diagram*{
-					(v6) -- (v1) -- (v2) -- (v3) -- (v4) -- (v5) -- (v7), 
-					(v1) -- [scalar, very thick] (i1),
-					(v2) -- (i2),
-					(v3) -- (i3),
-					(v4) -- (i4),
-					(v5) -- (i5),
-					
-				};
-			\end{feynman}
-		\end{tikzpicture}
-    }
-    \end{subfigure}
-    \begin{subfigure}{0.3\linewidth}
-    \scalebox{0.8}{
-		\begin{tikzpicture}\hspace{0.5cm}
-			\begin{feynman}[small]
-				\vertex (v1);
-				\vertex[yshift=0.2cm, right =1cm of v1] (v2);
-				\vertex[xshift=0.7cm, below =1cm of v2] (v3);				
-				\vertex[below = 1.5cm of v1] (v5);
-				\vertex[yshift=-0.2cm, right =1cm of v5] (v4);
-				\vertex[below=0.3cm of v1] (v6);
-				\vertex[below=0.9cm of v6] (v7);
-				
-				\vertex[above left = 0.8cm of v1] (i1) {$p_5$};
-				\vertex[above right = 0.8cm of v2] (i2) {$p_1$};
-				\vertex[right = 0.8cm of v3] (i3) {$p_4$};
-				\vertex[below right = 0.8cm of v4] (i4) {$p_3$};
-				\vertex[below left = 0.8cm of v5] (i5) {$p_2$};
-				
-				\draw ([yshift=-0.75cm]v1) circle (0.45cm);
-				
-				\diagram*{
-					(v6) -- (v1) -- (v2) -- (v3) -- (v4) -- (v5) -- (v7), 
-					(v1) -- [scalar, very thick] (i1),
-					(v2) -- (i2),
-					(v3) -- (i3),
-					(v4) -- (i4),
-					(v5) -- (i5),
-					
-				};
-			\end{feynman}
-		\end{tikzpicture}
-    }
-    \end{subfigure}
-    \begin{subfigure}{0.3\linewidth}
-    \scalebox{0.8}{
-		\begin{tikzpicture}\hspace{0.5cm}
-			\begin{feynman}[small]
-				\vertex (v1);
-				\vertex[yshift=0.2cm, right =1cm of v1] (v2);
-				\vertex[xshift=0.7cm, below =1cm of v2] (v3);				
-				\vertex[below = 1.5cm of v1] (v5);
-				\vertex[yshift=-0.2cm, right =1cm of v5] (v4);
-				\vertex[below=0.3cm of v1] (v6);
-				\vertex[below=0.9cm of v6] (v7);
-				
-				\vertex[above left = 0.8cm of v1] (i1) {$p_1$};
-				\vertex[above right = 0.8cm of v2] (i2) {$p_5$};
-				\vertex[right = 0.8cm of v3] (i3) {$p_2$};
-				\vertex[below right = 0.8cm of v4] (i4) {$p_3$};
-				\vertex[below left = 0.8cm of v5] (i5) {$p_4$};
-				
-				\draw ([yshift=-0.75cm]v1) circle (0.45cm);
-				
-				\diagram*{
-					(v6) -- (v1) -- (v2) -- (v3) -- (v4) -- (v5) -- (v7), 
-					(v1) -- (i1),
-					(v2) -- [scalar, very thick] (i2),
-					(v3) -- (i3),
-					(v4) -- (i4),
-					(v5) -- (i5),
-					
-				};
-			\end{feynman}
-		\end{tikzpicture}
-    }
-    \end{subfigure}
-    \begin{subfigure}{0.3\linewidth}
-    \scalebox{0.8}{
-		\begin{tikzpicture}\hspace{0.5cm}
-			\begin{feynman}[small]
-				\vertex (v1);
-				\vertex[yshift=0.2cm, right =1cm of v1] (v2);
-				\vertex[xshift=0.7cm, below =1cm of v2] (v3);				
-				\vertex[below = 1.5cm of v1] (v5);
-				\vertex[yshift=-0.2cm, right =1cm of v5] (v4);
-				\vertex[below=0.3cm of v1] (v6);
-				\vertex[below=0.9cm of v6] (v7);
-				
-				\vertex[above left = 0.8cm of v1] (i1) {$p_2$};
-				\vertex[above right = 0.8cm of v2] (i2) {$p_5$};
-				\vertex[right = 0.8cm of v3] (i3) {$p_1$};
-				\vertex[below right = 0.8cm of v4] (i4) {$p_4$};
-				\vertex[below left = 0.8cm of v5] (i5) {$p_3$};
-				
-				\draw ([yshift=-0.75cm]v1) circle (0.45cm);
-				
-				\diagram*{
-					(v6) -- (v1) -- (v2) -- (v3) -- (v4) -- (v5) -- (v7), 
-					(v1) -- (i1),
-					(v2) -- [scalar, very thick] (i2),
-					(v3) -- (i3),
-					(v4) -- (i4),
-					(v5) -- (i5),
-					
-				};
-			\end{feynman}
-		\end{tikzpicture}
-        }
-    \end{subfigure}
-    \begin{subfigure}{0.3\linewidth}
-        \scalebox{0.8}{
-		\begin{tikzpicture}\hspace{0.5cm}
-			\begin{feynman}[small]
-				\vertex (v1);
-				\vertex[yshift=0.2cm, right =1cm of v1] (v2);
-				\vertex[xshift=0.7cm, below =1cm of v2] (v3);				
-				\vertex[below = 1.5cm of v1] (v5);
-				\vertex[yshift=-0.2cm, right =1cm of v5] (v4);
-				\vertex[below=0.3cm of v1] (v6);
-				\vertex[below=0.9cm of v6] (v7);
-				
-				\vertex[above left = 0.8cm of v1] (i1) {$p_4$};
-				\vertex[above right = 0.8cm of v2] (i2) {$p_1$};
-				\vertex[right = 0.8cm of v3] (i3) {$p_5$};
-				\vertex[below right = 0.8cm of v4] (i4) {$p_2$};
-				\vertex[below left = 0.8cm of v5] (i5) {$p_3$};
-				
-				\draw ([yshift=-0.75cm]v1) circle (0.45cm);
-				
-				\diagram*{
-					(v6) -- (v1) -- (v2) -- (v3) -- (v4) -- (v5) -- (v7), 
-					(v1) -- (i1),
-					(v2) -- (i2),
-					(v3) -- [scalar, very thick] (i3),
-					(v4) -- (i4),
-					(v5) -- (i5),
-					
-				};
-			\end{feynman}
-		\end{tikzpicture}
-        }
-    \end{subfigure}
-    \caption{Maximal topologies present in the computation of the two-loop $\ppbbh$ amplitudes. The massive scalar particle is marked with a bold dashed line. They were previously also used in Ref.~\cite{Badger:2021nhg}}
-    \label{fig:Hbbmaxtopos}
+	\begin{tikzpicture}
+		\node (start) at (0,0) {};
+		\node (startcaption) at ([yshift=-2pt]start.south) {$s_0$};
+		\node (i1) [right of=start, xshift=1em, yshift=0.5em] {};
+		\node (i2) [right of=i1, xshift=0.9em, yshift=-1.8em] {};
+		\node (finish) [right of=i2, xshift=1em, yshift=1em] {};
+		\node (finishcaption) at ([yshift=-2pt]finish.south) {$s$};
+        \node (label1) [right of=i1, xshift=-0.6cm, yshift=-0.2cm] {};
+        \node (label2) [above right= 1cm of label1] {$\gamma(\lambda)$};
+		
+		\foreach \i in {start,i1,i2,finish}{
+			\filldraw[red] (\i.center) circle (0.1em);
+			\draw[red,dashed] (\i.center) circle (2.1em);
+		}
+		\draw (start.center) to [out=70,in=250] (i1.center) to [out=70,in=180] (i2.center) to [out=0,in=90] (finish.center);
+        \draw [{Stealth[scale=1.5]}-] (label1) -- (label2);
+	\end{tikzpicture}
+    \caption{A pictorial representation of the generalised series expansion method. We connect the kinematic point $s_0$, at which the solution to the DEs is known, to the target point $s$ with a one-dimensional path $\gamma(\lambda)$. The path is split into (usually, but not necessarily, straight) line segments as necessitated by singularities. Each segment admits a solution in the form of a series expansion and has a certain radius of convergence (marked by dashed circles). Stitching together the solutions from individual segments allows us to transport the solution from $s_0$ to $s$.}
+    \label{fig:seriesexp}
 \end{figure}
-
 \end{document}

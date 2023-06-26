@@ -1189,12 +1189,36 @@ where $|\text{MI}| = |\text{MI}_{\sum_T T}|$, as defined earlier. This additiona
 \section{Evaluating mater integrals}
 
 \begin{itemize}
-    \item \textbf{Sector decomposition}: This method relies on the parametrisation of integrals in terms of the Feynman parameters and the $\mathcal{U}$ and $\mathcal{F}$ Symanzik polynomials. The integration phase-space of the parameters is split into sectors and subsectors based on a relative ordering between the parameters. This allows us to resolve the singularities present in the integrals and place them in simple functions that can be integrated analytically. What remains to be computed are the coefficients of the $\eps$ poles. They receive contributions from finite integrals only and are computed numerically~\cite{Binoth:2000ps, Binoth:2003ak}. There exist several public codes implementing this algorithm~\cite{Bogner:2007cr, Smirnov:2015mct, Borowka:2015mxa, Heinrich:2023til}.
-    \item \textbf{Expansion by regions}: In this method, the integration domain of the loop momenta is divided into appropriate regions where a certain kinematic quantity is small, e.g. $m_i^2/p_j^2 \ll 1$. For each such limit, the integrand is expanded in the corresponding small parameter, resulting in a simpler function. The expanded integrands are then integrated over the \textit{full} space of loop momenta. With certain conditions ~\cite{Jantzen:2011nz}, the original integral can be recovered by summing the individual contributions from the various regions~\cite{Beneke:1997zp, Smirnov:1998vk, Smirnov:1999bza, Pak:2010pt, Ananthanarayan:2018tog}. For numerical implementation, see Refs.~\cite{Ananthanarayan:2020ptw, Jantzen:2012mw, Smirnov:2015mct, Heinrich:2021dbf}. 
-    \item \textbf{Generalised series expansion}: 
+    \item \textbf{Sector decomposition}: this method relies on the parametrisation of integrals in terms of the Feynman parameters and the $\mathcal{U}$ and $\mathcal{F}$ Symanzik polynomials. The integration phase-space of the parameters is split into sectors and subsectors based on a relative ordering between the parameters. This allows us to resolve the singularities present in the integrals and place them in simple functions that can be integrated analytically. What remains to be computed are the coefficients of the $\eps$ poles. They receive contributions from finite integrals only and are computed numerically~\cite{Binoth:2000ps, Binoth:2003ak}. There exist several public codes implementing this algorithm~\cite{Bogner:2007cr, Smirnov:2015mct, Borowka:2015mxa, Heinrich:2023til}.
+    \item \textbf{Expansion by regions}: in this method, the integration domain of the loop momenta is divided into appropriate regions where a certain kinematic quantity is small, e.g. $m_i^2/p_j^2 \ll 1$. For each such limit, the integrand is expanded in the corresponding small parameter, resulting in a simpler function. The expanded integrands are then integrated over the \textit{full} space of loop momenta. With certain conditions ~\cite{Jantzen:2011nz}, the original integral can be recovered by summing the individual contributions from the various regions~\cite{Beneke:1997zp, Smirnov:1998vk, Smirnov:1999bza, Pak:2010pt, Ananthanarayan:2018tog}. For numerical implementation, see Refs.~\cite{Ananthanarayan:2020ptw, Jantzen:2012mw, Smirnov:2015mct, Heinrich:2021dbf}. 
+    \item \textbf{Generalised series expansion}: For integrals satisfying canonical DEs in Eq.~\ref{eq:canonicalDEsoneform}, it is possible to integrate these DEs along a one-dimensional line segment\footnote{We stress that this method is applicable not only to canonical MIs, but to any set of functions satisfying the canonical DEs. We will explore this further in Chapter~\ref{sec:Hbb}.}. If we know the value of the integrals at one point in the kinematic phase space (i.e. the boundary condition of the DEs) and want to know their value at another point, we construct a path $\gamma(\lambda)$ between them and solve the DEs along it. Thus, the solution is reduced to a one-dimensional problem in $\lambda$, with all the kinematic invariants set to numbers. The solution is then obtained by using an ansatz in the form of a series expansion. 
+
+Naturally, each such series has a certain radius of convergence within which it is valid. Typically, it is the distance from the centre point of the expansion to the nearest singularity. Thus, in order to obtain the full solution across the entire length of $\gamma(\lambda)$, in practice we split the path into multiple (usually straight line) segments and solve the DEs on them one by one. The value of the solution from the previous segment can then serve as a boundary condition for solving the DEs in the subsequent segment~\cite{Moriello:2019yhu, Bonciani:2019jyb, Frellesvig:2019byn}. We provide a more intuitive, graphical representation of this idea in Fig.~\ref{fig:seriesexp}. Recently, a public implementation of this method has been completed in Ref.~\cite{Hidding:2020ytt}.
     \item \textbf{Auxiliary mass flow}:
 \end{itemize}
-\section{Syzygy relations} \label{sec:syzygies} 
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+		\node (start) at (0,0) {};
+		\node (startcaption) at ([yshift=-2pt]start.south) {$s_0$};
+		\node (i1) [right of=start, xshift=1em, yshift=0.5em] {};
+		\node (i2) [right of=i1, xshift=0.9em, yshift=-1.8em] {};
+		\node (finish) [right of=i2, xshift=1em, yshift=1em] {};
+		\node (finishcaption) at ([yshift=-2pt]finish.south) {$s$};
+        \node (label1) [right of=i1, xshift=-0.6cm, yshift=-0.2cm] {};
+        \node (label2) [above right= 1cm of label1] {$\gamma(\lambda)$};
+		
+		\foreach \i in {start,i1,i2,finish}{
+			\filldraw[red] (\i.center) circle (0.1em);
+			\draw[red,dashed] (\i.center) circle (2.1em);
+		}
+		\draw (start.center) to [out=70,in=250] (i1.center) to [out=70,in=180] (i2.center) to [out=0,in=90] (finish.center);
+        \draw [{Stealth[scale=1.5]}-] (label1) -- (label2);
+	\end{tikzpicture}
+    \caption{A pictorial representation of the generalised series expansion method. We connect the kinematic point $s_0$, at which the solution to the DEs is known, to the target point $s$ with a one-dimensional path $\gamma(\lambda)$. The path is split into (usually, but not necessarily, straight) line segments as necessitated by singularities. Each segment admits a solution in the form of a series expansion and has a certain radius of convergence (marked by dashed circles). Stitching together the solutions from individual segments allows us to transport the solution from $s_0$ to $s$.}
+    \label{fig:seriesexp}
+\end{figure}
+%\section{Syzygy relations} \label{sec:syzygies} 
 %
 \section{Special functions} \label{sec:specialfunctions}
 %\subsection{Pentagon functions} \label{sec:Pentagon functions}
