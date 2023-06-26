@@ -1186,6 +1186,35 @@ In practice, we obtain these missing relations between MIs by performing their r
     \text{MI}_{i} = \sum_j^{|\text{MI}|} f_{ij}(p, \eps) \times \text{MI}_j \qquad i \in \left\{1, \ldots, \sum_T |\text{MI}_T|\right\}\,,
 \end{equation}
 where $|\text{MI}| = |\text{MI}_{\sum_T T}|$, as defined earlier. This additional reduction does not present such complexity as the reduction needed for the amplitude. Firstly, the identities generated through the Laporta algorithm only need to cover the rank and number of dotted propagators present in the MI bases, rather than the full amplitude. Secondly, all the missing relations between MIs can be worked out just once and they will be applicable to any process at the same loop order and number of particles, since the IBP identities are sensitive only to the kinematic setup. Finally, an extremely useful property of UT integrals is that any inter-family relations between them cannot contain any dependence on the kinematic variables, i.e. $f(p, \eps) \rightarrow f(\eps)$. Thus, when using UT bases, this additional reduction can be performed with the kinematic variables set to random values (subject to momentum conservation). Having obtained the missing relations between MIs, we apply them to our amplitude and collect the coefficients of the true, linearly independent MIs. In the end, this is equivalent to performing the traditional IBP reduction of all families considered together simultaneously, but much more efficient.
+\section{Evaluating mater integrals}
+
+\begin{itemize}
+    \item \textbf{Sector decomposition}: This method relies on the parametrisation of integrals in terms of the Feynman parameters and the $\mathcal{U}$ and $\mathcal{F}$ Symanzik polynomials. The integration phase-space of the parameters is split into sectors and subsectors based on a relative ordering between the parameters. This allows us to resolve the singularities present in the integrals and place them in simple functions that can be integrated analytically. What remains to be computed are the coefficients of the $\eps$ poles. They receive contributions from finite integrals only and are computed numerically~\cite{Binoth:2000ps, Binoth:2003ak}. There exist several public codes implementing this algorithm~\cite{Bogner:2007cr, Smirnov:2015mct, Borowka:2015mxa, Heinrich:2023til}.
+    \item \textbf{Expansion by regions}: %If a given Feynman integral depends on kinematic invariants
+and masses which essentially differ in scale, a natural idea
+is to expand it in ratios of small and large parameters. As a
+result, the integral is written as a series of simpler quantities
+than the original integral itself and it can be substituted by a
+sufficiently large number of terms of such an expansion.
+Divide the space of the loop momenta into various
+regions and, in every region, expand the integrand in a
+Taylor series with respect to the parameters that are
+considered small there.
+Integrate the integrand, expanded in the appropriate
+way in every region, over the whole integration domain
+of the loop momenta.
+A remarkable feature of this method is that in most
+cases, it allows to reproduce the result for the original integral if all regions
+are identified correctly and summed up, after having performed the integra-
+tions in the various regions over the full integration domain. In Ref. [21],
+the relations between the expanded integrals and the original integral have
+been investigated in detail with the aim to clearly identify the conditions
+under which the original integral can be fully reproduced by summing up
+the individual regions. It was shown that overlap contributions usually yield
+scaleless integrals which can be set to zero if they are regulated appropriately
+    \item \textbf{Generalised series expansion}:
+    \item \textbf{Auxiliary mass flow}:
+\end{itemize}
 \section{Syzygy relations} \label{sec:syzygies} 
 %
 \section{Special functions} \label{sec:specialfunctions}
