@@ -1239,8 +1239,7 @@ We make two final remarks. First, we emphasise that the finite remainder is depe
 \begin{equation}
     F_n^{(L)} \left(1^{h_1}, 2^{h_2}, \ldots, n^{h_n} \right) = \sum_i r_i(p, \eps) \times \text{mon}_i \big(\{f_i(p)\}\big)\,.
 \end{equation}
-While the special functions $\{f_i\}$ that come from the MIs are complicated functions with poles and branch cuts, the coefficients $r_i$ are rational functions that are computed and reconstructed from finite fields. We remind the reader that they will be usually expressed in terms of the momentum twistors $\mathbf{x}$. 
-%\section{Reconstruction} \label{sec:reconstruction}
-%Describe the various reconstruction tricks?
+While the special functions $\{f_i\}$ that come from the MIs are complicated functions with poles and branch cuts, the coefficients $r_i$ are rational functions that are computed and reconstructed from finite fields. We remind the reader that they will be usually expressed in terms of the momentum twistors $\mathbf{x}$. In practical applications for computations at the state of the art, the reconstruction processes can be enormously expensive even on modern CPU clusters. For this reason, we find it unavoidable to implement several tools which simplify the coefficients before we need to reconstruct them. They lower the polynomial degrees (see Sec.~\ref{sec:ratfuncs}) and will be covered in detail when discussing the reconstruction strategies in Chapters~\ref{sec:Hbb} and \ref{sec:Wyj}.
 
+We are now ready to take on the computation of scattering amplitudes at the cutting edge of current knowledge. In the next two chapters, we will use the workflow developed here to tackle two-loop, five-point amplitudes with an external mass for two processes directly relevant to LHC phenomenology, $\ppbbh$ and $\ppWgj$.
 \end{document}
