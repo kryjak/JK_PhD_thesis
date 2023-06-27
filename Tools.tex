@@ -625,8 +625,6 @@ In order to agree which integrals are considered `simpler', it is useful to defi
     H \left(\nu_i - \frac{1}{2} \right) = \mathbf{\theta}_i \qquad i \in \{1, \ldots, N\} \,,
 \end{equation}
 where $H(x)$ is the Heaviside step function. For example, an integral defined by the indices $\bm{\nu} = \{1, 0, 2, 1\}$ belongs to the sector $\bm{\theta} = \{1, 0, 1, 1\}$, but $\bm{\nu} = \{1, 0, 2, -1\}$ belongs to $\bm{\theta} = \{1, 0, 1, 0\}$. For the case $N=2$, it is straightforward to visualise how sectors divide the space (see Fig.~\ref{fig:IBPsectors}). The sector $\bm{\theta} = \{1, 1, \ldots, 1\}$ is known as the `top sector', while sectors with progressively more $\theta_i = 0$ become `sub-sectors' of the top sector and of each other \JK{Is it clear what I mean here?}. Rather trivially, the strictly non-positive sector $\bm{\theta} = \{0, 0, \ldots, 0\}$ vanishes. Furthermore, the point $\bm{\nu} = \{\theta_1, \ldots, \theta_N\}$ is called the `corner point' of sector $\bm{\theta}$. A nice result is that if the integral at the corner point of a sector is 0, then the whole sector is also 0 \cite{Lee:2008tj}.
-
-It is now possible to order (albeit not uniquely) the sectors $\bm{\theta}$ with respect to each other, as well as the integrals $I_T(\bm{\nu})$ within each sector. It is somewhat natural to think of sectors with fewer unique denominators as simpler. Thus, $\sum_{i=1}^N \theta_i$ defines an ordering between the sectors. In the $N=2$ example, we say that the sector $\{1, 1\}$ is higher than its sub-sectors $\{1, 0\}$ and $\{0, 1\}$, which are both higher than their sub-sector $\{0, 0\}$ (which vanishes anyway). However, sectors $\{1, 0\}$ and $\{0, 1\}$ are equal. Within such equal sectors, we can define further criteria, for example based on the total power of the denominators, followed by the total power of the numerators (ISPs), etc. With the help of an arbitrary ordering, we can replace higher $I_T(\bm{\nu})$ by lower ones through the IBP reduction procedure, as visualised in Fig.~\ref{fig:IBPschematic}. It should not be surprising that the set of master integrals remaining after this reduction depends on the ordering. We remark that, depending on our needs, it is possible to choose an ordering that leads to an ISP-free basis or conversely a dot-free basis.
 \begin{figure}
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
@@ -696,7 +694,7 @@ It is now possible to order (albeit not uniquely) the sectors $\bm{\theta}$ with
     \caption{A lattice of points visualising the integrals and sectors used in the IBP reduction ($N=2$).}
     \label{fig:IBPschematic}
 \end{figure}
-\begin{figure}[t]
+\begin{figure}
     \centering
         \begin{tikzpicture}
         	\begin{feynman}
@@ -725,23 +723,22 @@ It is now possible to order (albeit not uniquely) the sectors $\bm{\theta}$ with
         \end{tikzpicture}
     \caption{One-loop box Feynman diagram $I_\text{box}(1,1,2,1)$ with a `dotted' propagator. The corresponding denominators are: $\{k_1^2, (k_1-p_1)^2, \left((k_1-p_1-p_2)^2\right)^2, (k_1+p_4)^2\}$\,.} \label{fig:1Lboxdot}
 \end{figure}
+It is now possible to order (albeit not uniquely) the sectors $\bm{\theta}$ with respect to each other, as well as the integrals $I_T(\bm{\nu})$ within each sector. It is somewhat natural to think of sectors with fewer unique denominators as simpler. Thus, $\sum_{i=1}^N \theta_i$ defines an ordering between the sectors. In the $N=2$ example, we say that the sector $\{1, 1\}$ is higher than its sub-sectors $\{1, 0\}$ and $\{0, 1\}$, which are both higher than their sub-sector $\{0, 0\}$ (which vanishes anyway). However, sectors $\{1, 0\}$ and $\{0, 1\}$ are equal. Within such equal sectors, we can define further criteria, for example based on the total power of the denominators, followed by the total power of the numerators (ISPs), etc. With the help of an arbitrary ordering, we can replace higher $I_T(\bm{\nu})$ by lower ones through the IBP reduction procedure, as visualised in Fig.~\ref{fig:IBPschematic}. It should not be surprising that the set of master integrals remaining after this reduction depends on the ordering. We remark that, depending on our needs, it is possible to choose an ordering that leads to an ISP-free basis or conversely a dot-free basis (see Fig.~\ref{fig:1Lboxdot}).
 
 Overall, IBP relations allow us to express each helicity amplitude of Eq.~\ref{eq:ampreducedschematic} in terms of a much smaller number of master integrals:
 \begin{equation} \label{eq:ampafterIBP}
     	A_n^{(L)} \left(1^{h_1}, 2^{h_2}, \ldots, n^{h_n} \right) =  
-     \sum_{i=1}^{|\text{MI}|} g_i(p(\mathbf{x}), \eps) \times \text{MI}_i(p,\eps)\,,
+     \sum_{i=1}^{|\text{MI}|} g_i(p, \eps) \times \text{MI}_i(p,\eps)\,,
 \end{equation}
-where $|\text{MI}|$ denotes the total number of linearly independent master integrals in all the families. Once again, the coefficients are rational functions of external kinematics (expressed through the momentum twistor variables), as well as the dimensional parameter $\eps$. It is worth pointing out an interesting subtlety of this formula:
-\begin{equation} \label{eq:noofmis}
-    |\text{MI}| \equiv |\text{MI}_{\sum_T T}| \neq \sum_{\mathclap{\substack{T \in \\ \text{maximal} \\ \text{topologies}}}} |\text{MI}_T| \,.
-\end{equation}
-That is, the number of MIs for all families considered together is not the same as the sum of numbers of MIs for these families considered separately. This statement might seem surprising. Indeed, if we formulate one big system of IBP relations between integrals in all the families and perform the IBP reduction, the resultant MI basis is equal to the sum of the bases obtained by solving smaller systems of IBP relations within each family one by one. This is because integrals in different families live in different vector spaces and there cannot be inter-family IBP relations. However, integrals belonging to sectors other than the top sector can often be mapped between families. We present an easy to understand example in Fig.~\ref{fig:symmetryrelation}. We will return to the observation of Eq.~\ref{eq:noofmis} in Sec.~\ref{sec:altibps}. 
+where $|\text{MI}|$ denotes the total number of linearly independent MIs in all the families. Once again, the coefficients are rational functions of external kinematics, as well as the dimensional parameter $\eps$. 
+\subsection{Improving the performance of large IBP reductions} \label{sec:altibps}
+In this section, we discuss how we can incorporate the IBP reduction in our workflow for computing amplitudes in a more efficient way as compared to the standard approach. This method is based on a certain realisation about the integral families we are dealing with, as well as the fact that the reduction can be implemented as a series of numerical operations over finite fields.
 \begin{figure}
     \centering
     \begin{adjustbox}{minipage=\textwidth,scale=0.9}
     \raisebox{0.2cm}{
     \begin{subfigure}[b]{0.25\linewidth}
-        \hspace*{1em}
+        \hspace{-1cm}
         \begin{tikzpicture}
     	\begin{feynman}[small]
     		\vertex (v1);
@@ -759,11 +756,11 @@ That is, the number of MIs for all families considered together is not the same 
     		\vertex[xshift=0.6cm, yshift=0.2cm, below = of v3] (v4);
     		\vertex[right = 0.8cm of v4] (f2) {$p_2$};		
 
-            \draw ($(v7)!0.5!(v6)$) node[cross,red] (5cm) {};
-            \draw ($(v4)!0.5!(v5)$) node[cross,red,rotate=45] (5cm) {};
+            \draw ($(v1)!0.5!(v2)$) node[cross,red] (5cm) {};
+            \draw ($(v4)!0.5!(v3)$) node[cross,red,rotate=45] (5cm) {};
             
     		\diagram*{
-    			(i1) -- (v1) -- (v2) -- (v3),
+    			(i1) -- [very thick] (v1) -- (v2) -- (v3),
     			(i2) -- (v7) -- (v6) -- (v5),
     			(v3) -- (f1),
     			(v3) -- (v4) -- (v5),
@@ -781,29 +778,29 @@ That is, the number of MIs for all families considered together is not the same 
     \hspace{1.3cm}
     %\begin{adjustbox}{minipage=\linewidth,scale=0.4}
     \begin{subfigure}[b]{0.25\linewidth}
-        \hspace*{1em}
+        \hspace{-1cm}
         \begin{tikzpicture}
         \begin{feynman}[small]
 			\vertex (v1);
-			\vertex[left = 0.8cm of v1] (i1) {$p_5$};
+			\vertex[left = 0.8cm of v1] (i1) {$p_4$};
 			\vertex[above right =1cm of v1] (v2);
 			\vertex[below right =1cm of v1] (v3);				
 			\vertex[yshift=0.3cm, right = 0.7cm of v2] (v4);	
 			\vertex[yshift=-0.6cm, right = 0.7cm of v4] (v5);
 			\vertex[yshift=-0.3cm, right = 0.7cm of v3] (v7);
 			\vertex[yshift=0.6cm, right = 0.7cm of v7] (v6);	
-			\vertex[above right = 0.8cm of v4] (i2) {$p_1$};
-			\vertex[yshift=0.2cm, right = 0.8cm of v5] (i3) {$p_3$};
-			\vertex[yshift=-0.2cm, right = 0.8cm of v6] (i4) {$p_2$};
-			\vertex[below right = 0.8cm of v7] (i5) {$p_4$};
+			\vertex[above right = 0.8cm of v4] (i2) {$p_5$};
+			\vertex[yshift=0.2cm, right = 0.8cm of v5] (i3) {$p_2$};
+			\vertex[yshift=-0.2cm, right = 0.8cm of v6] (i4) {$p_1$};
+			\vertex[below right = 0.8cm of v7] (i5) {$p_3$};
 			
-            \draw ($(v7)!0.5!(v3)$) node[cross,red,rotate=60] (5cm) {};
-            \draw ($(v6)!0.5!(v5)$) node[cross,red] (5cm) {};
+            \draw ($(v5)!0.5!(v6)$) node[cross,red] (5cm) {};
+            \draw ($(v2)!0.5!(v4)$) node[cross,red, rotate=30] (5cm) {};
             
 			\diagram*{
 				(i1) -- (v1) -- (v2) -- (v3) -- (v1),
 				(v2) -- (v4) -- (v5) -- (v6) -- (v7) -- (v3),
-				(v4) -- (i2),
+				(v4) -- [very thick] (i2),
 				(v5) -- (i3),
 				(v6) -- (i4),
 				(v7) -- (i5),
@@ -817,29 +814,30 @@ That is, the number of MIs for all families considered together is not the same 
     %\begin{adjustbox}{minipage=\linewidth,scale=0.4}
     \raisebox{0.2cm}{
     \begin{subfigure}[b]{0.25\linewidth}
-        \hspace*{1em}
+        \hspace{1em}
         \begin{tikzpicture}
     	\begin{feynman}[small]
     		\vertex (v1);
       
-    		\vertex[left = 0.8cm of v1] (i1) {$p_5$};
+    		\vertex[left = 0.8cm of v1] (i1) {$p_4$};
     		\vertex[above right = of v1] (v2);			
     		\vertex[below right = of v1] (v3);			
     		\vertex[right = of v2] (v4);			
     		\vertex[right = of v3] (v5);			
     		
-    		\vertex[above right = 0.8cm of v4] (i2) {$p_1$};
-    		\vertex[below right = 0.7cm of v5, yshift=-0.2cm] (i3) {$p_3$};
-    		\vertex[below right = 0.5cm of v5, xshift=+0.4cm] (i4) {$p_2$};
-    		\vertex[below =  0.7cm of v3] (i5) {$p_4$};
+    		\vertex[below right = 0.8cm of v5] (i2) {$p_3$};
+    		\vertex[above right = 0.6cm of v4, xshift=0.2cm, yshift=-0.2cm] (i3) {$p_2$};
+    		\vertex[above right = 0.4cm of v4, yshift=+0.4cm] (i4) {$p_1$};
+    		\vertex[above =  0.7cm of v2] (i5) {$p_5$};
     		
     		\diagram*{
-                (i1) -- (v1) -- (v2) -- (v4) -- (i2),
-                (v1) -- (v3) -- (v5) -- (i3),
+                (i1) -- (v1) -- (v2) -- (v4),
+                (v1) -- (v3) -- (v5) -- (i2),
                 (v2) -- (v3),
                 (v4) -- (v5),
-                (v5) -- (i4),
-                (v3) -- (i5),
+                (v4) -- (i3),
+                (v4) -- (i4),
+                (v2) -- [very thick] (i5),
     		};
     	\end{feynman}
     \end{tikzpicture}
@@ -850,6 +848,35 @@ That is, the number of MIs for all families considered together is not the same 
 \caption{A simple example of possible non-IBP relations between integrals within different (maximal) topologies. Integrals in lower sectors often map to each other. The red crosses denote a vanishing denominator, i.e. the corresponding $\nu_i$ is 0. Here, diagrams $(a)$ and $(b)$ both collapse onto diagram $(c)$. Such relations are often hard to discover just from analysing the propagators of the integrals, especially if the two families use vastly different conventions for loop momentum routing. However, a visual representation often makes spotting these relations trivial.}
 \label{fig:symmetryrelation}
 \end{figure}
+We start by pointing out an interesting subtlety related to the number of MIs in Eq.~\ref{eq:ampafterIBP} after the reduction of multiple families:
+\begin{equation} \label{eq:noofmis}
+    |\text{MI}| \equiv |\text{MI}_{\bigcup_T}| \neq \sum_{\mathclap{\substack{T \in \\ \text{maximal} \\ \text{topologies}}}} |\text{MI}_T| \,,
+\end{equation}
+where $\bigcup_T$ indicates the union of all maximal topologies. That is, the number of MIs for all families considered together is not the same as the sum of numbers of MIs for these families considered separately. This statement might seem surprising. Indeed, if we formulate one big system of IBP relations between integrals in all the families and perform the IBP reduction, the resultant MI basis is equal to the sum of the bases obtained by solving smaller systems of IBP relations within each family one by one. This is because integrals in different families live in different vector spaces and there cannot be inter-family IBP relations. However, integrals belonging to sectors other than the top sector can often be mapped between families (see  Fig.~\ref{fig:symmetryrelation} for an easy to understand example). Therefore, an amplitude reduced using $N_T$ separate IBP systems contains leftover MIs that can be further reduced onto each other with the help of non-IBP mappings. To avoid this redundancy, we typically build a combined system which covers all the families in the problem. It contains the pure IBP relations, as well as the additional inter-family mappings\footnote{In practice, these mappings are found by comparing integrals based on their representation in terms of the $\mathcal{U}$ and $\mathcal{F}$ Symanzik polynomials (see Section 4 of Ref.~\cite{Lee:2012cn} and also Ref.~\cite{Pak:2011xt}).} Unfortunately, for large $N_T$, this often leads to a prohibitively long time required to solve the system and may even constitute the main bottleneck of the whole amplitude computation.
+
+There is, however, a more efficient way of performing the IBP reduction. Recall that the integral families fed into the reduction are defined by their propagators and ISPs. Each family can therefore be identified by its `type' and permutation of external legs within that type. Moreover, in the presence of an external mass, we need to further distinguish between topology subtypes based on the position of the mass which breaks the symmetry of integrals under the permutations of external legs. For example, we refer to the topology of Fig.~\ref{fig:pentabox} as `\textbf{zzz} penta-box$(12345)$', and to that of Fig.~\ref{fig:hexatriangle} as `\textbf{mzz} hexa-triangle$(52134)$' (we follow the naming convention of Ref.~\cite{Abreu:2020jxa}).
+
+It is not hard to notice that that if two given families are of the same (sub)type and differ only by a permutation $\sigma$ of the massless legs, i.e. $T'=T(\sigma(ijklm))$, where $\sigma$ preserves the position of the external mass, then the IBP reduction of any integral $I_{T'}$ can be expressed by permuting the reduction of $I_T$ according to $\sigma$:
+\begin{align}
+    I_{T(ijklm)}(\bm{\nu}) &= \sum_{i=1}^{|\text{MI}_T|} c_i(p, \eps) \times \text{MI}_{T(ijklm),\,i} \\
+    \implies I_{T'}(\bm{\nu}) &= \sum_{i=1}^{|\text{MI}_T|} c_i(\sigma(p), \eps) \times \text{MI}_{T^\prime,\,i}\,.
+\end{align}
+That is, the new reduction coefficients $c^\prime_i = c_i(\sigma(p), \eps)$ are computed as a permutation of the external kinematics in the old coefficients $c_i(p, \eps)$, while the new master integrals MI$_{T^\prime}$ are obtained by permuting the external momenta in the propagators and ISPs of MI$_T$\footnote{In the case of UT MIs, which are often defined as combinations of integrals $I_T$, we also need to permute any potential kinematic prefactor of these integrals according to $\sigma$.}.
+
+In our applications, the reductions coefficients $c_i$ will be parametrised by the momentum twistors $\mathbf{x}$. Then, since they will be rational functions of $\mathbf{x}$ and $\eps$, permuting the external kinematics to obtain $c_i^\prime$ is trivial. Moreover, the rationality means that this new approach to IBP reduction is perfectly compatible with the finite field sampling procedure. Permuting the coefficients amounts to a change of variables, which can be implemented over the field\footnote{When working with the $s_{ij}$ variables, the permutation $s_{\sigma(ij)}$ will in general take us outside of their minimal set but we can always express the new Mandelstam variables through the same minimal set by using momentum conservation.}. Thus, we never have to know and permute the analytic form of the IBP coefficients, which leads to a significant reduction in the computational cost. For an integral family with $n$ massless particles, we do not need to explicitly perform the IBP reduction for up to $n!$ permutation of it. In fact, weonly need to do it once per maximal topology — in an arbitrarily chosen permutation of each topology, which we label $T_{\sigma_\text{id}}$. Then, the reduction of any permutation of this family is obtained by considering $\sigma$ such that $\sigma(\sigma_\text{id})$ brings us onto the target topology, that is $T' = T_{\sigma(\sigma_\text{id})}$, and applying the steps above.
+
+Let us now discuss a small issue with this new strategy. As pointed out in the beginning of this section, the total number of MIs after the reduction is smaller than the sum of MIs in the individual families. This redundancy is not taken care of in the approach we have described above, since the reduction is performed only within the ‘main’ families $T_{\sigma_\text{id}}$ and then permuted to cover all needed permutations. Thus, the inter-family mappings between the MIs are not found and the reduced amplitude will contain MIs which are in fact not fully linearly independent. Strictly speaking, there is no requirement for the amplitude to be expressed in terms of independent objects. However, it is always desirable to do so, as this ensures that any cancellations happen analytically and prevents instabilities or issues with precision during the numerical evaluation of the amplitude. Moreover, it is more computationally efficient, as it reduces the number of independent coefficients that have to be processed when expanding the amplitude into special functions.
+
+In practice, we obtain these missing relations between MIs by performing their reduction in the traditional approach (i.e. all families included together in one system) in \texttt{LiteRed}. This expresses the MIs from all families in terms of the truly independent ones:
+\begin{equation}
+    \text{MI}_{i} = \sum_j^{|\text{MI}|} f_{ij}(p, \eps) \times \text{MI}_j \qquad i \in \left\{1, \ldots, \sum_T |\text{MI}_T|\right\}\,,
+\end{equation}
+where $i$ runs over the `naive' MIs from all maximal topologies. We stress that this additional reduction does not present such a high complexity as the reduction needed for the amplitude itself. Firstly, the identities generated through the Laporta algorithm only need to cover the rank and number of dotted propagators present in the MI bases, rather than the full amplitude. Secondly, all the missing relations between MIs can be worked out once and for all --- they will be applicable to any process at the same loop order and number of particles (and external masses), since the IBP reduction is specific only to the kinematic setup. Finally, an extremely useful property of UT integrals is that any inter-family relations between them cannot contain any dependence on the kinematic variables, i.e. $f(p, \eps) \rightarrow f(\eps)$. This is simply because adding such factors would break the canonical form of the DEs and would imply that we have in fact found a relation between a UT integral and a non-UT one. Thus, when using UT bases, which has become the standard in modern amplitude computations, this additional reduction can be performed with the kinematic variables set to random values (subject to momentum conservation). 
+
+Having obtained the missing relations between MIs, we apply them to our amplitude
+and collect the coefficients of the true, linearly independent MIs. Overall, we find that this alternative approach performs much better than the previously employed strategy of considering all integral families together in one shared system. The benefit grows with the number of permutations of the maximal topologies, since including additional families in the IBP system is expensive, but numerically permuting the solution from one family onto another is cheap.
+
+\JK{Subsection on syzygies?}
 \section{Differential equations} \label{sec:DEs}
 Differential equations (DEs) satisfied by Feynman integrals were studied even before the invention of the IBP reduction technique (see, for example, Ref.~\cite{Golubeva:1976}). However, it was these two concepts combined together that led to the development of a powerful method for evaluating the MIs \cite{Kotikov:1990kg, Kotikov:1991314, Bern:1993kr, Remiddi:1997ny, Gehrmann:1999as}. The idea is as follows. If we differentiate an integral $I_T(\bm{\nu})$ with respect to the Mandelstam invariants $s_{ij}$ or internal masses $m_i$, we will obtain a linear combination of integrals within the same family $T$, but with different exponents $\bm{\nu}'$. These new integrals $I_T(\bm{\nu}')$ can then be IBP reduced onto the corresponding MIs. Thus, if we apply the differentiation to the MI basis itself, we obtain a set of first-order partial DEs (one for each kinematic variable). It is convenient to group the MIs as a vector $\vv{\text{MI}}$. We then have:
 \begin{equation} \label{eq:DEspartial}
@@ -941,10 +968,10 @@ are known as \textit{pure} function. In practice, this means that a pure functio
 \begin{align}
     [ \tilde{A}_i, \tilde{A}_j] &= 0\,, \\
     \partial_i \tilde{A}_j - \partial_j \tilde{A}_i &= 0\,, \\
-    \sum_i \lambda_i \tilde{A}_i &= [\vv{\text{MI}'}] \, \mathds{1} \,,
+    \sum_i \lambda_i \tilde{A}_i &= [\vv{\text{MI}}] \, \mathds{1} \,,
 \end{align}
 \end{subequations}
-where in the last equation, the sum runs over all kinematic scales, $[\vv{\text{MI}'}]$ are the mass dimensions of the MIs. \JK{I don't understand the scaling property}. Finally, we point out an interesting observation on the nature of dimensionally regulated amplitudes (see e.g. Ref.~\cite{Duhr:2014woa}). For a Laurent expanded $L$-loop amplitude in $d = 4- 2\eps$, it is \textit{conjectured} that the $\order{\eps^k}$ term contains functions of transcendental weight up to $2L+k$. For example, to calculate a two-loop amplitude up to $\order{\eps^0}$, we need to supply the MI expansions up to weight 4. It is expected that in $\mathcal{N}=4$ Super Yang-Mills theory, this bound is saturated, i.e. functions of weight exactly $2L+k$ are required.
+where in the last equation, the sum runs over all kinematic scales, $[\vv{\text{MI}}]$ are the mass dimensions of the MIs. \JK{I don't understand the scaling property}. Finally, we point out an interesting observation on the nature of dimensionally regulated amplitudes (see e.g. Ref.~\cite{Duhr:2014woa}). For a Laurent expanded $L$-loop amplitude in $d = 4- 2\eps$, it is conjectured that the $\order{\eps^k}$ term contains functions of transcendental weight up to $2L+k$. For example, to calculate a two-loop amplitude up to $\order{\eps^0}$, we need to supply the MI expansions up to weight 4. It is expected that in $\mathcal{N}=4$ Super Yang-Mills theory, this bound is saturated, i.e. functions of weight exactly $2L+k$ are required.
 
 Overall, pure integrals have played a central role in the derivation and evaluation of MI bases relevant to this thesis, that is bases for processes with a high number of kinematic scales. For future convenience, in Table~\ref{tab:MIs} we collect (without claiming to be exhaustive) the publications dealing with two-loop, five-point integrals with up to one external mass and massless propagators.
 \begin{table}[b]
@@ -968,8 +995,6 @@ Overall, pure integrals have played a central role in the derivation and evaluat
 \caption{Selected works relevant to the computation of two-loop, five-point pure master integral bases. All propagators are massless. \JK{Insert reference for double-pentagons.}}
 \label{tab:MIs}
 \end{table}
-
-\JK{Ask Simone to explain why mappings between UT MIs cannot contain $\eps$ or kinematic dependence.}
 \section{Symbols} \label{sec:symbols}
 \subsection{Introduction}
 In this section, we introduce yet another useful concept related to iterated integrals. We begin by noting that the representation of the solution to the canonical DEs in Eq.~\ref{eq:canonicalDEsoneform} is not unique. Most generally, the answer is written using Chen's iterated integrals (CIIs)~\cite{Chen:1977oja}. This form is usually the most compact one. However, as pointed out above Eq.~\ref{eq:GPLs}, if the `letters' are rational in at least one variable, CIIs be expressed in terms of GPLs~\cite{Henn:2014qga}. This typically increases the number of terms, but has the advantage that robust and stable numerical evaluation of GPLs is available (see \cite{Bauer:2000cp, Vollinga:2004sn}, but also \cite{Panzer:2014caa}). Moreover, due to the conjecture pointed out in the previous section, typically we will be interested in computing the solution up to transcendental weight 4. Another remarkable conjecture exists: any transcendental function of weight $k < 4$ can be expressed in terms of the usual logarithms and polylogarithms $\text{Li}_k$ only~\cite{MR1265551, Goncharov:2010jf}, while at weight $k=4$ all functions can be expressed in terms of the following functions~\cite{Henn:2014qga}:
@@ -1166,25 +1191,6 @@ Note that each coefficient $\vec{c}_{\alpha_1, \ldots, \alpha_n}$ is a vector of
     \SS\left(\vv{\text{MI}}^{(n)}\right) = \sum_{\alpha_1, \ldots, \alpha_n} \vec{c}_{\alpha_1, \ldots, \alpha_n} [w_{\alpha_1}, \ldots, w_{\alpha_n}]\,.
 \end{equation}
 It turns out that the first entry of the symbol encodes its branch cut structure. In particular, a Feynman integral with the symbol $[w_{\alpha_1}, \ldots, w_{\alpha_n}]$ has a discontinuity when $w_{\alpha_1}=0$ or $\infty$. Of course, singular points of Feynman integrals are not random and we expect them to be connected to special values of the Mandelstam variables. Indeed, there exists a so-called first-entry condition which states that $\vec{c}_{\alpha_1, \ldots, \alpha_n}=0$ if $w_{\alpha_1} \neq s_{ij}\,$, i.e. a symbol cannot appear in the solution of the DEs if its first letter is not a Mandelstam variable with a physical discontinuity\footnote{Strictly speaking, it is the absence of discontinuities at certain points that implies first-entry conditions, but this statement should not be inverted. It is possible to write an amplitude using a function which satisfies a first-entry condition, yet has the forbidden singularity. See Section 3 of Ref.~\cite{Zoia:2021zmb} for an explicit example.}\cite{Gaiotto:2011dt}. This turns out to be a very strong condition which in many cases uniquely fixes the values of $\vv{\text{MI}}^{(0)}$, as we will see in Section~\ref{sec:selfdual} \JK{Are we actually going to see this there?...}. Beyond the first entry, the structure of the symbols is further constrained by the so-called Steinmann relations, which state that there is no double continuity associated with overlapping channels (e.g. $s_{12}$ and $s_{23}$)\cite{20.500.11850/135473, Steinmann:1960, Caron-Huot:2016owq, Dixon:2016nkn}. Overall, such conditions created by physical principles constrain the structure of the symbols and canonical DEs. This is evident when studying the pure MI bases relevant to this thesis (see Refs.~\cite{Abreu:2020jxa, abreu2021twoloop}).
-\section{An alternative approach to IBP reduction} \label{sec:altibps}
-\JK{Improve this section according to what I wrote for Ryan's paper.}\\
-As mentioned earlier, the IBP relations can only provide the reduction of integrals within one family. Therefore, in practice we typically need to build an extensive IBP system which covers all the families in the problem. This often leads to a prohibitively long time required to solve the system. There is, however, a more efficient way of performing the IBP reduction. Recall that the integral families fed into the reduction are defined by their propagators and ISPs. Each family can therefore be identified by its `type' and permutation of external legs within that type. For example, we refer to the topology of Fig.~\ref{fig:pentabox} as $\text{double-box}(12345)$, and to that of Fig.~\ref{fig:hexatriangle} as $\text{hexa-triangle}(13245)$. It is not hard to notice that that if two given families are of the same type and differ only by a permutation $\sigma$ of the external momenta, i.e. $T'=T(\sigma(ijklm))$, then the IBP reduction of any integral Eq.~\ref{eq:ibpintegral} within the permuted family $T'$ can be expressed as a permutation of the reduction of the corresponding integral in the original family $T$:
-\begin{align}
-    I_{T(ijklm)}(\bm{\nu}) &= \sum_{i=1}^{|\text{MI}_T|} c_i(p, \eps) \times \text{MI}_{T(ijklm),\,i} \\
-    \implies I_{T(\sigma(ijklm))}(\bm{\nu}) &= \sum_{i=1}^{|\text{MI}_T|} c_i(\sigma(p), \eps) \times \text{MI}_{T(\sigma(ijklm)),\,i}\,.
-\end{align}
-\JK{I think the notation here is crap, but I can't think of anything better for now.} \JK{Does this fact need any further justification?} Since the reduction coefficients $c_i$ are rational functions of the $\eps$ and the momenta $p$, permuting the external kinematics to obtain $c_i(\sigma(p), \eps)$ is trivial, whether we express them through the Mandelstam invariants $s_{ij}$ or the momentum twistor variables $\bm{x}$. Moreover, the rationality means that this new approach to IBP reduction is perfectly compatible with the finite field workflow. Permuting the coefficients amounts to a change of variables, which can be implemented over the field\footnote{When working with the $s_{ij}$ variables, the permutation $s_{\sigma(ij)}$ will in general take us outside of their minimal set
-%such as Eq.~\ref{eq:sijs},
-but we can always express the new Mandelstam variables through the same minimal set by using momentum conservation. This subtlety is not present at the level of momentum twistor variables.}. Thus, we never have to know and permute the analytic form of the IBP coefficients, which leads to a significant reduction in the computational cost. For an $n$-particle integral family, we only need to consider the IBP system composed of one permutation of this family, rather than up to $n!$ permutations of it. The choice of this main permutation is arbitrary and we will denote it as $\sigma_\text{id}$.
-
-\JK{Should I---and if yes, then where---describe the permutations of $\sqrt{}$`s and $\tr_5$ in the basis definitions?}
-As pointed out below Eq.~\ref{eq:noofmis}, the presence of relations other than IBP relations allows us to express some MIs of one family in terms of the MIs of other families. Thus, the total number of MIs is smaller than the sum of MIs in the individual families. This fact is automatically taken care of in the traditional approach to IBP reduction, where all families are treated by one shared IBP system, which also includes inter-family relations. However, in the alternative approach described above, these extra relations are not taken into account, as we are performing the reduction for families $T$ only in their canonical permutations $\sigma_\text{id}$. Thus, the amplitude obtained in this approach will contain MIs which are in fact not fully linearly independent. Strictly speaking, there is no requirement for the amplitude to be expressed in terms of independent objects. However, it is always desirable to do so, as this ensures that any cancellations happen analytically, therefore it avoids introducing instabilities and issues with precision during numerical evaluation of the amplitude. Moreover, it is more computationally efficient, as it reduces the number of independent coefficients that have to be processed when expanding the amplitude into special functions.
-
-In practice, we obtain these missing relations between MIs by performing their reduction in the traditional approach (i.e. all families included together in one system) in \texttt{LiteRed}\footnote{Note that this reduction will not rely on identities of the IBP nature, as inter-family IBP relations do not exist. Instead, it will compare different integrals based on their representation in terms of the $\mathcal{U}$ and $\mathcal{F}$ Symanzik polynomials (see Section 4 of Ref.~\cite{Lee:2012cn} and also Ref.~\cite{Pak:2011xt}).}, which expresses the MIs from all families in terms of the truly independent ones:
-\begin{equation}
-    \text{MI}_{i} = \sum_j^{|\text{MI}|} f_{ij}(p, \eps) \times \text{MI}_j \qquad i \in \left\{1, \ldots, \sum_T |\text{MI}_T|\right\}\,,
-\end{equation}
-where $|\text{MI}| = |\text{MI}_{\sum_T T}|$, as defined earlier. This additional reduction does not present such complexity as the reduction needed for the amplitude. Firstly, the identities generated through the Laporta algorithm only need to cover the rank and number of dotted propagators present in the MI bases, rather than the full amplitude. Secondly, all the missing relations between MIs can be worked out just once and they will be applicable to any process at the same loop order and number of particles, since the IBP identities are sensitive only to the kinematic setup. Finally, an extremely useful property of UT integrals is that any inter-family relations between them cannot contain any dependence on the kinematic variables, i.e. $f(p, \eps) \rightarrow f(\eps)$. Thus, when using UT bases, this additional reduction can be performed with the kinematic variables set to random values (subject to momentum conservation). Having obtained the missing relations between MIs, we apply them to our amplitude and collect the coefficients of the true, linearly independent MIs. In the end, this is equivalent to performing the traditional IBP reduction of all families considered together simultaneously, but much more efficient.
 \section{Evaluating master integrals}
 After a rather lengthy excursion into the world of IBPs, DEs and symbols, let us remind ourselves where we currently stand in the workflow for computing amplitudes presented in Fig.~\ref{fig:outline}. Having written down the helicity-dependent numerators of each colour-ordered amplitude, we were faced with the task of integrating an enormous number of tensor integrals that belong to many integral families. Then, in Sec.~\ref{sec:reduction}, we mapped these integrals onto integrals within significantly fewer maximal topologies. We then built a system of IBP relations for each of these maximal topologies (containing also the non-IBP, inter-family relations) and reduced the integrals further onto a manageable set of master integrals. In principle, we can now end the amplitude computation. Our result is written in terms of rational coefficients of external kinematics, which are trivial to evaluate the full phase space \JK{Is statement this too strong?}, while the MIs that these coefficients multiply are in general functions that are extremely hard to compute analytically and that exhibit a complicated branch cut structure. As we will see in the next section, there are good reasons why we typically extend our workflow and express the MIs in terms of appropriately chosen special functions. However, it is entirely possible to work with the amplitude at the level of MIs. Indeed, in some cases we have no other choice, since the expansion of the relevant MIs into special functions may not be known. Having phenomenological applications in mind, we list below a few methods which allow us to evaluate these MIs numerically at chosen kinematic points. In fact, we will use the last two in subsequent chapters.
 \begin{itemize}
