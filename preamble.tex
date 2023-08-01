@@ -12,9 +12,12 @@
 \usepackage{shuffle}
 \usepackage{dsfont}
 \usepackage{esvect}
+\usepackage[nolist]{acronym}
+\usepackage[capitalise]{cleveref}
 \usepackage[export]{adjustbox}
 \usepackage{multirow}
-
+%\usepackage[obeyspaces]{url}
+\usepackage{url}
 \usepackage{lipsum}
 \stackMath
 
@@ -103,6 +106,13 @@
 \def\Li{\text{Li}}
 \def\oo{\otimes}
 
+\newcommand{\am}{\mathcal{A}}
+\newcommand{\al}[1]{{\am^{(#1)}}^{\mu}}
+\newcommand{\sal}[3]{{\am^{(#1)}_{#2, #3}}^{\mu}}
+\newcommand{\nl}{n_l}
+
+\newcommand{\incite}[1]{Ref.~\cite{#1}}
+\newcommand{\incites}[1]{Refs.~\cite{#1}}
 
 % Nicer appearance / typesetting
 \usepackage[shrink=10,stretch=10]{microtype}

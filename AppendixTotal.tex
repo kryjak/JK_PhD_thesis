@@ -1,4 +1,5 @@
 \documentclass[main.tex]{subfiles}
+\input{ExtraDefinitions.tex}
 
 \begin{document}
 %\renewcommand{\chaptername}{}
@@ -652,12 +653,36 @@ r_2 & = \frac{\beta_0^2}{4\eps^2} - \frac{\beta_1}{8\eps}\,, \\
 s_1 & = -\frac{3 C_F}{2\eps} \,, \\
 s_2 & = \frac{3}{8\eps^2}\big(3 C_F^2 + \beta_0 C_F \big) - \frac{1}{8\eps} \bigg( \frac{3 C_F^2}{2} + \frac{97}{6} C_F C_A -\frac{10}{3} C_F T_F n_f   \bigg) \,,
 \end{align}
-while the $\beta$ function coefficients and anomalous dimensions are~\cite{Becher:2009qa}
+where the first two $\beta$ function coefficients are:
+\begin{align}
+    \beta_0 = & \;\frac{11}{3}C_A - \frac{4}{3} T_F n_f \,, \\
+    \beta_1 = & \; \frac{34}{3} C_A^2 - \frac{20}{3} C_A T_F n_f - 4 C_F T_F n_f \,,
+\end{align}
+with $C_A = N_c$, $C_F = (N_c^2-1)/(2N_c)$ and $T_F = 1/2$.
+
+The coefficients $Z^{(L)}$ appearing in Eq.\ref{eqQED:finite-remainders} are given up to the two-loop level by:
+\begin{align}
+    \label{eq:ir-pole-coeffs}
+    Z^{(0)} &= 1 \,, &
+    Z^{(1)} &= \frac{\Gamma_0^\prime}{4\eps^2}+\frac{\Gamma_0}{2\eps} \,, &
+    Z^{(2)} &= \frac{{Z^{(1)}}^2}{2} -\frac{3\beta_0\Gamma_0^\prime}{16\eps^3}+\frac{\Gamma_1^\prime-4\beta_0\Gamma_0}{16\eps^2}+\frac{\Gamma_1}{4\eps} \,,
+\end{align}
+where the anomalous dimension is:
+\begin{align}
+    \Gamma &= \gamma^\text{cusp}\ln\left(\frac{-s_{12}}{\mu^2}\right)+2\gamma^l+\gamma^A \,,
+\end{align}
+while its derivative is:
+\begin{align}
+    \Gamma^\prime &\coloneqq \frac{\partial\Gamma}{\partial\ln\mu} = -2\gamma^\text{cusp} \,.
+\end{align}
+We expand all anomalous dimensions $y\in\{\Gamma,\gamma^i\}$ as:
+\begin{align}
+    y &= \frac{\alpha}{4\pi} \sum_{k\ge0} y_k \left(\frac{\alpha}{4\pi}\right)^k \,,
+\end{align}
+with the zeroth and first-order coefficients given by~\cite{Becher:2009qa}: 
 \begingroup
 \allowdisplaybreaks
 \begin{align}
-\beta_0 = & \;\frac{11}{3}C_A - \frac{4}{3} T_F n_f \,, \\
-\beta_1 = & \; \frac{34}{3} C_A^2 - \frac{20}{3} C_A T_F n_f - 4 C_F T_F n_f \,, \\
 \gamma_0^g = & \; -\frac{11}{3}C_A + \frac{4}{3} T_F n_f \,,   \\
 \gamma_1^g = & \;  C_A^2 \left( -\frac{692}{27} + \frac{11\pi^2}{18} + 2 \zeta_3\right)
                + 4 C_F T_F n_f
@@ -666,10 +691,133 @@ while the $\beta$ function coefficients and anomalous dimensions are~\cite{Beche
 \gamma_1^q = & \; C_F^2 \left( -\frac{3}{2} + 2 \pi^2 - 24 \zeta_3 \right)
                   + C_F C_A \left( -\frac{961}{54} -\frac{11\pi^2}{6} + 26 \zeta_3 \right) \nn
              & \;  + C_F T_F n_f \left( \frac{130}{27} + \frac{2\pi^2}{3} \right) \,, \\
+\gamma^l_0 = & -3 \,, \\
+\gamma^l_1 = & -\frac{3}{2}+2\pi^2-24 \, \zeta_3+n_f\left(\frac{130}{27}+\frac{2}{3}\pi^2\right) \,, \\
+\gamma^A_0 = & -\beta_0 \,, \\
+\gamma^A_1 = & -\beta_1 \,, \\
 \gamma_0^\cusp = & \; 4 \,, \\
-\gamma_1^\cusp = & \; \left( \frac{268}{9} - \frac{4\pi^2}{3} \right) C_A -\frac{80}{9} T_F n_f \,,
+\gamma_1^\cusp = & \; \left( \frac{268}{9} - \frac{4\pi^2}{3} \right) C_A -\frac{80}{9} T_F n_f \,.
 \end{align}
 \endgroup
-where $C_A = N_c$, $C_F = (N_c^2-1)/(2N_c)$ and $T_F = 1/2$.
+\JK{I changed $n_l \to n_f$ in $\gamma_1^l$.}
+When working in QED, one needs to set $C_A=0$, $C_F=1$, and $T_F=1$ in all the expressions above.
 
+\chapter{Definition of the four-point integral families} \label{app:int_def}
+For each two-loop integral family $\tau$ corresponding to one of the maximal topologies shown in \cref{fig:int-fams}, the Feynman integrals have the form:
+\begin{equation}
+	j^{\tau}(a_1, \ldots, a_9) = \mathrm{e}^{2 \eps \gamma_{E}} \int \frac{\mathrm{d}^{4-2\eps} k_1}{\mathrm{i} \pi^{2-\eps}} \frac{\mathrm{d}^{4-2\eps} k_2}{\mathrm{i} \pi^{2-\eps}} \frac{1}{D_{\tau,1}^{a_1} \ldots D_{\tau,9}^{a_9}} \,.
+\end{equation}
+The sets $\{D_{\tau,1}, \ldots, D_{\tau,9}\}$ contain seven (inverse) propagators and two ISPs ($a_8, a_9 \le 0$). 
+For the maximal topologies under consideration, they are given by:\footnote{We use a naming convention analogous to that of \incite{Abreu:2020jxa}.}
+\begin{itemize}
+	\item penta-triangle, \textbf{mzz} configuration:
+		\begin{align} \begin{aligned}
+			\big\{k_1^2,(k_1+p_1+p_2+p_3)^2,(k_1+p_2+p_3)^2,(k_1+p_3)^2,k_2^2,(k_2-p_3)^2,\\(k_1+k_2)^2,(k_2-p_1-p_2-p_3)^2,(k_2-p_2-p_3)^2\big\} \,,
+		\end{aligned} \end{align}
+	\item penta-triangle, \textbf{zmz} configuration:
+		\begin{align} \begin{aligned}
+		\big\{k_1^2,(k_1-p_1)^2,(k_1+p_2+p_3)^2,(k_1+p_3)^2,k_2^2,(k_2-p_3)^2,(k_1+k_2)^2,\\(k_2+p_1)^2,(k_2-p_2-p_3)^2 \big\} \,,
+		\end{aligned} \end{align}
+	\item penta-triangle, \textbf{zzz} configuration:
+		\begin{align} \begin{aligned}
+			\big\{k_1^2,(k_1-p_1)^2,(k_1-p_1-p_2)^2,(k_1-p_1-p_2-p_3)^2,k_2^2,(k_2+p_1+p_2+p_3)^2, \\ (k_1+k_2)^2,(k_2+p_1)^2,(k_2+p_1+p_2)^2\big\} \,,
+		\end{aligned} \end{align}
+	\item planar double-box:
+		\begin{align} \begin{aligned}
+			\big\{k_1^2,(k_1-p_1)^2,(k_1-p_1-p_2)^2,k_2^2,(k_2+p_1+p_2+p_3)^2,(k_2+p_1+p_2)^2, \\ (k_1+k_2)^2,(k_1-p_1-p_2-p_3)^2,(k_2+p_1)^2\big\} \,,
+		\end{aligned} \end{align}
+	\item crossed double-box, \textbf{mz} configuration:
+		\begin{align} \begin{aligned}
+			\big\{k_1^2,(k_1+p_1+p_2+p_3)^2,(k_1+p_2+p_3)^2,k_2^2,(k_2-p_2)^2,(k_1+k_2)^2,\\ (k_1+k_2+p_3)^2,(k_1+p_3)^2,(k_2-p_1-p_2-p_3)^2\big\} \,,
+		\end{aligned} \end{align}
+	\item crossed double-box, \textbf{zz} configuration:
+		\begin{align} \begin{aligned}
+			\big\{k_1^2,(k_1-p_1)^2,(k_1-p_1-p_2)^2,k_2^2,(k_2-p_3)^2,(k_1+k_2)^2, \\ (k_1+k_2-p_1-p_2-p_3)^2,(k_1-p_1-p_2-p_3)^2,(k_2+p_1)^2\big\} \,.
+		\end{aligned} \end{align}
+\end{itemize}
+%
+We also use the one-loop (one-mass) box family, made of the following integrals:
+\begin{equation}
+	j^{\rm box}(a_1, a_2, a_3, a_4) = \mathrm{e}^{\eps \gamma_{E}} \int \frac{\mathrm{d}^{4-2\eps} k}{\mathrm{i} \pi^{2-\eps}} \frac{1}{D_{\mathrm{box}, 1}^{a_1} D_{\mathrm{box},2}^{a_2} D_{\mathrm{box},3}^{a_3} D_{\mathrm{box},4}^{a_4}} \,,
+\end{equation}
+with the four inverse propagators $D_{\mathrm{box},i}$:
+	\begin{equation}
+		\big\{k_1^2, (k_1-p_1)^2, (k_1-p_1-p_2)^2, (k_1-p_1-p_2-p_3)^2 \big\} \,.
+	\end{equation}
+Feynman's prescription for the imaginary parts of all propagators is implicit.
+
+These family definitions (strictly with the ordering of inverse propagators and ISPs shown above) correspond to the integrals \texttt{j[family,$a_1,$\ldots]} that build the canonical MI bases provided in the \texttt{pure\_mi\_bases/} directory of our ancillary files~\cite{zenodo}. In this notation, each \texttt{j[...]} represents a Feynman integral within a given integral family, while the numbers $a_i$ refer to the powers of its propagators and ISPs.
+
+\chapter{Analytic continuation} \label{app:an_cont}
+In Chapter~\ref{sec:QEDpaper}, we analytically continue the MPLs by adding a small positive (or negative) imaginary part to the MPL indices $l_i$ in \cref{eq:indices} whenever they fall between $0$ and $1$. The imaginary part of each index prescribes how to deform the integration contour around the pole associated with it. We do similarly for the logarithms in \cref{eq:logs}.
+To this end, following \incite{Gehrmann:2002zr}, we change variables from $(s_{12},s_{23},s_4)$ to $(s_{12},s_{23},s_{13})$, with $s_4 = s_{12} + s_{23} + s_{13}$. We then add a small positive imaginary part to the latter variables, as
+\begin{align} \label{eq:add_im}
+s_{12} \longrightarrow s_{12} + \mathrm{i} \, c_{1} \, \delta \, , \qquad
+s_{23} \longrightarrow s_{23} + \mathrm{i} \, c_{2} \, \delta  \, , \qquad
+s_{13} \longrightarrow s_{13} + \mathrm{i} \, c_{3} \, \delta  \, , 
+\end{align}
+where $c_{1}$, $c_{2}$ and $c_{3}$ are arbitrary positive constants, and $\delta$ is a positive infinitesimal. 
+Finally, we check whether this substitution gives a positive or negative imaginary part to each MPL index $l_i$.
+This depends on the domain of the kinematic variables.
+We focus on three kinematic regions which are of phenomenological interest. The analytic continuation for any other region may be obtained similarly.
+
+\smallskip
+
+\paragraph{Electron-line corrections to $e^- \mu^- \to e^- \mu^- \gamma$.}
+To define the domain of the kinematic variables relevant for this application, 
+we embed the four-particle off-shell process of \cref{eq:scatter} in the five-particle process $e^- \mu^- \to e^- \mu^- \gamma$. We then determine the kinematic constraints for the five-particle process (see e.g. Appendix~A of \incite{Chicherin:2021dyp}), and from them derive the constraints on the four-point off-shell kinematics. The result is
+\begin{align}
+\label{eq:region_emu-emugamma}
+\mathcal{P}_{e\mu\to{e}\mu\gamma} \coloneqq \{\vec{s} \colon s_{12} < 0 \, \land \, s_{23} < 0 \, \land \, 0 < s_{13} < -s_{12} - s_{23} \} \,.
+\end{align}
+The MPL index $l_4 = - s_{12}/s_{23}$ is always negative in $\mathcal{P}_{{e}\mu\to{e}\mu\gamma}$, hence no analytic continuation is required. The other three indices may instead fall between $0$ and $1$. Let us study $l_1$. Changing variables from $s_4$ to $s_{13}$ and adding imaginary parts as in \cref{eq:add_im} gives
+\begin{align}
+l_1 = \frac{s_{12} + s_{13} + s_{23}}{s_{12}} +  \frac{\mathrm{i} \delta}{s_{12}^2} \left[ (c_2 + c_3) s_{12} - c_1 (s_{13} + s_{23}) \right] + \mathcal{O}\left(\delta^2\right) \,.
+\end{align}
+The imaginary part of $l_1$ may be either negative or positive in $\mathcal{P}_{{e}\mu\to{e}\mu\gamma} $. However, it is strictly negative in the subregion of $\mathcal{P}_{{e}\mu\to{e}\mu\gamma} $ where $0<l_1<1$. We therefore assign a negative imaginary part to $l_1$ whenever $0<l_1<1$ in $\mathcal{P}_{{e}\mu\to{e}\mu\gamma} $. The analysis of the other indices follows similarly, and is summarised in \cref{tab:an_cont}.
+The arguments of the three logarithms in \cref{eq:logs} are positive in $\mathcal{P}_{e\mu\to{e}\mu\gamma}$.
+
+\begin{table}
+    \centering
+    \begin{tabular}{cccc}
+        \hline
+        Index & $\mathcal{P}_{{e}\mu\to{e}\mu\gamma}$ & $\mathcal{P}_{{e}\bar{{e}}\to\gamma \gamma^*}$ & $\mathcal{P}_{\gamma^*\to e \bar{e} \gamma}$  \\
+        \hline
+        $l_1$  & $-$ & $+$ & $0$ \\
+        $l_2$  & $-$ & $0$ & $0$ \\
+        $l_3$  & $-$ & $0$ & $0$ \\
+        $l_4$  & $0$ & $0$ & $0$ \\
+        \hline
+    \end{tabular}
+    \caption{Imaginary parts of the MPL indices defined by \cref{eq:indices} in the two kinematic regions discussed in \cref{app:an_cont}. The symbol $+$ ($-$) denotes a positive (negative) imaginary part, while $0$ means no analytic continuation is needed.}
+    \label{tab:an_cont}
+\end{table}
+
+\smallskip
+
+\paragraph{Corrections to $e^- e^+ \to \gamma \gamma^*$.} The relevant domain of the kinematic variables in this case can be derived directly for the four-point kinematics, and is typically named the $s_{12}$ channel. It is given by 
+\begin{align}
+\label{eq:region_eebar}
+\mathcal{P}_{e\bar{e}\to\gamma\gamma^*} \coloneqq \{\vec{s} \colon s_{23} < 0 \, \land \, s_{13} < 0 \, \land \, s_{12} > - s_{23} - s_{13} \} \,.
+\end{align}
+The MPL indices $l_2$, $l_3$ and $l_4$ can never fall between $0$ and $1$ in $\mathcal{P}_{e\bar{e}\to\gamma\gamma^*}$, and hence require no analytic continuation. We instead need to add a positive imaginary part to $l_1$. 
+In this region also the logarithms in \cref{eq:logs} need to be analytically continued. The argument of $\log(s_{12}/s_4)$ is positive in $\mathcal{P}_{e\bar{e}\to\gamma\gamma^*}$. By adding imaginary parts to the arguments of the other logarithms and studying them where the arguments are negative in $\mathcal{P}_{e\bar{e}\to\gamma\gamma^*}$, we determine that the analytic continuation is achieved through the following replacements:
+\begin{align}
+\log(s_{23}/s_4) \longrightarrow \log(-s_{23}/s_{4})+ \mathrm{i} \pi \,, \qquad  \log(-s_4) \longrightarrow \log(s_4)- \mathrm{i} \pi \,.
+\end{align}
+
+
+\paragraph{Corrections to the decay $\gamma^* \to e^- e^+ \gamma$.} The relevant domain of the kinematic variables~is
+\begin{align}
+\label{eq:region_decay}
+\mathcal{P}_{\gamma^*\to e \bar{e} \gamma} \coloneqq  \{ \vec{s} \colon s_{12} > 0 \, \land \, s_{23} > 0 \, \land \,  s_{13} > 0 \} \,.
+\end{align}
+All MPL indices $l_i$ in \cref{eq:indices} are either $l_i < 0$ or $l_i > 1$, hence no analytic continuation is required. The same holds for the first two logarithms in \cref{eq:logs}, whose arguments are positive. The only function which needs to be analytically continued is $\log(-s_4)$. We achieve this by replacing
+\begin{align}
+\log(-s_4) \longrightarrow \log(s_{4}) - \mathrm{i} \pi \,.
+\end{align}
+
+\smallskip
+
+The information about the imaginary parts of the MPL indices can be fed into the publicly available libraries for evaluating these functions numerically, such as \texttt{FastGPL}~\cite{Wang:2021imw}, \texttt{GiNaC}~\cite{Bauer:2000cp,Vollinga:2004sn}, and \texttt{handyG}~\cite{Naterop:2019xaf}. This typically leads to longer evaluation times with respect to MPLs which do not need analytic continuation. We find that this is not an issue for the planned applications of our results (see \cref{sec:performance}). Nonetheless, we note that a more performant evaluation may be achieved by tailoring the representation to the kinematic region of interest in such a way that no MPLs require analytic continuation. We refer to \incite{Gehrmann:2002zr,Gehrmann:2023etk} for a detailed discussion. 
 \end{document}
