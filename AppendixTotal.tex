@@ -120,24 +120,24 @@ evaluated at the kinematic point given in Eq.~\eqref{Wyjeq:PSpoint}.
 \end{table}
 
 \chapter{Derivation of the pole structure} \label{app:polestructure}
-In the following, we provide a detailed derivation of the full pole structure of the $\ppbbh$ amplitudes presented in Eqs.~\ref{eq:poles1L} to \ref{eq:H2bbggH}. We do this for completeness, but also in the hope of illuminating the procedure, which can be far from obvious. 
+In the following, we provide a detailed derivation of the full pole structure of the $\ppbbh$ amplitudes presented in Eqs.~\ref{eq:poles1L} to \ref{eq:H2bbggH}. We do this for completeness, but also in the hope of illuminating the procedure, which can be far from obvious. We also outline the analogous calculation for the $0\to \ell \bar\ell \gamma \gamma^*$ amplitudes of Chapter~\ref{sec:QEDpaper}.
 \section{UV singularities}
 Let us start with the UV singularities. Renormalising the amplitude amounts to replacing the bare couplings in the Lagrangian with the physical ones according to:
 \begin{equation}
     x_B = Z_x x_R \,.
 \end{equation}
-The renormalisation factors are expanded as $Z_x = 1 + \delta_x$, where $\delta_x$ are the counterterms added to the bare Lagrangian and which are designed precisely to cancel out the divergences. Thus, we can think of renormalisation as absorbing the infinities from $x_B$ into $Z_x$. Then, working with the renormalised parameters $x_R$ in the Lagrangian is known as `renormalised perturbation theory'. Let us now see how to achieve that. Specifying to the case of the $\ppbbh$ process in Sec.\ref{sec:Hbb}, the bare amplitude admits the following expansion (similar to that of Eq.~\ref{eq:ampexpansion})\footnote{See Refs.~\cite{Ahmed:2014pka, Mondini:2019vub} for details, but note the difference of $\alpha_{s,B}^{1/2}$ as the leading power due to one fewer jet and, in the second reference, the expansion in powers of $\alpha_{s,B}/(2 \pi)$, which introduces relative factors of $2$ with respect to our convention}:
+The renormalisation factors are expanded as $Z_x = 1 + \delta_x$, where $\delta_x$ are the counterterms added to the bare Lagrangian and which are designed precisely to cancel out the divergences. Thus, we can think of renormalisation as absorbing the infinities from $x_B$ into $Z_x$. Then, working with the renormalised parameters $x_R$ in the Lagrangian is known as `renormalised perturbation theory'. Let us now see how to achieve that. Specifying to the case of the $\ppbbh$ process in Sec.~\ref{sec:Hbb}, the bare amplitude admits the following expansion (similar to that of Eq.~\ref{eq:ampexpansion})\footnote{See Refs.~\cite{Ahmed:2014pka, Mondini:2019vub} for details, but note the difference of $\alpha_{s,B}^{1/2}$ as the leading power due to one fewer jet and, in the second reference, the expansion in powers of $\alpha_{s,B}/(2 \pi)$, which introduces relative factors of $2$ with respect to our convention.}:
 \begin{equation} \label{eq:ampexpbare}
     A_B = a_B y_{b,B} \left(A_B^{(0)} + a_B A_B^{(1)} + a_B^2 A_B^{(2)} + \ldots \right)\,,
 \end{equation}
-where $a_B = \alpha_{s,B}/(4\pi)$ and $\alpha_{s,B}\,$,  $y_{b,B}$ are the bare strong coupling constant and the bare Yukawa coupling of the $b$ quark\JK{What about the renormalisation of $m_B$ and the wavefunction?}. We will work in the $\overline{\text{MS}}$ scheme and make the following replacements for the two couplings:
+where $a_B = \alpha_{s,B}/(4\pi)$ and $\alpha_{s,B}\,$,  $y_{b,B}$ are the bare strong coupling constant and the bare Yukawa coupling of the $b$ quark. We will work in the $\overline{\text{MS}}$ scheme and make the following replacements for the two couplings\footnote{We treat all quarks as massless, while the wave function renormalisation factor $Z_A$ in the on-shell scheme is just 1 \JK{Citation here!!!}(see Sec.~\ref{Hbbsec:amp} for an explanation as to why we use a mixed renormalisation scheme). Therefore, we only renormalise the strong coupling constant and the $b$ quark Yukawa coupling.}:
 \begin{align}
-    \alpha_{s,B} &= S_\eps\, Z_{\alpha_s} \, \alpha_{s,R}(\mu_R) \label{eq:baretorenormalpha} \\
+    \alpha_{s,B} &= S_\eps\, Z_{\alpha_s} \, \alpha_{s,R}(\mu_R), \label{eq:baretorenormalpha} \\
     y_{b,B} &= Z_y \, y_{b,R}(\mu_R) \label{eq:baretorenormyb} \,,
 \end{align}
 where $\mu_R$ is the renormalisation scale. The factor $S_\eps = e^{\eps \gamma_E} (4\pi)^{-\eps}$ cancels out with the $m_\eps$ factor extracted from the colour-ordered amplitudes in Eq.~\ref{eq:colourdecomposition} and so will be dropped in the following discussion. The renormalisation factors themselves admit a perturbative expansion in the renormalised strong coupling constant:
 \begin{align}
-    Z_{\alpha_s} &= 1 + a_R r_1 + a_R^2 r_2 + \order{a_R^3}  \label{eq:Zalphacoeff} \\
+    Z_{\alpha_s} &= 1 + a_R r_1 + a_R^2 r_2 + \order{a_R^3},  \label{eq:Zalphacoeff} \\
     Z_y &= 1 + a_R s_1 + a_R^2 s_2 + \order{a_R^3} \label{eq:Zybcoeff}\,,
 \end{align}
 where $a_R = \alpha_{s,R}/(4\pi)$. Substituting Eqs.~\ref{eq:baretorenormalpha} through \ref{eq:Zybcoeff} into Eq.~\ref{eq:ampexpbare}, we obtain the amplitude expansion in terms of the renormalised parameters:
@@ -159,18 +159,18 @@ The $\overline{\text{MS}}$-renormalised amplitudes $A_R^{(L)}$ admit the followi
     A_R^{(1)} &= 2\bm{I}^{(1)}(\eps) A_R^{(0)} + F^{(1)}\,, \label{eq:A1IRstructure} \\
     A_R^{(2)} &= 2\bm{I}^{(1)}(\eps) A_R^{(1)} + 4\bm{I}^{(2)}(\eps) A_R^{(0)} + F^{(2)} \,. \label{eq:A2IRstructure}
 \end{align}
-Thus, the IR-divergent part is determined by amplitudes at lower loop order, while the full amplitude also receives a finite part $F^{(L)}$, which is the genuinely new contribution that needs to be computed. The pole operators are given by:
+Thus, the IR-divergent part is determined by amplitudes at lower loop order, while the full amplitude also receives a finite part $F^{(L)}$, which is the genuinely new contribution that needs to be computed. The pole operators are given by~\cite{Catani:1998bh}:
 \begin{align}
     \bm{I}^{(1)}(\eps) &= \frac{1}{2} \frac{e^{\eps \gamma_E}}{\Gamma(1-\eps)} \sum_i \left(\frac{1}{\eps^2} - \frac{\gamma_0^i}{2\eps} \frac{1}{\bm{T}_i^2}\right) \sum_{j\neq i} \bm{T}_j \cdot \bm{T}_j \left(\frac{\mu_R^2}{-s_{ij}} \right)^\eps\,, \\
-    \bm{I}^{(2)}(\eps) &= \frac{e^{-\eps \gamma_E} \Gamma(1-2\eps)}{\Gamma(1-\eps)} \left( \frac{\gamma_1^\text{cusp}}{8} + \frac{\beta_0}{2\eps} \right) \bm{I}^{(1)}(2\eps) - \frac{1}{2}\bm{I}^{(1)}(\eps) \left(\bm{I}^{(1)}(2\eps) + \frac{\beta_0}{\eps} \right) + \bm{H}_{\text{RS}}^{(2)}(\eps)\,,
+    \bm{I}^{(2)}(\eps) &= \frac{e^{-\eps \gamma_E} \Gamma(1-2\eps)}{\Gamma(1-\eps)} \left( \frac{\gamma_1^\text{cusp}}{8} + \frac{\beta_0}{2\eps} \right) \bm{I}^{(1)}(2\eps) - \frac{1}{2}\bm{I}^{(1)}(\eps) \left(\bm{I}^{(1)}(\eps) + \frac{\beta_0}{\eps} \right) + \bm{H}_{\text{RS}}^{(2)}(\eps)\,,
 \end{align}
 where $s_{ij} = 2\sigma_{ij} p_i \cdot p_j$ with $\sigma_{ij}=+1$ if both momenta are incoming or outgoing and $\sigma_{ij}=-1$ otherwise. The values of the $\beta$-function coefficients and the anomalous dimensions are given in Appendix~\ref{app:renormconstants}. We remark that the one-loop pole operator $\bm{I}^{(1)}(\eps)$ is independent of the regularisation scheme, while the two-loop operator $\bm{I}^{(2)}(\eps)$ is not. Its dependence enters through the quantity $\bm{H}_{\text{RS}}^{(2)}(\eps)$, which contains $\order{1/\eps}$ poles only:
 \begin{align} \label{eq:IR_H_function}
     \bm{H}_{\text{RS}}^{(2)}(\eps) &= \frac{1}{16\eps} \sum_i \left(\gamma_1^i - \frac{1}{4} \gamma_1^{\text{cusp}}\gamma_0^i + \frac{\pi^2}{16} \beta_0 \gamma_0^{\text{cusp}} C_i \right) \nonumber \\
-    &+ \frac{i f^{abc}}{24\eps} \sum_{(i,j,k)} \bm{T}_i^a \bm{T}_j^b \bm{T}_k^c \ln\left(\frac{-s_{ij}}{-s_{jk}} \right) \ln\left(\frac{-s_{jk}}{-s_{kj}} \right) \ln\left(\frac{-s_{ki}}{-s_{ij}} \right) \\ 
+    &+ \frac{i f^{abc}}{24\eps} \sum_{(i,j,k)} \bm{T}_i^a \bm{T}_j^b \bm{T}_k^c \ln\left(\frac{-s_{ij}}{-s_{jk}} \right) \ln\left(\frac{-s_{jk}}{-s_{ki}} \right) \ln\left(\frac{-s_{ki}}{-s_{ij}} \right) \\ 
     &-\frac{i f^{abc}}{128\eps} \gamma_0^{\text{cusp}} \sum_{(i,j,k)} \bm{T}_i^a \bm{T}_j^b \bm{T}_k^c \left( \frac{\gamma_0^i}{C_i} - \frac{\gamma_0^j}{C_j} \right)\ln\left(\frac{-s_{ij}}{-s_{jk}} \right) \ln\left(\frac{-s_{ki}}{-s_{ij}} \right)\,, \nonumber
 \end{align}
-where the sum runs over unordered tuples $(i,j,k)$ of distinct parton indices. As pointed out in Ref.~\cite{Becher:2009cu}, the last two lines appear only because the pole operators $\bm{I}^{(L)}(\eps)$ formulated in Ref.~\cite{Catani:1998bh} were not defined in a minimal scheme, but also include terms finite in $\eps$. Due to colour conservation, they contribute only if the amplitude contains at least four partons \JK{The last line appears only for \textit{more} than partons due to momentum conservation (Becher+Neubert). But the 2nd line should still be present for bbH, since we have exactly 4 partons and we are working in $\overline{\text{MS}}$ scheme. What's going on?}.
+where the sum runs over unordered tuples $(i,j,k)$ of distinct parton indices. As pointed out in Ref.~\cite{Becher:2009cu}, the last two lines appear only because the pole operators $\bm{I}^{(L)}(\eps)$ formulated in Ref.~\cite{Catani:1998bh} were not defined in a minimal scheme, but also include terms finite in $\eps$. Due to colour conservation, they contribute only if the amplitude contains at least four partons \JK{The last line appears only for \textit{more} than 4 partons due to momentum conservation (Becher+Neubert). But the 2nd line should still be present for bbH, since we have exactly 4 partons and we are working in $\overline{\text{MS}}$ scheme. What's going on?}.
 
 Overall, despite the intimidating appearance of the formulas above, it can be appreciated that the only non-trivial piece of deriving the pole structure of the two-loop amplitudes is due to the operators $\bm{T}_i^a$, which we will refer to as `colour insertion operators'. Indeed, each $\bm{T}_i^a$ acts on the colour structure of the amplitude by inserting a gluon with the adjoint index $a$ onto the parton $i$. The rules are as follows:
 \begin{itemize}
@@ -334,7 +334,7 @@ We find it very helpful to use pictures akin to Feynman diagrams in order to bet
     \end{subfigure}
     %}
     %\end{adjustbox}
-\caption{Graphical representation of the action of the colour insertion operators on partons. The dot $\bullet$ indicates a Feynman diagram vertex and allows us to distinguish between incoming and outgoing quarks and antiquarks. The fundamental and antifundamental indices should be read in the direction opposite to fermion flow, while the adjoint indices in the three-point gluon vertex should be read anticlockwise.\JK{Does that make sense?}}
+\caption{Graphical representation of the action of the colour insertion operators on partons. The dot $\bullet$ indicates a Feynman diagram vertex and allows us to distinguish between incoming and outgoing quarks and antiquarks. The fundamental and antifundamental indices should be read in the direction opposite to fermion flow, while the adjoint indices in the three-point gluon vertex should be read anticlockwise.}
 \label{fig:colourinsertion}
 \end{figure}
 Before applying them to our process of interest, it is useful to note that the product of two colour insertion operators, $\bm{T}_i\cdot\bm{T}_j \equiv \bm{T}_i^a \bm{T}_j^a$, trivially commutes: 
@@ -354,11 +354,11 @@ where $\ket{A_n}$ denotes a vector in the $n$-dimensional colour space, with $A_
 \subsection{Application to $\ppbbh$ amplitudes}
 We now have all the tools to derive the IR pole structure of the $\ppbbh$ amplitudes in Chapter~\ref{sec:Hbb}. First of all, we note that by applying the first line of Eq.~\ref{eq:IR_H_function} to the $\bbqqh$ and $\bbggh$ channels, Eqs.~\ref{eq:H2bbqqH} and \ref{eq:H2bbggH} follow trivially. Then, to derive the two-loop pole operator $\bm{I}^{(2)}(\eps)$, we only need to concern ourselves with the action of the colour insertion operators $\bm{T}_i^a$ within $\bm{I}^{(1)}(\eps)$.
 \subsubsection{The $\bbqqh$ channel}
-As the first step, we write down all the colour structures that appear in the relevant Feynman diagrams. Note that factors such as $N_c, T_F, C_A$ or $C_F$ are not considered a part of these structures --- we only include $\delta$-functions, fundamental generators $(T^a)_{ij}$ or the structure constants $f^{abc}$\JK{Maybe this sentence can be improved.}. For this channel, we find two structures (see Fig.~\ref{fig:bbqqHcolour}):
+As the first step, we write down all the colour structures that appear in the relevant Feynman diagrams. Note that factors such as $N_c, T_F, C_A$ or $C_F$ are not considered a part of these structures --- we only include $\delta$-functions, fundamental generators $(T^a)_{ij}$ and the structure constants $f^{abc}$. For this channel, we find two structures (see Fig.~\ref{fig:bbqqHcolour}):
 \begin{equation}
     \bm{c} = 
     \begin{pmatrix}
-        \delta_{i_4}^{\;\;\bar{i}_1} \delta_{i_2}^{\;\;\bar{i}_3} & \delta_{i_2}^{\;\;\bar{i}_1} \delta_{i_4}^{\;\;\bar{i}_3}
+        \delta_{i_4}^{\;\;\bar{i}_1} \delta_{i_2}^{\;\;\bar{i}_3} & \quad \delta_{i_2}^{\;\;\bar{i}_1} \delta_{i_4}^{\;\;\bar{i}_3}
     \end{pmatrix}^T\,.
 \end{equation}
 Then, the action of the products $\bm{T}_i \cdot \bm{T}_j$ produces a linear combination of these structures, which we encode in the matrices $\mathcal{C}_{ij}$ defined as follows:
@@ -551,6 +551,8 @@ Once all the matrices $\mathcal{C}_{ij}$ have been computed, we have all the inf
 Moreover, it turns out that the second colour factor $\delta_{i_2}^{\;\;\bar{i}_1} \delta_{i_4}^{\;\;\bar{i}_3}$ always appears suppressed by $1/N_c$ with respect to the first factor $\delta_{i_4}^{\;\;\bar{i}_1} \delta_{i_2}^{\;\;\bar{i}_3}$, as can be appreciated from our simple example in Fig.~\ref{fig:bbqqHcolour}. Thus, in the leading-colour approximation, we simply drop it. This justifies the decomposition in Eq.~\ref{eq:colourdecomposition} and completes the derivation of the pole operator $I_{\bbqqh}^{(1)}$ in Eq.~\ref{eq:I1bbqqh}, which now acts solely on the amplitude associated with the colour factor $\delta_{i_4}^{\;\;\bar{i}_1} \delta_{i_2}^{\;\;\bar{i}_3}$.
 
 Finally, we combine the UV and IR poles in a single operator $P^{(L)}$ which we can use to subtract both types of divergences from the amplitude. Substituting Eq.~\ref{eq:amprenorminbare} into Eqs.~\ref{eq:A1IRstructure} and \ref{eq:A2IRstructure}, we obtain the finite part:
+\hspace{-9.2cm}
+\begin{minipage}[t]{16cm}
 \begin{align}
     F^{(1)} &= A_R^{(1)} - 2 I^{(1)}(\eps) A_R^{(0)} \nonumber \\
             &= A_B^{(1)} + 2 A_B^{(0)}(r_1 + s_1) - 2 I^{(1)}(\eps) A_B^{(0)} \nonumber \\
@@ -558,17 +560,29 @@ Finally, we combine the UV and IR poles in a single operator $P^{(L)}$ which we 
             &\nonumber \\
     F^{(2)} &= A_R^{(2)} - 2 I^{(1)}(\eps) A_R^{(1)} - 4 I^{(2)}(\eps) A_R^{(0)} \nonumber \\
             &= A_B^{(2)} + 2 A_B^{(1)}(2r_1 + s_1) + 4A_B^{(0)} (r_2 + r_1 s_1 + s_2) \nonumber \\
-            & -2 I^{(1)}(\eps) \left(A_B^{(1)} + 2 A_B^{(0)}(r_1 + s_1)\right) - 4 I^{(2)}(\eps) A_B^{(0)} \nonumber \\
-            &= A_B^{(2)} - \underbrace{\left(2 I^{(1)}(\eps) \left(\hat{A}_B^{(1)} + r_1 + s_1\right) + 4I^{(2)}(\eps) - 2 (2r_1 + s_1) \hat{A}_B^{(1)} -  4(r_2 + r_1 s_1 + s_2) \right)}_{P^{(2)}} A_B^{(0)}\,,
+            & \quad \, -2 I^{(1)}(\eps) \left(A_B^{(1)} + 2 A_B^{(0)}(r_1 + s_1)\right) - 4 I^{(2)}(\eps) A_B^{(0)} \nonumber \\
+            &= A_B^{(2)} - \underbrace{\big(2 I^{(1)}(\eps) \big(\hat{A}_B^{(1)} + 2 r_1 + 2 s_1\big) +4I^{(2)}(\eps) -2 (2r_1 + s_1) \hat{A}_B^{(1)} -  4(r_2 + r_1 s_1 + s_2) \big)}_{P^{(2)}} A_B^{(0)}\,,
 \end{align}
+\end{minipage}
+%\begin{align}
+%    F^{(1)} &= A_R^{(1)} - 2 I^{(1)}(\eps) A_R^{(0)} \nonumber \\
+%            &= A_B^{(1)} + 2 A_B^{(0)}(r_1 + s_1) - 2 I^{(1)}(\eps) A_B^{(0)} \nonumber \\
+%            &= A_B^{(1)} - \underbrace{2 \left(I^{(1)}(\eps) - r_1 - s_1 \right)}_{P^{(1)}} A_B^{(0)} \,, \\
+%            &\nonumber \\
+%    F^{(2)} &= A_R^{(2)} - 2 I^{(1)}(\eps) A_R^{(1)} - 4 I^{(2)}(\eps) A_R^{(0)} \nonumber \\
+%            &= A_B^{(2)} + 2 A_B^{(1)}(2r_1 + s_1) + 4A_B^{(0)} (r_2 + r_1 s_1 + s_2) \nonumber \\
+%            & -2 I^{(1)}(\eps) \left(A_B^{(1)} + 2 A_B^{(0)}(r_1 + s_1)\right) - 4 I^{(2)}(\eps) A_B^{(0)} \nonumber \\
+%            &= A_B^{(2)} - \big(2 I^{(1)}(\eps) \big(\hat{A}_B^{(1)} + 2 r_1 + 2 s_1\big) +4I^{(2)}(\eps) \nonumber  \\
+%            &\phantom{=A_B^{(2)}-(} \underbrace{\quad \qquad -2 (2r_1 + s_1) \hat{A}_B^{(1)} -  4(r_2 + r_1 s_1 + s_2) \big)}_{P^{(2)}} A_B^{(0)}\,,
+%\end{align}
 where $\hat{A}_B^{(1)}$ is the one-loop bare amplitude divided by the tree-level amplitude. Thus, to obtain the finite remainders, we simply subtract the operators $P^{(1)}$ and $P^{(2)}$ (multiplied by the tree amplitude) from the \textit{bare} amplitudes $A^{(1)}_B$ and $A^{(2)}_B$.
 \subsubsection{The $\bbggh$ channel}
 The derivation of the pole structure of the $\bbggh$ follows exactly the same steps as described in the previous section. However, we believe it is still useful to outline it, since there are a few subtleties that we did not have to take care of in the case of the $\bbggh$ channel. First of all, here we find three colour factors:
 \begin{equation}
     \bm{c} = 
     \begin{pmatrix}
-        (T^{a_3}T^{a_4})_{i_2}^{\;\;\bar{i}_1} & (T^{a_4}T^{a_3})_{i_2}^{\;\;\bar{i}_1}
-        & \delta_{i_2}^{\;\;\bar{i}_1} \delta^{ab}
+        (T^{a_3}T^{a_4})_{i_2}^{\;\;\bar{i}_1} & \quad (T^{a_4}T^{a_3})_{i_2}^{\;\;\bar{i}_1}
+        & \quad \delta_{i_2}^{\;\;\bar{i}_1} \delta^{ab}
     \end{pmatrix}^T\,.
 \end{equation}
 While the first two factors can be spotted in a naive analysis of tree-level diagrams such as Fig.~\ref{fig:bbggHcolour}, the third factor appears only at loop-level\JK{Check this is true.}. Thus, from a practical point of view, it is useful to have an automated routine which is able to extract the colour structure of all diagrams up to the desired loop order.
@@ -626,7 +640,7 @@ While the first two factors can be spotted in a naive analysis of tree-level dia
     \label{fig:bbggHcolour}
 \end{figure}
 
-Just as before, we apply all the need combinations of the $\bm{T}_i \cdot \bm{T}_j$ operators on the colour structures in $\bm{c}$ and extract the matrices $\mathcal{C}_{ij}$. We then know how to act with the pole operator $\bm{I}_{\bbggh}^{(1)}$ on the renormalised amplitude $A_R^{(L)}$ in this channel. Again, in the leading colour approximation, the pole operator is diagonal, i.e. there is no mixing of different colour structures. However, contrary to $\bm{I}_{\bbqqh}^{(1)}$, it is not proportional to the identity matrix. We find:
+Just as before, we apply all the needed combinations of the $\bm{T}_i \cdot \bm{T}_j$ operators on the colour structures in $\bm{c}$ and extract the matrices $\mathcal{C}_{ij}$. We then know how to act with the pole operator $\bm{I}_{\bbggh}^{(1)}$ on the renormalised amplitude $A_R^{(L)}$ in this channel. Again, in the leading colour approximation, the pole operator is diagonal, i.e. there is no mixing of different colour structures. However, contrary to $\bm{I}_{\bbqqh}^{(1)}$, it is not proportional to the identity matrix. We find:
 \begin{equation*}
     \bm{I}_{\bbggh}^{(1)} = -N_c \frac{N(\eps)}{2}
     \begin{pmatrix}
@@ -640,9 +654,73 @@ where:
     \mathrm{I}_1 = \mathrm{I}_2 &= \left(\frac{1}{\eps^2} + \frac{3}{4\eps} + \frac{\beta_0}{4 N_c \eps}\right) \left((-s_{23})^{-\eps} + (-s_{14})^{-\eps}\right) +\left(\frac{1}{\eps^2} + \frac{\beta_0}{2 N_c\eps} \right) (-s_{34})^{-\eps} \nonumber \\
     \mathrm{I}_3 &= \left(\frac{1}{\eps^2} + \frac{3}{2\eps} \right) (-s_{12})^{-\eps} + \left(\frac{2}{\eps^2} + \frac{\beta_0}{2 N_c \eps} \right) (-s_{34})^{-\eps}\,.
 \end{align}
-As in the previous section, the last colour factor is always suppressed by $1/N_c$ with respect to the first two and we simply drop it. This completes the derivation of the $\bbggh$ leading-colour decomposition Eq.\ref{eq:colourdecomposition} and its pole operator Eq.~\ref{eq:I1bbggh}.\JK{What about the $bbbbH$ channel?}
+As in the previous section, the last colour factor is always suppressed by $1/N_c$ with respect to the first two and we simply drop it. This completes the derivation of the $\bbggh$ leading-colour decomposition Eq.\ref{eq:colourdecomposition} and its pole operator Eq.~\ref{eq:I1bbggh}.
 
-A careful reader might be alarmed by the presence of the $\beta_0/N_c$ term at leading colour. Indeed, since $\beta_0 = \frac{11}{3}C_A - \frac{4}{3} T_F n_f$ and $C_A = N_c$ \JK{or rather $C_A = 2 T_F N_c$ ?}, we would expect only the $11/3$ contribution to survive. However, in most practical applications, $n_f=4$ or $5$, thus $n_f/N_c \approx  \order{1}$. It is therefore reasonable to retain the $n_f$ term as well and the whole contribution is written in terms of the first $\beta$-function coefficient as $\beta_0/N_c$. This also provides the motivation for the decomposition in Eqs.~\ref{eq:NfDecomposition1L} and \ref{eq:NfDecomposition2L}.
+A careful reader might be alarmed by the presence of the $\beta_0/N_c$ term at leading colour. Indeed, since $\beta_0 = \frac{11}{3}C_A - \frac{4}{3} T_F n_f$ and $C_A = N_c$, we would expect only the $11/3$ contribution to survive. However, in most practical applications, $n_f=4$ or $5$, thus $n_f/N_c \approx  \order{1}$. It is therefore reasonable to retain the $n_f$ term as well and the whole contribution is written in terms of the first $\beta$-function coefficient as $\beta_0/N_c$. This also provides the motivation for the decomposition in Eqs.~\ref{eq:NfDecomposition1L} and \ref{eq:NfDecomposition2L}.
+\section{Pole structure of the QED process $0\to \ell \bar\ell \gamma \gamma^*$} \label{app:QEDpolestructure}
+To derive the pole structure of the process $0\to \ell \bar\ell \gamma \gamma^*$ in Chapter~\ref{sec:QEDpaper}, we slightly depart from the procedure described above. In particular, in QED there is no colour structure, therefore applying the colour insertion operators would not make sense here. Instead, we follow the approach found in Refs.~\cite{Gardi:2009qi, Gardi:2009zv, Becher:2009cu, Becher:2009qa} and provide a brief outline below.
+
+We renormalise the QED coupling constant by trading the bare coupling $\alpha_B$ for the renormalised one $\alpha_R$ through:
+\begin{align}
+    \label{eq:alpha-bare}
+    \alpha_B = \alpha_R(\mu_R) \, Z_{\alpha}\bigl(\alpha_R(\mu_R) \bigr)  \, \mu_R^{2 \eps} \, S_{\eps} \,,
+\end{align}
+with $S_\eps=(4\pi)^{-\eps} \mathrm{e}^{\eps\gamma_E}$.
+The renormalisation factor $Z_{\alpha}$ in the $\overline{\text{MS}}$ scheme is: \cite{Barnreuther:2013qvf,Bonciani:2021okt}
+\begin{align}
+    \label{eq:Za}
+    Z_{\alpha}(\alpha) = 1 - \frac{\alpha}{4 \pi} \frac{\beta_0}{\eps} -
+    \left(\frac{\alpha}{4 \pi}\right)^2 \left( -\frac{\beta_0^2}{\eps^2} + \frac{1}{2}\frac{\beta_1}{\eps} \right) + \mathcal{O}\bigl(\alpha^3\bigr) \,.
+\end{align}
+The QED $\beta$-function is defined from the renormalised coupling as:
+\begin{align} \label{eq:beta_func_def}
+\frac{\dd \alpha_{\rm R}(\mu_R)}{\dd \ln \mu_R} = \left[ -2 \, \eps + \beta\bigl(\alpha_{\rm R}(\mu_R)\bigr) \right]  \alpha_{\rm R}(\mu_R) \,,
+\end{align}
+and expanded as:
+\begin{align} \label{eq:beta_func}
+\beta( \alpha ) = -2 \, \frac{\alpha}{4 \pi}  \sum_{k\ge 0} \beta_k \left(\frac{\alpha}{4\pi} \right)^k \,,
+\end{align}
+with:
+\begin{align} \label{eq:beta_coeffs}
+\beta_0 = -\frac{4}{3} \nl \,, \qquad \qquad \beta_1 = - 4 \, \nl \,.
+\end{align}
+The photon wave function renormalisation factor is $Z_A=Z_\alpha$, which we include due to the external off-shell photon. The complete renormalisation procedure then is:
+\begin{align}
+    \mathcal{A}^\mu_\text{renorm}(\alpha_R) = Z_A^{\frac{1}{2}}(\alpha_R) \, \mathcal{A}^\mu_\text{bare}(\alpha_\text{bare}) \, ,
+\end{align}
+where $\alpha_B$ is expressed in terms of $\alpha_R$ through \cref{eq:alpha-bare}.
+
+The IR poles of the renormalised amplitude factorise as~\cite{Catani:1998bh, Gardi:2009qi, Gardi:2009zv, Becher:2009cu, Becher:2009qa}:
+\begin{align}
+ \mathcal{A}^\mu_\text{renorm}(\alpha_R) = Z(\alpha_R) \,  \mathcal{F}^\mu(\alpha_R) \,,
+\end{align}
+so that $ Z(\alpha_R)$ captures all IR poles and $\mathcal{F}^\mu$ is a finite remainder.
+We obtain the explicit two-loop expression of the IR factor $Z(\alpha_R)$ by
+choosing QED parameters ($C_A=0$, $C_F=1$, and $T_F=1$) in the non-abelian gauge-theory expressions of \incite{Becher:2009qa}. We expand it as:
+\begin{align}
+    Z(\alpha) &= \sum_{k\ge0} Z^{(L)} \left(\frac{\alpha}{4\pi}\right)^L \,.
+\end{align}
+The coefficients $Z^{(L)}$ are expressed in terms of the anomalous dimension:
+\begin{align}
+    \Gamma &= \gamma^\text{cusp}\ln\left(\frac{-s_{12}}{\mu^2}\right)+2\gamma^l+\gamma^A \,,
+\end{align}
+and its derivative:
+\begin{align}
+    \Gamma^\prime &\coloneqq \frac{\partial\Gamma}{\partial\ln\mu} = -2\gamma^\text{cusp} \,.
+\end{align}
+Here, $\gamma^\text{cusp}$ is the cusp anomalous dimension, while $\gamma^l$ and $\gamma^A$ are the lepton's and the photon's collinear anomalous dimensions, respectively.
+We expand all anomalous dimensions $y\in\{\Gamma,\gamma^i\}$ as:
+\begin{align}
+    y &= \frac{\alpha}{4\pi} \sum_{k\ge0} y_k \left(\frac{\alpha}{4\pi}\right)^k \,.
+\end{align}
+Their coefficients are listed in Appendix~\ref{app:renormconstants}. Finally, the coefficients of the IR factor $Z$ up to two loop are given by:
+\begin{align}
+    \label{eq:ir-pole-coeffs}
+    Z^{(0)} &= 1 \,, &
+    Z^{(1)} &= \frac{\Gamma_0^\prime}{4\eps^2}+\frac{\Gamma_0}{2\eps} \,, &
+    Z^{(2)} &= \frac{{Z^{(1)}}^2}{2} -\frac{3\beta_0\Gamma_0^\prime}{16\eps^3}+\frac{\Gamma_1^\prime-4\beta_0\Gamma_0}{16\eps^2}+\frac{\Gamma_1}{4\eps} \,.
+\end{align}
+Putting together the subtraction of UV and IR poles, and expanding the resulting finite remainder $\mathcal{F}^{\mu}(\alpha_R)$ in $\alpha_R$ leads to the definitions in \cref{eq:finite-remainders}.
 
 \chapter{Renormalisation Constants} \label{app:renormconstants}
 \renewcommand{\theequation}{C.\arabic{equation}}
@@ -658,28 +736,9 @@ where the first two $\beta$ function coefficients are:
     \beta_0 = & \;\frac{11}{3}C_A - \frac{4}{3} T_F n_f \,, \\
     \beta_1 = & \; \frac{34}{3} C_A^2 - \frac{20}{3} C_A T_F n_f - 4 C_F T_F n_f \,,
 \end{align}
-with $C_A = N_c$, $C_F = (N_c^2-1)/(2N_c)$ and $T_F = 1/2$.
+with $C_A = N_c$, $C_F = T_F(N_c^2-1)/N_c$.
 
-The coefficients $Z^{(L)}$ appearing in Eq.\ref{eqQED:finite-remainders} are given up to the two-loop level by:
-\begin{align}
-    \label{eq:ir-pole-coeffs}
-    Z^{(0)} &= 1 \,, &
-    Z^{(1)} &= \frac{\Gamma_0^\prime}{4\eps^2}+\frac{\Gamma_0}{2\eps} \,, &
-    Z^{(2)} &= \frac{{Z^{(1)}}^2}{2} -\frac{3\beta_0\Gamma_0^\prime}{16\eps^3}+\frac{\Gamma_1^\prime-4\beta_0\Gamma_0}{16\eps^2}+\frac{\Gamma_1}{4\eps} \,,
-\end{align}
-where the anomalous dimension is:
-\begin{align}
-    \Gamma &= \gamma^\text{cusp}\ln\left(\frac{-s_{12}}{\mu^2}\right)+2\gamma^l+\gamma^A \,,
-\end{align}
-while its derivative is:
-\begin{align}
-    \Gamma^\prime &\coloneqq \frac{\partial\Gamma}{\partial\ln\mu} = -2\gamma^\text{cusp} \,.
-\end{align}
-We expand all anomalous dimensions $y\in\{\Gamma,\gamma^i\}$ as:
-\begin{align}
-    y &= \frac{\alpha}{4\pi} \sum_{k\ge0} y_k \left(\frac{\alpha}{4\pi}\right)^k \,,
-\end{align}
-with the zeroth and first-order coefficients given by~\cite{Becher:2009qa}: 
+The zeroth and first-order coefficients of the anomalous dimensions are given by~\cite{Becher:2009qa}: 
 \begingroup
 \allowdisplaybreaks
 \begin{align}
@@ -699,8 +758,7 @@ with the zeroth and first-order coefficients given by~\cite{Becher:2009qa}:
 \gamma_1^\cusp = & \; \left( \frac{268}{9} - \frac{4\pi^2}{3} \right) C_A -\frac{80}{9} T_F n_f \,.
 \end{align}
 \endgroup
-\JK{I changed $n_l \to n_f$ in $\gamma_1^l$.}
-When working in QED, one needs to set $C_A=0$, $C_F=1$, and $T_F=1$ in all the expressions above.
+We emphasise that while in QCD we have $N_c=3$ and $T_F = 1/2$, when working in QED one needs to set $C_A=0$, $C_F=1$ and $T_F=1$ in the expressions above.
 
 \chapter{Definition of the four-point integral families} \label{app:int_def}
 For each two-loop integral family $\tau$ corresponding to one of the maximal topologies shown in \cref{fig:int-fams}, the Feynman integrals have the form:
