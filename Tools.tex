@@ -84,11 +84,11 @@ The colour-ordered amplitudes $A_n$ are calculated by adding up the kinematic pa
 \begin{align}
     A_n[123\ldots n] &= A_n[23\ldots n\,1]\,, && \text{cyclicity} \\
     A_n[123\ldots n] &= (-1)^n A_n[n \ldots 231] \,, && \text{reflection} \\
-    A_n[123 \ldots n] &+ A_n[213 \ldots n] +  A_n[231 \ldots n] +  \ldots + && A_n[23 \ldots 1\,n]  = 0 \,, \nonumber \\ 
+    A_n[123 \ldots n] &+ \mathrlap{A_n[213 \ldots n] +  A_n[231 \ldots n] +  \ldots + A_n[23 \ldots 1\,n] = 0 \,,} && \nonumber \\ 
     & && U(1) \text{ decoupling} \\
     A_n[1, {\alpha}, n, {\beta}] &= (-1)^{|\beta|} \sum_{\mathclap{\sigma \in OP(\{\alpha\} \cup \{\beta^T\})}} A_n[1, \sigma, n] \,, && \text{Kleiss-Kuiff relations}
 \end{align}
-\JK{fix alignment!!!} where the sum is over permutations in the joint set $\{\alpha\} \cup \{\beta^T\}$ such that the order within the individual sets is preserved, and $\{\beta^T\}$ is the reversal of the set $\{\beta\}$~\cite{Mangano:1990by, Kleiss:1989616, Bern:2008qj}. Crucially, these properties allow us to reduce the number of independent amplitudes that need to be computed. In fact, for $n$-gluon scattering, this number is just $(n-2)!$\,.
+where the sum is over permutations in the joint set $\{\alpha\} \cup \{\beta^T\}$ such that the order within the individual sets is preserved, and $\{\beta^T\}$ is the reversal of the set $\{\beta\}$~\cite{Mangano:1990by, Kleiss:1989616, Bern:2008qj}. Crucially, these properties allow us to reduce the number of independent amplitudes that need to be computed. In fact, for $n$-gluon scattering, this number is just $(n-2)!$\,.
 
 \section{Helicity amplitudes}
 After colour decomposition, our colour-ordered amplitude contains purely kinematic information. The kinematic part of the Feynman rules for external states carries information about the spins and polarisations of particles: for massless spin\=/1/2 fermions, we use $\pm$ helicity states to differentiate between the two solutions to the Dirac equation, while for massless spin\=/1 bosons, they denote the two polarisation vectors. From the experimental perspective, we are rarely interested in differentiating between the spin states of individual particles. Usually, a beam of particles with random spins undergoes scattering and we look at the total number of products outgoing in a certain direction. Thus, to calculate the corresponding cross-section, we should average over the initial spin states and sum over the final ones. This can be achieved in two different ways: 
@@ -564,7 +564,8 @@ The general structure of this formula can be understood simply by considering th
 \end{figure}
 
 We point out that not all topologies contributing to each helicity amplitude are independent, in the sense that some topologies can be written as \textit{sub}topologies of others. This is illustrated in Fig.~\ref{fig:topologies}. It is clear that topologies (a) and (b) can be viewed as subtopologies of topology (c) with a few propagators absent. Topologies with the maximum number of propagators allowed for $L$-loop, $n$-particle kinematics are referred to as maximal topologies. All other topologies can be obtained from them by `pinching' appropriate propagators. Thus, the next step in our procedure is to express all topologies which contribute to Eq.~\ref{eq:ampschematic} as subtopologies of these maximal topologies. Moreover, after this mapping we will write the monomials $m_i(k, p)$ in terms of the propagators of the target maximal topology. In this way, we will remove all loop momentum dependence from the numerators, so that the amplitude will be a linear combination of scalar integrals over the maximal topologies, with rational coefficients of external kinematics parametrised by the momentum twistor variables.
-\subsection{Reduction onto maximal topologies}
+%\subsection{Reduction onto maximal topologies}
+\subsection{Parametrising the loop momenta}
 %Consider the 1L box. It has the following propagators:
 %\begin{equation}
 %    \{k_1^2, (k_1-p_1)^2, (k_1-p_1-p_2)^2, (k_1+p_4)^2 \} \,.
@@ -574,7 +575,11 @@ We decompose the loop momenta in a $D$-dimensional space spanned by a carefully 
 \begin{equation} \label{eq:4dextradimspace}
     k^{(D)} = k^{(4)} + k^{(-2\eps)}\,.
 \end{equation}
-Here and below, we have suppressed the Lorentz index for readability. Let us focus on the $4$-dimensional part first. We would like it to be spanned by the $4$-dimensional external momenta. However, due to momentum conservation, in an $n$-particle scattering process, only $n-1$ momenta can be linearly independent. Thus, they can span only an $(n-1)$-dimensional subspace, which we refer to as the `physical' space (labelled using $\parallel$). For $n\le4$, the remainder of the $4$-dimensional space needs to be completed by constructing $4-(n-1) = 5-n$ `spurious' vectors (labelled using $\omega$), which can be chosen as orthonormal to each other and also orthogonal to vectors in the physical space. Therefore, the decomposition in Eq.\ref{eq:4dextradimspace} becomes:
+Here and below, we have suppressed the Lorentz index for readability. Let us focus on the $4$-dimensional part first. We would like it to be spanned by the $4$-dimensional external momenta $p_i$. However, due to momentum conservation, in an $n$-particle scattering process, only $n-1$ momenta can be linearly independent. Thus, they can span only an $(n-1)$-dimensional subspace, which we refer to as the `physical' space (labelled using $\parallel$). For $n\le4$, the remainder of the $4$-dimensional space needs to be completed by constructing $4-(n-1) = 5-n$ `spurious' vectors (labelled using $\omega$). Their explicit representation is not unique and we are free to choose any vectors satisfying the following orthogonality conditions\footnote{It is also common to impose a stronger condition of orthonormality between the spurious space vectors, $\omega_i \cdot \omega_j = \delta_{ij}$. However, this may require us to introduce square roots in their normalisations, leading to problems when using the finite field approach.}:
+\begin{align} \label{eq:orthogonalityconditions}
+    \omega_i \cdot p_j = 0 && \omega_i \cdot \omega_j = 0\,.
+\end{align}
+Therefore, the decomposition in Eq.\ref{eq:4dextradimspace} becomes:
 \begin{equation} \label{eq:korthogonality}
     k^{(D)} = k^{(4),\, \parallel} + k^{(4),\, \omega} + k^{(-2\eps)}\,.
 \end{equation}
@@ -582,29 +587,31 @@ The spurious and $(-2\eps)$-dimensional spaces taken together are often referred
 \begin{equation} \label{eq:ksquared}
     k^{(D)} \cdot k^{(D)}  = k^{(4),\, \parallel} \cdot k^{(4),\, \parallel} + k^{(4),\, \omega} \cdot k^{(4),\, \omega} + k^{(-2\eps)} \cdot k^{(-2\eps)}\,.
 \end{equation}
-Overall, the explicit decomposition of each loop momentum $k_i^{(D)}$ in terms of basis vectors is:
+Overall, we parametrise each loop momentum $k_i^{(D)}$ according to:
 \begin{equation} \label{eq:kdecomposition}
-    k_i^{(D)} = \underbrace{\sum_{a=1}^{n-1} \alpha_{ia} p_a}_{k^{(4),\,\parallel}} + \underbrace{\sum_{b=n}^{4} \alpha_{ib} w_b}_{k^{(4),\,\omega}} + \underbrace{\beta_i \mu}_{k^{(-2\eps)}}\,,
+    k_i^{(D)} = \underbrace{\sum_{a=1}^{n-1} \alpha_{ia} p_a}_{k_i^{(4),\,\parallel}} + \underbrace{\sum_{b=n}^{4} \beta_{ib} w_b}_{k_i^{(4),\,\omega}} + k_i^{(-2\eps)}\,,
 \end{equation}
-where $p_a$ are the linearly indepdendent external momenta, $w_b$ are the vectors spanning the spurious space and $\mu$ is a vector spanning the extra-dimensional space \JK{Should it be $\mu$ or $\mu_i$ (separate for each $k_i$)?}\JK{How do we construct $\omega$? Using Levi-Civita? What about $\mu$ - does it have an explicit representation?}. If $n>4$, the second sum is not present since there is no spurious space. 
+where $p_a$ are the linearly independent external momenta and $w_b$ are the vectors spanning the spurious space. 
 
-To find the parameters $\alpha$ and $\beta$, we take the scalar products of Eq.~\ref{eq:kdecomposition} with external momenta. On the LHS, we express the products\footnote{Since we work in the HV scheme and the spurious space is orthogonal to the physical one, $k_i^{(D)} \cdot p_j = k_i^{(4)} \cdot p_j = k_i^{(4),\,\parallel} \cdot p_j$.} $k_i^{(D)} \cdot p_j$ in terms of the inverse propagators $D_t(k,p)$ belonging to the maximal topologies we have mapped our integral onto (see Eq.~\ref{eq:ampschematic}). It turns out, however, that in certain cases not all such scalar products can be expressed through the inverse propagators. The remaining products are then referred to as irreducible scalar products (ISPs). More precisely, a simple counting argument shows that this happens when~\cite{grozin:2011mt}:
+To find the parameters $\alpha$, we take the scalar products of Eq.~\ref{eq:kdecomposition} with external momenta. On the LHS, we express the products\footnote{Since we work in the HV scheme and the spurious space is orthogonal to the physical one, $k_i^{(D)} \cdot p_j = k_i^{(4)} \cdot p_j = k_i^{(4),\,\parallel} \cdot p_j$.} $k_i^{(D)} \cdot p_j$ in terms of the inverse propagators $D_t(k,p)$ belonging to the maximal topologies we have mapped our integral onto (see Eq.~\ref{eq:ampschematic}). It turns out, however, that in certain cases not all such scalar products can be expressed through the inverse propagators. The remaining products are then referred to as irreducible scalar products (ISPs). More precisely, a simple counting argument shows that this happens when~\cite{grozin:2011mt}:
 \begin{equation}
     L \ge \max (2, 7-2n)\,,
 \end{equation}
 where $n$ and $L$ are the number of legs and loops in a given Feynman diagram. Thus, for self-energy diagrams ($n=2$), ISPs appear at $L\ge3$, while for any process with $n\ge3$, they appear already at $L=2$. We point out that we will never encounter ISPs at $L=1$, no matter the number of external legs.
 
-Returning back to Eq.~\ref{eq:kdecomposition}, taking its scalar products with external momenta produces a system of equations linear in $\alpha$ and $\beta$, with the LHS given by linear combinations of the inverse propagators and (potentially) ISPs. This system can be easily inverted using the finite field framework. The coefficients $\alpha_a$ in the physical space are then functions of inverse propagators and ISPs, while the coefficients $\alpha_b$ and $\beta$ in the transverse space are functions of the `transverse' ISPs $k_i \cdot w_j$ and $\mu_{ij} \equiv k_i^{(-2\eps)} \cdot k_j^{(-2\eps)}$, respectively. 
+Returning back to Eq.~\ref{eq:kdecomposition}, taking its scalar products with $p_j$, but also $w_j$ and $k_j^{(D)}$, produces a system of equations linear in $\alpha$ and $\beta$, which we can invert to determine these parameters. This step can also be incorporated into the finite field framework. The parameters $\alpha$ in the physical space are then functions of the inverse propagators and potentially the `physical' ISPs introduced above, while the parameters $\beta$ in the spurious space are functions of the `spurious ISPs', $k_i \cdot w_j$. We also introduce a shorthand notation for the scalar products between the $(-2\eps)$-dimensional parts of loop momenta, $\mu_{ij} \equiv -k_i^{(-2\eps)} \cdot k_j^{(-2\eps)}$. Having determined the free parameters in Eq.~\ref{eq:kdecomposition}, we substitute the loop momentum decomposition into the numerators of integrals present in the amplitude. 
+\textcolor{gray}{
 \begin{itemize}
     \item Substitute this parametrisation into $N$.
     \item Transverse integration eliminates transverse space terms.
-    \item We are left with just inverse propagators and the `physical' ISPs - altogether this defines an integral IBP for the integrand reduction.
+    \item We are left with just inverse propagators and the `physical ISPs' - altogether this defines an integral IBP for the integrand reduction.
     \item The $D$s in the numerator will of course cancel out with the denominators defining the maximal topology.
     \item The end result is a scalar integral - numerator is 1, potentially with some ISPs.
     \item The coefficients of $D$s and ISPs can get pulled out of the integrals as they are functions of external kinematics only.
     \item So everything can be rationally parametrised for IBP reduction over FFs.
 \end{itemize}
-
+}
+\JK{I don't understand why 1712.02229 and 1608.01902 talk about constructing a monomial basis and then mapping the numerator onto it. Once we've parametrised each $k_i$, why can't we just substitute it into the numerator? The denominators $D$ will cancel out and we'll have scalar products $p_i \cdot p_j$, as well as $k_i \cdot w_j$ and $\mu_{ij}$, which can be integrated out.}
 \subsection{A simple example}
 \JK{Maybe 1L box? Idk if a 2L example will be too complicated.}
 
@@ -947,15 +954,15 @@ where $B$ is an arbitrary matrix that can depend on $\lambda$ and $\eps$. Under 
 \end{equation}
 A key conjecture due to Ref.~\cite{Henn:2013pwa} is that it is always possible to choose $B$ such that:
 \begin{equation}
-    \left( \frac{\partial B}{\partial \lambda}B^{-1} + B A_{\lambda}(\lambda, \, \eps) B^{-1} \right) = \eps \tilde{A}_{\lambda}(\lambda)\,.
+    \left( \frac{\partial B}{\partial \lambda}B^{-1} + B A_{\lambda}(\lambda, \, \eps) B^{-1} \right) = \eps \, \tilde{A}_{\lambda}(\lambda)\,.
 \end{equation}
 That is, with an appropriate transformation, the $\eps$-dependence factorises out of the matrices, which now contain only kinematic dependence. Note, however, that they might now contain algebraic (i.e. non-rational) factors such as square roots. Overall, Eq.~\ref{eq:DEspartial} becomes:
 \begin{equation} \label{eq:canonicalDEspartial}
-    \frac{\partial}{\partial \lambda} \vv{\text{MI}} = \eps \tilde{A}_{\lambda}(\lambda) \vv{\text{MI}}\,, 
+    \frac{\partial}{\partial \lambda} \vv{\text{MI}} = \eps \, \tilde{A}_{\lambda}(\lambda) \, \vv{\text{MI}}\,, 
 \end{equation}
 while Eq.~\ref{eq:DEsoneform}:
 \begin{equation} \label{eq:canonicalDEsoneform}
-    \dd \,\vv{\text{MI}} = \eps \dd \tilde{A}(\lambda) \,\vv{\text{MI}}\,.
+    \dd \,\vv{\text{MI}} = \eps \, \dd \tilde{A}(\lambda) \,\vv{\text{MI}}\,.
 \end{equation}
 This is known as DEs in the $\eps$-form\footnote{Several packages exist for transforming the DEs into the canonical form. See \texttt{Fuchsia}~\cite{Gituliar:2017vzm}, \texttt{Libra}~\cite{Lee:2020zfb}, \texttt{INITIAL}~\cite{Dlapa:2020cwj} and \texttt{CANONICA}~\cite{Meyer:2018feh}. See also \cite{Dlapa:2022nct} for a comprehensive review of different techniques.}. In particular, Eq.~\ref{eq:canonicalDEsoneform} admits a solution in terms of the path-ordered exponential:
 \begin{equation} \label{eq:pathexponential}
@@ -1008,10 +1015,11 @@ are known as \textit{pure} function. In practice, this means that a pure functio
 \begin{align}
     [ \tilde{A}_i, \tilde{A}_j] &= 0\,, \\
     \partial_i \tilde{A}_j - \partial_j \tilde{A}_i &= 0\,, \\
-    \sum_i \lambda_i \eps \tilde{A}_i &= [\vv{\text{MI}}] \, \mathds{1} \,,
+    %\sum_i \lambda_i \eps \tilde{A}_i &= [\vv{\text{MI}}] \, \mathds{1} \,,
+    \sum_i \lambda_i \eps \tilde{A}_i \cdot \vv{\text{MI}} &= \eps \, \text{diag}([\text{MI}_1], [\text{MI}_2], \ldots) \cdot \vv{\text{MI}} \,,
 \end{align}
 \end{subequations}
-where in the last equation, the sum runs over all kinematic scales, $[\vv{\text{MI}}]$ are the mass dimensions of the MIs. \JK{I don't understand the scaling property}. Finally, we point out an interesting observation on the nature of dimensionally regulated amplitudes (see e.g. Ref.~\cite{Duhr:2014woa}). For a Laurent expanded $L$-loop amplitude in $d = 4- 2\eps$, it is conjectured that the $\order{\eps^k}$ term contains functions of transcendental weight up to $2L+k$. For example, to calculate a two-loop amplitude up to $\order{\eps^0}$, we need to supply the MI expansions up to weight 4. It is expected that in $\mathcal{N}=4$ Super Yang-Mills theory, this bound is saturated, i.e. functions of weight exactly $2L+k$ are required.
+where in the last equation the sum runs over all kinematic scales and $[\text{MI}_i]$ is the mass dimension of MI$_i$. Finally, we point out an interesting observation on the nature of dimensionally regulated amplitudes (see e.g. Ref.~\cite{Duhr:2014woa}). For a Laurent expanded $L$-loop amplitude in $d = 4- 2\eps$, it is conjectured that the $\order{\eps^k}$ term contains functions of transcendental weight up to $2L+k$. For example, to calculate a two-loop amplitude up to $\order{\eps^0}$, we need to supply the MI expansions up to weight 4. It is expected that in $\mathcal{N}=4$ Super Yang-Mills theory, this bound is saturated, i.e. functions of weight exactly $2L+k$ are required.
 \begin{table}[t]
 	\begin{center}
 		\begin{tabular}{|c|c|c|c|}
@@ -1038,14 +1046,16 @@ Overall, pure integrals have played a central role in the derivation and evaluat
 
 \section{Symbols} \label{sec:symbols}
 \subsection{Introduction}
-In this section, we introduce yet another useful concept related to iterated integrals. We begin by noting that the representation of the solution to the canonical DEs in Eq.~\ref{eq:canonicalDEsoneform} is not unique. Most generally, the answer is written using Chen's iterated integrals (CIIs)~\cite{Chen:1977oja}. This form is usually the most compact one. However, as pointed out above Eq.~\ref{eq:GPLs}, if the `letters' are rational in at least one variable, CIIs can be expressed in terms of GPLs~\cite{Henn:2014qga}. This typically increases the number of terms, but has the advantage that robust and stable numerical evaluation of GPLs is available (see Refs.~\cite{Bauer:2000cp, Vollinga:2004sn} and also \cite{Panzer:2014caa}). Moreover, due to the conjecture pointed out in the previous section, typically we will be interested in computing the solution up to transcendental weight 4. Another remarkable conjecture exists: any transcendental function of weight $k < 4$ can be expressed in terms of the usual logarithms and polylogarithms $\text{Li}_k$ only~\cite{MR1265551, Goncharov:2010jf}, while at weight $k=4$ all functions can be expressed in terms of $\Li_4(x), \Li_{2,2}(x,y)$ and weight-4 products of lower-weight functions\footnote{See Section 6 of Ref.~\cite{Duhr:2011zq}, which considers this problem for the spanning set of functions with $k\le4$ in the special case of Harmonic Polylogarithms (GPLs with all indices $a_i\in\{0,\pm1\})$.}~\cite{Henn:2014qga}. 
+In this section, we introduce yet another useful concept related to iterated integrals. We begin by noting that the representation of the solution to the canonical DEs in Eq.~\ref{eq:canonicalDEsoneform} is not unique. Most generally, the answer is written using Chen's iterated integrals (CIIs)~\cite{Chen:1977oja}. 
+%This form is usually the most compact one. 
+However, as pointed out above Eq.~\ref{eq:GPLs}, if the `letters' are rational in at least one variable, CIIs can be expressed in terms of GPLs~\cite{Henn:2014qga}. This has the advantage that robust and stable numerical evaluation of GPLs is available (see Refs.~\cite{Bauer:2000cp, Vollinga:2004sn, Panzer:2014caa}). On the downside, contrary to CIIs, GPLs contain a large degree of redundancy in the sense that they satisfy extra functional relations, obscuring possible simplifications and cancellations. Other representations apart from CIIs and GPLs are also possible. Due to the conjecture pointed out in the previous section, typically we will be interested in computing the solution up to transcendental weight 4. Another remarkable conjecture exists: any transcendental function of weight $k < 4$ can be expressed in terms of the usual logarithms and polylogarithms $\text{Li}_k$ only~\cite{MR1265551, Goncharov:2010jf}, while at weight $k=4$ all functions can be expressed in terms of $\Li_4(x), \Li_{2,2}(x,y)$ and weight-4 products of lower-weight functions\footnote{See Section 6 of Ref.~\cite{Duhr:2011zq}, which considers this problem for the spanning set of functions with $k\le4$ in the special case of Harmonic Polylogarithms (GPLs with all indices $a_i\in\{0,\pm1\})$.}~\cite{Henn:2014qga}. 
 %\begin{equation} \label{eq:weight4basis}
 %    \left\{\log(x)\log(y)\log(z)\log(w), \Li_2(z) \log(x) \log(y), \Li_2(x)\Li_2(y), \Li_3(y) \log (x), \Li_4(x), \Li_{2,2}(x, y) \right\}\,,
 %\end{equation}
 %Here, the arguments $x,y,z,w$ are to be determined.
 Here, the classical polylogarithms $\Li_n(z)$ are defined as:
 \begin{equation} \label{eq:Lidefinition}
-    \Li_n(z) = \sum_{k=1}^\infty \frac{z^k}{k^n}\,, \qquad z, n \in \mathbb{C}\,,
+    \Li_n(z) = \sum_{k=1}^\infty \frac{z^k}{k^n}\,, \qquad |z|<1,\,\, n \in \mathbb{N}\,,
 \end{equation}
 while the multiple polylogarithms $\Li_{m_1, \ldots, m_k}$ are their generalisations~\cite{2011arXiv1105.2076G, Duhr:2019tlz}:
 \begin{subequations}
@@ -1058,20 +1068,20 @@ Note that in these two definitions, $|z_i|<1$, but the functions can be analytic
 \begin{equation} \label{eq:LiToG}
     \Li_{m_1, \ldots, m_n}(z_1, \ldots, z_n) = (-1)^n\,G\left(\vec{0}_{m_n-1}, \frac{1}{z_n}, \ldots, \vec{0}_{m_1-1}, \frac{1}{z_1\ldots z_n}; \,1 \right)\,,
 \end{equation}
-where $\vec{0}_m$ denotes a series\JK{vector?} of zeros of length $m$. For example, $\Li_{2,2}(x, y)$ in the weight-4 basis Eq.~\ref{eq:weight4basis} can be written as:%admits the integral representation:
+where $\vec{0}_m$ denotes a vector of zeros of length $m$. For example, $\Li_{2,2}(x, y)$ in the weight-4 basis Eq.~\ref{eq:weight4basis} can be written as:%admits the integral representation:
 \begin{equation}
      \Li_{2,2}(x, y) = G\left(0, \frac{1}{y}, 0, \frac{1}{xy};\,1 \right)\,.
 \end{equation}
 %\begin{equation}
 %    \Li_{2,2}(x, y) = -\int_0^1 \frac{x \dd t}{1- xt} \log t \, \Li_2(xyt)\,.
 %\end{equation}
-Overall, we see that the most naive solution to the canonical DEs, written in terms of special functions rather than CIIs, is likely to contain a large degree of redundancy. However, due to the abundance of integral representations, it is not easy to choose the most appropriate set of functions or even verify if two expressions are equivalent. We would like to have a tool which can find relations between transcendental functions and be representation independent \JK{Is it correct to say that the symbol is representation independent?}. To this end, we introduce the notion of a \textbf{symbol}\cite{Goncharov:2010jf, Duhr:2011zq}. After giving its definition and properties, we will demonstrate its power based on several illustrative examples. To motivate our effort, we remark that the main result of Ref.~\cite{Goncharov:2010jf} was the re-writing of a 17-page expression for a quantity known as the two-loop, six-point remainder function (related to Wilson loops) in $\mathcal{N}=4$ SYM~\cite{DelDuca:2009au, DelDuca:2010zg} as a remarkably compact combination of classical polylogarithms.
+Overall, we see that the most naive solution to the canonical DEs, written in terms of special functions rather than CIIs, is likely to contain a large degree of redundancy. However, due to the abundance of integral representations, it is not easy to choose the most appropriate set of functions or even verify if two expressions are equivalent. We would like to have a tool which can find relations between transcendental functions and be representation independent. To this end, we introduce the notion of a `symbol'\cite{Goncharov:2010jf, Duhr:2011zq}. After giving its definition and properties, we will demonstrate its power based on several illustrative examples. To motivate our effort, we remark that the main result of Ref.~\cite{Goncharov:2010jf} was the re-writing of a 17-page expression for a quantity known as the two-loop, six-point remainder function (related to Wilson loops) in $\mathcal{N}=4$ SYM~\cite{DelDuca:2009au, DelDuca:2010zg} as a remarkably compact combination of classical polylogarithms.
 \subsection{Definition and properties}
 The symbol of a CII with $\dd \log$ kernels is defined as:
 \begin{equation} \label{eq:symboldef}
     \SS \left(\int_\gamma \dd \log w_1 \cdot \ldots \cdot \dd \log w_n \right) \equiv w_1 \oo \ldots \oo w_n \,.
 \end{equation}
-We can think of it as an elementary $n$-fold tensor where each entry $w_i$ is implicitly understood as to mean its corresponding $\dd \log$. It satisfies certain properties that we would expect from the behaviour of logarithms\footnote{For a detailed discussion of symbol properties, see Ref.~\cite{Duhr:2011zq}}:
+We can think of it as an elementary $n$-fold tensor where each entry $w_i$ is implicitly understood as to mean its corresponding $\dd \log$. It satisfies certain properties that we would expect from the behaviour of logarithms\footnote{For a detailed discussion of symbol properties, see Ref.~\cite{Duhr:2011zq}.}:
 \begin{subequations}
 \begin{align} \label{eq:symbolproperties}
     A \oo (ab) \oo B &= A \oo a \oo B + A \oo b \oo B\,, \\
@@ -1085,19 +1095,19 @@ where $A, B$ are elementary tensors and $a, b$ are algebraic functions. Note tha
 \end{equation}
 which can be understood as a consequence of $\dd \log c = 0$. This means that, when working with the symbol, we are insensitive to constants, including transcendental ones like $\pi$. 
 
-Since CIIs are defined as repeated integrations over some kernels, the total differential acts on the symbol defined through Eq.~\ref{eq:symboldef} in the following way:
+Since CIIs are defined as repeated integrations over some kernels\JK{Defined through Eq.~\ref{eq:MIlaurentexp}?}, the total differential acts on the symbol defined through Eq.~\ref{eq:symboldef} in the following way:
 \begin{equation} \label{eq:symboldiff}
     \dd (w_1 \oo \ldots \oo w_n) = \dd \log w_n \, (w_1 \oo \ldots \oo w_{n-1})\,.
 \end{equation}
 This should remind the reader of the definition of pure functions in Eq.~\ref{eq:purecondition}. Crucially, this differential property can be reversed and allows us to define the symbol recursively~\cite{Goncharov:2010jf}. For a transcendental function $F$ with $\mathcal{T}(F) = k$ whose total differential can be written as:
-\begin{equation}
+\begin{equation} \label{eq:Ftofrecursive}
     \dd F = \sum_i f_i \, \dd \log w_i\,,
 \end{equation}
 where $f_i$ are functions with $\mathcal{T}(f_i)=k-1$, we have:
 \begin{equation} \label{eq:symbolrecursive}
     \SS(F) = \sum_i \SS(f_i)\oo w_i \,.
 \end{equation}
-Let us now see how to use this definition. For now, we will focus on the classical polylogarithms $\Li_n(z)$. In this case, the starting point of the recursion is a single weight-1 function --- the logarithm: $\SS(\log w) = w$, where the $w$ on the RHS is understood as an elementary tensor in the sense of Eq.~\ref{eq:symboldef} (remember that $\SS(\pi) = \SS(\zeta(n))=0$ \JK{Is this relevant?}). This immediately allows us to obtain the symbol of any $\Li_n$. Note the weight-1 polylogarithm is just the normal logarithm:
+The starting point of the recursion is the `empty' symbol: $\SS(1)$. Let us see how to use this definition. For now, we will focus on the classical polylogarithms $\Li_n(z)$. In this case, we will need the symbol of a single weight-1 function --- the logarithm: $\SS(\log w) = w$, which can itself be obtained using Eqs.~\ref{eq:Ftofrecursive} and~\ref{eq:symbolrecursive}. Here, the $w$ on the RHS is understood as an elementary tensor in the sense of Eq.~\ref{eq:symboldef}. This immediately allows us to obtain the symbol of any $\Li_n$. Note that the weight-1 polylogarithm is just the normal logarithm:
 \begin{equation} \label{eq:Li1equivlog}
     \Li_1(z) = -\log (1-z)\,. 
 \end{equation}
@@ -1109,35 +1119,34 @@ which is equivalent to the differential relation:
 \begin{equation}
     \dd \Li_n(z) = (\dd \log z) \Li_{n-1}(z)\,, \qquad n>1\,.
 \end{equation}
-Thus, Eqs.~\ref{eq:Li1equivlog} and \ref{eq:symbolrecursive} give:
+Thus, Eqs.~\ref{eq:symbolrecursive} and \ref{eq:Li1equivlog} give:
 \begin{align} \label{eq:Lisymbols}
     \SS(\Li_1(z)) &= -(1-z)\,, \nonumber \\
     \SS(\Li_2(z)) &= -(1-z) \oo z \,, \nonumber \\
     &\,\,\, \vdots \nonumber \\
     \SS(\Li_n(z)) &= -(1-z) \oo \underbrace{z \oo \ldots \oo z}_{n-1 \text{ times}}\,.
 \end{align}
-Note that in deriving the first line, we used $\SS(-f) = -\SS(f)$\JK{Make sure this is correct.} and this minus sign cannot be dropped or absorbed, i.e. $\SS(\Li_1(z)) \neq (z-1)$. Moreover, it should not be confused with the symbol expression $-1 \oo (1-z)$, which vanishes due to Eq.~\ref{eq:symbolAcB}. To avoid confusion, the symbol is often written using a square bracket, e.g. $\SS(\Li_2(z)) = -[1-z, z]$.
+Note that in deriving the first line, we used $\SS(-f) = -\SS(f)$ and this minus sign cannot be dropped or absorbed, i.e. $\SS(\Li_1(z)) \neq (z-1)$. Moreover, it should not be confused with the symbol expression $-1 \oo (1-z)$, which vanishes due to Eq.~\ref{eq:symbolAcB}. To avoid confusion, the symbol is often written using square brackets, e.g. $\SS(\Li_2(z)) = -[1-z, z]$.
 
-The symbol of the GPLs can be obtained recursively in a similar manner. We will need the differential equivalent of the integral definition in Eq.~\
-\ref{eq:GPLs} \cite{2001math......3059G}:
+The symbol of the GPLs can be obtained recursively in a similar manner. We will need the differential equivalent of the integral definition in Eq.~\ref{eq:GPLs} \cite{2001math......3059G}:
 \begin{equation} \label{eq:GPLdifferential}
-    \dd G(a_{n-1}, \ldots, a_1; a_n) = \sum_{i=1}^{n-1} G(a_{n-1}, \ldots, \hat{a}_i, \ldots, a_1; a_n) \dd \log\left( \frac{a_i - a_{i+1}}{a_i - a_{i-1}} \right)\,,
+    \dd G(a_{n-1}, \ldots, a_1; a_n) = \sum_{i=1}^{n-1} G(a_{n-1}, \ldots, \hat{a}_i, \ldots, a_1; a_n) \, \dd \log\left( \frac{a_i - a_{i+1}}{a_i - a_{i-1}} \right)\,,
 \end{equation}
-where $\hat{a}_i$ denotes the index that should be removed in a particular GPL and $a_0$ is understood as 0. The starting point of this recursion is a bit problematic, since we do not have a neat representation of the weight-1 GPL $G(a; z)$ that would be analogous to Eq.~\ref{eq:Li1equivlog}.  Indeed, we can move down one more step on the recursion ladder:
-\begin{equation}
-    \dd G(a; z) = G(;z) \dd \log \left(\frac{a-z}{a} \right)\,.
-\end{equation}
-It is then conventional to define the symbol of the `empty' GPL as the empty symbol:
+where $a_1, \ldots, a_n$ are unique non-zero indices, $a_0$ is understood as 0 and $\hat{a}_i$ denotes the index that should be removed in a particular GPL. The starting point of the recursion is the symbol of the `empty' GPL, defined as the empty symbol: 
 \begin{equation}
     \SS (G(;z)) = [\,]\,.
+\end{equation}  
+Clearly, the reader will now understand why we mentioned the alternative notation for the symbol. We can now move up on the recursion ladder by one step:
+\begin{equation}
+    \dd G(a; z) = G(;z) \, \dd \log \left(\frac{a-z}{a} \right)\,.
 \end{equation}
-Clearly, the reader will now understand why we mentioned the alternative notation for the symbol. Then the weight-1 GPL has the symbol:
+Then, the weight-1 GPL has the symbol:
 \begin{equation} \label{eq:G1symbol}
     \SS(G(a; z)) = \left[\frac{a-z}{a} \right] = [a-z] - [a]\,.
 \end{equation}
-Starting from this equation, one then then calculate the symbols of all GPLs with higher weights.
+Proceeding in this manner, we can then calculate the symbols of all GPLs with higher weights.
 
-We also need to know how to obtain the symbol of a product of functions, e.g. $\SS(\log(z) \Li_2(z))$. To this end, we point out that the CIIs satisfy so-called shuffle relations. Specialising to the case of GPLs, we have:
+We also need to know how to obtain the symbol of a product of functions, e.g. $\SS(\log(z) \Li_2(z))$. To this end, we point out that the CIIs satisfy so-called shuffle relations\footnote{For this simple weight-3 function, its symbol can be obtained more directly by taking the differential and using Eq~\ref{eq:symbolrecursive}. Nonetheless, we find it illustrative to introduce the shuffle product, as it becomes useful in more complicated cases.}. Specialising to the case of GPLs, we have:
 \begin{equation} \label{eq:GPLshuffleprod}
     G(\vec{a};z)G(\vec{b};z) = \sum_{\vec{c}=\vec{a} \shuffle \vec{b}} G(\vec{c};z)\,.
 \end{equation}
@@ -1146,7 +1155,7 @@ The shuffle product $\vec{a} \shuffle \vec{b}$ produces all possible ways of per
     G(a_1,a_2;z) G(b_1,b_2;z) &= G(a_1,a_2,b_1,b_2;z) + G(a_1,b_1,a_2,b_2;z) + G(a_1,b_1,b_2,a_2;z) \nonumber \\ 
     & + G(b_1,a_1,a_2,b_2;z) + G(b_1,a_1,b_2,a_2;z) + G(b_1,b_2,a_1,a_2;z)\,.
 \end{align}
-Therefore, the shuffle relations allow us to write a product of GPLs of weight $|\vec{a}|$ and $|\vec{b}|$ as a GPL of weight $|\vec{a}|+|\vec{b}|$. Thus, we can now calculate the symbol of the product $\SS(\log(z) \Li_2(z))$ by expressing the two functions as special instances of GPLs, taking the shuffle product of these GPLs according to Eq.~\ref{eq:GPLshuffleprod} and finally mapping the symbol over the resultant sum of higher-weight GPLs. However, it is often easier to follow an alternative route, which arises due to the fact that:
+Therefore, the shuffle relations allow us to write a product of GPLs of weight $|\vec{a}|$ and $|\vec{b}|$ as a linear combination of GPLs of weight $|\vec{a}|+|\vec{b}|$. Thus, we can now calculate the symbol of the product $\SS(\log(z) \Li_2(z))$ by expressing the two functions as special instances of GPLs, taking the shuffle product of these GPLs according to Eq.~\ref{eq:GPLshuffleprod} and finally mapping the symbol over the resultant sum of higher-weight GPLs. However, it is often easier to follow an alternative route, which arises due to the fact that:
 \begin{equation}
     \SS(f_1 f_2) = \SS(f_1) \times \SS(f_2)\,,
 \end{equation}
@@ -1160,48 +1169,45 @@ Therefore, in our example, we may simple write:
     &= -z \oo (1-z) \oo z - 2 (1-z) \oo z \oo z \\
     &= -[z, 1-z, z] -2[1-z, z, z] \,. \nonumber
 \end{align}
-In the last line, we have again used the alternative notation in order to make the position of the minus sign and a constant absolutely clear\JK{Is the last line actually correct???}.
+In the last line, we have again used the alternative notation in order to make the position of the minus sign and a constant absolutely clear.
 
 \subsection{Examples}
 Overall, we see that thanks to symbols of the classical polylogarithms Eqs.~\ref{eq:Lisymbols} and GPLs Eq.~\ref{eq:G1symbol}, the symbol shuffling Eq.~\ref{eq:symbolshuffle} and finally the relation Eq.~\ref{eq:LiToG}, we can now compute the symbol of each function in the weight-4 basis of Eq.~\ref{eq:weight4basis}. Thinking ahead to our amplitude applications, it should now be clear that the symbol will allow us to find relations between linearly dependent objects such as GPLs and express our results in a much more compact form. Having expended the effort of understanding the last few pages, let us enjoy the fruits of our labour sprouting in the form of several illustrative examples.
 
 \textbf{Example 1} \newline
-Given a functional relation, we can check its validity ---- but only up to constants. More precisely, while we can never prove with full certainty that an identity is valid by looking at its symbols, we can definitely show that an identity is not correct by proving that the symbols do not match up. Consider the well-known dilogarithm reflection identity:
+Given a functional relation, we can check its validity --- but only up to constants. More precisely, while we can never prove with full certainty that an identity is valid by looking at its symbols, we can definitely show that an identity is not correct by proving that the symbols do not match up. The symbols allow us to fix the most complicated part of the identities\JK{(involving functions with the leading `functional' transcendental weight)}. What is left is essentially boundary values, which can be determined for example by evaluating both sides of the relation at a numerical point. Consider the well-known dilogarithm reflection identity:
 \begin{equation}
-    \Li_2(1-z) =- \Li_2(z) -\log(z) \log(1-z) + \frac{\pi^2}{6} \,.
+    \Li_2(1-z) =- \Li_2(z) -\log(z) \log(1-z) + \frac{\pi^2}{6} \,,
 \end{equation}
-For the two dilogarithms, we can straightforwardly use Eq.~\ref{eq:Lisymbols}, while for the product of ordinary logs we need to use the shuffle algebra. Thus, at the symbol level:
+valid in the domain $z \in \mathbb{C} \setminus\{(-\infty, 0] \cup [1, \infty)\}$. For the two dilogarithms, we can straightforwardly use Eq.~\ref{eq:Lisymbols}, while for the product of ordinary logs we need to use the shuffle algebra. At the symbol level:
 \begin{equation}
     -[z,1-z] = + [1-z,z] - [z] \shuffle [1-z]\,.
 \end{equation}
-Taking this shuffle product is trivial and it yields the two sides equal. Thus, we managed to verify the identity holds (up to $\frac{\pi^2}{6}$ ).
+Taking the shuffle product leaves the two sides equal. Thus, we managed to verify that the identity holds --- up the factor of $\pi^2/6$, which we can easily find by evaluating the rest of the identity at e.g. $z=1$.
 
 \textbf{Example 2} \newline
 If we're trying to construct a functional relation, the symbol can also help us to fix the coefficients of a function. Let us conjecture another identity:
 \begin{equation} \label{eq:Li2ref2conj}
-    \Li_2\left( \frac{1}{z} \right) = a\Li_2(z) + b \log^2(-z) + c\,.
+    \Li_2\left( \frac{1}{z} \right) = a\,\Li_2(z) + b \log^2(-z) + c\,,
 \end{equation}
-Then, at the symbol level:
+where $a,b,c$ are rational constants. Then, at the symbol level:
 \begin{align}
     -\left[1-\frac{1}{z}, \frac{1}{z}\right] &= -a[1-z, z] + b[-z] \shuffle [-z] \nonumber \\
     [z-1,z] - [z,z] &= -a[z-1, z] + 2 b[z]\,,
 \end{align}
-To get to the second line, we have expanded the LHS using the symbol properties in Eqs.~\ref{eq:symbolproperties} and \ref{eq:symbolAcB}, while on the RHS we used $[-x]=[x]$, which is a direct consequence of these properties. Thus, $a=-1, \, b=-1/2$. We still need to fix the so-called `beyond the symbol terms'. These include not only the weight-2 constants such as $\pi^2$ or $\zeta(2)$\JK{I think it's unreasonable to expect $\zeta(2)$ to appear here, but can we really exclude it?}, but also products of weight-1 constants with a $\log$. The latter type can be often fixed by differentiating both sides of the identity, thus producing a relation at lower weight. In this case, differentiating Eq.~\ref{eq:Li2ref2conj} with the known values of $a$ and $b$ shows that no $\log \times \text{constant}$ terms are missing. Hence, only weight-2 constants are allowed in $c$ and we can fix it by evaluating the identity at a chosen value for $z$. In this way, we find:
+To get to the second line, we have expanded the LHS using the symbol properties in Eqs.~\ref{eq:symbolproperties} and \ref{eq:symbolAcB}, while on the RHS we used $[-x]=[x]$, which is a direct consequence of these properties. Thus, $a=-1, \, b=-1/2$. We still need to fix the so-called `beyond the symbol terms'. These include not only the weight-2 constants such as $\pi^2$, but also products of weight-1 constants with a $\log$. The latter type can be often fixed by differentiating both sides of the identity, thus producing a relation at lower weight. In this case, differentiating Eq.~\ref{eq:Li2ref2conj} with the known values of $a$ and $b$ shows that no $\log \times \text{constant}$ terms are missing. Hence, only weight-2 constants are allowed in $c$ and we can fix it by evaluating the identity at a chosen value for $z$. In this way, we find:
 \begin{equation} \label{eq:Li2ref2}
-    \Li_2\left( \frac{1}{z} \right) = -\Li_2(z) + \frac{1}{2} \log^2(-z) + \frac{\pi^2}{6}\,, \qquad z \notin (0,\, 1)\,,
+    \Li_2\left( \frac{1}{z} \right) = -\Li_2(z) - \frac{1}{2} \log^2(-z) - \frac{\pi^2}{6}\,, \qquad z \in \mathbb{C} \setminus [0,\, \infty)\,,
 \end{equation}
-which is indeed a well-known dilogarithm relation. Finally, the reader might wonder we have conjectured $\log(-z)$ instead of $\log(z)$. After all, as pointed out above, both these functions have the same symbol --- $[z]$. The reason is simple: swapping the sign of the argument in the $\log$ would mean that there is no domain in which all the functions in this relation are defined and they would consequently have to be analytically continued.
+which is indeed a well-known dilogarithm relation\JK{Discuss the domain.}. Finally, the reader might wonder why we have conjectured $\log(-z)$ instead of $\log(z)$. After all, as pointed out above, both these functions have the same symbol --- $[z]$. The reason is simple: swapping the sign of the argument in the $\log$ would mean that there is no domain in which all the functions in this relation are defined and they would consequently have to be analytically continued.
 
-\textbf{Example 3}
-\newline
-\JK{Not sure if these example adds anything of value...}
+\textbf{Example 3} \newline
 For more complicated identities, calculating the symbol by hand becomes unfeasible. Consider the following weight-3 relation:
 \begin{align}
     \Li_3(z)&=-\Li_3\left(\frac{z}{z-1}\right)-\Li_3(1-z) \nonumber \\
-    &+\frac{1}{6} \log ^3(1-z)-\frac{1}{2} \log (z) \log ^2(1-z)+\frac{1}{6} \pi ^2 \log (1-z)+\zeta (3)\,, \qquad z \notin (1, \, \infty)\,.
+    &+\frac{1}{6} \log ^3(1-z)-\frac{1}{2} \log (z) \log ^2(1-z)+\frac{1}{6} \pi ^2 \log (1-z)+\zeta (3)\,,
 \end{align}
-\JK{Is the domain correct here?}
-The symbol of the LHS is trivial thanks to Eq.~\ref{eq:Lisymbols}:
+which holds for $z \in \mathbb{C} \setminus\{(-\infty, 0] \cup [1, \infty)\}$. The symbol of the LHS is trivial thanks to Eq.~\ref{eq:Lisymbols}:
 \begin{equation} \label{eq:Li3symbol}
     \SS(\Li_3(z)) = -[1-z,z,z]\,.
 \end{equation}
@@ -1211,37 +1217,36 @@ The \texttt{PolyLogTools} package introduces several powerful tools related to t
 \begin{equation}
     F = \sum_i c_i\, G(\vec{a}_i;\, x)\,,
 \end{equation}
-for some variable x, where $\vec{a}_i$ are independent of $x$ and the coefficients $c_i$ include only those GPLs that are independent of x (see~\cite{Duhr:2019tlz} and references therein). The GPLs appearing on the RHS of this formula are known as the fibration basis. Moreover, it is also possible to `integrate' a symbol --- given a symbol tensor $S$, it is possible to find a fibration basis such that $\SS(F) = S.$  This means we can determine the functional form corresponding to a symbol expressions (up to beyond-the-symbol terms). 
+for some variable $x$, where $\vec{a}_i$ are independent of $x$ and the coefficients $c_i$ include only those GPLs that are independent of $x$ (see~\cite{Duhr:2019tlz} and references therein). The GPLs appearing on the RHS of this formula are known as the fibration basis. Moreover, it is also possible to `integrate' a symbol: given a symbol tensor $S$, it is possible to find a fibration basis such that $\SS(F) = S.$  This means we can determine the functional form corresponding to a symbol expressions (up to beyond-the-symbol terms). 
 \subsection{Relation to canonical DEs and discontinuities}
-Let us now take a step back and make a connection between the symbols and the differential equations satisfied by master integrals. In Section~\ref{sec:DEs}, we saw that by making a suitable change of basis, it is possible to construct MIs such that the corresponding DEs are in the canonical form of Eq.~\ref{eq:canonicalDEsoneform}. Then, their solution is given by a path-ordered exponential of the $\eps$-free DE matrix $\tilde{A}$. This exponential is understood through its series expansion, leading to repeated integrations over kernels dictated by $\tilde{A}$. Further, we introduced the notion of uniform transcendentality and an even stronger condition on `pure' functions, Eq.~\ref{eq:purecondition}, which says that the transcendental weight of pure UT functions is lowered by 1 upon differentiation. Moreover, we learned that the solution of any canonical DEs is pure and vice versa --- a given basis of pure functions will satisfy the canonical DEs. We should therefore be able to write down these DEs in a way which makes the purity property manifest. Indeed, notice that the differential equivalent of Eq.~\ref{eq:DEssolution} is:
+Let us now take a step back and make a connection between the symbols and the differential equations satisfied by master integrals. In Section~\ref{sec:DEs}, we saw that by making a suitable change of basis, it is possible to construct MIs such that the corresponding DEs are in the canonical form of Eq.~\ref{eq:canonicalDEsoneform}. Then, their solution is given by a path-ordered exponential of the $\eps$-free DE matrix $\tilde{A}$. This exponential is understood through its series expansion, leading to repeated integrations over kernels dictated by $\tilde{A}$. Further, we introduced the notion of uniform transcendentality and an even stronger condition on `pure' functions, Eq.~\ref{eq:purecondition}, which says that the transcendental weight of pure functions is lowered by 1 upon differentiation. Moreover, we learned that the solution of any canonical DEs is pure and vice versa --- a given basis of pure functions will satisfy the canonical DEs. We should therefore be able to write down these DEs in a way which makes the purity property manifest. Indeed, notice that the differential equivalent of Eq.~\ref{eq:DEssolution} is:
 \begin{equation}
-    \dd \vv{\text{MI}}^{(k)} = \dd \tilde{A} \vv{\text{MI}}^{(k-1)}\,.
+    \dd \vv{\text{MI}}^{(k)} = \dd \tilde{A} \, \vv{\text{MI}}^{(k-1)} \quad \forall k>0, \qquad \dd \vv{\text{MI}}^{(0)} = 0\,.
 \end{equation}
-If we specify to the cases where the DE matrix can be written in the $\dd \log$ form of Eq.~\ref{eq:dlogform}, then this equation becomes:
+If we specialise to the cases where the DE matrix can be written in the $\dd \log$ form of Eq.~\ref{eq:dlogform}, then (for $k>0$) this becomes:
 \begin{equation} \label{eq:pureMIDEs}
-    \dd \vv{\text{MI}}^{(k)} = \left( \sum_i b_i^{(k)} \dd \log w_i  \right)\vv{\text{MI}}^{(k-1)}\,.
+    \dd \vv{\text{MI}}^{(k)} = \left( \sum_i a_i \, \dd \log w_i  \right)\vv{\text{MI}}^{(k-1)}\,.
 \end{equation}
-\JK{Is it $b_i^{(i)}$ or the same $a_i$ as in Eq.~\ref{eq:dlogform}? Eq. (5.1) in Abreu suggests it's the latter and I would agree.}. Note that $\vv{\text{MI}}^{(0)}$ is a vector of constants since it lives in the kernel of the derivative \JK{Not sure if I understand this}. This means that the leading term in the Laurent expansion of pure MIs does not contain any kinematic dependence. 
+Note that $\vv{\text{MI}}^{(0)}$ must be a vector of constants due to its vanishing derivative. This means that the leading term in the Laurent expansion of pure MIs does not contain any kinematic dependence. 
 
-We can use Eq.~\ref{eq:pureMIDEs} to express the solution of the canonical DEs \textit{up to} weight $n$ in the following form:
+We can use Eq.~\ref{eq:pureMIDEs} to express the solution of the canonical DEs up to and including weight $n$ in the following form:
 \begin{equation} \label{eq:pureMIDEsupton}
     \vv{\text{MI}}^{(n)} = \sum_{\alpha_1, \ldots, \alpha_n} \vec{c}_{\alpha_1, \ldots, \alpha_n} \int \dd \log w_{\alpha_1} \ldots \dd \log w_{\alpha_n}\,, \qquad n\ge1\,.
 \end{equation}
-Note that each coefficient $\vec{c}_{\alpha_1, \ldots, \alpha_n}$ is a vector of rational numbers --- they are calculated from the products of matrices \JK{$b_i^{(i)}/a_i$}, which are dotted into the weight-0 term $\vv{\text{MI}}^{(0)}$. Naturally, to obtain explicit values for $\vv{\text{MI}}^{(n)}$, we need to supply the integration contour. Nonetheless, the symbol, which discards this information, can still tell us a lot about the analytic structure of the solution. It can be trivially read off from the above equation:
+Note that each coefficient $\vec{c}_{\alpha_1, \ldots, \alpha_n}$ is a vector of rational numbers --- they are calculated from the products of matrices $a_i$, which are dotted into the weight-0 term $\vv{\text{MI}}^{(0)}$. Naturally, to obtain explicit values for $\vv{\text{MI}}^{(n)}$, we need to supply the integration contour. Nonetheless, the symbol, which discards this information, can still tell us a lot about the analytic structure of the solution. It can be trivially read off from the above equation:
 \begin{equation}
     \SS\left(\vv{\text{MI}}^{(n)}\right) = \sum_{\alpha_1, \ldots, \alpha_n} \vec{c}_{\alpha_1, \ldots, \alpha_n} [w_{\alpha_1}, \ldots, w_{\alpha_n}]\,.
 \end{equation}
-It turns out that the first entry of the symbol encodes its branch cut structure. In particular, a Feynman integral with the symbol $[w_{\alpha_1}, \ldots, w_{\alpha_n}]$ has a discontinuity when $w_{\alpha_1}=0$ or $\infty$. Of course, singular points of Feynman integrals are not random and we expect them to be connected to special values of the Mandelstam variables. Indeed, there exists a so-called first-entry condition which states that $\vec{c}_{\alpha_1, \ldots, \alpha_n}=0$ if $w_{\alpha_1} \neq s_{ij}\,$, i.e. a symbol cannot appear in the solution of the DEs if its first letter is not a Mandelstam variable with a physical discontinuity\footnote{Strictly speaking, it is the absence of discontinuities at certain points that implies first-entry conditions, but this statement should not be inverted. It is possible to write an amplitude using a function which satisfies a first-entry condition, yet has the forbidden singularity. See Section 3 of Ref.~\cite{Zoia:2021zmb} for an explicit example.}\cite{Gaiotto:2011dt}. This turns out to be a very strong condition which in many cases uniquely fixes the values of $\vv{\text{MI}}^{(0)}$. Beyond the first entry, the structure of the symbols is further constrained by the so-called Steinmann relations, which state that there is no double continuity associated with overlapping channels (e.g. $s_{12}$ and $s_{23}$)\cite{20.500.11850/135473, Steinmann:1960, Caron-Huot:2016owq, Dixon:2016nkn}. Overall, such conditions created by physical principles constrain the structure of the symbols and canonical DEs. This is evident when studying the pure MI bases relevant to this thesis (see Refs.~\cite{Abreu:2020jxa, abreu2021twoloop}).
+It turns out that the first entry of the symbol encodes its branch cut structure. In particular, a Feynman integral with the symbol $[w_{\alpha_1}, \ldots, w_{\alpha_n}]$ has a discontinuity if $w_{\alpha_1}=0$ or $\infty$. Of course, singular points of Feynman integrals are not random and we expect them to be connected to special values of the Mandelstam variables. Indeed, there exists a so-called first-entry condition which states that $\vec{c}_{\alpha_1, \ldots, \alpha_n}=0$ if $w_{\alpha_1} \neq s_{ij}\,$, i.e. a symbol cannot appear in the solution of the DEs if its first letter is not a Mandelstam variable with a physical discontinuity\footnote{Strictly speaking, it is the absence of discontinuities at certain points that implies first-entry conditions, but this statement should not be inverted. It is possible to write an amplitude using a function which satisfies a first-entry condition, yet has the forbidden singularity. See Section 3 of Ref.~\cite{Zoia:2021zmb} for an explicit example.}\cite{Gaiotto:2011dt}. This turns out to be a very strong condition which in many cases fixes the values of $\vv{\text{MI}}^{(0)}$ up to an overall normalisation factor. Beyond the first entry, the structure of the symbols is further constrained by the so-called Steinmann relations, which state that there is no double continuity associated with overlapping channels~\cite{20.500.11850/135473, Steinmann:1960, Caron-Huot:2016owq, Dixon:2016nkn}. Overall, such conditions created by physical principles constrain the structure of the symbols and canonical DEs. This is evident when studying the pure MI bases relevant to this thesis (see Refs.~\cite{Abreu:2020jxa, abreu2021twoloop}).
 \section{Evaluating master integrals}
-After a rather lengthy excursion into the world of IBPs, DEs and symbols, let us remind ourselves where we currently stand in the workflow for computing amplitudes presented in Fig.~\ref{fig:outline}. Having written down the helicity-dependent numerators of each colour-ordered amplitude, we were faced with the task of integrating an enormous number of tensor integrals that belong to many integral families. Then, in Sec.~\ref{sec:reduction}, we mapped these integrals onto integrals within significantly fewer maximal topologies. We then built a system of IBP relations for each of these maximal topologies (containing also the non-IBP, inter-family relations) and reduced the integrals further onto a manageable set of master integrals. In principle, we can now end the amplitude computation. Our result is written in terms of rational coefficients of external kinematics, which are trivial to evaluate the full phase space \JK{Is statement this too strong?}, while the MIs that these coefficients multiply are in general functions that are extremely hard to compute analytically and that exhibit a complicated branch cut structure. As we will see in the next section, there are good reasons why we typically extend our workflow and express the MIs in terms of appropriately chosen special functions. However, it is entirely possible to work with the amplitude at the level of MIs. Indeed, in some cases we have no other choice, since the expansion of the relevant MIs into special functions may not be known. Having phenomenological applications in mind, we list below a few methods which allow us to evaluate these MIs numerically at chosen kinematic points. In fact, we will use the last two in subsequent chapters.
+After a rather lengthy excursion into the world of IBPs, DEs and symbols, let us remind ourselves where we currently stand in the workflow for computing amplitudes presented in Fig.~\ref{fig:outline}. Having written down the helicity-dependent numerators of each colour-ordered amplitude, we were faced with the task of integrating an enormous number of tensor integrals that belong to many integral families. Then, in Sec.~\ref{sec:reduction}, we mapped these integrals onto integrals within significantly fewer maximal topologies. We then built a system of IBP relations for each of these maximal topologies (containing also the non-IBP, inter-family relations) and reduced the integrals further onto a manageable set of master integrals. In principle, we can now end the amplitude computation. Our result is written in terms of rational coefficients of external kinematics, which are trivial to evaluate over the full phase space, while the MIs that these coefficients multiply are in general functions that are extremely hard to compute analytically and that exhibit a complicated branch cut structure. As we will see in the next section, there are good reasons why we typically extend our workflow and express the MIs in terms of appropriately chosen special functions. However, it is entirely possible to work with the amplitude at the level of MIs. Indeed, in some cases we have no other choice, since the expansion of the relevant MIs into special functions may not be known. Having phenomenological applications in mind, we list below a few methods which allow us to evaluate these MIs numerically at chosen kinematic points. In fact, we will use the last two in subsequent chapters.
 \begin{itemize}
     \item \textbf{Sector decomposition}: This method relies on the parametrisation of integrals in terms of the Feynman parameters and the $\mathcal{U}$ and $\mathcal{F}$ Symanzik polynomials. The integration phase-space of the parameters is split into sectors and subsectors based on a relative ordering between the parameters. This allows us to resolve the singularities present in the integrals and place them in simple functions that can be integrated analytically. What remains to be computed are the coefficients of the $\eps$ poles. They receive contributions from finite integrals only and are computed numerically~\cite{Binoth:2000ps, Binoth:2003ak}. There exist several public codes implementing this algorithm~\cite{Bogner:2007cr, Smirnov:2015mct, Borowka:2015mxa, Heinrich:2023til}.
-    \item \textbf{Expansion by regions}: In this method, the integration domain of the loop momenta is divided into appropriate regions where a certain kinematic quantity is small, e.g. $m_i^2/p_j^2 \ll 1$. For each such limit, the integrand is expanded in the corresponding small parameter, resulting in a simpler function. The expanded integrands are then integrated over the \textit{full} space of loop momenta. With certain conditions ~\cite{Jantzen:2011nz}, the original integral can be recovered by summing the individual contributions from the various regions~\cite{Beneke:1997zp, Smirnov:1998vk, Smirnov:1999bza, Pak:2010pt, Ananthanarayan:2018tog}. For numerical implementation, see Refs.~\cite{Ananthanarayan:2020ptw, Jantzen:2012mw, Smirnov:2015mct, Heinrich:2021dbf}. 
-    \item \textbf{Generalised series expansion}: For integrals satisfying canonical DEs in Eq.~\ref{eq:canonicalDEsoneform}, it is possible to integrate these DEs along a one-dimensional line segment\footnote{We stress that this method is applicable not only to canonical MIs, but to any set of functions satisfying the canonical DEs. We will explore this further in Chapter~\ref{sec:Hbb}.}. If we know the value of the integrals at one point in the kinematic phase space (i.e. the boundary condition of the DEs) and want to know their value at another point, we construct a path $\gamma(\lambda)$ between them and solve the DEs along it. Thus, the solution is reduced to a one-dimensional problem in $\lambda$, with all the kinematic invariants set to numbers. The solution is then obtained by using an ansatz in the form of a series expansion. 
+    \item \textbf{Expansion by regions}: In this method, the integration domain of the loop momenta is divided into appropriate regions where a certain kinematic quantity is small, e.g. $m_i^2/p_j^2 \ll 1$. For each such limit, the integrand is expanded in the corresponding small parameter and the expansion is truncated at a certain order, resulting in a simpler approximation. The expanded integrands are then integrated over the \textit{full} space of loop momenta. With certain conditions ~\cite{Jantzen:2011nz}, the original integral can be recovered by summing the individual contributions from the various regions~\cite{Beneke:1997zp, Smirnov:1998vk, Smirnov:1999bza, Pak:2010pt, Ananthanarayan:2018tog}. For numerical implementation, see Refs.~\cite{Ananthanarayan:2020ptw, Jantzen:2012mw, Smirnov:2015mct, Heinrich:2021dbf}. 
+    \item \textbf{Generalised series expansion}: For integrals satisfying a set of DEs, it is possible to integrate these DEs along a one-dimensional line segment\footnote{We stress that this method is applicable not only to MIs, but to any set of functions satisfying DEs. We will explore this further in Chapter~\ref{sec:Hbb}.}. If we know the value of the integrals at one point in the kinematic phase space (i.e. the boundary condition of the DEs) and want to know their value at another point, we construct a path $\gamma(t)$ between them and solve the DEs along it. Thus, the solution is reduced to a one-dimensional problem in the parameter $t$ of the path, with all the kinematic invariants set to numbers. The solution is then obtained by using an ansatz in the form of a series expansion. 
 
-    Naturally, each such series has a certain radius of convergence within which it is valid. Typically, it is the distance from the centre point of the expansion to the nearest singularity. Thus, in order to obtain the full solution across the entire length of $\gamma(\lambda)$, we split the path into multiple (usually straight line) segments and solve the DEs on them one by one. The value of the solution from the previous segment can then serve as a boundary condition for solving the DEs in the subsequent segment~\cite{Moriello:2019yhu, Bonciani:2019jyb, Frellesvig:2019byn}. We provide a more intuitive, graphical representation of this idea in Fig.~\ref{fig:seriesexp}. Recently, a public implementation of this method has been completed in Ref.~\cite{Hidding:2020ytt}.
-    \item \textbf{Auxiliary mass flow}: This method relies on constructing the DEs not with respect to the traditional kinematic invariants, but an auxiliary mass parameter $\eta$. The original integrals can then be recovered by solving the $\eta$-DEs with $\eta = \infty$ as the boundary condition and letting $\eta$ `flow' from $\infty$ to $\ii \varepsilon^+$ \JK{Not sure if this should be $\varepsilon^+$ or $\varepsilon^-$.}. Crucially, the integrals involved in the boundary condition are simpler than the ones we are aiming for. If these prove still too hard to compute, we can iterate the procedure: set up new $\eta^\prime$-DEs for these integrals, obtain the new boundary condition in terms of even simpler integrals, and so on. Eventually, the boundary terms can be expressed in terms of scaleless integrals (which vanish in DR) or single-scale vacuum integrals (which are very simple)~\cite{Liu:2017jxz, Liu:2021wks}. A public implementation of this method has been made available in Ref.~\cite{Liu:2022chg}.
-    \item \JK{Anything else here? Tropical integrals?...}
+    Naturally, each such series has a certain radius of convergence within which it is valid. Typically, it is the distance from the centre point of the expansion to the nearest singularity. Thus, in order to obtain the full solution across the entire length of $\gamma(t)$, we split the path into multiple segments and solve the DEs on them one by one. The value of the solution from the previous segment can then serve as a boundary condition for solving the DEs in the subsequent segment~\cite{Moriello:2019yhu, Bonciani:2019jyb, Frellesvig:2019byn}. We provide a more intuitive, graphical representation of this idea in Fig.~\ref{fig:seriesexp}. Recently, public implementations of this method have been presented in Refs.~\cite{Hidding:2020ytt, Armadillo:2022ugh}.
+    \item \textbf{Auxiliary mass flow}: This method relies on constructing the DEs not with respect to the traditional kinematic invariants, but an auxiliary mass parameter $\eta$. The original integrals can then be recovered by solving the $\eta$-DEs with $\eta = \infty$ as the boundary condition and letting $\eta$ `flow' from $\infty$ to $\ii \varepsilon^-$. Crucially, the integrals involved in the boundary condition are simpler than the ones we are aiming for. If these prove still too hard to compute, we can iterate the procedure: set up new $\eta^\prime$-DEs for these integrals, obtain the new boundary condition in terms of even simpler integrals, and so on. Eventually, the boundary terms can be expressed in terms of scaleless integrals (which vanish in DR) or single-scale vacuum integrals (which are very simple)~\cite{Liu:2017jxz, Liu:2021wks}. A public implementation of this method has been made available in Ref.~\cite{Liu:2022chg}.
     \item \JK{Maybe this discussion should be improved - talk about relative timings, precision, etc.}
 \end{itemize}
 \begin{figure}
@@ -1254,7 +1259,7 @@ After a rather lengthy excursion into the world of IBPs, DEs and symbols, let us
 		\node (finish) [right of=i2, xshift=1em, yshift=1em] {};
 		\node (finishcaption) at ([yshift=-2pt]finish.south) {$s$};
         \node (label1) [right of=i1, xshift=-0.6cm, yshift=-0.2cm] {};
-        \node (label2) [above right= 1cm of label1] {$\gamma(\lambda)$};
+        \node (label2) [above right= 1cm of label1] {$\gamma(t)$};
 		
 		\foreach \i in {start,i1,i2,finish}{
 			\filldraw[red] (\i.center) circle (0.1em);
@@ -1263,30 +1268,28 @@ After a rather lengthy excursion into the world of IBPs, DEs and symbols, let us
 		\draw (start.center) to [out=70,in=250] (i1.center) to [out=70,in=180] (i2.center) to [out=0,in=90] (finish.center);
         \draw [{Stealth[scale=1.5]}-] (label1) -- (label2);
 	\end{tikzpicture}
-    \caption{A pictorial representation of the generalised series expansion method. We connect the kinematic point $s_0$, at which the solution to the DEs is known, to the target point $s$ with a one-dimensional path $\gamma(\lambda)$. The path is split into (usually, but not necessarily, straight) line segments as necessitated by singularities. Each segment admits a solution in the form of a series expansion and has a certain radius of convergence (marked by dashed circles). Stitching together the solutions from individual segments allows us to transport the solution from $s_0$ to $s$.}
+    \caption{A pictorial representation of the generalised series expansion method. We connect the kinematic point $s_0 = \gamma(0)$, at which the solution to the DEs is known, to the target point $s = \gamma(1)$ with a one-parameter path $\gamma(t)$. The path is split into segments as necessitated by singularities. Each segment admits a solution in the form of a series expansion and has a certain radius of convergence (marked by dashed circles)\JK{See Simone's comment - fine to leave it as it is?}. Stitching together the solutions from individual segments allows us to transport the solution from $s_0$ to $s$.}
     \label{fig:seriesexp}
 \end{figure}
-%\section{Syzygy relations} \label{sec:syzygies} 
-%
 \section{Special functions and finite remainders} \label{sec:specialfunctions}
-As mentioned above, after reducing the amplitude onto a small set of MIs, we typically make use of the available results for these MIs and expand them into special functions, which we will denote as $\{f_i(p)\}$ for now, with $p$ indicating the collective dependence on external momenta. These functions could involve, e.g. GPLs, elliptic polylogarithms or more case-specific functions better suited to a particular computation. More details on this topic will be presented in Secs.~\ref{Hbbsec:Hbasis} and ~\ref{wyjsec:Permutations}. \JK{Maybe I should make a list here, like in the previous section?}. The expansion of MIs onto $\{f_i(p)\}$ can be easily implemented over the finite fields as a multiplication of the MI coefficients $g_i(p, \eps)$ in Eq.~\ref{eq:ampafterIBP} by a matrix encoding these MIs in terms of the special functions. Schematically, we are left with:
+As mentioned above, after reducing the amplitude onto a small set of MIs, we typically make use of the available results for these MIs and expand them onto a basis of special functions, which we will denote as $\{f_i(p)\}$ for now, with $p$ indicating the collective dependence on external momenta. These functions could involve, e.g. GPLs, elliptic polylogarithms or more case-specific functions better suited to a particular computation. More details on this topic will be presented in Secs.~\ref{Hbbsec:Hbasis}, \ref{wyjsec:Permutations} and \ref{secQED:spec-fns}. The expansion of MIs onto $\{f_i(p)\}$ can be easily implemented over the finite fields as a multiplication of the MI coefficients $g_i(p, \eps)$ in Eq.~\ref{eq:ampafterIBP} by a matrix encoding these MIs in terms of the special functions. Schematically, we are left with:
 \begin{equation} \label{eq:ampexpandedspfuncs}
     A_n^{(L)} \left(1^{h_1}, 2^{h_2}, \ldots, n^{h_n} \right) = \sum_i q_i(p, \eps) \times \text{mon}_i \big(\{f_i(p)\}\big)\,,
 \end{equation}
 where mon$_i$ denote monomials formed from the special functions.
-%Finally, with a constantly improving understanding of special functions, in many cases it is beneficial to work with a set of functions that provides a fast, stable numerical evaluation. 
-
-Expanding the amplitude onto special functions has several advantages. First and foremost, it unveils the analytic structure that is simply hidden within the MI representation. Second, \JK{Quicker to evaluate?}. Finally, it allows us to subtract from the amplitude its UV and IR poles and define the so-called \textbf{finite remainder}:
-\begin{equation} \label{eq:finrem}
+ 
+Expanding the amplitude onto a basis of special functions has several advantages. First and foremost, all cancellations and simplifications are manifest, leading to a unique representation of the amplitude. This is an important improvement in the context of the finite field framework, as it means we will not have to reconstruct additional, `unphysical' coefficients. It also unveils the analytic structure that is simply hidden within the MI representation. Furthermore, having a basis of special functions grants us a more efficient numerical evaluation of a minimal number of functions. Finally, it allows us to subtract from the amplitude its UV and IR poles and define the so-called `finite remainder':
+\begin{equation} \label{eq:finremschematic}
     F^{(L)} = \lim_{\eps \to 0} \left( A^{(L)} - P^{(L)} A^{(0)} \right)\,,
 \end{equation}
-where the $L$-loop pole operator $P^{(L)}$ contains both UV and IR divergences. A few words on why we want to work with the finite remainder are in order. Since the UV poles of an amplitude are eliminated in renormalisation, while the IR poles are determined from lower-loop information~\cite{Catani:1998bh, Becher:2009cu, Becher:2009qa, Gardi:2009qi} (see also Appendix~\ref{app:polestructure}), the genuinely new information we compute is contained solely in the non-singular terms. Moreover, the fact of being able to subtract these pre-determined poles from our result, such that we are left with a finite quantity in the limit $\eps \rightarrow 0$, is in itself already a strong check on the calculation. Finally, it has been observed that finite remainders often exhibit simpler analytic structure than the corresponding full amplitude, with certain special functions dropping out after subtracting the poles. Thus, it is the finite remainder, rather than the amplitude itself, that we take as the end point of our computational algorithm in Fig.~\ref{fig:outline}:
+where the $L$-loop pole operator $P^{(L)}$ contains both UV and IR divergences\footnote{We stress that the pole operator denoted as $P^{(l)}$ contains contributions from loop orders $l\le L$. For a detailed discussion, see subsequent chapters and Appendix~\ref{app:polestructure}.}\JK{Discuss with Simone}. A few words on why we want to work with the finite remainder are in order. Since the UV poles of an amplitude are eliminated in renormalisation, while the IR poles are determined from lower-loop information~\cite{Catani:1998bh, Becher:2009cu, Becher:2009qa, Gardi:2009qi} (see also Appendix~\ref{app:polestructure}), the genuinely new information we compute is contained solely in the non-singular terms. Moreover, the fact of being able to subtract these pre-determined poles from our result, such that we are left with a finite quantity in the limit $\eps \rightarrow 0$, is in itself already a strong check on the calculation. Finally, it has been observed that finite remainders often exhibit simpler analytic structure than the corresponding full amplitude, with certain special functions dropping out after subtracting the poles. Thus, it is the finite remainder, rather than the amplitude itself, that we take as the end point of our computational algorithm in Fig.~\ref{fig:outline}:
 \begin{equation}
-    F_n^{(L)} \left(1^{h_1}, 2^{h_2}, \ldots, n^{h_n} \right) = \sum_i r_i(p, \eps) \times \text{mon}_i \big(\{f_i(p)\}\big)\,.
+    F_n^{(L)} \left(1^{h_1}, 2^{h_2}, \ldots, n^{h_n} \right) = \sum_i r_i(p) \times \text{mon}_i \big(\{f_i(p)\}\big)\,.
 \end{equation}
-Let us make three remarks about the finite remainder. First, we emphasise that it is dependent on both the renormalisation and regularisation schemes. It is important to bear that in mind when cross-checking results or trying to restore the full amplitude from its remainder. Second, the pole subtraction in Eq.~\ref{eq:finrem} can be straightforwardly implemented over finite fields as a subtraction on the monomial coefficients $q_i$ in Eq.~\ref{eq:ampexpandedspfuncs}. Third, the $\eps$ dependence of the coefficients $r_i$ can be removed by performing their Laurent expansion. This is done up to $\order{\eps^0}$, since any higher-order terms are removed by the limit $\eps \rightarrow 0$ anyway. Once again, the Laurent expansion can be easily encoded within the finite field workflow.
+Let us make three remarks about the finite remainder. First, we emphasise that it is dependent on both the renormalisation and regularisation\JK{Discuss with Simone} schemes. It is important to bear that in mind when cross-checking results or trying to restore the full amplitude from its remainder. Second, the pole subtraction in Eq.~\ref{eq:finremschematic} can be straightforwardly implemented over finite fields as a subtraction on the monomial coefficients $q_i$ in Eq.~\ref{eq:ampexpandedspfuncs}. Third, since the coefficients $r_i$ of the finite remainder do not depend on $\eps$, their reconstruction is usually easier as compared to $q_i$\JK{Discuss with Simone}.
+%Since the $\eps$ dependence of the coefficients $r_i$ can be removed by performing their Laurent expansion. This is done up to $\order{\eps^0}$, since any higher-order terms are removed by the limit $\eps \rightarrow 0$ anyway. Once again, the Laurent expansion can be easily encoded within the finite field workflow.
 
-While the special functions $\{f_i\}$ that come from the MIs are complicated functions with poles and branch cuts, the coefficients $r_i$ are rational functions that are computed and reconstructed from finite fields. We remind the reader that they will be usually expressed in terms of the momentum twistors $\mathbf{x}$. In practical applications for computations at the state of the art, the reconstruction processes can be enormously expensive even on modern CPU clusters. For this reason, we find it unavoidable to implement several tools which simplify the coefficients before we need to reconstruct them. They lower the polynomial degrees (see Sec.~\ref{sec:ratfuncs}) and will be covered in detail when discussing the reconstruction strategies in Chapters~\ref{sec:Hbb} and \ref{sec:Wyj}.
+While the special functions $\{f_i\}$ that come from the MIs are complicated functions with singularities and branch cuts, the coefficients $r_i$ are rational functions that are computed and reconstructed from finite fields. We remind the reader that they will be usually expressed in terms of the momentum twistors $\mathbf{x}$. In practical applications for computations at the state of the art, the reconstruction processes can be enormously expensive even on modern CPU clusters. For this reason, we find it unavoidable to implement several tools which simplify the coefficients before we need to reconstruct them. They lower the polynomial degrees (see Sec.~\ref{sec:ratfuncs}) and will be covered in detail when discussing the reconstruction strategies in Chapters~\ref{sec:Hbb} and \ref{sec:Wyj}.
 
-We are now ready to take on the computation of scattering amplitudes at the cutting edge of current knowledge. In the subsequent chapters, we will use the workflow developed here to tackle two-loop amplitudes for two processes directly relevant to LHC phenomenology, $\ppbbh$ and $\ppWgj$.
+We are now ready to take on the computation of scattering amplitudes at the cutting edge of current knowledge. In subsequent chapters, we will use the workflow developed here to tackle two-loop amplitudes for three processes directly relevant to modern particle physics phenomenology.
 \end{document}
