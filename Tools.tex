@@ -471,7 +471,7 @@ At this point, the task of computing a colour-ordered helicity amplitude for $n$
 \begin{equation} \label{eq:ampschematic}
     	A_n^{(L)} \left(1^{h_1}, 2^{h_2}, \ldots, n^{h_n} \right) =  \sum_{T\in \text{topologies}} \left[\, \prod_{l=1}^{L} \left(\mu_R^{2\eps} \int \frac{\dd^d k_l}{\ii \, \pi^{d/2}}\right) \frac{\sum_i c_i(p, \eps )\times m_i(k,p)}{\prod_{t\in T} D_t(k,p)} \right].
 \end{equation}
-The general structure of this formula can be understood simply by considering the QCD Feynman rules and all the possible Lorentz contractions that follow from them. The main sum runs over distinct integral topologies, that is sets of inverse propagators $D_t$ \JK{Should I call them denominators instead? That will be less clear, but strictly speaking they are not inverse propagators, since they don't have factors like $\ii$ etc.} associated with a given Feynman diagram (see Fig.~\ref{fig:topologies} for a few examples). Each inverse propagator depends on external momenta $p$, as well as one or more loop momenta $k$, which act as the integration variables for the $d$-dimensional integrals (see Sec.~\ref{sec:divergences}). In the numerator of each topology, we have a sum of monomials $m_i$ of \textit{both} loop and external momenta, multiplied by coefficients $c_i(p)$ that depend \textit{only} on external momenta $p$. The monomials are composed of scalar products $p_i \cdot p_i,\, k_i \cdot k_j,\, k_i\cdot p_j$; as well as the spinor brackets $\braket{ij},\, \braketsq{ij},\, \langle i |k_i \ketsq{j},\, \langle i |p_5 \ketsq{j},\, \bra{i}k_i p_5\ket{j},\, \brasq{i}k_i p_5 \ketsq{j}\,$. Similar objects appear in their coefficients, but because they do not contain any dependence on the loop momenta, we will usually express the external kinematics in the coefficients in terms of the momentum twistor variables $\mathbf{x} = \{x_1, \ldots, x_{3n-10}\}$, i.e. $c_i(p) = c_i(p(\mathbf{x}))$. This ensures the coefficients are rational, parametrised through a minimal set of variables and can be processed using the finite field framework. In fact, all the remaining steps in our workflow that deal with the computation of the coefficients will be implemented over finite fields. 
+The general structure of this formula can be understood simply by considering the QCD Feynman rules and all the possible Lorentz contractions that follow from them. The main sum runs over distinct integral topologies, that is sets of inverse propagators $D_t$ \JK{Should I call them denominators instead? That will be less clear, but strictly speaking they are not inverse propagators, since they don't have factors like $\ii$ etc.} associated with a given Feynman diagram (see Fig.~\ref{fig:topologies} for a few examples). Each inverse propagator depends on external momenta $p$, as well as one or more loop momenta $k$, which act as the integration variables for the $d$-dimensional integrals (see Sec.~\ref{sec:divergences}). In the numerator of each topology, we have a sum of monomials $m_i$ of \textit{both} loop and external momenta, multiplied by coefficients $c_i(p)$ that depend \textit{only} on external momenta $p$. The monomials are composed of scalar products $p_i \cdot p_i,\, k_i \cdot k_j,\, k_i\cdot p_j$; as well as the spinor brackets $\braket{ij},\, \braketsq{ij},\, \langle i |k_i \ketsq{j},\, \langle i |p_M \ketsq{j},\, \bra{i}k_i \, p_M\ket{j},\, \brasq{i}k_i \, p_M \ketsq{j}\,$, where $p_M$ denotes a massive momentum $p_M^2 = M^2 \neq 0$. Similar objects appear in their coefficients, but because they do not contain any dependence on the loop momenta, we will usually express the external kinematics in the coefficients in terms of the momentum twistor variables $\mathbf{x} = \{x_1, \ldots, x_{3n-10}\}$, i.e. $c_i(p) = c_i(p(\mathbf{x}))$. This ensures the coefficients are rational, parametrised through a minimal set of variables and can be processed using the finite field framework. In fact, all the remaining steps in our workflow that deal with the computation of the coefficients will be implemented over finite fields. 
 %Finally, we note that unless otherwise stated, in the following we will specialise to the case $L=2$ since we are interested in computing two-loop amplitudes.
 \begin{figure}
     \centering
@@ -568,10 +568,6 @@ The general structure of this formula can be understood simply by considering th
 We point out that not all topologies contributing to each helicity amplitude are independent, in the sense that some topologies can be written as \textit{sub}topologies of others. This is illustrated in Fig.~\ref{fig:topologies}. It is clear that topologies (a) and (b) can be viewed as subtopologies of topology (c) with a few propagators absent. Topologies with the maximum number of propagators allowed for $L$-loop, $n$-particle kinematics are referred to as maximal topologies. All other topologies can be obtained from them by `pinching' appropriate propagators. Thus, the next step in our procedure is to express all topologies which contribute to Eq.~\ref{eq:ampschematic} as subtopologies of these maximal topologies. Moreover, after this mapping we will write the monomials $m_i(k, p)$ in terms of the propagators of the target maximal topology. In this way, we will remove all loop momentum dependence from the numerators, so that the amplitude will be a linear combination of scalar integrals over the maximal topologies, with rational coefficients of external kinematics parametrised by the momentum twistor variables.
 %\subsection{Reduction onto maximal topologies}
 \subsection{Parametrising the loop momenta}
-%Consider the 1L box. It has the following propagators:
-%\begin{equation}
-%    \{k_1^2, (k_1-p_1)^2, (k_1-p_1-p_2)^2, (k_1+p_4)^2 \} \,.
-%\end{equation}
 \JK{Quote ~\cite{Ellis:2011cr, Mastrolia:2016dhn, badger:2017jhb} somewhere.}
 We decompose the loop momenta in a $D$-dimensional space spanned by a carefully chosen set of basis vectors. We start by splitting each $k^{(D)}$ into the $4$ and $(-2\eps)$-dimensional parts:
 \begin{equation} \label{eq:4dextradimspace}
@@ -596,15 +592,42 @@ Overall, we parametrise each loop momentum $k_i^{(D)}$ according to:
 where $p_a$ are the linearly independent external momenta and $w_b$ are the vectors spanning the spurious space. 
 
 To find the parameters $\alpha$, we take the scalar products of Eq.~\ref{eq:kdecomposition} with external momenta. On the LHS, we express the products\footnote{Since we work in the HV scheme and the spurious space is orthogonal to the physical one, $k_i^{(D)} \cdot p_j = k_i^{(4)} \cdot p_j = k_i^{(4),\,\parallel} \cdot p_j$.} $k_i^{(D)} \cdot p_j$ in terms of the inverse propagators $D_t(k,p)$ belonging to the maximal topologies we have mapped our integral onto (see Eq.~\ref{eq:ampschematic}). It turns out, however, that in certain cases not all such scalar products can be expressed through the inverse propagators. The remaining products are then referred to as irreducible scalar products (ISPs). More precisely, a simple counting argument shows that this happens when~\cite{grozin:2011mt}:
-\begin{equation}
+\begin{equation} \label{eq:ISPcondition}
     L \ge \max (2, 7-2n)\,,
 \end{equation}
 where $n$ and $L$ are the number of legs and loops in a given Feynman diagram. Thus, for self-energy diagrams ($n=2$), ISPs appear at $L\ge3$, while for any process with $n\ge3$, they appear already at $L=2$. We point out that we will never encounter ISPs at $L=1$, no matter the number of external legs.
 
-Returning back to Eq.~\ref{eq:kdecomposition}, taking its scalar products with $p_j$, but also $w_j$ and $k_j^{(D)}$, produces a system of equations linear in $\alpha$ and $\beta$, which we can invert to determine these parameters. This step can also be incorporated into the finite field framework. The parameters $\alpha$ in the physical space are then functions of the inverse propagators and potentially the `physical' ISPs introduced above, while the parameters $\beta$ in the spurious space are functions of the `spurious ISPs', $k_i \cdot w_j$. We also introduce a shorthand notation for the scalar products between the $(-2\eps)$-dimensional parts of loop momenta, $\mu_{ij} \equiv -k_i^{(-2\eps)} \cdot k_j^{(-2\eps)}$. Having determined the free parameters in Eq.~\ref{eq:kdecomposition}, we substitute the loop momentum decomposition into the numerators of integrals present in the amplitude. 
+Returning back to Eq.~\ref{eq:kdecomposition}, taking its scalar products with $p_j$, but also $w_j$ and $k_j^{(D)}$, produces a system of equations linear in $\alpha$ and $\beta$, which we can invert to determine these parameters. This step can also be incorporated into the finite field framework. The parameters $\alpha$ in the physical space are then functions of the inverse propagators and potentially the `physical' ISPs introduced above, while the parameters $\beta$ in the spurious space are functions of the `spurious ISPs', $k_i^{(4),\, \omega} \cdot w_j$. We also introduce a shorthand notation for the scalar products between the $(-2\eps)$-dimensional parts of loop momenta, $\mu_{ij} \equiv -k_i^{(-2\eps)} \cdot k_j^{(-2\eps)}$. Having determined the free parameters in Eq.~\ref{eq:kdecomposition}, we substitute the loop momentum decomposition into the numerators of integrals present in the amplitude. 
+
+As an example, consider the 1L box diagram with massless external momenta, Figure~\ref{fig:}\JK{Insert diagram}. It has the following inverse propagators $D_t$:
+\begin{equation}
+    \{k_1^2, (k_1-p_1)^2, (k_1-p_1-p_2)^2, (k_1+p_4)^2 \} \,.
+\end{equation}
+With $L=1$ and $n=4$, our parametrisation in Eq.~\ref{eq:kdecomposition} is:
+\begin{equation} \label{eq:kdecomposition1Lbox}
+    k_1^{(D)} = \alpha_{11} p_1 + \alpha_{12} p_2 + \alpha_{13} p_3 + \beta_1 \omega + k_1^{(-2\eps)}\,.
+\end{equation}
+Taking the scalar products of this equation with $p_1, p_2, p_3$ and $\omega$, we find the following parameters $\alpha_i$ and $\beta$ \JK{Improve formatting}:
+\begin{align}
+    \alpha_{11} &= -\frac{D_4}{4 p_1 \cdot p_3} + \frac{D_3 (p_1\cdot p_2 - p_1 \cdot p_3)}{4 p_1 \cdot p_2 p_1 \cdot p_3} - \frac{D_1 p_2 \cdot p_3}{4 p_1 \cdot p_2 p_1 \cdot p_3} + \frac{D_2 (p_1\cdot p_3 + p_2 \cdot p_3)}{4 p_1 \cdot p_2 p_1 \cdot p_3} + \frac{p_2 \cdot p_3}{2 p_1 \cdot p_3} + 1\,, \nonumber \\
+    \alpha_{12} &= -\frac{D_4}{4 p_2 \cdot p_3} + \frac{D_1}{4 p_1 \cdot p_2} + \frac{D_3 (p_1\cdot p_2 + p_1 \cdot p_3)}{4 p_1 \cdot p_2 p_2 \cdot p_3} - \frac{D_2 (p_1\cdot p_3 + p_2 \cdot p_3)}{4 p_1 \cdot p_2 p_2 \cdot p_3} + \frac{1}{2}\,, \nonumber \\
+    \alpha_{13} &=  \frac{D_1}{4 p_1 \cdot p_3} + \frac{D_4 p_1 \cdot p_2}{4 p_1 \cdot p_3 p_2 \cdot p_3} - \frac{D_3 (p_1\cdot p_2 + p_1 \cdot p_3)}{4 p_1 \cdot p_3 p_2 \cdot p_3} + \frac{D_2 (p_1\cdot p_3 - p_2 \cdot p_3)}{4 p_1 \cdot p_3 p_2 \cdot p_3} -\frac{p_1 \cdot p_2}{2 p_1 \cdot p_3}\,, \nonumber \\
+    \beta &= \frac{k_1^{(4),\, \omega} \cdot \omega}{\omega^2}\,.
+\end{align}
+We can then substitute the parametrisation into all the monomials appearing in Eq.~\ref{eq:ampschematic}. For example:
+\begin{align}
+    \bra{1}k_1^{(D)}\ketsq{2} &= \sum_{a=1}^3 \alpha_a \bra{1}p_a\ketsq{2} \nonumber \\
+    &= \alpha_3 \braket{13}\braketsq{32} \JK{check sign}\,,
+\end{align}
+where the first line follows from the orthogonality properties of the loop momentum decomposition, while in the second we have imposed the massless Weyl equation~\ref{eq:weyleq}. We then collect the result in $D_t$, whose coefficients are given by rational functions of external kinematics only. As another example, the square of the loop momentum will contain the spurious and $(-2\eps)$ terms:
+\begin{equation}
+    k_1^{(D)} \cdot k_1^{(D)} \ni \frac{(k_1^{(4),\, \omega} \cdot \omega)^2}{\omega^2} - \mu_{11}\,.
+\end{equation}
+Most generally, this substitution will also contain the physical ISPs, which will appear provided the condition in Eq.~\ref{eq:ISPcondition} is satisfied.
+
+Typically, we want to avoid performing the substitution analytically due to the high rank of monomials in Eq.~\ref{eq:ampschematic} and the complexity of their coefficients. Fortunately, it can also be performed numerically as an additional step in our finite field workflow. To this end, 
 \textcolor{gray}{
 \begin{itemize}
-    \item Substitute this parametrisation into $N$.
     \item Transverse integration eliminates transverse space terms.
     \item We are left with just inverse propagators and the `physical ISPs' - altogether this defines an integral IBP for the integrand reduction.
     \item The $D$s in the numerator will of course cancel out with the denominators defining the maximal topology.
