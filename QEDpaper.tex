@@ -24,16 +24,14 @@
     \acro{VV}{double-virtual}
 \end{acronym}
 
-In this chapter, we present the computation of the two-loop QED helicity amplitudes for the scattering of a
-lepton pair with an off-shell and an on-shell photon, $0\to\ell \bar\ell \gamma \gamma^*$, using the approximation of massless leptons. We express all MIs relevant for the scattering of four massless particles with a single external off-shell leg up to two loops in a basis of algebraically independent \aclp{MPL}, which guarantees an efficient numerical evaluation and compact analytic representations of the amplitudes. Analytic forms of the amplitudes are reconstructed from numerical evaluations over finite fields. Our results complete the amplitude-level ingredients contributing to the \acs{N3LO} predictions of electron-muon scattering $e\mu\to e\mu$, which are required to meet the precision goal of the future MUonE experiment.
+In this chapter, we present the computation of the two-loop QED helicity amplitudes for the scattering of a lepton pair with an off-shell and an on-shell photon, $0\to\ell \bar\ell \gamma \gamma^*$, using the approximation of massless leptons. We express all MIs relevant for the scattering of four massless particles with a single external off-shell leg up to two loops in a basis of algebraically independent GPLs, which guarantees an efficient numerical evaluation and compact analytic representations of the amplitudes. Analytic forms of the amplitudes are reconstructed from numerical evaluations over finite fields. Our results complete the amplitude-level ingredients contributing to the \acs{N3LO} predictions of electron-muon scattering $e\mu\to e\mu$, which are required to meet the precision goal of the future MUonE experiment.
 
-The chapter is organised as follows. In \cref{secQED:structure}, we describe our decomposition of the helicity amplitudes and detail how we express the off-shell currents. In \cref{secQED:calc}, we discuss our computation of analytic amplitudes by numerical evaluations over finite fields. In \cref{secQED:spec-fns}, we present the computation of the Feynman integrals in terms of a basis of special functions. We provide useful technical details in appendices. We define the relevant families of Feynman integrals in \cref{app:int_def}.
-\JK{In \cref{app:altIBPs}, we discuss in detail how we handle permutations of the integral families in the IBP reduction.
-In \cref{app:mtvs}, we describe our rational parametrisation of the kinematics.
-\Cref{app:poles} is devoted to the UV renormalisation and IR factorisation which determine the pole structure of the amplitudes.
-In \cref{app:an_cont} we discuss the analytic continuation of the special functions to the physical kinematic regions.}
+The chapter is organised as follows. In \cref{secQED:structure}, we describe our decomposition of the helicity amplitudes and detail how we express the off-shell currents. In \cref{secQED:calc}, we discuss our computation of analytic amplitudes by numerical evaluations over finite fields. In \cref{secQED:spec-fns}, we present the computation of the Feynman integrals in terms of a basis of special functions. We provide useful technical details in appendices. We define the relevant families of Feynman integrals in \cref{app:int_def}. 
+%\JK{In \cref{app:altIBPs}, we discuss in detail how we handle permutations of the integral families in the IBP reduction.
+%In \cref{app:mtvs}, we describe our rational parametrisation of the kinematics.
+Appendix~\cref{app:QEDpolestructure} is devoted to the UV renormalisation and IR factorisation which determine the pole structure of the amplitudes. In \cref{app:an_cont}, we discuss the analytic continuation of the special functions to the physical kinematic regions.
 \section{Introduction}
-The MUonE experiment~\cite{Abbiendi:2016xup,Abbiendi:2022oks,Spedicato:2022qtw,Pilato:2022wvg} will measure the hadronic running of the electromagnetic coupling $\alpha$ using low-energy elastic electron-muon scattering, $e\mu \to e\mu$.
+The MUonE experiment~\cite{Abbiendi:2016xup, Abbiendi:2022oks, Spedicato:2022qtw, Pilato:2022wvg} will measure the hadronic running of the electromagnetic coupling $\alpha$ using low-energy elastic electron-muon scattering, $e\mu \to e\mu$.
 This will enable a new and precise determination of the \ac{HVP} contribution $a_{\mu}^{\text{HVP}}$~\cite{CarloniCalame:2015obs,Balzani:2021del} to the muon anomalous magnetic moment $a_{\mu}$. This is required in light of the recent tensions between experimental~\cite{Muong-2:2021ojo}, SM data-driven~\cite{Aoyama:2020ynm}, and lattice QCD~\cite{Borsanyi:2020mff} results for $a_\mu$.
 Increasing the precision of the theoretical predictions for $e\mu \to e\mu$ scattering is a high priority for the planned MUonE experiment~\cite{Banerjee:2020tdt,Budassi:2022dco} and has seen good progress in the last few years~\cite{Alacevich:2018vez,Budassi:2021twh,Fael:2019nsf,Fael:2018dmz,CarloniCalame:2020yoz}.
 The recent completion of full NNLO QED corrections~\cite{Broggio:2022htr} indicates that 
@@ -98,7 +96,7 @@ which gives a unique and uniform representation of all the required Feynman
 integrals up to transcendental weight four.  This enables a more efficient
 computation of the amplitudes using the modern workflow based on finite-field
 arithmetic, and leads to more compact expressions. We give explicit expressions
-for the basis functions in terms of MPLs which can be evaluated in an
+for the basis functions in terms of GPLs which can be evaluated in an
 efficient and stable way throughout the physical phase space.  We compute all
 crossings of all massless one- and two-loop four-particle Feynman integrals
 with an external off-shell leg, so that our results for the integrals may be of
@@ -133,19 +131,17 @@ We consider the perturbative QED expansion of the helicity amplitudes:
 \end{align}
 with prefactor $n_\eps=\i (4\pi)^\eps \mathrm{e}^{-\eps\gamma_E}$, electromagnetic coupling $g_e$, and $\alpha=g_e^2/(4\pi)$.
 We truncate the expansion at $L=2$ loops.
-We set the renormalisation scale $\mu_R$ to one throughout the computation and restore the dependence on it in the final analytic result by dimensional analysis. For the bare amplitudes we have that:
+We set the renormalisation scale $\mu_R$ to $1$ throughout the computation and restore the dependence on it in the final analytic result by dimensional analysis. For the bare amplitudes, we have that:
 \begin{align}
     \label{eqQED:scale-restoration}
     \al{L}(\mu_R) &= \mu_R^{2\eps L} \al{L}(\mu_R=1) \,.
 \end{align}
-
 There are two independent helicity configurations $(h_1,h_2,h_3)$, which we take as:
 \begin{align} \label{eqQED:helconfs}
     \{-+- \,, \ \ -++\} \,.
 \end{align}
 We derive the analytic expressions for these helicity amplitudes.
 We obtain the remaining helicity configurations, $\{+-+ \,,\ \ +--\}$, through parity transformation (see Appendix~C of \incite{Badger:2023mgf}).
-
 \begin{figure}
     \begin{center}
         \begin{subfigure}[c]{0.3\linewidth}
@@ -233,25 +229,21 @@ using the following basis written with the spinor-helicity formalism:
     q_k^\mu &= p_k^\mu \quad\forall \, k=1,2,3 \,, &
     q_4^\mu &= \frac{\langle 2|p_3p_1\sigma^\mu|2 ] - \langle 1|p_3p_2\sigma^\mu|1 ]}{2 s_{12}} \,.
 \end{align}
-Readers not familiar with the spinor-helicity formalism may like to consult one of the many good reviews on the subject~\cite{Mangano:1990by,Dixon:1996wi,Badger:2023eqz}.
+%Readers not familiar with the spinor-helicity formalism may like to consult one of the many good reviews on the subject~\cite{Mangano:1990by, Dixon:1996wi, Badger:2023eqz}.
 Note that $q_4$ is orthogonal to the momenta $p_i$ by construction; one can in fact show that $q_4^\mu\propto \varepsilon^{\mu\nu\rho\sigma}{q_1}_\nu{q_2}_\rho{q_3}_\sigma$. 
 The subamplitude coefficients $a_{i,j;k}^{(L)}$ can be related to the amplitude ones $a_{k}^{(L)}$ through \cref{eqQED:nldecomp}.
-
-\smallskip
 
 The scattering amplitudes $\mathcal{M}^{(L)}$ for fully on-shell processes (for instance, for $0 \to e^-e^+ \gamma \mu^-\mu^+$) are obtained by contracting the amplitude currents $\al{L}$ (for $0 \to e^-e^+ \gamma \gamma^*$) with a suitable decay current $\mathcal{V}_\mu$ (in this example, $\gamma^*\to\mu^-\mu^+$) as:
 \begin{align}
     \label{eqQED:on-shell-amps}
     \mathcal{M}^{(L)} &\coloneqq \mathcal{A}^{(L)} \cdot\mathcal{V}  = \sum_{k=1}^4 a_k^{(L)} \, \left( q_k\cdot\mathcal{V} \right) \,.
 \end{align}
-In this manner, the on-shell amplitudes $\mathcal{M}^{(L)}$ are given by the scalar product between the vector of coefficients $(a_1^{(L)}, \ldots, a_4^{(L)})$, and that of decay-vector contractions $(q_1\cdot\mathcal{V}, \ldots, q_4\cdot\mathcal{V} )$.
+In this manner, the on-shell amplitudes $\mathcal{M}^{(L)}$ are given by the scalar product between the vector of coefficients $(a_1^{(L)}, \ldots, a_4^{(L)})$, and that of decay-vector contractions ${(q_1\cdot\mathcal{V}, \ldots, q_4\cdot\mathcal{V} )}$.
 The coefficients $a^{(L)}_k$ depend on the helicities of the three on-shell particles in \cref{eqQED:scatter}, while the decay vector $\mathcal{V}_{\mu}$ depends on the helicities of the particles the off-shell photon decays to. The helicity-summed interference between the $L_1$-loop and the $L_2$-loop matrix elements is then given by:
 \begin{align} \label{eqQED:squared_M}
     \mathcal{M}^{(L_1,L_2)} &= \frac{1}{4} \sum_{\vec{h}} {\mathcal{M}^{(L_1)}_{\vec{h}}}^* \mathcal{M}^{(L_2)}_{\vec{h}} \,,
 \end{align}
 where the subscripts $\vec{h}$ indicates the helicities of all on-shell particles --- that is, including the decay products of the off-shell photon --- and the overall constant factor averages over the helicities of the incoming particles.
-
-\smallskip
 
 The output of the computation described in \cref{secQED:calc} is the set of four projections $\mathcal{A}^{(L)}_{i,j} \cdot q_k$ for each helicity configuration listed in \cref{eqQED:helconfs}.
 From these, we determine the subamplitude coefficients $a_{i,j;k}^{(L)}$ by inverting \cref{eqQED:offshellproj} as:
@@ -269,7 +261,7 @@ where $\text{mon}_r(F)$ are monomials of special functions $F$ (see \cref{secQED
 We drop the dependence on $i$, $j$, $k$, and $L$ on the right-hand side of \cref{eqQED:ampprojcoeffs} for compactness. 
 We truncate the Laurent expansion around $\eps=0$ to the orders required for computing NNLO predictions.
 We express the coefficients $c_{r,w}$ as $\mathbb{Q}$-linear combinations of a smaller set of linearly-independent coefficients (see \cref{secQED:calc}).
-The analytic expressions of the latter are given explicitly in terms of momentum twistor variables (see \cref{app:mtvs}).
+The analytic expressions of the latter are given explicitly in terms of MTs.
 We simplify these expressions through a multivariate partial fraction decomposition using \texttt{MultivariateApart}~\cite{Heller:2021qkz}, and by collecting the common factors.
 
 In the ancillary files~\cite{zenodo}, the directory \texttt{amplitudes/} contains \texttt{Mathematica} files describing the bare helicity subamplitude currents $\sal{L}{i}{j}$ by their coefficients $a_{i,j;k}^{(L)}$ in the form of \cref{eqQED:ampprojcoeffs}.
@@ -279,7 +271,7 @@ The results of the script are checked against a reference point included in \tex
 
 \smallskip
 
-We perform the following checks of our amplitudes.
+We perform the following checks of our amplitudes:
 \begin{description}
     \item[Ward identity]
         We verify the gauge invariance of the subamplitudes $\sal{L}{i}{j}$ by checking that they vanish on replacing the on-shell photon's polarisation vector with its momentum.
@@ -296,34 +288,16 @@ We perform the following checks of our amplitudes.
                 {\mathcal{F}^{(2)}}^\mu &= \left[ \al{2} - \frac{5}{2}\frac{\beta_0}{\eps} \al{1} - \left(-\frac{15}{8}\frac{\beta_0^2}{\eps^2}+\frac{3}{4}\frac{\beta_1}{\eps}\right) \al{0} \right] - Z^{(2)} \al{0} - Z^{(1)} {\mathcal{F}^{(1)}}^\mu \,,
             \end{align}
         \end{subequations}
-        where the square brackets separate renormalisation of UV poles from subtraction of IR poles. The derivation of these formulae follows the procedure outlined in Appendix~\ref{app:polestructure}\JK{I don't think that's true...}, with the important difference that we do not have to worry about the colour factors and the QED result is obtained by setting ($C_A=0$, $C_F=1$, and $T_F=1$). The coefficients $Z^{(L)}$ are given in Appendix~\ref{app:renormconstants}.
+        where the square brackets separate renormalisation of UV poles from subtraction of IR poles. The derivation of these formulae follows the procedure outlined in Appendix~\ref{app:QEDpolestructure}. The coefficients $Z^{(L)}$ are given in Appendix~\ref{app:renormconstants}.
 \end{description}
 
 \section{Setup of the calculation}
 \label{secQED:calc}
 
-In this section, we outline the workflow we used to calculate our amplitudes.
-Firstly, we generate all Feynman diagrams contributing to \cref{eqQED:scatter}
-using \texttt{QGRAF}~\cite{Nogueira:1991ex}. Each diagram is then replaced with
-the corresponding Feynman rules for vertices, propagators, and external states,
-leading to a collection of $D$-dimensional Feynman integrals. Next, we filter
-the integrals according to \cref{eqQED:loopdecomp,eq:nldecomp} using a collection
-of \texttt{Mathematica} and \texttt{FORM} scripts~\cite{Kuipers:2012rf,
-Ruijl:2017dtg}. Within each subamplitude $\sal{L}{i}{j}$, we then collect the
-integrals according to their topology, by which we mean a unique set of
-denominators. For example, the diagrams in
-\cref{fig:2Lboxbubble1,fig:2Lboxbubble2} belong to different topologies, but
-those in \cref{fig:2Lbox1,fig:2Lbox2} belong to the same topology (under the
-assumption of massless lepton propagators). At this point, the subamplitudes
-are sums of Feynman integrals over distinct integral topologies, with the
-numerators given by linear combinations of monomials that depend on the loop as
-well as the external momenta. To work with the projected helicity subamplitudes
-$\am^{(L)}_{i,j}\cdot q_k$, we specify the polarisations of external particles
-according to \cref{eqQED:helconfs}, as well as the projector $q_k^\mu$ of the
-off-shell photon from \cref{eqQED:proj-basis}. It is natural to express
-helicity-dependent objects using the spinor-helicity formalism. Then, the
-monomials of loop momenta contain the following scalar products and spinor
-strings:
+In this section, we outline the workflow we used to calculate our amplitudes. For much more detail, we refer the reader to Section~\ref{sec:tools}. Firstly, we generate all Feynman diagrams contributing to \cref{eqQED:scatter} using \texttt{QGRAF}~\cite{Nogueira:1991ex}. Each diagram is then replaced with the corresponding Feynman rules for vertices, propagators, and external states, leading to a collection of $D$-dimensional Feynman integrals. Next, we filter the integrals according to \cref{eqQED:loopdecomp,eq:nldecomp} using a collection of \texttt{Mathematica} and \texttt{FORM} scripts~\cite{Kuipers:2012rf,
+Ruijl:2017dtg}. Within each subamplitude $\sal{L}{i}{j}$, we then collect the integrals according to their topology, by which we mean a unique set of denominators. 
+%For example, the diagrams in \cref{fig:2Lboxbubble1,fig:2Lboxbubble2} belong to different topologies, but those in \cref{fig:2Lbox1,fig:2Lbox2} belong to the same topology (under the assumption of massless lepton propagators). 
+At this point, the subamplitudes are sums of Feynman integrals over distinct integral topologies, with the numerators given by linear combinations of monomials that depend on the loop as well as the external momenta. To work with the projected helicity subamplitudes $\am^{(L)}_{i,j}\cdot q_k$, we specify the polarisations of external particles according to \cref{eqQED:helconfs}, as well as the projector $q_k^\mu$ of the off-shell photon from \cref{eqQED:proj-basis}. It is natural to express helicity-dependent objects using the spinor-helicity formalism. Then, the monomials of loop momenta contain the following scalar products and spinor strings:
 \begin{equation} \label{eqQED:loopmomobjects}
 	\left\{ k_i \cdot k_j, \,
     k_i \cdot p_j ,\,
@@ -339,7 +313,7 @@ objects, but do not contain any dependence on loop momenta $k_i$.  Similarly to 
 \begin{align}
     p_i &= q_i \qquad \forall i=1,2,3, & p_4=q_4+q_5 \, .
 \end{align}
-The momentum twistor variables $x_i$ for $p$ are then related to the scalar invariants $\vec{s}$ through:
+The MTs $x_i$ are then related to the scalar invariants $\vec{s}$ through:
 \begin{align} \label{eqQED:mtvs}
     s_{12} &= x_1 \,, &
     s_{23} &= x_1 x_2 \,, &
@@ -355,25 +329,9 @@ which in our momentum twistor parameterisation are given by:
   \Phi(-++) &= x_1^2 \,,&
   \Phi(-+-) &= - \frac{1}{x_1 (1 + x_2 - x_3)^2}   \,.
 \end{align}
-We refer to Appendix~C of \incite{Badger:2023mgf} a thorough discussion of how to restore the phase information in a momentum twistor parameterisation.
-
-This marks the start of our finite-field sampling
-procedure~\cite{Peraro:2016wsq}.  The goal of this approach is to sidestep the
-algebraic complexity which typically plagues the intermediate stages of
-symbolic computations by evaluating numerically all rational coefficients.
-Using integers modulo some large prime number ---~which constitute a finite
-field~--- for the numerical evaluation allows us to avoid the loss of accuracy
-inherent to floating-point numbers, as well as the expensive
-arbitrary-precision arithmetic required by rational numbers.  Manipulations
-needed to further process the rational coefficients are a completely separate
-problem from the calculation of the integrals or special functions that these
-coefficients multiply. In fact, they can be implemented as a series of rational
-transformations over finite fields. We stress that this is the methodology we
-follow at each step of the computation described below. In particular, we use
-the package \texttt{FiniteFlow}~\cite{Peraro:2019svx}, which is conveniently
-interfaced to \texttt{Mathematica}. The analytic form of the coefficients is
-not known at any intermediate step. It is reconstructed from the finite-field
-samples only at the very end of the workflow.
+We refer to Appendix~C of \incite{Badger:2023mgf} for a thorough discussion of how to restore the phase information in a momentum twistor parameterisation.
+  
+%The goal of this approach is to sidestep the algebraic complexity which typically plagues the intermediate stages of symbolic computations by evaluating numerically all rational coefficients. Using integers modulo some large prime number ---~which constitute a finite field~--- for the numerical evaluation allows us to avoid the loss of accuracy inherent to floating-point numbers, as well as the expensive arbitrary-precision arithmetic required by rational numbers.  Manipulations needed to further process the rational coefficients are a completely separate problem from the calculation of the integrals or special functions that these coefficients multiply. In fact, they can be implemented as a series of rational transformations over finite fields. We stress that this is the methodology we follow at each step of the computation described below. In particular, we use the package \texttt{FiniteFlow}~\cite{Peraro:2019svx}, which is conveniently interfaced to \texttt{Mathematica}. The analytic form of the coefficients is not known at any intermediate step. It is reconstructed from the finite-field samples only at the very end of the workflow.
 
 \begin{figure}
     \begin{center}
@@ -409,136 +367,80 @@ samples only at the very end of the workflow.
     }
     \label{fig:int-fams}
 \end{figure}
-
-Firstly, we note that not all integral topologies are independent: some of them
-can be written as subtopologies of others. For this reason, we define the set
-of \textit{maximal} topologies, i.e.~topologies with the maximum number of
-propagators allowed for $L$-loop, $n$-particle diagrams.  In figure
-\ref{fig:int-fams}, we present the maximal topologies for the process under
-consideration in an arbitrary ordering of the external momenta (we give their
-explicit definitions in \cref{app:int_def}). Several orderings of the external
-momenta are relevant for the amplitudes, and we treat them as distinct
-families. Next, we map all topologies present so far onto one of these maximal
-topologies. The loop momenta dependent objects of \cref{eqQED:loopmomobjects} are
-then expressed through the nine inverse propagators and ISPs associated
-with the chosen maximal topology. In this way, each subamplitude is now a sum
-of integrals compatible with IBP
-reduction~\cite{Tkachov:1981wb,Chetyrkin:1981qh}, while their coefficients
-depend purely on external kinematics. We generate the required IBP
-relations using \texttt{LiteRed}~\cite{Lee:2012cn}. The resulting IBP
-system is then solved using the Laporta algorithm~\cite{Laporta:2001dd} with
-\texttt{FiniteFlow}'s linear solver to yield the reduction of all the integrals
-present within our maximal topologies onto a much smaller subset of MIs.
-We choose the MIs such that they satisfy DEs in canonical
-form~\cite{Henn:2013pwa} (see \cref{secQED:basis_construction}). We stress that
-the IBP reduction is also done numerically over finite fields, since the
-coefficients of the IBP relations are rational functions of external
-kinematics and the dimensional regulator $\eps$. This is an important
-simplification, since analytic IBP reduction often proves to be the
-bottleneck of amplitude computations. For many amplitude applications, multiple permutations of the ordered topologies can appear. We outline a strategy to optimise the reduction in such situations in Appendix~\ref{app:altIBPs}.
+This marks the start of our finite-field sampling
+procedure~\cite{Peraro:2016wsq}. 
+%Firstly, we note that not all integral topologies are independent: some of them can be written as subtopologies of others. 
+Firstly, we define the set of maximal topologies, i.e.~topologies with the maximum number of propagators allowed for $L$-loop, $n$-particle diagrams. In Fig.~\ref{fig:int-fams}, we present the maximal topologies for the process under consideration in an arbitrary ordering of the external momenta (we give their explicit definitions in \cref{app:int_def}). Several orderings of the external momenta are relevant for the amplitudes, and we treat them as distinct families. Next, we map all topologies present so far onto one of these maximal topologies. The loop momenta dependent objects of \cref{eqQED:loopmomobjects} are then expressed through the nine inverse propagators and ISPs associated with the chosen maximal topology. In this way, each subamplitude is now a sum of integrals compatible with IBP reduction~\cite{Tkachov:1981wb,Chetyrkin:1981qh}, while their coefficients depend purely on external kinematics. We generate the required IBP relations using \texttt{LiteRed}~\cite{Lee:2012cn}. The resulting IBP system is then solved using the Laporta algorithm~\cite{Laporta:2001dd} with \texttt{FiniteFlow}'s linear solver to yield the reduction of all the integrals present within our maximal topologies onto a much smaller subset of MIs. We choose the MIs such that they satisfy DEs in canonical form~\cite{Henn:2013pwa} (see \cref{secQED:basis_construction}). For many amplitude applications, multiple permutations of the ordered topologies can appear. We outline a strategy to optimise the reduction in such situations in Appendix~\ref{app:altIBPs}.
 
 At this point, each projected helicity subamplitude $\am^{(L)}_{i,j}\cdot q_k$
 is written as a linear combination of MIs multiplied by rational
 coefficients of $\eps$ and the kinematic variables. We now write the MIs
 in terms of a basis of special functions up to the required order in $\eps$
 (see \cref{secQED:spec-fns}). Finally, we Laurent expand the amplitude around
-$\eps=0$, the deepest pole being $1/\eps^{2 L}$ at $L$ loops. The only task
+$\eps=0$, the deepest pole being $1/\eps^{2 L}$ at $L$ loops. The only step
 left is to reconstruct the rational coefficients of the special-function
-monomials from their samples over finite fields. In general, this might be a
-daunting challenge and its complexity stems from two separate factors. The
-workflow described so far is a series of rational operations chained together
-within a so-called dataflow graph~\cite{Peraro:2019svx}. As such, we
-essentially have a black-box algorithm which takes numerical values of the
-kinematic variables as input, and returns the corresponding numerical values of
-the rational coefficients of the special-function monomials. The first factor
-is that several sample points are necessary to infer the analytic expression of
-these coefficients from their values in the finite fields. The required number
-is correlated with the polynomial degrees of the rational functions viewed as
-ratios of polynomials: the higher the degree, the more sample points are
-required. The second factor affecting the reconstruction complexity is the time
-it takes to obtain the values of the coefficients at each sample point. The
-more complicated the dataflow graph is, i.e.~the more operations are chained
-together and the more difficult each operation is, the longer it will take to
-run the black-box algorithm. The most expensive operation in this regard is the
-evaluation of the solution to the IBP system.  The total reconstruction
-time can thus be estimated as:
-\begin{equation} \label{eqQED:rectimeschematic}
-	\text{reconstruction time} \approx (\text{number of sample points}) \times (\text{evaluation time per point})\,.
-\end{equation}
-We emphasise that the sample evaluations can be run in parallel.  For a
-detailed discussion of various strategies to improve the reconstruction time,
-see section~4 of \incite{Badger:2021imn} and section~3.5 of
-\incite{Badger:2022ncb}. Here, we give a brief overview of the tools that
-proved sufficient for this work.
-
-First, we look for $\mathbb{Q}$-linear relations among the rational
-coefficients of each helicity subamplitude. This typically requires few sample
-points with respect to the full reconstruction. We then solve these linear
-relations to express all coefficients in terms of a minimal subset of
-independent ones. Only the latter need to be reconstructed. Choosing them so
-that they have the lowest degrees often leads to a decrease in the complexity
-of the reconstruction.
-
-The second strategy we employ is to match the rational coefficients with factorised ans\"atze informed by the singularity structure of Feynman integrals. The singularities of Feynman integrals can in fact be read off from the DEs they satisfy. For each coefficient we then write an ansatz made of the following factors:
+monomials from their samples over finite fields. To simplify this task, we employ chosen strategies already described in Section~\ref{Hbbsec:reduction}.
+%In general, this might be a daunting challenge and its complexity stems from two separate factors. The workflow described so far is a series of rational operations chained together within a so-called dataflow graph~\cite{Peraro:2019svx}. As such, we essentially have a black-box algorithm which takes numerical values of the kinematic variables as input, and returns the corresponding numerical values of the rational coefficients of the special-function monomials. The first factor is that several sample points are necessary to infer the analytic expression of these coefficients from their values in the finite fields. The required number is correlated with the polynomial degrees of the rational functions viewed as ratios of polynomials: the higher the degree, the more sample points are required. The second factor affecting the reconstruction complexity is the time it takes to obtain the values of the coefficients at each sample point. The more complicated the dataflow graph is, i.e.~the more operations are chained together and the more difficult each operation is, the longer it will take to run the black-box algorithm. The most expensive operation in this regard is the evaluation of the solution to the IBP system.  The total reconstruction
+%time can thus be estimated as:
+%\begin{equation} \label{eqQED:rectimeschematic}
+%	\text{reconstruction time} \approx (\text{number of sample points}) \times %(\text{evaluation time per point})\,.
+%\end{equation}
+%We emphasise that the sample evaluations can be run in parallel. For a detailed discussion of various strategies to improve the reconstruction time, see section~4 of \incite{Badger:2021imn} and section~3.5 of \incite{Badger:2022ncb}. Here, we give a brief overview of the tools that proved sufficient for this work.
+Specifically, we look for $\mathbb{Q}$-linear relations among the rational
+coefficients of each helicity subamplitude, which allows us to select those coefficients for reconstruction which have the lowest degrees. Then, we employ the technique of matching the denominators of the rational coefficients against an ansatz. Here, we use the following factors:
 \begin{equation}
 	\left\{\braket{ij} , \, \braketsq{ij} , \, \bra{i}p_4|j] , \, s_{ij} - s_{k4} , \, s_{i4} - s_4 , \, s_4 \right\} \,,
 \end{equation}
 for all $i, j, k = 1, 2, 3$ such that $i\neq j \neq k$. This list includes denominator factors of the DEs satisfied by the MIs (listed by \cref{eqQED:alphabet}), 
 as well as spinor structures aimed at capturing the phase information of helicity amplitudes.
-We then determine the exponents of the ans\"atze by comparing them to the coefficients reconstructed on a univariate slice of the kinematic variables~\cite{Abreu:2019odu}, which are very cheap to obtain. We find that with this ansatz it is possible to determine all denominator factors ---~which indeed are linked to the singularity structure of the amplitude~--- and sometimes also some numerator factors. As a result, the undetermined functions yet to be reconstructed are of lower degree and require fewer sample points. 
+%We then determine the exponents of the ans\"atze by comparing them to the coefficients reconstructed on a univariate slice of the kinematic variables~\cite{Abreu:2019odu}, which are very cheap to obtain. We find that with this ansatz it is possible to determine all denominator factors ---~which indeed are linked to the singularity structure of the amplitude~--- and sometimes also some numerator factors. As a result, the undetermined functions yet to be reconstructed are of lower degree and require fewer sample points. 
 We reconstruct the analytic form of the remaining rational functions using \texttt{FiniteFlow}'s built-in multivariate functional reconstruction algorithm.
 
-Finally, we note that, for more computationally demanding processes, further ansatz-based techniques ---~for instance based on 
-partial fraction decompositions or informed by the singularity structure of the amplitudes~--- may be used to optimise 
-the functional reconstruction; see, for example, \incites{Badger:2021imn, Badger:2021ega, Badger:2022ncb, DeLaurentis:2022otd, Badger:2023mgf, Abreu:2023bdp, Liu:2023cgs}.
+Finally, we note that, for more computationally demanding processes, further simplification strategies can be used. We refer the reader to Section~\ref{wyjsec:Simplification} and \incites{Badger:2021imn, Badger:2021ega, Badger:2022ncb, DeLaurentis:2022otd, Badger:2023mgf, Abreu:2023bdp, Liu:2023cgs}.
 
 \section{Computation of the \aclp{MI}}
 \label{secQED:spec-fns}
 
 The MIs for the relevant integral families were computed analytically in \incites{gehrmann:2000zt,gehrmann:2001ck,Gehrmann:2023etk} (see also~\incite{Gehrmann:2002zr} for a thorough discussion of the analytic continuation).
-We revisit this computation to obtain expressions for the MIs which are better suited for the amplitude-computation workflow discussed in \cref{secQED:calc}. To this end, we compute the MIs for \emph{all permutations} of the external legs in terms of a \emph{basis} of special functions, following the approach of \incites{Gehrmann:2018yef,Chicherin:2020oor,Badger:2021nhg,Chicherin:2021dyp,Abreu:2023rco}.
-In other words, we express all the Feynman integrals contributing to the amplitudes in terms of a set of special functions which are (algebraically) independent.
-Having such a unified and unique representation for all permutations of the integral families allows for simplifications and cancellations among different permutations of the Feynman integrals.
-This leads to a simpler expression of the amplitudes and to a more efficient functional reconstruction in the finite-field setup presented in \cref{secQED:calc}. 
-We emphasise that our results cover all MIs required for computing \emph{any} two-loop four-particle amplitude with a single external off-shell leg, and not just the ones required for the amplitudes presented in this work.
+We revisit this computation to obtain expressions for the MIs which are better suited for the amplitude-computation workflow discussed in \cref{secQED:calc}. To this end, we compute the MIs for \emph{all permutations} of the external legs in terms of a \emph{basis} of special functions, following the approach of \incites{Gehrmann:2018yef,Chicherin:2020oor,Badger:2021nhg,Chicherin:2021dyp,Abreu:2023rco}. In other words, we express all the Feynman integrals contributing to the amplitudes in terms of a set of special functions which are algebraically independent. Having such a unified and unique representation for all permutations of the integral families allows for simplifications and cancellations among different permutations of the Feynman integrals. This leads to a simpler expression of the amplitudes and to a more efficient functional reconstruction in the finite-field setup presented in \cref{secQED:calc}. We emphasise that our results cover all MIs required for computing \emph{any} two-loop four-particle amplitude with a single external off-shell leg, and not just the ones required for the amplitudes presented in this work.
 
-We discuss the construction of the basis in \cref{secQED:basis_construction}, and how we express it in terms of \acfp{MPL} in \cref{secQED:basis_MPLs}. 
+We discuss the construction of the basis in \cref{secQED:basis_construction}, and how we express it in terms of GPLs in \cref{secQED:basis_MPLs}. 
 Finally, we give some details about the numerical evaluation and the checks we performed in \cref{secQED:performance}.
 
 
 \subsection{Construction of the special function basis}
 \label{secQED:basis_construction}
 
-We follow the strategy presented in \incite{Abreu:2023rco}. The starting point are the DEs satisfied by the MIs for each family~\cite{Barucchi:1973zm,KOTIKOV1991158,KOTIKOV1991123,Gehrmann:1999as,Bern:1993kr}. Let $\tau$ label an integral family, e.g.\ the double-box in \cref{fig:double-box} for an arbitrary permutation of the external massless momenta. We choose a basis of \emph{pure} MIs $\vec{g}_{\tau}$, that is, a basis which satisfies DEs in the canonical form~\cite{Henn:2013pwa}
+We follow the strategy presented in \incite{Abreu:2023rco}. The starting point are the DEs satisfied by the MIs for each family~\cite{Barucchi:1973zm, KOTIKOV1991158, KOTIKOV1991123, Gehrmann:1999as, Bern:1993kr}. Let $T$ label an integral family, e.g.\ the double-box in \cref{fig:double-box} for an arbitrary permutation of the external massless momenta. We choose a basis of \emph{pure} master integrals $\vv{\text{MI}}_T$, that is, a basis which satisfies DEs in the canonical form~\cite{Henn:2013pwa}:
 \begin{align}
 \label{eqQED:canonicalDEs}
-\dd \, \vec{g}_{\tau}(\vec{s}; \eps) = \eps \, \left( \sum_{i=1}^{7} \mathrm{A}^{(\tau)}_i \, \dd \log W_i(\vec{s}) \right) \cdot \vec{g}_{\tau}(\vec{s}; \eps) \,.
+\dd \vv{\text{MI}}_T(\vec{s}; \eps) = \eps \, \left( \sum_{i=1}^{7} A^{(T)}_i \, \dd \log w_i(\vec{s}) \right) \cdot \vv{\text{MI}}_T(\vec{s}; \eps) \,.
 \end{align}
-Here, $\dd$ is the total differential, $\dd f \coloneqq \dd s_{12} \, \partial_{s_{12}} f + \dd s_{23} \, \partial_{s_{23}} f +  \dd s_{4} \, \partial_{s_{4}} f $, $\mathrm{A}^{(\tau)}_i$ are constant $n_{\tau} \times n_{\tau}$ matrices, with $n_{\tau}$ the number of MIs of the family $\tau$, and 
+Here, $\dd$ is the total differential, $\dd f \coloneqq \dd s_{12} \, \partial_{s_{12}} f + \dd s_{23} \, \partial_{s_{23}} f +  \dd s_{4} \, \partial_{s_{4}} f $, $A^{(T)}_i$ are constant $n_{T} \times n_{T}$ matrices, with $n_{T}$ the number of MIs of the family $T$, and: 
 \begin{align}
 \label{eqQED:alphabet}
 \begin{alignedat}{4}
-& W_1 = s_{12} \,, 
-&& W_2 = s_{23} \,, 
-&& W_3 = s_{12} + s_{23} \,, \qquad
-&& W_4 = s_{12} - s_4 \,,  \\
-& W_5 = s_{23} - s_4 \,, \qquad
-&& W_6 = s_{12} + s_{23} - s_4 \,, \qquad
-&& W_7 = s_4 \, &&
+& w_1 = s_{12} \,, 
+&& w_2 = s_{23} \,, 
+&& w_3 = s_{12} + s_{23} \,, \qquad
+&& w_4 = s_{12} - s_4 \,,  \\
+& w_5 = s_{23} - s_4 \,, \qquad
+&& w_6 = s_{12} + s_{23} - s_4 \,, \qquad
+&& w_7 = s_4 \, &&
 \end{alignedat}
 \end{align}
-are called \emph{letters}. We find such canonical bases by a mixture of methods: the package \texttt{DlogBasis}~\cite{Henn:2020lye}, the analysis of results in the literature for related integral families (massless two-loop five-point planar integrals~\cite{Gehrmann:2015bfy} and two-loop four-point integrals with two massive external legs~\cite{Henn:2014lfa,Caola:2014lpa}), and a set of heuristic rules (see e.g.\ \incite{Dlapa:2022nct}).
-We normalise the MIs such that their expansion around $\eps=0$ starts from order $\eps^0$,
+are the `letters'. We find such canonical bases by a mixture of methods: the package \texttt{DlogBasis}~\cite{Henn:2020lye}, the analysis of results in the literature for related integral families (massless two-loop five-point planar integrals~\cite{Gehrmann:2015bfy} and two-loop four-point integrals with two massive external legs~\cite{Henn:2014lfa,Caola:2014lpa}), and a set of heuristic rules (see e.g.\ \incite{Dlapa:2022nct}).
+We normalise the MIs such that their expansion around $\eps=0$ starts from order $\eps^0$:
 \begin{align}
-\vec{g}_{\tau}(\vec{s} ; \eps) = \sum_{w \ge 0} \eps^w \, \vec{g}^{(w)}_{\tau}(\vec{s}) \,.
+\vv{\text{MI}}_T(\vec{s} ; \eps) = \sum_{k \ge 0} \eps^k \, \vv{\text{MI}}_T^{(k)}(\vec{s}) \,.
 \end{align}
-For the purpose of computing two-loop scattering amplitudes up to their finite part (i.e., up to order $\eps^0$), it suffices to restrict our attention to $w \le 4$.
-Since the MIs satisfy canonical DEs~\labelcref{eqQED:canonicalDEs}, the $\eps$-order of the \ac{MI} coefficients $\vec{g}^{(w)}_{\tau}(\vec{s})$ equals their \emph{transcendental weight}~\cite{Henn:2013pwa}.
+For the purpose of computing two-loop scattering amplitudes up to their finite part (i.e., up to order $\eps^0$), it suffices to restrict our attention to $k \le 4$.
+Since the MIs satisfy canonical DEs, Eq.~\ref{eqQED:canonicalDEs}, the $\eps$-order of the MI coefficients $\vv{\text{MI}}_T^{(k)}(\vec{s})$ equals their transcendental weight~\cite{Henn:2013pwa}.
 We compute the derivatives of the MIs using \texttt{FiniteFlow}~\cite{Peraro:2019svx} and \texttt{LiteRed}~\cite{Lee:2012cn}.
 We do so only for the integral families with the ordering of the external momenta shown in \cref{fig:int-fams}, and obtain those for all other orderings of the external massless legs by permutation. 
 We provide the definition of the pure MIs and the corresponding DEs for all one- and two-loop four-point one-mass families in \cref{fig:int-fams} in the folder \texttt{pure\_mi\_bases/} of our ancillary files~\cite{zenodo}. 
 
-In order to solve the DEs~\labelcref{eqQED:canonicalDEs} we need boundary values, i.e., values of all MIs up to order $\eps^4$ at a phase-space point. 
+In order to solve the DEs in Eq.~\ref{eqQED:canonicalDEs} we need boundary values, i.e., values of all MIs up to order $\eps^4$ at a phase-space point. 
 Due to the simplicity ---~by today's standards~--- of the integrals under consideration, an arbitrary (non-singular) phase-space point would do. 
 Nonetheless, we make a more refined choice following some of the criteria of \incites{Chicherin:2020oor,Chicherin:2021dyp}.
 We choose the following point in the $s_{12}$ channel (see \cref{app:an_cont}),
@@ -548,18 +450,18 @@ We choose the following point in the $s_{12}$ channel (see \cref{app:an_cont}),
 motivated by two principles: that it is symmetric under the permutations which preserve the $s_{12}$ channel (i.e., swapping $p_1 \leftrightarrow p_2$), and that it contains few distinct prime factors.
 The first condition reduces the number of permuted integral families we need to evaluate in order to obtain the boundary values.
 The second condition reduces the number of independent transcendental constants appearing in the boundary values, which simplifies the construction of the basis of special functions. 
-The order-$\eps^0$ boundary values $\vec{g}_{\tau}^{(0)}$ are rational constants. We obtain them up to their overall normalisation by solving the `first-entry conditions'~\cite{Gaiotto:2011dt}, i.e., by requiring the absence of unphysical branch cuts in the solutions. We fix the overall normalisation and the higher-order boundary values $\vec{g}_{\tau}^{(w)}(\vec{s}_0)$ (for $1\le w\le 4$) by evaluating all MIs with \texttt{AMFlow}~\cite{Liu:2022chg} (interfaced to 
+The order-$\eps^0$ boundary values $\vv{\text{MI}}_T^{(0)}$ are rational constants. We obtain them up to their overall normalisation by solving the `first-entry conditions'~\cite{Gaiotto:2011dt}, i.e., by requiring the absence of unphysical branch cuts in the solutions. We fix the overall normalisation and the higher-order boundary values $\vv{\text{MI}}_T^{(k)}(\vec{s}_0)$ (for $1\le k\le 4$) by evaluating all MIs with \texttt{AMFlow}~\cite{Liu:2022chg} (interfaced to 
 \texttt{FiniteFlow}~\cite{Peraro:2019svx} and \texttt{LiteRed}~\cite{Lee:2012cn}) at $\vec{s}_0$ with at least $60$-digit precision.
-We anticipate from \cref{secQED:basis_MPLs} that, although we use floating-point boundary values, our results in terms of MPLs are fully~analytic. 
+We anticipate from \cref{secQED:basis_MPLs} that, although we use floating-point boundary values, our results in terms of GPLs are fully~analytic. 
 
-The canonical DEs \labelcref{eqQED:canonicalDEs} and the boundary values for all integral families are the input for the algorithm of \incite{Abreu:2023rco} for constructing a basis of special functions. We refer to the original work for a thorough discussion. 
-Out of all \ac{MI} coefficients up to transcendental weight $4$, the algorithm selects a subset, denoted $F \coloneqq \{F^{(w)}_i(\vec{s})\}$, which satisfy two constraints. 
-First, they are \emph{algebraically independent}, that is, there are no polynomial functional relations among them. Second, the \ac{MI} coefficients of all families (including all permutations of the external massless legs) up to transcendental weight $4$ are expressed as polynomials in the $\{F^{(w)}_i(\vec{s})\}$ and the zeta values $\zeta_2 = \pi^2/6$ and $\zeta_3$. For example, an arbitrary weight-$2$ \ac{MI} coefficient $g^{(2)}(\vec{s})$ has the general form
+The canonical DEs in Eq.~\ref{eqQED:canonicalDEs} and the boundary values for all integral families are the input for the algorithm of \incite{Abreu:2023rco} for constructing a basis of special functions. We refer to the original work for a thorough discussion. 
+Out of all MI coefficients up to transcendental weight $4$, the algorithm selects a subset, denoted $F \coloneqq \{F^{(k)}_i(\vec{s})\}$, which satisfy two constraints. 
+First, they are \emph{algebraically independent}, that is, there are no polynomial functional relations among them. Second, the MI coefficients of all families (including all permutations of the external massless legs) up to transcendental weight $4$ are expressed as polynomials in the $\{F^{(k)}_i(\vec{s})\}$ and the zeta values $\zeta_2 = \pi^2/6$ and $\zeta_3$. For example, an arbitrary weight-$2$ MI coefficient $\text{MI}^{(2)}(\vec{s})$ has the general form
 \begin{align}
-g^{(2)}(\vec{s}) = \sum_{i=1}^{4} c_i \, F_i^{(2)}(\vec{s}) + \sum_{i \le j =1}^{3} d_{ij} \, F_i^{(1)}(\vec{s}) \,  F_j^{(1)}(\vec{s}) + e \, \zeta_2 \,,
+\text{MI}^{(2)}(\vec{s}) = \sum_{i=1}^{4} c_i \, F_i^{(2)}(\vec{s}) + \sum_{i \le j =1}^{3} d_{ij} \, F_i^{(1)}(\vec{s}) \,  F_j^{(1)}(\vec{s}) + e \, \zeta_2 \,,
 \end{align}
-with $c_i, d_{ij}, e \in \mathbb{Q}$. This special subset of \ac{MI} coefficients, $\{F^{(w)}_i(\vec{s})\}$, constitutes our special function basis. 
-We give the number of functions in the basis in \cref{tab:func_basis}. Note that there is freedom in the choice of which \ac{MI} coefficients make up the basis. We make use of this freedom to choose as many basis-elements as possible from the one-loop family, then complement them with coefficients from the planar two-loop families, and finally complete them with coefficients from the non-planar two-loop families. In this way no two-loop \ac{MI} coefficients appear in the one-loop amplitudes, and no non-planar two-loop \ac{MI} coefficients appear in those amplitudes where only planar diagrams contribute (as is often the case in the leading colour approximation of QCD).
+with $c_i, d_{ij}, e \in \mathbb{Q}$. This special subset of MI coefficients, $\{F^{(k)}_i(\vec{s})\}$, constitutes our special function basis. 
+We give the number of functions in the basis in \cref{tab:func_basis}. Note that there is freedom in the choice of which MI coefficients make up the basis. We make use of this freedom to choose as many basis-elements as possible from the one-loop family, then complement them with coefficients from the planar two-loop families, and finally complete them with coefficients from the non-planar two-loop families. In this way no two-loop MI coefficients appear in the one-loop amplitudes, and no non-planar two-loop MI coefficients appear in those amplitudes where only planar diagrams contribute (as is often the case in the leading colour approximation of QCD).
 
 \begin{table}
     \centering
@@ -573,36 +475,35 @@ We give the number of functions in the basis in \cref{tab:func_basis}. Note that
         $4$ & 67 \\
         \hline
     \end{tabular}
-    \caption{Number of functions $\{F^{(w)}_i\}$ in the basis weight by weight.}
+    \caption{Number of functions $\{F^{(k)}_i\}$ in the basis weight by weight.}
     \label{tab:func_basis}
 \end{table}
 
-The folder \texttt{mi2func/} of our ancillary files~\cite{zenodo} contains the expression of all \ac{MI} coefficients (for all one- and two-loop integral families in all permutations of the external massless legs) up to weight $4$ in terms of our special function basis. This result enables the efficient amplitude-computation strategy based on finite-field arithmetic discussed in \cref{secQED:calc}.
-However, at this stage the basis functions $\{F^{(w)}_i\}$ are expressed in terms of Chen iterated integrals~\cite{Chen:1977oja} and numerical boundary values $\vec{g}^{(w)}(\vec{s}_0)$. This representation is excellent for investigating the analytic properties of Feynman integrals and amplitudes, but it is not readily suitable for an efficient numerical evaluation.
-In the next section we discuss how we construct a representation of the function basis in terms of MPLs and zeta values, which is well suited for an efficient and stable numerical evaluation.
+The folder \texttt{mi2func/} of our ancillary files~\cite{zenodo} contains the expression of all MI coefficients (for all one- and two-loop integral families in all permutations of the external massless legs) up to weight $4$ in terms of our special function basis. This result enables the efficient amplitude-computation strategy based on finite-field arithmetic discussed in \cref{secQED:calc}.
+However, at this stage the basis functions $\{F^{(k)}_i\}$ are expressed in terms of CIIs~\cite{Chen:1977oja} and numerical boundary values $\vv{\text{MI}}^{(k)}(\vec{s}_0)$. This representation is excellent for investigating the analytic properties of Feynman integrals and amplitudes, but it is not readily suitable for an efficient numerical evaluation.
+In the next section we discuss how we construct a representation of the function basis in terms of GPLs and zeta values, which is well suited for an efficient and stable numerical evaluation.
 
 
-\subsection{Expression in terms of \aclp{MPL}}
+\subsection{Expression in terms of GPLs}
 \label{secQED:basis_MPLs}
 
-In this section we construct a representation of our function basis in terms of MPLs. The weight-$n$ MPL of indices $\{a_1,\ldots,a_n\}$ and argument $x$ is defined recursively as
-\begin{align} 
-G(a_1,a_2,\ldots,a_n; x) \coloneqq \int_0^x \frac{\dd t}{t - a_1} \, G(a_2,\ldots,a_n; t) \,, \qquad a_n \neq 0 \,, 
-\end{align}
-for $a_n \neq 0$, starting with $G(;x) = 1$. Trailing zeros, i.e., zeros in the right-most indices, are allowed through the definition
-\begin{align} \label{eqQED:trailingzeros}
-G(\underbrace{0,\ldots,0}_{k}; x) \coloneqq \frac{1}{k!} \log^k(x) \,.
-\end{align}
-We refer to \incite{Vollinga:2004sn} for a thorough discussion.
-
-Since the letters in \cref{eqQED:alphabet} are rational and linear in all variables, we can solve the canonical DEs in \cref{eqQED:canonicalDEs} algorithmically in terms of MPLs. Order by order in $\eps$, the solution is given~by
+In this section, we construct a representation of our function basis in terms of GPLs (see Section~\ref{sec:DEdlogform} for their definition). %The weight-$n$ GPL of indices $\{a_1,\ldots,a_n\}$ and argument $x$ is defined recursively as
+%\begin{align} 
+%G(a_1,a_2,\ldots,a_n; x) \coloneqq \int_0^x \frac{\dd t}{t - a_1} \, G(a_2,\ldots,a_n; t) \,, \qquad a_n \neq 0 \,, 
+%\end{align}
+%for $a_n \neq 0$, starting with $G(;x) = 1$. Trailing zeros, i.e., zeros in the right-most indices, are allowed through the definition
+%\begin{align} \label{eqQED:trailingzeros}
+%G(\underbrace{0,\ldots,0}_{k}; x) \coloneqq \frac{1}{k!} \log^k(x) \,.
+%\end{align}
+%We refer to \incite{Vollinga:2004sn} for a thorough discussion.
+Since the letters in \cref{eqQED:alphabet} are rational and linear in all variables, we can solve the canonical DEs in \cref{eqQED:canonicalDEs} algorithmically in terms of GPLs. Order by order in $\eps$, the solution is given~by:
 \begin{align} \label{eqQED:solution}
-\vec{g}^{(w)}_{\tau}(\vec{s}) = \sum_{i=1}^7 \mathrm{A}_i^{(\tau)} \cdot \int_{\gamma} \dd \log \bigl(W_i(\vec{s}=\gamma) \bigr) \, \vec{g}^{(w-1)}_{\tau}\bigl(\vec{s}=\gamma\bigr) + \vec{b}^{(w)}_{\tau} \,,
+\vv{\text{MI}}_T^{(k)}(\vec{s}) = \sum_{i=1}^7 A_i^{(T)} \cdot \int_{\gamma} \dd \log \bigl(w_i(\vec{s}=\gamma) \bigr) \,\vv{\text{MI}}_T^{(k-1)}\bigl(\vec{s}=\gamma\bigr) + \vec{b}^{(k)}_{T} \,,
 \end{align}
-starting from the constant weight-$0$ boundary values $\vec{g}^{(0)}_{\tau}$ determined in the previous subsection. Here, $\gamma$ is a path connecting an arbitrary base-point $\vec{s}_{\mathrm{base}}$ to the end-point $\vec{s}$. The weight-$w$ constants $\vec{b}^{(w)}_{\tau} $ are given by the values of the integrals at the base-point, $ \vec{b}^{(w)}_{\tau} = \vec{g}^{(w)}_{\tau}(\vec{s}_{\mathrm{base}})$.
-For $\vec{s}_{\mathrm{base}}$ we may use the boundary point $\vec{s}_0$ in \cref{eqQED:s0}, so that the constants $\vec{b}^{(w)}_{\tau}$ coincide with the boundary values determined numerically in the previous section. We follow a different approach, which allows us to trade all numerical constants in the expressions for zeta values.
+starting from the constant weight-$0$ boundary values $\vv{\text{MI}}_T^{(0)}$ determined in the previous subsection. Here, $\gamma$ is a path connecting an arbitrary base-point $\vec{s}_{\mathrm{base}}$ to the end-point $\vec{s}$. The weight-$k$ constants $\vec{b}^{(k)}_{T} $ are given by the values of the integrals at the base-point, $ \vec{b}^{(k)}_{T} = \vv{\text{MI}}_T^{(k)}(\vec{s}_{\mathrm{base}})$.
+For $\vec{s}_{\mathrm{base}}$ we may use the boundary point $\vec{s}_0$ in \cref{eqQED:s0}, so that the constants $\vec{b}^{(k)}_{T}$ coincide with the boundary values determined numerically in the previous section. We follow a different approach, which allows us to trade all numerical constants in the expressions for zeta values.
 
-We find it convenient to change variables from $(s_{12},s_{23},s_4)$ to $(z_1,z_2,s_4)$, with
+We find it convenient to change variables from $(s_{12},s_{23},s_4)$ to $(z_1,z_2,s_4)$, with:
 \begin{align}
 z_1 = \frac{s_{12}}{s_4} \,, \qquad \qquad z_2 = \frac{s_{23}}{s_4} \,.
 \end{align}
@@ -613,26 +514,26 @@ We then integrate the canonical DEs as in \cref{eqQED:solution} along the follow
 \end{align}
 Since the Feynman integrals are divergent at the chosen base-point, the latter is understood in a \emph{regularised} sense (we refer to section~4 of \incite{Abreu:2022mfk} for a thorough discussion).
 Choosing $(0,0,0)$ as base-point has the important benefit of removing spurious transcendental numbers that would pollute the solution were we to choose a base-point where the integrals are finite. As we will see below, only zeta values appear.
-Roughly speaking, we define regularised, finite values $\vec{b}^{(w)}_{\tau} \coloneqq \mathrm{Reg} \, \vec{g}^{(w)}_{\tau}(\vec{s}_{\mathrm{base}})$ by introducing a regulator and formally setting to $0$ the (divergent) logarithms of the regulator.
-Since the integrals are finite at a generic end-point $\vec{s}$, the divergences at the base-point must cancel out with divergences arising in the integration. We can thus drop all these divergences. Provided that we do it consistently between the integration and the base-point values $\vec{b}^{(w)}_{\tau}$, this leads to a finite and unique result. In practice, we fix the finite base-point values $\vec{b}^{(w)}_{\tau}$ by matching the solution $\vec{g}^{(w)}_{\tau}(\vec{s})$ evaluated at the boundary point $\vec{s}_0$ against the boundary values discussed in the previous subsection. 
+Roughly speaking, we define regularised, finite values $\vec{b}^{(k)}_{T} \coloneqq \mathrm{Reg} \, \vv{\text{MI}}_T^{(k)}(\vec{s}_{\mathrm{base}})$ by introducing a regulator and formally setting to $0$ the (divergent) logarithms of the regulator.
+Since the integrals are finite at a generic end-point $\vec{s}$, the divergences at the base-point must cancel out with divergences arising in the integration. We can thus drop all these divergences. Provided that we do it consistently between the integration and the base-point values $\vec{b}^{(k)}_{T}$, this leads to a finite and unique result. In practice, we fix the finite base-point values $\vec{b}^{(k)}_{T}$ by matching the solution $\vv{\text{MI}}_T^{(k)}(\vec{s})$ evaluated at the boundary point $\vec{s}_0$ against the boundary values discussed in the previous subsection. 
 
-We therefore keep the $\vec{b}^{(w)}_{\tau}$ as symbols and integrate the canonical DEs as in \cref{eqQED:solution} along the path in \cref{eqQED:path} up to weight $4$. 
+We therefore keep the $\vec{b}^{(k)}_{T}$ as symbols and integrate the canonical DEs as in \cref{eqQED:solution} along the path in \cref{eqQED:path} up to weight $4$. 
 We parameterise each piece of the path in \cref{eqQED:path} linearly. For instance, 
 $\gamma_2(t) = ( z_1,  t  , 0 )$,
 with $t \in [0,z_2]$.
 \begin{itemize}
-\item The $\gamma_1$ integration leads to MPLs with indices in $\{0,1\}$ and argument~$z_1$.
-\item The $\gamma_2$ integration leads to MPLs with indices in $\{0,1, 1-z_1, -z_1\}$ and argument~$z_2$.
+\item The $\gamma_1$ integration leads to GPLs with indices in $\{0,1\}$ and argument~$z_1$.
+\item The $\gamma_2$ integration leads to GPLs with indices in $\{0,1, 1-z_1, -z_1\}$ and argument~$z_2$.
 \item The $\gamma_3$ integration leads to powers of $\log(-s_4)$, fixed by dimensional analysis.
 \end{itemize}
-Once we have obtained expressions for all MIs in terms of MPLs and symbolic constants $\vec{b}^{(w)}_{\tau}$, we equate them to the numerical boundary values at $\vec{s}_0$, and solve for the $\vec{b}^{(w)}_{\tau}$. We use \texttt{GiNaC}~\cite{Bauer:2000cp,Vollinga:2004sn} to evaluate the MPLs numerically.
-Finally, we use the \texttt{PSLQ} algorithm~\cite{PSLQ} to express the ensuing values of $\vec{b}^{(w)}_{\tau}$ in terms of $\zeta_2$ and $\zeta_3$. As a result, we obtain a fully analytic representation of all MIs --- and thus of our special function basis $\{F^{(w)}_i\}$ --- in terms of MPLs and zeta values, up to weight $4$.
+Once we have obtained expressions for all MIs in terms of GPLs and symbolic constants $\vec{b}^{(k)}_T$, we equate them to the numerical boundary values at $\vec{s}_0$, and solve for the $\vec{b}^{(k)}_{T}$. We use \texttt{GiNaC}~\cite{Bauer:2000cp,Vollinga:2004sn} to evaluate the GPLs numerically.
+Finally, we use the \texttt{PSLQ} algorithm~\cite{PSLQ} to express the ensuing values of $\vec{b}^{(k)}_{T}$ in terms of $\zeta_2$ and $\zeta_3$. As a result, we obtain a fully analytic representation of all MIs --- and thus of our special function basis $\{F^{(k)}_i\}$ --- in terms of GPLs and zeta values, up to weight $4$.
 
-Contrary to the functions in the basis $\{F^{(w)}_i\}$, the MPLs in their representation satisfy functional relations. We make use of this freedom to optimise our expressions in view of their numerical evaluation by reducing the number of distinct MPLs that need to be evaluated. First, we use the shuffle algebra of MPLs to push all trailing zeros into logarithms through \cref{eqQED:trailingzeros}~\cite{Vollinga:2004sn}. Next, we employ the scaling relation
+Contrary to the functions in the basis $\{F^{(k)}_i\}$, the GPLs in their representation satisfy functional relations. We make use of this freedom to optimise our expressions in view of their numerical evaluation by reducing the number of distinct GPLs that need to be evaluated. First, we use the shuffle algebra of GPLs to push all trailing zeros into logarithms through \cref{eqQED:trailingzeros}~\cite{Vollinga:2004sn}. Next, we employ the scaling relation:
 \begin{align}
 G(a_1, \ldots, a_n; x) = G\left(\frac{a_1}{x}, \ldots, \frac{a_n}{x}; 1\right) \,,
 \end{align}
-which holds for $x, a_n \neq 0$. As a result, all MPLs have argument $1$ and indices
+which holds for $x, a_n \neq 0$. As a result, all GPLs have argument $1$ and indices:
 \begin{align} \label{eqQED:indices}
 l_0 = 0 \,, \qquad 
 l_1 = \frac{s_4}{s_{12}} \,, \qquad 
@@ -641,34 +542,34 @@ l_3 = \frac{s_4-s_{12}}{s_{23}} \,, \qquad
 l_4 = - \frac{s_{12}}{s_{23}}\,.
 \end{align}
 %
-Finally, we decompose the MPLs to \emph{Lyndon words}~\cite{Radford1979ANR} using \texttt{PolyLogTools}~\cite{Duhr:2019tlz}; we refer to the latter work for a thorough explanation, and give here only a simple example. 
-This procedure requires that we choose a symbolic ordering of the MPL indices. We choose $l_0 \prec l_1 \prec l_2 \prec l_3 \prec l_4$, meaning that $l_1$ is greater than $l_0$, and so on. 
-Consider the MPL $G(l_1, l_0; 1)$, whose indices are not sorted according to the ordering above, since $l_1 \succ l_0$. We can use the shuffle algebra of MPLs to rewrite it in terms of MPLs whose indices are sorted according to the chosen ordering, as
+Finally, we decompose the GPLs to \emph{Lyndon words}~\cite{Radford1979ANR} using \texttt{PolyLogTools}~\cite{Duhr:2019tlz}; we refer to the latter work for a thorough explanation, and give here only a simple example. 
+This procedure requires that we choose a symbolic ordering of the GPL indices. We choose $l_0 \prec l_1 \prec l_2 \prec l_3 \prec l_4$, meaning that $l_1$ is greater than $l_0$, and so on. 
+Consider the GPL $G(l_1, l_0; 1)$, whose indices are not sorted according to the ordering above, since $l_1 \succ l_0$. We can use the shuffle algebra of GPLs to rewrite it in terms of GPLs whose indices are sorted according to the chosen ordering:
 \begin{align}
 G(l_1, l_0; 1) = G(l_0;1) \, G(l_1;1) - G(l_0, l_1; 1) \,.
 \end{align}
-Doing this consistently throughout all expressions reduces the number of higher-weight MPLs in favour of products of lower-weight ones, which are cheaper to evaluate numerically. To maximise the impact in this sense, we tested all possible orderings of the indices and selected the one --- given above --- which minimises the number of weight-4 MPLs.
-The resulting representation of the function basis contains $4$ weight-1, 6 weight-2, 19 weight-3, and 25 weight-4 MPLs, as well as $3$ logarithms: 
+Doing this consistently throughout all expressions reduces the number of higher-weight GPLs in favour of products of lower-weight ones, which are cheaper to evaluate numerically. To maximise the impact in this sense, we tested all possible orderings of the indices and selected the one --- given above --- which minimises the number of weight-4 GPLs.
+The resulting representation of the function basis contains $4$ weight-1, 6 weight-2, 19 weight-3, and 25 weight-4 GPLs, as well as $3$ logarithms: 
 \begin{align} \label{eqQED:logs}
 \log(s_{12}/s_4) \,, \qquad \quad \log(s_{23}/s_4) \,, \qquad \quad \log(-s_4) \,.
 \end{align}
-We write the latter in terms of logarithms rather than MPLs as they play an important role in the factorisation of the IR divergences in the scattering amplitudes (see \cref{app:poles} for the IR structure of the amplitudes we compute here). We stress that $\log(-s_4)$ is the only function of a dimensionful argument in our representation of the function basis. 
+We write the latter in terms of logarithms rather than GPLs as they play an important role in the factorisation of the IR divergences in the scattering amplitudes (see \cref{app:QEDpolestructure} for the IR structure of the amplitudes we compute here). We stress that $\log(-s_4)$ is the only function of a dimensionful argument in our representation of the function basis. 
 
-We provide in the folder \texttt{mi2func/} of our ancillary files~\cite{zenodo} the expression of the basis functions $\{F^{(w)}_i\}$ in terms of MPLs, logarithms, $\zeta_2$ and $\zeta_3$.
+We provide in the folder \texttt{mi2func/} of our ancillary files~\cite{zenodo} the expression of the basis functions $\{F^{(k)}_i\}$ in terms of GPLs, logarithms, $\zeta_2$ and $\zeta_3$.
 
 \smallskip
 
-It is important to stress that the MPLs are multi-valued functions.
-For unit argument, there is a pole on the integration contour whenever one of the indices lies between $0$ and $1$. In this case the contour must be deformed in the complex plane, either above or below the pole, leading to different branches. Our MPLs are thus well-defined only in the 
-kinematic region where all MPL indices in \cref{eqQED:indices} are either less than 0 or greater than 1, and $s_4 < 0$ for the argument of all logarithms in \cref{eqQED:logs} to be positive. We discuss how to analytically continue the MPLs and the logarithms in \cref{eqQED:logs} to the kinematic regions of interest in \cref{app:an_cont}.
+It is important to stress that the GPLs are multi-valued functions.
+For unit argument, there is a pole on the integration contour whenever one of the indices lies between $0$ and $1$. In this case the contour must be deformed in the complex plane, either above or below the pole, leading to different branches. Our GPLs are thus well-defined only in the 
+kinematic region where all GPL indices in \cref{eqQED:indices} are either less than 0 or greater than 1, and $s_4 < 0$ for the argument of all logarithms in \cref{eqQED:logs} to be positive. We discuss how to analytically continue the GPLs and the logarithms in \cref{eqQED:logs} to the kinematic regions of interest in \cref{app:an_cont}.
 
 
 
 \subsection{Performance and validation}
 \label{secQED:performance}
 
-We validated our results for the MIs of all families by crosschecking them against values obtained with \texttt{AMFlow}~\cite{Liu:2022chg} at several random points in all the physical kinematic regions discussed in \cref{app:an_cont}. Furthermore, we find agreement with the results of~\incite{Gehrmann:2023etk}. We employ \texttt{GiNaC}~\cite{Bauer:2000cp,Vollinga:2004sn} to evaluate the MPLs.
+We validated our results for the MIs of all families by crosschecking them against values obtained with \texttt{AMFlow}~\cite{Liu:2022chg} at several random points in all the physical kinematic regions discussed in \cref{app:an_cont}. Furthermore, we find agreement with the results of~\incite{Gehrmann:2023etk}. We employ \texttt{GiNaC}~\cite{Bauer:2000cp,Vollinga:2004sn} to evaluate the GPLs.
 
-Our results allow for an efficient and stable evaluation of the MIs, and are thus ready for immediate deployment in phenomenology. Indeed, the amplitudes we computed in this work have already been implemented in \texttt{McMule}~\cite{Banerjee:2020rww,ulrich_yannick_2022_6046769} to provide the \acl{RVV} electron-line corrections  $e \mu \to e \mu$ scattering. The evaluation is efficient, running at $\approx 130$ events per second in the bulk of the phase space~\cite{ulrich-radcor} using \texttt{handyG}~\cite{Naterop:2019xaf} for the evaluation of the MPLs.
+Our results allow for an efficient and stable evaluation of the MIs, and are thus ready for immediate deployment in phenomenology. Indeed, the amplitudes we computed in this work have already been implemented in \texttt{McMule}~\cite{Banerjee:2020rww,ulrich_yannick_2022_6046769} to provide the \acl{RVV} electron-line corrections  $e \mu \to e \mu$ scattering. The evaluation is efficient, running at $\approx 130$ events per second in the bulk of the phase space~\cite{ulrich-radcor} using \texttt{handyG}~\cite{Naterop:2019xaf} for the evaluation of the GPLs.
 
 \end{document}
