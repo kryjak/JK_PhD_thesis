@@ -53,16 +53,16 @@ Having generated the Feynman diagrams, we substitute the Feynman rules for the p
 \end{equation}
 where $A_{n\,i}$ are the colour-ordered amplitudes (also known as colour-stripped or partial amplitudes). The motivation behind this decomposition is that the colour-ordered amplitudes turn out to be significantly simpler to calculate.
 
-The choice of the colour basis is not unique. We adopt the decomposition according to traces of the $SU(N_c)$ generators in the fundamental representation. As an example, let's look at 4-gluon scattering at tree-level\JK{Redo this diagram using tikzfeynman}:
+The choice of the colour basis is not unique. We adopt the decomposition according to traces of the $SU(N_c)$ generators in the fundamental representation. As an example, let's look at 4-gluon scattering at tree-level:
 \begin{equation} \label{eq:3grule}
 \feynmandiagram [baseline = (i.base), horizontal = i to j] {
-    a1 [particle={$A^{a_1}_{\mu_1}$}] -- [gluon, momentum=$p_1$] i;
-    a2 [particle={$A^{a_2}_{\mu_2}$}] -- [gluon, momentum=$p_2$] i;
+    a1 [particle={$A^{a_1}_{\mu_1}(p_1)$}] -- [gluon] i;
+    a2 [particle={$A^{a_2}_{\mu_2}(p_2)$}] -- [gluon] i;
     i -- [gluon] j;
-    a3 [particle={$A^{a_3}_{\mu_3}$}] -- [gluon, momentum=$p_3$] j;
-    a4 [particle={$A^{a_4}_{\mu_4}$}] -- [gluon, momentum=$p_4$] j;
+    a3 [particle={$A^{a_3}_{\mu_3}(p_3)$}] -- [gluon] j;
+    a4 [particle={$A^{a_4}_{\mu_4}(p_4)$}] -- [gluon] j;
     };
-    \xrightarrow{colour}
+    \xrightarrow{\text{colour}}
     f^{a_1a_2b}f^{ba_3a_4} \,.
 \end{equation}
 The colour factor of this diagram can be expressed in terms of the generators using Eqs.~\ref{eq:fierzcolour} and \ref{eq:fabc}:
