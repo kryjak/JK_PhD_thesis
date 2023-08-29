@@ -286,7 +286,7 @@ In the last line, we have again used the alternative notation in order to make t
 Overall, we see that thanks to symbols of the classical polylogarithms Eqs.~\ref{eq:Lisymbols} and GPLs Eq.~\ref{eq:G1symbol}, the symbol shuffling Eq.~\ref{eq:symbolshuffle} and finally the relation Eq.~\ref{eq:LiToG}, we can now compute the symbol of any function that may appear in the weight-4 function basis. Thinking ahead to our amplitude applications, it is clear that the symbol will allow us to find relations between linearly dependent objects such as GPLs and express our results in a much more compact form. Having expended the effort of understanding the last few pages, let us enjoy the fruits of our labour sprouting in the form of several illustrative examples.
 
 \textbf{Example 1} \newline
-Given a functional relation, we can check its validity --- but only up to constants. More precisely, while we can never prove with full certainty that an identity is valid by looking at its symbols, we can definitely show that an identity is not correct by proving that the symbols do not match up. The symbols allow us to fix the most complicated part of the identities\JK{(involving functions with the leading `functional' transcendental weight)}. What is left is essentially boundary values, which can be determined for example by evaluating both sides of the relation at a numerical point. Consider the well-known dilogarithm reflection identity:
+Given a functional relation, we can check its validity --- but only up to constants. More precisely, while we can never prove with full certainty that an identity is valid by looking at its symbols, we can definitely show that an identity is not correct by proving that the symbols do not match up. The symbols allow us to fix the most complicated part of the identities. What is left is essentially boundary values, which can be determined for example by evaluating both sides of the relation at a numerical point. Consider the well-known dilogarithm reflection identity:
 \begin{equation}
     \Li_2(1-z) =- \Li_2(z) -\log(z) \log(1-z) + \frac{\pi^2}{6} \,,
 \end{equation}
@@ -397,10 +397,10 @@ Thus, the IR-divergent part is determined by amplitudes at lower loop order, whi
 where $s_{ij} = 2\sigma_{ij} p_i \cdot p_j$ with $\sigma_{ij}=+1$ if both momenta are incoming or outgoing and $\sigma_{ij}=-1$ otherwise. The values of the $\beta$-function coefficients and the anomalous dimensions are given in Appendix~\ref{app:renormconstants}. We remark that the one-loop pole operator $\bm{I}^{(1)}(\eps)$ is independent of the regularisation scheme, while the two-loop operator $\bm{I}^{(2)}(\eps)$ is not. Its dependence enters through the quantity $\bm{H}_{\text{RS}}^{(2)}(\eps)$, which contains $\order{1/\eps}$ poles only:
 \begin{align} \label{eq:IR_H_function}
     \bm{H}_{\text{RS}}^{(2)}(\eps) &= \frac{1}{16\eps} \sum_i \left(\gamma_1^i - \frac{1}{4} \gamma_1^{\text{cusp}}\gamma_0^i + \frac{\pi^2}{16} \beta_0 \gamma_0^{\text{cusp}} C_i \right) \nonumber \\
-    &+ \frac{i f^{abc}}{24\eps} \sum_{(i,j,k)} \bm{T}_i^a \bm{T}_j^b \bm{T}_k^c \ln\left(\frac{-s_{ij}}{-s_{jk}} \right) \ln\left(\frac{-s_{jk}}{-s_{ki}} \right) \ln\left(\frac{-s_{ki}}{-s_{ij}} \right) \\ 
-    &-\frac{i f^{abc}}{128\eps} \gamma_0^{\text{cusp}} \sum_{(i,j,k)} \bm{T}_i^a \bm{T}_j^b \bm{T}_k^c \left( \frac{\gamma_0^i}{C_i} - \frac{\gamma_0^j}{C_j} \right)\ln\left(\frac{-s_{ij}}{-s_{jk}} \right) \ln\left(\frac{-s_{ki}}{-s_{ij}} \right)\,, \nonumber
+    &+ \frac{\ii f^{abc}}{24\eps} \sum_{(i,j,k)} \bm{T}_i^a \bm{T}_j^b \bm{T}_k^c \ln\left(\frac{-s_{ij}}{-s_{jk}} \right) \ln\left(\frac{-s_{jk}}{-s_{ki}} \right) \ln\left(\frac{-s_{ki}}{-s_{ij}} \right) \\ 
+    &-\frac{\ii f^{abc}}{128\eps} \gamma_0^{\text{cusp}} \sum_{(i,j,k)} \bm{T}_i^a \bm{T}_j^b \bm{T}_k^c \left( \frac{\gamma_0^i}{C_i} - \frac{\gamma_0^j}{C_j} \right)\ln\left(\frac{-s_{ij}}{-s_{jk}} \right) \ln\left(\frac{-s_{ki}}{-s_{ij}} \right)\,, \nonumber
 \end{align}
-where the sum runs over unordered tuples $(i,j,k)$ of distinct parton indices. As pointed out in Ref.~\cite{Becher:2009cu}, the last two lines appear only because the pole operators $\bm{I}^{(L)}(\eps)$ formulated in Ref.~\cite{Catani:1998bh} were not defined in a minimal scheme, but also include terms finite in $\eps$. Due to colour conservation, they contribute only if the amplitude contains at least four partons \JK{The last line appears only for \textit{more} than 4 partons due to momentum conservation (Becher+Neubert). But the 2nd line should still be present for bbH, since we have exactly 4 partons and we are working in $\overline{\text{MS}}$ scheme. What's going on?}.
+where the sum runs over unordered tuples $(i,j,k)$ of distinct parton indices. As pointed out in Ref.~\cite{Becher:2009cu}, the last two lines appear only because the pole operators $\bm{I}^{(L)}(\eps)$ formulated in Ref.~\cite{Catani:1998bh} were not defined in a minimal scheme, but also include terms finite in $\eps$. Due to colour conservation, they contribute only if the amplitude contains at least four partons. Moreover, the last line appears only for \textit{more} than 4 partons due to momentum conservation\footnote{For the processes under consideration in this thesis, the last two lines of Eq.~\ref{eq:IR_H_function} produce terms subleading in $N_c$. Thus, in the leading-colour approximation, we will neglect them and use the first line only.}.
 
 Overall, despite the intimidating appearance of the formulas above, it can be appreciated that the only non-trivial piece of deriving the pole structure of the two-loop amplitudes is due to the operators $\bm{T}_i^a$, which we will refer to as `colour insertion operators'. Indeed, each $\bm{T}_i^a$ acts on the colour structure of the amplitude by inserting a gluon with the adjoint index $a$ onto the parton $i$. The rules are as follows:
 \begin{itemize}
@@ -815,7 +815,7 @@ The derivation of the pole structure of the $\bbggh$ follows exactly the same st
         & \quad \delta_{i_2}^{\;\;\bar{i}_1} \delta^{ab}
     \end{pmatrix}^T\,.
 \end{equation}
-While the first two factors can be spotted in a naive analysis of tree-level diagrams such as Fig.~\ref{fig:bbggHcolour}, the third factor appears only at loop-level\JK{Check this is true.}. Thus, from a practical point of view, it is useful to have an automated routine which is able to extract the colour structure of all diagrams up to the desired loop order.
+While the first two factors can be spotted in a naive analysis of tree-level diagrams such as Fig.~\ref{fig:bbggHcolour}, the third factor appears only at loop level. Thus, from a practical point of view, it is useful to have an automated routine which is able to extract the colour structure of all diagrams up to the desired loop order.
 \begin{figure}
     \centering
         \begin{tikzpicture}
@@ -866,7 +866,7 @@ While the first two factors can be spotted in a naive analysis of tree-level dia
         		};
         	\end{feynman}
         \end{tikzpicture}
-    \caption{The colour structure of a sample diagram contributing to the $\bbggh$ channel at tree level. It is also a graphical representation of the relation which defines the structure constants, $\ii f^{abc} (T^c)_{i_2}^{\;\;\bar{i}_1} = (T^aT^b)_{i_2}^{\;\;\bar{i}_1} - (T^bT^a)_{i_2}^{\;\;\bar{i}_1}\,$. \JK{I think there's an overall minus sign here.}} 
+    \caption{The colour structure of a sample diagram contributing to the $\bbggh$ channel at tree level. It is also a graphical representation of the relation which defines the structure constants, $\ii f^{abc} (T^c)_{i_2}^{\;\;\bar{i}_1} = (T^aT^b)_{i_2}^{\;\;\bar{i}_1} - (T^bT^a)_{i_2}^{\;\;\bar{i}_1}\,$.} 
     \label{fig:bbggHcolour}
 \end{figure}
 
