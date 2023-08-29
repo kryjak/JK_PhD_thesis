@@ -1155,7 +1155,7 @@ These family definitions (strictly with the ordering of inverse propagators and 
 
 \renewcommand{\theequation}{G.\arabic{equation}}
 \chapter{Analytic continuation} \label{app:an_cont}
-In Chapter~\ref{sec:QEDpaper}, we analytically continue the MPLs by adding a small positive (or negative) imaginary part to the MPL indices $l_i$ in \cref{eq:indices} whenever they fall between $0$ and $1$. The imaginary part of each index prescribes how to deform the integration contour around the pole associated with it. We do similarly for the logarithms in \cref{eq:logs}.
+In Chapter~\ref{sec:QEDpaper}, we analytically continue the MPLs by adding a small positive (or negative) imaginary part to the MPL indices $l_i$ in \cref{eqQED:indices} whenever they fall between $0$ and $1$. The imaginary part of each index prescribes how to deform the integration contour around the pole associated with it. We do similarly for the logarithms in \cref{eqQED:logs}.
 To this end, following \incite{Gehrmann:2002zr}, we change variables from $(s_{12},s_{23},s_4)$ to $(s_{12},s_{23},s_{13})$, with $s_4 = s_{12} + s_{23} + s_{13}$. We then add a small positive imaginary part to the latter variables, as
 \begin{align} \label{eq:add_im}
 s_{12} \longrightarrow s_{12} + \mathrm{i} \, c_{1} \, \delta \, , \qquad
@@ -1171,7 +1171,7 @@ We focus on three kinematic regions which are of phenomenological interest. The 
 
 \paragraph{Electron-line corrections to $e^- \mu^- \to e^- \mu^- \gamma$.}
 To define the domain of the kinematic variables relevant for this application, 
-we embed the four-particle off-shell process of \cref{eq:scatter} in the five-particle process $e^- \mu^- \to e^- \mu^- \gamma$. We then determine the kinematic constraints for the five-particle process (see e.g. Appendix~A of \incite{Chicherin:2021dyp}), and from them derive the constraints on the four-point off-shell kinematics. The result is
+we embed the four-particle off-shell process of \cref{eqQED:scatter} in the five-particle process $e^- \mu^- \to e^- \mu^- \gamma$. We then determine the kinematic constraints for the five-particle process (see e.g. Appendix~A of \incite{Chicherin:2021dyp}), and from them derive the constraints on the four-point off-shell kinematics. The result is
 \begin{align}
 \label{eq:region_emu-emugamma}
 \mathcal{P}_{e\mu\to{e}\mu\gamma} \coloneqq \{\vec{s} \colon s_{12} < 0 \, \land \, s_{23} < 0 \, \land \, 0 < s_{13} < -s_{12} - s_{23} \} \,.
@@ -1181,7 +1181,7 @@ The MPL index $l_4 = - s_{12}/s_{23}$ is always negative in $\mathcal{P}_{{e}\mu
 l_1 = \frac{s_{12} + s_{13} + s_{23}}{s_{12}} +  \frac{\mathrm{i} \delta}{s_{12}^2} \left[ (c_2 + c_3) s_{12} - c_1 (s_{13} + s_{23}) \right] + \mathcal{O}\left(\delta^2\right) \,.
 \end{align}
 The imaginary part of $l_1$ may be either negative or positive in $\mathcal{P}_{{e}\mu\to{e}\mu\gamma} $. However, it is strictly negative in the subregion of $\mathcal{P}_{{e}\mu\to{e}\mu\gamma} $ where $0<l_1<1$. We therefore assign a negative imaginary part to $l_1$ whenever $0<l_1<1$ in $\mathcal{P}_{{e}\mu\to{e}\mu\gamma} $. The analysis of the other indices follows similarly, and is summarised in \cref{tab:an_cont}.
-The arguments of the three logarithms in \cref{eq:logs} are positive in $\mathcal{P}_{e\mu\to{e}\mu\gamma}$.
+The arguments of the three logarithms in \cref{eqQED:logs} are positive in $\mathcal{P}_{e\mu\to{e}\mu\gamma}$.
 
 \begin{table}
     \centering
@@ -1195,7 +1195,7 @@ The arguments of the three logarithms in \cref{eq:logs} are positive in $\mathca
         $l_4$  & $0$ & $0$ & $0$ \\
         \hline
     \end{tabular}
-    \caption{Imaginary parts of the MPL indices defined by \cref{eq:indices} in the two kinematic regions discussed in \cref{app:an_cont}. The symbol $+$ ($-$) denotes a positive (negative) imaginary part, while $0$ means no analytic continuation is needed.}
+    \caption{Imaginary parts of the MPL indices defined by \cref{eqQED:indices} in the two kinematic regions discussed in \cref{app:an_cont}. The symbol $+$ ($-$) denotes a positive (negative) imaginary part, while $0$ means no analytic continuation is needed.}
     \label{tab:an_cont}
 \end{table}
 
@@ -1207,7 +1207,7 @@ The arguments of the three logarithms in \cref{eq:logs} are positive in $\mathca
 \mathcal{P}_{e\bar{e}\to\gamma\gamma^*} \coloneqq \{\vec{s} \colon s_{23} < 0 \, \land \, s_{13} < 0 \, \land \, s_{12} > - s_{23} - s_{13} \} \,.
 \end{align}
 The MPL indices $l_2$, $l_3$ and $l_4$ can never fall between $0$ and $1$ in $\mathcal{P}_{e\bar{e}\to\gamma\gamma^*}$, and hence require no analytic continuation. We instead need to add a positive imaginary part to $l_1$. 
-In this region also the logarithms in \cref{eq:logs} need to be analytically continued. The argument of $\log(s_{12}/s_4)$ is positive in $\mathcal{P}_{e\bar{e}\to\gamma\gamma^*}$. By adding imaginary parts to the arguments of the other logarithms and studying them where the arguments are negative in $\mathcal{P}_{e\bar{e}\to\gamma\gamma^*}$, we determine that the analytic continuation is achieved through the following replacements:
+In this region also the logarithms in \cref{eqQED:logs} need to be analytically continued. The argument of $\log(s_{12}/s_4)$ is positive in $\mathcal{P}_{e\bar{e}\to\gamma\gamma^*}$. By adding imaginary parts to the arguments of the other logarithms and studying them where the arguments are negative in $\mathcal{P}_{e\bar{e}\to\gamma\gamma^*}$, we determine that the analytic continuation is achieved through the following replacements:
 \begin{align}
 \log(s_{23}/s_4) \longrightarrow \log(-s_{23}/s_{4})+ \mathrm{i} \pi \,, \qquad  \log(-s_4) \longrightarrow \log(s_4)- \mathrm{i} \pi \,.
 \end{align}
@@ -1218,12 +1218,12 @@ In this region also the logarithms in \cref{eq:logs} need to be analytically con
 \label{eq:region_decay}
 \mathcal{P}_{\gamma^*\to e \bar{e} \gamma} \coloneqq  \{ \vec{s} \colon s_{12} > 0 \, \land \, s_{23} > 0 \, \land \,  s_{13} > 0 \} \,.
 \end{align}
-All MPL indices $l_i$ in \cref{eq:indices} are either $l_i < 0$ or $l_i > 1$, hence no analytic continuation is required. The same holds for the first two logarithms in \cref{eq:logs}, whose arguments are positive. The only function which needs to be analytically continued is $\log(-s_4)$. We achieve this by replacing
+All MPL indices $l_i$ in \cref{eqQED:indices} are either $l_i < 0$ or $l_i > 1$, hence no analytic continuation is required. The same holds for the first two logarithms in \cref{eqQED:logs}, whose arguments are positive. The only function which needs to be analytically continued is $\log(-s_4)$. We achieve this by replacing
 \begin{align}
 \log(-s_4) \longrightarrow \log(s_{4}) - \mathrm{i} \pi \,.
 \end{align}
 
 \smallskip
 
-The information about the imaginary parts of the MPL indices can be fed into the publicly available libraries for evaluating these functions numerically, such as \texttt{FastGPL}~\cite{Wang:2021imw}, \texttt{GiNaC}~\cite{Bauer:2000cp,Vollinga:2004sn}, and \texttt{handyG}~\cite{Naterop:2019xaf}. This typically leads to longer evaluation times with respect to MPLs which do not need analytic continuation. We find that this is not an issue for the planned applications of our results (see \cref{sec:performance}). Nonetheless, we note that a more performant evaluation may be achieved by tailoring the representation to the kinematic region of interest in such a way that no MPLs require analytic continuation. We refer to Refs.~\cite{Gehrmann:2002zr, Gehrmann:2023etk} for a detailed discussion. 
+The information about the imaginary parts of the MPL indices can be fed into the publicly available libraries for evaluating these functions numerically, such as \texttt{FastGPL}~\cite{Wang:2021imw}, \texttt{GiNaC}~\cite{Bauer:2000cp, Vollinga:2004sn}, and \texttt{handyG}~\cite{Naterop:2019xaf}. This typically leads to longer evaluation times with respect to MPLs which do not need analytic continuation. We find that this is not an issue for the planned applications of our results (see \cref{secQED:performance}). Nonetheless, we note that a more performant evaluation may be achieved by tailoring the representation to the kinematic region of interest in such a way that no MPLs require analytic continuation. We refer the reader to Refs.~\cite{Gehrmann:2002zr, Gehrmann:2023etk} for a detailed discussion. 
 \end{document}

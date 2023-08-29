@@ -820,7 +820,7 @@ Overall, IBP relations allow us to express each helicity amplitude of Eq.~\ref{e
 where $|\text{MI}|$ denotes the total number of linearly independent MIs in all the families. Once again, the coefficients are functions of external kinematics, as well as the dimensional parameter $\eps$. We emphasise that the step of IBP reducing the integrals involved in the amplitude can also be implemented over finite fields. In particular, the IBP system generated within the Laporta algorithm can be solved using \texttt{FiniteFlow}'s linear solver (for details, see Section~5 of~\cite{Peraro:2019svx}). This is an important simplification, since analytic IBP reduction often proves to be the bottleneck of the whole computation. Moreover, in many applications, we will be dealing with multiple permutations of the maximal topologies appearing in Eq.~\ref{eq:ampreducedschematic}. In such cases, it is advantageous to implement an optimised strategy for obtaining the IBP solution in the permuted families, which is particularly powerful when used in conjunction with finite field techniques. It allows us to reduce the time and computational cost of the IBP reduction. We invite the reader to familiarise themselves with Appendix~\ref{app:altIBPs}, where we present this strategy in detail. We will exploit it when computing the QED amplitudes of Chapter~\ref{sec:QEDpaper}.
 
 \section{Differential equations} \label{sec:DEs}
-Differential equations (DEs) satisfied by Feynman integrals were studied even before the invention of the IBP reduction technique (see, for example, Refs.~\cite{10.1063/1.1666327, Golubeva:1976}). However, it was these two concepts combined together that led to the development of a powerful method for evaluating the MIs \cite{Kotikov:1990kg, Kotikov:1991314, Bern:1993kr, Remiddi:1997ny, Gehrmann:1999as}. The idea is as follows. If we differentiate an integral $I_T(\bm{\nu})$ with respect to the Mandelstam invariants $s_{ij}$ or internal masses $m_i$, we will obtain a linear combination of integrals within the same family $T$, but with different exponents $\bm{\nu}'$. These new integrals $I_T(\bm{\nu}')$ can then be IBP reduced onto the MIs of family $T$. Thus, if we apply the differentiation to the MI basis itself, we will obtain a set of first-order partial DEs (one for each kinematic variable). It is convenient to group the MIs as a vector $\vv{\text{MI}}$. We then have:
+Differential equations (DEs) satisfied by Feynman integrals were studied even before the invention of the IBP reduction technique (see, for example, Refs.~\cite{Barucchi:1973zm, Golubeva:1976}). However, it was these two concepts combined together that led to the development of a powerful method for evaluating the MIs \cite{Kotikov:1990kg, Kotikov:1991314, Bern:1993kr, Remiddi:1997ny, Gehrmann:1999as}. The idea is as follows. If we differentiate an integral $I_T(\bm{\nu})$ with respect to the Mandelstam invariants $s_{ij}$ or internal masses $m_i$, we will obtain a linear combination of integrals within the same family $T$, but with different exponents $\bm{\nu}'$. These new integrals $I_T(\bm{\nu}')$ can then be IBP reduced onto the MIs of family $T$. Thus, if we apply the differentiation to the MI basis itself, we will obtain a set of first-order partial DEs (one for each kinematic variable). It is convenient to group the MIs as a vector $\vv{\text{MI}}$. We then have:
 \begin{equation} \label{eq:DEspartial}
     \frac{\partial \vv{\text{MI}}}{\partial \lambda} = A_{\lambda}(\Lambda, \eps) \vv{\text{MI}}\,,
 \end{equation}
@@ -895,13 +895,14 @@ with the `empty' GPL:
     \end{cases}
 \end{equation}
 Here, despite the somewhat suggestive notation, the indices $a_i$ do not have to be numbers and are considered fully-fledged arguments of $G_n$, alongside $x$. The length of the vector $\vec{a} = (a_1, \ldots a_n)$, i.e. $|\vec{a}|=n$, is called the weight (or depth) of $G_n$. The GPLs are related to the usual logarithms through:
-\begin{equation}
-    G_n(a, a, \ldots, a; x) = 
-    \begin{cases}
-        \frac{1}{n!}\log^n\left(1-\frac{x}{a}\right) & \text{if  $a \neq 0$} \\ 
-        \frac{1}{n!}\log^n x & \text{if $a = 0$}\,.
-    \end{cases}
-\end{equation}  
+\begin{subequations}
+   \begin{align}
+    G_n(a, a, \ldots, a; x) &= 
+        \frac{1}{n!}\log^n\left(1-\frac{x}{a}\right) \quad \text{if } a \neq 0\,, \label{eq:GPLtolognonzero} \\ 
+    G_n(0, 0, \ldots, 0; x) &= 
+        \frac{1}{n!}\log^n x \,. \label{eq:GPLtologzero}
+   \end{align} 
+\end{subequations}
 Aside from this special case of GPLs, the complexity of the integration kernels can be estimated by studying the maximal cuts of the relevant Feynman integrals~\cite{Tancredi:2017onthemaxcut, Abreu:2020jxa, abreu2021twoloop}. More generally, the letters might not be rational, or the kernels overall might not be of the $\dd \log$ form. Then, more complicated functions appear in the solution of the DEs.  For example, the presence of internal masses in the Feynman diagrams often leads to Elliptic Multiple Polylogarithms (eMPLs) (see Refs.~ \cite{Broedel:2017kkb, Broedel:2017siw, Adams:2017ejb, Broedel:2018qkq, Adams:2018yfj, Walden:2020odh} for a discussion of eMPLs and also Refs.~\cite{Bonciani:2016qxi, Bonciani:2019jyb, Frellesvig:2019byn} for the application to Higgs+jet production with quark mass dependence). 
 
 \subsection{Uniform transcendentality} \label{sec:UT}
