@@ -5,7 +5,11 @@
 \usepackage[british]{babel}
 \usepackage[nottoc]{tocbibind} % Includes bibliography in table of contents, but not the table of contents itself
 \usepackage[figuresright]{rotating} % Allows for sideways figures and tables
+\usepackage[hyphens,obeyspaces]{url}
+\def\UrlBreaks{\do\&\do-}
 \usepackage[hidelinks,pdfusetitle]{hyperref} % hidelinks removes the boxes around links when viewed on screen, pdfusetitle option includes the thesis title and author in the PDF metadata
+\hypersetup{breaklinks=true}
+\urlstyle{same}
 \usepackage{cite} % Combine multiple citations in range
 \usepackage{mathtools}
 \usepackage{amsmath,stackengine}
@@ -18,8 +22,9 @@
 \usepackage[export]{adjustbox}
 \usepackage{multirow}
 %\usepackage[obeyspaces]{url}
-\usepackage{url}
-\usepackage{xurl}
+
+
+%\usepackage{xurl}
 \usepackage{lipsum}
 \stackMath
 
