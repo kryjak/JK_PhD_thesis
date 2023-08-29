@@ -8,6 +8,7 @@
 %\renewcommand{\thesection}{B.\arabic{section}}
 %\renewcommand{\thesubsection}{C.\arabic{subsection}}
 %\renewcommand{\theequation}{A.\arabic{equation}}
+\renewcommand{\theequation}{A.\arabic{equation}}
 
 \chapter{Optimised IBP reduction for amplitudes with many permuted families} \label{app:altIBPs}
 In this section, we discuss how we can incorporate the IBP reduction in our workflow in a more efficient way, particularly when the amplitude includes many permutations of the same integral families. We exploit this method when computing the amplitudes presented in Chapter~\ref{sec:QEDpaper}.
@@ -155,6 +156,7 @@ where $i$ runs over the `naive' MIs from all maximal topologies. We stress that 
 Having obtained the missing relations between MIs, we apply them to our amplitude
 and collect the coefficients of the true, linearly independent MIs. Overall, we find that this alternative approach performs much better than the previously employed strategy of considering all integral families together in one shared system. The benefit grows with the number of permutations of the maximal topologies, since including additional families in the IBP system is expensive, but numerically permuting the solution from one family onto another is cheap.
 
+\renewcommand{\theequation}{B.\arabic{section}.\arabic{equation}}
 \chapter{Symbols} \label{app:symbols}
 \section{Introduction}
 In this Appendix, we introduce yet another useful concept related to DEs and iterated integrals. We begin by noting that the representation of the solution to the $\eps$-form DEs in Eq.~\ref{eq:canonicalDEsoneform} is not unique. Most generally, the answer is written using Chen's iterated integrals (CIIs)~\cite{Chen:1977oja}. 
@@ -349,6 +351,7 @@ Note that each coefficient $\vec{c}_{\alpha_1, \ldots, \alpha_n}$ is a vector of
     \SS\left(\vv{\text{MI}}^{(n)}\right) = \sum_{\alpha_1, \ldots, \alpha_n} \vec{c}_{\alpha_1, \ldots, \alpha_n} [w_{\alpha_1}, \ldots, w_{\alpha_n}]\,.
 \end{equation}
 It turns out that the first entry of the symbol encodes its branch cut structure. In particular, a Feynman integral with the symbol $[w_{\alpha_1}, \ldots, w_{\alpha_n}]$ has a discontinuity if $w_{\alpha_1}=0$ or $\infty$. Of course, singular points of Feynman integrals are not random and we expect them to be connected to special values of the Mandelstam variables. Indeed, there exists a so-called first-entry condition which states that $\vec{c}_{\alpha_1, \ldots, \alpha_n}=0$ if $w_{\alpha_1} \neq s_{ij}\,$, i.e. a symbol cannot appear in the solution of the DEs if its first letter is not a Mandelstam variable with a physical discontinuity\footnote{Strictly speaking, it is the absence of discontinuities at certain points that implies first-entry conditions, but this statement should not be inverted. It is possible to write an amplitude using a function which satisfies a first-entry condition, yet has the forbidden singularity. See Section 3 of Ref.~\cite{Zoia:2021zmb} for an explicit example.}\cite{Gaiotto:2011dt}. This turns out to be a very strong condition which in many cases fixes the values of $\vv{\text{MI}}^{(0)}$ up to an overall normalisation factor. Beyond the first entry, the structure of the symbols is further constrained by the so-called Steinmann relations, which state that there is no double continuity associated with overlapping channels~\cite{20.500.11850/135473, Steinmann:1960, Caron-Huot:2016owq, Dixon:2016nkn}. Overall, such conditions created by physical principles constrain the structure of the symbols and canonical DEs. This is evident when studying the pure MI bases relevant to this thesis (see Refs.~\cite{Abreu:2020jxa, abreu2021twoloop}).
+\renewcommand{\theequation}{C.\arabic{section}.\arabic{equation}}
 \chapter{Derivation of the pole structure} \label{app:polestructure}
 In the following, we provide a detailed derivation of the full pole structure of the $\ppbbh$ amplitudes presented in Eqs.~\ref{eq:poles1L} to \ref{eq:H2bbggH}. We do this for completeness, but also in the hope of illuminating the procedure, which can be far from obvious. We also outline the analogous calculation for the $0\to \ell \bar\ell \gamma \gamma^*$ amplitudes of Chapter~\ref{sec:QEDpaper}.
 \section{UV singularities}
@@ -952,6 +955,7 @@ Their coefficients are listed in Appendix~\ref{app:renormconstants}. Finally, th
 \end{align}
 Putting together the subtraction of UV and IR poles, and expanding the resulting finite remainder $\mathcal{F}^{\mu}(\alpha_R)$ in $\alpha_R$ leads to the definitions in \cref{eqQED:finite-remainders}.
 
+\renewcommand{\theequation}{D.\arabic{equation}}
 \chapter{Renormalisation Constants} \label{app:renormconstants}
 %\renewcommand{\theequation}{C.\arabic{equation}}
 The bottom-quark Yukawa renormalisation constants are~\cite{Ahmed:2014pka,Mondini:2021nck}:
@@ -991,6 +995,7 @@ The zeroth and first-order coefficients of the anomalous dimensions are given by
 We emphasise that while in QCD we have $N_c=3$ and $T_F = 1/2$, when working in QED one needs to set $C_A=0$, $C_F=1$ and $T_F=1$ in the expressions above.
 
 
+\renewcommand{\theequation}{E.\arabic{equation}}
 \chapter{One-Loop Results}
 \label{app:oneloop}
 In this Appendix, we collect the numerical results relevant to the amplitudes presented in Chapters~\ref{sec:Hbb} and \ref{sec:Wyj}. Tables~\ref{tab:benchmarkbare1L} and \ref{Wyjtab:benchmark1Lnf0bare} show the bare one-loop amplitudes (normalised by the tree-level amplitudes) for the two processes $\ppbbh$ and $\ppWgj$, respectively. Tables~\ref{tab:benchmarkfinremsq1L} and ~\ref{Wyjtab:benchmarkfinremsq1L} show the corresponding reduced squared tree-level amplitudes $\cH^{(0)}$ and reduced squared one-loop finite remainders (normalised by $\cH^{(0)}$).
@@ -1101,6 +1106,7 @@ evaluated at the kinematic point given in Eq.~\eqref{Wyjeq:PSpoint}.
 }
 \end{table}
 
+\renewcommand{\theequation}{F.\arabic{equation}}
 \chapter{Definition of the four-point integral families} \label{app:int_def}
 For each two-loop integral family $T$ corresponding to one of the maximal topologies shown in \cref{fig:int-fams}, the Feynman integrals have the form:
 \begin{equation}
@@ -1147,6 +1153,7 @@ Feynman's prescription for the imaginary parts of all propagators is implicit.
 
 These family definitions (strictly with the ordering of inverse propagators and ISPs shown above) correspond to the integrals \texttt{j[family,$a_1,$\ldots]} that build the canonical MI bases provided in the \texttt{pure\_mi\_bases/} directory of our ancillary files~\cite{zenodo}. In this notation, each \texttt{j[...]} represents a Feynman integral within a given integral family, while the numbers $a_i$ refer to the powers of its propagators and ISPs.
 
+\renewcommand{\theequation}{G.\arabic{equation}}
 \chapter{Analytic continuation} \label{app:an_cont}
 In Chapter~\ref{sec:QEDpaper}, we analytically continue the MPLs by adding a small positive (or negative) imaginary part to the MPL indices $l_i$ in \cref{eq:indices} whenever they fall between $0$ and $1$. The imaginary part of each index prescribes how to deform the integration contour around the pole associated with it. We do similarly for the logarithms in \cref{eq:logs}.
 To this end, following \incite{Gehrmann:2002zr}, we change variables from $(s_{12},s_{23},s_4)$ to $(s_{12},s_{23},s_{13})$, with $s_4 = s_{12} + s_{23} + s_{13}$. We then add a small positive imaginary part to the latter variables, as
@@ -1218,5 +1225,5 @@ All MPL indices $l_i$ in \cref{eq:indices} are either $l_i < 0$ or $l_i > 1$, he
 
 \smallskip
 
-The information about the imaginary parts of the MPL indices can be fed into the publicly available libraries for evaluating these functions numerically, such as \texttt{FastGPL}~\cite{Wang:2021imw}, \texttt{GiNaC}~\cite{Bauer:2000cp,Vollinga:2004sn}, and \texttt{handyG}~\cite{Naterop:2019xaf}. This typically leads to longer evaluation times with respect to MPLs which do not need analytic continuation. We find that this is not an issue for the planned applications of our results (see \cref{sec:performance}). Nonetheless, we note that a more performant evaluation may be achieved by tailoring the representation to the kinematic region of interest in such a way that no MPLs require analytic continuation. We refer to \incite{Gehrmann:2002zr,Gehrmann:2023etk} for a detailed discussion. 
+The information about the imaginary parts of the MPL indices can be fed into the publicly available libraries for evaluating these functions numerically, such as \texttt{FastGPL}~\cite{Wang:2021imw}, \texttt{GiNaC}~\cite{Bauer:2000cp,Vollinga:2004sn}, and \texttt{handyG}~\cite{Naterop:2019xaf}. This typically leads to longer evaluation times with respect to MPLs which do not need analytic continuation. We find that this is not an issue for the planned applications of our results (see \cref{sec:performance}). Nonetheless, we note that a more performant evaluation may be achieved by tailoring the representation to the kinematic region of interest in such a way that no MPLs require analytic continuation. We refer to Refs.~\cite{Gehrmann:2002zr, Gehrmann:2023etk} for a detailed discussion. 
 \end{document}
