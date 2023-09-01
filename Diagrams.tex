@@ -1,6 +1,84 @@
-\documentclass[main.tex]{subfiles}
+%\documentclass[main.tex]{subfiles}
+\documentclass[a4paper, landscape]{article}
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes}
+%\usepackage[a4paper,margin=1in,landscape]{geometry}
+
+\newcommand{\red}{red!50}
+\newcommand{\green}{green!50}
+\newcommand{\blue}{blue!50}
+
+\tikzset{
+    line/.style = { line width=2pt, },
+    arrow/.style = { ->,line width=1pt, },
+    invisible/.style = { inner sep=0, minimum size=0, },
+    write/.style = { text=black,font=\LARGE,inner sep=0, },
+    wee/.style = { text=black,font=\Large,inner sep=0, },
+    blob/.style = { write,minimum width=2cm, },
+}
+
+\newcommand{\hadron}[5]{
+    \coordinate (a) at (-6,#2*3);
+
+    \draw [line] (c) -- +(-6,#2*2) -- +(-12,#2*2);
+    \draw [line] (-12,#2*3) -- (a) -- (0,#2*5);
+    \draw [line] (-12,#2*4) -- (-6,#2*4) -- (0,#2*6);
+
+    \draw [arrow] (-3.5,#2*1.75) -- node [#4,wee,yshift=#2*2mm] {$x_#3P_#3$} +(1.5,-#2*0.5);
+    \draw [arrow] (-10.5,#2*4.5) -- node [#4,wee,yshift=#2*2mm] {$P_#3$} +(2,0);
+
+    \node [ellipse,fill=\red,minimum height=4cm,blob] at (a) {$f_#5(x_#3, \mu_F)$};
+
+    \node [write] at (-12.75,#2*3) {$h_#3$};
+}
+
+\newcommand{\ssplit}[7]{
+    \node [invisible, above right={#2*cos(#5)} and {#2*sin(#5)} of #1] (#6) {};
+    \node [invisible, above right={#3*cos(#4+#5)} and {#3*sin(#4+#5)} of #1] (#7) {};
+    \draw [line] (#1) -- (#6);
+    \draw [line] (#1) -- (#7);
+}
+\pagenumbering{gobble}
+
 \begin{document}
-\chapter{Drawings} 
+\hspace{-8cm}
+\begin{tikzpicture}
+
+    \coordinate (c) at (0,0);
+
+    \hadron{c}{1}{1}{above}{i}
+    \hadron{c}{-1}{2}{below}{j}
+
+    \ssplit{c}{4}{5}{30}{75}{a1}{a2}
+
+    \ssplit{a1}{2}{3}{30}{60}{b1}{b2}
+    \ssplit{b1}{3}{1}{30}{45}{c1}{c2}
+    \ssplit{c2}{3}{1}{30}{60}{d1}{d2}
+    \ssplit{b2}{3}{1}{30}{75}{e1}{e2}
+    \ssplit{c1}{3}{2}{30}{45}{f1}{f2}
+    \ssplit{d2}{2}{2}{30}{75}{m1}{m2}
+    \ssplit{e2}{2}{2}{30}{90}{n1}{n2}
+
+    \ssplit{a2}{2}{3}{30}{90}{g1}{g2}
+    \ssplit{g1}{1}{1}{30}{75}{h1}{h2}
+    \ssplit{g2}{1}{1}{30}{105}{j1}{j2}
+    \ssplit{h1}{2}{2}{30}{60}{k1}{k2}
+    \ssplit{j1}{1}{1}{30}{90}{i1}{i2}
+    \ssplit{j2}{2}{3}{30}{120}{l1}{l2}
+    \ssplit{h2}{2}{2}{30}{90}{o1}{o2}
+
+    \node [circle,fill=\green,blob] at (c) {$\mathrm{d}\hat\sigma_{ij}$};
+
+    \coordinate (h) at (10,0);
+    \fill [\blue] (h) ellipse (1 and 6.5);
+    \node [rotate=270,blob] at (h) {Hadronisation};
+
+\end{tikzpicture}
+
+
+
 
 %\begin{figure}
 %    \centering
@@ -1234,26 +1312,28 @@
 %    \label{fig:Hbbmaxtopos}
 %\end{figure}
 
-\begin{figure}
-    \centering
-	\begin{tikzpicture}
-		\node (start) at (0,0) {};
-		\node (startcaption) at ([yshift=-2pt]start.south) {$s_0$};
-		\node (i1) [right of=start, xshift=1em, yshift=0.5em] {};
-		\node (i2) [right of=i1, xshift=0.9em, yshift=-1.8em] {};
-		\node (finish) [right of=i2, xshift=1em, yshift=1em] {};
-		\node (finishcaption) at ([yshift=-2pt]finish.south) {$s$};
-        \node (label1) [right of=i1, xshift=-0.6cm, yshift=-0.2cm] {};
-        \node (label2) [above right= 1cm of label1] {$\gamma(\lambda)$};
-		
-		\foreach \i in {start,i1,i2,finish}{
-			\filldraw[red] (\i.center) circle (0.1em);
-			\draw[red,dashed] (\i.center) circle (2.1em);
-		}
-		\draw (start.center) to [out=70,in=250] (i1.center) to [out=70,in=180] (i2.center) to [out=0,in=90] (finish.center);
-        \draw [{Stealth[scale=1.5]}-] (label1) -- (label2);
-	\end{tikzpicture}
-    \caption{A pictorial representation of the generalised series expansion method. We connect the kinematic point $s_0$, at which the solution to the DEs is known, to the target point $s$ with a one-dimensional path $\gamma(\lambda)$. The path is split into (usually, but not necessarily, straight) line segments as necessitated by singularities. Each segment admits a solution in the form of a series expansion and has a certain radius of convergence (marked by dashed circles). Stitching together the solutions from individual segments allows us to transport the solution from $s_0$ to $s$.}
-    \label{fig:seriesexp}
-\end{figure}
+%\begin{figure}
+%    \centering
+%	\begin{tikzpicture}
+%		\node (start) at (0,0) {};
+%		\node (startcaption) at ([yshift=-2pt]start.south) {$s_0$};
+%		\node (i1) [right of=start, xshift=1em, yshift=0.5em] {};
+%		\node (i2) [right of=i1, xshift=0.9em, yshift=-1.8em] {};
+%		\node (finish) [right of=i2, xshift=1em, yshift=1em] {};
+%		\node (finishcaption) at ([yshift=-2pt]finish.south) {$s$};
+%        \node (label1) [right of=i1, xshift=-0.6cm, yshift=-0.2cm] {};
+%        \node (label2) [above right= 1cm of label1] {$\gamma(\lambda)$};
+%		
+%		\foreach \i in {start,i1,i2,finish}{
+%			\filldraw[red] (\i.center) circle (0.1em);
+%			\draw[red,dashed] (\i.center) circle (2.1em);
+%		}
+%		\draw (start.center) to [out=70,in=250] (i1.center) to [out=70,in=180] (i2.center) to [out=0,in=90] (finish.center);
+%        \draw [{Stealth[scale=1.5]}-] (label1) -- (label2);
+%	\end{tikzpicture}
+%    \caption{A pictorial representation of the generalised series expansion method. We connect the kinematic point $s_0$, at which the solution to the DEs is known, to the target point $s$ with a one-dimensional path $\gamma(\lambda)$. The path is split into (usually, but not necessarily, straight) line segments as necessitated by singularities. Each segment admits a solution in the form of a series expansion and has a certain radius of convergence (marked by dashed circles). Stitching together the solutions from individual segments allows us to transport the solution from $s_0$ to $s$.}
+%    \label{fig:seriesexp}
+%\end{figure}
+
+
 \end{document}
