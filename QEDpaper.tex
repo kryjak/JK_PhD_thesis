@@ -493,7 +493,7 @@ In this section, we construct a representation of our function basis in terms of
 %\begin{align} 
 %G(a_1,a_2,\ldots,a_n; x) \coloneqq \int_0^x \frac{\dd t}{t - a_1} \, G(a_2,\ldots,a_n; t) \,, \qquad a_n \neq 0 \,, 
 %\end{align}
-%for $a_n \neq 0$, starting with $G(;x) = 1$. Trailing zeros, i.e., zeros in the right-most indices, are allowed through the definition
+%starting with $G(;x) = 1$. Trailing zeros, i.e., zeros in the right-most indices, are allowed through the definition
 %\begin{align} \label{eqQED:trailingzeros}
 %G(\underbrace{0,\ldots,0}_{k}; x) \coloneqq \frac{1}{k!} \log^k(x) \,.
 %\end{align}
@@ -514,7 +514,7 @@ We then integrate the canonical DEs as in \cref{eqQED:solution} along the follow
 \begin{align} \label{eqQED:path}
 (0,0,0) \overset{\gamma_1}{\longrightarrow} (z_1, 0, 0)  \overset{\gamma_2}{\longrightarrow} (z_1, z_2, 0)  \overset{\gamma_3}{\longrightarrow} (z_1, z_2, s_4) \,.
 \end{align}
-Since the Feynman integrals are divergent at the chosen base-point, the latter is understood in a \emph{regularised} sense (we refer to section~4 of \incite{Abreu:2022mfk} for a thorough discussion).
+Since the Feynman integrals are divergent at the chosen base-point, the latter is understood in a \emph{regularised} sense (we refer to Section~4 of \incite{Abreu:2022mfk} for a thorough discussion).
 Choosing $(0,0,0)$ as base-point has the important benefit of removing spurious transcendental numbers that would pollute the solution were we to choose a base-point where the integrals are finite. As we will see below, only zeta values appear.
 Roughly speaking, we define regularised, finite values $\vec{b}^{(k)}_{T} \coloneqq \mathrm{Reg} \, \vv{\text{MI}}_T^{(k)}(\vec{s}_{\mathrm{base}})$ by introducing a regulator and formally setting to $0$ the (divergent) logarithms of the regulator.
 Since the integrals are finite at a generic end-point $\vec{s}$, the divergences at the base-point must cancel out with divergences arising in the integration. We can thus drop all these divergences. Provided that we do it consistently between the integration and the base-point values $\vec{b}^{(k)}_{T}$, this leads to a finite and unique result. In practice, we fix the finite base-point values $\vec{b}^{(k)}_{T}$ by matching the solution $\vv{\text{MI}}_T^{(k)}(\vec{s})$ evaluated at the boundary point $\vec{s}_0$ against the boundary values discussed in the previous subsection. 
