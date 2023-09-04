@@ -157,9 +157,7 @@ Having obtained the missing relations between the naive MIs, we apply them to ou
 \renewcommand{\theequation}{B.\arabic{section}.\arabic{equation}}
 \chapter{Symbols} \label{app:symbols}
 \section{Introduction}
-In this Appendix, we introduce yet another useful concept related to DEs and iterated integrals. We begin by noting that the representation of the solution to the $\eps$-form DEs in Eq.~\ref{eq:canonicalDEsoneform} is not unique. Most generally, the answer is written using Chen's iterated integrals (CIIs)~\cite{Chen:1977oja}. 
-%this form is usually the most compact one. 
-However, as pointed out above Eq.~\ref{eq:GPLs}, if the `letters' are rational in at least one variable, CIIs can be expressed in terms of GPLs~\cite{Henn:2014qga}. This has the advantage that robust and stable numerical evaluation of GPLs is available (see Refs.~\cite{Bauer:2000cp, Vollinga:2004sn, Panzer:2014caa}). On the downside, contrary to CIIs, GPLs contain a large degree of redundancy in the sense that they satisfy extra functional relations, obscuring possible simplifications and cancellations. Other representations apart from CIIs and GPLs are also possible. Due to the conjecture pointed out in the previous section, typically we will be interested in computing the solution up to transcendental weight 4. Another remarkable conjecture exists: any transcendental function of weight $k < 4$ can be expressed in terms of the usual logarithms and polylogarithms $\text{Li}_k$ only~\cite{MR1265551, Goncharov:2010jf}, while at weight $k=4$ all functions can be expressed in terms of $\Li_4(x), \Li_{2,2}(x,y)$ and weight-4 products of lower-weight functions\footnote{See Section 6 of Ref.~\cite{Duhr:2011zq}, which considers this problem for the spanning set of functions with $k\le4$ in the special case of Harmonic Polylogarithms (GPLs with all indices $a_i\in\{0,\pm1\})$.}~\cite{Henn:2014qga}. 
+In this appendix, we introduce another useful concept related to DEs and iterated integrals. We begin by noting that the representation of the solution to the $\eps$-form DEs in Eq.~\ref{eq:canonicalDEsoneform} is not unique. Most generally, the answer is written using Chen's iterated integrals (CIIs)~\cite{Chen:1977oja}. However, as pointed out above Eq.~\ref{eq:GPLs}, if the `letters' are rational in at least one variable, CIIs can be expressed in terms of GPLs~\cite{Henn:2014qga}. This has the advantage that robust and stable numerical evaluation of GPLs is available (see Refs.~\cite{Bauer:2000cp, Vollinga:2004sn, Panzer:2014caa}). On the downside, contrary to CIIs, GPLs contain a large degree of redundancy in the sense that they satisfy extra functional relations, obscuring possible simplifications and cancellations. Other representations apart from CIIs and GPLs are also possible. Due to the conjecture pointed out in Section~\ref{sec:UT}, typically we will be interested in computing the DE solution up to transcendental weight 4. Another remarkable conjecture exists: any transcendental function of weight $k < 4$ can be expressed in terms of the usual logarithms and polylogarithms $\text{Li}_k$ only~\cite{MR1265551, Goncharov:2010jf}, while at weight $k=4$ all functions can be expressed in terms of $\Li_4(x), \Li_{2,2}(x,y)$ and weight-4 products of lower-weight functions\footnote{See Section 6 of Ref.~\cite{Duhr:2011zq}, which considers this problem for the spanning set of functions with $k\le4$ in the special case of Harmonic Polylogarithms (GPLs with all indices $a_i\in\{0,\pm1\})$.}~\cite{Henn:2014qga}. 
 %\begin{equation} \label{eq:weight4basis}
 %    \left\{\log(x)\log(y)\log(z)\log(w), \Li_2(z) \log(x) \log(y), \Li_2(x)\Li_2(y), \Li_3(y) \log (x), \Li_4(x), \Li_{2,2}(x, y) \right\}\,,
 %\end{equation}
@@ -168,11 +166,11 @@ Here, the classical polylogarithms $\Li_n(z)$ are defined as:
 \begin{equation} \label{eq:Lidefinition}
     \Li_n(z) = \sum_{k=1}^\infty \frac{z^k}{k^n}\,, \qquad |z|<1,\,\, n \in \mathbb{N}\,,
 \end{equation}
-while the multiple polylogarithms $\Li_{m_1, \ldots, m_k}$ are their generalisations~\cite{2011arXiv1105.2076G, Duhr:2019tlz}:
+while the multiple polylogarithms (MPLs) $\Li_{m_1, \ldots, m_k}$ are their multi-index, multi-variable generalisations~\cite{2011arXiv1105.2076G, Duhr:2019tlz}:
 \begin{subequations}
 \begin{align} \label{eq:multiLidefinition}
     \Li_{m_1, \ldots, m_n}(z_1, \ldots, z_n) &= \sum_{0<k_1<\ldots<k_n} \frac{z_1^{k_1} \ldots z_n^{k_n}}{k_1^{m_1} \ldots k_n^{m_n}} \\
-    &= \sum_{k_n=1}^\infty \frac{z_n^{k_n}}{k_n^{m_n}} \sum_{k_{n-1}=1}^{k_n-1} \frac{z_{n-1}^{k_{n-1}}}{k_{n-1}^{m_{n-1}}}\ldots \sum_{k_1=1}^{k_2-1} \frac{z_1^{k_1}}{k_1^{m_1}}\,. \label{eq:multiLidefinition2}
+    &= \sum_{k_n=1}^\infty \frac{z_n^{k_n}}{k_n^{m_n}} \sum_{k_{n-1}=1}^{k_n-1} \frac{z_{n-1}^{k_{n-1}}}{k_{n-1}^{m_{n-1}}}\ldots \sum_{k_1=1}^{k_2-1} \frac{z_1^{k_1}}{k_1^{m_1}}\,, \qquad |z_i|<1, \,\, m_i \in \mathbb{N} \,. \label{eq:multiLidefinition2}
 \end{align}
 \end{subequations}
 Note that in these two definitions, $|z_i|<1$, but the functions can be analytically continued to cover regions where $|z_i| \ge 1$. The $\Li_{m_1, \ldots, m_k}$ MPLs can be viewed as the series representation of the GPLs defined in Eq.~\ref{eq:GPLs}. They are related through the following equation~\cite{Duhr:2011zq}:
@@ -186,31 +184,31 @@ where $\vec{0}_m$ denotes a vector of zeros of length $m$. For example, the afor
 %\begin{equation}
 %    \Li_{2,2}(x, y) = -\int_0^1 \frac{x \dd t}{1- xt} \log t \, \Li_2(xyt)\,.
 %\end{equation}
-Overall, we see that the most naive solution to the canonical DEs, written in terms of special functions rather than CIIs, is likely to contain a large degree of redundancy. However, due to the abundance of integral representations, it is not easy to choose the most appropriate set of functions or even verify if two expressions are equivalent. We would like to have a tool which can find relations between transcendental functions and be representation independent. To this end, we introduce the notion of a `symbol'\cite{Goncharov:2010jf, Duhr:2011zq}. After giving its definition and properties, we will demonstrate its power based on several illustrative examples. To motivate our effort, we remark that the main result of Ref.~\cite{Goncharov:2010jf} was the re-writing of a 17-page expression for a quantity known as the two-loop, six-point remainder function (related to Wilson loops) in $\mathcal{N}=4$ SYM~\cite{DelDuca:2009au, DelDuca:2010zg} as a remarkably compact combination of classical polylogarithms.
+Overall, the solution to the canonical DEs written in terms of special functions rather than CIIs is likely to contain a large degree of redundancy. Moreover, due to the abundance of representations, it is not easy to choose the most appropriate set of functions or even verify if two expressions are equivalent. We would like to have a tool which can find relations between transcendental functions and be representation independent. To this end, we introduce the notion of a `symbol'\cite{Goncharov:2010jf, Duhr:2011zq}. After giving its definition and properties, we will demonstrate its power based on several illustrative examples. To motivate our effort, we remark that the main result of Ref.~\cite{Goncharov:2010jf} was the application of the symbol to re-write a 17-page expression for a quantity known as the two-loop, six-point remainder function (related to Wilson loops) in $\mathcal{N}=4$ SYM~\cite{DelDuca:2009au, DelDuca:2010zg} as a remarkably compact combination of classical polylogarithms that fits on just a handful of lines.
 \section{Definition and properties}
 The symbol of a CII with $\dd \log$ kernels is defined as:
 \begin{equation} \label{eq:symboldef}
     \SS \left(\int_\gamma \dd \log w_1 \cdot \ldots \cdot \dd \log w_n \right) \equiv w_1 \oo \ldots \oo w_n \,.
 \end{equation}
-We can think of it as an elementary $n$-fold tensor where each entry $w_i$ is implicitly understood as to mean its corresponding $\dd \log$. It satisfies certain properties that we would expect from the behaviour of logarithms\footnote{For a detailed discussion of symbol properties, see Ref.~\cite{Duhr:2011zq}.}:
-\begin{subequations}
-\begin{align} \label{eq:symbolproperties}
+We can think of it as an elementary $n$-fold tensor where each entry $w_i$ is implicitly understood as its corresponding $\dd \log$. It satisfies certain properties that we would expect from the behaviour of logarithms\footnote{For a detailed discussion of symbol properties, see Ref.~\cite{Duhr:2011zq}.}:
+\begin{subequations} \label{eq:symbolproperties}
+\begin{align}
     A \oo (ab) \oo B &= A \oo a \oo B + A \oo b \oo B\,, \\
     A \oo \left(\frac{a}{b}\right) \oo B &= A \oo a \oo B - A \oo b \oo B\,, \\
     A \oo a^n \oo B &= n(A \oo a \oo B)\,,
 \end{align}
 \end{subequations}
-where $A, B$ are elementary tensors and $a, b$ are algebraic functions. Note that in the last line, $n$ becomes a coefficient of the symbol, rather than a part of it. Moreover, a symbol which contains a constant (not only rational) vanishes:
+where $A, B$ are elementary tensors and $a, b$ are algebraic functions. Note that in the last line, $n$ becomes a coefficient in front of the symbol, rather than a part of it. Moreover, a symbol which contains a constant (not only rational) vanishes:
 \begin{equation} \label{eq:symbolAcB}
     A \oo c \oo B = 0\,,
 \end{equation}
 which can be understood as a consequence of $\dd \log c = 0$. This means that, when working with the symbol, we are insensitive to constants, including transcendental ones like $\pi$. 
 
-Since CIIs are defined as repeated integrations over some kernels (see Eq.~\ref{eq:CIIsdef}), the total differential acts on the symbol defined through Eq.~\ref{eq:symboldef} in the following way:
+Since CIIs are defined as repeated integrations over some kernels (see Eq.~\ref{eq:CIIsdef}), the total differential acts on the symbol defined through Eq.~\ref{eq:symboldef} as:
 \begin{equation} \label{eq:symboldiff}
     \dd (w_1 \oo \ldots \oo w_n) = \dd \log w_n \, (w_1 \oo \ldots \oo w_{n-1})\,.
 \end{equation}
-This should remind the reader of the definition of pure functions in Eq.~\ref{eq:purecondition}. Crucially, this differential property can be reversed and allows us to define the symbol recursively~\cite{Goncharov:2010jf}. For a transcendental function $F$ with $\mathcal{T}(F) = k$ whose total differential can be written as:
+This property goes hand in hand with the definition of pure functions in Eq.~\ref{eq:purecondition}. Crucially, it can be reversed and allows us to define the symbol recursively~\cite{Goncharov:2010jf}. For a transcendental function $F$ with $\mathcal{T}(F) = k$ whose total differential can be written as:
 \begin{equation} \label{eq:Ftofrecursive}
     \dd F = \sum_i f_i \, \dd \log w_i\,,
 \end{equation}
@@ -224,11 +222,11 @@ The starting point of the recursion is the `empty' symbol: $\SS(1)$. Let us see 
 \end{equation}
 Moreover, the following iterative definition holds:
 \begin{equation} \label{eq:Liiterative}
-    \Li_n(z) = \int_0^z \frac{\dd t}{t} \Li_{n-1}(t)\,, \qquad n>1\,.
+    \Li_n(z) = \int_0^z \frac{\dd t}{t} \Li_{n-1}(t)\,, \qquad n>1\,,
 \end{equation}
 which is equivalent to the differential relation:
 \begin{equation}
-    \dd \Li_n(z) = (\dd \log z) \Li_{n-1}(z)\,, \qquad n>1\,.
+    \dd \Li_n(z) = (\dd \log z) \Li_{n-1}(z) \,, \qquad n>1\,.
 \end{equation}
 Thus, Eqs.~\ref{eq:symbolrecursive} and \ref{eq:Li1equivlog} give:
 \begin{align} \label{eq:Lisymbols}
@@ -261,7 +259,7 @@ We also need to know how to obtain the symbol of a product of functions, e.g. $\
 \begin{equation} \label{eq:GPLshuffleprod}
     G(\vec{a};z)G(\vec{b};z) = \sum_{\vec{c}=\vec{a} \shuffle \vec{b}} G(\vec{c};z)\,.
 \end{equation}
-The shuffle product $\vec{a} \shuffle \vec{b}$ produces all possible ways of permuting the union of indices $\vec{a}$ and $\vec{b}$ such that the ordering of indices within each set is preserved. Perhaps a simple example illustrates this definition better:
+The shuffle product $\vec{a} \shuffle \vec{b}$ denotes all possible ways of permuting the union of indices $\vec{a}$ and $\vec{b}$ such that the ordering of indices within each set is preserved. Perhaps a simple example illustrates this definition better:
 \begin{align} \label{eq:shuffleexample}
     G(a_1,a_2;z) G(b_1,b_2;z) &= G(a_1,a_2,b_1,b_2;z) + G(a_1,b_1,a_2,b_2;z) + G(a_1,b_1,b_2,a_2;z) \nonumber \\ 
     & + G(b_1,a_1,a_2,b_2;z) + G(b_1,a_1,b_2,a_2;z) + G(b_1,b_2,a_1,a_2;z)\,.
@@ -274,7 +272,7 @@ where the RHS is understood as the shuffle product of the individual symbols. In
 \begin{equation} \label{eq:symbolshuffle}
     (w_1 \oo \ldots \oo w_n) \times (v_1 \oo \ldots \oo v_m) = \sum_{\vec{z}=\vec{w} \shuffle \vec{v}} (z_1 \oo \ldots \oo z_{n+m})\,.
 \end{equation}
-Therefore, in our example, we may simple write: 
+Therefore, in our example we may simply write: 
 \begin{align}
     \SS(\log(z) \Li_2(z)) &= (z) \times (-(1-z)\oo z) \nonumber \\
     &= -z \oo (1-z) \oo z - 2 (1-z) \oo z \oo z \\
@@ -283,21 +281,21 @@ Therefore, in our example, we may simple write:
 In the last line, we have again used the alternative notation in order to make the position of the minus sign and a constant absolutely clear.
 
 \section{Examples}
-Overall, we see that thanks to symbols of the classical polylogarithms Eqs.~\ref{eq:Lisymbols} and GPLs Eq.~\ref{eq:G1symbol}, the symbol shuffling Eq.~\ref{eq:symbolshuffle} and finally the relation Eq.~\ref{eq:LiToG}, we can now compute the symbol of any function that may appear in the weight-4 function basis. Thinking ahead to our amplitude applications, it is clear that the symbol will allow us to find relations between linearly dependent objects such as GPLs and express our results in a much more compact form. Having expended the effort of understanding the last few pages, let us enjoy the fruits of our labour sprouting in the form of several illustrative examples.
+Overall, we see that thanks to symbols of the classical polylogarithms, Eq.~\ref{eq:Lisymbols}, and GPLs, Eq.~\ref{eq:G1symbol}, as well as the symbol shuffling, Eq.~\ref{eq:symbolshuffle}, and finally the relation in Eq.~\ref{eq:LiToG}, we can now compute the symbol of any function that may appear in the weight-4 function basis. Thinking ahead to our amplitude applications, it is clear that the symbol will allow us to find relations between linearly dependent objects such as GPLs and express our results in a much more compact form. Having expended the effort of understanding the last few pages, let us enjoy the fruits of our labour sprouting in the form of several illustrative examples.
 
 \textbf{Example 1} \newline
 Given a functional relation, we can check its validity --- but only up to constants. More precisely, while we can never prove with full certainty that an identity is valid by looking at its symbols, we can definitely show that an identity is not correct by proving that the symbols do not match up. The symbols allow us to fix the most complicated part of the identities. What is left is essentially boundary values, which can be determined for example by evaluating both sides of the relation at a numerical point. Consider the well-known dilogarithm reflection identity:
 \begin{equation}
     \Li_2(1-z) =- \Li_2(z) -\log(z) \log(1-z) + \frac{\pi^2}{6} \,,
 \end{equation}
-valid in the domain $z \in \mathbb{C} \setminus\{(-\infty, 0] \cup [1, \infty)\}$. For the two dilogarithms, we can straightforwardly use Eq.~\ref{eq:Lisymbols}, while for the product of ordinary logs we need to use the shuffle algebra. At the symbol level:
+valid in the domain $z \in \mathbb{C} \setminus\{(-\infty, 0] \cup [1, \infty)\}$. For the two dilogarithms, we can straightforwardly use Eq.~\ref{eq:Lisymbols}, while for the product of ordinary logs we need to use the shuffle algebra. At the symbol level, the identity reads:
 \begin{equation}
     -[z,1-z] = + [1-z,z] - [z] \shuffle [1-z]\,.
 \end{equation}
 Taking the shuffle product leaves the two sides equal. Thus, we managed to verify that the identity holds --- up the factor of $\pi^2/6$, which we can easily find by evaluating the rest of the identity at e.g. $z=1$.
 
 \textbf{Example 2} \newline
-If we're trying to construct a functional relation, the symbol can also help us to fix the coefficients of a function. Let us conjecture another identity:
+If we're trying to construct a functional relation, the symbol can also help us to fix the coefficients of the functions. Let us conjecture another identity:
 \begin{equation} \label{eq:Li2ref2conj}
     \Li_2\left( \frac{1}{z} \right) = a\,\Li_2(z) + b \log^2(-z) + c\,,
 \end{equation}
@@ -306,11 +304,11 @@ where $a,b,c$ are rational constants. Then, at the symbol level:
     -\left[1-\frac{1}{z}, \frac{1}{z}\right] &= -a[1-z, z] + b[-z] \shuffle [-z] \nonumber \\
     [z-1,z] - [z,z] &= -a[z-1, z] + 2 b[z]\,,
 \end{align}
-To get to the second line, we have expanded the LHS using the symbol properties in Eqs.~\ref{eq:symbolproperties} and \ref{eq:symbolAcB}, while on the RHS we used $[-x]=[x]$, which is a direct consequence of these properties. Thus, $a=-1, \, b=-1/2$. We still need to fix the so-called `beyond the symbol terms'. These include not only the weight-2 constants such as $\pi^2$, but also products of weight-1 constants with a $\log$. The latter type can be often fixed by differentiating both sides of the identity, thus producing a relation at lower weight. In this case, differentiating Eq.~\ref{eq:Li2ref2conj} with the known values of $a$ and $b$ shows that no $\log \times \text{constant}$ terms are missing. Hence, only weight-2 constants are allowed in $c$ and we can fix it by evaluating the identity at a chosen value for $z$. In this way, we find:
+To get to the second line, we have expanded the LHS using the symbol properties in Eqs.~\ref{eq:symbolproperties} and \ref{eq:symbolAcB}, while on the RHS we used $[-x]=[x]$, which is a direct consequence of these properties. Thus, $a=-1, \, b=-1/2$. We still need to fix the so-called `beyond the symbol terms'. These include not only the weight-2 constants such as $\pi^2$, but also products of weight-1 constants with a $\log$. The latter type can be often fixed by differentiating both sides of the identity, thus producing a relation at a lower weight. In this case, differentiating Eq.~\ref{eq:Li2ref2conj} with the known values of $a$ and $b$ shows that no $\log \times \text{constant}$ terms are missing. Hence, only weight-2 constants are allowed in $c$ and we can fix it by evaluating the identity at a chosen value of $z$. In this way, we find:
 \begin{equation} \label{eq:Li2ref2}
     \Li_2\left( \frac{1}{z} \right) = -\Li_2(z) - \frac{1}{2} \log^2(-z) - \frac{\pi^2}{6}\,, \qquad z \in \mathbb{C} \setminus [0,\, \infty)\,,
 \end{equation}
-which is indeed a well-known dilogarithm relation. Finally, the reader might wonder why we have conjectured $\log(-z)$ instead of $\log(z)$. After all, as pointed out above, both these functions have the same symbol --- $[z]$. The reason is simple: swapping the sign of the argument in the $\log$ would mean that there is no domain in which all the functions in this relation are defined and they would consequently have to be analytically continued.
+which is indeed a well-known dilogarithm relation. Finally, the reader might wonder why we have conjectured $\log(-z)$ instead of $\log(z)$. After all, as pointed out above, both these functions have the same symbol --- $[z]$. The reason is simple: swapping the sign of the argument in the $\log$ would mean that there is no domain in which all the functions in this relation are well-defined and they would consequently have to be analytically continued.
 
 \textbf{Example 3} \newline
 For more complicated identities, calculating the symbol by hand becomes unfeasible. Consider the following weight-3 relation:
@@ -322,13 +320,13 @@ which holds for $z \in \mathbb{C} \setminus\{(-\infty, 0] \cup [1, \infty)\}$. T
 \begin{equation} \label{eq:Li3symbol}
     \SS(\Li_3(z)) = -[1-z,z,z]\,.
 \end{equation}
-The RHS requires much more work, namely repeated application of shuffle products and symbol properties Eq.~\ref{eq:symbolproperties}. These operations can be easily automated, however. In particular, we make use of the \texttt{Mathematica} package \texttt{PolyLogTools}~\cite{Duhr:2019tlz}, which enables the computation of symbols of arbitrary combinations of GPLs. Indeed, with the help of this package, it is trivial to verify that the sum of symbols of the terms on the RHS is equal to Eq.~\ref{eq:Li3symbol}.
+The RHS requires much more work, namely repeated application of shuffle products and symbol properties in Eq.~\ref{eq:symbolproperties}. These operations can be easily automated, however. In particular, we make use of the \texttt{Mathematica} package \texttt{PolyLogTools}~\cite{Duhr:2019tlz}, which enables the computation of symbols of arbitrary combinations of GPLs. Indeed, with the help of this package, it is trivial to verify that the sum of symbols of the terms on the RHS is equal to Eq.~\ref{eq:Li3symbol}.
 
 The \texttt{PolyLogTools} package introduces several powerful tools related to the symbol. In particular, we point out its functionality related to the so-called `fibration basis'. Given a GPL expression $F$ whose letters (i.e. the arguments) satisfy certain conditions, it is possible to write it in the following form:
 \begin{equation}
     F = \sum_i c_i\, G(\vec{a}_i;\, x)\,,
 \end{equation}
-for some variable $x$, where $\vec{a}_i$ are independent of $x$ and the coefficients $c_i$ include only those GPLs that are independent of $x$ (see~\cite{Duhr:2019tlz} and references therein). The GPLs appearing on the RHS of this formula are known as the fibration basis. Moreover, it is also possible to `integrate' a symbol: given a symbol tensor $S$, it is possible to find a fibration basis such that $\SS(F) = S.$  This means we can determine the functional form corresponding to a symbol expressions (up to beyond-the-symbol terms). 
+for some variable $x$, where $\vec{a}_i$ are independent of $x$ and the coefficients $c_i$ include only those GPLs that are independent of $x$ (see Ref.~\cite{Duhr:2019tlz} and references therein). The GPLs appearing on the RHS of this formula are known as the fibration basis. Moreover, it is also possible to `integrate' a symbol: given a symbol tensor $S$, it is possible to find a fibration basis such that $\SS(F) = S.$  This means that we can determine the functional form corresponding to a symbol expression (up to beyond-the-symbol terms). 
 \section{Relation to canonical DEs and discontinuities}
 Let us now take a step back and make a connection between the symbols and the differential equations satisfied by master integrals. In Section~\ref{sec:DEs}, we saw that by making a suitable change of basis, it is possible to construct MIs such that the corresponding DEs are in the canonical form of Eq.~\ref{eq:canonicalDEsoneform}. Then, their solution is given by a path-ordered exponential of the $\eps$-free DE matrix $\tilde{A}$. This exponential is understood through its series expansion, leading to repeated integrations over kernels dictated by $\tilde{A}$. Further, we introduced the notion of uniform transcendentality and an even stronger condition on `pure' functions, Eq.~\ref{eq:purecondition}, which says that the transcendental weight of pure functions is lowered by 1 upon differentiation. Moreover, we learned that the solution of any canonical DEs is pure and vice versa --- a given basis of pure functions will satisfy the canonical DEs. We should therefore be able to write down these DEs in a way which makes the purity property manifest. Indeed, notice that the differential equivalent of Eq.~\ref{eq:DEssolution} is:
 \begin{equation}
@@ -342,13 +340,13 @@ Note that $\vv{\text{MI}}^{(0)}$ must be a vector of constants due to its vanish
 
 We can use Eq.~\ref{eq:pureMIDEs} to express the solution of the canonical DEs up to and including weight $n$ in the following form:
 \begin{equation} \label{eq:pureMIDEsupton}
-    \vv{\text{MI}}^{(n)} = \sum_{\alpha_1, \ldots, \alpha_n} \vec{c}_{\alpha_1, \ldots, \alpha_n} \int \dd \log w_{\alpha_1} \ldots \dd \log w_{\alpha_n}\,, \qquad n\ge1\,.
+    \vv{\text{MI}}^{(n)} = \sum_{\alpha_1, \ldots, \alpha_n} \vec{c}_{\alpha_1, \ldots, \alpha_n} \int \dd \log w_{\alpha_1} \ldots \dd \log w_{\alpha_n}\,, \qquad n>0 \,.
 \end{equation}
-Note that each coefficient $\vec{c}_{\alpha_1, \ldots, \alpha_n}$ is a vector of rational numbers --- they are calculated from the products of matrices $a_i$, which are dotted into the weight-0 term $\vv{\text{MI}}^{(0)}$. Naturally, to obtain explicit values for $\vv{\text{MI}}^{(n)}$, we need to supply the integration contour. Nonetheless, the symbol, which discards this information, can still tell us a lot about the analytic structure of the solution. It can be trivially read off from the above equation:
+Note that each coefficient $\vec{c}_{\alpha_1, \ldots, \alpha_n}$ is a vector of rational numbers --- they are calculated from the products of matrices $a_i$, which are dotted into the weight-0 vector $\vv{\text{MI}}^{(0)}$. Naturally, to obtain explicit values for $\vv{\text{MI}}^{(n)}$, we need to supply the integration contour. Nonetheless, the symbol, which discards this information, can still tell us a lot about the analytic structure of the solution. It can be trivially read off from the above equation:
 \begin{equation}
     \SS\left(\vv{\text{MI}}^{(n)}\right) = \sum_{\alpha_1, \ldots, \alpha_n} \vec{c}_{\alpha_1, \ldots, \alpha_n} [w_{\alpha_1}, \ldots, w_{\alpha_n}]\,.
 \end{equation}
-It turns out that the first entry of the symbol encodes its branch cut structure. In particular, a Feynman integral with the symbol $[w_{\alpha_1}, \ldots, w_{\alpha_n}]$ has a discontinuity if $w_{\alpha_1}=0$ or $\infty$. Of course, singular points of Feynman integrals are not random and we expect them to be connected to special values of the Mandelstam variables. Indeed, there exists a so-called first-entry condition which states that $\vec{c}_{\alpha_1, \ldots, \alpha_n}=0$ if $w_{\alpha_1} \neq s_{ij}\,$, i.e. a symbol cannot appear in the solution of the DEs if its first letter is not a Mandelstam variable with a physical discontinuity\footnote{Strictly speaking, it is the absence of discontinuities at certain points that implies first-entry conditions, but this statement should not be inverted. It is possible to write an amplitude using a function which satisfies a first-entry condition, yet has the forbidden singularity. See Section 3 of Ref.~\cite{Zoia:2021zmb} for an explicit example.}\cite{Gaiotto:2011dt}. This turns out to be a very strong condition which in many cases fixes the values of $\vv{\text{MI}}^{(0)}$ up to an overall normalisation factor. Beyond the first entry, the structure of the symbols is further constrained by the so-called Steinmann relations, which state that there is no double continuity associated with overlapping channels~\cite{20.500.11850/135473, Steinmann:1960, Caron-Huot:2016owq, Dixon:2016nkn}. Overall, such conditions created by physical principles constrain the structure of the symbols and canonical DEs. This is evident when studying the pure MI bases relevant to this thesis (see Refs.~\cite{Abreu:2020jxa, abreu2021twoloop}).
+It turns out that the first entry of the symbol encodes its branch cut structure. In particular, a Feynman integral with the symbol $[w_{\alpha_1}, \ldots, w_{\alpha_n}]$ has a discontinuity if $w_{\alpha_1}=0$ or $\infty$. Of course, singular points of Feynman integrals are not random and we expect them to be connected to special values of the Mandelstam variables. Indeed, there exists a so-called first-entry condition which states that $\vec{c}_{\alpha_1, \ldots, \alpha_n}=0$ if $w_{\alpha_1} \neq s_{ij}$, i.e. a symbol cannot appear in the solution of the DEs if its first letter is not a Mandelstam variable with a physical discontinuity\footnote{Strictly speaking, it is the absence of discontinuities at certain points that implies the first-entry condition, but this statement should not be inverted. In fact, it is possible to write an amplitude using a function which satisfies the first-entry condition, yet has the forbidden singularity. See Section 3 of Ref.~\cite{Zoia:2021zmb} for an explicit example.}\cite{Gaiotto:2011dt}. This turns out to be a very strong condition which in many cases fixes the values of $\vv{\text{MI}}^{(0)}$ up to an overall normalisation factor. Beyond the first entry, the structure of the symbols is further constrained by the so-called Steinmann relations, which state that there is no double continuity associated with overlapping channels~\cite{20.500.11850/135473, Steinmann:1960, Caron-Huot:2016owq, Dixon:2016nkn}. Overall, such conditions created by physical principles constrain the structure of the symbols and canonical DEs. This is evident when studying the pure MI bases relevant to this thesis (see Refs.~\cite{Abreu:2020jxa, abreu2021twoloop}).
 \renewcommand{\theequation}{C.\arabic{section}.\arabic{equation}}
 \chapter{Derivation of the pole structure} \label{app:polestructure}
 In the following, we provide a detailed derivation of the full pole structure of the $\ppbbh$ amplitudes presented in Eqs.~\ref{eq:poles1L} to \ref{eq:H2bbggH}. We do this for completeness, but also in the hope of illuminating the procedure, which can be far from obvious. We also outline the analogous calculation for the $0\to \ell \bar\ell \gamma \gamma^*$ amplitudes of Chapter~\ref{sec:QEDpaper}.
