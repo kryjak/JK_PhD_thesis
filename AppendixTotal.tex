@@ -166,14 +166,14 @@ Here, the classical polylogarithms $\Li_n(z)$ are defined as:
 \begin{equation} \label{eq:Lidefinition}
     \Li_n(z) = \sum_{k=1}^\infty \frac{z^k}{k^n}\,, \qquad |z|<1,\,\, n \in \mathbb{N}\,,
 \end{equation}
-while the multiple polylogarithms (MPLs) $\Li_{m_1, \ldots, m_k}$ are their multi-index, multi-variable generalisations~\cite{2011arXiv1105.2076G, Duhr:2019tlz}:
+while the multiple polylogarithms (GPLs) $\Li_{m_1, \ldots, m_k}$ are their multi-index, multi-variable generalisations~\cite{2011arXiv1105.2076G, Duhr:2019tlz}:
 \begin{subequations}
 \begin{align} \label{eq:multiLidefinition}
     \Li_{m_1, \ldots, m_n}(z_1, \ldots, z_n) &= \sum_{0<k_1<\ldots<k_n} \frac{z_1^{k_1} \ldots z_n^{k_n}}{k_1^{m_1} \ldots k_n^{m_n}} \\
     &= \sum_{k_n=1}^\infty \frac{z_n^{k_n}}{k_n^{m_n}} \sum_{k_{n-1}=1}^{k_n-1} \frac{z_{n-1}^{k_{n-1}}}{k_{n-1}^{m_{n-1}}}\ldots \sum_{k_1=1}^{k_2-1} \frac{z_1^{k_1}}{k_1^{m_1}}\,, \qquad |z_i|<1, \,\, m_i \in \mathbb{N} \,. \label{eq:multiLidefinition2}
 \end{align}
 \end{subequations}
-Note that in these two definitions, $|z_i|<1$, but the functions can be analytically continued to cover regions where $|z_i| \ge 1$. The $\Li_{m_1, \ldots, m_k}$ MPLs can be viewed as the series representation of the GPLs defined in Eq.~\ref{eq:GPLs}. They are related through the following equation~\cite{Duhr:2011zq}:
+Note that in these two definitions, $|z_i|<1$, but the functions can be analytically continued to cover regions where $|z_i| \ge 1$. The $\Li_{m_1, \ldots, m_k}$ GPLs can be viewed as the series representation of the GPLs defined in Eq.~\ref{eq:GPLs}. They are related through the following equation~\cite{Duhr:2011zq}:
 \begin{equation} \label{eq:LiToG}
     \Li_{m_1, \ldots, m_n}(z_1, \ldots, z_n) = (-1)^n\,G\left(\vec{0}_{m_n-1}, \frac{1}{z_n}, \ldots, \vec{0}_{m_1-1}, \frac{1}{z_1\ldots z_n}; \,1 \right)\,,
 \end{equation}
@@ -996,7 +996,7 @@ We emphasise that while in QCD we have $N_c=3$ and $T_F = 1/2$, when working in 
 \renewcommand{\theequation}{E.\arabic{equation}}
 \chapter{One-Loop Results}
 \label{app:oneloop}
-In this Appendix, we collect the numerical results relevant to the amplitudes presented in Chapters~\ref{sec:Hbb} and \ref{sec:Wyj}. Tables~\ref{tab:benchmarkbare1L} and \ref{Wyjtab:benchmark1Lnf0bare} show the bare one-loop amplitudes (normalised by the tree-level amplitudes) for the two processes $\ppbbh$ and $\ppWgj$, respectively. Tables~\ref{tab:benchmarkfinremsq1L} and ~\ref{Wyjtab:benchmarkfinremsq1L} show the corresponding reduced squared tree-level amplitudes $\cH^{(0)}$ and reduced squared one-loop finite remainders (normalised by $\cH^{(0)}$).
+In this appendix, we collect the numerical results relevant to the amplitudes presented in Chapters~\ref{sec:Hbb} and \ref{sec:Wyj}. Tables~\ref{tab:benchmarkbare1L} and \ref{Wyjtab:benchmark1Lnf0bare} show the bare one-loop amplitudes for the two processes $\ppbbh$ and $\ppWgj$, respectively. Tables~\ref{tab:benchmarkfinremsq1L} and~\ref{Wyjtab:benchmarkfinremsq1L} show the corresponding reduced squared tree-level amplitudes $\cH^{(0)}$ and the reduced squared one-loop finite remainders.
 \begin{table}[t!]
 \centering
 \begin{tabularx}{1.0\textwidth}{|C{0.7}|C{0.8}|C{0.5}|C{1.2}|C{1.2}|C{1.3}|C{1.3}|}
@@ -1023,7 +1023,7 @@ $\hat A^{(1),n_f}$ & $+++-$ & $ 0$ & $ -0.666667$ & $ 0.726782 - 2.09440 i$ & $ 
 \hline
 \end{tabularx}
 \caption{\label{tab:benchmarkbare1L} Numerical values of the bare $\bbggh$ and $\bbqqh$ partial amplitudes at one loop (normalised to the tree-level amplitude) at the kinematic point in 
-Eq.~\eqref{eq:physicalpointHbbMomTwistor} for the four independent helicity configurations and the various closed fermion loops contributions. }
+Eq.~\ref{eq:physicalpointHbbMomTwistor} for the four independent helicity configurations and the various closed fermion loops contributions. }
 \end{table}
 
 \begin{table}[t!]
@@ -1042,8 +1042,8 @@ $\mathbf{bb}/\mathbf{\bar{b}\bar{b}}$ & $ 71.81424881 $  & $ -678.1382010$ & $ -
 \end{tabularx}
 \caption{\label{tab:benchmarkfinremsq1L} Numerical values of the tree-level reduced squared amplitudes  $\mathcal{H}^{(0)}$ and 
 one-loop reduced squared finite remainders $\mathcal{H}^{(1)}$ 
-defined in Eqs.~\eqref{eq:channel_gg}-\eqref{eq:channel_BB} at the kinematic point in 
-Eq.~\eqref{eq:physicalpointHbbMomTwistor} for  the closed fermion loops contributions and the scattering channels specified in Eq.~\eqref{eq:channel_definition}.}
+defined in Eqs.~\ref{eq:channel_gg}-\ref{eq:channel_BB} at the kinematic point in 
+Eq.~\ref{eq:physicalpointHbbMomTwistor} for  the closed fermion loops contributions and the scattering channels specified in Eq.~\ref{eq:channel_definition}.}
 \end{table}
 
 \begin{table}[t!]
@@ -1066,9 +1066,9 @@ $\hat A^{(1),1}_e$ & $\scriptstyle +++--+$ & -2 & 23.8477 & $-139.570 - 1.46851 
 \hline
 \end{tabularx}
 \caption{\label{Wyjtab:benchmark1Lnf0bare} 
-Bare one-loop helicity sub-amplitudes (normalised to the tree-level amplitudes as in Eq.~\eqref{Wyjeq:treenorm}) without any closed fermion loop contribution  
+Bare one-loop helicity sub-amplitudes (normalised to the tree-level amplitudes as in Eq.~\ref{Wyjeq:treenorm}) without any closed fermion loop contribution  
 for $\wpaj$ production in the $\mathbf{u\bar{d}}$ scattering channel 
-evaluated at the kinematic point given in Eq.~\eqref{Wyjeq:PSpoint}. The results are shown for the two independent helicity configurations and obtained with $q_1 = p_3$ and $q_3 = p_1$ where $q_1$ ($q_3$) is the 
+evaluated at the kinematic point given in Eq.~\ref{Wyjeq:PSpoint}. The results are shown for the two independent helicity configurations and obtained with $q_1 = p_3$ and $q_3 = p_1$ where $q_1$ ($q_3$) is the 
 reference momentum for the photon (gluon) polarisation vector.
 }
 \end{table}
@@ -1100,7 +1100,7 @@ $\mathbf{g\bar{u}}$ & 27.6357549618  & -32.8902240077 & 4.37533965902  \\
 \caption{\label{Wyjtab:benchmarkfinremsq1L} 
 Reduced squared tree-level amplitude (absolute) and reduced squared one-loop finite remainders (normalised to the reduced squared tree amplitudes)
 for the various closed fermion loop contributions and scattering channels of both $pp\to\wpaj$ and $pp\to\wmaj$ production,
-evaluated at the kinematic point given in Eq.~\eqref{Wyjeq:PSpoint}.
+evaluated at the kinematic point given in Eq.~\ref{Wyjeq:PSpoint}.
 }
 \end{table}
 
@@ -1111,7 +1111,7 @@ For each two-loop integral family $T$ corresponding to one of the maximal topolo
 	j^{T}(a_1, \ldots, a_9) = \mathrm{e}^{2 \eps \gamma_{E}} \int \frac{\mathrm{d}^{4-2\eps} k_1}{\mathrm{i} \pi^{2-\eps}} \frac{\mathrm{d}^{4-2\eps} k_2}{\mathrm{i} \pi^{2-\eps}} \frac{1}{D_{T,1}^{a_1} \ldots D_{T,9}^{a_9}} \,.
 \end{equation}
 The sets $\{D_{T,1}, \ldots, D_{T,9}\}$ contain seven (inverse) propagators and two ISPs ($a_8, a_9 \le 0$). 
-For the maximal topologies under consideration, they are given by:\footnote{We use a naming convention analogous to that of \incite{Abreu:2020jxa}.}
+For the maximal topologies under consideration, they are given by\footnote{We use a naming convention analogous to that of \incite{Abreu:2020jxa}.}:
 \begin{itemize}
 	\item penta-triangle, \textbf{mzz} configuration:
 		\begin{align} \begin{aligned}
@@ -1149,19 +1149,19 @@ with the four inverse propagators $D_{\mathrm{box},i}$:
 	\end{equation}
 Feynman's prescription for the imaginary parts of all propagators is implicit.
 
-These family definitions (strictly with the ordering of inverse propagators and ISPs shown above) correspond to the integrals \texttt{j[family,$a_1,$\ldots]} that build the canonical MI bases provided in the \texttt{pure\_mi\_bases/} directory of our ancillary files~\cite{zenodo}. In this notation, each \texttt{j[...]} represents a Feynman integral within a given integral family, while the numbers $a_i$ refer to the powers of its propagators and ISPs.
+These family definitions (strictly with the ordering of inverse propagators and ISPs shown above) correspond to the integrals \texttt{j[family,$a_1,$\ldots]} that build the canonical MI bases provided in the \texttt{pure\_mi\_bases/} directory of the ancillary files~\cite{zenodo}. In this notation, each \texttt{j[...]} represents a Feynman integral within a given integral family, while the numbers $a_i$ refer to the powers of its propagators and ISPs.
 
 \renewcommand{\theequation}{G.\arabic{equation}}
 \chapter{Analytic continuation} \label{app:an_cont}
-In Chapter~\ref{sec:QEDpaper}, we analytically continue the MPLs by adding a small positive (or negative) imaginary part to the MPL indices $l_i$ in \cref{eqQED:indices} whenever they fall between $0$ and $1$. The imaginary part of each index prescribes how to deform the integration contour around the pole associated with it. We do similarly for the logarithms in \cref{eqQED:logs}.
-To this end, following \incite{Gehrmann:2002zr}, we change variables from $(s_{12},s_{23},s_4)$ to $(s_{12},s_{23},s_{13})$, with $s_4 = s_{12} + s_{23} + s_{13}$. We then add a small positive imaginary part to the latter variables, as
+In Chapter~\ref{sec:QEDpaper}, we analytically continue the GPLs by adding a small positive (or negative) imaginary part to the GPL indices $l_i$ in \cref{eqQED:indices} whenever they fall between $0$ and $1$. The imaginary part of each index prescribes how to deform the integration contour around the pole associated with it. We do similarly for the logarithms in \cref{eqQED:logs}.
+To this end, following \incite{Gehrmann:2002zr}, we change variables from $(s_{12},s_{23},s_4)$ to $(s_{12},s_{23},s_{13})$, with $s_4 = s_{12} + s_{23} + s_{13}$. We then add a small positive imaginary part to the new variables:
 \begin{align} \label{eq:add_im}
 s_{12} \longrightarrow s_{12} + \mathrm{i} \, c_{1} \, \delta \, , \qquad
 s_{23} \longrightarrow s_{23} + \mathrm{i} \, c_{2} \, \delta  \, , \qquad
 s_{13} \longrightarrow s_{13} + \mathrm{i} \, c_{3} \, \delta  \, , 
 \end{align}
 where $c_{1}$, $c_{2}$ and $c_{3}$ are arbitrary positive constants, and $\delta$ is a positive infinitesimal. 
-Finally, we check whether this substitution gives a positive or negative imaginary part to each MPL index $l_i$.
+Finally, we check whether this substitution gives a positive or negative imaginary part to each GPL index $l_i$.
 This depends on the domain of the kinematic variables.
 We focus on three kinematic regions which are of phenomenological interest. The analytic continuation for any other region may be obtained similarly.
 
@@ -1169,12 +1169,12 @@ We focus on three kinematic regions which are of phenomenological interest. The 
 
 \paragraph{Electron-line corrections to $e^- \mu^- \to e^- \mu^- \gamma$.}
 To define the domain of the kinematic variables relevant for this application, 
-we embed the four-particle off-shell process of \cref{eqQED:scatter} in the five-particle process $e^- \mu^- \to e^- \mu^- \gamma$. We then determine the kinematic constraints for the five-particle process (see e.g. Appendix~A of \incite{Chicherin:2021dyp}), and from them derive the constraints on the four-point off-shell kinematics. The result is
+we embed the four-particle off-shell process of \cref{eqQED:scatter} in the five-particle process $e^- \mu^- \to e^- \mu^- \gamma$. We then determine the kinematic constraints for the five-particle process (see e.g. Appendix~A of \incite{Chicherin:2021dyp}), and from them derive the constraints on the four-point off-shell kinematics. The result is:
 \begin{align}
 \label{eq:region_emu-emugamma}
 \mathcal{P}_{e\mu\to{e}\mu\gamma} \coloneqq \{\vec{s} \colon s_{12} < 0 \, \land \, s_{23} < 0 \, \land \, 0 < s_{13} < -s_{12} - s_{23} \} \,.
 \end{align}
-The MPL index $l_4 = - s_{12}/s_{23}$ is always negative in $\mathcal{P}_{{e}\mu\to{e}\mu\gamma}$, hence no analytic continuation is required. The other three indices may instead fall between $0$ and $1$. Let us study $l_1$. Changing variables from $s_4$ to $s_{13}$ and adding imaginary parts as in \cref{eq:add_im} gives
+The GPL index $l_4 = - s_{12}/s_{23}$ is always negative in $\mathcal{P}_{{e}\mu\to{e}\mu\gamma}$, hence no analytic continuation is required. The other three indices may instead fall between $0$ and $1$. Let us study $l_1$. Changing variables from $s_4$ to $s_{13}$ and adding imaginary parts as in \cref{eq:add_im} gives:
 \begin{align}
 l_1 = \frac{s_{12} + s_{13} + s_{23}}{s_{12}} +  \frac{\mathrm{i} \delta}{s_{12}^2} \left[ (c_2 + c_3) s_{12} - c_1 (s_{13} + s_{23}) \right] + \mathcal{O}\left(\delta^2\right) \,.
 \end{align}
@@ -1193,35 +1193,35 @@ The arguments of the three logarithms in \cref{eqQED:logs} are positive in $\mat
         $l_4$  & $0$ & $0$ & $0$ \\
         \hline
     \end{tabular}
-    \caption{Imaginary parts of the MPL indices defined by \cref{eqQED:indices} in the two kinematic regions discussed in \cref{app:an_cont}. The symbol $+$ ($-$) denotes a positive (negative) imaginary part, while $0$ means no analytic continuation is needed.}
+    \caption{Imaginary parts of the GPL indices defined by \cref{eqQED:indices} in the three kinematic regions discussed in \cref{app:an_cont}. The symbol $+$ ($-$) denotes a positive (negative) imaginary part, while $0$ means no analytic continuation is needed.}
     \label{tab:an_cont}
 \end{table}
 
 \smallskip
 
-\paragraph{Corrections to $e^- e^+ \to \gamma \gamma^*$.} The relevant domain of the kinematic variables in this case can be derived directly for the four-point kinematics, and is typically named the $s_{12}$ channel. It is given by 
+\paragraph{Corrections to $e^- e^+ \to \gamma \gamma^*$.} The relevant domain of the kinematic variables in this case can be derived directly for the four-point kinematics, and is typically named the $s_{12}$ channel. It is given by:
 \begin{align}
 \label{eq:region_eebar}
 \mathcal{P}_{e\bar{e}\to\gamma\gamma^*} \coloneqq \{\vec{s} \colon s_{23} < 0 \, \land \, s_{13} < 0 \, \land \, s_{12} > - s_{23} - s_{13} \} \,.
 \end{align}
-The MPL indices $l_2$, $l_3$ and $l_4$ can never fall between $0$ and $1$ in $\mathcal{P}_{e\bar{e}\to\gamma\gamma^*}$, and hence require no analytic continuation. We instead need to add a positive imaginary part to $l_1$. 
-In this region also the logarithms in \cref{eqQED:logs} need to be analytically continued. The argument of $\log(s_{12}/s_4)$ is positive in $\mathcal{P}_{e\bar{e}\to\gamma\gamma^*}$. By adding imaginary parts to the arguments of the other logarithms and studying them where the arguments are negative in $\mathcal{P}_{e\bar{e}\to\gamma\gamma^*}$, we determine that the analytic continuation is achieved through the following replacements:
+The GPL indices $l_2$, $l_3$ and $l_4$ can never fall between $0$ and $1$ in $\mathcal{P}_{e\bar{e}\to\gamma\gamma^*}$, and hence require no analytic continuation. We instead need to add a positive imaginary part to $l_1$. 
+In this region, also the logarithms in \cref{eqQED:logs} need to be analytically continued. The argument of $\log(s_{12}/s_4)$ is positive in $\mathcal{P}_{e\bar{e}\to\gamma\gamma^*}$. By adding imaginary parts to the arguments of the other logarithms and studying them where the arguments are negative in $\mathcal{P}_{e\bar{e}\to\gamma\gamma^*}$, we determine that the analytic continuation is achieved through the following replacements:
 \begin{align}
 \log(s_{23}/s_4) \longrightarrow \log(-s_{23}/s_{4})+ \mathrm{i} \pi \,, \qquad  \log(-s_4) \longrightarrow \log(s_4)- \mathrm{i} \pi \,.
 \end{align}
 
 
-\paragraph{Corrections to the decay $\gamma^* \to e^- e^+ \gamma$.} The relevant domain of the kinematic variables~is
+\paragraph{Corrections to the decay $\gamma^* \to e^- e^+ \gamma$.} The relevant domain of the kinematic variables~is:
 \begin{align}
 \label{eq:region_decay}
 \mathcal{P}_{\gamma^*\to e \bar{e} \gamma} \coloneqq  \{ \vec{s} \colon s_{12} > 0 \, \land \, s_{23} > 0 \, \land \,  s_{13} > 0 \} \,.
 \end{align}
-All MPL indices $l_i$ in \cref{eqQED:indices} are either $l_i < 0$ or $l_i > 1$, hence no analytic continuation is required. The same holds for the first two logarithms in \cref{eqQED:logs}, whose arguments are positive. The only function which needs to be analytically continued is $\log(-s_4)$. We achieve this by replacing
+All GPL indices $l_i$ in \cref{eqQED:indices} are either $l_i < 0$ or $l_i > 1$, hence no analytic continuation is required. The same holds for the first two logarithms in \cref{eqQED:logs}, whose arguments are positive. The only function which needs to be analytically continued is $\log(-s_4)$. We achieve this by replacing:
 \begin{align}
 \log(-s_4) \longrightarrow \log(s_{4}) - \mathrm{i} \pi \,.
 \end{align}
 
 \smallskip
 
-The information about the imaginary parts of the MPL indices can be fed into the publicly available libraries for evaluating these functions numerically, such as \texttt{FastGPL}~\cite{Wang:2021imw}, \texttt{GiNaC}~\cite{Bauer:2000cp, Vollinga:2004sn}, and \texttt{handyG}~\cite{Naterop:2019xaf}. This typically leads to longer evaluation times with respect to MPLs which do not need analytic continuation. We find that this is not an issue for the planned applications of our results (see \cref{secQED:performance}). Nonetheless, we note that a more performant evaluation may be achieved by tailoring the representation to the kinematic region of interest in such a way that no MPLs require analytic continuation. We refer the reader to Refs.~\cite{Gehrmann:2002zr, Gehrmann:2023etk} for a detailed discussion. 
+The information about the imaginary parts of the GPL indices can be fed into the publicly available libraries for evaluating these functions numerically, such as \texttt{FastGPL}~\cite{Wang:2021imw}, \texttt{GiNaC}~\cite{Bauer:2000cp, Vollinga:2004sn}, and \texttt{handyG}~\cite{Naterop:2019xaf}. This typically leads to longer evaluation times with respect to GPLs which do not need analytic continuation. We find that this is not an issue for the planned applications of our results (see \cref{secQED:performance}). Nonetheless, we note that a more performant evaluation may be achieved by tailoring the GPL representation to the kinematic region of interest in such a way that no GPLs require analytic continuation. We refer the reader to Refs.~\cite{Gehrmann:2002zr, Gehrmann:2023etk} for a detailed discussion. 
 \end{document}
