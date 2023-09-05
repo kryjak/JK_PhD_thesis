@@ -148,6 +148,13 @@
 \usepackage{perpage} % Allows to reset counters on each page
 \MakePerPage{footnote} % Resets footnote counters on each page
 
+% handle footnote numbering starting at 2
+% https://tex.stackexchange.com/questions/359253/why-does-starting-a-new-chapter-makes-footnotes-start-at-2
+\usepackage{remreset}
+\makeatletter
+\@removefromreset{footnote}{chapter}
+\makeatother
+
 \usepackage{graphicx}
 
 % For convenience
@@ -262,3 +269,4 @@
      
 % this one needs to be at the very end, apparently
 \usepackage[shortcuts]{extdash}  % for making unbreakable hyphens
+
