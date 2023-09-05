@@ -887,15 +887,15 @@ As in the previous section, the last colour factor is always suppressed by $1/N_
 
 A careful reader might be alarmed by the presence of the $\beta_0/N_c$ term at leading colour. Indeed, since $\beta_0 = \frac{11}{3}C_A - \frac{4}{3} T_F n_f$ and $C_A = N_c$, we would expect only the $11/3$ contribution to survive. However, in most applications the number of light fermions circulating in closed loops is $n_f=4$ or $5$, thus $n_f/N_c \approx  \order{1}$. It is therefore reasonable to retain the $n_f$ term as well and the whole contribution is written in terms of the first $\beta$ function coefficient as $\beta_0/N_c$. This also provides the motivation for the decomposition in Eqs.~\ref{eq:NfDecomposition1L} and \ref{eq:NfDecomposition2L}.
 \section{Pole structure of the QED process $0\to \ell \bar\ell \gamma \gamma^*$} \label{app:QEDpolestructure}
-To derive the pole structure of the process $0\to \ell \bar\ell \gamma \gamma^*$ in Chapter~\ref{sec:QEDpaper}, we slightly depart from the procedure described above. In particular, in QED there is no colour structure, therefore applying the colour insertion operators would not make sense here. Instead, we follow the approach found in Refs.~\cite{Gardi:2009qi, Gardi:2009zv, Becher:2009cu, Becher:2009qa} and provide a brief outline below.
+To derive the pole structure of the process $0\to \ell \bar\ell \gamma \gamma^*$ in Chapter~\ref{sec:QEDpaper}, we depart from the procedure described above. In particular, in QED there is no colour structure, therefore applying the colour insertion operators would not make sense here. Instead, we follow the approach found in Refs.~\cite{Gardi:2009qi, Gardi:2009zv, Becher:2009cu, Becher:2009qa} and provide a brief outline below.
 
-We renormalise the QED coupling constant by trading the bare coupling $\alpha_B$ for the renormalised one $\alpha_R$ through:
+We renormalise the QED coupling constant by trading the bare coupling, $\alpha_B$, for the renormalised one, $\alpha_R$, through:
 \begin{align}
     \label{eq:alpha-bare}
     \alpha_B = \alpha_R(\mu_R) \, Z_{\alpha}\bigl(\alpha_R(\mu_R) \bigr)  \, \mu_R^{2 \eps} \, S_{\eps} \,,
 \end{align}
 with $S_\eps= \mathrm{e}^{\eps\gamma_E} (4\pi)^{-\eps}$.
-The renormalisation factor $Z_{\alpha}$ in the $\overline{\text{MS}}$ scheme is: \cite{Barnreuther:2013qvf,Bonciani:2021okt}
+The renormalisation factor $Z_{\alpha}$ in the $\overline{\text{MS}}$ scheme is \cite{Barnreuther:2013qvf, Bonciani:2021okt}:
 \begin{align}
     \label{eq:Za}
     Z_{\alpha}(\alpha) = 1 - \frac{\alpha}{4 \pi} \frac{\beta_0}{\eps} -
@@ -913,7 +913,7 @@ with:
 \begin{align} \label{eq:beta_coeffs}
 \beta_0 = -\frac{4}{3} \nl \,, \qquad \qquad \beta_1 = - 4 \, \nl \,.
 \end{align}
-The photon wave function renormalisation factor is $Z_A=Z_\alpha$, which we include due to the external off-shell photon. The complete renormalisation procedure then is:
+The photon wave function renormalisation factor is $Z_A=Z_\alpha$, which we include due to the external off-shell photon. The complete renormalisation procedure is then:
 \begin{align}
     \mathcal{A}^\mu_R (\alpha_R) = Z_A^{\frac{1}{2}}(\alpha_R) \, \mathcal{A}^\mu_B (\alpha_B) \, ,
 \end{align}
@@ -927,29 +927,31 @@ so that $ Z(\alpha_R)$ captures all IR poles and $\mathcal{F}^\mu$ is a finite r
 We obtain the explicit two-loop expression of the IR factor $Z(\alpha_R)$ by
 choosing QED parameters ($C_A=0$, $C_F=1$, and $T_F=1$) in the non-abelian gauge-theory expressions of \incite{Becher:2009qa}. We expand it as:
 \begin{align}
-    Z(\alpha) &= \sum_{k\ge0} Z^{(L)} \left(\frac{\alpha}{4\pi}\right)^L \,.
+    Z(\alpha) &= \sum_{k\ge0} Z^{(L)} \left(\frac{\alpha}{4\pi}\right)^L .
 \end{align}
-The coefficients $Z^{(L)}$ are expressed in terms of the anomalous dimension:
-\begin{align}
-    \Gamma &= \gamma^\text{cusp}\ln\left(\frac{-s_{12}}{\mu^2}\right)+2\gamma^l+\gamma^A \,,
-\end{align}
-and its derivative:
-\begin{align}
-    \Gamma^\prime &\coloneqq \frac{\partial\Gamma}{\partial\ln\mu} = -2\gamma^\text{cusp} \,.
-\end{align}
-Here, $\gamma^\text{cusp}$ is the cusp anomalous dimension, while $\gamma^l$ and $\gamma^A$ are the lepton's and the photon's collinear anomalous dimensions, respectively.
-We expand all anomalous dimensions $y\in\{\Gamma,\gamma^i\}$ as:
-\begin{align}
-    y &= \frac{\alpha}{4\pi} \sum_{k\ge0} y_k \left(\frac{\alpha}{4\pi}\right)^k \,.
-\end{align}
-Their coefficients are listed in Appendix~\ref{app:renormconstants}. Finally, the coefficients of the IR factor $Z$ up to two loop are given by:
+The coefficients $Z^{(L)}$ up to two loops are given by:
 \begin{align}
     \label{eq:ir-pole-coeffs}
     Z^{(0)} &= 1 \,, &
     Z^{(1)} &= \frac{\Gamma_0^\prime}{4\eps^2}+\frac{\Gamma_0}{2\eps} \,, &
     Z^{(2)} &= \frac{{Z^{(1)}}^2}{2} -\frac{3\beta_0\Gamma_0^\prime}{16\eps^3}+\frac{\Gamma_1^\prime-4\beta_0\Gamma_0}{16\eps^2}+\frac{\Gamma_1}{4\eps} \,.
 \end{align}
-Putting together the subtraction of UV and IR poles, and expanding the resulting finite remainder $\mathcal{F}^{\mu}(\alpha_R)$ in $\alpha_R$ leads to the definitions in \cref{eqQED:finite-remainders}.
+They are expressed in terms of the anomalous dimension $\Gamma$:
+\begin{align}
+    \Gamma &= \gamma^\text{cusp}\ln\left(\frac{-s_{12}}{\mu^2}\right)+2\gamma^l+\gamma^A ,
+\end{align}
+and its derivative:
+\begin{align}
+    \Gamma^\prime &\equiv \frac{\partial\Gamma}{\partial\ln\mu} = -2\gamma^\text{cusp}\,.
+\end{align}
+Here, $\gamma^\text{cusp}$ is the cusp anomalous dimension, while $\gamma^l$ and $\gamma^A$ are the lepton's and the photon's collinear anomalous dimensions, respectively.
+We expand all anomalous dimensions $y\in\{\Gamma,\gamma^i\}$ as:
+\begin{align}
+    y &= \frac{\alpha}{4\pi} \sum_{k\ge0} y_k \left(\frac{\alpha}{4\pi}\right)^k.
+\end{align}
+Their zeroth- and first-order coefficients are listed in Appendix~\ref{app:renormconstants}.
+
+Putting together the subtraction of UV and IR poles and expanding the resulting finite remainder $\mathcal{F}^{\mu}(\alpha_R)$ in $\alpha_R$ leads to the definitions in \cref{eqQED:finite-remainders}.
 
 \renewcommand{\theequation}{D.\arabic{equation}}
 \chapter{Renormalisation Constants} \label{app:renormconstants}
