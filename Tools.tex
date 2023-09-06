@@ -223,18 +223,18 @@ Naturally, the Schouten, Gordon and Fierz identities also hold if we exchange al
 In addition to massless fermions, we need to be able to write the polarisation vectors of massless spin\=/1 bosons in the spinor-helicity language. They have to obey the following identities:
 \begin{subequations}
     \begin{align}
-        p \cdot \eps_\pm(p, q) &= 0\,, \\
-        q \cdot \eps_\pm(p, q) &= 0\,, \\
-        \eps_\pm (p, q) \cdot \eps_\pm(p', q) &= 0\,, \label{eq:polarisationlightlike} \\
-        \eps_\pm (p, q) \cdot \eps_\mp(p', p) &= 0\,, \\
-        \eps_\pm^\ast (p, q) \cdot \eps_\pm(p, q) &= -1\,.
+        p \cdot \vareps_\pm(p, q) &= 0\,, \\
+        q \cdot \vareps_\pm(p, q) &= 0\,, \\
+        \vareps_\pm (p, q) \cdot \vareps_\pm(p', q) &= 0\,, \label{eq:polarisationlightlike} \\
+        \vareps_\pm (p, q) \cdot \vareps_\mp(p', p) &= 0\,, \\
+        \vareps_\pm^\ast (p, q) \cdot \vareps_\pm(p, q) &= -1\,.
     \end{align}
 \end{subequations}
-To find compatible expressions for the polarisation vectors, we note that setting $p' = p$ in Eq.~\ref{eq:polarisationlightlike} gives $\eps_{\pm}(p, q) \cdot \eps_{\pm}(p, q) = 0$. This allows us to decompose $\eps^\mu$ into an outer product of two vectors, in analogy to Eq.~\ref{eq:outerproduct}. To this end, we introduce a light-like reference vector $q^\mu$ and write:
+To find compatible expressions for the polarisation vectors, we note that setting $p' = p$ in Eq.~\ref{eq:polarisationlightlike} gives $\vareps_{\pm}(p, q) \cdot \vareps_{\pm}(p, q) = 0$. This allows us to decompose $\vareps^\mu$ into an outer product of two vectors, in analogy to Eq.~\ref{eq:outerproduct}. To this end, we introduce a light-like reference vector $q^\mu$ and write:
 \begin{align} \label{eq:pols}
-    \eps^\mu_{-}(p, q) = \frac{\bra{p}\gamma^\mu\ketsq{q}}{\sqrt{2}\braketsq{pq}}, && \eps^\mu_{+}(p, q) = \frac{\bra{q}\gamma^\mu\ketsq{p}}{\sqrt{2}\braket{qp}} \,.
+    \vareps^\mu_{-}(p, q) = \frac{\bra{p}\gamma^\mu\ketsq{q}}{\sqrt{2}\braketsq{pq}}, && \vareps^\mu_{+}(p, q) = \frac{\bra{q}\gamma^\mu\ketsq{p}}{\sqrt{2}\braket{qp}} \,.
 \end{align}
-The choice of the reference vector is arbitrary (apart from the condition $q^\mu \neq p^\mu$), which reflects gauge invariance. We can see this by noting that the Weyl spinors are two-component objects and can be decomposed as $\ket{r} = \frac{\braket{rq}}{\braket{pq}}\ket{p} - \frac{\braket{rp}}{\braket{pq}}\ket{q}$. Therefore, any shift in $q$ must be of the form $q \rightarrow Aq + Bp$, where $A, B$ are constants. Then, from Eq.~\ref{eq:pols} (and using Eq.~\ref{eq:gordon}), it is easy to see that this shift will correspond to $\eps^\mu \rightarrow \eps^\mu + Cp^\mu$. Thus, the Ward identity $p_\mu \ampl{}{^\mu}=0$ is satisfied for any choice of the reference vector $q^\mu$. In practice, it is useful to choose it such that contracting $\eps^\mu$ with external momenta leads to the formation of vanishing spinor brackets, thus greatly simplifying the algebra.
+The choice of the reference vector is arbitrary (apart from the condition $q^\mu \neq p^\mu$), which reflects gauge invariance. We can see this by noting that the Weyl spinors are two-component objects and can be decomposed as $\ket{r} = \frac{\braket{rq}}{\braket{pq}}\ket{p} - \frac{\braket{rp}}{\braket{pq}}\ket{q}$. Therefore, any shift in $q$ must be of the form $q \rightarrow Aq + Bp$, where $A, B$ are constants. Then, from Eq.~\ref{eq:pols} (and using Eq.~\ref{eq:gordon}), it is easy to see that this shift will correspond to $\vareps^\mu \rightarrow \vareps^\mu + Cp^\mu$. Thus, the Ward identity $p_\mu \ampl{}{^\mu}=0$ is satisfied for any choice of the reference vector $q^\mu$. In practice, it is useful to choose it such that contracting $\vareps^\mu$ with external momenta leads to the formation of vanishing spinor brackets, thus greatly simplifying the algebra.
 
 At this point, we have all the tools we need to express any amplitude of massless fermions and spin\=/1 bosons through the angle and square brackets. Its usefulness, however, may not be immediately clear, especially given the notation which at first appears daunting. As a quick demonstration of the power of spinor-helicity formalism, let us consider the special case of 3-particle kinematics. For any three massless momenta satisfying $p_1^\mu + p_2^\mu + p_3^\mu = 0$, we have:
 \begin{equation}
@@ -256,7 +256,7 @@ In the previous section, we saw that the freedom in choosing the reference vecto
 \end{align}
 This is known as little group scaling. Each external momentum has its own little group transformation. This implies the following relations for spin-$1$ massless boson polarisations in Eq.~\ref{eq:pols}:
 \begin{align}
-    \eps^\mu_- (p,q) \rightarrow z^2 \eps^\mu_- (p,q), &&  \eps^\mu_+ (p,q) \rightarrow z^{-2} \eps^\mu_+ (p,q) \,.
+    \vareps^\mu_- (p,q) \rightarrow z^2 \vareps^\mu_- (p,q), &&  \vareps^\mu_+ (p,q) \rightarrow z^{-2} \vareps^\mu_+ (p,q) \,.
 \end{align}
 Note that the polarisation vectors are invariant under such rescalings of the reference momenta. Thus, for scattering of massless particles, the little group scaling of the corresponding amplitude is determined by the helicities of the external particles. Specifically, if we rescale the spinor brackets associated with the momentum $p_i$, the amplitude scales according to:
 \begin{equation}
