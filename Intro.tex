@@ -123,13 +123,13 @@ where $(\tau^a)_{ij}$ are the eight $(3 \times 3)$ Gell-Mann matrices. Similarly
 \begin{equation}
     \tr (T^aT^b) = T_F \delta^{ab},
 \end{equation}
-with $T_F = \frac{1}{2}$ in QCD. Finally, let us list one more extremely useful relation they satisfy:
+with $T_F = \frac{1}{2}$ in QCD. Finally, let us list one more extremely useful relation:
 \begin{equation} \label{eq:fierzcolour}
     (T^a)_{ij} (T^a)_{kl} = T_F \left( \delta_{il} \delta_{jk} - \frac{1}{N_c} \delta_{ij} \delta_{kl} \right)\,,
 \end{equation}
 which is known as the Fierz identity.
 
-The third type of field, the gluon field, is represented by $A^a_\mu$. It transforms in the adjoint representation, i.e. under the action of $N_c^2-1$ adjoint generators with dimensions $(N_c^2-1 \times  N_c^2-1)$:
+The third type of a field, the gluon field, is represented by $A^a_\mu$. It transforms in the adjoint representation, i.e. under the action of $N_c^2-1$ adjoint generators with dimensions $(N_c^2-1 \times  N_c^2-1)$:
 \begin{equation}
 \left(T_\text{adj}^a\right)^{bc} = -\ii f^{abc}\,,
 \end{equation}
@@ -153,7 +153,7 @@ which yields the gluon propagator:
 \begin{equation}
     \Pi^{\mu\nu}(p) = \frac{-\ii \, \delta^{ab}}{p^2+ \ii \varepsilon} \left(g^{\mu\nu} - (1-\xi) \frac{p^\mu p^\nu}{p^2+\ii \varepsilon} \right)\,.
 \end{equation}
-As an example, with term Eq.\ref{eq:gaugefixing} included in the full QCD Lagrangian, for small $\xi$ we must have that $\partial^\mu A^a_\mu \rightarrow 0$ in order to prevent the exponential of $\mathcal{L}$ from blowing up, such that we can still minimise the action. Thus, the choice $\xi = 0$ is equivalent to the Lorenz gauge and spares us from having to impose the Lorenz condition throughout the entire computation. Other choices are possible, of course. In fact, the most common prescription is to set $\xi = 1$, which is known as the \mbox{Feynman-'t Hooft} gauge. It is also possible to keep $\xi$ generic --- gauge invariance ensures that the results of computations of physical quantities will at the end be free of $\xi$.
+As an example, with the term Eq.~\ref{eq:gaugefixing} included in the full QCD Lagrangian, for small $\xi$ we must have that $\partial^\mu A^a_\mu \rightarrow 0$ in order to prevent the exponential of $\mathcal{L}$ from blowing up, such that we can still minimise the action. Thus, the choice $\xi = 0$ is equivalent to the Lorenz gauge and spares us from having to impose the Lorenz condition throughout the entire computation. Other choices are possible, of course. In fact, the most common prescription is to set $\xi = 1$, which is known as the \mbox{Feynman-'t Hooft} gauge. It is also possible to keep $\xi$ generic --- gauge invariance ensures that the results of computations of physical quantities will be free of $\xi$ at the end.
 
 The second feature, which appears only in non-Abelian gauge theories, is that gauge fixing the Lagrangian implies that not only the physical transverse modes of $A^a_\mu$ can propagate. To cancel the unphysical degrees of freedom propagating through gluon loops in Feynman diagrams, it is necessary to include in the Lagrangian Grassmann-valued fields $c$ and $\bar{c}$ representing Faddeev-Popov ghosts and antighosts:
 \begin{equation} \label{eq:ghosts}
