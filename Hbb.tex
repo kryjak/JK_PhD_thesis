@@ -5,9 +5,9 @@
 
 \begin{document}
 \chapter{Two-loop helicity amplitudes for $\ppbbh$ production} \label{sec:Hbb}
-In this chapter, we present the computation of the two-loop QCD helicity amplitudes for the production of a Higgs boson in association with a bottom quark pair at a hadron collider. We take the approximations of leading colour and work in the five flavour scheme, where the bottom quarks are massless while the Yukawa coupling is non-zero. We extract analytic expressions from multiple numerical evaluations over finite fields and present the results in terms of an independent set of special functions that can be reliably evaluated over the full phase space.
+In this chapter, we present the computation of the two-loop QCD helicity amplitudes for the production of a Higgs boson in association with a bottom quark pair at a hadron collider. We take the approximation of leading colour and work in the five flavour scheme, where the bottom quarks are massless while the Yukawa coupling is non-zero. We extract analytic expressions from multiple numerical evaluations over finite fields and present the results in terms of an independent set of special functions that can be reliably evaluated over the full phase space.
 
-The chapter is organised as follows. After providing the necessary background and context in which this work is situated, in Section~\ref{Hbbsec:amp} we describe the structure of the $b\bar{b}H$ amplitudes at leading colour, followed by a brief outline of the methodology used in deriving the analytic expression of the amplitudes in Section~\ref{Hbbsec:reduction}. A description of the basis of special functions is presented in Section~\ref{Hbbsec:Hbasis} and a number of validations that we performed on the results derived in this work are discussed in Section~\ref{Hbbsec:validation}. We present benchmark numerical evaluations together with evaluations on a physical phase-space slice in Section~\ref{Hbbsec:results}. Finally we draw our conclusions in Section~\ref{Hbbsec:conclusions}. 
+The chapter is organised as follows. After providing the necessary background and context in which this work is situated, in Section~\ref{Hbbsec:amp} we describe the structure of the $b\bar{b}H$ amplitudes at leading colour, followed by a brief outline of the methodology used in deriving the analytic expression of the amplitudes in Section~\ref{Hbbsec:reduction}. A description of the basis of special functions is presented in Section~\ref{Hbbsec:Hbasis} and a number of validations that we performed on the results derived in this work are discussed in Section~\ref{Hbbsec:validation}. We present benchmark numerical evaluations together with evaluations on a physical phase-space slice in Section~\ref{Hbbsec:results}. Finally, we draw our conclusions in Section~\ref{Hbbsec:conclusions}. 
 \section{Introduction \label{Hbbsec:intro}}
 %Precise theoretical predictions are an essential ingredient in the search for subtle deviations from
 %the Standard Model (SM) at current and future collider experiments. The enormous amount of data
@@ -26,10 +26,8 @@ The chapter is organised as follows. After providing the necessary background an
 %$b$-quark and on-shell $W$-boson approximations~\cite{Badger:2021nhg}. 
 %Very recently, complete analytic results for one of the non-planar integral topologies have also become available~\cite{Papadopoulos:2019iam,abreu2021twoloop}.
 
-In this work, we consider the two-loop amplitudes relevant for the production of a Higgs boson in
-association with a bottom-quark pair, i.e. $pp \to b\bar{b}H$, in the leading colour approximation.
-$b\bar{b}H$ production at the LHC has been a subject of great phenomenological interest due to its
-potential in directly measuring the bottom-quark Yukawa coupling. In the Standard Model (SM), the
+Form the perspective of phenomenology, $\ppbbh$ production at the LHC has been a subject of great interest due to its
+potential in directly measuring the bottom-quark Yukawa coupling. In the SM, the
 coupling strengths of the Higgs boson to the fermions and vector bosons are proportional to their
 mass, causing the rate of the $b\bar{b}H$ production to be suppressed with respect to, for example,
 Higgs production in gluon fusion ($gg\to H$) or vector boson fusion ($pp\to Hjj$), associated
@@ -47,15 +45,15 @@ The theoretical approach to obtaining predictions for the $pp\to b\bar{b}H$ proc
 of much discussion in the community. This is due to the fact that, in the presence of bottom quarks,
 a theoretical prediction can be computed in either the four-flavour scheme (4FS) or the five-flavour
 scheme (5FS). In the 4FS computation, bottom quarks are treated as massive and they do not
-contribute to the parton distributions functions (PDFs), hence only appearing in the final state.
+contribute to the PDFs, hence only appearing in the final state.
 Large logarithms of the form $\log(m_b/Q)$ with $Q \propto m_H$ arise when the integration over the
 bottom-quark phase space is performed, and such contributions may spoil the convergence of the
 perturbative series. These large logarithms can be resummed to all orders by introducing the
-bottom-quark parton distribution functions.  The 5FS approach stems from this prescription, where
-the bottom-quarks are included in the parton distribution functions, allowed to appear in the
+bottom quark PDFs.  The 5FS approach stems from this prescription, where
+the bottom quarks are included in the PDFs, allowed to appear in the
 initial state, and treated as massless.  We refer the reader to Ref.~\cite{Maltoni:2012pa} for further
 discussion on the 5FS and 4FS approaches. 
-In 5FS the inclusive $b\bar{b}H$ production (where the tree level process is $b\bar{b}\to H$) has been computed up to
+In 5FS, the inclusive $b\bar{b}H$ production (where the tree level process is $b\bar{b}\to H$) has been computed up to
 N3LO QCD~\cite{Dicus:1998hs,Balazs:1998sb,Maltoni:2003pn,Harlander:2010cz,Buehler:2012cu,Harlander:2012pb,H:2019nsw,Duhr:2019kwi,Mondini:2021nck}, 
 while for the case where a single bottom quark is observed NLO QCD~\cite{Campbell:2002zm}, weak~\cite{Dawson:2010yz} 
 and SUSY QCD~\cite{Dawson:2011pe} corrections are available.
@@ -74,7 +72,7 @@ that beyond NLO, for the computation with massless bottom quarks, a flavoured je
 algorithm~\cite{Banfi:2006hf} would have to be employed when identifying the $b$-jets, since the use
 of conventional $k_T$ or anti-$k_T$ jet algorithms would render the fixed order computation infrared
 unsafe.  We further remark that the two-loop amplitudes for $b\bar{b}H$ production derived in this
-work can also be used in the computation of Higgs decaying into a bottom-quark pair in 5FS, by
+work can also be used in the computation of Higgs decaying into a bottom quark pair in 5FS, by
 crossing initial partons to the final state. Specifically, they will contribute in the N4LO $H\to
 b\bar{b}$, N3LO $H\to b\bar{b}j$ and NNLO $H\to b\bar{b}jj$ computations.  In addition, by crossing
 the $b\bar{b}$ pair to the initial state and the $gg/q\bar{q}$ pair to the final state we obtain the
@@ -96,7 +94,7 @@ where all momenta are taken as outgoing:
 \begin{align}
 \sum_{i=1}^5 p_i = 0\,.
 \end{align}
-We work in the five-flavour scheme, where the bottom quark is taken as massless while its Yukawa coupling to the Higgs boson is kept finite, so that:
+We work in the 5FS, where the bottom quark is taken as massless while its Yukawa coupling to the Higgs boson is kept finite, so that:
 \begin{align}
 p_1^2=p_2^2=p_3^2=p_4^2=0\,, \qquad \quad p_5^2=m_H^2\,, 
 \end{align}
@@ -145,7 +143,7 @@ In our computation we do not consider the closed top-quark loop contribution.
   \begin{center}
     \includegraphics[width=0.95\textwidth]{ggbbH_amps_1L}
   \end{center}
-  \caption{Sample Feynman diagrams corresponding to the various closed fermion loop contributions at one loop as specified in Eq.~\eqref{eq:NfDecomposition1L}. 
+  \caption{Sample Feynman diagrams corresponding to the various closed fermion loop contributions at one loop as specified in Eq.~\ref{eq:NfDecomposition1L}. 
   Black-dashed, red, black-spiralled and black lines represent Higgs bosons, bottom quarks, gluons and light quarks (bottom quarks included), respectively.}
   \label{fig:amp1L}
 \end{figure}
@@ -154,7 +152,7 @@ In our computation we do not consider the closed top-quark loop contribution.
   \begin{center}
     \includegraphics[width=0.95\textwidth]{ggbbH_amps_2L}
   \end{center}
-  \caption{Sample Feynman diagrams corresponding to the various closed fermion loop contributions at two loops as specified in Eq.~\eqref{eq:NfDecomposition2L}. 
+  \caption{Sample Feynman diagrams corresponding to the various closed fermion loop contributions at two loops as specified in Eq.~\ref{eq:NfDecomposition2L}. 
   Black-dashed, red, black-spiralled and black lines represent Higgs bosons, bottom quarks, gluons and light quarks (bottom quarks included), respectively.}
   \label{fig:amp2L}
 \end{figure}
@@ -200,7 +198,7 @@ H_{\bbggh}^{(2)}(\eps) &=  \frac{1}{16\eps} \bigg\lbrace 2\left(\gamma_1^q+\gamm
 \end{align}
 The $\beta$ function coefficients and anomalous dimensions are given in Appendix~\ref{app:renormconstants}, while in Appendix~\ref{app:polestructure} we provide an explicit derivation of the pole operators.
 
-The finite remainder of the $L$-loop partial amplitude is obtained by subtracting the poles $P^{(L)}$ (which include both the ultraviolet and infrared singularities) from the unrenormalised partial amplitude $A^{(L)}$ and setting $\eps$ to $0$:
+The finite remainder of the $L$-loop partial amplitude is obtained by subtracting the poles $P^{(L)}$ (which include both the UV and IR singularities) from the unrenormalised partial amplitude $A^{(L)}$ and setting $\eps$ to $0$:
 \begin{equation}
 F^{(L)} = \lim_{\eps \to 0} \left[ A^{(L)} - P^{(L)} A^{(0)} \right]\,.
 \label{eq:finiteremainder}
@@ -212,7 +210,7 @@ The partial finite remainders $F^{(L)}$ inherit from the partial amplitudes the 
 & F^{(2)} = N_c^2 F^{(2),1} + N_c n_f F^{(2),n_f} + n_f^2 F^{(2),n_f^2}  \,.
 \label{eq:NfDecomposition2LF}
 \end{align}
-The full finite remainders $\mathcal{F}^{(L)}$ are obtained from the partial ones $F^{(L)}$ through a colour decomposition analogous to that given in Eq.~\eqref{eq:colourdecomposition} for the bare amplitudes:
+The full finite remainders $\mathcal{F}^{(L)}$ are obtained from the partial ones $F^{(L)}$ through a colour decomposition analogous to that given in Eq.~\ref{eq:colourdecomposition} for the bare amplitudes:
 \begin{align}
 &\mathcal{F}^{(L)}(1_{\bar b},2_{b},3_{g},4_{g} ,5_{H}) = n^L g_s^2 y_b \bigg[ 
   (T^{a_3} T^{a_4})_{i_2}^{\;\;\bar i_1} \,  F^{(L)}(1_{\bar b},2_{b},3_{g},4_{g} ,5_{H}) + ( 3 \leftrightarrow 4 ) \bigg]\,, \nonumber\\
@@ -230,7 +228,7 @@ The full finite remainders $\mathcal{F}^{(L)}$ are obtained from the partial one
 \label{Hbbsec:trees}
 The tree-level amplitudes can be obtained using the BCFW recursion relations~\cite{Britto:2004ap,Britto:2005fq} within the spinor helicity formalism. In the $\bar{b}bggH$ case, we choose to shift the momenta of gluons $3$ and $4$, while in the $\bar{b}b\bar{q}qH$ case we choose particles $1$ and $4$ to avoid shifting the momenta of adjacent quarks of the same flavour. Moreover, we ensure that the shifted brackets $[\hat{i}\ra, |\hat{j}]$ do not belong to particles of helicities $i^-, j^+$. These choices are necessary for the validity of the recursion relations as they prevent the shifted amplitude from having poles at infinity.
 
-For the $\bar{b} b g g H$ channel we obtain the following non-vanishing tree-level partial amplitudes:
+For the $\bar{b} b g g H$ channel we obtain the following non-vanishing tree-level amplitudes:
 \begin{align} \label{eq:A0bbggh}
 	A^{(0)}(1^+_{\bar{b}},2^+_{b},3^+_g,4^+_g,5_{H}) &=  \frac{s_5}{\spA 23 \spA 34 \spA 41} \,, \\
 	A^{(0)}(1^+_{\bar{b}},2^+_{b},3^-_g,4^-_g,5_{H}) &= -\frac{\spB 12^2}{\spB 23\spB 34\spB 41} \,, \\
@@ -242,7 +240,7 @@ For the $\bar{b} b \bar{q} q H$ channel the ``all-plus'' and MHV configurations 
 	A^{(0)}(1^+_{\bar b},2^+_{b},3^+_{\bar q},4^-_{q},5_{H}) &=  \frac{\spAB 451^2}{s_{234} \spA 34 \spAB 251}+\frac{s_5 \spB 31^2}{s_{134} \spB 34 \spAB 251} \,. 
 \end{align}
 
-In both cases, due to the colour decomposition of the full amplitudes given by Eq.~\eqref{eq:colourdecomposition}, the $A^{(0)}(1^+,2^+,3^-,4^+,5_{H})$ partial amplitude is related to $A^{(0)}(1^+,2^+,3^+,4^-,5_{H})$ by swapping the particles $1\leftrightarrow 2,3\leftrightarrow 4$ , and flipping the overall sign for the subprocess $\bbggh$. The remaining non-vanishing helicity configurations can be obtained by parity transformations, that is by swapping the brackets $\la \phantom{1} \ra \leftrightarrow [\phantom{1}]$.
+In both cases, due to the colour decomposition of the full amplitudes given by Eq.~\ref{eq:colourdecomposition}, the $A^{(0)}(1^+,2^+,3^-,4^+,5_{H})$ partial amplitude is related to $A^{(0)}(1^+,2^+,3^+,4^-,5_{H})$ by swapping the particles $1\leftrightarrow 2,3\leftrightarrow 4$ , and flipping the overall sign for the subprocess $\bbggh$. The remaining non-vanishing helicity configurations can be obtained by parity transformations, that is by swapping the brackets $\la ij \ra \leftrightarrow [ji]$.
 
 \section{Amplitude Reduction and Reconstruction}
 \label{Hbbsec:reduction}
@@ -774,18 +772,18 @@ Subtracting the UV and IR poles from the bare helicity amplitudes and performing
 F^{(L)} = \sum_{i} r_i(x) m_i(f)\,,
 \label{eq:finrem}
 \end{equation}
-where $m_i(f)$ are monomials of the special functions and $r_i$ are rational functions of the MTs $x$. It is important to note that the definition of the UT MIs involves three square roots. One is related to the pseudo-scalar invariant $\tr_5$, which captures the parity-odd part of the spinor expressions and is therefore present already in the rational coefficients. This square root is rationalised by the momentum-twistor inspired parametrisation~\eqref{eq:mtvardefs}. The other two square roots are associated with the three-mass triangle Gram determinants:
+where $m_i(f)$ are monomials of the special functions and $r_i$ are rational functions of the MTs $x$. It is important to note that the definition of the UT MIs involves three square roots. One is related to the pseudo-scalar invariant $\tr_5$, which captures the parity-odd part of the spinor expressions and is therefore present already in the rational coefficients. This square root is rationalised by the momentum-twistor inspired parametrisation~\ref{eq:mtvardefs}. The other two square roots are associated with the three-mass triangle Gram determinants:
 \begin{align}
   \Delta_3^{(1)} &= 2 \sqrt{(p_{23} \cdot p_{5})^2 - p_5^2 s_{23}} \,,&
   \Delta_3^{(2)} &= 2 \sqrt{(p_{12} \cdot p_{5})^2 - p_5^2 s_{12}} \,,
   \label{eq:squareroots}
 \end{align}
 where $p_{ij} = p_i + p_j$.
-They are not rationalised by our parametrisation and may therefore be problematic for the finite field setup. We overcome this issue by absorbing the three square roots in the definition of the UT MIs, which is possible because they appear only as overall normalisations of the latter. As a result, they are contained in the monomials $m_i(f)$ in Eq.~\eqref{eq:finrem} and do not appear in the amplitude reconstruction.
+They are not rationalised by our parametrisation and may therefore be problematic for the finite field setup. We overcome this issue by absorbing the three square roots in the definition of the UT MIs, which is possible because they appear only as overall normalisations of the latter. As a result, they are contained in the monomials $m_i(f)$ in Eq.~\ref{eq:finrem} and do not appear in the amplitude reconstruction.
 We note that in our computation, while the $\tr_5$ originating from the UT MI definition is absorbed in $m_i(f)$, 
 the $\tr_5$ already present in the rational coefficients is rationalised and present in the amplitude reconstruction.
 
-At this stage we have an algorithm which computes the coefficients of the special function monomials, $r_i(x)$ in Eq.~\eqref{eq:squareroots}, 
+At this stage we have an algorithm which computes the coefficients of the special function monomials, $r_i(x)$ in Eq.~\ref{eq:squareroots}, 
 numerically over finite fields for each of the independent helicity configurations of the two processes $\bar{b}bggH$ and $\bar{b}b\bar{q}qH$. 
 We emphasise that from the start of our numerical algorithm until the evaluation of $r_i(x)$, the computation is done within one system of \texttt{FiniteFlow} graphs.
 The last step which remains to be done is the functional reconstruction of the rational coefficients. This task is made challenging by the high polynomial degrees, which are shown in the third column of Tables~\ref{tab:degrees2g2bH} and~\ref{tab:degrees2q2bH}. We tackle the complexity of the reconstruction through the strategy already used in Refs.~\cite{Badger:2021nhg,Badger:2021imn}. We refer to Ref.~\cite{Badger:2021imn} for a thorough discussion, and give here only a brief outline. 
@@ -803,11 +801,11 @@ This motivates us to include the letters into an ansatz for the denominator fact
 \end{aligned}
 \label{eq:coeffansatz}
 \end{equation}
-where the indices $i,j$ in the spinor expressions vary from $1$ to $4$, while the indices $i,j,k,l$ in the Mandelstam invariants vary from $1$ to $5$. The various free indices in each of the factors are understood to be different from each other. We then match an ansatz made of the factors in Eq.~\eqref{eq:coeffansatz} against the rational coefficients reconstructed on a random univariate slice of the phase space. This allows to determine entirely the denominators, as well as some factors in the numerators.
+where the indices $i,j$ in the spinor expressions vary from $1$ to $4$, while the indices $i,j,k,l$ in the Mandelstam invariants vary from $1$ to $5$. The various free indices in each of the factors are understood to be different from each other. We then match an ansatz made of the factors in Eq.~\ref{eq:coeffansatz} against the rational coefficients reconstructed on a random univariate slice of the phase space. This allows to determine entirely the denominators, as well as some factors in the numerators.
 
-Having determined the denominators of the rational coefficients we can proceed to the third and last step of our reconstruction strategy:  a univariate partial fraction decomposition on the fly. We find that, with the parameterisation of the external kinematics given by Eq.~\eqref{eq:mtvardefs}, partial fractioning with respect to $x_5$ is the most convenient choice. 
+Having determined the denominators of the rational coefficients we can proceed to the third and last step of our reconstruction strategy:  a univariate partial fraction decomposition on the fly. We find that, with the parameterisation of the external kinematics given by Eq.~\ref{eq:mtvardefs}, partial fractioning with respect to $x_5$ is the most convenient choice. 
 The partial fraction decomposition of multivariate functions has recently drawn a lot interest as a powerful tool to simplify the analytic expressions of scattering amplitudes. A number of new approaches have been proposed, which make use of algebraic geometry techniques to handle the multivariate case efficiently~\cite{Leinartas:1978,Raichev:2012,Abreu:2019odu,Boehm:2020ijp,Heller:2021qkz}. These algorithms are however applied to known analytic expressions, namely after the rational reconstruction has been performed. Conversely, the univariate partial fraction decomposition can be performed within the finite field setup to simplify the reconstruction of the rational coefficients.
-The algorithm makes use of the knowledge of the denominators to construct an ansatz for the decomposition into partial fractions with respect to the chosen variable. The coefficients of this ansatz can then be solved for and reconstructed within the finite field workflow. In order to reconstruct the coefficients of the partial fraction decomposition we perform a further matching of the factors from the ansatz~\eqref{eq:coeffansatz}. The determined factors are then removed, and the remaining functions are reconstructed with \texttt{FiniteFlow}'s reconstruction algorithm (see Sec.~\ref{sec:ratfuncs}). The degrees of the rational coefficients which remain to be reconstructed are shown in the fifth column of Tables~\ref{tab:degrees2g2bH} and~\ref{tab:degrees2q2bH}. Note that after partial fractioning the denominators are not entirely determined from the ansatz~\eqref{eq:coeffansatz}. The univariate partial fraction decomposition in fact introduces spurious factors in the denominators. The latter could be determined as well, but we refrain from doing so as it does not reduce the complexity of the reconstruction.
+The algorithm makes use of the knowledge of the denominators to construct an ansatz for the decomposition into partial fractions with respect to the chosen variable. The coefficients of this ansatz can then be solved for and reconstructed within the finite field workflow. In order to reconstruct the coefficients of the partial fraction decomposition we perform a further matching of the factors from the ansatz~\ref{eq:coeffansatz}. The determined factors are then removed, and the remaining functions are reconstructed with \texttt{FiniteFlow}'s reconstruction algorithm (see Sec.~\ref{sec:ratfuncs}). The degrees of the rational coefficients which remain to be reconstructed are shown in the fifth column of Tables~\ref{tab:degrees2g2bH} and~\ref{tab:degrees2q2bH}. Note that after partial fractioning the denominators are not entirely determined from the ansatz~\ref{eq:coeffansatz}. The univariate partial fraction decomposition in fact introduces spurious factors in the denominators. The latter could be determined as well, but we refrain from doing so as it does not reduce the complexity of the reconstruction.
 
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[t!]
@@ -832,7 +830,7 @@ $F^{(2),n_f^2}$ & $++++$ & 12/8  & 9/7   & 0/0 & 3 \\
                 & $++--$ & 12/20 & 8/16  & 8/0 & 242 \\
 \hline
 \end{tabularx}
-\caption{\label{tab:degrees2g2bH} Maximum numerator/denominator polynomial degrees of the finite remainder coefficients $r_i(x)$ in Eq.~\eqref{eq:finrem} 
+\caption{\label{tab:degrees2g2bH} Maximum numerator/denominator polynomial degrees of the finite remainder coefficients $r_i(x)$ in Eq.~\ref{eq:finrem} 
 at each stage of our reconstruction steps, together with the number of sample points needed for the analytic reconstruction in the $\bbggh$ subprocess, for the various closed fermion loop contributions.}
 \end{table}
 
@@ -852,7 +850,7 @@ $F^{(2),n_f^2}$ & $+++-$ & 6/11  & 6/11  & 3/0 & 22 \\
 %                & $++-+$ & 10/12 & 10/12 & 3/0 & 22 \\
 \hline
 \end{tabularx}
-\caption{\label{tab:degrees2q2bH} Maximum numerator/denominator polynomial degrees of the finite remainder coefficients $r_i(x)$ in Eq.~\eqref{eq:finrem} 
+\caption{\label{tab:degrees2q2bH} Maximum numerator/denominator polynomial degrees of the finite remainder coefficients $r_i(x)$ in Eq.~\ref{eq:finrem} 
 at each stage of our reconstruction steps, together with the number of sample points needed for the analytic reconstruction in the $\bbqqh$ subprocess, for the various closed fermion loop contributions.}
 \end{table}
 
@@ -865,11 +863,11 @@ The relation with the $+++-$ configuration constitutes a non-trivial check of ou
 \section[A Custom Basis for the Finite Remainders]{A Custom Basis of Special Functions for the Finite Remainders}
 
 \label{Hbbsec:Hbasis}
-The one and two-loop finite remainders are expressed as combinations of rational coefficients --~functions of the MTs~\eqref{eq:mtvardefs}~-- and monomials of square roots and elements of the MI function basis $\{f^{(w)}_i\}$. The latter were classified in Ref.~\cite{Badger:2021nhg} so as to span the cyclic permutations of the planar five-particle integrals with one massive off-shell leg up to two loops. The function space of the finite remainders is however simpler than that of the integrals and of the amplitudes. This becomes particularly clear when we express the special functions in terms of CIIs~\cite{Chen:1977oja}, which we have introduced in Sec.~\ref{sec:canonicalform} in the context of MIs. Here, we will write the special functions as:
+The one and two-loop finite remainders are expressed as combinations of rational coefficients --~functions of the MTs~\ref{eq:mtvardefs}~-- and monomials of square roots and elements of the MI function basis $\{f^{(w)}_i\}$. The latter were classified in Ref.~\cite{Badger:2021nhg} so as to span the cyclic permutations of the planar five-particle integrals with one massive off-shell leg up to two loops. The function space of the finite remainders is however simpler than that of the integrals and of the amplitudes. This becomes particularly clear when we express the special functions in terms of CIIs~\cite{Chen:1977oja}, which we have introduced in Sec.~\ref{sec:canonicalform} in the context of MIs. Here, we will write the special functions as:
 \begin{align} \label{eq:Chen}
 \left[W_{i_1}, \ldots, W_{i_n}  \right]_{s_0} (s) = \int_0^1 dt \, \frac{d \log W_{i_n}\left(\gamma(t)\right)}{dt} \left[W_{i_1}, \ldots, W_{i_{n-1}}  \right]_{s_0} \left(\gamma(t)\right) \,,
 \end{align}
-where $\left\{ d\log W_i \right\}$ are the logarithmic integration kernels and their arguments $W_i$ are algebraic functions of the external kinematics. The cumulative dependence on external kinematics is denoted by $s$, while $s_0$ is an arbitrary reference point, and $\gamma$ is an arbitrary contour in the phase space going from $\gamma(0)=s_0$ to $\gamma(1)=s$. The iteration starts with $[]_{s_0}(s) := 1$. The transcendental weight of the special functions is then trivially given by $n$ in Eq.~\eqref{eq:Chen}. At two loops up to order $\eps^0$ iterated integrals with transcendental weight up to four are required. In our case, the integration kernels are given by the letters $\{W_i\}$ of the alphabet defined in Ref.~\cite{Abreu:2020jxa}. 
+where $\left\{ d\log W_i \right\}$ are the logarithmic integration kernels and their arguments $W_i$ are algebraic functions of the external kinematics. The cumulative dependence on external kinematics is denoted by $s$, while $s_0$ is an arbitrary reference point, and $\gamma$ is an arbitrary contour in the phase space going from $\gamma(0)=s_0$ to $\gamma(1)=s$. The iteration starts with $[]_{s_0}(s) := 1$. The transcendental weight of the special functions is then trivially given by $n$ in Eq.~\ref{eq:Chen}. At two loops up to order $\eps^0$ iterated integrals with transcendental weight up to four are required. In our case, the integration kernels are given by the letters $\{W_i\}$ of the alphabet defined in Ref.~\cite{Abreu:2020jxa}. 
 Although they may look rather abstract, CIIs offer several important advantages. Most importantly, they implement automatically all the functional relations which would otherwise be hidden in a representation in terms of other types of functions, such as GPLs. This property was exploited in Ref.~\cite{Badger:2021nhg} to construct the MI function basis $\{f^{(w)}_i\}$. 
 The expression in terms of CIIs of the MI basis functions can be obtained through their definition in terms of MI components given in Ref.~\cite{Badger:2021nhg}, and the canonical DEs for the MIs given in Ref.~\cite{Abreu:2020jxa} (see Ref.~\cite{Badger:2021nhg} for a thorough discussion). Another important benefit of using iterated integrals is that their analytic structure is beautifully manifest: an iterated integral may have singularities or branch points only where one of its letters vanishes or diverges. Expressing the special functions in the finite remainders in terms of CIIs therefore highlights their analytic structure. Indeed this unveils important simplifications: certain letters, which are present in the expressions of the MIs, are absent in the finite remainders. In other words, certain branch cuts of the integrals drop out of the finite remainders. We observe the same pattern noticed for the $Wb\bar{b}$ amplitudes in Ref.~\cite{Badger:2021nhg}. One letter, $W_{49} = \text{tr}_5$, is present in the bare amplitudes but absent in the finite remainders. This pattern of the pseudo-scalar invariant $\text{tr}_5$ has already been observed explicitly in many massless two-loop five-particle finite remainders~\cite{Badger:2018enw,Abreu:2018zmy,Abreu:2018aqd,Chicherin:2018yne,Chicherin:2019xeg,Abreu:2019rpt,Abreu:2019odu,Badger:2019djh,Caron-Huot:2020vlo,Abreu:2020cwb,Chawdhry:2020for}, and is linked to an underlying cluster algebra structure~\cite{Chicherin:2020umh}. Since this letter is invariant under permutations of the external massless legs (up to a sign), we expect it to drop out from the finite remainders in general.
 In addition, six letters, $W_i$ with $i=16,17,27,28,29,30$, are present in the two-loop integrals but drop out already at the level of the bare amplitudes (truncated at order $\eps^0$ at two loops). This set of letters is not closed under all permutations of the external massless legs, and the generality of their absence is therefore less clear.
@@ -885,7 +883,7 @@ The method of the generalised power series expansion can be applied to the finit
 \begin{align} \label{eq:example_h}
 h^{(w)}_{i}(s) = \sum_{I = (i_1,\ldots,i_w)} c_I^{(i)} \, \left[W_{i_1}, \ldots, W_{i_w}  \right]_{s_0} (s) \, ,
 \end{align}
-for some rational constant coefficients $c_I^{(i)}$\footnote{In general the iterated integrals in Eq.~\eqref{eq:example_h} include also transcendental constants, such as $\pi$ and $\zeta(3)$. We neglect them here to simplify the presentation.}.
+for some rational constant coefficients $c_I^{(i)}$\footnote{In general the iterated integrals in Eq.~\ref{eq:example_h} include also transcendental constants, such as $\pi$ and $\zeta(3)$. We neglect them here to simplify the presentation.}.
 Moreover, the purity condition Eq.~\ref{eq:purecondition} follows straightforwardly from the differential of CIIs:
 \begin{align} \label{eq:ChenDerivative}
 d \left[W_{i_1}, \ldots, W_{i_n}  \right]_{s_0} (s) = d \log W_{i_n}(s) \, \left[W_{i_1}, \ldots, W_{i_{n-1}}  \right]_{s_0} (s) \,,
@@ -895,9 +893,9 @@ The purity of the functions basis therefore implies that the vector of all weigh
 \begin{align} \label{eq:dhw}
 d \vec{h}^{(w)} = \left( \sum_{j} b_j^{(w)} \, d\log W_j  \right) \,  \vec{h}^{(w-1)} \,,
 \end{align}
-for $w>1$, where $b_j$ are constant rational matrices. The matrices $b_j^{(w)}$ can be determined easily from the iterated integral expression of the functions through Eq.~\eqref{eq:ChenDerivative}. 
+for $w>1$, where $b_j$ are constant rational matrices. The matrices $b_j^{(w)}$ can be determined easily from the iterated integral expression of the functions through Eq.~\ref{eq:ChenDerivative}. 
 In general the derivatives of the weight-$w$ functions may involve weight-$(w-1)$ functions which are not needed to express the finite remainders. These must be included in the basis as well, in order to be able to write down the DEs. So, strictly speaking, the finite remainder function basis $\{h^{(w)}_i\}$ contains all linearly independent functions which appear in the finite remainders and in the derivatives of the basis itself.
-The DEs~\eqref{eq:dhw} for all weights can be put together in one system by defining the vector of all the functions in the finite remainder basis as:
+The DEs~\ref{eq:dhw} for all weights can be put together in one system by defining the vector of all the functions in the finite remainder basis as:
 \begin{align}
 \vec{h} = \left( \eps^4 \vec{h}^{(4)}\,, \eps^3 \vec{h}^{(3)}\,, \eps^2 \vec{h}^{(2)} \,, \eps \vec{h}^{(1)} \,, 1 \right)^T \,,
 \end{align}
@@ -905,15 +903,15 @@ where $\eps$ is an auxiliary parameter with transcendental weight $-1$, so that 
 \begin{align} \label{eq:dh}
 d \vec{h} = \eps \, \left(  \sum_{i=1}^{49} a_i \, d\log W_i \right) \, \vec{h} \,,
 \end{align}
-where the constant matrices $a_i$ are strictly upper block triangular, with the blocks given by the matrices $b_i^{(w)}$ in the DEs~\eqref{eq:dhw} for the various weights. This is in direct analogy to the canonical DEs for the MIs we saw in Eq.~\ref{eq:dlogform}.
-However, this system of DEs for the vector $\vec{h}$ is much simpler than that for the MIs. First, it contains only the letters which do appear in the finite remainders, i.e. $a_i = 0$ for $i=16,17,27,28,29,30,49$. Second, while the DEs for the MIs contain information about all the orders in $\eps$, the system~\eqref{eq:dh} encodes only those orders which are relevant for the finite remainders, i.e. up to $\eps^4$. The constant matrices $a_i$ are in fact nilpotent with degree $5$, i.e. $(a_i)^5 = 0$ for any $i$, which follows from their strictly upper triangular form. The process-dependent basis identified for the finite remainder has a practical advantage since we find a significant reduction in the number of weight four functions which dominate the total evaluation times. In this case we find a reduction from 113 to 23 weight four functions which gives a rough measure of the improvement.
+where the constant matrices $a_i$ are strictly upper block triangular, with the blocks given by the matrices $b_i^{(w)}$ in the DEs~\ref{eq:dhw} for the various weights. This is in direct analogy to the canonical DEs for the MIs we saw in Eq.~\ref{eq:dlogform}.
+However, this system of DEs for the vector $\vec{h}$ is much simpler than that for the MIs. First, it contains only the letters which do appear in the finite remainders, i.e. $a_i = 0$ for $i=16,17,27,28,29,30,49$. Second, while the DEs for the MIs contain information about all the orders in $\eps$, the system~\ref{eq:dh} encodes only those orders which are relevant for the finite remainders, i.e. up to $\eps^4$. The constant matrices $a_i$ are in fact nilpotent with degree $5$, i.e. $(a_i)^5 = 0$ for any $i$, which follows from their strictly upper triangular form. The process-dependent basis identified for the finite remainder has a practical advantage since we find a significant reduction in the number of weight four functions which dominate the total evaluation times. In this case we find a reduction from 113 to 23 weight four functions which gives a rough measure of the improvement.
 
 The MI function basis defined in Ref.~\cite{Badger:2021nhg} and thus also the finite remainder function basis constructed here cover the planar integral families only in those permutations of the external massless legs which preserve the cyclic ordering of the particles. The other permutations cannot be expressed analytically in terms of functions of these bases only. Nonetheless, thanks to our numerical evaluation strategy, we can obtain the values of any permutation $\sigma$ of the finite remainder basis functions by evaluating them in the standard orientation at permuted points:
 \begin{align}
 \sigma \left[ h^{(w)}_i \right] (X) =  h^{(w)}_i \left[\sigma\left(X\right)\right] \,.
 \end{align}
 This is possible because 
-we evaluate the finite remainder function basis $\{h^{(w)}_i\}$ by solving the system of DEs~\eqref{eq:dh} numerically with the method of the generalised power series expansions~\cite{Francesco:2019yqt}. For this purpose we make use of the public \texttt{Mathematica} package \texttt{DiffExp}~\cite{Hidding:2020ytt}. In order to compute the boundary values, i.e. the values of the functions at some base point, we relate the finite remainder functions to MI components using the definition of the MI function basis~\cite{Badger:2021nhg}, and evaluate the latter through their analytic expression in terms of GPLs~\cite{2011arXiv1105.2076G,Remiddi:1999ew,2001math......3059G} provided in Refs.~\cite{Papadopoulos:2015jft,Syrrakos:2020kba,Canko:2020ylt}. We evaluate the GPLs numerically with the \texttt{C++} library \texttt{GiNaC}~\cite{Vollinga:2004sn}. We provide in ancillary files the DEs~\eqref{eq:dh} and the values of the finite remainder functions at six points, one for each $2\to 3$ scattering region with massless incoming particles, with (at least) $200$-digit accuracy. Using this information, the generalised power series expansion method allows to evaluate the finite remainder function basis reliably anywhere in the phase space. This technique in fact handles the analytic continuation automatically, so that also the permutations required to evaluate the complete finite remainders starting from the partial ones --~as shown in Eqs.~\eqref{eq:colourdecomposition} for the amplitudes~-- as well as the other helicity configurations can be performed numerically straightforwardly. We assessed the reliability of this evaluation approach by checking the convergence of the finite remainders close to the spurious poles of the rational coefficients. We discuss this and other checks in the next section.
+we evaluate the finite remainder function basis $\{h^{(w)}_i\}$ by solving the system of DEs~\ref{eq:dh} numerically with the method of the generalised power series expansions~\cite{Francesco:2019yqt}. For this purpose we make use of the public \texttt{Mathematica} package \texttt{DiffExp}~\cite{Hidding:2020ytt}. In order to compute the boundary values, i.e. the values of the functions at some base point, we relate the finite remainder functions to MI components using the definition of the MI function basis~\cite{Badger:2021nhg}, and evaluate the latter through their analytic expression in terms of GPLs~\cite{2011arXiv1105.2076G,Remiddi:1999ew,2001math......3059G} provided in Refs.~\cite{Papadopoulos:2015jft,Syrrakos:2020kba,Canko:2020ylt}. We evaluate the GPLs numerically with the \texttt{C++} library \texttt{GiNaC}~\cite{Vollinga:2004sn}. We provide in ancillary files the DEs~\ref{eq:dh} and the values of the finite remainder functions at six points, one for each $2\to 3$ scattering region with massless incoming particles, with (at least) $200$-digit accuracy. Using this information, the generalised power series expansion method allows to evaluate the finite remainder function basis reliably anywhere in the phase space. This technique in fact handles the analytic continuation automatically, so that also the permutations required to evaluate the complete finite remainders starting from the partial ones --~as shown in Eqs.~\ref{eq:colourdecomposition} for the amplitudes~-- as well as the other helicity configurations can be performed numerically straightforwardly. We assessed the reliability of this evaluation approach by checking the convergence of the finite remainders close to the spurious poles of the rational coefficients. We discuss this and other checks in the next section.
 
 
 \section{Further Validation}
@@ -936,7 +934,7 @@ The squared matrix element computation uses the Conventional Dimensional Regular
 
 The analytic expressions of the one- and two-loop finite remainders have been derived with the renormalisation scale $\mu$ set to $\mu  = 1$. 
 The dependence of the finite remainders on the renormalisation scale can be determined by restoring the $\mu$ dependence of the strong and Yukawa couplings ($\alpha_s \rightarrow \alpha_s \mu^{2\eps}$, 
-$y_b \rightarrow y_b \mu^{\eps}$), and by replacing $(-s_{ij})^{-\eps} \rightarrow (-\mu^2/s_{ij})^\eps$ in the $I_1$ operators defined in Eqs.~\eqref{eq:I1bbqqh}~--~\eqref{eq:I1bbggh}, which enter the pole terms in Eqs.~\eqref{eq:poles1L}~--~\eqref{eq:poles2L}. In order to capture the scale dependence of the finite remainders we define the difference:
+$y_b \rightarrow y_b \mu^{\eps}$), and by replacing $(-s_{ij})^{-\eps} \rightarrow (-\mu^2/s_{ij})^\eps$ in the $I_1$ operators defined in Eqs.~\ref{eq:I1bbqqh}~--~\ref{eq:I1bbggh}, which enter the pole terms in Eqs.~\ref{eq:poles1L}~--~\ref{eq:poles2L}. In order to capture the scale dependence of the finite remainders we define the difference:
 \begin{equation}
 \delta F^{(L),i}(\mu^2) = F^{(L),i}(\mu^2) - F^{(L),i}(\mu^2 = 1) \,,
 \end{equation}
@@ -999,7 +997,7 @@ Permuting the special functions is however non-trivial, and may in general requi
 \begin{align}
 \left(\sigma \circ \vec{h} \right) (\{p_i\}) = \vec{h} ( \{p_{\sigma(i)}\} )\, ,
 \end{align}
-where $\sigma$ denotes the permutation $(12345)\to(21435)$ of the external particles, and $\{p_i\}$ denotes the dependence on the external momenta. In order to check the relations~\eqref{eq:relations} analytically, we need to express the permuted functions $(\sigma \circ \vec{h} )$ in terms of the ones in the standard orientation, $\vec{h}$. To perform this operation in an algorithmic and robust way we resort to the system of DEs~\eqref{eq:dh} satisfied by the finite remainder function basis. The permuted functions in fact satisfy the permuted DEs:
+where $\sigma$ denotes the permutation $(12345)\to(21435)$ of the external particles, and $\{p_i\}$ denotes the dependence on the external momenta. In order to check the relations~\ref{eq:relations} analytically, we need to express the permuted functions $(\sigma \circ \vec{h} )$ in terms of the ones in the standard orientation, $\vec{h}$. To perform this operation in an algorithmic and robust way we resort to the system of DEs~\ref{eq:dh} satisfied by the finite remainder function basis. The permuted functions in fact satisfy the permuted DEs:
 \begin{align}
 d ( \sigma \circ \vec{h} ) = \eps \left[ \sum_{i=1}^{49} a_i \, d \log\left(\sigma \circ W_i \right) \right] \,  ( \sigma \circ \vec{h} ) \,.
 \end{align}
@@ -1007,7 +1005,7 @@ Permuting the letters $W_i$ is however trivial, as they only involve algebraic f
 \begin{align} \label{eq:dsigmah}
 d ( \sigma \circ \vec{h} ) = \eps \left( \sum_{i=1}^{49} a_i' \, d \log W_i  \right) \,  ( \sigma \circ \vec{h} ) \,.
 \end{align}
-The latter can straightforwardly be solved in terms of CIIs (see Ref.~\cite{Badger:2021nhg} for a thorough discussion). In order to be comparable with the solution of the system~\eqref{eq:dh}, which defines the finite remainder function basis $\vec{h}$, we must make sure that the same boundary point is used when solving both systems of DEs in terms of iterated integrals. The boundary values can be obtained numerically with arbitrary precision using the expressions in terms of GPLs of Refs.~\cite{Papadopoulos:2015jft,Syrrakos:2020kba,Canko:2020ylt}, as discussed at the end of Section~\ref{Hbbsec:Hbasis}. Using the DEs~\eqref{eq:dsigmah} we can then express the permuted finite remainder special functions in terms of the ones in the original orientation through CIIs. Once that is done, the right-hand sides of Eqs.~\eqref{eq:relations} are written in terms of the same special function basis as the left-hand sides. Since the rational coefficients can be permuted analytically trivially, it is immediate to verify that our results for the one- and two-loop finite remainders satisfy the relations given by Eqs.~\eqref{eq:relations}.
+The latter can straightforwardly be solved in terms of CIIs (see Ref.~\cite{Badger:2021nhg} for a thorough discussion). In order to be comparable with the solution of the system~\ref{eq:dh}, which defines the finite remainder function basis $\vec{h}$, we must make sure that the same boundary point is used when solving both systems of DEs in terms of iterated integrals. The boundary values can be obtained numerically with arbitrary precision using the expressions in terms of GPLs of Refs.~\cite{Papadopoulos:2015jft,Syrrakos:2020kba,Canko:2020ylt}, as discussed at the end of Section~\ref{Hbbsec:Hbasis}. Using the DEs~\ref{eq:dsigmah} we can then express the permuted finite remainder special functions in terms of the ones in the original orientation through CIIs. Once that is done, the right-hand sides of Eqs.~\ref{eq:relations} are written in terms of the same special function basis as the left-hand sides. Since the rational coefficients can be permuted analytically trivially, it is immediate to verify that our results for the one- and two-loop finite remainders satisfy the relations given by Eqs.~\ref{eq:relations}.
 
 
 
@@ -1015,7 +1013,7 @@ The latter can straightforwardly be solved in terms of CIIs (see Ref.~\cite{Badg
 \subsection{Convergence near spurious poles}
 
 The rational coefficients in the finite remainders contain spurious poles, namely poles which are not related to the physical singularities of the amplitudes. When evaluating at a phase space point infinitesimally close to a spurious pole --~but at a finite distance from all physical poles~-- the rational coefficients diverge, whereas the finite remainders must stay finite. This can only occur through large numerical cancellations involving both the rational coefficients and the special functions. Verifying this behaviour constitutes both a check on our analytic expressions for the finite remainders and a stress test of our evaluation approach for the special functions. We do it as follows.
-First, we use the factor matching strategy discussed in Section~\ref{Hbbsec:reduction} with the ansatz given by Eq.~\eqref{eq:coeffansatz}. This allows us to determine that the spurious poles in the rational coefficients are associated with the following factors in their denominators:
+First, we use the factor matching strategy discussed in Section~\ref{Hbbsec:reduction} with the ansatz given by Eq.~\ref{eq:coeffansatz}. This allows us to determine that the spurious poles in the rational coefficients are associated with the following factors in their denominators:
 \begin{equation} \label{eq:spurious}
 \begin{aligned}
 \left\{P_k \right\} = \biggl\{ & \langle i | p_{5}| j] \,, \text{tr}_5 \,, \Delta_1 \,, \Delta_2 \,, s_{15} - s_{23} \,, s_{15} - s_{24} \,, s_{13} - s_{25} \,, s_{14} - s_{25} \,, s_{15} - s_{34} \,,  \\
@@ -1024,12 +1022,12 @@ First, we use the factor matching strategy discussed in Section~\ref{Hbbsec:redu
  s_{25} (s_{24}+s_{34}) - p_5^2  s_{34} \biggr\} \,,
 \end{aligned}
 \end{equation}
-where $i,j \in \{1,2,3,4\}$ with $i\neq j$. Next, for each factor $P_k$ in Eq.~\eqref{eq:spurious}, we construct a one-dimensional slice of the phase space, parametrised by a parameter $\delta$, such that $P_k = \delta$. As we probe the small-$\delta$ region all the other factors in Eq.~\eqref{eq:spurious} and the factors associated with the physical singularities --~$(p_i+p_j)^2$ and $p_i \cdot p_j$~-- must stay finite, i.e. they must neither diverge nor vanish. This ensures that we target a specific spurious pole, rather than multiple at once, and that we stay away from the physical singularities. Finally, we evaluate the finite remainders on these slices for increasingly small values of $\delta$. We evaluate the special functions with $64$-digit accuracy. Our analytic expressions for the finite remainders exhibit the expected behaviour: as $\delta$ approaches zero the rational coefficients diverge, while the finite remainders converge to finite values. 
+where $i,j \in \{1,2,3,4\}$ with $i\neq j$. Next, for each factor $P_k$ in Eq.~\ref{eq:spurious}, we construct a one-dimensional slice of the phase space, parametrised by a parameter $\delta$, such that $P_k = \delta$. As we probe the small-$\delta$ region all the other factors in Eq.~\ref{eq:spurious} and the factors associated with the physical singularities --~$(p_i+p_j)^2$ and $p_i \cdot p_j$~-- must stay finite, i.e. they must neither diverge nor vanish. This ensures that we target a specific spurious pole, rather than multiple at once, and that we stay away from the physical singularities. Finally, we evaluate the finite remainders on these slices for increasingly small values of $\delta$. We evaluate the special functions with $64$-digit accuracy. Our analytic expressions for the finite remainders exhibit the expected behaviour: as $\delta$ approaches zero the rational coefficients diverge, while the finite remainders converge to finite values. 
 
 
 \section{Results}
 \label{Hbbsec:results}
-The analytic expressions of the independent one- and two-loop finite remainders are provided in the ancillary files of Ref~\cite{Badger:2021ega}. We present them as combinations of linearly independent rational coefficients and monomials of the square roots and of the finite remainder basis functions. The rational coefficients are expressed in terms of the MTs defined in Eq.~\eqref{eq:mtvardefs}. We evaluate the finite remainder function basis numerically by integrating the DEs~\eqref{eq:dh} with the method of the generalised series expansions. We also provide \texttt{Mathematica} scripts which illustrate how to evaluate the finite remainders interfered with the tree-level amplitudes for all the partonic channels contributing to the process $pp\to b\bar{b} H$, which we label as:
+The analytic expressions of the independent one- and two-loop finite remainders are provided in the ancillary files of Ref~\cite{Badger:2021ega}. We present them as combinations of linearly independent rational coefficients and monomials of the square roots and of the finite remainder basis functions. The rational coefficients are expressed in terms of the MTs defined in Eq.~\ref{eq:mtvardefs}. We evaluate the finite remainder function basis numerically by integrating the DEs~\ref{eq:dh} with the method of the generalised series expansions. We also provide \texttt{Mathematica} scripts which illustrate how to evaluate the finite remainders interfered with the tree-level amplitudes for all the partonic channels contributing to the process $pp\to b\bar{b} H$, which we label as:
 \begin{equation}
 \label{eq:channel_definition}
 \begin{aligned}
@@ -1136,7 +1134,7 @@ $\hat A^{(2),n_f^2}$ & $++++$ & $ 0$ & $ 0$ & $ 0$ & $ 0.00334 - 0.000519914 i$ 
                      & $++--$ & $ 0$ & $ 0$ & $ 0$ & $ 0.262368 - 0.0923434 i$ & $ 0.532893 + 1.66516 i $ \\
 \hline
 \end{tabularx}
-\caption{\label{tab:benchmark2g2bHbare} Numerical values of the bare $\bbggh$ partial amplitudes at two loops (normalised to the tree-level amplitude) at the kinematic point in Eq.~\eqref{eq:physicalpointHbbMomTwistor} for the four independent helicity configurations and the various closed fermion loops contributions.}
+\caption{\label{tab:benchmark2g2bHbare} Numerical values of the bare $\bbggh$ partial amplitudes at two loops (normalised to the tree-level amplitude) at the kinematic point in Eq.~\ref{eq:physicalpointHbbMomTwistor} for the four independent helicity configurations and the various closed fermion loops contributions.}
 \end{table}
 
 \begin{table}[t!]
@@ -1155,7 +1153,7 @@ $\hat A^{(2),n_f^2}$ & $+++-$ & $ 0$ & $ 0$ & $ 0.444444$ & $ -0.969043 + 2.7925
                      & $++-+$ & $ 0$ & $ 0$ & $ 0.444444$ & $ -0.969043 + 2.79253 i$ & $ -6.91677 - 6.08868 i $ \\
 \hline
 \end{tabularx}
-\caption{\label{tab:benchmark2q2bHbare} Numerical values of the bare $\bbqqh$ partial amplitudes at two loops (normalised to the tree level amplitude) at the kinematic point in Eq.~\eqref{eq:physicalpointHbbMomTwistor} for the four independent helicity configurations and the various closed fermion loops contributions. }
+\caption{\label{tab:benchmark2q2bHbare} Numerical values of the bare $\bbqqh$ partial amplitudes at two loops (normalised to the tree level amplitude) at the kinematic point in Eq.~\ref{eq:physicalpointHbbMomTwistor} for the four independent helicity configurations and the various closed fermion loops contributions. }
 \end{table}
 
 
@@ -1174,10 +1172,10 @@ $\mathbf{bb}/\mathbf{\bar{b}\bar{b}}$  & $ -53679.25708$ & $ 1988.662899$ & $ 89
 \hline
 \end{tabularx}
 \caption{\label{tab:benchmarkfinremsq2L} Numerical values of the two-loop reduced squared finite
-remainders $\mathcal{H}^{(2)}$ defined in Eqs.~\eqref{eq:channel_gg}-\eqref{eq:channel_BB} at the kinematic point in Eq.~\eqref{eq:physicalpointHbbMomTwistor} for the various closed fermion loops contributions and the scattering channels specified in Eq.~\eqref{eq:channel_definition}.}
+remainders $\mathcal{H}^{(2)}$ defined in Eqs.~\ref{eq:channel_gg}-\ref{eq:channel_BB} at the kinematic point in Eq.~\ref{eq:physicalpointHbbMomTwistor} for the various closed fermion loops contributions and the scattering channels specified in Eq.~\ref{eq:channel_definition}.}
 \end{table}
 
-To demonstrate the suitability of our results for phenomenological applications we present the evaluation of the finite remainders interfered with the tree-level amplitudes on a univariate slice of the phase space. For this purpose we parametrise the momenta for the scattering processes~\eqref{eq:subprocesses} in terms of angles and energy fractions of the final state as:
+To demonstrate the suitability of our results for phenomenological applications we present the evaluation of the finite remainders interfered with the tree-level amplitudes on a univariate slice of the phase space. For this purpose we parametrise the momenta for the scattering processes~\ref{eq:subprocesses} in terms of angles and energy fractions of the final state as:
 \begin{equation} \label{eq:parametrisation}
 \begin{aligned}
 & p_1 = \frac{y_1 \sqrt{s}}{2} \left( 1\,, 1\,, 0\,, 0 \right) \,, \quad \\
@@ -1197,9 +1195,9 @@ s = 1 \,, \quad \qquad \phi = \frac{1}{10} \,, \quad \qquad y_1 = \frac{3}{5} \,
 \end{align}
 The reality of the angle $\theta$ then restricts the free parameter $y_2$ to the interval $y_2 \in
 [\frac{39}{100},\frac{39}{40}]$. In order to evaluate the finite remainders for all the processes
-shown in Eq.~\eqref{eq:channel_definition} we need to compute the finite remainder special functions
+shown in Eq.~\ref{eq:channel_definition} we need to compute the finite remainder special functions
 at $16$ permutations of each phase space point, as can be seen explicitly in
-Eqs.\eqref{eq:channel_gg}~-~\eqref{eq:channel_BB}. We do this by integrating the system of canonical DEs~\eqref{eq:dh} with \texttt{DiffExp} using rationalised values of the invariants. The need for rational values arises from the fact that the series expansion method, implemented in \texttt{DiffExp}, is very sensitive to the values of input parameters as it requires high precision throughout the intermediate steps. For each permutation of each point we compute the ``distance'' (technically speaking, the number of segments into which the integration contour is divided by \texttt{DiffExp}) from the six reference points provided in the ancillary files, and choose the closest one as initial point for the integration. In Figure~\ref{fig:plots} we plot the values of the one- and two-loop reduced squared finite remainders for all the processes defined in Eq.~\eqref{eq:channel_definition}, as functions of the parameter $y_2$.
+Eqs.\ref{eq:channel_gg}~-~\ref{eq:channel_BB}. We do this by integrating the system of canonical DEs~\ref{eq:dh} with \texttt{DiffExp} using rationalised values of the invariants. The need for rational values arises from the fact that the series expansion method, implemented in \texttt{DiffExp}, is very sensitive to the values of input parameters as it requires high precision throughout the intermediate steps. For each permutation of each point we compute the ``distance'' (technically speaking, the number of segments into which the integration contour is divided by \texttt{DiffExp}) from the six reference points provided in the ancillary files, and choose the closest one as initial point for the integration. In Figure~\ref{fig:plots} we plot the values of the one- and two-loop reduced squared finite remainders for all the processes defined in Eq.~\ref{eq:channel_definition}, as functions of the parameter $y_2$.
 
 \begin{figure}[t!]
 \centering
@@ -1240,11 +1238,11 @@ Eqs.\eqref{eq:channel_gg}~-~\eqref{eq:channel_BB}. We do this by integrating the
     \caption{$\mathbf{\bar{b}b}$}
 \end{subfigure}
 \caption[short]{Reduced squared finite remainders $\mathcal{H}^{(L)}$ at tree level, one and two loops evaluated on the one-dimensional phase space slice defined 
-in Eq.~\eqref{eq:parametrisation}, as functions of the variable $y_2$, for the channels defined in Eq.~\eqref{eq:channel_definition}.}
+in Eq.~\ref{eq:parametrisation}, as functions of the variable $y_2$, for the channels defined in Eq.~\ref{eq:channel_definition}.}
 \label{fig:plots}
 \end{figure}
 
-We stress that the purpose of the plots in Figure~\ref{fig:plots} is merely to demonstrate that our results for the finite remainders can be evaluated reliably in the physical scattering region. Nothing can be inferred about the convergence of the perturbative expansion at the cross section level. One interesting feature which can be appreciated from Figure~\ref{fig:plots} is the appearance of a loop-induced peak in the finite remainders for the channel $\mathbf{\bar{q}q}$. The peak is absent at tree level for the same channel and up to two loops for $\mathbf{q\bar{q}}$. The latter channel is related to $\mathbf{\bar{q}q}$ by the exchange $3\leftrightarrow 4$ of the external particles. We observe that the peak stems from the values of the finite remainder function basis, while the rational coefficients are not enhanced in that region. In order to pinpoint more precisely the origin of this phenomenon, we construct the explicit analytic expressions for some of the special functions which exhibit the peak, starting from their iterated integral expression obtained by solving the system of canonical DEs~\eqref{eq:dh}. For instance:
+We stress that the purpose of the plots in Figure~\ref{fig:plots} is merely to demonstrate that our results for the finite remainders can be evaluated reliably in the physical scattering region. Nothing can be inferred about the convergence of the perturbative expansion at the cross section level. One interesting feature which can be appreciated from Figure~\ref{fig:plots} is the appearance of a loop-induced peak in the finite remainders for the channel $\mathbf{\bar{q}q}$. The peak is absent at tree level for the same channel and up to two loops for $\mathbf{q\bar{q}}$. The latter channel is related to $\mathbf{\bar{q}q}$ by the exchange $3\leftrightarrow 4$ of the external particles. We observe that the peak stems from the values of the finite remainder function basis, while the rational coefficients are not enhanced in that region. In order to pinpoint more precisely the origin of this phenomenon, we construct the explicit analytic expressions for some of the special functions which exhibit the peak, starting from their iterated integral expression obtained by solving the system of canonical DEs~\ref{eq:dh}. For instance:
 \begin{equation} \label{eq:h24}
 \begin{aligned}
 h^{(2)}_4 & = 2 \, \text{Li}_2\left( 1 - \frac{s_{15}}{p_5^2} \right) + 2 \, \text{Li}_2 \left( 1- \frac{s_{23}}{s_{15}}\right) -\frac{\pi^2}{4} + \frac{1}{2} \log^2\left( p_5^2 \right) + \frac{1}{2}\log^2\left( -s_{45}\right) + 2 \log^2\left( s_{15}\right) \\
@@ -1254,15 +1252,15 @@ h^{(2)}_4 & = 2 \, \text{Li}_2\left( 1 - \frac{s_{15}}{p_5^2} \right) + 2 \, \te
  & +i \pi \biggl[ \log\left( p_5^2\right) - 2 \log\left( s_{15}\right) + 2 \log\left( s_{15} - s_{23}\right) - \log\left( -s_{23}\right) - \log\left( -s_{14}\right)\biggr] \,,
 \end{aligned}
 \end{equation}
-which is well defined in the $s_{34}$ physical scattering region. The analytic continuation to any other region is obtained by adding a small positive imaginary part to each $s_{ij}$ and to $p_5^2$. We checked that the values of $h^{(2)}_4$ as given by Eq.~\eqref{eq:h24} (and of its permutations) agree with the evaluation through the generalised series expansion. The function $h^{(2)}_4$ exhibits no peak on the phase space sliced defined by Eqs.~\eqref{eq:parametrisation} and~\eqref{eq:fixparameters}, and indeed the finite remainder for the channel $\mathbf{q\bar{q}}$ does not exhibit such feature. The permutation $3\leftrightarrow 4$ of $h^{(2)}_4$, which contributes to $\mathbf{\bar{q}q}$, is instead peaked around $y_2 \approx 0.5566$. Thanks to the analytic expression~\eqref{eq:h24} we can identify the source of the peak in the logarithms of $s_{24}$, which originate from the $\log (-s_{23})$'s in Eq.~\eqref{eq:h24} upon swapping $3\leftrightarrow 4$. Indeed the tree-level amplitude for the subprocess $0\to\bar{b} b \bar{q} q H$, given by Eq.~\eqref{eq:A0bbqqh}, is manifestly free of $1/\langle 23 \rangle$ poles. The $0\to\bar{b} b \bar{q} q H$ diagrams with a $1/s_{23}$ pole would come with a loop and so end up scaling as $\log(-s_{23})$. While $\log(-s_{23})$ is not enhanced on the one-dimensional slice under consideration, its $3\leftrightarrow4$ permutation $\log(-s_{24})$, which contributes to $\mathcal{H}^{(L)}_{\mathbf{\bar{q}q}}$ for $L=1,2$, is peaked at $y_2 \approx 0.5566$, where $s_{24}$ reaches its minimum absolute value on the slice. 
+which is well defined in the $s_{34}$ physical scattering region. The analytic continuation to any other region is obtained by adding a small positive imaginary part to each $s_{ij}$ and to $p_5^2$. We checked that the values of $h^{(2)}_4$ as given by Eq.~\ref{eq:h24} (and of its permutations) agree with the evaluation through the generalised series expansion. The function $h^{(2)}_4$ exhibits no peak on the phase space sliced defined by Eqs.~\ref{eq:parametrisation} and~\ref{eq:fixparameters}, and indeed the finite remainder for the channel $\mathbf{q\bar{q}}$ does not exhibit such feature. The permutation $3\leftrightarrow 4$ of $h^{(2)}_4$, which contributes to $\mathbf{\bar{q}q}$, is instead peaked around $y_2 \approx 0.5566$. Thanks to the analytic expression~\ref{eq:h24} we can identify the source of the peak in the logarithms of $s_{24}$, which originate from the $\log (-s_{23})$'s in Eq.~\ref{eq:h24} upon swapping $3\leftrightarrow 4$. Indeed the tree-level amplitude for the subprocess $0\to\bar{b} b \bar{q} q H$, given by Eq.~\ref{eq:A0bbqqh}, is manifestly free of $1/\langle 23 \rangle$ poles. The $0\to\bar{b} b \bar{q} q H$ diagrams with a $1/s_{23}$ pole would come with a loop and so end up scaling as $\log(-s_{23})$. While $\log(-s_{23})$ is not enhanced on the one-dimensional slice under consideration, its $3\leftrightarrow4$ permutation $\log(-s_{24})$, which contributes to $\mathcal{H}^{(L)}_{\mathbf{\bar{q}q}}$ for $L=1,2$, is peaked at $y_2 \approx 0.5566$, where $s_{24}$ reaches its minimum absolute value on the slice. 
 The tree-level amplitudes for the channel $\mathbf{gg}$ instead do have poles at $s_{23}=0$, which
-can be seen explicitly in Eqs.~\eqref{eq:A0bbggh}. Since $\mathcal{H}^{(L)}_{\mathbf{gg}}$ with
+can be seen explicitly in Eqs.~\ref{eq:A0bbggh}. Since $\mathcal{H}^{(L)}_{\mathbf{gg}}$ with
 $L=1,2$ receive contributions from the partial finite remainders in both the standard orientation
-and with the swap $3\leftrightarrow4$, as shown in Eq.~\eqref{eq:channel_gg}, their plot in Figure~\ref{fig:plots}~(a) exhibits this peak already at tree level. The same holds for the $\mathbf{bb}$ and $\mathbf{\bar{b}b}$ channels, as can be seen in Figures~\ref{fig:plots}~(d) and~(f). 
+and with the swap $3\leftrightarrow4$, as shown in Eq.~\ref{eq:channel_gg}, their plot in Figure~\ref{fig:plots}~(a) exhibits this peak already at tree level. The same holds for the $\mathbf{bb}$ and $\mathbf{\bar{b}b}$ channels, as can be seen in Figures~\ref{fig:plots}~(d) and~(f). 
 
 Also in Figure~\ref{fig:plots}, we observe divergences at $y_2 = 39/100$ for the processes
 $\mathbf{b\bar{b}}$ and $\mathbf{\bar{b}b}$. This divergence is associated with the propagator
-$1/s_{12}$, which can only appear in processes with two pairs of bottom quarks. In Eqs.~\eqref{eq:channel_bB}~and~\eqref{eq:channel_Bb} 
+$1/s_{12}$, which can only appear in processes with two pairs of bottom quarks. In Eqs.~\ref{eq:channel_bB}~and~\ref{eq:channel_Bb} 
 we can see the $q\bar{q}$ fermion pairs can appear
 with momenta $p_1$ and $p_2$, which is not the case for other processes. All the other features of the plots
 in Figure~\ref{fig:plots} can be similarly understood in terms of tree-level propagators going on shell.
