@@ -246,7 +246,7 @@ In both cases, due to the colour decomposition of the full amplitudes given by E
 
 To obtain the analytic form of the two-loop QCD helicity amplitudes, we employ the framework thoroughly discussed in Chapter~\ref{sec:tools}. Here, we provide a brief outline of it and supply process-specific details. We start by generating a set of Feynman diagrams contributing to 
 both the $\bbggh$ and $\bbqqh$ processes using \texttt{QGRAF}~\cite{Nogueira:1991ex}, and perform diagram filtering, topology identification and colour decomposition using a collection of in-house \texttt{Mathematica} and \texttt{Form}~\cite{Kuipers:2012rf,Ruijl:2017dtg} scripts.  In the leading colour approximation, there are 749 (264) Feynman diagrams contributing to the two-loop $\bbggh$ ($\bbqqh$) QCD amplitudes, including all closed fermion loop contributions. The numerators of the loop amplitudes are then computed for each independent helicity configuration, and the spinor-helicity manipulations are carried out using the library \texttt{Spinney}~\cite{Cullen:2010jv}. The helicity dependent loop numerators are written in terms of spinor products ($\spA{i}{j}$, $\spB{i}{j}$), scalar products ($p_i\cdot p_j$, $k_i\cdot k_j$, $k_i \cdot p_j$) and spinor strings ($\spAB{i}{k_i}{j}$, $\spAB{i}{p_5}{j}$, $\spAA{i}{k_i p_5}{j}$, $\spBB{i}{k_i p_5}{j}$), where $p_i$'s and $k_i$'s are the external and loop momenta, respectively. The numerators are therefore expressed as linear combinations of monomials of loop-momentum dependent objects that multiply coefficients which depend only on the external kinematics.
-As explained in Section~\ref{sec:MTs}, the coefficients are built from spinor products and strings (free of $k_i$) which not only are not independent, but are also incompatible with finite field arithmetic.
+As explained in Section~\ref{sec:MTs}, the coefficients are built from spinor products and strings (free of $k_i$) which not only are not independent, but also incompatible with finite field arithmetic.
 
 Both of these problems are solved by using MTs. To obtain a configuration for the off-shell five-particle configuration we begin with a massless configuration for six particles. While the exact parametrisation is not important, the form presented in Ref.~\cite{Badger:2016uuq} is a useful starting point. We can think of the massless process as the result of the off-shell leg decaying into a pair of massless particles. There are $3n-10 = 8$ independent variables in the six-particle process, but we can reduce the degrees of freedom by choosing one of the decay direction to be collinear with one of the other massless legs in the five-point kinematics. Since the MTs are associated with complex momenta, we consider the angle and square bracket spinors products to be independent. We can write this explicitly as follows: the six massless momenta $q_i^\mu$ are related to the off-shell five particle momenta $p_i^\mu$ by:
 \begin{align}
@@ -258,17 +258,14 @@ Both of these problems are solved by using MTs. To obtain a configuration for th
 \end{align}
 We impose the constraints $\spA{q_2}{q_6} = 0 $ and $\spB{q_2}{q_6} = 0$ to reduce the independent variables to 6. 
 We then apply a transformation onto the following choice of variables:
-\begin{equation}
-\begin{aligned}
-  x_1 &= s_{12}, \\
-  x_2 &= -\frac{\trp(1234)}{s_{12}s_{34}}, \\
-  x_3 &= \frac{\trp(134152)}{s_{13}\trp{(1452)}}, \\
-  x_4 &= \frac{s_{23}}{s_{12}}, \\
-  x_5 &= -\frac{\trm(1(2+3)(1+5)523)}{s_{23}\trm(1523)}, \\
-  x_6 &= \frac{s_{45}}{s_{12}},
-\end{aligned}
-\label{eq:mtvardefs}
-\end{equation}
+\begin{align} \label{eq:mtvardefs}
+  x_1 &= s_{12}, \nonumber \\
+  x_2 &= -\frac{\trp(1234)}{s_{12}s_{34}}, \nonumber \\
+  x_3 &= \frac{\trp(134152)}{s_{13}\trp{(1452)}}, \nonumber \\
+  x_4 &= \frac{s_{23}}{s_{12}},  \\
+  x_5 &= -\frac{\trm(1(2+3)(1+5)523)}{s_{23}\trm(1523)}, \nonumber \\
+  x_6 &= \frac{s_{45}}{s_{12}}, \nonumber
+\end{align}
 where $\tr_{\pm}(ij \cdots kl) = \frac{1}{2} \tr((1\pm\gamma_5)\slashed{p}_i\slashed{p}_j \cdots\slashed{p}_k\slashed{p}_l)$.
 Some features of this parametrisation are particularly convenient. For example, the only dimensionful 
 quantity is $x_1$, and $\tr_5$ is rational. However, such a choice does break some symmetries
@@ -962,7 +959,6 @@ while for the $\bbqqh$ finite remainders, it is given by:
 \delta F^{(2),n_f^2}(\mu^2) & = - \frac{4}{3} F^{(1),n_f}(1) \log(\mu^2) + \frac{4}{9} A^{(0)} \log^2(\mu^2) \, . 
 \end{align}
 \endgroup
-
 To check that our results for the finite remainders have the correct scale dependence, we evaluate them at two kinematic points related by a rescaling by some positive factor $a$:
 \begin{equation}
 \begin{aligned}
