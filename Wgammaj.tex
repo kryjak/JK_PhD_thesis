@@ -2,24 +2,22 @@
 \begin{document}
 \chapter{Two-loop helicity amplitudes for $\Wgj$ production} \label{sec:Wyj}
 In this chapter, we present the computation of the two-loop leading colour QCD helicity amplitudes for yet another process, $pp\to W(\to l\nu)\gamma+j$. We implement a complete reduction of the amplitudes, including the leptonic decay of the $W$-boson,
-using finite field arithmetic, and extract the analytic finite remainders using a recently
+using finite field arithmetic and extract the analytic finite remainders using a recently
 identified basis of special functions. Simplified analytic expressions are obtained after considering
 permutations of a rational kinematic parametrisation and multivariate partial fractioning. We
 demonstrate efficient numerical evaluation of the two-loop colour and helicity summed finite
 remainders for physical kinematics, and hence the suitability for phenomenological applications.
 
-This chapter largely follows the structure of the previous one. In Section~\ref{wyjsec:amp} we describe the structure of the
+This chapter largely follows the structure of the previous one. In Section~\ref{wyjsec:amp}, we describe the structure of the
 amplitudes for $pp\to W\gamma j$ up to two loops, paying particular attention to the description of
-the decay of the $W$ boson. In Section~\ref{wyjsec:reduction} we describe the finite field reduction
-setup used to extract the finite remainders, and propose an approach to simplify dramatically the analytic expressions of the latter based on a systematic search of a better parameterisation of the kinematics in terms of MTs. We describe a number of validation tests that have been
-performed on our results in Section~\ref{wyjsec:validation}, and then present some numerical results for the
+the decay of the $W$ boson. In Section~\ref{wyjsec:reduction}, we describe the finite field reduction
+setup used to extract the finite remainders, and propose an approach to simplify the analytic expressions of the latter based on a systematic search for a better parametrisation of the kinematics in terms of MTs. We describe a number of validation tests on our results in Section~\ref{wyjsec:validation}, and then present numerical results for the
 colour and helicity summed finite remainders in Section~\ref{wyjsec:results}. We
-present our summary and outlook for the future in Section~\ref{wyjsec:conclusions}. Complete analytic expressions associated with the work in this chapter are provided in the ancillary files of Ref.~\cite{Badger:2022ncb}.
+give our summary and outlook for the future in Section~\ref{wyjsec:conclusions}. Complete analytic expressions associated with the work in this chapter are provided in the ancillary files of Ref.~\cite{Badger:2022ncb}.
 
 \section{Introduction \label{wyjsec:intro}}
 Processes with a pair of electroweak vector bosons $(W^\pm,Z,\gamma)$ offer a wide
-range of observables which can test electroweak couplings and probe the Higgs sector of the Standard
-Model. In particular, the production of a $W$ boson in association with a photon ($pp\to W\gamma$) is
+range of observables which can test electroweak couplings and probe the Higgs sector of the SM. In particular, the production of a $W$ boson in association with a photon ($pp\to W\gamma$) is
 one of the processes observed at the LHC with relatively large cross sections where clean
 signatures can be acquired when the $W$ boson decays leptonically. $W\gamma$ production enables direct access to
 the $WW\gamma$ triple gauge boson coupling, which can be modified in certain new physics scenarios.
@@ -29,8 +27,8 @@ anomalous $WW\gamma$ coupling.
 Predictions for $pp\to W^\pm\gamma$ are available through to next-to-next-to-leading order (NNLO) in
 QCD~\cite{Gehrmann:2011ab,Grazzini:2015nwa,Campbell:2021mlr} and NLO in the electroweak (EW)
 coupling~\cite{Accomando:2005ra,Denner:2014bna} as well as combined NNLO in QCD and NLO in EW~\cite{Grazzini:2019jkl}. The colourless final state makes the process well
-suited for the $q_T$~\cite{Catani:2007vq} and $N$-jettiness~\cite{Boughezal:2015aha,Gaunt:2015pea} subtraction methods as implemented within the \textsc{Matrix}~\cite{Grazzini:2017mhc}
-and \textsc{MCFM}~\cite{Boughezal:2016wmq} Monte Carlo event generators, respectively. Resummed predictions including parton shower
+suited for the $q_T$~\cite{Catani:2007vq} and $N$-jettiness~\cite{Boughezal:2015aha,Gaunt:2015pea} subtraction methods as implemented within the \texttt{Matrix}~\cite{Grazzini:2017mhc}
+and \texttt{MCFM}~\cite{Boughezal:2016wmq} Monte Carlo event generators, respectively. Resummed predictions including parton shower
 effects are now available~\cite{Cridge:2021hfr}, making this one of the most precisely known
 theoretical predictions. Experimental measurements are constantly improving and provide rich
 opportunities for precision SM tests~\cite{CMS:2021foa,CMS:2021cxr}.
@@ -71,7 +69,7 @@ in the leading colour approximation:
 0 \rightarrow \gamma(p_1,h_1)+\bar{u}(p_2,h_2)+g(p_3,h_3)+d(p_4,h_4)+\nu_e(p_5,h_5)+e^+(p_6,h_6) \,.
 \end{equation}
 %
-For simplicity we denote this process as $\wpaj$ production henceforth. Sample two-loop Feynman diagrams contributing at leading colour are shown in Figures~\ref{Wyjfig:diag2L} and~\ref{Wyjfig:diag2Lnf}.
+For simplicity, we henceforth denote this process as $\wpaj$ production. Sample two-loop Feynman diagrams contributing at leading colour are shown in Figs.~\ref{Wyjfig:diag2L} and~\ref{Wyjfig:diag2Lnf}.
 %
 \begin{figure}[t!]
   \begin{center}
@@ -84,7 +82,7 @@ For simplicity we denote this process as $\wpaj$ production henceforth. Sample t
   \begin{center}
     \includegraphics[width=0.72\textwidth]{wgamjet_2L_nf}
   \end{center}
-  \caption{Sample two-loop Feynman diagrams for $\wpaj$ production containing closed fermion loop. $A_{6,q}^{(2),n_f}$ vanishes due to Furry's theorem.}
+  \caption{Sample two-loop Feynman diagrams for $\wpaj$ production containing a closed fermion loop. $A_{6,q}^{(2),n_f}$ vanishes due to Furry's theorem.}
   \label{Wyjfig:diag2Lnf}
 \end{figure}
 %
@@ -95,7 +93,7 @@ The colour decomposition of the $\wpaj$ $L$-loop amplitude is given by:
 \end{equation}
 where  $n= m_\eps  \alpha_s/(4\pi)$, $\alpha_s = g_s^2/(4\pi)$, $m_\eps=i (4\pi)^{\eps} \mathrm{e}^{-\eps\gamma_E}$, $\eps = (4-d)/2$ is the dimensional regulator, and
 $T^a$ are the generators of $SU(N_c)$ in the fundamental representation, normalised according to $\tr(T^a T^b) = \delta^{ab}$.
-We denote by $e$, $g_W$ and $g_s$ the electron charge, the weak and the strong coupling constants, respectively.
+We denote by $e$, $g_W$ and $g_s$ the electron charge, the weak and strong coupling constants, respectively.
 The $\wpaj$ amplitude can be further decomposed according to the source of photon radiation:
 \begin{align}
 \label{Wyjeq:ampdecomposition}
@@ -108,7 +106,7 @@ where $s_{ij}=(p_i+p_j)^2$ and $s_{ijk}=(p_i+p_j+p_k)^2$, $Q_u$ and $Q_d$ are th
 \begin{equation}
 P(s) = \frac{1}{s-M_W^2+i M_W \Gamma_W} \,,
 \end{equation}
-is the denominator factor of $W$ boson propagator. 
+is the denominator factor of the $W$ boson propagator. 
 $M_W$ and $\Gamma_W$ are the mass and decay width of the $W$ boson, respectively.
 The sub-amplitudes $A_{6,i}^{(L)}$ in Eq.~\ref{Wyjeq:ampdecomposition} are categorised as follows:
 \begin{itemize}
@@ -133,7 +131,7 @@ A_{6}^{(L)} & =   Q_u \bigg[ A^{(L)}_{6,u} + \frac{1}{s_{156}-s_{56}} A^{(L)}_{6
 \label{Wyjeq:gaugeinvariantamps}
 \end{align}
 such that the combinations of sub-amplitudes in the square brackets and $A^{(L)}_{6,q}$ are the gauge invariant pieces.
-We further decompose the sub-amplitudes according to their closed fermion loop contributions. At leading colour we have:
+We further decompose the sub-amplitudes according to their closed fermion loop contributions. At leading colour, we have:
 \begin{align} \label{Wyjeq:NFdecomposition}
 \begin{aligned}
 & A^{(1)}_{6,i} = N_c A^{(1),1}_{6,i} \,, \\
@@ -145,7 +143,7 @@ where  $i=u,d,W,e$, and $n_f$ is the number of massless quark flavours running i
 We note that $A^{(L)}_{6,q}$ vanishes at tree level and one loop, while at two loops it includes non-planar contributions, and thus will not be considered in this work.
 
 The coupling of the $W$ boson to fermions involves vector and axial-vector ($V-A$) vertices in the form of $\gamma^\mu(1-\gamma_5)/2$.
-The massless fermion pairs that are coupled to the $W$ boson are connected to the external states and the $V-A$ coupling fixes the helicity of the fermion pairs. Therefore we only need to take into account the vector coupling of the $W$ boson to fermions when computing the helicity amplitudes. The contributing helicity configurations are:
+The massless fermion pairs that are coupled to the $W$ boson are connected to the external states and the $V-A$ coupling fixes the helicity of the fermion pairs. Therefore, we only need to take into account the vector coupling of the $W$ boson to fermions when computing the helicity amplitudes. The contributing helicity configurations are:
 \begin{equation}
 A_{6}^{(L)}(1^\pm_\gamma,2^+_{\bar{u}},3^\pm_g,4^-_d,5^-_{\nu},6^+_{\bar{e}}) \,. 
 \nn
@@ -200,8 +198,7 @@ H^{(2)}(\eps) &= \frac{1}{16\eps} \bigg\lbrace \big(2\gamma_1^q+\gamma_1^g\big)
                                                 - \gamma_1^\cusp \left(\frac{\gamma_0^q}{2}+\frac{\gamma_0^g}{4}\right)
                                                 + \frac{\pi^2}{8} \beta_0 \gamma_0^\cusp \left(C_F+\frac{C_A}{2}\right) \bigg\rbrace \,.
 \end{align}
-The $\beta$ function coefficients and anomalous dimensions are tabulated in Appendix~\ref{app:renormconstants}. We stress that the pole terms in Eqs.~\ref{Wyjeq:poles1L} and~\ref{Wyjeq:poles2L} include both the ultraviolet and infrared singularities.
-We then extract the $L$-loop partial finite remainder by subtracting the poles $P_6^{(L)}$ from the unrenormalised partial amplitude $A_6^{(L)}$ and sending $\eps$ to $0$:
+The $\beta$-function coefficients and anomalous dimensions are tabulated in Appendix~\ref{app:renormconstants}. We stress that the pole terms in Eqs.~\ref{Wyjeq:poles1L} and~\ref{Wyjeq:poles2L} include both the UV and IR singularities. We then extract the $L$-loop partial finite remainder by subtracting the poles $P_6^{(L)}$ from the unrenormalised partial amplitude $A_6^{(L)}$ and sending $\eps$ to $0$:
 \begin{equation}
 F_6^{(L)} = \lim_{\eps \to 0} \left[ A_6^{(L)} - P_6^{(L)} A_6^{(0)} \right]\,.
 \label{Wyjeq:finiteremainder}
@@ -237,39 +234,39 @@ A_{6}^{(L)}(1^{-h_1}_\gamma,2^{+}_{\bar{d}},3^{-h_3}_g,4^{-}_u,5^{-}_{e},6^{+}_{
 
 \section{Amplitude Computation}
 \label{wyjsec:reduction}
-In this section we describe the computation of the two-loop $\wpaj$ amplitudes in the leading colour approximation.
-To derive their analytic form, we closely (albeit with certain departures) follow the framework adopted throughout Chapter~\ref{sec:Hbb} and described extensively in Chapter~\ref{sec:tools}. Crucially, apart from the techniques presented so far, in this work we also make use of the the four-dimensional projector method~\cite{Peraro:2019cjj,Peraro:2020sfm}, which we will introduce in later sections.
+In this section, we describe the computation of the two-loop $\wpaj$ amplitudes in the leading colour approximation.
+To derive their analytic form, we closely (albeit with certain departures) follow the framework adopted throughout Chapter~\ref{sec:Hbb} and described extensively in Chapter~\ref{sec:tools}. Crucially, apart from the techniques presented so far, in this work we also make use of the the four-dimensional projector method~\cite{Peraro:2019cjj,Peraro:2020sfm}, which we will introduce in soon.
 %That combines Feynman diagram input, the four-dimensional projector method~\cite{Peraro:2019cjj,Peraro:2020sfm}, integration-by-parts (IBP) reduction~\cite{Tkachov:1981wb,Chetyrkin:1981qh,Laporta:2000dsw},
 %Laurent expansion onto a basis of special function, numerical evaluations over finite fields, and analytic reconstruction techniques~\cite{vonManteuffel:2014ixa,Peraro:2016wsq,Peraro:2019svx}.
 
 Instead of computing the loop amplitudes using the full six-particle kinematics, 
 we detach the leptonic decay of the $W$ boson from the amplitude and only compute the $W$-production amplitudes.
-For the $A^{(L)}_{6,u}$ and $A^{(L)}_{6,d}$ sub-amplitudes the $W$-production amplitude is a five-point amplitude with an off-shell leg (denoted by  $A_{5,u/d}^{^{(L)}\mu}$),
-while for the $A^{(L)}_{6,W}$ and $A^{(L)}_{6,e}$ sub-amplitudes the $W$-production amplitude is a four-point amplitude with an off-shell leg (denoted by $A_{4}^{{(L)}\mu}$):
+For the $A^{(L)}_{6,u}$ and $A^{(L)}_{6,d}$ sub-amplitudes, the $W$-production amplitude is a five-point amplitude with an off-shell leg (denoted by  $A_{5,u/d}^{^{(L)}\mu}$),
+while for the $A^{(L)}_{6,W}$ and $A^{(L)}_{6,e}$ sub-amplitudes, the $W$-production amplitude is a four-point amplitude with an off-shell leg (denoted by $A_{4}^{{(L)}\mu}$):
 \begin{align}
 & A^{(L)}_{6,u/d}(p_1,p_2,p_3,p_4,p_5,p_6) = A_{5,u/d}^{(L)\mu}(p_1,p_2,p_3,p_4,p_W) \; L_{A,\mu}(p_5,p_6) \,, \label{Wyjeq:decayA}\\
 & A^{(L)}_{6,e/W}(p_1,p_2,p_3,p_4,p_5,p_6) = A_{4}^{(L)\mu}(p_2,p_3,p_4,\tilde{p}_W) \; L^{e/W}_{B,\mu}(p_1,p_5,p_6) \,, \label{Wyjeq:decayB}
 \end{align}
-where $p_W = p_5 + p_6$ and  $\tilde{p}_W = p_1 + p_5 + p_6$,
-$L^{e}_{B,\mu}$ ($L^{W}_{B,\mu}$) is the decay current where the photon is emitted from the positron ($W$ boson), while $L_{A,\mu}$ is simply the $W^+ \to \nu e^+$ decay current.
+where $p_W = p_5 + p_6$ and  $\tilde{p}_W = p_1 + p_5 + p_6$;
+$L^{e}_{B,\mu}$ ($L^{W}_{B,\mu}$) is the decay current with the photon emitted from the positron ($W$ boson), and $L_{A,\mu}$ is simply the $W^+ \to \nu e^+$ decay current.
 The QCD corrections affect only the $W$-production amplitudes $A_{5,u/d}^{(L)\mu}$ and $A_{4}^{(L)\mu}$. We adopt the same decomposition for the finite remainders:
 \begin{align}
 & F^{(L)}_{6,u/d}(p_1,p_2,p_3,p_4,p_5,p_6) = F_{5,u/d}^{(L)\mu}(p_1,p_2,p_3,p_4,p_W) \; L_{A,\mu}(p_5,p_6) \,, \label{Wyjeq:decayAF}\\
 & F^{(L)}_{6,e/W}(p_1,p_2,p_3,p_4,p_5,p_6) = F_{4}^{(L)\mu}(p_2,p_3,p_4,\tilde{p}_W) \; L^{e/W}_{B,\mu}(p_1,p_5,p_6) \,. \label{Wyjeq:decayBF}
 \end{align}
 
-In the next subsections we discuss the computation of $F_{5,d}^{(L)\mu}$ and $F_{4}^{(L)\mu}$. We recall that $F_{6,u}^{(L)}$ can be obtained from $F_{6,d}^{(L)}$ through the amplitude-level relation given in Eq.~\ref{Wyjeq:ufromd}, which we rewrite here for the finite remainders:
+In the next subsections, we discuss the computation of $F_{5,d}^{(L)\mu}$ and $F_{4}^{(L)\mu}$. We recall that $F_{6,u}^{(L)}$ can be obtained from $F_{6,d}^{(L)}$ through the amplitude-level relation given in Eq.~\ref{Wyjeq:ufromd}, which we rewrite here for the finite remainders:
 \begin{equation}  \label{Wyjeq:ufromdF}
 F_{6,u}^{(L)}(1^{h_1}_\gamma,2^+_{\bar{u}},3^{h_3}_g,4^-_d,5^{h_5}_{\nu},6^{h_6}_{\bar{e}})
 =
 F_{6,d}^{(L)}(1^{h_1}_\gamma,4^-_{\bar{u}},3^{h_3}_g,2^+_d,5^{h_5}_{\nu},6^{h_6}_{\bar{e}}) \,.
 \end{equation}
-We begin by describing how we parameterise the kinematics. Next, we discuss how we decompose the $W$-production five- and four-particle amplitudes, in Sections~\ref{wyjsec:A5amplitude} and~\ref{wyjsec:B4amplitude} respectively, using the projector method. Section~\ref{wyjsec:Reconstruction} is devoted to the finite-field setup which we use to reconstruct the analytic expressions of the finite remainders as linear combinations of rational coefficients and monomials of independent special functions. In Section~\ref{wyjsec:Simplification} we present a strategy which allows us to simplify dramatically the expressions of the rational coefficients. Finally, in Section~\ref{wyjsec:Permutations} we discuss how our analytic results for the minimal set of independent finite remainders can be used efficiently to evaluate numerically all the contributions to the squared finite remainder summed over helicity and colour.
+We begin by describing how we parameterise the kinematics. Next, we discuss how we decompose the $W$-production five- and four-particle amplitudes, in Sections~\ref{wyjsec:A5amplitude} and~\ref{wyjsec:B4amplitude} respectively, using the projector method. Section~\ref{wyjsec:Reconstruction} is devoted to the finite-field setup which we use to reconstruct the analytic expressions of the finite remainders as linear combinations of rational coefficients and monomials of independent special functions. In Section~\ref{wyjsec:Simplification}, we present a strategy which allows us to simplify dramatically the expressions of the coefficients. Finally, in Section~\ref{wyjsec:Permutations} we discuss how our analytic results for the minimal set of independent finite remainders can be used efficiently to evaluate numerically all the contributions to the squared finite remainder summed over helicity and colour.
 
 
 \subsection{Kinematics}
 \label{wyjsec:Kinematics}
-In this section we describe the kinematics of the process $\wpaj$ in Eq.~\ref{Wyjeq:wpaj}.
+In this section, we describe the kinematics of the process $\wpaj$ in Eq.~\ref{Wyjeq:wpaj}.
 All the external momenta $p_i^{\mu}$ are massless:
 \begin{equation}
 p_i^2 = 0 \quad \forall \, i = 1,\ldots,6 \,,
@@ -283,7 +280,7 @@ We consider the external momenta $p_i^{\mu}$ to live in a four-dimensional Minko
 \vec{s}_{6} = \left\{ s_{12},s_{23},s_{34},s_{45},s_{56},s_{16},s_{123},s_{234}\right\} \,.
 \label{Wyjeq:sijs6pt}
 \end{equation}
-We also use the pseudo-scalar invariant $\tr_5$ defined in Eq.~\ref{eq:tr5}, which captures the parity information of the phase space. 
+We also use the pseudo-scalar invariant $\tr_5$, defined in Eq.~\ref{eq:tr5}, which captures the parity information of the phase space. 
 
 Only a subset of these invariants are relevant for the computation of $A_{5,d}^{(L)\mu}$, which has five-point kinematics with an external massive particle. We choose the following independent five-point scalar invariants for computing $A_{5,d}^{(L)\mu}$:
 \begin{equation}
@@ -292,9 +289,9 @@ Only a subset of these invariants are relevant for the computation of $A_{5,d}^{
 \end{equation}
 together with $\tr_5$. Even fewer variables are relevant for $A_{4}^{(L)\mu}$. Since the latter has four-point kinematics with an external massive particle, no pseudo-scalar invariant can be formed and it is thus independent of $\tr_5$. Moreover, it depends only on three of the scalar invariants in $\vec{s}_5$. Nonetheless, we view it as a function of $\vec{s}_{5}$ in order to have a homogeneous setup.
 
-When attaching the $W$-boson decay currents ($L_{A,\mu}$ and $L^{e/W}_{B,\mu}$) to $A_{5,d}^{(L)\mu}$ and $A_{4}^{(L)\mu}$ (see Eqs.~\ref{Wyjeq:decayA}~and~\ref{Wyjeq:decayB}) we find it convenient to describe the massless six-point kinematics using a parameterisation based on MTs.
+When attaching the $W$-boson decay currents ($L_{A,\mu}$ and $L^{e/W}_{B,\mu}$) to $A_{5,d}^{(L)\mu}$ and $A_{4}^{(L)\mu}$ (see Eqs.~\ref{Wyjeq:decayA}~and~\ref{Wyjeq:decayB}), we find it convenient to describe the massless six-point kinematics using a parametrisation based on MTs.
 %~\cite{Hodges:2009hk} (see e.g.\ Refs.~\cite{Badger:2013gxa,Badger:2016uuq} for a thorough discussion of MTs in this context). 
-We adopt the following parameterisation (see the discussion in Sec.~\ref{sec:MTs}):
+We adopt the following parametrisation (see the discussion in Section~\ref{sec:MTs}):
 \begin{align}
   Z =
   \begin{pmatrix}
@@ -363,14 +360,14 @@ The tensor coefficients $\alpha^{(L)}_{i,j}$ can be obtained by:
 \end{align}
 where:
 \begin{align}
-\Theta_{ij}  = \sum_{\text{pol}} T_{i}^\dagger T_{j} \,,
+\Theta_{ij}  = \sum_{\text{pol}} T_{i}^\dagger T_{j} \,.
 \end{align}
-and the polarisation-vector sum for the photon and gluon is:
-\begin{align}
-\sum_{\text{pol}} \vareps^*_\mu(p_i,q_i) \vareps_\nu(p_i,q_i) = -g_{\mu\nu} + \frac{ p_{i\mu}q_{i\nu} + q_{i\mu}p_{i\nu} }{p_i \cdot q_i}, \qquad i=1,3\,.
-\label{Wyjeq:polsum}
-\end{align}
-We further specify the helicity states of the spinors and polarisation vectors in the tensor structures $\{T_j\}_{j=1}^8$:
+%and the polarisation-vector sum for the photon and gluon is:
+%\begin{align}
+%\sum_{\text{pol}} \vareps^*_\mu(p_i,q_i) \vareps_\nu(p_i,q_i) = -g_{\mu\nu} + \frac{ p_{i\mu}q_{i\nu} + q_{i\mu}p_{i\nu} }{p_i \cdot q_i}, \qquad i=1,3\,.
+%\label{Wyjeq:polsum}
+%\end{align}
+The gluon and photon polarisation sums follow from Eq.~\ref{eq:completeness:bosons}. We also specify the helicity states of the spinors and polarisation vectors in the tensor structures $\{T_j\}_{j=1}^8$:
 \begin{align}
 T^{h_1 h_2 h_3 h_4}_{1} & = \bar{u}(p_4,h_4) \slashed{p}_{1} v(p_2,h_2) \; p_{2}\cdot \vareps(p_1,q_1,h_1) \; p_{2}\cdot\vareps(p_3,q_3,h_3) \,, \nn
 T^{h_1 h_2 h_3 h_4}_{2} & = \bar{u}(p_4,h_4) \slashed{p}_{1} v(p_2,h_2) \; p_{2}\cdot \vareps(p_1,q_1,h_1) \; p_{4}\cdot\vareps(p_3,q_3,h_3) \,, \nn
@@ -428,7 +425,7 @@ We note that it is possible to compute directly the contracted finite remainders
 \subsection{Structure of the four-particle $W$-production amplitudes}
 \label{wyjsec:B4amplitude}
 
-The four-particle $W$-production amplitude $A_{4}^{(L)\mu}$ has been computed in the context of $W+1j$ production at the LHC ($q\bar{q} \to Wg$)~\cite{Gehrmann:2011ab}, which is a crossing of the $e^+ e^- \to q\bar{q}g$ amplitude~\cite{Garland:2002ak}. In our case it is convenient to express $A_{4}^{(L)\mu}$ in terms of the same special function basis as $A_{5,d}^{(L)\mu}$. This guarantees a uniform combination of the different contributions to the full amplitude. We therefore re-derive the $A_{4}^{(L)\mu}$ amplitude using our computational framework. We decompose the $A_{4}^{(L)\mu}$ amplitude using the following tensor structures~\cite{Garland:2002ak}:
+The four-particle $W$-production amplitude $A_{4}^{(L)\mu}$ has been computed in the context of $W+1j$ production at the LHC ($q\bar{q} \to Wg$)~\cite{Gehrmann:2011ab}, which is a crossing of the $e^+ e^- \to q\bar{q}g$ amplitude~\cite{Garland:2002ak}. In our case, it is convenient to express $A_{4}^{(L)\mu}$ in terms of the same special function basis as $A_{5,d}^{(L)\mu}$. This guarantees a uniform combination of the different contributions to the full amplitude. We therefore re-derive the $A_{4}^{(L)\mu}$ amplitude using our computational framework. We decompose the $A_{4}^{(L)\mu}$ amplitude using the following tensor structures~\cite{Garland:2002ak}:
 \begin{equation}
 A_{4}^{(L)\mu}(p_2,p_3,p_4) = \sum_{i=1}^{7} b_i^{(L)} Y_{i}^\mu \,,
 \label{Wyjeq:B4decomposition}
@@ -466,10 +463,10 @@ where:
 \label{Wyjeq:B4Ldef}
 & \tilde{A}^{(L)}_{4,i} = \sum_{\text{pol}} Y^{\mu\dagger}_{i} A^{(L)}_{4 \, \mu} \,.
 \end{align}
-The gluon polarisation-vector sum follows from Eq.~\ref{Wyjeq:polsum}.
+The gluon polarisation sum follows from Eq.~\ref{eq:completeness:bosons}.
 We note that the tensor structures in Eq.~\ref{Wyjeq:4ptDecomposition} are different from the ones employed in Ref.~\cite{Garland:2002ak}.
 Here, we start from 12 tensor structures that are linearly independent in 4 dimensions~\cite{Peraro:2019cjj,Peraro:2020sfm} and reduce them to 7 by imposing Ward identities.
-Since $A^{(L)\mu}_4$ is a four-point amplitude, it does not depend on $\tr_5$. For the sake of uniformity, we express it in terms of the five-point Mandelstam invariants $\vec{s}_5$~\ref{Wyjeq:sijs5pt}. 
+Since $A^{(L)\mu}_4$ is a four-point amplitude, it does not depend on $\tr_5$. For the sake of uniformity, we express it in terms of the five-point Mandelstam invariants $\vec{s}_5$, Eq.~\ref{Wyjeq:sijs5pt}. 
 In contrast to the computation of $A^{(L)\mu}_{5,d}$, here we derive the contracted amplitudes $\tilde{A}^{(L)}_{4,i}$ directly without specifying the helicity states, since the four-point computation
 is relatively simple. The helicity states for the tensor structures $Y_\mu^{i}$ are specified when the decay currents are attached, following Eq.~\ref{Wyjeq:decayB}. Once again, we perform the same decomposition on the corresponding four-particle finite remainder $F^{(L)\mu}_{4}$. The resulting formula for the contracted finite remainders is:
 \begin{align} \label{Wyjeq:FB4Ldef}
@@ -479,25 +476,23 @@ is relatively simple. The helicity states for the tensor structures $Y_\mu^{i}$ 
 \label{wyjsec:Reconstruction}
 In this section, we present the analytic computation of the contracted five- and four-particle finite remainders, $\tilde{F}_{5,i}^{(L),h_1 h_2 h_3 h_4}$ Eq.~\ref{Wyjeq:FA5Ldef} and $\tilde{F}_{4,i}^{(L)}$ Eq.~\ref{Wyjeq:FB4Ldef} respectively, at one and two loops. We adopt the framework used in Chapter~\ref{sec:Hbb} based on Feynman diagrams and functional reconstruction from numerical sampling over finite fields. 
 
-In order to use the finite field technique, we need to have a rational parameterisation of the kinematics. However, just as in Chapter~\ref{sec:Hbb}, the pseudo-scalar invariant $\tr_5$ in the five-particle kinematics leads (through Eq.~\ref{eq:tr5squared}) to the appearance of the square root $\sqrt{\Delta}_5$. This issue may be dealt with in two ways: either parameterise the kinematics to explicitly rationalise $\sqrt{\Delta}_5$, or parameterise the finite remainders such that the dependence on $\tr_5$ is analytic and so it never enters the computations within finite fields. In the previous chapter, we followed a mixed approach. On one hand, $\tr_5$ which captures the parity information of the coefficients in the finite remainders was explicitly rationalised using MTs. On the other hand, $\tr_5$ which appears in the overall prefactors of canonical MIs was normalised away (meaning that we performed our reduction onto a basis of strictly scalar integrals) and restored at the end of the computation.
+In order to use the finite field technique, we need to have a rational parametrisation of the kinematics. However, just as in Chapter~\ref{sec:Hbb}, the pseudo-scalar invariant $\tr_5$ in the five-particle kinematics leads (through Eq.~\ref{eq:tr5squared}) to the appearance of the square root $\sqrt{\Delta}_5$. This issue may be dealt with in two ways: either parameterise the kinematics to explicitly rationalise $\sqrt{\Delta}_5$, or parameterise the finite remainders such that the dependence on $\tr_5$ is analytic and so it never enters the computations within finite fields. In the previous chapter, we followed a mixed approach. On one hand, $\tr_5$ which captures the parity information of the coefficients in the finite remainders was explicitly rationalised using MTs. On the other hand, $\tr_5$ which appears in the overall prefactors of the canonical MIs was normalised away and restored at the end of the computation.
 
-In contrast, here we do not rationalise $\tr_5$ using MTs. Instead, we organise our workflow such that the dependence on $\tr_5$ is fully analytic. Note that $\tr_5$ can enter the computation in three distinct ways. First, it can originate from the $\gamma_5$ in the axial coupling of the $W$ boson. As we discussed in Section~\ref{wyjsec:amp}, we set up the computation so that only the vector coupling of $W$ is used. Second, while it is still true that we need $\tr_5$ to capture the parity-odd part of the spinor-helicity expressions, it enters the contracted helicity finite remainder in Eq.~\ref{Wyjeq:FA5Ldef} only through the spanning basis elements $T_{j}^{h_1 h_2 h_3 h_4}$, which are known analytically and do not need to be reconstructed over finite fields. Finally, $\tr_5$ present in the definitions of the canonical MIs is normalised away just as in Chapter~\ref{sec:Hbb}\footnote{In addition to $\sqrt{\Delta}_5$, the overall prefactors of the canonical MIs contain other square roots, $\sqrt{\Delta_3^{(i)}}$ for $i=1,2,3$, which we also normalise away and restore afterwards~\cite{Abreu:2020jxa, Chicherin:2021dyp}. We have already seen two of them in Eq.~\ref{eq:squareroots}. Here, the third one is needed: $\sqrt{\Delta_3^{(3)}} = 2 \sqrt{(p_{13} \cdot p_{5})^2 - p_5^2 s_{13}}$.}. With this setup the only parts of the contracted finite remainders which need to be reconstructed are rational functions of the scalar invariants $\vec{s}_5$ only, and can thus be sampled numerically over finite fields.
+Here, we do not rationalise $\tr_5$ using MTs. Instead, we organise our workflow such that the dependence on $\tr_5$ is fully analytic. Note that $\tr_5$ can enter the computation in three distinct ways. First, it can originate from the $\gamma_5$ in the axial coupling of the $W$ boson. As discussed in Section~\ref{wyjsec:amp}, we set up the computation so that only the vector coupling of $W$ is used. Second, while it is still true that we need $\tr_5$ to capture the parity-odd part of the spinor-helicity expressions, it enters the contracted helicity finite remainder in Eq.~\ref{Wyjeq:FA5Ldef} only through the spanning basis elements $T_{j}^{h_1 h_2 h_3 h_4}$, which are known analytically and do not need to be reconstructed over finite fields. Finally, $\tr_5$ present in the definitions of the canonical MIs is normalised away just as in Chapter~\ref{sec:Hbb}\footnote{In addition to $\sqrt{\Delta}_5$, the overall prefactors of the canonical MIs contain other square roots, $\sqrt{\Delta_3^{(i)}}$ for $i=1,2,3$, which we also normalise away and restore afterwards~\cite{Abreu:2020jxa, Chicherin:2021dyp}. We have already seen two of them in Eq.~\ref{eq:squareroots}. Here, the third one is needed: $\sqrt{\Delta_3^{(3)}} = 2 \sqrt{(p_{13} \cdot p_{5})^2 - p_5^2 s_{13}}$.}. With this setup, the only parts of the contracted finite remainders which need to be reconstructed are rational functions of the scalar invariants $\vec{s}_5$ only, and can thus be sampled numerically over finite fields.
 
 The starting point of our computation is the expression of the $W$-production five- and
-four-particle amplitudes, $A_{5,d}^{(L)\mu}$ and $A_4^{(L)\mu}$, in terms of Feynman diagrams. Using \textsc{Qgraf}~\cite{Nogueira:1991ex}, we find 20 diagrams for $A_{5,d}^{(1),1 \mu}$, 231 diagrams for $A_{5,d}^{(2),1 \mu}$, 32 diagrams for $A_{5,d}^{(2),n_f \mu}$, 7 diagrams for $A_{4}^{(1),1 \mu}$, 74 diagrams for $A_{4}^{(2),1 \mu}$, and 13 diagrams for $A_{4}^{(2),n_f \mu}$. Clearly this signifies nothing more than that the number of diagrams is not a good measure of complexity. We want to obtain analytic, IBP-compatible expressions for the contracted amplitudes, $\tilde{A}_{5,i}^{(L),h_1 h_2 h_3 h_4}$ and $\tilde{A}_{4,i}^{(L)}$. For the four-point amplitude $A^{(L)\mu}_{4}$ we apply the projectors and sum over all polarisation states as in Eq.~\ref{Wyjeq:B4Ldef}. For the five-point amplitude $A^{(L)\mu}_{5,d}$ we contract by the external momenta and apply the projectors, as in Eqs.~\ref{Wyjeq:A5i} and~\ref{Wyjeq:Asumpol}, respectively. We then rewrite the resulting expressions in terms of scalar Feynman integrals belonging to the 15 master topologies shown in %defined in Refs.~\cite{Badger:2021nhg,Badger:2021ega}.
-Fig.~\ref{fig:Hbbmaxtopos}. We carry out all these operations analytically using \textsc{Mathematica} and \textsc{Form}~\cite{Kuipers:2012rf,Ruijl:2017dtg} scripts. As a result, we obtain analytic expressions for $\tilde{\mathcal{A}}_{5,i\, k}^{(L)}$~\ref{Wyjeq:Asumpol} and $\tilde{A}_{4,i}^{(L)}$~\ref{Wyjeq:B4Ldef} as linear combinations of scalar Feynman integrals with rational coefficients functions of $\vec{s}_5$. 
-In order to obtain the contracted helicity-amplitudes $\tilde{A}_{5,i}^{(L), h_1h_2h_3h_4}$ from the $\tilde{\mathcal{A}}_{5,i\, k}^{(L)}$'s we further need to multiply by the spanning basis elements $T^{h_1h_2h_3h_4}_{j}$ and by the inverse of $\Theta$, as shown in Eq.~\ref{Wyjeq:A5Ldef}. We do these operations (including the inversion of $\Theta$) numerically within the finite field framework.
+four-particle amplitudes, $A_{5,d}^{(L)\mu}$ and $A_4^{(L)\mu}$, in terms of Feynman diagrams. Using \texttt{QGRAF}~\cite{Nogueira:1991ex}, we find 20 diagrams for $A_{5,d}^{(1),1 \mu}$, 231 diagrams for $A_{5,d}^{(2),1 \mu}$, 32 diagrams for $A_{5,d}^{(2),n_f \mu}$, 7 diagrams for $A_{4}^{(1),1 \mu}$, 74 diagrams for $A_{4}^{(2),1 \mu}$, and 13 diagrams for $A_{4}^{(2),n_f \mu}$. We want to obtain analytic, IBP-compatible expressions for the contracted amplitudes, $\tilde{A}_{5,i}^{(L),h_1 h_2 h_3 h_4}$ and $\tilde{A}_{4,i}^{(L)}$. For the four-point amplitude $A^{(L)\mu}_{4}$, we apply the projectors and sum over all polarisation states as in Eq.~\ref{Wyjeq:B4Ldef}. For the five-point amplitude $A^{(L)\mu}_{5,d}$, we contract by the external momenta and apply the projectors, as in Eqs.~\ref{Wyjeq:A5i} and~\ref{Wyjeq:Asumpol}, respectively. We then rewrite the resulting expressions in terms of scalar Feynman integrals belonging to the 15 maximal topologies shown in %defined in Refs.~\cite{Badger:2021nhg,Badger:2021ega}.
+Fig.~\ref{fig:Hbbmaxtopos}. We carry out all these operations analytically using \texttt{Mathematica} and \texttt{FORM}~\cite{Kuipers:2012rf,Ruijl:2017dtg} scripts. As a result, we obtain analytic expressions for $\tilde{\mathcal{A}}_{5,i\, k}^{(L)}$, Eq.~\ref{Wyjeq:Asumpol}, and $\tilde{A}_{4,i}^{(L)}$, Eq.~\ref{Wyjeq:B4Ldef}, as linear combinations of scalar Feynman integrals with rational coefficients functions of $\vec{s}_5$. 
+In order to obtain the contracted helicity-amplitudes $\tilde{A}_{5,i}^{(L), h_1h_2h_3h_4}$ from the $\tilde{\mathcal{A}}_{5,i\, k}^{(L)}$'s, we further need to multiply by the spanning basis elements $T^{h_1h_2h_3h_4}_{j}$ and by the inverse of $\Theta$, as shown in Eq.~\ref{Wyjeq:A5Ldef}. We do these operations (including the inversion of $\Theta$) numerically within the finite field framework.
 
-We reduce the scalar integrals to the canonical MIs identified in Ref.~\cite{Abreu:2020jxa}, which we modified so as to re-absorb the square roots. We generate the IBP relations~\cite{Chetyrkin:1981qh} using \textsc{LiteRed}~\cite{Lee:2012cn} in \textsc{Mathematica}, and solve them numerically over finite fields using the Laporta algorithm~\cite{Laporta:2000dsw} through \textsc{FiniteFlow}'s linear solver. We then perform a Laurent expansion of the rational coefficients around $\eps=0$, and map the canonical MIs onto square roots and the special function basis of  Ref.~\cite{Badger:2021nhg} up to the required order in $\eps$. We label the special function basis by $\{f_k\}$. We truncate the $\eps$ expansion at order $\eps^2$ at one loop and at order $\eps^0$ at two loops. Finally, we subtract the UV/IR poles as in Eq.~\ref{Wyjeq:finiteremainder} and define the contracted finite remainders, which we represent as:
+We reduce the scalar integrals to the canonical MIs identified in Ref.~\cite{Abreu:2020jxa}, which we modified so as to re-absorb the square roots. We generate the IBP relations~\cite{Chetyrkin:1981qh} using \texttt{LiteRed}~\cite{Lee:2012cn} in \texttt{Mathematica}, and solve them numerically over finite fields using the Laporta algorithm~\cite{Laporta:2000dsw} through \texttt{FiniteFlow}'s linear solver. We then perform a Laurent expansion of the rational coefficients around $\eps=0$, and map the canonical MIs onto square roots and the special function basis of  Ref.~\cite{Badger:2021nhg} up to the required order in $\eps$. We label the special function basis by $\{f_k\}$. We truncate the $\eps$ expansion at order $\eps^2$ at one loop and at order $\eps^0$ at two loops. Finally, we subtract the UV/IR poles as in Eq.~\ref{Wyjeq:finiteremainder} and define the contracted finite remainders:
 \begin{align} \label{Wyjeq:finrem_ratcoeffs}
-\begin{aligned}
-& \tilde{F}_{5,i}^{(L), h_1h_2h_3h_4} = \Phi^{h_1h_2h_3h_4}_{5} \sum_j \left[ q_{i,j}^{h_1h_2h_3h_4}\left(\vec{s}_5\right) + \tr_5 \, r_{i,j}^{h_1h_2h_3h_4} \left(\vec{s}_5\right) \right] \text{mon}_j\left(\tr_5,\sqrt{\Delta_3^{(l)}}, \{f_k\} \right) \,, \\
-& \tilde{F}_{4,i}^{(L)} = \sum_j t_{i,j}\left(\vec{s}_5\right) \text{mon}_j\left(\tr_5,\sqrt{\Delta_3^{(l)}}, \{f_k\} \right) \,, \\
-\end{aligned}
+& \tilde{F}_{5,i}^{(L), h_1h_2h_3h_4} = \Phi^{h_1h_2h_3h_4}_{5} \sum_j \left[ q_{i,j}^{h_1h_2h_3h_4}\left(\vec{s}_5\right) + \tr_5 \, r_{i,j}^{h_1h_2h_3h_4} \left(\vec{s}_5\right) \right] \text{mon}_j\left(\tr_5,\sqrt{\Delta_3^{(l)}}, \{f_k\} \right) \,, \nonumber \\
+& \tilde{F}_{4,i}^{(L)} = \sum_j t_{i,j}\left(\vec{s}_5\right) \text{mon}_j\left(\tr_5,\sqrt{\Delta_3^{(l)}}, \{f_k\} \right) \,,
 \end{align}
-where $\text{mon}_j(x,y,\ldots)$ denotes monomials in $x,y,\ldots$, while $q_{i,j}^{h_1h_2h_3h_4}$, $r_{i,j}^{h_1h_2h_3h_4}$ and $t_{i,j}$ are rational functions of $\vec{s}_5$. Note that we pull out from the five-particle finite remainders an arbitrary phase factor $\Phi^{h_1h_2h_3h_4}_{5}$ carrying all the helicity weights, so that the coefficients $q_{i,j}^{h_1h_2h_3h_4}$ and $r_{i,j}^{h_1h_2h_3h_4}$ are scalar and hence functions of $\vec{s}_5$ only. We recall that the helicity configuration is assigned to the four-particle finite remainders when attaching the decay current, as discussed in Section~\ref{wyjsec:B4amplitude}. The cancellation of the poles at this stage provides a robust check of the result prior to the rational reconstruction. Furthermore, it typically leads to simplifications which make the finite remainders easier to reconstruct than the bare amplitudes. This chain of operations is implemented in the \textsc{FiniteFlow} framework, and ultimately amounts to an algorithm which samples numerically over finite fields the rational coefficients in the contracted finite remainders.
+where $\text{mon}_j(x,y,\ldots)$ denotes monomials in $x,y,\ldots$, while $q_{i,j}^{h_1h_2h_3h_4}$, $r_{i,j}^{h_1h_2h_3h_4}$ and $t_{i,j}$ are rational functions of $\vec{s}_5$. Note that we pull out from the five-particle finite remainders an arbitrary phase factor $\Phi^{h_1h_2h_3h_4}_{5}$ carrying all the helicity weights, so that the coefficients $q_{i,j}^{h_1h_2h_3h_4}$ and $r_{i,j}^{h_1h_2h_3h_4}$ are scalar and hence functions of $\vec{s}_5$ only. We recall that the helicity configuration is assigned to the four-particle finite remainders when attaching the decay current, as discussed in Section~\ref{wyjsec:B4amplitude}. The cancellation of the poles at this stage provides a robust check of the result prior to the rational reconstruction. Furthermore, it typically leads to simplifications which make the finite remainders easier to reconstruct than the bare amplitudes. This chain of operations is implemented in \texttt{FiniteFlow}.
 
-Finally, we need to reconstruct the rational coefficients of the contracted finite remainders from their numerical values. Following Refs.~\cite{Abreu:2018zmy,Badger:2021nhg,Badger:2021imn,Badger:2021ega}, we perform a number of optimisations to reduce the number of required sample points. We follow the strategy outlined in Ref.~\cite{Badger:2021imn}. First of all, we set $s_{12}=1$. We recover the analytic dependence on $s_{12}$ a posteriori through dimensional analysis. Then, similarly to the workflow outlined in Sec.~\ref{Hbbsec:reduction}, we fit the $\mathbb{Q}$-linear relations among the rational coefficients, and solve them so as to express the most complicated coefficients in terms of the simplest ones. Third, we perform the matching of remaining coefficients with an ansatz of factors on a random univariate phase-space slice modulo a large prime number. Contrary to the ansatz presented in Eq.~\ref{eq:coeffansatz}, here we do not need to include phase-dependent spinor structures. For this set of amplitudes, we find the following ansatz sufficient:
+Finally, we need to reconstruct the rational coefficients of the contracted finite remainders from their numerical values. Following Refs.~\cite{Abreu:2018zmy,Badger:2021nhg,Badger:2021imn,Badger:2021ega}, we perform a number of optimisations to reduce the number of required sample points. We follow the strategy outlined in Ref.~\cite{Badger:2021imn}. First of all, we set $s_{12}=1$. We recover the analytic dependence on $s_{12}$ \textit{a posteriori} through dimensional analysis. Then, similarly to the workflow outlined in Section~\ref{Hbbsec:reduction}, we fit the $\mathbb{Q}$-linear relations among the rational coefficients, and solve them so as to express the most complicated coefficients in terms of the simplest ones. Third, we perform the matching of remaining coefficients with an ansatz of factors on a random univariate phase space slice modulo a large prime number. Contrary to the ansatz presented in Eq.~\ref{eq:coeffansatz}, here we do not need to include phase-dependent spinor structures. For this set of amplitudes, we find the following ansatz sufficient:
 \begin{align} \label{Wyjeq:coeffansatz}
 \begin{aligned} 
 \biggl\{ & s_{12}\,, s_{23}\,, s_{34}\,, s_{23} + s_{34}\,, s_{23} - s_{234}\,, s_{234} - s_{34}\,, s_{123} - s_{56}\,, s_{234} - s_{56}\,, s_{12} - s_{123} + s_{23}\,, \\
@@ -518,7 +513,7 @@ where $\lambda$ is the K\"allen function:
 %The factors in the list~\ref{Wyjeq:coeffansatz} are a subset of the letters of the (planar) one-mass pentagon alphabet~\cite{Abreu:2020jxa}, namely of the arguments of the logarithmic integration kernels appearing in the DEs satisfied by the MIs. The letters govern the singularity structure of the MIs and hence of the special function basis $\{f_k\}$. It is therefore natural to expect that the denominators of the rational coefficients multiplying the special functions should factorise in terms of letters, and indeed the previous experience has shown that this is the case~\cite{Abreu:2018zmy,Badger:2021nhg,Badger:2021imn,Badger:2021ega}. 
 Just as in Chapter~\ref{sec:Hbb}, we are able to determine entirely the denominators of the rational coefficients, as well as some of their numerators. In Table~\ref{Wyjtab:degrees}, we show the impact of this strategy on the highest polynomial degrees of the rational coefficients which need to be reconstructed for the five-particle contracted finite remainders. Note that we process all helicity configurations of the five-particle finite remainders simultaneously, but for the $n_f^0$ ones we separate the contractions by the external momenta into two subsets, $\{p_1,p_2\}$ and $\{p_3,p_4\}$, to reduce the memory usage.
 %\JK{Need to understand this better.}
-After this optimisation is done, the rational coefficients are reconstructed using the multivariate functional reconstruction algorithms implemented in \textsc{FiniteFlow}~\cite{Peraro:2019svx} (see Sec.~\ref{sec:ratfuncs}). Note that in contrast to Chapter~\ref{sec:Hbb}, here we do not find it necessary to perform the univariate partial fraction decomposition \textit{prior} to reconstruction.
+After this optimisation is done, the rational coefficients are reconstructed using the multivariate functional reconstruction algorithms implemented in \texttt{FiniteFlow} (see Section~\ref{sec:ratfuncs}). Note that in contrast to Chapter~\ref{sec:Hbb}, here we do not find it necessary to perform the univariate partial fraction decomposition prior to reconstruction.
 \begin{table}[t!]
 \begin{center}
 \begin{tabular}{l|c|c|c}
@@ -529,18 +524,18 @@ $\tilde{F}_{5,i}^{(2),1\, h_1 h_2 h_3 h_4}$ with $i=3,4$     & $48/47$ & $42/42$
 $\tilde{F}_{5,i}^{(2),n_f\, h_1 h_2 h_3 h_4}$ with $i=1,2,3,4$ & $39/38$ & $26/24$ & $26/0$ \\
 \end{tabular}
 \end{center}
-\caption{Maximal total polynomial degrees of the rational coefficients of the contracted two-loop five-particle finite remainders at each stage of the optimisation procedure for the finite-field reconstruction, in the form numerator/denominator. The coefficients are  functions of the five scalar invariants $\{s_{23},s_{34},s_{123},s_{234},s_{56}\}$ ($s_{12}=1$). The independent helicity configurations~\ref{Wyjeq:indephel} are processed simultaneously, while the contractions by the external momenta for $\tilde{F}_{5,i}^{(2),1\, h_1 h_2 h_3 h_4}$ are separated into two subsets to reduce the memory usage.}
+\caption{Maximal total polynomial degrees of the rational coefficients of the contracted two-loop five-particle finite remainders at each stage of the optimisation procedure for the finite field reconstruction, in the form: numerator/denominator. The coefficients are  functions of the five scalar invariants $\{s_{23},s_{34},s_{123},s_{234},s_{56}\}$ ($s_{12}=1$). The independent helicity configurations Eq.~\ref{Wyjeq:indephel} are processed simultaneously, while the contractions by the external momenta for $\tilde{F}_{5,i}^{(2),1\, h_1 h_2 h_3 h_4}$ are separated into two subsets to reduce the memory usage.}
 \label{Wyjtab:degrees}
 \end{table}
 \subsection{Simplification of the rational coefficients}
 \label{wyjsec:Simplification}
-The resulting analytic expressions of the rational coefficients of the finite remainders are rather bulky. The standard approach to simplify them relies on partial fraction decomposition, either multivariate~\cite{Leinartas:1978,Pak:2011xt,Raichev:2012,Abreu:2019odu,Boehm:2020ijp,Heller:2021qkz,Bendle:2021ueg} or univariate with respect to a suitable variable~\cite{Badger:2021nhg,Badger:2021imn,Badger:2021ega,Abreu:2021asb}. For the rational coefficients of the four-point finite remainders, $t_{i,j}\left(\vec{s}_5\right)$ in Eq.~\ref{Wyjeq:finrem_ratcoeffs}, we achieve a satisfactory simplification by performing a multivariate partial fraction decomposition with the \textsc{Mathematica} package \textsc{MultivariateApart}~\cite{Heller:2021qkz}, enhanced by \textsc{Singular}~\cite{DGPS} for the computation of the Gr\"obner bases. 
+The resulting analytic expressions of the rational coefficients of the finite remainders are rather bulky. The standard approach to simplify them relies on partial fraction decomposition, either multivariate~\cite{Leinartas:1978,Pak:2011xt,Raichev:2012,Abreu:2019odu,Boehm:2020ijp,Heller:2021qkz,Bendle:2021ueg} or univariate with respect to a suitable variable~\cite{Badger:2021nhg,Badger:2021imn,Badger:2021ega,Abreu:2021asb}. For the rational coefficients of the four-point finite remainders, $t_{i,j}\left(\vec{s}_5\right)$ in Eq.~\ref{Wyjeq:finrem_ratcoeffs}, we achieve a satisfactory simplification by performing a multivariate partial fraction decomposition with the \texttt{Mathematica} package \texttt{MultivariateApart}~\cite{Heller:2021qkz}, enhanced by \texttt{Singular}~\cite{DGPS} for the computation of the Gr\"obner bases. 
 
-The rational coefficients of the five-particle finite remainders are instead substantially more involved. In order to simplify them, we look for a parameterisation of the five-particle kinematics leading to more compact expressions than the scalar invariants $\vec{s}_5$~\ref{Wyjeq:sijs5pt}. We investigate how the complexity of the expressions varies when using MT parameterisations~\cite{Hodges:2009hk}. The pseudo-scalar invariant $\tr_5$ is given by a rational function in terms of MTs, and we can thus add up the two terms of the coefficients of the special function monomials:
+The rational coefficients of the five-particle finite remainders are instead substantially more involved. In order to simplify them, we look for a parametrisation of the five-particle kinematics leading to more compact expressions than the scalar invariants $\vec{s}_5$ Eq.~\ref{Wyjeq:sijs5pt}. We investigate how the complexity of the expressions varies when using different MT parametrisations. The pseudoscalar invariant $\tr_5$ is given by a rational function in terms of MTs, and we can thus add up the two terms of the coefficients of the special function monomials:
 \begin{align}
 \left( q_{i,j}^{h_1h_2h_3h_4}\left(\vec{s}_5\right) + \tr_5 \, r_{i,j}^{h_1h_2h_3h_4}\left(\vec{s}_5\right) \right) \biggl|_{\vec{s}_5 = \vec{s}_5(\vec{z})} = u_{i,j}^{h_1h_2h_3h_4}\left(\vec{z}\right) \,,
 \end{align}
-where by $\vec{z} = \{z_i \}_{i=1,\ldots,6}$ we denote generally the independent MTs. In particular, we consider the parameterisation proposed in Ref.~\cite{Badger:2021ega}:
+where by $\vec{z} = \{z_i \}_{i=1,\ldots,6}$ we denote generally the independent MTs. In particular, we consider the parametrisation proposed in Ref.~\cite{Badger:2021ega}:
 \begin{equation}
 \begin{alignedat}{2}
   & z_1 = s_{12} \,, \qquad && z_2 = -\frac{\trp(1234)}{s_{12}s_{34}} \,, \\
@@ -549,27 +544,27 @@ where by $\vec{z} = \{z_i \}_{i=1,\ldots,6}$ we denote generally the independent
 \end{alignedat}
 \label{Wyjeq:mtvardefs5pt}
 \end{equation}
-In previous applications, such a parameterisation has been used globally, i.e.\ in all amplitudes/finite remainders
+In previous applications, such a parametrisation has been used globally, i.e.\ in all amplitudes/finite remainders
 irrespective of their helicity configuration. We find that this approach does not perform well in
 this case, and does not lead to a major simplification in comparison with the expressions in terms of scalar invariants $\vec{s}_5$ and $\tr_5$. 
-The rational parameterisation has the effect of breaking some symmetries in the kinematic quantities,
-which results in some configurations being simpler than others. There is no reason for the parameterisation
-to be a global choice, and in this case we exploit this fact and consider different parameterisations for each helicity configuration.
+The rational parametrisation has the effect of breaking some symmetries in the kinematic quantities,
+which results in some configurations being simpler than others. There is no reason for the parametrisation
+to be a global choice, and here we exploit this fact and consider different parametrisations for each helicity configuration.
 
-In practice, we consider all parameterisations which are obtained by permuting the massless momenta on the right-hand side of Eqs.~\ref{Wyjeq:mtvardefs5pt}. For each helicity configuration we determine which permutations of the parameterisation lead to the most compact expression of the finite remainder at one loop. We then use them at two loops, and select the one which results in the simplest expression. We perform the change of variables over finite fields within the \textsc{FiniteFlow} framework, and measure the ``simplicity'' of the rational coefficients in terms of their numerator/denominator polynomial degrees, which can be determined without reconstructing the expression of the coefficients in terms of the new variables. Once the ``best'' parameterisation $\vec{s}_5 = \vec{s}_5 (\vec{z})$ is chosen for each helicity configuration, we reconstruct the analytic expression of the coefficients in terms of the new variables $\vec{z}$. For this purpose, we make use of the finite field algorithm for univariate partial fraction decomposition presented in Refs.~\cite{Badger:2021nhg,Badger:2021imn}. We choose the variable to partial fraction with respect to so as to minimise the polynomial degrees of the separate terms of the decomposition. Breaking down the coefficients into univariate partial fractions simplifies the subsequent multivariate partial fraction decomposition, which we perform using \textsc{MultivariateApart}~\cite{Heller:2021qkz} enhanced with \textsc{Singular}~\cite{DGPS}. We apply it to each term of the univariate partial fraction decomposition separately, which is convenient as each term is by itself much simpler than the full coefficient. This is possible because \textsc{MultivariateApart}'s algorithm commutes with summation by design. The spurious poles introduced by the univariate partial fraction decomposition therefore cancel out after the multivariate partial fraction decomposition. In summary, our algorithm for the simplification of the rational coefficients of the five-particle finite remainders is the following:
+In practice, we consider all parametrisations which are obtained by permuting the massless momenta on the right-hand side of Eqs.~\ref{Wyjeq:mtvardefs5pt}. For each helicity configuration, we determine which permutations of the parametrisation lead to the most compact expression of the finite remainder at one loop. We then use them at two loops and select the one which results in the simplest expressions. We perform the change of variables over finite fields within the \texttt{FiniteFlow} framework, and measure the `simplicity' of the rational coefficients in terms of their numerator/denominator polynomial degrees, which can be determined without reconstructing the coefficients in terms of the new variables. Once the `best' parametrisation $\vec{s}_5 = \vec{s}_5 (\vec{z})$ is chosen for each helicity configuration, we reconstruct the analytic expression of the coefficients in terms of the new variables $\vec{z}$. For this purpose, we make use of the finite field algorithm for univariate partial fraction decomposition presented in Refs.~\cite{Badger:2021nhg,Badger:2021imn}. We choose the variable to partial fraction with respect to so as to minimise the polynomial degrees of the separate terms of the decomposition. Breaking down the coefficients into univariate partial fractions simplifies the subsequent multivariate partial fraction decomposition, which we perform using \texttt{MultivariateApart}~\cite{Heller:2021qkz} enhanced with \texttt{Singular}~\cite{DGPS}. We apply it to each term of the univariate partial fraction decomposition separately, which is convenient as each term is by itself much simpler than the full coefficient. This is possible because \texttt{MultivariateApart}'s algorithm commutes with summation by design. The spurious poles introduced by the univariate partial fraction decomposition therefore cancel out after the multivariate partial fraction decomposition. In summary, our algorithm for the simplification of the rational coefficients of the five-particle finite remainders is the following:
 \begin{enumerate}
-\item Try all permutations of a given MT parameterisation on the one-loop expressions and select the ones which lead to the lowest polynomial degrees.
-\item Apply the parameterisations selected at step 1 on the two-loop rational coefficients and choose the one which leads to the lowest polynomial degree.
-\item Decompose the two-loop rational coefficients in terms of the new variables into univariate partial fractions with respect to the variable which leads to the lowest polynomial degrees in the separate terms.
+\item Try all permutations of a given MT parametrisation on the one-loop expressions and select a few which lead to the lowest polynomial degrees.
+\item Apply the parametrisations selected at step 1 on the two-loop rational coefficients and choose the one which leads to the lowest polynomial degree.
+\item Decompose the two-loop coefficients in terms of the new variables into univariate partial fractions with respect to the variable which leads to the lowest polynomial degrees in the separate terms.
 \item Decompose into multivariate partial fractions the separate terms of the univariate partial fractions using the algorithm of Ref.~\cite{Heller:2021qkz}, and sum them up cancelling the spurious poles.
 \end{enumerate}
-In hindsight, the first three steps could have been implemented within the original \textsc{FiniteFlow} setup. We did not attempt this approach because we did not need any further optimisation to reconstruct the rational coefficients of the $W$-production five-particle finite remainders. However, we believe that this strategy may also help to improve the rational reconstruction.
+In hindsight, the first three steps could have been implemented prior to the original reconstruction in Section~\ref{wyjsec:Reconstruction}. We did not attempt this approach, because we did not need any further optimisation to reconstruct the coefficients of the $W$-production five-particle finite remainders. However, we believe that this strategy may be useful in future applications.
 
-We apply this procedure separately on each of the helicity configurations, leading to different parameterisations for each of them.
-The resulting expressions for the coefficients are remarkably more compact than the original ones in terms of the scalar invariants $\vec{s}_5$. For the most complicated finite remainder we achieved a compression in the file size of more than two orders of magnitude. The evaluation time of the rational coefficients is similarly improved. 
+We apply this procedure separately on each of the helicity configurations, leading to different parametrisations for each of them.
+The resulting expressions for the coefficients are remarkably more compact than the original ones in terms of the scalar invariants $\vec{s}_5$. For the most complicated finite remainder, we achieved a compression in the file size of more than two orders of magnitude. The evaluation time of the rational coefficients is similarly improved. 
 \subsection{Numerical evaluation and permutations of the amplitudes}
 \label{wyjsec:Permutations}
-In order to obtain the values of all the amplitudes in all the possible scattering channels we need to evaluate the minimal set of independent objects we reconstructed for different permutations of the external momenta (see e.g.\ Eq.~\ref{Wyjeq:ufromd} for an explicit example). In this subsection, we discuss how we implement this operation in an efficient way at the level of the numerical evaluation.
+In order to obtain the values of all the amplitudes in all the possible scattering channels, we need to evaluate the minimal set of independent objects we reconstructed for different permutations of the external momenta (see e.g.\ Eq.~\ref{Wyjeq:ufromd} for an explicit example). In this subsection, we discuss how we implement this operation in an efficient way at the level of the numerical evaluation.
 
 We denote a generic permutation of the external momenta by:
 \begin{align}
@@ -587,42 +582,42 @@ Given a generic amplitude/finite remainder $A$, function of the external momenta
 \begin{align}
 \left(\sigma \circ A\right)\left(\{p_i\} \right) = A \left( \{ \sigma \circ p_i \}  \right) \,.
 \end{align}
-In other words, we can obtain the value of the permuted amplitude by evaluating the amplitude in the original orientation of the external momenta at a permuted phase space point. While this operation is trivial for the rational functions, it is in general very subtle for the special functions. The reason is that a permutation in general maps the phase-space point to a different scattering region. This would require a complicated analytic continuation, since the special functions have a very intricate branch cut structure.
+In other words, we can obtain the value of the permuted amplitude by evaluating the amplitude in the original orientation of the external momenta at a permuted phase space point. While this operation is trivial for the rational functions, it is in general very subtle for the special functions. The reason is that a permutation in general maps the phase space point to a different scattering region. This would require a complicated analytic continuation, since the special functions have a very intricate branch cut structure.
 
-One way to overcome this problem is to evaluate the special functions numerically using the generalised series expansion method~\cite{Moriello:2019yhu}, implemented in the public \textsc{Mathematica} package \textsc{DiffExp}~\cite{Hidding:2020ytt}, as done in Chapter~\ref{sec:Hbb}. 
+One way to overcome this problem is to evaluate the special functions numerically using the generalised series expansion method~\cite{Moriello:2019yhu}, implemented in the public \texttt{Mathematica} package \texttt{DiffExp}~\cite{Hidding:2020ytt}, as done in Chapter~\ref{sec:Hbb}. 
 %Refs.~\cite{Badger:2021nhg,Badger:2021ega}.
-Within this method, the analytic continuation can be carried out systematically. However, this approach requires that, for each phase-space point where we want to evaluate the permuted amplitudes, we evaluate the special functions at as many points as the number of needed permutations. 
+Within this method, the analytic continuation can be carried out systematically. However, this approach requires that, for each phase space point where we want to evaluate the permuted amplitudes, we evaluate the special functions at as many points as the number of needed permutations. 
 
-For phase-space points in the physical scattering region we can adopt a much more efficient evaluation strategy: we use the \texttt{C++} package \textsc{PentagonFunctions++}~\cite{Chicherin:2021dyp}, which allows us to evaluate in the physical scattering region a larger basis of special functions, named one-mass pentagon functions. We denote them by $\{g_i\}$.
-For this purpose we translate the MI function basis $\{f_i\}$ of Ref.~\cite{Badger:2021nhg} (see Sec.~\ref{Hbbsec:Hbasis}) to the one-mass pentagon function basis $\{g_i\}$ implemented in \textsc{PentagonFunctions++}. The translation takes the form:
+For phase space points in the physical scattering region, we can adopt a much more efficient evaluation strategy: we use the \texttt{C++} package \texttt{PentagonFunctions++}~\cite{Chicherin:2021dyp}, which allows us to evaluate in the physical scattering region a larger basis of special functions, named `one-mass pentagon functions'. We denote them by $\{g_i\}$.
+For this purpose we translate the MI function basis $\{f_i\}$ of Ref.~\cite{Badger:2021nhg} (see Section~\ref{Hbbsec:Hbasis}) to the one-mass pentagon function basis $\{g_i\}$ implemented in \texttt{PentagonFunctions++}. The translation takes the form:
 \begin{align} \label{Wyjeq:translation}
 f_i = \sum_{j} w_{ij} \, \text{mon}_j \left(\{g_k\} \right) \,,
 \end{align}
-where $w_{ij} \in \mathbb{Q}$, and the sum runs over all the required monomials of the one-mass pentagon functions $\{g_k\}$. We obtain the transformation rules~\ref{Wyjeq:translation} by matching the expressions of the MIs in terms of special functions given in Ref.~\cite{Badger:2021nhg} with that of Ref.~\cite{Chicherin:2021dyp}. The advantage of the one-mass pentagon functions with respect to the function basis $\{f_i\}$ or Ref.~\cite{Badger:2021nhg} is that their evaluation through the package \textsc{PentagonFunctions++} is extremely efficient, and their design allows us to generate the values of all $S_4$ permutations of the functions from those at the un-permuted phase-space point. 
-The one-mass pentagon function basis $\{g_i\}$ is in fact closed under $S_4$ permutations. This means that, for any $\sigma \in S_4$, we can express the permuted one-mass pentagon functions evaluated at a given phase-space point as a combination of un-permuted pentagon functions evaluated at the same point:
+where $w_{ij} \in \mathbb{Q}$, and the sum runs over all the required monomials of the one-mass pentagon functions $\{g_k\}$. We obtain the transformation rules Qq.~\ref{Wyjeq:translation} by matching the expressions of the MIs in terms of special functions given in Ref.~\cite{Badger:2021nhg} with that of Ref.~\cite{Chicherin:2021dyp}. The advantage of the one-mass pentagon functions with respect to the function basis $\{f_i\}$ or Ref.~\cite{Badger:2021nhg} is that their evaluation through the package \texttt{PentagonFunctions++} is extremely efficient, and their design allows us to generate the values of all $S_4$ permutations of the functions from those at the unpermuted phase space point. 
+The one-mass pentagon function basis $\{g_i\}$ is in fact closed under $S_4$ permutations. This means that, for any $\sigma \in S_4$, we can express the permuted one-mass pentagon functions evaluated at a given phase space point as a combination of the unpermuted pentagon functions evaluated at the same point:
 \begin{align} \label{Wyjeq:permf}
 \left(\sigma \circ g_i\right)(\vec{s}_5, \tr_5) = \sum_j \Sigma_{ij}^{(\sigma)} \text{mon}_j \left[ \{ g_k\left(\vec{s}_5, \tr_5 \right) \} \right] \,,
 \end{align}
-where $\Sigma_{ij}^{(\sigma)} \in \mathbb{Q}$, and we spelled out the dependence on the kinematics for the sake of clarity. These transformation rules are provided in Ref.~\cite{Chicherin:2021dyp}.\footnote{Note that Ref.~\cite{Chicherin:2021dyp} has a different labelling of the external momenta. Moreover, the package \textsc{PentagonFunctions++} works in a specific physical scattering region (the $s_{45}$ channel using the notation of Ref.~\cite{Chicherin:2021dyp}). A relabelling and a further permutation of the momenta are required to use \textsc{PentagonFunctions++} in the scattering region relevant for our application. We implemented these operations in the \textsc{Mathematica} evaluation script provided in the ancillary files, and refer to the original work~\cite{Chicherin:2021dyp} for a discussion of how to use \textsc{PentagonFunctions++} in a physical region different from the default one.} This strategy is advantageous because it minimises the number of evaluations of the special functions, which is the most time-consuming step in the  numerical evaluation of the colour and helicity summed squared amplitudes.
+where $\Sigma_{ij}^{(\sigma)} \in \mathbb{Q}$, and we spelled out the dependence on the kinematics for the sake of clarity. These transformation rules are provided in Ref.~\cite{Chicherin:2021dyp}.\footnote{Note that Ref.~\cite{Chicherin:2021dyp} has a different labelling of the external momenta. Moreover, the package \texttt{PentagonFunctions++} works in a specific physical scattering region (the $s_{45}$ channel using the notation of Ref.~\cite{Chicherin:2021dyp}). A relabelling and a further permutation of the momenta are required to use \texttt{PentagonFunctions++} in the scattering region relevant for our application. We implemented these operations in the \texttt{Mathematica} evaluation script provided in the ancillary files, and refer to the original work, Ref.~\cite{Chicherin:2021dyp}, for a discussion of how to use \texttt{PentagonFunctions++} in a physical region different from the default one.} This strategy is advantageous because it minimises the number of evaluations of the special functions, which is the most time-consuming step in the  numerical evaluation of the colour and helicity summed squared amplitudes.
 
-It is worth highlighting the special behaviour of the pseudo-scalar invariant $\tr_5$ in this chain of operations. In the physical scattering regions, the reality of the momenta implies that $\tr_5^2 < 0$. In other words, $\tr_5$ is purely imaginary. The library \textsc{PentagonFunctions++} always assumes that $\text{Im}\left[\tr_5\right]>0$. The sign of $\tr_5$, however, may change upon the action of an odd-signature permutation:
+It is worth highlighting the special behaviour of the pseudoscalar invariant $\tr_5$ in this chain of operations. In the physical scattering regions, the reality of the momenta implies that $\tr_5^2 < 0$. In other words, $\tr_5$ is purely imaginary. The library \texttt{PentagonFunctions++} always assumes that $\text{Im}\left[\tr_5\right]>0$. The sign of $\tr_5$, however, may change upon the action of an odd-signature permutation:
 \begin{align}
 \sigma \circ \text{tr}_5 = \text{sign}(\sigma) \, \text{tr}_5 \,,
 \end{align}
 or space-time parity.
-The values of the one-mass pentagon functions for a negative imaginary part of $\tr_5$ can be obtained by flipping the sign of a subset of functions specified in Ref.~\cite{Chicherin:2021dyp}. In our setup however we do not need to. As discussed in Section~\ref{wyjsec:Reconstruction}, we reduce the amplitudes to manifestly scalar MIs, and group together the special functions and the square roots arising from the definition of the canonical MIs. As a result, the monomials of special functions and square roots in the finite remainders~\ref{Wyjeq:finrem_ratcoeffs} are scalar as well. Any sign change in the pentagon functions due to permutations or space-time parity is therefore compensated by that of the accompanying factor of $\tr_5$, and we can thus evaluate both with a value of $\tr_5$ such that $\text{Im}\left[\tr_5\right]>0$ ---~as by default in \textsc{PentagonFunctions++}~--- regardless of the permutations or space-time parity. We must only keep track of the sign of $\tr_5$ in the rational coefficients (see Eqs.~\ref{Wyjeq:finrem_ratcoeffs}), which enters our final expressions for the five-particle finite remainders through the values of the MTs, and is determined by the values of the external momenta through its definition~\ref{eq:tr5}.
-The same holds for the other square roots in the problem, $\sqrt{\Delta_3^{(i)}}$, which appear only in the special function monomials. The polynomials $\Delta_3^{(i)}$ are positive in the physical scattering regions. We adopt the convention of Ref.~\cite{Chicherin:2021dyp} that their square roots are positive, $\sqrt{\Delta_3^{(i)}}>0$, as done in \textsc{PentagonFunctions++}.
+The values of the one-mass pentagon functions for a negative imaginary part of $\tr_5$ can be obtained by flipping the sign of a subset of functions specified in Ref.~\cite{Chicherin:2021dyp}. In our setup, however, we do not need to do so. As discussed in Section~\ref{wyjsec:Reconstruction}, we reduce the amplitudes to manifestly scalar MIs, and group together the special functions and the square roots arising from the definition of the canonical MIs. As a result, the monomials of special functions and square roots in the finite remainders Eq.~\ref{Wyjeq:finrem_ratcoeffs} are scalar as well. Any sign change in the pentagon functions due to permutations or space-time parity is therefore compensated by that of the accompanying factor of $\tr_5$, and we can thus evaluate both with a value of $\tr_5$ such that $\text{Im}\left[\tr_5\right]>0$ ---~as by default in \texttt{PentagonFunctions++}~--- regardless of the permutations or space-time parity. We must only keep track of the sign of $\tr_5$ in the rational coefficients (see Eq.~\ref{Wyjeq:finrem_ratcoeffs}), which enters our final expressions for the five-particle finite remainders through the values of the MTs, and is determined by the values of the external momenta through its definition Eq.~\ref{eq:tr5}.
+The same holds for the other square roots in the problem, $\sqrt{\Delta_3^{(i)}}$, which appear only in the special function monomials. The polynomials $\Delta_3^{(i)}$ are positive in the physical scattering regions. We adopt the convention of Ref.~\cite{Chicherin:2021dyp} that their square roots are positive, $\sqrt{\Delta_3^{(i)}}>0$, as done in \texttt{PentagonFunctions++}.
 
-In conclusion, we reconstruct the analytic expressions for the minimal set of independent finite remainders, and generate the values of the remaining ones by permuting the former at the numerical evaluation stage. We do this by evaluating the rational coefficients at permuted points, whereas we obtain the values of all permutations of the special functions from the values of the functions at the original phase-space point only. This allows us to minimise the amount of analytic data, whose size may otherwise become problematic, and at the same time evaluate the results efficiently.
+In conclusion, we reconstruct the analytic expressions for the minimal set of independent finite remainders, and generate the values of the remaining ones by permuting the former at the numerical evaluation stage. We do this by evaluating the rational coefficients at permuted points, whereas we obtain the values of all permutations of the special functions from the values of the functions at the original phase space point only. This allows us to minimise the amount of analytic data, whose size may otherwise become problematic, and at the same time evaluate the results efficiently.
 
 \section{Validation}
 \label{wyjsec:validation}
-In this section we discuss a number of validations performed on the analytic results derived in this work.
-First, let us remind the reader that the quantities that we reconstructed analytically are the $L$-loop finite remainders, where the UV and IR poles contained in the $L$-loop bare amplitudes are cancelled by the pole terms according to Eq.~\ref{Wyjeq:finiteremainder}. These pole cancellations already provide a strong consistency check of our calculation. In the following subsections we present further checks.
+In this section, we discuss a number of validations performed on the analytic results derived in this work.
+First, let us remind the reader that the quantities that we reconstructed analytically are the $L$-loop finite remainders, where the UV and IR poles contained in the $L$-loop bare amplitudes are cancelled by the pole terms according to Eq.~\ref{Wyjeq:finiteremainder}. These pole cancellations already provide a strong consistency check of our calculation. In the following subsections, we present further checks.
 \subsection{Comparison against full six-point computation}
 In order to verify the analytic expressions obtained by detaching the leptonic decay current as described in Section~\ref{wyjsec:reduction}, 
 we cross-check them against the helicity amplitudes obtained by computing the six-point process directly using a framework that has been applied to the computation of several 
-two-loop amplitudes~\cite{Hartanto:2019uvl,Badger:2021owl,Badger:2021imn,Badger:2021ega}. We perform the full six-point computation numerically using the MT parameterisation~\ref{Wyjeq:mtvardefs} by assigning rational values to the variables $x_1, \ldots, x_8$ in the rational coefficients and treating the special functions symbolically. We derive numerical results for all the sub-amplitudes ---~$A^{(L)}_{6,u}$, $A^{(L)}_{6,d}$, $A^{(L)}_{6,W}$ and $A^{(L)}_{6,e}$~--- in all four contributing helicity configurations. We find full numerical agreement between the two approaches. 
+two-loop amplitudes~\cite{Hartanto:2019uvl,Badger:2021owl,Badger:2021imn,Badger:2021ega}. We perform the full six-point computation numerically using the MT parametrisation Eq.~\ref{Wyjeq:mtvardefs} by assigning rational values to the variables $x_1, \ldots, x_8$ in the coefficients and treating the special functions symbolically. We derive numerical results for all the sub-amplitudes ---~$A^{(L)}_{6,u}$, $A^{(L)}_{6,d}$, $A^{(L)}_{6,W}$ and $A^{(L)}_{6,e}$~--- in all four contributing helicity configurations. We find full numerical agreement between the two approaches. 
 This provides a further robust check of our analytic computation, where we derived analytic expressions only for the independent helicity configurations and obtained the remaining ones by complex conjugation and permutation of the external momenta.
 
 
@@ -645,7 +640,7 @@ We further demonstrate the gauge invariance by evaluating the helicity amplitude
 
 \subsection{Renormalisation scale dependence}
 \label{wyjsec:scaledep}
-Similarly to Sec.~\ref{Hbbsec:renormscaledep}, we restore the renormalisation scale dependence of the $L$-loop finite remainders by adding to them the terms:
+Similarly to Section~\ref{Hbbsec:renormscaledep}, we restore the renormalisation scale dependence of the $L$-loop finite remainders by adding to them the terms:
 %\begin{equation}
 %F^{(L),i}_6\left(\mu^2\right) = F^{(L),i}_6\left(\mu^2 = 1\right) + \delta F^{(L),i}_6 \left(\mu^2\right) \,,
 %\label{Wyjeq:FiniteRemainderMu}
@@ -664,8 +659,8 @@ Similarly to Sec.~\ref{Hbbsec:renormscaledep}, we restore the renormalisation sc
 & \delta F^{(2),n_f^2}_6\left(\mu^2\right) = \log(\mu^2) \bigg\lbrace \frac{10}{27} A^{(0)}_6 -  F^{(1),n_f}_6(1) \bigg\rbrace + \frac{1}{6} A^{(0)}_6 \log^2(\mu^2) \,.
 \end{align}
 \endgroup
-The dependence on the external momenta is understood. We then verify that the $\mu$-dependent finite remainders satisfy the correct scaling relations by evaluating them at two phase-space points and checking the relation Eq.~\ref{eq:Hbbscalingrel}.
-%We do this by evaluating the finite remainders at two phase-space points that are connected by a rescaling by some positive factor $a$,
+The dependence on the external momenta is understood. We then verify that the $\mu$-dependent finite remainders satisfy the correct scaling relations by evaluating them at two phase space points and checking the relation Eq.~\ref{eq:Hbbscalingrel}.
+%We do this by evaluating the finite remainders at two phase space points that are connected by a rescaling by some positive factor $a$,
 %\begin{equation}
 %\begin{aligned}
 %& \vec{p} = (p_1,p_2,p_3,p_4,p_5,p_6) \,,  \\ 
@@ -683,29 +678,29 @@ The dependence on the external momenta is understood. We then verify that the $\
 
 \subsection{Tree-level and one-loop checks}
 
-We validated the tree-level and one-loop amplitudes derived in this chapter against the results available in the literature.
-For the tree-level amplitude we compared our helicity amplitudes against the analytic results presented in Ref.~\cite{Campbell:2021mlr} and additionally, for the full colour tree-level squared matrix elements, against \textsc{Madgraph5}~\cite{Alwall:2014hca} for both processes $W^+\gamma j$ and $W^-\gamma j$.
+We validated the tree-level and one-loop amplitudes derived in this chapter against the results available in literature.
+For the tree-level amplitude, we compared our helicity amplitudes against the analytic results presented in Ref.~\cite{Campbell:2021mlr} and additionally, for the full colour tree-level squared matrix elements, against \texttt{Madgraph5}~\cite{Alwall:2014hca} for both processes $W^+\gamma j$ and $W^-\gamma j$.
 As for the one-loop amplitudes, we compared our results against the leading colour contributions of the $W^+\gamma j$ amplitudes presented in Ref.~\cite{Campbell:2021mlr}.
 In all cases we find perfect agreement.
-We would like to point out that our choice of reference vectors for the photon and the gluon is different from the one used in Ref.~\cite{Campbell:2021mlr}. For this reason we compared the gauge invariant combinations of sub-amplitudes shown in Eq.~\ref{Wyjeq:gaugeinvcombinations}. This check therefore further validates the gauge invariance of our result.
+We would like to point out that our choice of reference vectors for the photon and the gluon is different from the one used in Ref.~\cite{Campbell:2021mlr}. For this reason, we compared the gauge invariant combinations of sub-amplitudes shown in Eq.~\ref{Wyjeq:gaugeinvcombinations}. This check therefore further validates the gauge invariance of our result.
 
 
 \subsection{Four-point amplitude comparison}
 \label{subwyjsec:4ptcomparison}
 
-We performed a cross check of the four-point amplitudes $A_4^{(L)\mu}$ which contribute to the sub-amplitudes $A^{(L)}_{6,W}$ and $A^{(L)}_{6,e}$ against the results provided in Ref.~\cite{Gehrmann:2011ab} for the scattering process $q\bar{q}\to Vg$. In Ref.~\cite{Gehrmann:2011ab} analytic results are presented 
+We performed a cross check of the four-point amplitudes $A_4^{(L)\mu}$ which contribute to the sub-amplitudes $A^{(L)}_{6,W}$ and $A^{(L)}_{6,e}$ against the results provided in Ref.~\cite{Gehrmann:2011ab} for the scattering process $q\bar{q}\to Vg$. In Ref.~\cite{Gehrmann:2011ab}, analytic results are presented 
 for the helicity coefficients which are linear combinations of the form factors $b_i^{(L)}$ in Eq.~\ref{Wyjeq:B4decomposition}, evaluated at $\mu^2 = s_{234}$.
 In order to enable a direct comparison for the one- and two-loop leading colour finite remainders, we 
 recomputed the $A_4^{(L)\mu}$ amplitudes in Eq.~\ref{Wyjeq:B4decomposition} using the tensor structures employed in Ref.~\cite{Gehrmann:2011ab}.
 Since we compute the finite remainders with $\mu^2=1$, we obtain the results at $\mu^2=s_{234}$ using the formulae to restore the dependence on $\mu$ shown in Section~\ref{wyjsec:scaledep}. We obtain perfect numerical agreement for the helicity coefficients. We further check that the four-particle finite remainders $F_4^{(L)\mu}$ computed using the tensor structures of Ref.~\cite{Gehrmann:2011ab} match the ones we derived using the tensor structures defined in Section~\ref{wyjsec:B4amplitude} after contracting them with the decay currents according to Eq.~\ref{Wyjeq:decayBF}.
 \section{Results}
 \label{wyjsec:results}
-The analytic expressions for the five- and four-point contracted amplitudes ($\tilde{A}^{(L)}_{5,i}$ and $\tilde{A}^{(L)}_{4,i}$), at one and two loops, together with the decay currents ($L_{A,\mu}$, $L^{e}_{B,\mu}$, $L^{W}_{B,\mu}$) and the relevant projection matrices ($\Delta$~\ref{Wyjeq:Delta} and $\Omega$~\ref{Wyjeq:Omega}) are provided in the ancillary files of Ref.~\cite{Badger:2022ncb}. The amplitudes are presented as linear combinations of independent rational coefficients that multiply a monomial basis of square roots and special functions. 
+The analytic expressions for the five- and four-point contracted amplitudes ($\tilde{A}^{(L)}_{5,i}$ and $\tilde{A}^{(L)}_{4,i}$), at one and two loops, together with the decay currents ($L_{A,\mu}$, $L^{e}_{B,\mu}$, $L^{W}_{B,\mu}$) and the relevant projection matrices ($\Delta$, Eq.~\ref{Wyjeq:Delta} and $\Omega$, Eq.~\ref{Wyjeq:Omega}) are provided in the ancillary files of Ref.~\cite{Badger:2022ncb}. The amplitudes are presented as linear combinations of independent rational coefficients that multiply a monomial basis of square roots and special functions. 
 
-We confirm the observations pointed out in Sec.~\ref{Hbbsec:Hbasis} about the cancellation of the pentagon functions involving certain letters~\cite{Badger:2021nhg, Badger:2021ega, Abreu:2021asb}. Once again, we observe that the functions involving the letters $\{W_{16}, W_{17}, W_{27}, W_{28}, W_{29}, W_{30} \}$ (in the notation of Ref.~\cite{Abreu:2020jxa}) are present in the contributing integrals but drop out from the amplitudes truncated at order $\eps^0$,\footnote{This holds for the set of independent amplitudes we reconstructed explicitly, which receive contributions only from the cyclic permutations of the MIs. Since the set of letters $\mathcal{Z}$ is not closed under all $S_4$ permutations, these letters are present in some of the permuted amplitudes which contribute to the helicity and colour summed squared finite remainders.} and that the functions involving the letter $W_{49}=\tr_5$ are present in the amplitudes and drop out from the finite remainders. It is worth noting that these cancellations occur already at the level of the separate sub-amplitudes $A^{(L)}_{6,i}$ and sub-finite remainders $F^{(L)}_{6,i}$, and not just for their gauge-invariant combinations. 
+We confirm the observations pointed out in Section~\ref{Hbbsec:Hbasis} about the cancellation of the pentagon functions involving certain letters~\cite{Badger:2021nhg, Badger:2021ega, Abreu:2021asb}. Once again, we observe that the functions involving the letters $\{W_{16}, W_{17}, W_{27}, W_{28}, W_{29}, W_{30} \}$ (in the notation of Ref.~\cite{Abreu:2020jxa}) are present in the contributing integrals but drop out from the amplitudes truncated\footnote{This holds for the set of independent amplitudes we reconstructed explicitly, which receive contributions only from the cyclic permutations of the MIs. Since the set of letters $\mathcal{Z}$ is not closed under all $S_4$ permutations, these letters are present in some of the permuted amplitudes which contribute to the helicity and colour summed squared finite remainders.} at order $\eps^0$ and that the functions involving the letter $W_{49}=\tr_5$ are present in the amplitudes and drop out from the finite remainders. It is worth noting that these cancellations occur already at the level of the separate sub-amplitudes $A^{(L)}_{6,i}$ and sub-finite remainders $F^{(L)}_{6,i}$, and not just for their gauge-invariant combinations. 
 %The cancellation of the letter corresponding to $\tr_5$ is by now well established in the case of fully massless scattering, where it has been linked to an underlying cluster algebra structure of the letter alphabet~\cite{Chicherin:2020umh}.
 
-The ancillary files of Ref.~\cite{Badger:2022ncb} include a \textsc{Mathematica} script to demonstrate the assembly of both the $\wpaj$ and $\wmaj$ amplitudes, and to perform the numerical evaluation of the finite remainders at a given kinematic point. We evaluate the special functions in the physical scattering region using the package \textsc{PentagonFunctions++}~\cite{Chicherin:2021dyp}, as discussed in Section~\ref{wyjsec:Permutations}. We use the following configuration of momenta:
+The ancillary files of Ref.~\cite{Badger:2022ncb} include a \texttt{Mathematica} script to demonstrate the assembly of both the $\wpaj$ and $\wmaj$ amplitudes, and to perform the numerical evaluation of the finite remainders at a given kinematic point. We evaluate the special functions in the physical scattering region using the package \texttt{PentagonFunctions++}~\cite{Chicherin:2021dyp}, as discussed in Section~\ref{wyjsec:Permutations}. We use the following configuration of momenta:
 \begin{equation}
 -p_2 - p_4 \to p_1 + p_3 + p_5 + p_6 \,,
 \label{Wyjeq:momconfig}
@@ -750,7 +745,7 @@ The reduced squared finite remainder obeys the same decomposition according to t
 & \cH^{(2)} = N_c^2 \cH^{(2),1} + N_c n_f \cH^{(2),n_f} + n_f^2 \cH^{(2),n_f^2} \,.
 \end{aligned}
 \end{align}
-We present a benchmark evaluation at the following phase-space point in the physical scattering region specified by Eq.~\ref{Wyjeq:momconfig} (the momenta are given in units of GeV):
+We present a benchmark evaluation at the following phase space point in the physical scattering region specified by Eq.~\ref{Wyjeq:momconfig} (the momenta are given in units of GeV):
 \begin{align}
 \label{Wyjeq:PSpoint}
 \begin{aligned}
@@ -778,8 +773,8 @@ for $i = u,d,W,e$ and the two closed fermion loop contributions specified in Eq.
 The results are presented only for the two independent helicity configurations ($\scriptstyle +++--+$ and $\scriptstyle -++--+$).
 We note that the numerical results in Tables~\ref{Wyjtab:benchmark2Lnf0bare} and~\ref{Wyjtab:benchmark2Lnf1bare}, presented separately for the sub-amplitudes $A_u$, $A_d$, $A_W$ and $A_e$,
 are gauge dependent. We used  $q_1 = p_3$ and $q_3 = p_1$, where $q_1 (q_3)$ is the reference momentum for the photon (gluon) polarisation vector. Gauge invariant quantities can be obtained using Eq.~\ref{Wyjeq:gaugeinvariantamps}. This enables comparisons already for the smaller building blocks of the amplitude, rather than just the full amplitude. For example, the sub-amplitudes $A_W$ and $A_e$ can be derived by attaching the $L^{e/W}_{B,\mu}(p_1,p_5,p_6)$ decay currents to the already available $q\bar{q} \to Wg$ 
-amplitude~\cite{Gehrmann:2011ab}. Indeed we performed this check, as described in Section~\ref{subwyjsec:4ptcomparison}. 
-In Table~\ref{Wyjtab:benchmarkfinremsq2L} we show the values of the two-loop reduced squared finite remainders normalised to the reduced squared tree-level amplitudes: 
+amplitude~\cite{Gehrmann:2011ab}. Indeed, we performed this check, as described in Section~\ref{subwyjsec:4ptcomparison}. 
+In Table~\ref{Wyjtab:benchmarkfinremsq2L}, we show the values of the two-loop reduced squared finite remainders normalised to the reduced squared tree-level amplitudes: 
 \begin{equation}
 \hat{\cH}^{(L)} = \frac{\cH^{(L)}}{\cH^{(0)}} \,,
 \end{equation}
@@ -869,7 +864,7 @@ evaluated at the kinematic point given in Eq.~\ref{Wyjeq:PSpoint} for both $pp\t
 }
 \end{table}
 
-In order to show the suitability and stability of our evaluation strategy, we present in Figure~\ref{Wyjfig:plots} the evaluation of the reduced squared finite remainders on a one-dimensional slice of the physical phase space for all channels of $\wpaj$ production. We begin by parameterising the momenta of the one-mass five-particle process relevant for the $W$-production amplitudes as:
+In order to show the suitability and stability of our evaluation strategy, we present in Fig.~\ref{Wyjfig:plots} the evaluation of the reduced squared finite remainders on a one-dimensional slice of the physical phase space for all channels of $\wpaj$ production. We begin by parameterising the momenta of the one-mass five-particle process relevant for the $W$-production amplitudes as:
 \begin{align} \label{Wyjeq:unislice1}
 \begin{aligned}
 & p_1^{\mu} = u_1 \, \frac{\sqrt{s}}{2} \, \left(1,1,0,0 \right) \,, \\
@@ -888,14 +883,14 @@ We then parameterise the momenta of the leptonic pair:
 p_5^{\mu} = u_3 \, \frac{\sqrt{s}}{2}  \left(1,\cos\theta_{ll},-\sin \phi_{ll} \sin \theta_{ll}, -\cos \phi_{ll} \sin\theta_{ll} \right) \,,
 \end{align}
 and $p_6$ follows from momentum conservation.
-We fix $u_3$ by requiring that $p_6^2 = 0$. In order to define a univariate phase-space slice, we choose:
+We fix $u_3$ by requiring that $p_6^2 = 0$. In order to define a univariate phase space slice, we choose:
 \begin{align} \label{Wyjeq:unisliceparams}
 s = 10^4 \, \text{GeV}^2 \,, \qquad M_{ll} = 60 \, \text{GeV}  \,, \qquad \phi = \frac{1}{10} \,, \qquad u_1 = \frac{1}{7}\,, \qquad \theta_{ll} = \frac{\pi}{2} \,, \qquad \phi_{ll} = \frac{\pi}{3} \,.
 \end{align}
-The remaining variable, $u_2$, is constrained to the interval $[87/175, 29/50]$. We chose these values arbitrarily so that the slice crosses a number of spurious poles, i.e.\ points where the rational coefficients diverge whereas the finite remainders stay finite. We checked explicitly that, while approaching such spurious poles, the values of the rational coefficients become larger and larger, while the finite remainders converge. 
-We evaluated the pentagon functions in quadruple precision using the \textsc{PentagonFunctions++} library, and the rational coefficients in \textsc{Mathematica} with $64$-digit accuracy.
+The remaining variable, $u_2$, is constrained to the interval $[87/175, 29/50]$. We chose these values arbitrarily so that the slice crosses a number of spurious poles, i.e.\ points where the rational coefficients diverge, whereas the finite remainders stay finite. We checked explicitly that, while approaching such spurious poles, the values of the rational coefficients become larger and larger, while the finite remainders converge. 
+We evaluated the pentagon functions in quadruple precision using the \texttt{PentagonFunctions++} library, and the rational coefficients in \texttt{Mathematica} with $64$-digit accuracy.
 This is a robust check of the stability of the evaluation, since the convergence requires large numerical cancellations among various terms of the finite remainders. 
-Figure~\ref{Wyjfig:plots} shows the plots of the reduced squared finite remainders up to two-loop order for all channels of $\wpaj$ production on the univariate phase-space slice defined above. 
+Fig.~\ref{Wyjfig:plots} shows the plots of the reduced squared finite remainders up to the two-loop order for all channels of $\wpaj$ production on the univariate phase space slice defined above. 
 %
 \begin{figure}[t!]
 \centering
@@ -935,7 +930,7 @@ Figure~\ref{Wyjfig:plots} shows the plots of the reduced squared finite remainde
     \label{Wyjfig:gD}
     \caption{$\mathbf{g\bar{d}}$}
 \end{subfigure}
-\caption[short]{Reduced squared finite remainders $\mathcal{H}^{(L)}$ at tree level, one and two loops evaluated on the univariate phase-space slice defined by Eqs.~\ref{Wyjeq:unislice1}, \ref{Wyjeq:unislice2} and~\ref{Wyjeq:unislice3}, with the parameters given in Eq.~\ref{Wyjeq:unisliceparams}, for all channels of $\wpaj$ production defined in Eq.~\ref{Wyjeq:wplus_channel_definition}.}
+\caption[short]{Reduced squared finite remainders $\mathcal{H}^{(L)}$ at tree level, one and two loops, evaluated on the univariate phase space slice defined by Eqs.~\ref{Wyjeq:unislice1}, \ref{Wyjeq:unislice2} and~\ref{Wyjeq:unislice3}, with the parameters given in Eq.~\ref{Wyjeq:unisliceparams}, for all channels of $\wpaj$ production defined in Eq.~\ref{Wyjeq:wplus_channel_definition}.}
 \label{Wyjfig:plots}
 \end{figure}
 
@@ -943,21 +938,18 @@ Figure~\ref{Wyjfig:plots} shows the plots of the reduced squared finite remainde
 \label{wyjsec:conclusions}
 In this chapter, we have presented the two-loop leading colour QCD helicity amplitudes for the
 process $W^{\pm}\gamma j$ for the first time. We have obtained relatively compact analytic
-expressions that can be efficiently evaluated across the full physical phase-space. We constructed
+expressions that can be efficiently evaluated across the full physical phase space. We constructed
 the colour and helicity summed finite remainders, and performed several validation tests. This opens
 the path for precision phenomenological predictions at NNLO accuracy in the strong coupling.
 
-To obtain the best possible theoretical predictions it will be necessary to improve upon the leading
+To obtain the best possible theoretical predictions, it will be necessary to improve upon the leading
 colour approximation taken in this chapter. While it is expected that the leading colour contribution
 dominates, a quantitative statement is not possible without explicit computation. Sub-leading colour
 corrections require non-planar topologies to be taken into account, and represent a considerable
-increase in analytic and algebraic complexity. Progress on the relevant Feynman integrals has been made in this direction quite
-recently~\cite{Abreu:2021smk}, although a few topologies contributing to the full amplitudes are
-still missing. We note that the missing closed fermion loop contributions, $A^{(2)}_{6,q}$, only
-require non-planar hexaboxes and therefore could be considered on a shorter timescale.
+increase in analytic and algebraic complexity. We point out that the bases of pure MIs required for the non-planar topologies have been recently made available in literature after the completion of our work~\cite{Abreu:2023rco}.
 
-We also hope that our approach to the simplification of the reconstructed amplitudes will be of use in
-subsequent amplitude computations. An improved understanding of how a rational parameterisation can
+We hope that our approach to the simplification of the reconstructed amplitudes will be of use in
+subsequent amplitude computations. An improved understanding of how a rational parametrisation can
 be tuned to simplify a particular rational coefficient would certainly be of great value. We expect
 this to be of particular importance when dealing with sub-leading colour and non-planar
 configurations, in which many different orderings appear simultaneously. It would also be interesting
