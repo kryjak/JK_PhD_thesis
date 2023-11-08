@@ -123,7 +123,7 @@ The colour decomposition of the $L$-loop amplitudes in the leading colour approx
 & \hspace{4.5cm} -\delta_{i_2}^{\;\;\bar i_1} \delta_{i_4}^{\;\;\bar i_3}  \, \biggl( A^{(L)}(1_{\bar b},4_{b},3_{\bar{q}},2_{q} ,5_{H}) + A^{(L)}(3_{\bar b},2_{b},1_{\bar{q}},4_{q} ,5_{H}) \biggr) \bigg]\,, 
 \nonumber 
 \end{align}
-where $n= m_\eps  \alpha_s/(4\pi),\ \alpha_s = g_s^2/(4\pi)$, $m_\eps=i (4\pi)^{\eps} \mathrm{e}^{-\eps\gamma_E}$, $T^a$ 
+where $n= m_\eps  \alpha_s/(4\pi),\ \alpha_s = g_s^2/(4\pi)$, $m_\eps=\ii (4\pi)^{\eps} \mathrm{e}^{-\eps\gamma_E}$, $T^a$ 
 are the fundamental generators of $SU(N_c)$ normalised such that $\tr(T^a T^b) = \delta^{ab}$,
 while $g_s$ and $y_b$ are the strong coupling constant and bottom-quark Yukawa coupling, respectively. 
 We further decompose the partial amplitudes at one and two loops based on their closed fermion loop contributions:
@@ -239,7 +239,7 @@ For the $\bar{b} b \bar{q} q H$ channel the `all-plus' and MHV configurations va
 	A^{(0)}(1^+_{\bar b},2^+_{b},3^+_{\bar q},4^-_{q},5_{H}) &=  \frac{\spAB 451^2}{s_{234} \spA 34 \spAB 251}+\frac{s_5 \spB 31^2}{s_{134} \spB 34 \spAB 251} \,. 
 \end{align}
 
-In both cases, due to the colour decomposition of the full amplitudes given by Eq.~\ref{eq:colourdecomposition}, the $A^{(0)}(1^+,2^+,3^-,4^+,5_{H})$ partial amplitude is related to $A^{(0)}(1^+,2^+,3^+,4^-,5_{H})$ by swapping the particles $1\leftrightarrow 2,3\leftrightarrow 4$ , and flipping the overall sign for the subprocess $\bbggh$. The remaining non-vanishing helicity configurations can be obtained by parity transformations, that is by swapping the brackets $\la ij \ra \leftrightarrow [ji]$.
+In both cases, due to the colour decomposition of the full amplitudes given by Eq.~\ref{eq:colourdecomposition}, the $A^{(0)}(1^+,2^+,3^-,4^+,5_{H})$ partial amplitude is related to $A^{(0)}(1^+,2^+,3^+,4^-,5_{H})$ by swapping the particles $1\leftrightarrow 2,3\leftrightarrow 4$, and flipping the overall sign for the subprocess $\bbggh$. The remaining non-vanishing helicity configurations can be obtained by parity transformations, that is by swapping the brackets $\la ij \ra \leftrightarrow [ji]$.
 
 \section{Amplitude Reduction and Reconstruction}
 \label{Hbbsec:reduction}
@@ -248,7 +248,7 @@ To obtain the analytic form of the two-loop QCD helicity amplitudes, we employ t
 both the $\bbggh$ and $\bbqqh$ processes using \texttt{QGRAF}~\cite{Nogueira:1991ex}, and perform diagram filtering, topology identification and colour decomposition using a collection of in-house \texttt{Mathematica} and \texttt{Form}~\cite{Kuipers:2012rf,Ruijl:2017dtg} scripts.  In the leading colour approximation, there are 749 (264) Feynman diagrams contributing to the two-loop $\bbggh$ ($\bbqqh$) QCD amplitudes, including all closed fermion loop contributions. The numerators of the loop amplitudes are then computed for each independent helicity configuration, and the spinor-helicity manipulations are carried out using the library \texttt{Spinney}~\cite{Cullen:2010jv}. The helicity dependent loop numerators are written in terms of spinor products ($\spA{i}{j}$, $\spB{i}{j}$), scalar products ($p_i\cdot p_j$, $k_i\cdot k_j$, $k_i \cdot p_j$) and spinor strings ($\spAB{i}{k_i}{j}$, $\spAB{i}{p_5}{j}$, $\spAA{i}{k_i p_5}{j}$, $\spBB{i}{k_i p_5}{j}$), where $p_i$'s and $k_i$'s are the external and loop momenta, respectively. The numerators are therefore expressed as linear combinations of monomials of loop-momentum dependent objects that multiply coefficients which depend only on the external kinematics.
 As explained in Section~\ref{sec:MTs}, the coefficients are built from spinor products and strings (free of $k_i$) which not only are not independent, but also incompatible with finite field arithmetic.
 
-Both of these problems are solved by using MTs. To obtain a configuration for the off-shell five-particle configuration we begin with a massless configuration for six particles. While the exact parametrisation is not important, the form presented in Ref.~\cite{Badger:2016uuq} is a useful starting point. We can think of the massless process as the result of the off-shell leg decaying into a pair of massless particles. There are $3n-10 = 8$ independent variables in the six-particle process, but we can reduce the degrees of freedom by choosing one of the decay direction to be collinear with one of the other massless legs in the five-point kinematics. Since the MTs are associated with complex momenta, we consider the angle and square bracket spinors products to be independent. We can write this explicitly as follows: the six massless momenta $q_i^\mu$ are related to the off-shell five particle momenta $p_i^\mu$ by:
+Both of these problems are solved by using MTs. To obtain a configuration for the off-shell five-particle configuration, we begin with a massless configuration for six particles. While the exact parametrisation is not important, the form presented in Ref.~\cite{Badger:2016uuq} is a useful starting point. We can think of the massless process as the result of the off-shell leg decaying into a pair of massless particles. There are $3n-10 = 8$ independent variables in the six-particle process, but we can reduce the degrees of freedom by choosing one of the decay direction to be collinear with one of the other massless legs in the five-point kinematics. Since the MTs are associated with complex momenta, we consider the angle and square bracket spinors products to be independent. We can write this explicitly as follows: the six massless momenta $q_i^\mu$ are related to the off-shell five particle momenta $p_i^\mu$ by:
 \begin{align}
   p_1^\mu = q_1^\mu\,, \ \qquad 
   p_2^\mu = q_2^\mu\,, \ \qquad 
@@ -765,16 +765,14 @@ Subtracting the UV and IR poles from the bare helicity amplitudes and performing
 F^{(L)} = \sum_{i} r_i(x) m_i(f)\,,
 \label{eq:finrem}
 \end{equation}
-where $m_i(f)$ are monomials of the special functions and $r_i$ are rational functions of the MTs $x$. It is important to note that the UT MIs involves three square roots. One is related to the pseudo-scalar invariant $\tr_5$, which captures the parity-odd part of the spinor expressions and is therefore present already in the rational coefficients. This square root is rationalised by the MT-inspired parametrisation, Eq.~\ref{eq:mtvardefs}. The other two square roots are associated with the three-mass triangle Gram determinants:
+where $m_i(f)$ are monomials of the special functions and $r_i$ are rational functions of the MTs $x$. It is important to note that the definition of the UT MIs involves three square roots. One is related to the pseudo-scalar invariant $\tr_5$, which captures the parity-odd part of the spinor expressions and is present already in the coefficients. The other two square roots are associated with the three-mass triangle Gram determinants:
 \begin{align}
   \Delta_3^{(1)} &= 2 \sqrt{(p_{23} \cdot p_{5})^2 - p_5^2 s_{23}} \,,&
   \Delta_3^{(2)} &= 2 \sqrt{(p_{12} \cdot p_{5})^2 - p_5^2 s_{12}} \,,
   \label{eq:squareroots}
 \end{align}
 where $p_{ij} = p_i + p_j$.
-They are not rationalised by our parametrisation and may therefore be problematic for the finite field setup. We overcome this issue by absorbing the three square roots into the definition of the UT MIs, which is possible because they appear only as overall normalisations of the latter. As a result, they are contained in the monomials $m_i(f)$ in Eq.~\ref{eq:finrem} and do not appear in the amplitude reconstruction.
-We note that in our computation, while the $\tr_5$ originating from the UT MIs is absorbed in $m_i(f)$, 
-the $\tr_5$ already present in the coefficients is rationalised and present in the amplitude reconstruction.
+They are not rationalised by the MT parametrisation and may therefore be problematic for the finite field setup. We overcome this issue by absorbing the three square roots into the definition of the UT MIs, which is possible because they appear only as overall normalisations of the latter. As a result, they are contained in the monomials $m_i(f)$ in Eq.~\ref{eq:finrem} and do not appear in the amplitude reconstruction. We note that in our computation, while the $\tr_5$ originating from the UT MIs is absorbed in $m_i(f)$, the $\tr_5$ already present in the coefficients is rationalised by the MT parametrisation, Eq.~\ref{eq:mtvardefs}. 
 
 At this stage, we have an algorithm which computes the coefficients of the special function monomials, $r_i(x)$ in Eq.~\ref{eq:squareroots}, 
 numerically over finite fields for each of the independent helicity configurations of the two processes $\bar{b}bggH$ and $\bar{b}b\bar{q}qH$. 
@@ -783,8 +781,7 @@ The last step is the functional reconstruction of the rational coefficients. Thi
 
 The first step of the strategy consists in fitting the linear relations among the rational coefficients. These linear relations are then used to express the rational coefficients in terms of a set of linearly independent coefficients, which are chosen to have the lowest possible degrees. The degrees of the independent rational coefficients are given in the fourth column of Tables~\ref{tab:degrees2g2bH} and~\ref{tab:degrees2q2bH}.
 
-The second step of our reconstruction strategy consists of determining the factors in the denominators of the rational coefficients. The analytic structure of the special functions is determined by a set of algebraic functions of the kinematics called letters. In other words, the singularities of the special functions and of their discontinuities are located on the hypersurfaces where any of the letters vanish (or go to infinity). It is therefore natural to expect that the rational coefficients which multiply the special functions should feature poles which are similarly linked to the letters, given for our process in Ref.~\cite{Abreu:2020jxa}. 
-This motivates us to include the letters into an ansatz for the denominators of the coefficients. Since the helicity amplitudes also contain phase information, we must include spinor structures as well. It is then simple to check, on a univariate slice of the amplitude, whether the terms in the ansatz are present in the denominators or not. For our amplitudes, we find the following list to be sufficient:
+The second step of our reconstruction strategy consists of determining the factors in the denominators of the rational coefficients. The analytic structure of the special functions is determined by the set of letters corresponding to the canonical DEs satisfied by the MIs. In other words, the singularities of the special functions and of their discontinuities are located on the hypersurfaces where any of the letters vanish (or go to infinity). It is therefore natural to expect that the rational coefficients which multiply the special functions should feature poles which are similarly linked to the letters. This motivates us to include the letters into an ansatz for the denominators of the coefficients. Since the helicity amplitudes also contain phase information, we must include spinor structures as well. It is then simple to check, on a univariate slice of the amplitude, whether the terms in the ansatz are present in the denominators or not. For our amplitudes, we find the following list to be sufficient:
 \begin{equation}
 \begin{aligned}
 \biggl\{  & \spA{i}{j} \,,  \spB{i}{j}  \,, \spAB{i}{p_5}{j}  \,, s_{ij} \,, s_{ij} - s_{kl} \,, 
@@ -849,14 +846,14 @@ at each stage of our reconstruction steps, together with the number of sample po
 
 Following the strategy outlined above, we reconstructed the partial finite remainders for the independent mostly-plus helicity configurations of the subprocesses $\bbggh$ and $\bbqqh$. The mostly-minus helicity finite remainders can be obtained by parity conjugation. Moreover, the finite remainders for the helicity configuration $++-+$ can be obtained by swapping $1\leftrightarrow2$, $3\leftrightarrow 4$ in the $+++-$ finite remainders, as discussed in Section~\ref{Hbbsec:trees} for the tree-level amplitudes. 
 This symmetry follows from the colour structure and thus holds at any loop order. 
-We could therefore evaluate the $++-+$ finite remainders by permuting numerically the $+++-$ ones, as we do in order to get all the other helicity configurations from the independent ones. By permuting numerically, we mean that we obtain the values of the permuted finite remainders by evaluating the unpermuted ones at permuted points. This is possible because our approach to the evaluation of the special functions, which we discuss in Section~\ref{Hbbsec:Hbasis}, handles the analytic continuation to any region automatically. Each numerical permutation therefore amounts to one more evaluation for each point. The permutation that takes from $+++-$ to $++-+$ is however peculiar, as it is covered by the basis of special functions defined in Ref.~\cite{Badger:2021nhg}. We can thus reconstruct the finite remainders for both helicity configurations directly in terms of the same basis of special functions. This is much more convenient, as it reduces the number of permutations which need to be carried out numerically, this way decreasing the global evaluation time of the finite remainders. For this reason we reconstructed the analytic expression of the $++-+$ finite remainders as well, and include the $++-+$ configuration in the independent helicity set in the following sections. 
+We could therefore evaluate the $++-+$ finite remainders by permuting numerically the $+++-$ ones, as we do in order to get all the other helicity configurations from the independent ones. By permuting numerically, we mean that we obtain the values of the permuted finite remainders by evaluating the unpermuted ones at permuted points. This is possible because our approach to the evaluation of the special functions, which we discuss in Section~\ref{Hbbsec:Hbasis}, handles the analytic continuation to any region automatically. Each numerical permutation therefore amounts to one more evaluation for each point. The permutation that takes from $+++-$ to $++-+$ is however peculiar, as it is covered by the basis of special functions defined in Ref.~\cite{Badger:2021nhg}. We can thus reconstruct the finite remainders for both helicity configurations directly in terms of the same basis of special functions. This is much more convenient, as it reduces the number of permutations which need to be carried out numerically, this way decreasing the global evaluation time of the finite remainders. For this reason, we reconstructed the analytic expression of the $++-+$ finite remainders as well, and include the $++-+$ configuration in the independent helicity set in the following sections. 
 The relation with the $+++-$ configuration constitutes a non-trivial check of our results, which we discuss in Section~\ref{Hbbsec:validation}.
 
 
 \section[A Custom Basis for the Finite Remainders]{A Custom Basis of Special Functions for the Finite Remainders}
 
 \label{Hbbsec:Hbasis}
-The one and two-loop finite remainders are expressed as combinations of rational coefficients --- functions of the MTs Eq.~\ref{eq:mtvardefs} --- and monomials of square roots and elements of the MI function basis $\{f^{(w)}_i\}$. The latter were classified in Ref.~\cite{Badger:2021nhg} so as to span the cyclic permutations of the planar five-particle integrals with one massive off-shell leg up to two loops. The function space of the finite remainders is however simpler than that of the integrals and of the amplitudes. This becomes particularly clear when we express the special functions in terms of CIIs~\cite{Chen:1977oja}, which we have introduced in Section~\ref{sec:canonicalform}. Here, we will write the special functions as:
+The one and two-loop finite remainders are expressed as combinations of rational coefficients --- functions of the MTs in Eq.~\ref{eq:mtvardefs} --- and monomials of square roots and elements of the MI function basis $\{f^{(w)}_i\}$. The latter were classified in Ref.~\cite{Badger:2021nhg} so as to span the cyclic permutations of the planar five-particle integrals with one massive off-shell leg up to two loops. The function space of the finite remainders is however simpler than that of the integrals and of the amplitudes. This becomes particularly clear when we express the special functions in terms of CIIs~\cite{Chen:1977oja}, which we have introduced in Section~\ref{sec:canonicalform}. Here, we will write the special functions as:
 \begin{align} \label{eq:Chen}
 \left[W_{i_1}, \ldots, W_{i_n}  \right]_{s_0} (s) = \int_0^1 dt \, \frac{d \log W_{i_n}\left(\gamma(t)\right)}{dt} \left[W_{i_1}, \ldots, W_{i_{n-1}}  \right]_{s_0} \left(\gamma(t)\right) \,,
 \end{align}
@@ -874,8 +871,8 @@ In order to evaluate numerically the finite remainder function basis $\{h^{(w)}_
 \begin{align} \label{eq:example_h}
 h^{(w)}_{i}(s) = \sum_{I = (i_1,\ldots,i_w)} c_I^{(i)} \, \left[W_{i_1}, \ldots, W_{i_w}  \right]_{s_0} (s) \, ,
 \end{align}
-for some rational constant coefficients $c_I^{(i)}$\footnote{In general the iterated integrals in Eq.~\ref{eq:example_h} include also transcendental constants, such as $\pi$ and $\zeta(3)$. We neglect them here to simplify the presentation.}.
-Moreover, the purity condition Eq.~\ref{eq:purecondition} follows straightforwardly from the differential of CIIs:
+for some rational constant coefficients $c_I^{(i)}$ \footnote{In general the iterated integrals in Eq.~\ref{eq:example_h} include also transcendental constants, such as $\pi$ and $\zeta(3)$. We neglect them here to simplify the presentation.}.
+Moreover, the purity condition in Eq.~\ref{eq:purecondition} follows straightforwardly from the differential of CIIs:
 \begin{align} \label{eq:ChenDerivative}
 d \left[W_{i_1}, \ldots, W_{i_n}  \right]_{s_0} (s) = d \log W_{i_n}(s) \, \left[W_{i_1}, \ldots, W_{i_{n-1}}  \right]_{s_0} (s) \,,
 \end{align}
@@ -885,7 +882,7 @@ The purity of the function basis therefore implies that the vector of all weight
 d \vec{h}^{(w)} = \left( \sum_{j} b_j^{(w)} \, d\log W_j  \right) \,  \vec{h}^{(w-1)} \,,
 \end{align}
 for $w>1$, where $b_j$ are constant rational matrices. The matrices $b_j^{(w)}$ can be determined easily from the iterated integral expression of the functions through Eq.~\ref{eq:ChenDerivative}. 
-In general the derivatives of the weight-$w$ functions may involve weight-$(w-1)$ functions which are not needed to express the finite remainders. These must be included in the basis as well, in order to be able to write down the DEs. So, strictly speaking, the finite remainder function basis $\{h^{(w)}_i\}$ contains all linearly independent functions which appear in the finite remainders and in the derivatives of the basis itself.
+In general, the derivatives of the weight-$w$ functions may involve weight-$(w-1)$ functions which are not needed to express the finite remainders. These must be included in the basis as well, in order to be able to write down the DEs. So, strictly speaking, the finite remainder function basis $\{h^{(w)}_i\}$ contains all linearly independent functions which appear in the finite remainders and in the derivatives of the basis itself.
 The DEs Eq.~\ref{eq:dhw} for all weights can be put together in one system by defining the vector of all the functions in the finite remainder basis as:
 \begin{align}
 \vec{h} = \left( \eps^4 \vec{h}^{(4)}\,, \eps^3 \vec{h}^{(3)}\,, \eps^2 \vec{h}^{(2)} \,, \eps \vec{h}^{(1)} \,, 1 \right)^T \,,
@@ -987,7 +984,7 @@ Permuting the special functions is however non-trivial, and may in general requi
 \begin{align}
 \left(\sigma \circ \vec{h} \right) (\{p_i\}) = \vec{h} ( \{p_{\sigma(i)}\} )\, ,
 \end{align}
-where $\sigma$ denotes the permutation $(12345)\to(21435)$ of the external particles, and $\{p_i\}$ denotes the dependence on the external momenta. In order to check the relations Eq.~\ref{eq:relations} analytically, we need to express the permuted functions $(\sigma \circ \vec{h} )$ in terms of the ones in the standard orientation, $\vec{h}$. To perform this operation in an algorithmic and robust way, we resort to the system of DEs Eq.~\ref{eq:dh} satisfied by the finite remainder function basis. The permuted functions in fact satisfy the permuted DEs:
+where $\sigma$ denotes the permutation $(12345)\to(21435)$ of the external particles, and $\{p_i\}$ denotes the dependence on the external momenta. In order to check the relations Eq.~\ref{eq:relations} analytically, we need to express the permuted functions $(\sigma \circ \vec{h} )$ in terms of the ones in the standard orientation, $\vec{h}$. To perform this operation in an algorithmic and robust way, we resort to the system of DEs in Eq.~\ref{eq:dh} satisfied by the finite remainder function basis. The permuted functions in fact satisfy the permuted DEs:
 \begin{align}
 d ( \sigma \circ \vec{h} ) = \eps \left[ \sum_{i=1}^{49} a_i \, d \log\left(\sigma \circ W_i \right) \right] \,  ( \sigma \circ \vec{h} ) \,.
 \end{align}
@@ -1017,7 +1014,7 @@ where $i,j \in \{1,2,3,4\}$ with $i\neq j$. Next, for each factor $P_k$ in Eq.~\
 
 \section{Results}
 \label{Hbbsec:results}
-The analytic expressions of the independent one- and two-loop finite remainders are provided in the ancillary files of Ref~\cite{Badger:2021ega}. We present them as combinations of linearly independent rational coefficients and monomials of the square roots and of the finite remainder basis functions. The rational coefficients are expressed in terms of the MTs defined in Eq.~\ref{eq:mtvardefs}. We evaluate the finite remainder function basis numerically by integrating the DEs Eq.~\ref{eq:dh} with the method of the generalised series expansions. We also provide \texttt{Mathematica} scripts which illustrate how to evaluate the finite remainders interfered with the tree-level amplitudes for all the partonic channels contributing to the process $pp\to b\bar{b} H$, which we label as:
+The analytic expressions of the independent one- and two-loop finite remainders are provided in the ancillary files of Ref~\cite{Badger:2021ega}. We present them as combinations of linearly independent rational coefficients and monomials of the square roots and of the finite remainder basis functions. The rational coefficients are expressed in terms of the MTs defined in Eq.~\ref{eq:mtvardefs}. We evaluate the finite remainder function basis numerically by integrating the DEs of Eq.~\ref{eq:dh} with the method of the generalised series expansions. We also provide \texttt{Mathematica} scripts which illustrate how to evaluate the finite remainders interfered with the tree-level amplitudes for all the partonic channels contributing to the process $pp\to b\bar{b} H$, which we label as:
 \begin{equation}
 \label{eq:channel_definition}
 \begin{aligned}
@@ -1083,18 +1080,18 @@ s_{34} = \frac{63}{4}\,,\quad
 s_{45} = -\frac{288491}{38912}\,,\nonumber \\[10pt]
 & \qquad \quad s_{15} = \frac{455}{64}\,, \quad 
 p_5^2 = 7\,, \quad 
-\mathrm{tr}_5 = i\frac{49\sqrt{50998583}}{1400832}  \,,
+\mathrm{tr}_5 = \ii\frac{49\sqrt{50998583}}{1400832}  \,,
 \label{eq:physicalpointHbb}
 \end{align}
 which corresponds to the following values of the MTs:
 \begin{align}
 &
 x_{1}=\frac{49}{576}\,, \quad 
-x_{2}=-\frac{77405}{76608}-i\frac{\sqrt{50998583}}{76608}\,, \quad
-x_{3}=-\frac{557251}{411874}+i\frac{95\sqrt{50998583}}{411874}\,, \quad \nonumber \\[10pt]
+x_{2}=-\frac{77405}{76608}-\ii\frac{\sqrt{50998583}}{76608}\,, \quad
+x_{3}=-\frac{557251}{411874}+\ii\frac{95\sqrt{50998583}}{411874}\,, \quad \nonumber \\[10pt]
 & \qquad \quad
 x_{4}=-\frac{2817}{32}\,,\quad 
-x_{5}=-\frac{11290}{41629} - i\frac{2\sqrt{50998583}}{41629}\,, \quad 
+x_{5}=-\frac{11290}{41629} - \ii\frac{2\sqrt{50998583}}{41629}\,, \quad 
 x_{6}=-\frac{370917}{4256} \,.
 \label{eq:physicalpointHbbMomTwistor}
 \end{align}
@@ -1187,7 +1184,7 @@ The reality of the angle $\theta$ then restricts the free parameter $y_2$ to the
 [\frac{39}{100},\frac{39}{40}]$. In order to evaluate the finite remainders for all the processes
 shown in Eq.~\ref{eq:channel_definition}, we need to compute the finite remainder special functions
 at $16$ permutations of each phase space point, as can be seen explicitly in
-Eqs.~\ref{eq:channel_gg}---\ref{eq:channel_BB}. We do this by integrating the system of canonical DEs Eq.~\ref{eq:dh} with \texttt{DiffExp} using rationalised values of the invariants. The need for rational values arises from the fact that the series expansion method, implemented in \texttt{DiffExp}, is very sensitive to the values of input parameters, as it requires high precision throughout the intermediate steps. For each permutation of each point, we compute the `distance' (technically speaking, the number of segments into which the integration contour is divided by \texttt{DiffExp}) from the six reference points provided in the ancillary files, and choose the closest one as the initial point for the integration. In Fig.~\ref{fig:plots}, we plot the values of the one- and two-loop reduced squared finite remainders for all the processes defined in Eq.~\ref{eq:channel_definition}, as functions of the parameter $y_2$.
+Eqs.~\ref{eq:channel_gg}---\ref{eq:channel_BB}. We do this by integrating the system of canonical DEs in Eq.~\ref{eq:dh} with \texttt{DiffExp} using rationalised values of the invariants. The need for rational values arises from the fact that the series expansion method, implemented in \texttt{DiffExp}, is very sensitive to the values of input parameters, as it requires high precision throughout the intermediate steps. For each permutation of each point, we compute the `distance' (technically speaking, the number of segments into which the integration contour is divided by \texttt{DiffExp}) from the six reference points provided in the ancillary files, and choose the closest one as the initial point for the integration. In Fig.~\ref{fig:plots}, we plot the values of the one- and two-loop reduced squared finite remainders for all the processes defined in Eq.~\ref{eq:channel_definition} as functions of the parameter $y_2$.
 
 \begin{figure}[t!]
 \centering
@@ -1232,7 +1229,7 @@ in Eq.~\ref{eq:parametrisation}, as functions of the variable $y_2$, for the cha
 \label{fig:plots}
 \end{figure}
 
-We stress that the purpose of the plots in Fig.~\ref{fig:plots} is merely to demonstrate that our results for the finite remainders can be evaluated reliably in the physical scattering region. Nothing can be inferred about the convergence of the perturbative expansion at the cross section level. One interesting feature which can be appreciated from Fig.~\ref{fig:plots} is the appearance of a loop-induced peak in the finite remainders for the channel $\mathbf{\bar{q}q}$. The peak is absent at tree level for the same channel and up to two loops for $\mathbf{q\bar{q}}$. The latter channel is related to $\mathbf{\bar{q}q}$ by the exchange $3\leftrightarrow 4$ of the external particles. We observe that the peak stems from the values of the finite remainder function basis, while the rational coefficients are not enhanced in that region. In order to pinpoint more precisely the origin of this phenomenon, we construct the explicit analytic expressions for some of the special functions which exhibit the peak, starting from their iterated integral expression obtained by solving the system of canonical DEs Eq.~\ref{eq:dh}. For instance:
+We stress that the purpose of the plots in Fig.~\ref{fig:plots} is merely to demonstrate that our results for the finite remainders can be evaluated reliably in the physical scattering region. Nothing can be inferred about the convergence of the perturbative expansion at the cross section level. One interesting feature which can be appreciated from Fig.~\ref{fig:plots} is the appearance of a loop-induced peak in the finite remainders for the channel $\mathbf{\bar{q}q}$. The peak is absent at tree level for the same channel and up to two loops for $\mathbf{q\bar{q}}$. The latter channel is related to $\mathbf{\bar{q}q}$ by the exchange $3\leftrightarrow 4$ of the external particles. We observe that the peak stems from the values of the finite remainder function basis, while the rational coefficients are not enhanced in that region. In order to pinpoint more precisely the origin of this phenomenon, we construct the explicit analytic expressions for some of the special functions which exhibit the peak, starting from their iterated integral expression obtained by solving the system of canonical DEs in Eq.~\ref{eq:dh}. For instance:
 \begin{align} \label{eq:h24}
 h^{(2)}_4 & = 2 \, \text{Li}_2\left( 1 - \frac{s_{15}}{p_5^2} \right) + 2 \, \text{Li}_2 \left( 1- \frac{s_{23}}{s_{15}}\right) -\frac{\pi^2}{4} + \frac{1}{2} \log^2\left( p_5^2 \right) + \frac{1}{2}\log^2\left( -s_{45}\right) + 2 \log^2\left( s_{15}\right) \nonumber \\
 & - \frac{1}{2}\log^2\left( -s_{23}\right) - 2 \log\left( s_{15}\right) \log\left( s_{15} - s_{23}\right) + \log^2\left( s_{15} - s_{23}\right) + \log\left( p_5^2\right) \log\left(-s_{23}\right) \nonumber \\

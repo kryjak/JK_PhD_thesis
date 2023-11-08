@@ -261,7 +261,7 @@ We express the coefficients $c_{r,w}$ as $\mathbb{Q}$-linear combinations of a s
 The analytic expressions of the latter are given explicitly in terms of MTs.
 We simplify these expressions through a multivariate partial fraction decomposition using \texttt{MultivariateApart}~\cite{Heller:2021qkz}, and by collecting the common factors.
 
-In the ancillary files~\cite{zenodo}, the directory \texttt{amplitudes/} contains \texttt{Mathematica} files describing the bare helicity subamplitude currents $\sal{L}{i}{j}$ by their coefficients $a_{i,j;k}^{(L)}$ in the form of \cref{eqQED:ampprojcoeffs}.
+In the ancillary files of Ref.~\cite{zenodo}, the directory \texttt{amplitudes/} contains \texttt{Mathematica} files describing the bare helicity subamplitude currents $\sal{L}{i}{j}$ by their coefficients $a_{i,j;k}^{(L)}$ in the form of \cref{eqQED:ampprojcoeffs}.
 The \texttt{Mathematica} script \texttt{current.m} is a reference implementation of the numerical evaluation of the bare amplitude coefficients $a_k^{(L)}$ in \cref{eqQED:ampprojcoeffs}, including summation of subamplitudes in \cref{eqQED:nldecomp}, treatment of dependent helicities, and renormalisation scale restoration in \cref{eqQED:scale-restoration}.
 The \texttt{Mathematica} script \texttt{evaluation.wl} demonstrates the construction of the five-particle on-shell amplitudes in \cref{eqQED:on-shell-amps} for the process $0\to e^- e^+ \gamma \mu^- \mu^+$, and their helicity-summation to obtain the squared matrix elements in \cref{eqQED:squared_M}.
 The results of the script are checked against a reference point included in \texttt{reference\_point.json}.
@@ -388,7 +388,7 @@ coefficients of each helicity subamplitude, which allows us to select those coef
 \begin{equation}
 	\left\{\braket{ij} , \, \braketsq{ij} , \, \bra{i}p_4|j] , \, s_{ij} - s_{k4} , \, s_{i4} - s_4 , \, s_4 \right\} \,,
 \end{equation}
-for all $i, j, k = 1, 2, 3$ such that $i\neq j \neq k$. This list includes denominator factors of the DEs satisfied by the MIs (listed by \cref{eqQED:alphabet}), 
+for all $i, j, k = 1, 2, 3$ such that $i\neq j \neq k$. This list includes denominator factors of the DEs satisfied by the MIs (listed in \cref{eqQED:alphabet}), 
 as well as spinor structures aimed at capturing the phase information of helicity amplitudes.
 %We then determine the exponents of the ans\"atze by comparing them to the coefficients reconstructed on a univariate slice of the kinematic variables~\cite{Abreu:2019odu}, which are very cheap to obtain. We find that with this ansatz it is possible to determine all denominator factors ---~which indeed are linked to the singularity structure of the amplitude~--- and sometimes also some numerator factors. As a result, the undetermined functions yet to be reconstructed are of lower degree and require fewer sample points. 
 We reconstruct the analytic form of the remaining rational functions using \texttt{FiniteFlow}'s built-in multivariate functional reconstruction algorithm (see Section~\ref{sec:FF}).
@@ -434,7 +434,7 @@ For the purpose of computing two-loop scattering amplitudes up to their finite p
 Since the MIs satisfy canonical DEs, Eq.~\ref{eqQED:canonicalDEs}, the $\eps$-order of the MI coefficients $\vv{\text{MI}}_T^{(k)}(\vec{s})$ equals their transcendental weight~\cite{Henn:2013pwa}.
 We compute the derivatives of the MIs using \texttt{FiniteFlow}~\cite{Peraro:2019svx} and \texttt{LiteRed}~\cite{Lee:2012cn}.
 We do so only for the integral families with the ordering of the external momenta shown in \cref{fig:int-fams}, and obtain those for all other orderings of the external massless legs by permutation. 
-We provide the definition of the pure MIs and the corresponding DEs for all one- and two-loop four-point one-mass families in \cref{fig:int-fams} in the folder \texttt{pure\_mi\_bases/} of the ancillary files~\cite{zenodo}. 
+We provide the definition of the pure MIs and the corresponding DEs for all one- and two-loop four-point one-mass families in \cref{fig:int-fams} in the folder \texttt{pure\_mi\_bases/} of the ancillary files of Ref.~\cite{zenodo}. 
 
 In order to solve the DEs in Eq.~\ref{eqQED:canonicalDEs}, we need boundary values, i.e., values of all MIs up to order $\eps^4$ at a phase-space point. Due to the simplicity ---~by today's standards~--- of the integrals under consideration, an arbitrary (non-singular) phase-space point would do. Nonetheless, we make a more refined choice following some of the criteria of \incites{Chicherin:2020oor,Chicherin:2021dyp}.
 We choose the following point in the $s_{12}$ channel (see \cref{app:an_cont}),
