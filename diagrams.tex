@@ -1,0 +1,67 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \hspace*{1em}\raisebox{0.3cm}{ % needed to align the diagrams
+        \begin{tikzpicture}
+        	\begin{feynman}[small]
+        		\vertex (v1) {$e$};
+        		\vertex[right = 1.2cm of v1] (i1);
+        		\vertex[right = of i1] (v2) {$e$};
+        		\vertex[below = of v1] (v3) {$\mu$};
+        		\vertex[right = 1.2cm of v3] (i2);
+        		\vertex[right = of i2] (v4) {$\mu$};
+
+        		\diagram*{
+                    (v1) -- (i1) -- (v2),
+                    (v3) -- (i2) -- (v4),
+                    (i1) -- [photon] (i2),
+        		};
+        	\end{feynman}
+        \end{tikzpicture}}
+    \caption{$e\mu \rightarrow e\mu$} \label{fig:topologya}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \hspace*{1em}
+\begin{tikzpicture}
+        	\begin{feynman}[small]
+        		\vertex (v1) {$e$};
+        		\vertex[right = 1.2cm of v1] (i1);
+        		\vertex[right = of i1] (v2) {$e$};
+        		\vertex[below = of i1] (v3) {$\gamma^\ast$};
+
+        		\diagram*{
+                    (v1) -- (i1) -- (v2),
+                    (i1) -- [photon] (v3),
+        		};
+        	\end{feynman}
+        \end{tikzpicture}
+    \caption{$e \rightarrow e\gamma^\ast$} \label{fig:topologyb}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \hspace*{1em}
+\begin{tikzpicture}
+        	\begin{feynman}[small]
+        		\vertex (v1) {$e$};
+        		\vertex[right = 1.2cm of v1] (i1);
+        		\vertex[right = of i1] (i2);
+        		\vertex[right = of i2] (v2) {$e$};
+        		\vertex[below = of i1] (v3) {$\gamma$};
+        		\vertex[below = of i2] (v4) {$\gamma^\ast$};
+
+        		\diagram*{
+                    (v1) -- (i1) -- (i2) -- (v2),
+                    (i1) -- [photon] (v3),
+                    (i2) -- [photon] (v4),
+        		};
+        	\end{feynman}
+        \end{tikzpicture}
+    \caption{$e \rightarrow e \gamma \gamma^\ast$} \label{fig:topologyc}
+    \end{subfigure}
+\label{fig:topologies}
+\end{figure}
+
+
+\end{document}
